@@ -98,7 +98,7 @@
 
       'reels.title': 'Bekijk mijn Reels',
       'reels.view': 'Bekijk deze Reel op Instagram',
-      'reels.copy': 'Naast mijn strategiewerk maak ik Instagram Reels over popmuziek, artiesten en de internetcultuur eromheen.',
+      'reels.copy': 'Als DJ en contentcreator deel ik mijn liefde voor popmuziek, zet ik ondergewaardeerde artiesten in de spotlight en duik ik in de internetcultuur eromheen. Mijn Reels zijn al meer dan 1 miljoen keer bekeken.',
 
       'music.eyebrow': 'Nu te horen',
       'music.title': 'Muziekhoek',
@@ -221,7 +221,7 @@
 
       'reels.title': 'Guarda i miei Reel',
       'reels.view': 'Guarda questo Reel su Instagram',
-      'reels.copy': 'Oltre al lavoro di strategia, creo Reel su Instagram che raccontano la musica pop, gli artisti e la cultura online che li circonda.',
+      'reels.copy': 'Come DJ e content creator condivido il mio amore per la musica pop, do voce ad artisti sottovalutati ed esploro la cultura online che li circonda. I miei Reel hanno superato il milione di visualizzazioni.',
 
       'music.eyebrow': 'In riproduzione',
       'music.title': 'Angolo musicale',
