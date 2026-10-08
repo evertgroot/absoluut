@@ -140,6 +140,7 @@
       'djp.contactAlt': 'Absoluut met zicht op de dansvloer',
       'djp.contactEyebrow': 'Contact',
       'djp.contactTitle': 'Laten we de juiste soundtrack vinden',
+      'djp.email': 'E-mail',
       'djp.contactLead': 'Neem contact op voor boekingen, samenwerkingen, bruiloften, clubavonden en brand events.'
     },
 
@@ -261,6 +262,7 @@
       'djp.contactAlt': 'Absoluut davanti alla pista',
       'djp.contactEyebrow': 'Contatti',
       'djp.contactTitle': 'Troviamo la colonna sonora giusta',
+      'djp.email': 'Email',
       'djp.contactLead': 'Per booking, collaborazioni, matrimoni, serate in club ed eventi aziendali, contattami.'
     }
   };
