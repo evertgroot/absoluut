@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="IM Groot: content strategist, pop culture creator and DJ.">
+  <meta name="description" content="IM Groot: content strategist, pop culture creator and DJ." data-i18n-content="home.desc">
   <meta name="theme-color" content="#17155f">
-  <title>IM Groot | Content Strategist, Creator & DJ</title>
+  <title data-i18n="home.title">IM Groot | Content Strategist, Creator & DJ</title>
+  <script src="assets/i18n.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -439,6 +440,37 @@
     footer div { display: flex; gap: 14px; }
     footer a { text-decoration: none; }
 
+    .i18n-pending body { opacity: 0; }
+
+    .topbar { display: flex; justify-content: flex-end; margin-bottom: 14px; }
+    .lang-switch {
+      display: inline-flex;
+      gap: 2px;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .lang-switch button {
+      min-width: 44px;
+      min-height: 36px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: rgba(255,255,255,.7);
+      font: inherit;
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease;
+    }
+    .lang-switch button:hover { color: #fff; background: rgba(255,255,255,.08); }
+    .lang-switch button[aria-pressed="true"] { background: var(--brochure-wine); color: #fff; }
+    .lang-switch button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
     @keyframes drift {
       from { transform: translate(-24px,-16px) scale(1); }
       to { transform: translate(28px,22px) scale(1.1); }
@@ -516,25 +548,33 @@
 
 <body>
   <main class="page">
+    <nav class="topbar" aria-label="Language" data-i18n-aria="lang.label">
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="lang.label">
+        <button type="button" data-set-lang="en" lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="nl" lang="nl" aria-pressed="false">NL</button>
+        <button type="button" data-set-lang="it" lang="it" aria-pressed="false">IT</button>
+      </div>
+    </nav>
+
     <header class="hero panel" id="top">
       <div class="portrait-wrap">
-        <img class="portrait" src="https://i.ibb.co/p6zFzz3m/480230220-10234893136214064-1510774797317054110-n.jpg" alt="Portrait">
+        <img class="portrait" src="https://i.ibb.co/p6zFzz3m/480230220-10234893136214064-1510774797317054110-n.jpg" alt="Portrait" data-i18n-alt="home.portraitAlt">
         <p class="portrait-name">Evert Groot</p>
-        <p class="dj-name">DJ as <strong>Absoluut</strong></p>
+        <p class="dj-name" data-i18n-html="home.djAs">DJ as <strong>Absoluut</strong></p>
       </div>
       <div>
-        <p class="eyebrow">Content strategist · Creator · DJ</p>
-        <h1>Strategy with a pulse. Content with a point.</h1>
-        <p class="intro">I turn insight and online behaviour into sharp strategies, memorable formats, and ideas people want to share. I also make content about pop music and DJ sets built for queer joy.</p>
+        <p class="eyebrow" data-i18n="home.eyebrow">Content strategist · Creator · DJ</p>
+        <h1 data-i18n="home.h1">Strategy with a pulse. Content with a point.</h1>
+        <p class="intro" data-i18n="home.intro">I turn insight and online behaviour into sharp strategies, memorable formats, and ideas people want to share. I also make content about pop music and DJ sets built for queer joy.</p>
         <div class="actions">
-          <a class="button primary" href="#portfolio">View my work <span class="css-arrow down" aria-hidden="true"></span></a>
+          <a class="button primary" href="#portfolio"><span data-i18n="home.btnWork">View my work</span> <span class="css-arrow down" aria-hidden="true"></span></a>
           <a class="button" href="#dj-work">DJ <span class="css-arrow down" aria-hidden="true"></span></a>
           <a class="button" href="mailto:evert@imgroot.nl">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="3" y="5" width="18" height="14" rx="2"></rect>
               <path d="m3 7 9 6 9-6"></path>
             </svg>
-            Contact me
+            <span data-i18n="home.btnContact">Contact me</span>
           </a>
           <a class="button" href="https://www.instagram.com/absoluut/" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -550,8 +590,8 @@
 
     <section class="section-card panel" aria-labelledby="services-title">
       <div class="section-heading">
-        <h2 id="services-title">What I do</h2>
-        <p class="section-copy">From the first insight to a format that keeps working week after week.</p>
+        <h2 id="services-title" data-i18n="services.title">What I do</h2>
+        <p class="section-copy" data-i18n="services.copy">From the first insight to a format that keeps working week after week.</p>
       </div>
       <div class="services">
         <article class="service">
@@ -561,8 +601,8 @@
               <path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9 4.9-2.1Z"></path>
             </svg>
           </span>
-          <h3>Content strategy</h3>
-          <p>A clear story, smart formats, and a plan tailored to your audience.</p>
+          <h3 data-i18n="services.s1.title">Content strategy</h3>
+          <p data-i18n="services.s1.text">A clear story, smart formats, and a plan tailored to your audience.</p>
         </article>
         <article class="service">
           <span class="service-icon" aria-hidden="true">
@@ -571,8 +611,8 @@
               <path d="m18.5 14 .8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2Z"></path>
             </svg>
           </span>
-          <h3>Creative direction</h3>
-          <p>Strong concepts and a distinctive creative direction that hold everything together.</p>
+          <h3 data-i18n="services.s2.title">Creative direction</h3>
+          <p data-i18n="services.s2.text">Strong concepts and a distinctive creative direction that hold everything together.</p>
         </article>
         <article class="service">
           <span class="service-icon" aria-hidden="true">
@@ -582,8 +622,8 @@
               <circle cx="16" cy="16" r="3"></circle>
             </svg>
           </span>
-          <h3>DJ & music</h3>
-          <p>Pop, queer joy, and guilty pleasures without the guilt.</p>
+          <h3 data-i18n="services.s3.title">DJ & music</h3>
+          <p data-i18n="services.s3.text">Pop, queer joy, and guilty pleasures without the guilt.</p>
         </article>
       </div>
     </section>
@@ -592,77 +632,77 @@
       <div class="section-heading">
         <div>
           <p class="eyebrow">Portfolio</p>
-          <h2 id="portfolio-title">Selected projects</h2>
+          <h2 id="portfolio-title" data-i18n="portfolio.title">Selected projects</h2>
         </div>
-        <p class="section-copy">A selection of strategy, social content, and creative projects.</p>
+        <p class="section-copy" data-i18n="portfolio.copy">A selection of strategy, social content, and creative projects.</p>
       </div>
-      <div class="scroll-hint" aria-hidden="true">Swipe to explore <span class="css-arrow"></span></div>
+      <div class="scroll-hint" aria-hidden="true"><span data-i18n="portfolio.swipe">Swipe to explore</span> <span class="css-arrow"></span></div>
       <div class="portfolio-grid">
         <article class="project">
-          <div class="project-image"><img src="assets/tui-campaign-content.png" alt="Examples of TUI campaign content" loading="lazy"></div>
+          <div class="project-image"><img src="assets/tui-campaign-content.png" alt="Examples of TUI campaign content" data-i18n-alt="p1.alt" loading="lazy"></div>
           <div class="project-content">
-            <span class="project-type">Concept · Creative · Copy</span>
-            <span class="project-client">In collaboration with The Best Social</span>
-            <h3>TUI campaign content</h3>
-            <p>Concept development, creative direction, and copy for TUI social content.</p>
+            <span class="project-type" data-i18n="p1.type">Concept · Creative · Copy</span>
+            <span class="project-client" data-i18n="portfolio.collab">In collaboration with The Best Social</span>
+            <h3 data-i18n="p1.title">TUI campaign content</h3>
+            <p data-i18n="p1.text">Concept development, creative direction, and copy for TUI social content.</p>
           </div>
         </article>
         <article class="project">
-          <div class="project-image"><img src="assets/tui-social-strategy.png" alt="Examples of TUI short-form social content" loading="lazy"></div>
+          <div class="project-image"><img src="assets/tui-social-strategy.png" alt="Examples of TUI short-form social content" data-i18n-alt="p2.alt" loading="lazy"></div>
           <div class="project-content">
-            <span class="project-type">Strategy · Concept</span>
-            <span class="project-client">In collaboration with The Best Social</span>
-            <h3>TUI social strategy</h3>
-            <p>Strategy and concept work for short-form travel content and recurring social formats.</p>
+            <span class="project-type" data-i18n="p2.type">Strategy · Concept</span>
+            <span class="project-client" data-i18n="portfolio.collab">In collaboration with The Best Social</span>
+            <h3 data-i18n="p2.title">TUI social strategy</h3>
+            <p data-i18n="p2.text">Strategy and concept work for short-form travel content and recurring social formats.</p>
           </div>
         </article>
         <article class="project">
-          <div class="project-image"><img src="assets/netflix-nikkietutorials.png" alt="Netflix and NikkieTutorials collaboration" loading="lazy"></div>
+          <div class="project-image"><img src="assets/netflix-nikkietutorials.png" alt="Netflix and NikkieTutorials collaboration" data-i18n-alt="p3.alt" loading="lazy"></div>
           <div class="project-content">
             <span class="project-type">Concept</span>
-            <span class="project-client">In collaboration with The Best Social</span>
+            <span class="project-client" data-i18n="portfolio.collab">In collaboration with The Best Social</span>
             <h3>Netflix × NikkieTutorials</h3>
-            <p>Creative concept work for a collaboration between Netflix and NikkieTutorials.</p>
+            <p data-i18n="p3.text">Creative concept work for a collaboration between Netflix and NikkieTutorials.</p>
           </div>
         </article>
         <article class="project">
-          <div class="project-image"><img src="assets/forward.png" alt="Social content created for Stichting FORWARD" loading="lazy"></div>
+          <div class="project-image"><img src="assets/forward.png" alt="Social content created for Stichting FORWARD" data-i18n-alt="p4.alt" loading="lazy"></div>
           <div class="project-content">
-            <span class="project-type">Strategy · Editorial planning · Copy</span>
+            <span class="project-type" data-i18n="p4.type">Strategy · Editorial planning · Copy</span>
             <h3>Stichting FORWARD</h3>
-            <p>Content strategy, planning, copy, and social content that make policy and advocacy accessible to a broad audience.</p>
+            <p data-i18n="p4.text">Content strategy, planning, copy, and social content that make policy and advocacy accessible to a broad audience.</p>
           </div>
         </article>
         <article class="project">
-          <div class="project-image"><img src="assets/bops-portfolio.png" alt="BOPS social content" loading="lazy"></div>
+          <div class="project-image"><img src="assets/bops-portfolio.png" alt="BOPS social content" data-i18n-alt="p5.alt" loading="lazy"></div>
           <div class="project-content">
-            <span class="project-type">Strategy · Concept · Creative · Copy</span>
+            <span class="project-type" data-i18n="p5.type">Strategy · Concept · Creative · Copy</span>
             <h3>BOPS</h3>
-            <p>Strategy, concepts, creative direction, and copy for my own queer pop party.</p>
+            <p data-i18n="p5.text">Strategy, concepts, creative direction, and copy for my own queer pop party.</p>
           </div>
         </article>
         <article class="project">
           <div class="project-image"><img src="assets/soaaids.png" alt="Soa Aids Nederland" loading="lazy"></div>
           <div class="project-content">
-            <span class="project-type">Content · Advertising · Copy</span>
+            <span class="project-type" data-i18n="p6.type">Content · Advertising · Copy</span>
             <h3>Soa Aids Nederland</h3>
-            <p>Inclusive social content and campaigns for Man tot Man across Facebook, Instagram, and TikTok.</p>
+            <p data-i18n="p6.text">Inclusive social content and campaigns for Man tot Man across Facebook, Instagram, and TikTok.</p>
           </div>
         </article>
         <article class="project">
-          <div class="project-image"><img src="assets/american-eagle-pearpop.png" alt="American Eagle and Pearpop creator content" loading="lazy"></div>
+          <div class="project-image"><img src="assets/american-eagle-pearpop.png" alt="American Eagle and Pearpop creator content" data-i18n-alt="p7.alt" loading="lazy"></div>
           <div class="project-content">
-            <span class="project-type">Content review · Copy</span>
+            <span class="project-type" data-i18n="p7.type">Content review · Copy</span>
             <h3>American Eagle × Pearpop</h3>
-            <p>Content and copy review for creator-led social work by American Eagle and Pearpop.</p>
+            <p data-i18n="p7.text">Content and copy review for creator-led social work by American Eagle and Pearpop.</p>
           </div>
         </article>
         <article class="project">
-          <div class="project-image"><img src="assets/earproof-nxtli.png" alt="Earproof and NXTLI social content" loading="lazy"></div>
+          <div class="project-image"><img src="assets/earproof-nxtli.png" alt="Earproof and NXTLI social content" data-i18n-alt="p8.alt" loading="lazy"></div>
           <div class="project-content">
-            <span class="project-type">Concept · Editing · Copy</span>
+            <span class="project-type" data-i18n="p8.type">Concept · Editing · Copy</span>
             <h3>Earproof × NXTLI</h3>
-            <p>Concept, editing, and copy for expert-led short-form social content.</p>
+            <p data-i18n="p8.text">Concept, editing, and copy for expert-led short-form social content.</p>
           </div>
         </article>
       </div>
@@ -671,18 +711,18 @@
     <section class="dj-feature panel" id="dj-work" aria-labelledby="dj-work-title">
       <div>
         <div class="dj-portrait">
-          <img src="assets/absoluut-dj-portrait.png" alt="Evert Groot as DJ Absoluut" loading="lazy">
+          <img src="assets/absoluut-dj-portrait.png" alt="Evert Groot as DJ Absoluut" data-i18n-alt="dj.alt" loading="lazy">
         </div>
-        <p class="eyebrow">DJ as Absoluut</p>
-        <h2 id="dj-work-title">An uplifting mix for every kind of crowd</h2>
-        <p class="dj-summary">With 18 years of experience, I blend iconic hits, nostalgic anthems, and fresh tracks across pop, disco, and house.</p>
-        <p class="dj-summary">From festivals and club nights to weddings and brand events, I adapt each set to the moment, from relaxed cocktail-hour selections to an all-out late-night dance floor. I can also build a playlist around personal must-plays and weave them into a set that keeps different generations dancing.</p>
+        <p class="eyebrow" data-i18n="dj.eyebrow">DJ as Absoluut</p>
+        <h2 id="dj-work-title" data-i18n="dj.title">An uplifting mix for every kind of crowd</h2>
+        <p class="dj-summary" data-i18n="dj.text1">With 18 years of experience, I blend iconic hits, nostalgic anthems, and fresh tracks across pop, disco, and house.</p>
+        <p class="dj-summary" data-i18n="dj.text2">From festivals and club nights to weddings and brand events, I adapt each set to the moment, from relaxed cocktail-hour selections to an all-out late-night dance floor. I can also build a playlist around personal must-plays and weave them into a set that keeps different generations dancing.</p>
         <div class="actions">
-          <a class="button primary" href="dj.html">Read more <span class="css-arrow" aria-hidden="true"></span></a>
+          <a class="button primary" href="dj.html"><span data-i18n="dj.readMore">Read more</span> <span class="css-arrow" aria-hidden="true"></span></a>
         </div>
       </div>
       <div>
-        <h3 class="venue-heading">Selected gigs</h3>
+        <h3 class="venue-heading" data-i18n="dj.gigs">Selected gigs</h3>
         <div class="venue-list">
           <a class="venue" href="https://adamtoren.nl/" target="_blank" rel="noopener noreferrer">A'DAM Tower <small>Amsterdam</small></a>
           <a class="venue" href="https://clubnyx.nl/" target="_blank" rel="noopener noreferrer">Club NYX <small>Amsterdam</small></a>
@@ -690,32 +730,32 @@
           <a class="venue" href="https://www.paradiso.nl/" target="_blank" rel="noopener noreferrer">Paradiso <small>Amsterdam</small></a>
           <a class="venue" href="https://the-other-side.nl/" target="_blank" rel="noopener noreferrer">The Other Side <small>Amsterdam</small></a>
           <a class="venue" href="https://www.ferryrotterdam.com/" target="_blank" rel="noopener noreferrer">FERRY <small>Rotterdam</small></a>
-          <a class="venue" href="https://www.cargoclub.be/" target="_blank" rel="noopener noreferrer">Red &amp; Blue <small>Antwerp, Belgium</small></a>
-          <a class="venue" href="https://qclubmilano.com/" target="_blank" rel="noopener noreferrer">Q Club <small>Milan, Italy</small></a>
+          <a class="venue" href="https://www.cargoclub.be/" target="_blank" rel="noopener noreferrer">Red &amp; Blue <small data-i18n="place.antwerpBelgium">Antwerp, Belgium</small></a>
+          <a class="venue" href="https://qclubmilano.com/" target="_blank" rel="noopener noreferrer">Q Club <small data-i18n="place.milanItaly">Milan, Italy</small></a>
           <a class="venue" href="https://www.milkshakefestival.com/" target="_blank" rel="noopener noreferrer">Milkshake Festival <small>Amsterdam</small></a>
           <a class="venue" href="https://www.tropikali.nl/" target="_blank" rel="noopener noreferrer">Tropikali <small>Amsterdam</small></a>
-          <a class="venue" href="https://pride.amsterdam/en/" target="_blank" rel="noopener noreferrer">Amsterdam Pride <small>Netherlands</small></a>
-          <a class="venue" href="https://en.antwerppride.com/" target="_blank" rel="noopener noreferrer">Antwerp Pride <small>Belgium</small></a>
+          <a class="venue" href="https://pride.amsterdam/en/" target="_blank" rel="noopener noreferrer">Amsterdam Pride <small data-i18n="place.netherlands">Netherlands</small></a>
+          <a class="venue" href="https://en.antwerppride.com/" target="_blank" rel="noopener noreferrer">Antwerp Pride <small data-i18n="place.belgium">Belgium</small></a>
         </div>
       </div>
     </section>
 
     <section class="bops panel" id="bops" aria-label="BOPS">
       <div class="bops-logo-frame">
-        <img class="bops-logo" src="assets/bops-logo.png" alt="BOPS logo">
+        <img class="bops-logo" src="assets/bops-logo.png" alt="BOPS logo" data-i18n-alt="bops.logoAlt">
       </div>
       <div class="bops-copy">
         <p class="bops-tagline">queer. pop. party.</p>
-        <p class="bops-description">I am the co-founder of BOPS, a queer pop party with house &amp; disco twists in Amsterdam.</p>
+        <p class="bops-description" data-i18n-html="bops.desc">I am the co-founder of BOPS, a queer pop party with house &amp; disco twists in Amsterdam.</p>
         <div class="bops-event">
           <div>
-            <span class="bops-event-label" id="bops-event-date">Next event · 31 July</span>
-            <strong id="bops-event-title">BOPS x KIKI</strong>
+            <span class="bops-event-label"><span data-i18n="bops.next">Next event</span><span id="bops-event-date"> · 27 November</span></span>
+            <strong id="bops-event-title">BOPS</strong>
           </div>
-          <a class="button primary" id="bops-event-link" href="https://shop.weeztix.com/8e451077-cf74-11eb-9194-9e36bf7d673e/tickets?shop_code=3ktx3623" target="_blank" rel="noopener noreferrer">Get tickets <span class="css-arrow up-right" aria-hidden="true"></span></a>
+          <a class="button primary" id="bops-event-link" href="https://shop.weeztix.com/8e451077-cf74-11eb-9194-9e36bf7d673e/tickets?shop_code=3ktx3623" target="_blank" rel="noopener noreferrer"><span id="bops-event-link-text" data-i18n="bops.tickets">Get tickets</span> <span class="css-arrow up-right" aria-hidden="true"></span></a>
         </div>
         <div class="actions">
-          <a class="button primary" href="https://www.instagram.com/bops.ams/?hl=en" target="_blank" rel="noopener noreferrer">Follow BOPS on Instagram <span class="css-arrow up-right" aria-hidden="true"></span></a>
+          <a class="button primary" href="https://www.instagram.com/bops.ams/?hl=en" target="_blank" rel="noopener noreferrer"><span data-i18n="bops.follow">Follow BOPS on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></a>
         </div>
       </div>
     </section>
@@ -723,9 +763,9 @@
     <section class="section-card panel" id="work" aria-labelledby="work-title">
       <div class="section-heading">
         <div>
-          <h2 id="work-title">Check out my Reels</h2>
+          <h2 id="work-title" data-i18n="reels.title">Check out my Reels</h2>
         </div>
-        <p class="section-copy">Alongside my strategy work, I make Instagram Reels that explain pop music, artists, and the internet culture around them.</p>
+        <p class="section-copy" data-i18n="reels.copy">Alongside my strategy work, I make Instagram Reels that explain pop music, artists, and the internet culture around them.</p>
       </div>
       <div class="reels">
         <div class="reel"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DXYlCenDMh1/" data-instgrm-version="14"></blockquote></div>
@@ -739,8 +779,8 @@
     <section class="section-card panel music-section" id="dj" aria-labelledby="music-title">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Now playing</p>
-          <h2 id="music-title">Music corner</h2>
+          <p class="eyebrow" data-i18n="music.eyebrow">Now playing</p>
+          <h2 id="music-title" data-i18n="music.title">Music corner</h2>
         </div>
       </div>
       <div class="music-grid">
@@ -766,7 +806,7 @@
               <path d="M13 15.5a5.5 5.5 0 0 1 10.4-2.5H24a2.5 2.5 0 0 1 0 5H13Z" transform="translate(0 -2.5)"></path>
             </svg>
             <span class="music-text">
-              <span class="music-title">DJ mixes</span>
+              <span class="music-title" data-i18n="music.mixes">DJ mixes</span>
               <span class="music-service">SoundCloud</span>
             </span>
           </span>
@@ -781,14 +821,14 @@
               <path d="M8.8 14.9c2.2-.6 4.8-.4 6.7.7"></path>
             </svg>
             <span class="music-text">
-              <span class="music-title">BOPS Playlist</span>
+              <span class="music-title" data-i18n="music.bopsPlaylist">BOPS Playlist</span>
               <span class="music-service">Spotify</span>
             </span>
           </span>
           <span class="css-arrow up-right" aria-hidden="true"></span>
         </a>
         <a class="music-card apple-music" href="https://music.apple.com/nl/playlist/bops-queer-pop-party/pl.u-GBaaF7zEve?l=en" target="_blank" rel="noopener noreferrer">
-          <span class="music-label"><span class="apple-mark" aria-hidden="true"></span> <span class="music-text"><span class="music-title">BOPS Playlist</span><span class="music-service">Apple Music</span></span></span>
+          <span class="music-label"><span class="apple-mark" aria-hidden="true"></span> <span class="music-text"><span class="music-title" data-i18n="music.bopsPlaylist">BOPS Playlist</span><span class="music-service">Apple Music</span></span></span>
           <span class="css-arrow up-right" aria-hidden="true"></span>
         </a>
       </div>
@@ -796,15 +836,15 @@
 
     <section class="contact panel" id="contact" aria-labelledby="contact-title">
       <div>
-        <p class="eyebrow">Let’s make something</p>
-        <h2 id="contact-title">Got an idea, campaign, or dance floor in mind?</h2>
-        <p>Tell me what you want to create. I'd love to think along.</p>
+        <p class="eyebrow" data-i18n="contact.eyebrow">Let’s make something</p>
+        <h2 id="contact-title" data-i18n="contact.title">Got an idea, campaign, or dance floor in mind?</h2>
+        <p data-i18n="contact.text">Tell me what you want to create. I'd love to think along.</p>
       </div>
-      <a class="button primary" href="mailto:evert@imgroot.nl">Email me <span class="css-arrow" aria-hidden="true"></span></a>
+      <a class="button primary" href="mailto:evert@imgroot.nl"><span data-i18n="contact.btn">Email me</span> <span class="css-arrow" aria-hidden="true"></span></a>
     </section>
 
     <footer>
-      <span>© Evert Groot 2026 · Website by <a href="https://freycreates.nl/" target="_blank" rel="noopener noreferrer">Frey Creates</a></span>
+      <span>© Evert Groot 2026 · <span data-i18n="footer.by">Website by</span> <a href="https://freycreates.nl/" target="_blank" rel="noopener noreferrer">Frey Creates</a></span>
       <div>
         <a href="https://www.instagram.com/absoluut/" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="https://www.instagram.com/bops.ams/" target="_blank" rel="noopener noreferrer">BOPS</a>
@@ -813,42 +853,59 @@
   </main>
 
   <script>
-    fetch('assets/bops-event.json', { cache: 'no-store' })
-      .then(response => response.ok ? response.json() : Promise.reject())
-      .then(event => {
-        const date = document.getElementById('bops-event-date');
-        const title = document.getElementById('bops-event-title');
-        const link = document.getElementById('bops-event-link');
+    (function () {
+      var dateEl = document.getElementById('bops-event-date');
+      var title = document.getElementById('bops-event-title');
+      var link = document.getElementById('bops-event-link');
+      var linkText = document.getElementById('bops-event-link-text');
+      var eventData = null;
 
-        if (!event.date || !event.title) {
-          date.textContent = 'Next event';
-          title.textContent = 'New date coming soon';
+      function formatDate(iso) {
+        var parts = String(iso).split('-').map(Number);
+        var d = new Date(parts[0], parts[1] - 1, parts[2]);
+        try { return d.toLocaleDateString(I18N.locale(), { day: 'numeric', month: 'long' }); }
+        catch (e) { return eventData.displayDate || iso; }
+      }
+
+      function render() {
+        if (!eventData) return;
+
+        if (!eventData.date || !eventData.title) {
+          dateEl.textContent = '';
+          title.setAttribute('data-i18n', 'bops.noDate');
           link.hidden = true;
+          I18N.refresh();
           return;
         }
 
-        date.textContent = `Next event · ${event.displayDate}`;
-        title.textContent = event.title;
-        if (event.ticketUrl) {
-          link.textContent = '';
-          link.append('Get tickets ');
-          const arrow = document.createElement('span');
-          arrow.className = 'css-arrow up-right';
-          arrow.setAttribute('aria-hidden', 'true');
-          link.append(arrow);
-          link.href = event.ticketUrl;
+        dateEl.textContent = ' · ' + formatDate(eventData.date);
+        title.removeAttribute('data-i18n');
+        title.textContent = eventData.title;
+        link.hidden = false;
+
+        if (eventData.ticketUrl) {
+          linkText.setAttribute('data-i18n', 'bops.tickets');
+          link.href = eventData.ticketUrl;
           link.classList.remove('is-disabled');
           link.removeAttribute('aria-disabled');
-          link.hidden = false;
+          link.querySelector('.css-arrow').hidden = false;
         } else {
-          link.textContent = 'Tickets coming soon';
+          linkText.setAttribute('data-i18n', 'bops.ticketsSoon');
           link.removeAttribute('href');
           link.classList.add('is-disabled');
           link.setAttribute('aria-disabled', 'true');
-          link.hidden = false;
+          link.querySelector('.css-arrow').hidden = true;
         }
-      })
-      .catch(() => {});
+        I18N.refresh();
+      }
+
+      I18N.onChange(render);
+
+      fetch('assets/bops-event.json', { cache: 'no-store' })
+        .then(function (response) { return response.ok ? response.json() : Promise.reject(); })
+        .then(function (event) { eventData = event; render(); })
+        .catch(function () {});
+    })();
   </script>
   <script async src="https://www.instagram.com/embed.js"></script>
 </body>

@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Absoluut is an Amsterdam-based DJ blending pop, disco and house for clubs, festivals, weddings and brand events.">
+  <meta name="description" data-i18n-content="djp.desc" content="Absoluut is an Amsterdam-based DJ blending pop, disco and house for clubs, festivals, weddings and brand events.">
   <meta name="theme-color" content="#17155f">
   <title>Absoluut | DJ</title>
+  <script src="assets/i18n.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +34,37 @@
     .brand { font-family: "Baloo Bhai 2", sans-serif; font-size: 1.25rem; font-weight: 800; text-decoration: none; }
     .back { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,.72); font-size: .8rem; font-weight: 700; text-decoration: none; }
     .back:hover { color: var(--sand); }
+
+    .i18n-pending body { opacity: 0; }
+
+    .nav { flex-wrap: wrap; }
+    .nav-right { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 16px; }
+    .lang-switch {
+      display: inline-flex;
+      gap: 2px;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--deep);
+    }
+    .lang-switch button {
+      min-width: 44px;
+      min-height: 36px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: rgba(255,255,255,.7);
+      font: inherit;
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease;
+    }
+    .lang-switch button:hover { color: #fff; background: rgba(255,255,255,.08); }
+    .lang-switch button[aria-pressed="true"] { background: var(--wine); color: #fff; }
+    .lang-switch button:focus-visible { outline: 3px solid var(--sand); outline-offset: 2px; }
 
     .css-arrow {
       position: relative;
@@ -141,55 +173,62 @@
 
 <body>
   <main class="page">
-    <nav class="nav" aria-label="DJ page navigation">
+    <nav class="nav" aria-label="DJ page navigation" data-i18n-aria="djp.nav">
       <a class="brand" href="dj.html">ABSOLUUT</a>
-      <a class="back" href="index.html"><span class="css-arrow left" aria-hidden="true"></span>Evert's homepage</a>
+      <div class="nav-right">
+        <a class="back" href="index.html"><span class="css-arrow left" aria-hidden="true"></span><span data-i18n="djp.back">Evert's homepage</span></a>
+        <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="lang.label">
+          <button type="button" data-set-lang="en" lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-set-lang="nl" lang="nl" aria-pressed="false">NL</button>
+          <button type="button" data-set-lang="it" lang="it" aria-pressed="false">IT</button>
+        </div>
+      </div>
     </nav>
 
     <header class="hero">
-      <div class="hero-image"><img src="assets/dj-hero.jpg" alt="Evert Groot performing as DJ Absoluut"></div>
+      <div class="hero-image"><img src="assets/dj-hero.jpg" alt="Evert Groot performing as DJ Absoluut" data-i18n-alt="djp.heroAlt"></div>
       <div class="hero-copy">
-        <p class="eyebrow">Amsterdam-based DJ</p>
+        <p class="eyebrow" data-i18n="djp.eyebrow">Amsterdam-based DJ</p>
         <h1>Absoluut</h1>
-        <p class="lead">Creating the right soundtrack for clubs, festivals, weddings, brand events, and dance floors that deserve a little extra joy.</p>
-        <p class="hero-meta">18 years of experience</p>
+        <p class="lead" data-i18n="djp.lead">Creating the right soundtrack for clubs, festivals, weddings, brand events, and dance floors that deserve a little extra joy.</p>
+        <p class="hero-meta" data-i18n="djp.meta">18 years of experience</p>
         <div class="actions">
-          <a class="button primary" href="mailto:evert@imgroot.nl">Book Absoluut</a>
-          <a class="button" href="#music">Explore the music</a>
+          <a class="button primary" href="mailto:evert@imgroot.nl" data-i18n="djp.book">Book Absoluut</a>
+          <a class="button" href="#music" data-i18n="djp.explore">Explore the music</a>
         </div>
       </div>
     </header>
 
     <section class="split about" id="about" aria-labelledby="about-title">
-      <div class="split-image"><img src="assets/dj-about.png" alt="Portrait of DJ Absoluut"></div>
+      <div class="split-image"><img src="assets/dj-about.png" alt="Portrait of DJ Absoluut" data-i18n-alt="djp.aboutAlt"></div>
       <div class="split-copy">
-        <p class="eyebrow">About</p>
-        <h2 id="about-title">From Amsterdam to international dance floors</h2>
-        <p>I started DJing in 2008 at the iconic Studio 80 in Amsterdam. Today I play everything from major festivals and club nights to wedding celebrations and brand events.</p>
-        <p>I am co-founder of BOPS and have played at venues including Paradiso, as well as events in Antwerp and Milan.</p>
+        <p class="eyebrow" data-i18n="djp.aboutEyebrow">About</p>
+        <h2 id="about-title" data-i18n="djp.aboutTitle">From Amsterdam to international dance floors</h2>
+        <p data-i18n="djp.about1">I started DJing in 2008 at the iconic Studio 80 in Amsterdam. Today I play everything from major festivals and club nights to wedding celebrations and brand events.</p>
+        <p data-i18n="djp.about2">I am co-founder of BOPS and have played at venues including Paradiso, as well as events in Antwerp and Milan.</p>
       </div>
     </section>
 
     <section class="split music" id="music" aria-labelledby="music-title">
       <div class="split-copy">
-        <p class="eyebrow">Music</p>
-        <h2 id="music-title">Pop, disco and house with an uplifting pulse</h2>
-        <p>I blend iconic hits, nostalgic anthems, and fresh tracks into sets that match and amplify the mood.</p>
-        <p>That can mean relaxed selections during cocktail hour or all-out dancing deep into the night. For personal events, I can build the music around must-play songs and weave them into a set that keeps different generations moving.</p>
+        <p class="eyebrow" data-i18n="djp.musicEyebrow">Music</p>
+        <h2 id="music-title" data-i18n="djp.musicTitle">Pop, disco and house with an uplifting pulse</h2>
+        <p data-i18n="djp.music1">I blend iconic hits, nostalgic anthems, and fresh tracks into sets that match and amplify the mood.</p>
+        <p data-i18n="djp.music2">That can mean relaxed selections during cocktail hour or all-out dancing deep into the night. For personal events, I can build the music around must-play songs and weave them into a set that keeps different generations moving.</p>
         <div class="actions">
-          <a class="button primary" href="https://soundcloud.com/absoluut" target="_blank" rel="noopener noreferrer">Listen on SoundCloud</a>
+          <a class="button primary" href="https://soundcloud.com/absoluut" target="_blank" rel="noopener noreferrer" data-i18n="djp.listen">Listen on SoundCloud</a>
         </div>
       </div>
-      <div class="split-image"><img src="assets/dj-music.jpg" alt="Absoluut DJing outdoors"></div>
+      <div class="split-image"><img src="assets/dj-music.jpg" alt="Absoluut DJing outdoors" data-i18n-alt="djp.musicAlt"></div>
     </section>
 
     <section class="gigs" id="gigs" aria-labelledby="gigs-title">
-      <div class="gigs-photo"><img src="assets/dj-gigs.png" alt="Absoluut performing for a festival crowd"></div>
+      <div class="gigs-photo"><img src="assets/dj-gigs.png" alt="Absoluut performing for a festival crowd" data-i18n-alt="djp.gigsAlt"></div>
       <div class="gigs-content">
-        <h2 id="gigs-title">Clubs, festivals, Prides and brands</h2>
+        <h2 id="gigs-title" data-i18n="djp.gigsTitle">Clubs, festivals, Prides and brands</h2>
         <div class="gig-groups">
           <article class="gig-group">
-            <h3>Venues</h3>
+            <h3 data-i18n="djp.venues">Venues</h3>
             <ul class="gig-list">
               <li><a href="https://adamtoren.nl/" target="_blank" rel="noopener noreferrer">A'DAM Tower, Amsterdam</a></li>
               <li><a href="https://clubnyx.nl/" target="_blank" rel="noopener noreferrer">Club NYX, Amsterdam</a></li>
@@ -197,12 +236,12 @@
               <li><a href="https://www.paradiso.nl/" target="_blank" rel="noopener noreferrer">Paradiso, Amsterdam</a></li>
               <li><a href="https://the-other-side.nl/" target="_blank" rel="noopener noreferrer">The Other Side, Amsterdam</a></li>
               <li><a href="https://www.ferryrotterdam.com/" target="_blank" rel="noopener noreferrer">FERRY, Rotterdam</a></li>
-              <li><a href="https://www.cargoclub.be/" target="_blank" rel="noopener noreferrer">Red &amp; Blue, Antwerp</a></li>
-              <li><a href="https://qclubmilano.com/" target="_blank" rel="noopener noreferrer">Q Club, Milan</a></li>
+              <li><a href="https://www.cargoclub.be/" target="_blank" rel="noopener noreferrer" data-i18n-html="djp.redBlue">Red &amp; Blue, Antwerp</a></li>
+              <li><a href="https://qclubmilano.com/" target="_blank" rel="noopener noreferrer" data-i18n="djp.qClub">Q Club, Milan</a></li>
             </ul>
           </article>
           <article class="gig-group">
-            <h3>Festivals &amp; Prides</h3>
+            <h3 data-i18n-html="djp.festivals">Festivals &amp; Prides</h3>
             <ul class="gig-list">
               <li><a href="https://www.milkshakefestival.com/" target="_blank" rel="noopener noreferrer">Milkshake Festival, Amsterdam</a></li>
               <li><a href="https://www.tropikali.nl/" target="_blank" rel="noopener noreferrer">Tropikali, Amsterdam</a></li>
@@ -212,7 +251,7 @@
             </ul>
           </article>
           <article class="gig-group">
-            <h3>Brand events</h3>
+            <h3 data-i18n="djp.brands">Brand events</h3>
             <ul class="gig-list">
               <li>Bar-le-Duc</li>
               <li>Ferry van der Nat</li>
@@ -229,11 +268,11 @@
     </section>
 
     <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="contact-image"><img src="assets/dj-contact.jpg" alt="Absoluut facing the dance floor"></div>
+      <div class="contact-image"><img src="assets/dj-contact.jpg" alt="Absoluut facing the dance floor" data-i18n-alt="djp.contactAlt"></div>
       <div class="contact-copy">
-        <p class="eyebrow">Contact</p>
-        <h2 id="contact-title">Let’s find the right soundtrack</h2>
-        <p class="lead">For bookings, collaborations, weddings, club nights, and brand events, get in touch.</p>
+        <p class="eyebrow" data-i18n="djp.contactEyebrow">Contact</p>
+        <h2 id="contact-title" data-i18n="djp.contactTitle">Let’s find the right soundtrack</h2>
+        <p class="lead" data-i18n="djp.contactLead">For bookings, collaborations, weddings, club nights, and brand events, get in touch.</p>
         <div class="contact-links">
           <a class="button primary" href="mailto:evert@imgroot.nl">Email</a>
           <a class="button" href="https://www.instagram.com/absoluut/" target="_blank" rel="noopener noreferrer">Instagram</a>
@@ -242,7 +281,7 @@
     </section>
 
     <footer>
-      <span>© Evert Groot 2026 · Website by <a href="https://freycreates.nl/" target="_blank" rel="noopener noreferrer">Frey Creates</a></span>
+      <span>© Evert Groot 2026 · <span data-i18n="footer.by">Website by</span> <a href="https://freycreates.nl/" target="_blank" rel="noopener noreferrer">Frey Creates</a></span>
     </footer>
   </main>
 </body>
