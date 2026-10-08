@@ -368,7 +368,36 @@
       scroll-snap-align: start;
     }
 
-    .reel-frame { display: block; width: 100%; height: 600px; border: 0; background: transparent; }
+    .reel-card { display: block; color: #fff; text-decoration: none; transition: transform .2s ease, border-color .2s ease; }
+    .reel-card:hover { border-color: rgba(255,255,255,.35); transform: translateY(-3px); }
+    .reel-cover {
+      position: relative;
+      display: grid;
+      place-items: center;
+      aspect-ratio: 9 / 16;
+      max-height: 560px;
+      width: 100%;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--brochure-wine) 0%, var(--brochure-purple) 55%, var(--blue) 100%);
+      background-size: cover;
+      background-position: center;
+    }
+    .reel-play {
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    }
+    .reel-play::after {
+      content: "";
+      margin-left: 5px;
+      border-style: solid;
+      border-width: 11px 0 11px 18px;
+      border-color: transparent transparent transparent var(--brochure-wine);
+    }
     .reel-link {
       display: flex;
       align-items: center;
@@ -376,12 +405,10 @@
       gap: 9px;
       padding: 14px 18px;
       border-top: 1px solid var(--line);
-      color: #fff;
       font-size: .82rem;
       font-weight: 800;
-      text-decoration: none;
     }
-    .reel-link:hover { color: var(--accent); }
+    .reel-card:hover .reel-link { color: var(--accent); }
 
     .music-section { padding: 28px 34px; }
     .music-section .section-heading { margin-bottom: 18px; }
@@ -781,9 +808,9 @@
         <p class="section-copy" data-i18n="reels.copy">Alongside my strategy work, I make Instagram Reels that explain pop music, artists, and the internet culture around them.</p>
       </div>
       <div class="reels">
-        <div class="reel"><iframe class="reel-frame" src="https://www.instagram.com/p/DXYlCenDMh1/embed/" title="Instagram Reel" loading="lazy" scrolling="no" allowtransparency="true"></iframe><a class="reel-link" href="https://www.instagram.com/p/DXYlCenDMh1/" target="_blank" rel="noopener noreferrer"><span data-i18n="reels.view">Watch this Reel on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></a></div>
-        <div class="reel"><iframe class="reel-frame" src="https://www.instagram.com/p/DZJ4l4tMDnG/embed/" title="Instagram Reel" loading="lazy" scrolling="no" allowtransparency="true"></iframe><a class="reel-link" href="https://www.instagram.com/p/DZJ4l4tMDnG/" target="_blank" rel="noopener noreferrer"><span data-i18n="reels.view">Watch this Reel on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></a></div>
-        <div class="reel"><iframe class="reel-frame" src="https://www.instagram.com/p/DYWZcreMebc/embed/" title="Instagram Reel" loading="lazy" scrolling="no" allowtransparency="true"></iframe><a class="reel-link" href="https://www.instagram.com/p/DYWZcreMebc/" target="_blank" rel="noopener noreferrer"><span data-i18n="reels.view">Watch this Reel on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></a></div>
+        <a class="reel reel-card" href="https://www.instagram.com/p/DXYlCenDMh1/" target="_blank" rel="noopener noreferrer"><span class="reel-cover" data-reel="DXYlCenDMh1"><span class="reel-play" aria-hidden="true"></span></span><span class="reel-link"><span data-i18n="reels.view">Watch this Reel on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></span></a>
+        <a class="reel reel-card" href="https://www.instagram.com/p/DZJ4l4tMDnG/" target="_blank" rel="noopener noreferrer"><span class="reel-cover" data-reel="DZJ4l4tMDnG"><span class="reel-play" aria-hidden="true"></span></span><span class="reel-link"><span data-i18n="reels.view">Watch this Reel on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></span></a>
+        <a class="reel reel-card" href="https://www.instagram.com/p/DYWZcreMebc/" target="_blank" rel="noopener noreferrer"><span class="reel-cover" data-reel="DYWZcreMebc"><span class="reel-play" aria-hidden="true"></span></span><span class="reel-link"><span data-i18n="reels.view">Watch this Reel on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></span></a>
       </div>
     </section>
 
