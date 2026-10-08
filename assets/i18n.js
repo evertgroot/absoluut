@@ -97,6 +97,7 @@
       'bops.follow': 'Volg BOPS op Instagram',
 
       'reels.title': 'Bekijk mijn Reels',
+      'reels.view': 'Bekijk deze Reel op Instagram',
       'reels.copy': 'Naast mijn strategiewerk maak ik Instagram Reels over popmuziek, artiesten en de internetcultuur eromheen.',
 
       'music.eyebrow': 'Nu te horen',
@@ -219,6 +220,7 @@
       'bops.follow': 'Segui BOPS su Instagram',
 
       'reels.title': 'Guarda i miei Reel',
+      'reels.view': 'Guarda questo Reel su Instagram',
       'reels.copy': 'Oltre al lavoro di strategia, creo Reel su Instagram che raccontano la musica pop, gli artisti e la cultura online che li circonda.',
 
       'music.eyebrow': 'In riproduzione',
