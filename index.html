@@ -368,21 +368,20 @@
       scroll-snap-align: start;
     }
 
-    .instagram-media { width: 100% !important; min-width: 0 !important; margin: 0 !important; }
-    .reel-fallback {
+    .reel-frame { display: block; width: 100%; height: 600px; border: 0; background: transparent; }
+    .reel-link {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 9px;
-      min-height: 220px;
-      padding: 24px;
+      padding: 14px 18px;
+      border-top: 1px solid var(--line);
       color: #fff;
-      font-size: .9rem;
+      font-size: .82rem;
       font-weight: 800;
-      text-align: center;
       text-decoration: none;
     }
-    .reel-fallback:hover { color: var(--accent); }
+    .reel-link:hover { color: var(--accent); }
 
     .music-section { padding: 28px 34px; }
     .music-section .section-heading { margin-bottom: 18px; }
@@ -782,9 +781,9 @@
         <p class="section-copy" data-i18n="reels.copy">Alongside my strategy work, I make Instagram Reels that explain pop music, artists, and the internet culture around them.</p>
       </div>
       <div class="reels">
-        <div class="reel"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DXYlCenDMh1/" data-instgrm-version="14"><a class="reel-fallback" href="https://www.instagram.com/p/DXYlCenDMh1/" target="_blank" rel="noopener noreferrer"><span data-i18n="reels.view">Watch this Reel on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></a></blockquote></div>
-        <div class="reel"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZJ4l4tMDnG/" data-instgrm-version="14"><a class="reel-fallback" href="https://www.instagram.com/p/DZJ4l4tMDnG/" target="_blank" rel="noopener noreferrer"><span data-i18n="reels.view">Watch this Reel on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></a></blockquote></div>
-        <div class="reel"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DYWZcreMebc/" data-instgrm-version="14"><a class="reel-fallback" href="https://www.instagram.com/p/DYWZcreMebc/" target="_blank" rel="noopener noreferrer"><span data-i18n="reels.view">Watch this Reel on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></a></blockquote></div>
+        <div class="reel"><iframe class="reel-frame" src="https://www.instagram.com/p/DXYlCenDMh1/embed/" title="Instagram Reel" loading="lazy" scrolling="no" allowtransparency="true"></iframe><a class="reel-link" href="https://www.instagram.com/p/DXYlCenDMh1/" target="_blank" rel="noopener noreferrer"><span data-i18n="reels.view">Watch this Reel on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></a></div>
+        <div class="reel"><iframe class="reel-frame" src="https://www.instagram.com/p/DZJ4l4tMDnG/embed/" title="Instagram Reel" loading="lazy" scrolling="no" allowtransparency="true"></iframe><a class="reel-link" href="https://www.instagram.com/p/DZJ4l4tMDnG/" target="_blank" rel="noopener noreferrer"><span data-i18n="reels.view">Watch this Reel on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></a></div>
+        <div class="reel"><iframe class="reel-frame" src="https://www.instagram.com/p/DYWZcreMebc/embed/" title="Instagram Reel" loading="lazy" scrolling="no" allowtransparency="true"></iframe><a class="reel-link" href="https://www.instagram.com/p/DYWZcreMebc/" target="_blank" rel="noopener noreferrer"><span data-i18n="reels.view">Watch this Reel on Instagram</span> <span class="css-arrow up-right" aria-hidden="true"></span></a></div>
       </div>
     </section>
 
@@ -919,6 +918,5 @@
         .catch(function () {});
     })();
   </script>
-  <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
