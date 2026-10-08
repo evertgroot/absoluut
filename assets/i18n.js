@@ -105,9 +105,9 @@
       'music.mixes': 'DJ-mixes',
       'music.bopsPlaylist': 'BOPS-playlist',
 
-      'contact.eyebrow': 'Laten we iets maken',
-      'contact.title': 'Heb je een idee, campagne of dansvloer in gedachten?',
-      'contact.text': 'Vertel me wat je wilt maken. Ik denk graag mee.',
+      'contact.eyebrow': 'Laten we samenwerken',
+      'contact.title': 'Heb je een campagne, event of iets anders in gedachten?',
+      'contact.text': 'Vertel me waar je mee bezig bent. Ik hoor graag je ideeën en kijk hoe ik je kan helpen.',
       'contact.btn': 'Mail me',
 
       /* ---------- DJ page ---------- */
@@ -228,9 +228,9 @@
       'music.mixes': 'DJ mix',
       'music.bopsPlaylist': 'Playlist BOPS',
 
-      'contact.eyebrow': 'Creiamo qualcosa insieme',
-      'contact.title': 'Hai in mente un’idea, una campagna o una pista da ballo?',
-      'contact.text': 'Raccontami cosa vuoi creare. Sarò felice di pensarci insieme a te.',
+      'contact.eyebrow': 'Lavoriamo insieme',
+      'contact.title': 'Hai in mente una campagna, un evento o qualcos’altro?',
+      'contact.text': 'Raccontami a cosa stai lavorando. Mi piacerebbe conoscere le tue idee e capire come posso aiutarti.',
       'contact.btn': 'Scrivimi',
 
       /* ---------- DJ page ---------- */
