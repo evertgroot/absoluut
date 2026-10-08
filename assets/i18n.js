@@ -140,8 +140,7 @@
       'djp.contactAlt': 'Absoluut met zicht op de dansvloer',
       'djp.contactEyebrow': 'Contact',
       'djp.contactTitle': 'Laten we de juiste soundtrack vinden',
-      'djp.contactLead': 'Neem contact op voor boekingen, samenwerkingen, bruiloften, clubavonden en brand events.',
-      'djp.call': 'Bel me: +31 6 14 25 10 04'
+      'djp.contactLead': 'Neem contact op voor boekingen, samenwerkingen, bruiloften, clubavonden en brand events.'
     },
 
     it: {
@@ -262,8 +261,7 @@
       'djp.contactAlt': 'Absoluut davanti alla pista',
       'djp.contactEyebrow': 'Contatti',
       'djp.contactTitle': 'Troviamo la colonna sonora giusta',
-      'djp.contactLead': 'Per booking, collaborazioni, matrimoni, serate in club ed eventi aziendali, contattami.',
-      'djp.call': 'Chiamami: +31 6 14 25 10 04'
+      'djp.contactLead': 'Per booking, collaborazioni, matrimoni, serate in club ed eventi aziendali, contattami.'
     }
   };
 
