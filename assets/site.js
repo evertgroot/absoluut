@@ -49,6 +49,24 @@
     }
   }
 
+  /* 1b2. Mobile menu */
+  var menuBtn = document.querySelector('.menu-btn');
+  var menu = document.getElementById('mobile-menu');
+  if (menuBtn && menu) {
+    var setMenu = function (open) {
+      menu.hidden = !open;
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+      if (open) { var c = menu.querySelector('[data-close]'); if (c) c.focus(); } else { menuBtn.focus(); }
+    };
+    menuBtn.addEventListener('click', function () { setMenu(menu.hidden); });
+    menu.querySelectorAll('a, [data-close]').forEach(function (el) {
+      el.addEventListener('click', function () { if (!menu.hidden) setMenu(false); });
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
+    window.addEventListener('resize', function () { if (window.innerWidth > 760 && !menu.hidden) setMenu(false); });
+  }
+
   /* 1c. Testimonial slider: changes only when the visitor uses the arrows, dots, keyboard or a swipe */
   document.querySelectorAll('[data-carousel]').forEach(function (box) {
     var slides = box.querySelectorAll('.quote-slide');
