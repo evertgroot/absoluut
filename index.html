@@ -40,6 +40,21 @@ a{color:#ffffff}a:hover{color:#dbad72}
 .field:focus{outline:none;border-color:#dbad72 !important;box-shadow:0 0 0 3px rgba(219,173,114,0.35)}
 .field option{color:#17155f}
 </style>
+<style>
+  .quotes{position:relative;padding:clamp(28px,5vw,64px) clamp(60px,7vw,96px) clamp(22px,3vw,32px);border-radius:clamp(20px,2.4vw,28px);background:#8f0048}
+  .quote-track{display:grid}
+  .quote-slide{grid-area:1/1;margin:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(16px,2vw,26px);transition:opacity .35s ease}
+  .quote-slide[aria-hidden="true"]{opacity:0;visibility:hidden}
+  .quote-arrow{position:absolute;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:48px;height:48px;border:2px solid rgba(255,255,255,.45);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;transition:background .2s ease}
+  .quote-arrow:hover{background:rgba(255,255,255,.2)}
+  .quote-arrow:focus-visible,.quote-dot:focus-visible{outline:3px solid #dbad72;outline-offset:2px}
+  .quote-prev{left:clamp(8px,1.6vw,22px)}.quote-next{right:clamp(8px,1.6vw,22px)}
+  .quote-dots{display:flex;justify-content:center;gap:4px;margin-top:clamp(18px,2.4vw,28px)}
+  .quote-dot{display:grid;place-items:center;width:32px;height:32px;padding:0;border:0;background:transparent;cursor:pointer}
+  .quote-dot span{width:11px;height:11px;border-radius:999px;background:rgba(255,255,255,.4);transition:background .2s ease,transform .2s ease}
+  .quote-dot[aria-current="true"] span{background:#fff;transform:scale(1.2)}
+  @media (max-width:600px){.quotes{padding-left:22px;padding-right:22px;padding-bottom:16px}.quote-arrow{position:static;transform:none;width:44px;height:44px}.quote-controls{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px}.quote-dots{margin-top:0}}
+</style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://imgroot.nl/#evert", "name": "Evert Groot", "alternateName": ["DJ Absoluut", "Absoluut"], "url": "https://imgroot.nl/", "image": "https://imgroot.nl/assets/img/evert-groot.jpg", "email": "mailto:evert@imgroot.nl", "jobTitle": ["Content Strategist", "DJ", "Content Creator", "Event Organizer"], "knowsAbout": ["Content strategy", "Social media strategy", "Creative direction", "Short-form video", "Pop music", "DJing", "Wedding DJ", "Event organizing", "Queer nightlife"], "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "founder": {"@id": "https://imgroot.nl/#bops"}, "sameAs": ["https://www.instagram.com/absoluut/", "https://www.tiktok.com/@absoluutdj", "https://www.linkedin.com/in/evertgroot", "https://soundcloud.com/absoluut"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content strategy and creative direction", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ for weddings, clubs, festivals and brand events", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event organizing", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator partnerships and short-form video", "areaServed": ["NL", "IT"]}}]}, {"@type": "Organization", "@id": "https://imgroot.nl/#bops", "name": "BOPS", "description": "Queer pop party at The Other Side, Amsterdam", "url": "https://www.instagram.com/bops.ams/", "sameAs": ["https://www.instagram.com/bops.ams/"]}, {"@type": "WebSite", "@id": "https://imgroot.nl/#website", "url": "https://imgroot.nl/", "name": "Evert Groot", "inLanguage": ["en", "nl", "it"], "publisher": {"@id": "https://imgroot.nl/#evert"}}]}</script>
   <script data-goatcounter="https://imgroot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <script src="/assets/site.js" defer></script>
@@ -223,10 +238,27 @@ a{color:#ffffff}a:hover{color:#dbad72}
 
   <!-- TESTIMONIAL -->
   <section aria-label="What clients say" style="max-width: 1240px; margin: 0 auto; padding: clamp(56px, 7vw, 96px) clamp(16px, 3vw, 24px) 0">
-    <figure style="margin: 0; padding: clamp(28px, 5vw, 64px) clamp(22px, 4.5vw, 56px); border-radius: clamp(20px, 2.4vw, 28px); background: #8f0048; display: flex; flex-direction: column; gap: clamp(16px, 2vw, 26px)">
-      <blockquote style="margin: 0; font-style: italic; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(22px, 3vw, 38px); line-height: 1.2; letter-spacing: -0.015em; font-weight: 700">“We loved how Absoluut mixed our music wishes with very cool pop/disco songs! Super happy we had this absolute hit of a DJ playing our wedding. He got everyone dancing till late.”</blockquote>
-      <figcaption style="font-size: clamp(15px, 1.4vw, 17px); font-weight: 700; color: #ffd8ea">Daan &amp; Karl · <a href="https://coupleofmen.com/34307-gay-spring-wedding-amsterdam-couple-of-men/" target="_blank" rel="noopener noreferrer" style="color: #ffd8ea; text-decoration: underline; text-underline-offset: 3px">Couple of Men — read their wedding story ↗</a></figcaption>
-    </figure>
+    <div class="quotes" data-carousel role="region" aria-roledescription="carousel" aria-label="What clients say">
+    <div class="quote-track" aria-live="polite">
+      <figure class="quote-slide" role="group" aria-roledescription="slide" aria-label="1 of 3" aria-hidden="false">
+        <blockquote style="margin: 0; font-style: italic; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(22px, 3vw, 38px); line-height: 1.2; letter-spacing: -0.015em; font-weight: 700">“We loved how Absoluut mixed our music wishes with very cool pop/disco songs! Super happy we had this absolute hit of a DJ playing our wedding. He got everyone dancing till late.”</blockquote>
+        <figcaption style="font-size: clamp(15px, 1.4vw, 17px); font-weight: 700; color: #ffd8ea">Daan &amp; Karl · <a href="https://coupleofmen.com/34307-gay-spring-wedding-amsterdam-couple-of-men/" target="_blank" rel="noopener noreferrer" style="color: #ffd8ea; text-decoration: underline; text-underline-offset: 3px">Couple of Men — read their wedding story ↗</a></figcaption>
+      </figure>
+      <figure class="quote-slide" role="group" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true" inert>
+        <blockquote style="margin: 0; font-style: italic; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(22px, 3vw, 38px); line-height: 1.2; letter-spacing: -0.015em; font-weight: 700">“Absoluut has a special gift for sensing the atmosphere and turning any occasion into a true success with his music and energy. He made our wedding unforgettable.”</blockquote>
+        <figcaption style="font-size: clamp(15px, 1.4vw, 17px); font-weight: 700; color: #ffd8ea">Max &amp; Maarten</figcaption>
+      </figure>
+      <figure class="quote-slide" role="group" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true" inert>
+        <blockquote style="margin: 0; font-style: italic; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(22px, 3vw, 38px); line-height: 1.2; letter-spacing: -0.015em; font-weight: 700">“It was so nice to dance to our favorite songs at our wedding party AND also hear wonderful new music that fit in beautifully.”</blockquote>
+        <figcaption style="font-size: clamp(15px, 1.4vw, 17px); font-weight: 700; color: #ffd8ea">Zelah &amp; Jasper</figcaption>
+      </figure>
+    </div>
+    <div class="quote-controls">
+      <button type="button" class="quote-arrow quote-prev" data-step="-1" aria-label="Previous quote"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></button>
+      <div class="quote-dots"><button type="button" class="quote-dot" data-goto="0" aria-label="Show quote 1" aria-current="true"><span></span></button><button type="button" class="quote-dot" data-goto="1" aria-label="Show quote 2"><span></span></button><button type="button" class="quote-dot" data-goto="2" aria-label="Show quote 3"><span></span></button></div>
+      <button type="button" class="quote-arrow quote-next" data-step="1" aria-label="Next quote"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button>
+    </div>
+  </div>
   </section>
 
   <!-- DJ -->

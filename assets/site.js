@@ -49,6 +49,42 @@
     }
   }
 
+  /* 1c. Testimonial slider: changes only when the visitor uses the arrows, dots, keyboard or a swipe */
+  document.querySelectorAll('[data-carousel]').forEach(function (box) {
+    var slides = box.querySelectorAll('.quote-slide');
+    var dots = box.querySelectorAll('.quote-dot');
+    var current = 0;
+    function show(i) {
+      current = (i + slides.length) % slides.length;
+      slides.forEach(function (s, n) {
+        var on = n === current;
+        s.setAttribute('aria-hidden', on ? 'false' : 'true');
+        if (on) { s.removeAttribute('inert'); } else { s.setAttribute('inert', ''); }
+      });
+      dots.forEach(function (d, n) {
+        if (n === current) { d.setAttribute('aria-current', 'true'); } else { d.removeAttribute('aria-current'); }
+      });
+    }
+    box.querySelectorAll('[data-step]').forEach(function (b) {
+      b.addEventListener('click', function () { show(current + Number(b.getAttribute('data-step'))); });
+    });
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () { show(Number(d.getAttribute('data-goto'))); });
+    });
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { show(current - 1); }
+      if (e.key === 'ArrowRight') { show(current + 1); }
+    });
+    var startX = null;
+    box.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) { show(current + (dx < 0 ? 1 : -1)); }
+      startX = null;
+    });
+  });
+
   /* 2. Next BOPS event */
   var dateEl = document.getElementById('bops-date');
   var labelEl = document.getElementById('bops-label');
