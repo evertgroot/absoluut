@@ -21,4 +21,25 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/"/>
   </url>
+  <url>
+    <loc>https://imgroot.nl/dj/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/dj/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/dj/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/dj/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/dj/"/>
+  </url>
+  <url>
+    <loc>https://imgroot.nl/nl/dj/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/dj/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/dj/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/dj/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/dj/"/>
+  </url>
+  <url>
+    <loc>https://imgroot.nl/it/dj/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/dj/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/dj/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/dj/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/dj/"/>
+  </url>
 </urlset>

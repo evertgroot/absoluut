@@ -116,10 +116,15 @@
         .then(function (r) { return r.json(); })
         .then(function (res) {
           if (!res.success) throw new Error(res.message || 'error');
-          var topic = (form.querySelector('select[name="topic"]') || {}).selectedIndex;
-          var topicNames = ['strategy', 'dj', 'event', 'creator', 'other'];
+          var choice = (form.querySelector('select') || {}).selectedIndex;
+          var isDj = form.getAttribute('data-form') === 'dj';
+          var names = isDj ? ['wedding', 'private-party', 'club-festival', 'brand-event', 'other'] : ['strategy', 'dj', 'event', 'creator', 'other'];
           if (window.goatcounter && window.goatcounter.count) {
-            window.goatcounter.count({ path: 'form-sent-' + (topicNames[topic] || 'other') + '-' + lang, title: 'Contact form sent', event: true });
+            window.goatcounter.count({
+              path: (isDj ? 'dj-booking-sent-' : 'form-sent-') + (names[choice] || 'other') + '-' + lang,
+              title: isDj ? 'DJ booking request sent' : 'Contact form sent',
+              event: true
+            });
           }
           form.reset();
           status.textContent = form.getAttribute('data-success');
