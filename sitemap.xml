@@ -42,4 +42,25 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/dj/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/dj/"/>
   </url>
+  <url>
+    <loc>https://imgroot.nl/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/privacy/"/>
+  </url>
+  <url>
+    <loc>https://imgroot.nl/nl/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/privacy/"/>
+  </url>
+  <url>
+    <loc>https://imgroot.nl/it/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/privacy/"/>
+  </url>
 </urlset>
