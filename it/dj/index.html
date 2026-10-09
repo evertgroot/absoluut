@@ -106,7 +106,12 @@ a{color:#ffffff}a:hover{color:#dbad72}
   .menu-btn{display:inline-flex !important}
   .hdr-cta,.hdr-lang{display:none !important}
 }
-@media (max-width: 1000px){
+@media (min-width: 901px) and (max-width: 1100px){
+  .nav-links{gap:16px !important;font-size:14px}
+  header nav{gap:14px !important}
+  .hdr-cta{padding:0 14px !important;font-size:14px}
+}
+@media (max-width: 900px){
   .nav-links{display:none !important}
   .menu-btn{display:inline-flex !important}
   .hdr-cta,.hdr-lang{display:none !important}
@@ -140,8 +145,8 @@ a{color:#ffffff}a:hover{color:#dbad72}
     <a href="/it/" style="font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; text-decoration: none; color: #ffffff">Absoluut <span style="margin-left: 6px; font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #b3afe0">Evert Groot</span></a>
     <nav aria-label="Menu principale" style="display: flex; flex-wrap: wrap; align-items: center; gap: clamp(10px, 2vw, 32px); font-size: 15px; font-weight: 600">
       <div class="nav-links" style="display: flex; gap: 32px">
-        <a href="#where" style="text-decoration: none">Dove suono</a>
-        <a href="#decks" style="text-decoration: none">In consolle</a>
+        <a href="#where" style="text-decoration: none">Tipi di evento</a>
+        <a href="#decks" style="text-decoration: none">Musica ed esperienza</a>
         <a href="#reviews" style="text-decoration: none">Recensioni</a>
         <a href="https://soundcloud.com/absoluut" target="_blank" rel="noopener noreferrer" style="text-decoration: none">Mix</a>
       </div>
@@ -162,8 +167,8 @@ a{color:#ffffff}a:hover{color:#dbad72}
       <button type="button" class="menu-close" data-close aria-label="Chiudi menu" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; background: transparent; color: #ffffff; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     </div>
     <nav aria-label="Menu" style="display: flex; flex-direction: column; margin-top: 48px">
-      <a href="#where" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Dove suono</a>
-      <a href="#decks" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">In consolle</a>
+      <a href="#where" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Tipi di evento</a>
+      <a href="#decks" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Musica ed esperienza</a>
       <a href="#reviews" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Recensioni</a>
       <a href="https://soundcloud.com/absoluut" target="_blank" rel="noopener noreferrer" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Mix</a>
     </nav>
@@ -207,7 +212,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
   <!-- OCCASIONS: cream band, numbered rows -->
   <section id="where" aria-labelledby="occasions-title" style="background: #fff1e6; color: #17155f">
     <div style="max-width: 1360px; margin: 0 auto; padding: clamp(80px, 10vw, 140px) clamp(20px, 4vw, 48px)">
-      <p style="margin: 0 0 14px; color: #8f0048; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Dove suono</p>
+      <p style="margin: 0 0 14px; color: #8f0048; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Tipi di evento</p>
       <h2 id="occasions-title" style="margin: 0 0 clamp(32px, 4vw, 56px); font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800">Pubblici diversi. Set diversi.</h2>
       <div style="border-top: 1px solid rgba(23,21,95,0.2)">
       <div class="svc-row" style="display: grid; grid-template-columns: 48px minmax(0, 1fr) minmax(0, 1.25fr); align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(23,21,95,0.2)">
@@ -231,7 +236,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
 
   <!-- GALLERY -->
   <section id="decks" aria-labelledby="gallery-title" style="max-width: 1360px; margin: 0 auto; padding: clamp(96px, 12vw, 160px) clamp(20px, 4vw, 48px)">
-    <p style="margin: 0 0 14px; color: #dbad72; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">In consolle</p>
+    <p style="margin: 0 0 14px; color: #dbad72; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Musica ed esperienza</p>
     <h2 id="gallery-title" style="margin: 0 0 clamp(32px, 4vw, 56px); font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800">Dalle serate in club ai palchi dei festival</h2>
     <div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: clamp(32px, 5vw, 96px); margin-bottom: clamp(40px, 5vw, 72px)">
     <p style="flex: 1.5 1 480px; max-width: 780px; margin: 0; font-size: clamp(20px, 1.9vw, 28px); line-height: 1.5; font-weight: 500; color: #e9e6ff">Il pop è al centro di ciò che suono, con tanto spazio per disco, house e nuove scoperte. Amo trovare il giusto equilibrio tra hit familiari e brani meno conosciuti che meritano un posto in pista.</p>
