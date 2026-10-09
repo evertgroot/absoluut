@@ -64,7 +64,7 @@
       el.addEventListener('click', function () { if (!menu.hidden) setMenu(false); });
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
-    window.addEventListener('resize', function () { if (window.innerWidth > 760 && !menu.hidden) setMenu(false); });
+    window.addEventListener('resize', function () { if (!menu.hidden && getComputedStyle(menuBtn).display === 'none') setMenu(false); });
   }
 
   /* 1c. Testimonial slider: changes only when the visitor uses the arrows, dots, keyboard or a swipe */

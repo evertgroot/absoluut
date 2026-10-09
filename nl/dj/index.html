@@ -106,6 +106,11 @@ a{color:#ffffff}a:hover{color:#dbad72}
   .menu-btn{display:inline-flex !important}
   .hdr-cta,.hdr-lang{display:none !important}
 }
+@media (max-width: 1000px){
+  .nav-links{display:none !important}
+  .menu-btn{display:inline-flex !important}
+  .hdr-cta,.hdr-lang{display:none !important}
+}
 </style>
 <style>
   .quote-track{display:grid}
@@ -132,13 +137,13 @@ a{color:#ffffff}a:hover{color:#dbad72}
 <div style="position: relative">
   <!-- NAV -->
   <header style="position: absolute; left: 0; right: 0; top: 0; z-index: 5; max-width: none; padding-left: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); padding-right: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); max-width: 1360px; margin: 0 auto; padding: 22px clamp(20px, 4vw, 48px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
-    <a href="/nl/" style="font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; text-decoration: none; color: #ffffff">Absoluut</a>
+    <a href="/nl/" style="font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; text-decoration: none; color: #ffffff">Absoluut <span style="margin-left: 6px; font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #b3afe0">door Evert Groot</span></a>
     <nav aria-label="Hoofdmenu" style="display: flex; flex-wrap: wrap; align-items: center; gap: clamp(10px, 2vw, 32px); font-size: 15px; font-weight: 600">
       <div class="nav-links" style="display: flex; gap: 32px">
-        <a href="/nl/#work" style="text-decoration: none">Werk</a>
-        <a href="/nl/#creator" style="text-decoration: none">Creator</a>
-        <a href="/nl/dj/" aria-current="page" style="text-decoration: none; color: #dbad72">DJ</a>
-        <a href="/nl/#events" style="text-decoration: none">Events</a>
+        <a href="#where" style="text-decoration: none">Where I Play</a>
+        <a href="#decks" style="text-decoration: none">Achter de draaitafels</a>
+        <a href="#reviews" style="text-decoration: none">Reviews</a>
+        <a href="https://soundcloud.com/absoluut" target="_blank" rel="noopener noreferrer" style="text-decoration: none">Mixes</a>
       </div>
       <a class="btn-solid hdr-cta" href="#book" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #dbad72; color: #2a1d36; text-decoration: none; font-weight: 800" data-goatcounter-click="dj-click-book-absoluut">Boek Absoluut</a>
       <div class="hdr-lang" role="group" aria-label="Taal" style="display: flex; align-items: center; gap: 0; padding: 2px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0.08em">
@@ -153,14 +158,14 @@ a{color:#ffffff}a:hover{color:#dbad72}
   <!-- MOBILE MENU -->
   <div id="mobile-menu" hidden style="position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; padding: 22px 20px 32px; background: #17155f; overflow-y: auto">
     <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
-      <a href="/nl/" style="font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; text-decoration: none; color: #ffffff">Absoluut</a>
+      <a href="/nl/" style="font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; text-decoration: none; color: #ffffff">Absoluut <span style="margin-left: 6px; font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #b3afe0">door Evert Groot</span></a>
       <button type="button" class="menu-close" data-close aria-label="Menu sluiten" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; background: transparent; color: #ffffff; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     </div>
     <nav aria-label="Menu" style="display: flex; flex-direction: column; margin-top: 48px">
-      <a href="/nl/#work" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 44px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Werk</a>
-      <a href="/nl/#creator" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 44px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Creator</a>
-      <a href="/nl/dj/" aria-current="page" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 44px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #dbad72">DJ</a>
-      <a href="/nl/#events" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 44px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Events</a>
+      <a href="#where" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Where I Play</a>
+      <a href="#decks" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Achter de draaitafels</a>
+      <a href="#reviews" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Reviews</a>
+      <a href="https://soundcloud.com/absoluut" target="_blank" rel="noopener noreferrer" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Mixes</a>
     </nav>
     <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: auto; padding-top: 40px">
       <a class="btn-solid" href="#book" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #dbad72; color: #2a1d36; text-decoration: none; font-weight: 800; font-size: 16px" data-goatcounter-click="dj-click-book-absoluut">Boek Absoluut</a>
@@ -170,6 +175,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
         <a href="/it/dj/" hreflang="it" data-lang="it" style="display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 40px; padding: 0 6px; border-radius: 999px; text-decoration: none; color: #b3afe0">IT</a>
       </div>
     </div>
+    <a href="/nl/" style="display: inline-flex; align-items: center; min-height: 44px; margin-top: 20px; font-size: 15px; font-weight: 700; color: #b3afe0; text-decoration: none">← Evert Groot</a>
   </div>
 
 
@@ -199,7 +205,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
   </section>
 
   <!-- OCCASIONS: cream band, numbered rows -->
-  <section aria-labelledby="occasions-title" style="background: #fff1e6; color: #17155f">
+  <section id="where" aria-labelledby="occasions-title" style="background: #fff1e6; color: #17155f">
     <div style="max-width: 1360px; margin: 0 auto; padding: clamp(80px, 10vw, 140px) clamp(20px, 4vw, 48px)">
       <p style="margin: 0 0 14px; color: #8f0048; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Where I Play</p>
       <h2 id="occasions-title" style="margin: 0 0 clamp(32px, 4vw, 56px); font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800">Verschillende soorten publiek. Verschillende sets.</h2>
@@ -224,7 +230,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
   </section>
 
   <!-- GALLERY -->
-  <section aria-labelledby="gallery-title" style="max-width: 1360px; margin: 0 auto; padding: clamp(96px, 12vw, 160px) clamp(20px, 4vw, 48px)">
+  <section id="decks" aria-labelledby="gallery-title" style="max-width: 1360px; margin: 0 auto; padding: clamp(96px, 12vw, 160px) clamp(20px, 4vw, 48px)">
     <p style="margin: 0 0 14px; color: #dbad72; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Achter de draaitafels</p>
     <h2 id="gallery-title" style="margin: 0 0 clamp(32px, 4vw, 56px); font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800">Van clubavonden tot festivalpodia</h2>
     <div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: clamp(32px, 5vw, 96px); margin-bottom: clamp(40px, 5vw, 72px)">
@@ -255,6 +261,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
 
 
   <!-- TESTIMONIAL: full-bleed magenta band -->
+  <div id="reviews" aria-hidden="true"></div>
   <section style="background: #8f0048">
     <div class="quotes" data-carousel role="region" aria-roledescription="carousel" aria-label="Wat klanten zeggen" style="max-width: 1360px; margin: 0 auto; padding: clamp(56px, 7vw, 104px) clamp(20px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(20px, 2.4vw, 32px)">
       <span aria-hidden="true" style="font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(72px, 7vw, 112px); line-height: 0.6; height: 0.5em; color: #dbad72; font-weight: 800">“</span>
