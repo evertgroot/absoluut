@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://imgroot.nl/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/"/>
+  </url>
+  <url>
+    <loc>https://imgroot.nl/nl/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/"/>
+  </url>
+  <url>
+    <loc>https://imgroot.nl/it/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/"/>
+  </url>
+</urlset>
