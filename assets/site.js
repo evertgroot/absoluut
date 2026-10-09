@@ -67,6 +67,85 @@
     window.addEventListener('resize', function () { if (!menu.hidden && getComputedStyle(menuBtn).display === 'none') setMenu(false); });
   }
 
+  /* 1b3. Gold band: keeps drifting on its own, but visitors can swipe, drag or scroll it themselves */
+  var bands = document.querySelectorAll('.marquee');
+  if (bands.length) {
+    var css = document.createElement('style');
+    css.textContent = '.marquee.mq-js{overflow-x:auto !important;scrollbar-width:none;cursor:grab;overscroll-behavior-x:contain;-webkit-user-select:none;user-select:none}' +
+      '.marquee.mq-js::-webkit-scrollbar{display:none}.marquee.mq-js.mq-drag{cursor:grabbing}' +
+      '.marquee.mq-js .marquee-track{animation:none !important}' +
+      '.marquee.mq-js:focus-visible{outline:2px solid #2a1d36;outline-offset:-4px}';
+    document.head.appendChild(css);
+  }
+  bands.forEach(function (box) {
+    var track = box.querySelector('.marquee-track');
+    if (!track) return;
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    box.classList.add('mq-js');
+    box.setAttribute('tabindex', '0');
+    if (still) return; /* no drift, list wraps; nothing to scroll */
+    var pos = 0, seen = 0, last = null, hold = 0, hover = false, drag = null;
+    var first = track.firstElementChild, dup = track.querySelector('.marquee-dup');
+    function unit() { return first ? first.offsetWidth : track.scrollWidth / 2; }
+    function fill() { /* enough copies that the band never runs out on wide screens */
+      if (!dup) return;
+      var n = 0;
+      while (track.scrollWidth < unit() + box.clientWidth + 2 && n++ < 6) track.appendChild(dup.cloneNode(true));
+    }
+    fill();
+    window.addEventListener('resize', fill);
+    function wrap() {
+      var u = unit(), max = track.scrollWidth - box.clientWidth;
+      if (u <= 0) return;
+      if (box.scrollLeft < 1) box.scrollLeft += u;
+      else if (box.scrollLeft > max - 1) box.scrollLeft -= u;
+      pos = box.scrollLeft; seen = pos;
+    }
+    function pause(ms) { hold = Math.max(hold, performance.now() + ms); }
+    function tick(t) {
+      var dt = last === null ? 0 : Math.min((t - last) / 1000, 0.1);
+      last = t;
+      if (Math.abs(box.scrollLeft - seen) > 2) { pos = box.scrollLeft; wrap(); }
+      if (!drag && !hover && t > hold) {
+        var u = unit();
+        pos += (u / 48) * dt;
+        if (pos > track.scrollWidth - box.clientWidth - 1) pos -= u;
+        box.scrollLeft = pos;
+        seen = box.scrollLeft;
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    box.addEventListener('scroll', function () { if (drag || performance.now() < hold) { pos = box.scrollLeft; wrap(); } }, { passive: true });
+    box.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hover = true; });
+    box.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') { hover = false; pause(600); } });
+    box.addEventListener('touchstart', function () { pause(2500); }, { passive: true });
+    box.addEventListener('touchmove', function () { pause(2500); }, { passive: true });
+    box.addEventListener('wheel', function () { pause(1500); }, { passive: true });
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault(); pause(2500);
+        box.scrollLeft += e.key === 'ArrowRight' ? 160 : -160;
+        pos = box.scrollLeft; wrap();
+      }
+    });
+    box.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      drag = { x: e.clientX, s: box.scrollLeft };
+      box.classList.add('mq-drag');
+      box.setPointerCapture(e.pointerId);
+    });
+    box.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      box.scrollLeft = drag.s - (e.clientX - drag.x);
+      var before = box.scrollLeft; wrap();
+      if (box.scrollLeft !== before) drag.s += box.scrollLeft - before;
+    });
+    function endDrag() { if (!drag) return; drag = null; box.classList.remove('mq-drag'); pause(1500); }
+    box.addEventListener('pointerup', endDrag);
+    box.addEventListener('pointercancel', endDrag);
+  });
+
   /* 1c. Testimonial slider: changes only when the visitor uses the arrows, dots, keyboard or a swipe */
   document.querySelectorAll('[data-carousel]').forEach(function (box) {
     var slides = box.querySelectorAll('.quote-slide');
