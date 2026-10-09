@@ -44,8 +44,8 @@ a{color:#ffffff}a:hover{color:#dbad72}
 .svc:hover .svc-arrow{transform:translateX(8px);color:#8f0048}
 .case-img{overflow:hidden;border-radius:14px}
 .case-img img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
-.case:hover .case-img img{transform:scale(1.045)}
-.case:hover h3{color:#dbad72}
+a.case:hover .case-img img{transform:scale(1.045)}
+a.case:hover h3{color:#dbad72}
 .reel{transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .reel:hover{transform:translateY(-10px)}
 .btn-ghost{transition:background-color .3s ease,border-color .3s ease}
@@ -66,7 +66,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
 @media (prefers-reduced-motion: reduce){
   .marquee-track{width:auto;flex-wrap:wrap}
   .marquee-dup{display:none !important}
-  .case:hover .case-img img,.reel:hover,.btn-solid:hover{transform:none}
+  a.case:hover .case-img img,.reel:hover,.btn-solid:hover{transform:none}
 }
 @media (max-width: 900px){
   .svc-row{display:flex !important;flex-wrap:wrap}
@@ -179,12 +179,12 @@ a{color:#ffffff}a:hover{color:#dbad72}
 
 
   <!-- DIRECTION 1: cinematic portrait -->
-  <section class="cine" style="position: relative; min-height: 880px; display: flex; align-items: flex-end; overflow: hidden; background: #17155f">
+  <section class="cine" style="position: relative; min-height: 880px; display: flex; align-items: flex-end; overflow: hidden; background: #0b0b0c">
     <img class="cine-img cine-right" src="/assets/img/evert-groot-portrait.jpg" fetchpriority="high" alt="Ritratto di Evert Groot" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 44% 22%">
-    <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(23,21,95,0.92) 0%, rgba(23,21,95,0.55) 34%, rgba(23,21,95,0) 62%), linear-gradient(to bottom, rgba(23,21,95,0.55) 0%, rgba(23,21,95,0) 18%)"></div>
+    <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,11,12,0.92) 0%, rgba(11,11,12,0.55) 34%, rgba(11,11,12,0) 62%), linear-gradient(to bottom, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0) 18%)"></div>
     <div class="gut" style="position: relative; width: 100%; padding-bottom: clamp(32px, 4vw, 56px); display: flex; flex-direction: column; gap: clamp(24px, 3vw, 40px)">
       <h1 class="rise" style="margin: 0; max-width: min(780px, 58vw); font-family: 'Baloo Bhai 2', sans-serif; font-weight: 800; font-size: clamp(42px, 5.2vw, 84px); line-height: 0.92; letter-spacing: -0.045em; color: #ffffff; margin-left: -0.03em">Strategia e contenuti.<br class="br-d"> DJ set ed eventi,<br class="br-d"> <span style="color: #dbad72">con il pop nel DNA.</span></h1>
-      <div class="cine-meta" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.28)">
+      <div class="cine-meta" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid rgba(11,11,12,0.28)">
         <p style="margin: 0; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #ffffff">Content strategist · DJ · Creator · Organizzatore di eventi</p>
         <div style="display: flex; flex-wrap: wrap; gap: 4px 28px"><a href="#work" style="display: inline-flex; align-items: center; min-height: 44px; color: #ffffff; font-size: 15px; font-weight: 800; text-underline-offset: 5px" data-goatcounter-click="click-see-my-work">Guarda i miei lavori ↓</a></div>
       </div>
@@ -266,7 +266,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
     <p style="margin: 0 0 14px; color: #dbad72; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Lavori selezionati</p>
     <h2 id="work-title" style="margin: 0 0 clamp(32px, 4vw, 56px); font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800; margin-left: -0.025em">Campagne e contenuti</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: clamp(32px, 4vw, 48px) clamp(16px, 2vw, 32px)">
-      <a class="case" href="#work" style="display: flex; flex-direction: column; gap: 18px; text-decoration: none">
+      <a class="case" href="https://www.instagram.com/tv/CTMzKzHqiFT/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-netflix" style="display: flex; flex-direction: column; gap: 18px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-netflix.jpg" alt="Collaborazione tra Netflix e NikkieTutorials" style="display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover"></div>
         <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px">
           <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Netflix × NikkieTutorials</h3>
@@ -274,40 +274,40 @@ a{color:#ffffff}a:hover{color:#dbad72}
         </div>
         <p style="margin: -8px 0 0; font-size: 16px; line-height: 1.55; color: #d8d4fa">Concept creativo per una collaborazione di Netflix con NikkieTutorials.</p>
       </a>
-      <a class="case" href="#work" style="display: flex; flex-direction: column; gap: 18px; text-decoration: none">
+      <div class="case" style="display: flex; flex-direction: column; gap: 18px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-tui-campaign.jpg" alt="Contenuti per la campagna TUI" style="display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover"></div>
         <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px">
           <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Contenuti per la campagna TUI</h3>
           <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #b3afe0">Concept · Creatività · Copy</span>
         </div>
         <p style="margin: -8px 0 0; font-size: 16px; line-height: 1.55; color: #d8d4fa">Concept, direzione creativa e copy per i social di TUI, con The Best Social.</p>
-      </a>
+      </div>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: clamp(32px, 4vw, 48px) clamp(16px, 2vw, 32px); margin-top: clamp(40px, 5vw, 64px)">
-      <a class="case" href="#work" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
+      <div class="case" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-forward.jpg" alt="Contenuti social per Stichting FORWARD" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
         <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #b3afe0">Strategia · Pianificazione · Copy</span>
         <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Stichting FORWARD</h3>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #d8d4fa">Strategia dei contenuti, pianificazione editoriale e copy che rendono accessibili temi legali e LGBTQIA+ complessi.</p>
-      </a>
-      <a class="case" href="#work" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
+      </div>
+      <a class="case" href="https://www.instagram.com/reels/DDMBNbwCVMU/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-tui-social" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-tui-social.jpg" alt="Strategia social short-form per TUI" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
         <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #b3afe0">Strategia · Concept</span>
         <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Strategia social per TUI</h3>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #d8d4fa">Strategia dei contenuti social e concept ricorrenti di video short-form per TUI.</p>
       </a>
-      <a class="case" href="#work" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
+      <a class="case" href="https://www.tiktok.com/@aristotendunu/video/7432115377787768096" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-american-eagle" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-american-eagle.jpg" alt="Contenuti dei creator per American Eagle e Pearpop" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
         <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #b3afe0">Revisione contenuti · Copy</span>
         <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">American Eagle × Pearpop</h3>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #d8d4fa">Revisione di contenuti e copy per progetti social realizzati con i creator.</p>
       </a>
-      <a class="case" href="#work" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
+      <div class="case" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-soa-aids.jpg" alt="Contenuti social per Soa Aids Nederland" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
         <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #b3afe0">Contenuti · Advertising · Copy</span>
         <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Soa Aids Nederland</h3>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #d8d4fa">Contenuti social e campagne inclusive per Man tot Man su Facebook, Instagram e TikTok.</p>
-      </a>
+      </div>
     </div>
   </section>
 
@@ -339,13 +339,13 @@ a{color:#ffffff}a:hover{color:#dbad72}
         <h2 id="dj-title" style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(42px, 5.6vw, 84px); line-height: 0.94; letter-spacing: -0.045em; font-weight: 800; margin-left: -0.055em">Prendere sul serio la musica pop</h2>
         <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #d8d4fa">Mixo hit iconiche, anthem nostalgici e nuove scoperte tra pop, disco e house. Dal 2008 ho suonato in club, festival, Pride ed eventi aziendali tra Paesi Bassi, Belgio e Italia. Per matrimoni ed eventi privati costruisco il set attorno ai vostri brani irrinunciabili e faccio ballare ogni generazione.</p>
         <div style="display: flex; flex-wrap: wrap; gap: 24px 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.16)">
-          <div style="flex: 1 1 260px">
+          <div style="flex: 1 1 100%">
             <p style="margin: 0 0 10px; color: #dbad72; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">Club, festival e Pride</p>
-            <p style="margin: 0; font-size: 15px; line-height: 1.75; color: #ffffff">Paradiso · The Other Side · A'DAM Tower · Club NYX · FERRY Rotterdam · Q Club Milano · Amsterdam Pride · Antwerp Pride · Milkshake · Tropikali · Superflirt</p>
+            <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 2px 18px; font-family: 'Baloo Bhai 2', sans-serif; font-size: 22px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em"><li style="white-space: nowrap; color: #ffffff">Paradiso</li><li style="white-space: nowrap; color: #b3afe0">The Other Side</li><li style="white-space: nowrap; color: #ffffff">A'DAM Tower</li><li style="white-space: nowrap; color: #b3afe0">Club NYX</li><li style="white-space: nowrap; color: #ffffff">FERRY Rotterdam</li><li style="white-space: nowrap; color: #b3afe0">Q Club Milano</li><li style="white-space: nowrap; color: #ffffff">Amsterdam Pride</li><li style="white-space: nowrap; color: #b3afe0">Antwerp Pride</li><li style="white-space: nowrap; color: #ffffff">Milkshake</li><li style="white-space: nowrap; color: #b3afe0">Tropikali</li><li style="white-space: nowrap; color: #ffffff">Superflirt</li></ul>
           </div>
-          <div style="flex: 1 1 180px">
+          <div style="flex: 1 1 100%">
             <p style="margin: 0 0 10px; color: #dbad72; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">Eventi aziendali</p>
-            <p style="margin: 0; font-size: 15px; line-height: 1.75; color: #ffffff">Kaspersky · McDonald's · Sanoma · Sofitel · H'ART Museum · Bar-le-Duc</p>
+            <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 2px 18px; font-family: 'Baloo Bhai 2', sans-serif; font-size: 22px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em"><li style="white-space: nowrap; color: #ffffff">Kaspersky</li><li style="white-space: nowrap; color: #b3afe0">McDonald's</li><li style="white-space: nowrap; color: #ffffff">Sanoma</li><li style="white-space: nowrap; color: #b3afe0">Sofitel</li><li style="white-space: nowrap; color: #ffffff">H'ART Museum</li><li style="white-space: nowrap; color: #b3afe0">Bar-le-Duc</li></ul>
           </div>
         </div>
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 8px">
