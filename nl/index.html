@@ -77,6 +77,26 @@ a{color:#ffffff}a:hover{color:#dbad72}
   .reel-offset{margin-top:0 !important}
   .dj-photo{min-height:420px !important}
 }
+
+.gut{padding-left:calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px));padding-right:calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px))}
+.chap img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.chap:hover img{transform:scale(1.04)}
+.chap:hover .chap-label{color:#dbad72}
+.thumb img{transition:opacity .4s ease}
+.thumb:hover img{opacity:.75}
+@media (min-width: 900px){
+  .cine-shift{transform-origin:50% 0;transform:translateX(14%) scale(1.3)}
+  .cine-right{left:auto !important;right:0;width:62% !important;-webkit-mask-image:linear-gradient(to right, transparent 0%, #000 38%),linear-gradient(to top, transparent 0%, #000 20%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right, transparent 0%, #000 38%),linear-gradient(to top, transparent 0%, #000 20%);mask-composite:intersect}
+}
+@media (max-width: 760px){
+  .cine{min-height:760px !important}
+  .cine-img{height:66% !important;-webkit-mask-image:linear-gradient(to bottom, #000 72%, transparent 100%);mask-image:linear-gradient(to bottom, #000 72%, transparent 100%)}
+  .cine h1{max-width:none !important}
+  .cine-meta{flex-direction:column !important;align-items:flex-start !important}
+  .chap-row{grid-template-columns:repeat(2, minmax(0, 1fr)) !important}
+  .idx-cols{grid-template-columns:repeat(2, minmax(0, 1fr)) !important}
+  .thumb-row{grid-template-columns:repeat(2, minmax(0, 1fr)) !important}
+}
 </style>
 <style>
   .quote-track{display:grid}
@@ -100,8 +120,9 @@ a{color:#ffffff}a:hover{color:#dbad72}
 <!-- Icons: Instagram, TikTok, SoundCloud from Simple Icons (CC0); LinkedIn from Font Awesome Free (CC BY 4.0, https://fontawesome.com). -->
 <div style="font-family: 'Manrope', sans-serif; color: #ffffff; background: #17155f; min-height: 100vh; overflow: hidden">
 
+<div style="position: relative">
   <!-- NAV -->
-  <header style="max-width: 1360px; margin: 0 auto; padding: 22px clamp(20px, 4vw, 48px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+  <header style="position: absolute; left: 0; right: 0; top: 0; z-index: 5; max-width: none; padding-left: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); padding-right: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); max-width: 1360px; margin: 0 auto; padding: 22px clamp(20px, 4vw, 48px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
     <a href="#top" style="font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; text-decoration: none; color: #ffffff">Evert Groot</a>
     <nav aria-label="Hoofdmenu" style="display: flex; flex-wrap: wrap; align-items: center; gap: clamp(10px, 2vw, 32px); font-size: 15px; font-weight: 600">
       <div class="nav-links" style="display: flex; gap: 32px">
@@ -119,19 +140,23 @@ a{color:#ffffff}a:hover{color:#dbad72}
     </nav>
   </header>
 
-  <!-- HERO: big type, photo bleeds to the right edge -->
-  <section id="top" style="display: flex; flex-wrap: wrap; align-items: stretch; min-height: 760px; padding-left: max(0px, calc((100% - 1360px) / 2))">
-    <div style="flex: 1 1 560px; min-width: 0; display: flex">
-      <div style="width: 100%; max-width: 820px; padding: clamp(32px, 6vw, 88px) clamp(20px, 4vw, 64px) clamp(32px, 4vw, 56px) clamp(20px, 4vw, 48px); display: flex; flex-direction: column; justify-content: space-between; gap: 48px">
-        <div style="display: flex; flex-direction: column; gap: 28px">
-          <p class="rise" style="margin: 0; color: #dbad72; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Contentstrateeg · DJ · Creator · Eventorganisator</p>
-          <h1 class="rise rise-2" style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(46px, 6.4vw, 92px); line-height: 0.94; letter-spacing: -0.045em; font-weight: 800; margin-left: -0.03em">Strategie, content, DJ-sets en events <span style="color: #dbad72">met pop als basis.</span></h1>
-          <p class="rise rise-3" style="margin: 0; max-width: 500px; font-size: clamp(17px, 1.4vw, 19px); line-height: 1.6; color: #d8d4fa">Ik vertaal inzichten en online cultuur naar creatieve strategieën en content waar mensen echt iets mee willen. Begrijpen wat mensen met elkaar verbindt staat ook centraal in mijn werk als DJ Absoluut en medeoprichter van BOPS.</p>
-          <div class="rise rise-4" style="display: flex; flex-wrap: wrap; gap: 12px">
-            <a class="btn-ghost" href="#work" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 28px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.35); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 800" data-goatcounter-click="click-see-my-work">Bekijk mijn werk</a>
-          </div>
-        </div>
-        <!-- stats as one quiet row instead of three colored boxes -->
+  <!-- DIRECTION 1: cinematic portrait -->
+  <section class="cine" style="position: relative; min-height: 880px; display: flex; align-items: flex-end; overflow: hidden; background: #17155f">
+    <img class="cine-img cine-shift" src="/assets/img/evert-groot.jpg" fetchpriority="high" alt="Portret van Evert Groot" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 26%">
+    <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(23,21,95,0.92) 0%, rgba(23,21,95,0.55) 34%, rgba(23,21,95,0) 62%), linear-gradient(to bottom, rgba(23,21,95,0.55) 0%, rgba(23,21,95,0) 18%)"></div>
+    <div class="gut" style="position: relative; width: 100%; padding-bottom: clamp(32px, 4vw, 56px); display: flex; flex-direction: column; gap: clamp(24px, 3vw, 40px)">
+      <h1 class="rise" style="margin: 0; max-width: min(640px, 46%); font-family: 'Baloo Bhai 2', sans-serif; font-weight: 800; font-size: clamp(42px, 5.2vw, 84px); line-height: 0.92; letter-spacing: -0.045em; color: #ffffff; margin-left: -0.03em">Strategie, content, DJ-sets en events <span style="color: #dbad72">met pop als basis.</span></h1>
+      <div class="cine-meta" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.28)">
+        <p style="margin: 0; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #ffffff">Contentstrateeg · DJ · Creator · Eventorganisator</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 4px 28px"><a href="#work" style="display: inline-flex; align-items: center; min-height: 44px; color: #ffffff; font-size: 15px; font-weight: 800; text-underline-offset: 5px" data-goatcounter-click="click-see-my-work">Bekijk mijn werk ↓</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="gut" style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: clamp(32px, 5vw, 96px); padding-top: clamp(56px, 7vw, 104px); padding-bottom: clamp(56px, 7vw, 104px)">
+    <p style="flex: 1.5 1 480px; max-width: 780px; margin: 0; font-size: clamp(20px, 1.9vw, 28px); line-height: 1.5; font-weight: 500; color: #e9e6ff">Ik vertaal inzichten en online cultuur naar creatieve strategieën en content waar mensen echt iets mee willen. Begrijpen wat mensen met elkaar verbindt staat ook centraal in mijn werk als DJ Absoluut en medeoprichter van BOPS.</p>
+    <div style="flex: 1 1 360px; min-width: 0">
         <dl style="margin: 0; display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.16)">
           <div style="flex: 1 1 0; min-width: 0; padding: 20px clamp(10px, 2vw, 20px) 0 0">
             <dt style="font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 3vw, 42px); font-weight: 800; line-height: 1; letter-spacing: -0.03em">1M+</dt>
@@ -146,14 +171,9 @@ a{color:#ffffff}a:hover{color:#dbad72}
             <dd style="margin: 6px 0 0; font-size: 14px; color: #b3afe0">BOPS-edities georganiseerd</dd>
           </div>
         </dl>
-      </div>
-    </div>
-    <div class="hero-photo" style="flex: 1 1 420px; min-height: 520px; position: relative">
-      <img src="/assets/img/evert-groot.jpg" fetchpriority="high" width="1400" height="840" alt="Portret van Evert Groot" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%">
     </div>
   </section>
 
-  <!-- CLIENTS: slow marquee between hairlines -->
   <section class="marquee" aria-label="Werkte onder meer voor" style="background: #dbad72; padding: 24px 0; overflow: hidden">
     <div class="marquee-track" style="gap: 0">
       <div style="display: flex; align-items: center; gap: 64px; padding-right: 64px; font-size: 19px; font-weight: 700; color: #2a1d36; white-space: nowrap">
