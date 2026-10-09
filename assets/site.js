@@ -146,13 +146,15 @@
     box.addEventListener('pointercancel', endDrag);
   });
 
-  /* 1c. Testimonial slider: changes only when the visitor uses the arrows, dots, keyboard or a swipe */
+  /* 1c. Testimonial slider: changes only when the visitor swipes, drags, scrolls, taps a dot or uses the arrow keys */
   document.querySelectorAll('[data-carousel]').forEach(function (box) {
+    var track = box.querySelector('.quote-track');
     var slides = box.querySelectorAll('.quote-slide');
     var dots = box.querySelectorAll('.quote-dot');
-    var current = 0;
-    function show(i) {
-      current = (i + slides.length) % slides.length;
+    if (!track || !slides.length) return;
+    var current = 0, drag = null, timer = null;
+    function mark(i) {
+      current = i;
       slides.forEach(function (s, n) {
         var on = n === current;
         s.setAttribute('aria-hidden', on ? 'false' : 'true');
@@ -162,24 +164,52 @@
         if (n === current) { d.setAttribute('aria-current', 'true'); } else { d.removeAttribute('aria-current'); }
       });
     }
-    box.querySelectorAll('[data-step]').forEach(function (b) {
-      b.addEventListener('click', function () { show(current + Number(b.getAttribute('data-step'))); });
-    });
+    function show(i, instant) {
+      i = (i + slides.length) % slides.length;
+      track.scrollTo({ left: i * track.clientWidth, behavior: instant ? 'auto' : 'smooth' });
+      mark(i);
+    }
+    track.addEventListener('scroll', function () {
+      if (drag) return;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        var i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+        if (i !== current) mark(Math.max(0, Math.min(slides.length - 1, i)));
+      }, 90);
+    }, { passive: true });
     dots.forEach(function (d) {
       d.addEventListener('click', function () { show(Number(d.getAttribute('data-goto'))); });
     });
     box.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowLeft') { show(current - 1); }
-      if (e.key === 'ArrowRight') { show(current + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); }
     });
-    var startX = null;
-    box.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
-    box.addEventListener('touchend', function (e) {
-      if (startX === null) return;
-      var dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) { show(current + (dx < 0 ? 1 : -1)); }
-      startX = null;
+    /* mouse: drag the quotes sideways like the gold band (touch scrolls natively) */
+    track.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0 || e.target.closest('a')) return;
+      drag = { x: e.clientX, s: track.scrollLeft, moved: false };
+      track.classList.add('q-drag');
+      track.setPointerCapture(e.pointerId);
     });
+    track.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag.x;
+      if (Math.abs(dx) > 3) drag.moved = true;
+      track.scrollLeft = drag.s - dx;
+    });
+    function endDrag(e) {
+      if (!drag) return;
+      var dx = (e && e.clientX !== undefined) ? e.clientX - drag.x : 0;
+      drag = null;
+      track.classList.remove('q-drag');
+      var target = current;
+      if (dx < -50) target = Math.min(slides.length - 1, current + 1);
+      else if (dx > 50) target = Math.max(0, current - 1);
+      show(target);
+    }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    window.addEventListener('resize', function () { show(current, true); });
   });
 
   /* 2. Next BOPS event */
