@@ -118,6 +118,13 @@ a{color:#ffffff}a:hover{color:#dbad72}
 }
 .gig-list a{text-underline-offset:5px;text-decoration-thickness:2px}
 .gig-list a:hover,.gig-list a:focus-visible{text-decoration:underline !important}
+@media (max-width: 640px){
+  .dj-gal{grid-template-columns:1fr !important}
+  .dj-gal img{aspect-ratio:3 / 2 !important}
+  .dj-gal .g1{object-position:50% 18%}
+  .dj-gal .g2{object-position:50% 46%}
+  .dj-gal .g3{object-position:57% 50%}
+}
 </style>
 <style>
   .quote-track{display:grid}
@@ -261,10 +268,10 @@ a{color:#ffffff}a:hover{color:#dbad72}
         </dl>
     </div>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(12px, 1.6vw, 24px)">
-      <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/dj-club.jpg" alt="DJ Absoluut in een club" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover"></div>
-      <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/dj-festival.jpg" alt="DJ Absoluut draait voor een festivalpubliek" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover"></div>
-      <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/dj-outdoor.jpg" alt="DJ Absoluut draait buiten" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover"></div>
+    <div class="dj-gal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(12px, 1.6vw, 24px)">
+      <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/dj-club.jpg" class="g1" alt="DJ Absoluut in een club" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover"></div>
+      <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/dj-festival.jpg" class="g2" alt="DJ Absoluut draait voor een festivalpubliek" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover"></div>
+      <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/dj-outdoor.jpg" class="g3" alt="DJ Absoluut draait buiten" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover"></div>
     </div>
   </section>
 
