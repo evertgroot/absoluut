@@ -63,4 +63,25 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/privacy/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/privacy/"/>
   </url>
+  <url>
+    <loc>https://imgroot.nl/dj/press-kit/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/dj/press-kit/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/dj/press-kit/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/dj/press-kit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/dj/press-kit/"/>
+  </url>
+  <url>
+    <loc>https://imgroot.nl/nl/dj/press-kit/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/dj/press-kit/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/dj/press-kit/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/dj/press-kit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/dj/press-kit/"/>
+  </url>
+  <url>
+    <loc>https://imgroot.nl/it/dj/press-kit/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/dj/press-kit/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/dj/press-kit/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/dj/press-kit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/dj/press-kit/"/>
+  </url>
 </urlset>

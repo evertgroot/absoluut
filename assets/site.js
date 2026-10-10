@@ -212,6 +212,28 @@
     window.addEventListener('resize', function () { show(current, true); });
   });
 
+  /* 1d. Press kit: save as PDF (print dialog) and copy the biography */
+  document.querySelectorAll('[data-print]').forEach(function (b) {
+    b.addEventListener('click', function () { window.print(); });
+  });
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    var src = document.getElementById(b.getAttribute('data-copy'));
+    if (!src) return;
+    var label = b.textContent;
+    var done = { en: 'Copied ✓', nl: 'Gekopieerd ✓', it: 'Copiato ✓' }[lang] || 'Copied ✓';
+    b.addEventListener('click', function () {
+      var text = Array.prototype.map.call(src.querySelectorAll('p'), function (p) { return p.textContent.trim(); }).join('\n\n');
+      var ok = function () { b.textContent = done; setTimeout(function () { b.textContent = label; }, 2000); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(ok, function () {});
+      } else {
+        var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); ok(); } catch (e) {}
+        document.body.removeChild(t);
+      }
+    });
+  });
+
   /* 2. Next BOPS event */
   var dateEl = document.getElementById('bops-date');
   var labelEl = document.getElementById('bops-label');
