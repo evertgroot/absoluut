@@ -247,7 +247,7 @@
           location: {
             '@type': 'Place',
             name: 'The Other Side',
-            address: { '@type': 'PostalAddress', streetAddress: 'Reguliersdwarsstraat 6', addressLocality: 'Amsterdam', addressCountry: 'NL' }
+            address: { '@type': 'PostalAddress', streetAddress: 'Rigakade 10', addressLocality: 'Amsterdam', addressCountry: 'NL' }
           },
           image: ['https://imgroot.nl/assets/img/dj-absoluut-bops.jpg'],
           description: 'Queer pop party with house and disco twists in Amsterdam.',
@@ -260,12 +260,8 @@
           } : undefined
         });
         document.head.appendChild(ld);
-        if (ev.ticketUrl) {
-          ticketEl.href = ev.ticketUrl;
-          ticketEl.hidden = false;
-        } else {
-          ticketEl.hidden = true;
-        }
+        /* The button always points to the BOPS Linktree (set in the HTML) */
+        ticketEl.hidden = false;
       })
       .catch(function () {});
   }
