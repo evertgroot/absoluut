@@ -240,18 +240,24 @@
           '@type': 'Event',
           name: ev.title === 'BOPS' ? 'BOPS – queer pop party' : ev.title,
           startDate: ev.date,
+          /* BOPS runs past midnight, so it ends the next day */
+          endDate: ev.endDate || (function () { var e = new Date(Date.UTC(p[0], p[1] - 1, p[2] + 1)); return e.toISOString().slice(0, 10); })(),
           eventStatus: 'https://schema.org/EventScheduled',
           eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
           location: {
             '@type': 'Place',
             name: 'The Other Side',
-            address: { '@type': 'PostalAddress', addressLocality: 'Amsterdam', addressCountry: 'NL' }
+            address: { '@type': 'PostalAddress', streetAddress: 'Reguliersdwarsstraat 6', addressLocality: 'Amsterdam', addressCountry: 'NL' }
           },
           image: ['https://imgroot.nl/assets/img/dj-absoluut-bops.jpg'],
           description: 'Queer pop party with house and disco twists in Amsterdam.',
           organizer: { '@type': 'Organization', name: 'BOPS', url: 'https://www.instagram.com/bops.ams/' },
           performer: { '@type': 'Person', name: 'DJ Absoluut', url: 'https://imgroot.nl/' },
-          offers: ev.ticketUrl ? { '@type': 'Offer', url: ev.ticketUrl, availability: 'https://schema.org/InStock' } : undefined
+          /* Only describe an offer when the price is known; a price-less offer triggers Search Console warnings */
+          offers: (ev.ticketUrl && ev.price !== undefined) ? {
+            '@type': 'Offer', url: ev.ticketUrl, price: String(ev.price), priceCurrency: ev.priceCurrency || 'EUR',
+            validFrom: ev.validFrom || undefined, availability: 'https://schema.org/InStock'
+          } : undefined
         });
         document.head.appendChild(ld);
         if (ev.ticketUrl) {
