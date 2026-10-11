@@ -251,6 +251,32 @@
     window.addEventListener('resize', function () { show(current, true); });
   });
 
+  /* 1c2. Review cards: on small screens they scroll sideways; the dots follow and can be tapped */
+  document.querySelectorAll('[data-reviews]').forEach(function (grid) {
+    var cards = grid.querySelectorAll('.qcard');
+    var dots = grid.parentNode.querySelectorAll('.qdot');
+    if (!cards.length || !dots.length) return;
+    var t = null;
+    function mark(i) {
+      dots.forEach(function (d, n) { if (n === i) { d.setAttribute('aria-current', 'true'); } else { d.removeAttribute('aria-current'); } });
+    }
+    grid.addEventListener('scroll', function () {
+      clearTimeout(t);
+      t = setTimeout(function () {
+        var best = 0, dist = Infinity, left = grid.getBoundingClientRect().left;
+        cards.forEach(function (c, n) { var d = Math.abs(c.getBoundingClientRect().left - left - parseFloat(getComputedStyle(grid).paddingLeft || 0)); if (d < dist) { dist = d; best = n; } });
+        if (grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 4) best = cards.length - 1;
+        mark(best);
+      }, 60);
+    }, { passive: true });
+    dots.forEach(function (d, n) {
+      d.addEventListener('click', function () {
+        grid.scrollTo({ left: cards[n].offsetLeft - cards[0].offsetLeft, behavior: 'smooth' });
+        mark(n);
+      });
+    });
+  });
+
   /* 1d. Press kit: save as PDF (print dialog) and copy the biography */
   document.querySelectorAll('[data-print]').forEach(function (b) {
     b.addEventListener('click', function () { window.print(); });
