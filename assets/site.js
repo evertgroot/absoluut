@@ -72,16 +72,27 @@
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       fab.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.documentElement.style.overflow = open ? 'hidden' : '';
+      if (!open) document.documentElement.classList.remove('sw-menu');
       if (open) { var c = menu.querySelector('[data-close]'); if (c) c.focus(); }
       else if (opener && !opener.hidden) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
     };
     menuBtn.addEventListener('click', function () { setMenu(menu.hidden, menuBtn); });
     fab.addEventListener('click', function () { setMenu(menu.hidden, fab); });
     menu.querySelectorAll('a, [data-close]').forEach(function (el) {
+      if (el.closest('.site-sw')) return; /* the site switch keeps the menu open (it reopens on the other site) */
       el.addEventListener('click', function () { if (!menu.hidden) setMenu(false); });
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
     window.addEventListener('resize', function () { if (!menu.hidden && getComputedStyle(menuBtn).display === 'none') setMenu(false); });
+    /* arrived through the site switch in the menu: the menu was reopened before first paint (inline script); sync its state */
+    var viaSwitch = null;
+    try { viaSwitch = sessionStorage.getItem('imgroot-menu'); sessionStorage.removeItem('imgroot-menu'); } catch (e) {}
+    if (viaSwitch && !menu.hidden) {
+      opener = menuBtn;
+      menuBtn.setAttribute('aria-expanded', 'true');
+      fab.setAttribute('aria-expanded', 'true');
+      document.documentElement.style.overflow = 'hidden';
+    }
 
     var css = document.createElement('style');
     css.textContent =
@@ -286,15 +297,20 @@
     if (links.length !== 2 || !thumb) return;
     var cur = links[1].hasAttribute('aria-current') ? 1 : 0;
     var inMenu = !!sw.closest('#mobile-menu');
+    var keepMenu = function () {
+      if (!inMenu) return;
+      document.documentElement.classList.add('sw-menu');
+      try { sessionStorage.setItem('imgroot-menu', '1'); } catch (e) {}
+    };
     var leave = function (href) {
-      if (inMenu) document.documentElement.classList.add('sw-menu');
+      keepMenu();
       location.href = href;
     };
     links.forEach(function (a) {
       a.setAttribute('draggable', 'false');
       a.addEventListener('click', function (e) {
         if (eat) { e.preventDefault(); eat = false; return; }
-        if (inMenu && !a.hasAttribute('aria-current')) document.documentElement.classList.add('sw-menu');
+        if (!a.hasAttribute('aria-current')) keepMenu();
       });
     });
     var drag = null, eat = false;
