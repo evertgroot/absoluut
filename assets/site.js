@@ -49,22 +49,61 @@
     }
   }
 
-  /* 1b2. Mobile menu */
+  /* 1b2. Mobile menu, plus a menu that stays reachable after scrolling:
+     desktop - the header turns into a slim bar fixed to the top;
+     mobile  - a round menu button floats at the bottom right */
   var menuBtn = document.querySelector('.menu-btn');
   var menu = document.getElementById('mobile-menu');
+  var header = document.querySelector('header');
   if (menuBtn && menu) {
-    var setMenu = function (open) {
+    var opener = menuBtn;
+    var fab = document.createElement('button');
+    fab.type = 'button';
+    fab.className = 'menu-fab';
+    fab.hidden = true;
+    fab.setAttribute('aria-label', menuBtn.getAttribute('aria-label') || 'Menu');
+    fab.setAttribute('aria-controls', 'mobile-menu');
+    fab.setAttribute('aria-expanded', 'false');
+    fab.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg>';
+    document.body.appendChild(fab);
+    var setMenu = function (open, from) {
+      if (open) opener = from || menuBtn;
       menu.hidden = !open;
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      fab.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.documentElement.style.overflow = open ? 'hidden' : '';
-      if (open) { var c = menu.querySelector('[data-close]'); if (c) c.focus(); } else { menuBtn.focus(); }
+      if (open) { var c = menu.querySelector('[data-close]'); if (c) c.focus(); }
+      else if (opener && !opener.hidden) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
     };
-    menuBtn.addEventListener('click', function () { setMenu(menu.hidden); });
+    menuBtn.addEventListener('click', function () { setMenu(menu.hidden, menuBtn); });
+    fab.addEventListener('click', function () { setMenu(menu.hidden, fab); });
     menu.querySelectorAll('a, [data-close]').forEach(function (el) {
       el.addEventListener('click', function () { if (!menu.hidden) setMenu(false); });
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
     window.addEventListener('resize', function () { if (!menu.hidden && getComputedStyle(menuBtn).display === 'none') setMenu(false); });
+
+    var css = document.createElement('style');
+    css.textContent =
+      '.menu-fab{position:fixed;right:18px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:55;display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;padding:0;border:2px solid #dbad72;border-radius:999px;background:#17155f;color:#fff;box-shadow:0 10px 28px rgba(0,0,0,.35);cursor:pointer;animation:fab-in .25s ease both}' +
+      '.menu-fab[hidden]{display:none}.menu-fab:focus-visible{outline:3px solid #dbad72;outline-offset:3px}' +
+      'header.hdr-stuck{position:fixed !important;left:0 !important;right:0 !important;top:0 !important;z-index:50 !important;max-width:none !important;padding:10px calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)) !important;background:rgba(23,21,95,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(0,0,0,.25);animation:bar-in .25s ease both}' +
+      '@keyframes fab-in{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}' +
+      '@keyframes bar-in{from{transform:translateY(-100%)}to{transform:none}}' +
+      '@media (prefers-reduced-motion: reduce){.menu-fab,header.hdr-stuck{animation:none}}' +
+      'section[id]{scroll-margin-top:76px}' +
+      '@media print{.menu-fab{display:none !important}header.hdr-stuck{position:static !important}}';
+    document.head.appendChild(css);
+    var limit = function () { return Math.max(320, window.innerHeight * 0.6); };
+    var update = function () {
+      var past = window.scrollY > limit();
+      var mobile = getComputedStyle(menuBtn).display !== 'none';
+      if (header) header.classList.toggle('hdr-stuck', past && !mobile);
+      fab.hidden = !(past && mobile);
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   }
 
   /* 1b3. Gold band: keeps drifting on its own, but visitors can swipe, drag or scroll it themselves */
