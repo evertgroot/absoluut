@@ -89,10 +89,11 @@ a.case:hover h3{color:#dbad72}
   .cine-right{left:auto !important;right:0;width:62% !important;-webkit-mask-image:linear-gradient(to right, transparent 0%, #000 38%),linear-gradient(to top, transparent 0%, #000 20%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right, transparent 0%, #000 38%),linear-gradient(to top, transparent 0%, #000 20%);mask-composite:intersect}
 }
 @media (max-width: 760px){
-  .cine{min-height:760px !important}
-  .cine-img{height:66% !important;-webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 14%, #000 72%, transparent 100%);mask-image:linear-gradient(to bottom, transparent 0%, #000 14%, #000 72%, transparent 100%)}
+  .cine{min-height:0 !important;display:block !important}
+  .cine-img{position:relative !important;display:block;width:100% !important;height:auto !important;aspect-ratio:4 / 5;-webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);mask-image:linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%)}
   .cine h1{max-width:none !important}
-  .cine-right{object-position:44% 0% !important;top:28px !important}
+  .cine-right{object-position:44% 30% !important;top:auto !important}
+  .cine > .gut{margin-top:-110px}
   .cine-meta{flex-direction:column !important;align-items:flex-start !important}
   .chap-row{grid-template-columns:repeat(2, minmax(0, 1fr)) !important}
   .idx-cols{grid-template-columns:repeat(2, minmax(0, 1fr)) !important}
