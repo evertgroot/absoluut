@@ -277,6 +277,38 @@
     });
   });
 
+  /* 1c3. Menu: mark the section you're reading (gold line on desktop, gold item in the mobile menu) */
+  var spyLinks = [].slice.call(document.querySelectorAll('.nav-links a[href^="#"], #mobile-menu .mm-link[href^="#"]'));
+  var spyIds = [];
+  spyLinks.forEach(function (a) {
+    var id = a.getAttribute('href').slice(1);
+    if (spyIds.indexOf(id) < 0 && document.getElementById(id)) spyIds.push(id);
+  });
+  if (spyIds.length) {
+    var spyNow = null, spyTick = false;
+    var spySet = function (id) {
+      if (id === spyNow) return;
+      spyNow = id;
+      spyLinks.forEach(function (a) {
+        if (id && a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'location');
+        else a.removeAttribute('aria-current');
+      });
+    };
+    var spy = function () {
+      spyTick = false;
+      var line = Math.min(160, window.innerHeight * 0.3), hit = null;
+      spyIds.forEach(function (id) {
+        var r = document.getElementById(id).getBoundingClientRect();
+        if (r.top <= line && r.bottom > line) hit = id;
+      });
+      spySet(hit);
+    };
+    var spyQueue = function () { if (!spyTick) { spyTick = true; requestAnimationFrame(spy); } };
+    window.addEventListener('scroll', spyQueue, { passive: true });
+    window.addEventListener('resize', spyQueue);
+    spy();
+  }
+
   /* 1d. Press kit: save as PDF (print dialog) and copy the biography */
   document.querySelectorAll('[data-print]').forEach(function (b) {
     b.addEventListener('click', function () { window.print(); });
