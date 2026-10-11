@@ -126,10 +126,36 @@ a{color:#ffffff}a:hover{color:#dbad72}
   .qdots{display:flex}
 }
 /* header v3: one menu bar for both sites */
-.site-sw{display:inline-flex;align-items:center;justify-self:start;padding:3px;border:1px solid rgba(255,255,255,0.2);border-radius:999px}
-.site-sw a{display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;font-family:'Baloo Bhai 2',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;line-height:1;color:#b3afe0;text-decoration:none;white-space:nowrap;transition:color .25s ease,background-color .25s ease}
+.site-sw{display:inline-grid;grid-template-columns:auto auto;align-items:center;justify-self:start;padding:3px;border:1px solid rgba(255,255,255,0.2);border-radius:999px;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.site-sw > *{grid-row:1}
+.site-sw a:first-of-type{grid-column:1}
+.site-sw a:last-of-type{grid-column:2}
+.sw-thumb{grid-column:1;align-self:stretch;border-radius:999px;background:#ffffff;box-shadow:0 2px 10px rgba(0,0,0,0.22)}
+.site-sw.is-dj .sw-thumb{grid-column:2}
+.site-sw a{position:relative;z-index:1;display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;font-family:'Baloo Bhai 2',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;line-height:1;color:#b3afe0;text-decoration:none;white-space:nowrap;-webkit-user-drag:none;transition:color .25s ease}
 .site-sw a:hover{color:#ffffff}
-.site-sw a[aria-current],.site-sw a[aria-current]:hover{background:#ffffff;color:#17155f;font-weight:800}
+.site-sw a[aria-current],.site-sw a[aria-current]:hover{color:#17155f;font-weight:800}
+.site-sw.sw-drag{cursor:grabbing}
+.site-sw.sw-drag .sw-thumb{transition:none}
+.sw-thumb{transition:transform .3s cubic-bezier(.3,.7,.2,1)}
+.site-sw.sw-flip a[aria-current]{color:#b3afe0}
+.site-sw.sw-flip a:not([aria-current]){color:#17155f}
+@media (prefers-reduced-motion: no-preference){
+  @view-transition{navigation:auto}
+  header .site-sw{view-transition-name:sw}
+  header .sw-thumb{view-transition-name:sw-thumb}
+  header .site-sw a:first-of-type{view-transition-name:sw-a}
+  header .site-sw a:last-of-type{view-transition-name:sw-b}
+  .sw-menu header .site-sw,.sw-menu header .sw-thumb,.sw-menu header .site-sw a{view-transition-name:none}
+  .sw-menu #mobile-menu .site-sw{view-transition-name:sw}
+  .sw-menu #mobile-menu .sw-thumb{view-transition-name:sw-thumb}
+  .sw-menu #mobile-menu .site-sw a:first-of-type{view-transition-name:sw-a}
+  .sw-menu #mobile-menu .site-sw a:last-of-type{view-transition-name:sw-b}
+  ::view-transition-group(*){animation-duration:.45s;animation-timing-function:cubic-bezier(.3,.7,.2,1)}
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:.3s}
+  ::view-transition-group(sw-thumb){z-index:2}
+  ::view-transition-group(sw-a),::view-transition-group(sw-b){z-index:3}
+}
 .nav-links{justify-self:center}
 .nav-links a{position:relative;padding:12px 0;white-space:nowrap}
 .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;border-radius:2px;background:#dbad72;transform:scaleX(0);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
@@ -180,7 +206,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://imgroot.nl/#evert", "name": "Evert Groot", "alternateName": ["DJ Absoluut", "Absoluut"], "url": "https://imgroot.nl/", "image": "https://imgroot.nl/assets/img/evert-groot.jpg", "email": "mailto:evert@imgroot.nl", "jobTitle": ["Content Strategist", "DJ", "Content Creator", "Event Organizer"], "knowsAbout": ["Content strategy", "Social media strategy", "Creative direction", "Short-form video", "Pop music", "DJing", "Wedding DJ", "Event organizing", "Queer nightlife"], "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "founder": {"@id": "https://imgroot.nl/#bops"}, "sameAs": ["https://www.instagram.com/absoluut/", "https://www.tiktok.com/@absoluutdj", "https://www.linkedin.com/in/evertgroot", "https://soundcloud.com/absoluut"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content strategy and creative direction", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ for weddings, clubs, festivals and brand events", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event organizing", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator partnerships and short-form video", "areaServed": ["NL", "IT"]}}]}, {"@type": "Organization", "@id": "https://imgroot.nl/#bops", "name": "BOPS", "description": "Queer pop party at The Other Side, Amsterdam", "url": "https://www.instagram.com/bops.ams/", "sameAs": ["https://www.instagram.com/bops.ams/"]}, {"@type": "WebSite", "@id": "https://imgroot.nl/#website", "url": "https://imgroot.nl/", "name": "Evert Groot", "inLanguage": ["en", "nl", "it"], "publisher": {"@id": "https://imgroot.nl/#evert"}}, {"@type": "WebPage", "@id": "https://imgroot.nl/nl/dj/press-kit/", "url": "https://imgroot.nl/nl/dj/press-kit/", "name": "Press kit & technical rider | DJ Absoluut", "description": "Biografie, persfoto’s, video’s en technical rider van DJ Absoluut voor promoters, locaties en eventplanners.", "about": {"@id": "https://imgroot.nl/#evert"}, "inLanguage": "nl"}]}</script>
   <script data-goatcounter="https://imgroot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-  <script src="/assets/site.js?v=30121335" defer></script>
+  <script src="/assets/site.js?v=8088db78" defer></script>
 </head>
 <body>
 <!-- Icons: Instagram, TikTok, SoundCloud from Simple Icons (CC0); LinkedIn from Font Awesome Free (CC BY 4.0, https://fontawesome.com); camera and video from Lucide (ISC). -->
@@ -189,7 +215,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
 <div style="position: relative">
   <!-- NAV -->
   <header style="position: absolute; left: 0; right: 0; top: 0; z-index: 5; max-width: none; padding-left: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); padding-right: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); max-width: 1360px; margin: 0 auto; padding: 22px clamp(20px, 4vw, 48px); display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 24px">
-    <nav class="site-sw" aria-label="Site"><a href="/nl/">Evert Groot</a><a href="/nl/dj/" aria-current="true">DJ Absoluut</a></nav>
+    <nav class="site-sw is-dj" aria-label="Site"><span class="sw-thumb" aria-hidden="true"></span><a href="/nl/">Evert Groot</a><a href="/nl/dj/" aria-current="true">DJ Absoluut</a></nav>
     <nav class="nav-links" aria-label="Hoofdmenu" style="display: flex; gap: 32px; font-size: 15px; font-weight: 600">
       <a href="/nl/dj/#where" style="text-decoration: none">Diensten</a>
       <a href="/nl/dj/#decks" style="text-decoration: none">Over mij</a>
@@ -207,7 +233,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
   <!-- MOBILE MENU -->
   <div id="mobile-menu" hidden style="position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; padding: 22px 20px 32px; background: #17155f; overflow-y: auto">
     <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
-      <nav class="site-sw" aria-label="Site"><a href="/nl/">Evert Groot</a><a href="/nl/dj/" aria-current="true">DJ Absoluut</a></nav>
+      <nav class="site-sw is-dj" aria-label="Site"><span class="sw-thumb" aria-hidden="true"></span><a href="/nl/">Evert Groot</a><a href="/nl/dj/" aria-current="true">DJ Absoluut</a></nav>
       <button type="button" class="menu-close" data-close aria-label="Menu sluiten" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; background: transparent; color: #ffffff; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     </div>
     <nav aria-label="Menu" style="display: flex; flex-direction: column; margin-top: 48px">
