@@ -14,7 +14,7 @@
     });
   });
 
-  /* 1b. On the English page, suggest Dutch or Italian to visitors whose device uses that language.
+  /* 1b. On the English homepage and DJ page, suggest Dutch or Italian to visitors whose device uses that language.
      No automatic redirect (Google advises against it); the visitor decides. */
   var banner = document.getElementById('lang-banner');
   if (banner) {
@@ -35,7 +35,7 @@
       document.getElementById('lang-banner-text').textContent = copy[0];
       var bannerLink = document.getElementById('lang-banner-link');
       bannerLink.textContent = copy[1];
-      bannerLink.href = '/' + suggest + '/';
+      bannerLink.href = '/' + suggest + (location.pathname.indexOf('/dj/') === 0 ? '/dj/' : '/');
       bannerLink.setAttribute('data-lang', suggest);
       bannerLink.setAttribute('lang', suggest);
       bannerLink.addEventListener('click', function () {
