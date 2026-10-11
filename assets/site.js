@@ -277,6 +277,127 @@
     });
   });
 
+  /* 1c2b. Site switch (Evert Groot | DJ Absoluut): the white thumb slides to your choice.
+     Click or drag it; it slides across, then the other page opens and the thumb settles there. */
+  var switches = document.querySelectorAll('.site-sw');
+  if (switches.length) {
+    var swCss = document.createElement('style');
+    swCss.textContent =
+      '.site-sw.sw-js{position:relative;isolation:isolate;touch-action:pan-y;-webkit-user-select:none;user-select:none}' +
+      '.sw-thumb{position:absolute;left:0;top:3px;bottom:3px;border-radius:999px;background:#fff;z-index:-1;box-shadow:0 2px 10px rgba(0,0,0,.22);transition:transform .34s cubic-bezier(.3,.7,.2,1),width .34s cubic-bezier(.3,.7,.2,1)}' +
+      '.site-sw.sw-js a,.site-sw.sw-js a[aria-current],.site-sw.sw-js a[aria-current]:hover{background:transparent;color:#b3afe0;font-weight:700;-webkit-user-drag:none;transition:color .3s ease}' +
+      '.site-sw.sw-js a:hover{color:#fff}' +
+      '.site-sw.sw-js a.sw-on,.site-sw.sw-js a.sw-on:hover{color:#17155f}' +
+      '.site-sw.sw-drag{cursor:grabbing}.site-sw.sw-drag .sw-thumb,.site-sw.sw-still .sw-thumb{transition:none}' +
+      '@media (prefers-reduced-motion: reduce){.sw-thumb{transition:none}}';
+    document.head.appendChild(swCss);
+    var swCalm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var swCame = null;
+    try { swCame = sessionStorage.getItem('imgroot-sw'); sessionStorage.removeItem('imgroot-sw'); } catch (e) {}
+    switches.forEach(function (sw) {
+      var links = [].slice.call(sw.querySelectorAll('a'));
+      if (links.length !== 2) return;
+      var cur = links[1].hasAttribute('aria-current') ? 1 : 0;
+      var thumb = document.createElement('span');
+      thumb.className = 'sw-thumb';
+      thumb.setAttribute('aria-hidden', 'true');
+      sw.insertBefore(thumb, sw.firstChild);
+      sw.classList.add('sw-js');
+      links.forEach(function (a) { a.setAttribute('draggable', 'false'); });
+      var shown = cur, ready = false, sliding = false, drag = null;
+      var mark = function (i) { links.forEach(function (a, n) { a.classList.toggle('sw-on', n === i); }); };
+      var put = function (x, w) { thumb.style.width = w + 'px'; thumb.style.transform = 'translateX(' + x + 'px)'; };
+      var place = function (i, animate) {
+        var a = links[i];
+        if (!a.offsetWidth) return false;
+        if (!animate) sw.classList.add('sw-still');
+        put(a.offsetLeft, a.offsetWidth);
+        thumb.setAttribute('data-at', Math.round(a.offsetLeft) + 'x' + Math.round(a.offsetWidth));
+        mark(i);
+        shown = i;
+        if (!animate) { void thumb.offsetWidth; sw.classList.remove('sw-still'); }
+        return true;
+      };
+      var go = function (i) {
+        var href = links[i].getAttribute('href');
+        if (swCalm) { location.href = href; return; }
+        sliding = true;
+        place(i, true);
+        try { sessionStorage.setItem('imgroot-sw', href); } catch (e) {}
+        setTimeout(function () { location.href = href; }, 300);
+      };
+      var start = function () {
+        if (ready || !links[cur].offsetWidth) return;
+        ready = true;
+        if (!swCalm && swCame && swCame === links[cur].getAttribute('href')) {
+          place(1 - cur, false); /* arrive from the other side, then settle */
+          sliding = true;
+          requestAnimationFrame(function () { requestAnimationFrame(function () { place(cur, true); setTimeout(function () { sliding = false; refit(); }, 420); }); });
+        } else {
+          place(cur, false);
+        }
+      };
+      var refit = function () {
+        if (!ready) { start(); return; }
+        if (sliding || drag) return;
+        var a = links[shown];
+        if (a.offsetWidth && (Math.round(a.offsetLeft) + 'x' + Math.round(a.offsetWidth)) === thumb.getAttribute('data-at')) return;
+        place(shown, false);
+      };
+      if (window.ResizeObserver) new ResizeObserver(refit).observe(sw);
+      window.addEventListener('resize', refit);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(refit);
+      window.addEventListener('pageshow', function (e) { if (e.persisted) place(cur, false); });
+      start();
+
+      /* click */
+      var eatClick = false;
+      links.forEach(function (a, i) {
+        a.addEventListener('click', function (e) {
+          if (eatClick) { e.preventDefault(); eatClick = false; return; }
+          if (i === cur || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+          e.preventDefault();
+          go(i);
+        });
+      });
+
+      /* drag */
+      sw.addEventListener('pointerdown', function (e) {
+        if (e.button !== 0 || !ready) return;
+        drag = { x: e.clientX, id: e.pointerId, moved: false };
+      });
+      sw.addEventListener('pointermove', function (e) {
+        if (!drag || e.pointerId !== drag.id) return;
+        var dx = e.clientX - drag.x;
+        if (!drag.moved) {
+          if (Math.abs(dx) < 6) return;
+          drag.moved = true;
+          sw.classList.add('sw-drag');
+          try { sw.setPointerCapture(drag.id); } catch (err) {}
+        }
+        var a0 = links[0], a1 = links[1];
+        var from = links[cur].offsetLeft;
+        var x = Math.max(a0.offsetLeft, Math.min(a1.offsetLeft, from + dx));
+        var t = (x - a0.offsetLeft) / ((a1.offsetLeft - a0.offsetLeft) || 1);
+        put(x, a0.offsetWidth + (a1.offsetWidth - a0.offsetWidth) * t);
+        mark(t > 0.5 ? 1 : 0);
+      });
+      var end = function (e) {
+        if (!drag || e.pointerId !== drag.id) return;
+        var d = drag; drag = null;
+        if (!d.moved) return;
+        sw.classList.remove('sw-drag');
+        eatClick = true;
+        setTimeout(function () { eatClick = false; }, 60);
+        var target = links[1].classList.contains('sw-on') ? 1 : 0;
+        if (e.type === 'pointerup' && target !== cur) go(target);
+        else place(cur, true);
+      };
+      sw.addEventListener('pointerup', end);
+      sw.addEventListener('pointercancel', end);
+    });
+  }
+
   /* 1c3. Menu: mark the section you're reading (gold line on desktop, gold item in the mobile menu) */
   var spyLinks = [].slice.call(document.querySelectorAll('.nav-links a[href^="#"], #mobile-menu .mm-link[href^="#"]'));
   var spyIds = [];
