@@ -139,6 +139,8 @@ a.case:hover h3{color:#dbad72}
   ::view-transition-old(root),::view-transition-new(root){animation-duration:.3s}
   ::view-transition-group(sw-thumb){z-index:2}
   ::view-transition-group(sw-a),::view-transition-group(sw-b){z-index:3}
+  ::view-transition-group(sw-a),::view-transition-group(sw-b){overflow:clip}
+  ::view-transition-old(sw-a),::view-transition-new(sw-a),::view-transition-old(sw-b),::view-transition-new(sw-b){width:auto;height:100%;object-fit:none;object-position:left center}
 }
 .nav-links{justify-self:start}
 .nav-links a{position:relative;padding:12px 0;white-space:nowrap}
@@ -189,6 +191,24 @@ header.hdr-stuck{background:rgba(11,11,12,0.94) !important}
 .site-sw a:first-of-type::before{background:#7bd6e0}
 .site-sw a:last-of-type::before{background:#c8193a}
 @media (max-width: 360px){.site-sw a::before{width:7px;height:7px;margin-right:6px}}
+/* site switch: only the current site is written out, the other folds into its dot (opens on hover) */
+header .site-sw a:not([aria-current]){max-width:40px;padding:0 12px !important;overflow:hidden;color:transparent;transition:max-width .4s cubic-bezier(.3,.7,.2,1),color .25s ease}
+header .site-sw a:not([aria-current])::before{box-shadow:0 0 0 4px rgba(255,255,255,0.09)}
+header .site-sw:hover a:not([aria-current]),header .site-sw:focus-within a:not([aria-current]),header .site-sw.sw-peek a:not([aria-current]){max-width:190px;padding:0 16px !important;color:rgba(179,175,224,0.75)}
+header .site-sw a:not([aria-current]):hover,header .site-sw a:not([aria-current]):focus-visible{color:#ffffff}
+#mobile-menu .site-sw a:not([aria-current]){color:rgba(179,175,224,0.65)}
+@media (prefers-reduced-motion: reduce){header .site-sw a:not([aria-current]){transition:none}}
+/* language: current language + arrow, the others in a small panel */
+.lang-dd{position:relative}
+.lg-btn{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 4px 0 10px;border:0;background:none;color:#ffffff;font:800 12px/1 'Manrope',sans-serif;letter-spacing:0.1em;cursor:pointer}
+.lg-btn:hover{color:var(--acc)}
+.lg-btn svg{transition:transform .25s ease}
+.lg-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.lg-pop{position:absolute;right:0;top:calc(100% + 6px);z-index:70;min-width:180px;padding:6px;border-radius:14px;background:var(--pop);border:1px solid rgba(255,255,255,0.12);box-shadow:0 16px 40px rgba(0,0,0,0.45)}
+.hdr-lang .lg-pop a{display:flex;align-items:center;justify-content:flex-start;gap:12px;width:auto;height:44px;padding:0 12px;border-radius:10px;color:#ffffff;font:600 14px/1 'Manrope',sans-serif;letter-spacing:0}
+.hdr-lang .lg-pop a b{width:22px;font-size:11px;font-weight:800;letter-spacing:0.1em;color:#8e8abf}
+.hdr-lang .lg-pop a:hover,.hdr-lang .lg-pop a:focus-visible{background:rgba(255,255,255,0.08);color:#ffffff}
+:root{--acc:#7bd6e0;--pop:#161618}
 </style>
 <style>
   .quotes > span,.quote-track,.quote-controls{width:100%;max-width:860px;margin-left:auto;margin-right:auto}
@@ -206,7 +226,7 @@ header.hdr-stuck{background:rgba(11,11,12,0.94) !important}
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://imgroot.nl/#evert", "name": "Evert Groot", "alternateName": ["DJ Absoluut", "Absoluut"], "url": "https://imgroot.nl/", "image": "https://imgroot.nl/assets/img/evert-groot.jpg", "email": "mailto:evert@imgroot.nl", "jobTitle": ["Content Strategist", "DJ", "Content Creator", "Event Organizer"], "knowsAbout": ["Content strategy", "Social media strategy", "Creative direction", "Short-form video", "Pop music", "DJing", "Wedding DJ", "Event organizing", "Queer nightlife"], "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "founder": {"@id": "https://imgroot.nl/#bops"}, "sameAs": ["https://www.instagram.com/absoluut/", "https://www.tiktok.com/@absoluutdj", "https://www.linkedin.com/in/evertgroot", "https://soundcloud.com/absoluut"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content strategy and creative direction", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ for weddings, clubs, festivals and brand events", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event organizing", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator partnerships and short-form video", "areaServed": ["NL", "IT"]}}]}, {"@type": "Organization", "@id": "https://imgroot.nl/#bops", "name": "BOPS", "description": "Queer pop party at The Other Side, Amsterdam", "url": "https://www.instagram.com/bops.ams/", "sameAs": ["https://www.instagram.com/bops.ams/"]}, {"@type": "WebSite", "@id": "https://imgroot.nl/#website", "url": "https://imgroot.nl/", "name": "Evert Groot", "inLanguage": ["en", "nl", "it"], "publisher": {"@id": "https://imgroot.nl/#evert"}}]}</script>
   <script data-goatcounter="https://imgroot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-  <script src="/assets/site.js?v=5a11ff19" defer></script>
+  <script src="/assets/site.js?v=87b9cd62" defer></script>
 </head>
 <body>
 <!-- Icons: Instagram, TikTok, SoundCloud from Simple Icons (CC0); LinkedIn from Font Awesome Free (CC BY 4.0, https://fontawesome.com). -->
@@ -224,7 +244,7 @@ header.hdr-stuck{background:rgba(11,11,12,0.94) !important}
     <div class="hdr-right">
       <a class="btn-solid hdr-cta" href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #7bd6e0; color: #0b0b0c; text-decoration: none; font-weight: 800" data-goatcounter-click="click-work-with-me">Lavoriamo insieme</a>
       <span class="hdr-sep" aria-hidden="true"></span>
-      <div class="hdr-lang" role="group" aria-label="Lingua"><a href="/" hreflang="en" data-lang="en">EN</a><a href="/nl/" hreflang="nl" data-lang="nl">NL</a><a href="/it/" hreflang="it" data-lang="it" aria-current="page">IT</a></div>
+      <div class="hdr-lang lang-dd"><button type="button" class="lg-btn" aria-expanded="false" aria-controls="lang-pop" aria-label="Lingua: Italiano">IT <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3.5l3 3 3-3"></path></svg></button><div class="lg-pop" id="lang-pop" role="group" aria-label="Lingua" hidden><a href="/" hreflang="en" data-lang="en" lang="en"><b>EN</b>English</a><a href="/nl/" hreflang="nl" data-lang="nl" lang="nl"><b>NL</b>Nederlands</a></div></div>
       <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; background: transparent; color: #ffffff; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
     </div>
   </header>

@@ -315,12 +315,13 @@
     });
     var drag = null, eat = false;
     var reset = function () {
-      sw.classList.remove('sw-drag', 'sw-flip');
+      sw.classList.remove('sw-drag', 'sw-flip', 'sw-peek');
       thumb.style.transform = '';
     };
     sw.addEventListener('pointerdown', function (e) {
       if (e.button !== 0) return;
       drag = { x: e.clientX, id: e.pointerId, moved: false, flip: false };
+      if (!inMenu) sw.classList.add('sw-peek'); /* unfold the other site while the thumb is dragged */
     });
     sw.addEventListener('pointermove', function (e) {
       if (!drag || e.pointerId !== drag.id) return;
@@ -340,7 +341,7 @@
     var end = function (e) {
       if (!drag || e.pointerId !== drag.id) return;
       var d = drag; drag = null;
-      if (!d.moved) return;
+      if (!d.moved) { sw.classList.remove('sw-peek'); return; }
       eat = true;
       setTimeout(function () { eat = false; }, 60);
       if (e.type === 'pointerup' && d.flip) { sw.classList.remove('sw-drag'); leave(links[1 - cur].getAttribute('href')); }
@@ -348,9 +349,36 @@
     };
     sw.addEventListener('pointerup', end);
     sw.addEventListener('pointercancel', end);
+    /* first visit: show both names for a moment, then fold the other one into its dot */
+    if (!inMenu) {
+      var seen = null;
+      try { seen = localStorage.getItem('imgroot-sw-seen'); localStorage.setItem('imgroot-sw-seen', '1'); } catch (err) { seen = '1'; }
+      if (!seen) {
+        setTimeout(function () { sw.classList.add('sw-peek'); }, 700);
+        setTimeout(function () { if (!drag) sw.classList.remove('sw-peek'); }, 2600);
+      }
+    }
     window.addEventListener('pageshow', function (e) {
       if (e.persisted) { reset(); document.documentElement.classList.remove('sw-menu'); }
     });
+  });
+
+  /* 1c2c. Language: current language with an arrow; the other two in a small panel */
+  document.querySelectorAll('.lang-dd').forEach(function (dd) {
+    var btn = dd.querySelector('.lg-btn'), pop = dd.querySelector('.lg-pop');
+    if (!btn || !pop) return;
+    var set = function (open, focusFirst) {
+      pop.hidden = !open;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open && focusFirst) { var a = pop.querySelector('a'); if (a) a.focus(); }
+    };
+    btn.addEventListener('click', function (e) { set(pop.hidden, e.detail === 0); });
+    document.addEventListener('click', function (e) { if (!pop.hidden && !dd.contains(e.target)) set(false); });
+    dd.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !pop.hidden) { set(false); btn.focus(); }
+    });
+    dd.addEventListener('focusout', function (e) { if (!pop.hidden && e.relatedTarget && !dd.contains(e.relatedTarget)) set(false); });
+    window.addEventListener('pageshow', function (e) { if (e.persisted) set(false); });
   });
 
   /* 1c3. Menu: mark the section you're reading (gold line on desktop, gold item in the mobile menu) */
