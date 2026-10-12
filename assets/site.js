@@ -414,6 +414,15 @@
     spy();
   }
 
+  /* 1c4. "18 years behind the decks": count full years since the first gig (12 January 2008) */
+  document.querySelectorAll('[data-years-since]').forEach(function (el) {
+    var p = el.getAttribute('data-years-since').split('-');
+    var start = new Date(+p[0], +p[1] - 1, +p[2]), now = new Date();
+    var years = now.getFullYear() - start.getFullYear();
+    if (now.getMonth() < start.getMonth() || (now.getMonth() === start.getMonth() && now.getDate() < start.getDate())) years--;
+    if (years > 0) el.textContent = years;
+  });
+
   /* 1d. Press kit: save as PDF (print dialog) and copy the biography */
   document.querySelectorAll('[data-print]').forEach(function (b) {
     b.addEventListener('click', function () { window.print(); });
