@@ -195,10 +195,8 @@ a{color:#ffffff}a:hover{color:#dbad72}
 .nav-links a::after{background:#c8193a}
 .nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:#c8193a}
 .mm-link[aria-current]{color:#c8193a !important}
-.menu-fab{border-color:#c8193a !important}
 .hdr-cta:hover,#mobile-menu .btn-solid:hover{color:#ffffff}
 header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
-.menu-fab{background:#1f0328 !important}
 /* site switch: a colored dot per site, teal = Evert Groot, red = DJ Absoluut */
 .site-sw a::before{content:"";flex:0 0 auto;width:8px;height:8px;margin-right:8px;border-radius:50%}
 .site-sw a:first-of-type::before{background:#7bd6e0}
@@ -282,7 +280,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#ff9fb2}
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://imgroot.nl/#evert", "name": "Evert Groot", "alternateName": ["DJ Absoluut", "Absoluut"], "url": "https://imgroot.nl/", "image": "https://imgroot.nl/assets/img/evert-groot.jpg", "email": "mailto:evert@imgroot.nl", "jobTitle": ["Content Strategist", "DJ", "Content Creator", "Event Organizer"], "knowsAbout": ["Content strategy", "Social media strategy", "Creative direction", "Short-form video", "Pop music", "DJing", "Wedding DJ", "Event organizing", "Queer nightlife"], "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "founder": {"@id": "https://imgroot.nl/#bops"}, "sameAs": ["https://www.instagram.com/absoluut/", "https://www.tiktok.com/@absoluutdj", "https://www.linkedin.com/in/evertgroot", "https://soundcloud.com/absoluut"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content strategy and creative direction", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ for clubs, festivals, brand events and weddings", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event organizing", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator partnerships and short-form video", "areaServed": ["NL", "IT"]}}]}, {"@type": "Organization", "@id": "https://imgroot.nl/#bops", "name": "BOPS", "description": "Queer pop party at The Other Side, Amsterdam", "url": "https://www.instagram.com/bops.ams/", "sameAs": ["https://www.instagram.com/bops.ams/"]}, {"@type": "WebSite", "@id": "https://imgroot.nl/#website", "url": "https://imgroot.nl/", "name": "Evert Groot", "inLanguage": ["en", "nl", "it"], "publisher": {"@id": "https://imgroot.nl/#evert"}}, {"@type": "Service", "@id": "https://imgroot.nl/it/dj/#service", "serviceType": "DJ", "name": "DJ Absoluut – DJ for club nights, brand events, private parties and weddings", "provider": {"@id": "https://imgroot.nl/#evert"}, "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "url": "https://imgroot.nl/it/dj/", "image": "https://imgroot.nl/assets/img/dj-absoluut-bops.jpg"}]}</script>
   <script data-goatcounter="https://imgroot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-  <script src="/assets/site.js?v=84c42083" defer></script>
+  <script src="/assets/site.js?v=2e3662d7" defer></script>
 <style id="form-sys">
 #contact-form [hidden]{display:none !important}
 .f-hint{margin:-6px 0 0;font-size:14px;line-height:1.5;opacity:.75}
@@ -335,8 +333,52 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
   .btn-solid,.btn-ghost,.hv-2,footer.ft2 nav a,.hv-ar,.reel img,.reel video,a.case .case-img img{transform:none !important}
 }
 </style>
+<style id="polish-sys">
+/* polish pass: skip link, focus on light bands, field borders, tap targets, hero proof row, gigs, listen, press photos */
+.skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:#0b0b0c;font-weight:800;text-decoration:none}
+.skip:focus{top:12px;outline:2px solid var(--hv-acc-l);outline-offset:2px}
+main:focus{outline:none}
+:is(#services,#events,#where,#bio,#media,#rider) :focus-visible{outline-color:var(--hv-acc-l) !important}
+.field:not(:focus){border-color:rgba(255,255,255,0.5) !important}
+@media (max-width: 760px){.site-sw a{height:40px}header .site-sw a:not([aria-current]){max-width:44px}}
+.hero-proof{display:flex;flex-wrap:wrap;gap:8px 28px;margin:calc(14px - clamp(24px, 3vw, 40px)) 0 0;padding:0;list-style:none;font-size:15px;line-height:1.4;font-weight:600;color:rgba(255,255,255,0.8)}
+.hero-proof li{display:flex;align-items:baseline;gap:8px}
+.hero-proof b{font-family:'Baloo Bhai 2',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.02em;color:var(--hv-acc)}
+@media (max-width: 760px){.gut > .hero-proof{order:3;margin-top:0;flex-direction:column}}
+.f-mail{margin:0;font-size:16px;line-height:1.6;color:#c9cdcf}
+.f-mail a{color:#ffffff;font-weight:800;text-underline-offset:4px}
+.f-mail a:hover,.f-mail a:focus-visible{color:var(--hv-acc)}
+#form-status a{color:inherit;text-underline-offset:3px}
+.gig-list{flex-direction:column !important;flex-wrap:nowrap !important;gap:0 !important}
+.gig-list li{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;border-bottom:1px solid rgba(255,255,255,0.14);white-space:normal !important}
+.gig-list li > span{flex:0 0 auto;text-align:right}
+.gig-list a{display:inline-flex;align-items:center;min-height:44px}
+.gig-list a:not(:hover):not(:focus-visible){text-decoration-color:transparent !important}
+.listen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(12px,1.6vw,24px)}
+.mix{display:flex;flex-direction:column;justify-content:space-between;gap:32px;min-height:220px;padding:clamp(24px,2.4vw,32px);border-radius:20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:#ffffff;text-decoration:none;transition:background-color .3s ease,border-color .3s ease}
+.mix:hover,.mix:focus-visible{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.34);color:#ffffff}
+.mix:focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
+.mix-k{display:block;font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#ffd8ea}
+.mix h3{margin:10px 0 0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(26px,2.4vw,34px);line-height:1.02;letter-spacing:-0.025em;font-weight:800}
+.mix-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.2);font-size:15px;font-weight:800}
+.mix-foot > span:first-child{display:inline-flex;align-items:center;gap:12px}
+.mix-play{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;border-radius:999px;background:#c8193a;color:#ffffff;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){.mix:hover .mix-play{transform:scale(1.08)}}
+.mix-time{flex:0 0 auto;font-variant-numeric:tabular-nums;font-weight:600;color:#d9b5e6;white-space:nowrap}
+@media (max-width: 760px){.mix{min-height:0}}
+.press-photos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,24px);margin-bottom:clamp(12px,1.6vw,24px)}
+@media (max-width: 760px){.press-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.press-photo{display:flex;flex-direction:column;gap:10px;color:#16121a;text-decoration:none;font-size:15px;font-weight:800}
+.press-photo img{display:block;width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover;border-radius:20px;transition:opacity .3s ease}
+.press-photo:hover img{opacity:.85}
+.press-photo:hover,.press-photo:focus-visible{color:#c8193a}
+.press-photo:focus-visible{outline:2px solid #c8193a;outline-offset:3px}
+#media,#rider{border-top:1px solid #e6e1e8}
+@media (prefers-reduced-motion: reduce){.mix-play{transition:none}}
+</style>
 </head>
 <body>
+<a class="skip" href="#main">Vai al contenuto</a>
 <!-- Icons: Instagram, TikTok, SoundCloud from Simple Icons (CC0); LinkedIn from Font Awesome Free (CC BY 4.0, https://fontawesome.com). -->
 <div style="font-family: 'Manrope', sans-serif; color: #ffffff; background: #1f0328; min-height: 100vh; overflow: hidden">
 
@@ -346,27 +388,31 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
     <nav class="site-sw is-dj" aria-label="Sito"><span class="sw-thumb" aria-hidden="true"></span><a href="/it/">Evert Groot</a><a href="/it/dj/" aria-current="true">DJ Absoluut</a></nav>
     <nav class="nav-links" aria-label="Menu principale" style="display: flex; gap: 32px; font-size: 15px; font-weight: 600">
       <a href="#where" style="text-decoration: none">Servizi</a>
+      <a href="#listen" style="text-decoration: none">Ascolta</a>
       <a href="#gigs" style="text-decoration: none">Gig</a>
       <a href="#reviews" style="text-decoration: none">Recensioni</a>
+      <a href="/it/dj/press-kit/" style="text-decoration: none">Press kit</a>
     </nav>
     <div class="hdr-right">
       <a class="btn-solid hdr-cta" href="#book" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #c8193a; color: #ffffff; text-decoration: none; font-weight: 800" data-goatcounter-click="dj-click-book-absoluut">Prenota DJ Absoluut</a>
       <span class="hdr-sep" aria-hidden="true"></span>
-      <div class="hdr-lang lang-dd"><button type="button" class="lg-btn" aria-expanded="false" aria-controls="lang-pop" aria-label="Lingua: Italiano">IT <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3.5l3 3 3-3"></path></svg></button><div class="lg-pop" id="lang-pop" role="group" aria-label="Lingua" hidden><a href="/dj/" hreflang="en" data-lang="en" lang="en"><b>EN</b>English</a><a href="/nl/dj/" hreflang="nl" data-lang="nl" lang="nl"><b>NL</b>Nederlands</a></div></div>
+      <div class="hdr-lang lang-dd"><button type="button" class="lg-btn" aria-expanded="false" aria-controls="lang-pop" aria-label="IT, Lingua: Italiano">IT <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3.5l3 3 3-3"></path></svg></button><div class="lg-pop" id="lang-pop" role="group" aria-label="Lingua" hidden><a href="/dj/" hreflang="en" data-lang="en" lang="en"><b>EN</b>English</a><a href="/nl/dj/" hreflang="nl" data-lang="nl" lang="nl"><b>NL</b>Nederlands</a></div></div>
       <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; background: transparent; color: #ffffff; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
     </div>
   </header>
 
   <!-- MOBILE MENU -->
-  <div id="mobile-menu" hidden style="position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; padding: 22px 20px 32px; background: #1f0328; overflow-y: auto">
+  <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden style="position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; padding: 22px 20px 32px; background: #1f0328; overflow-y: auto">
     <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
       <nav class="site-sw is-dj" aria-label="Sito"><span class="sw-thumb" aria-hidden="true"></span><a href="/it/">Evert Groot</a><a href="/it/dj/" aria-current="true">DJ Absoluut</a></nav>
       <button type="button" class="menu-close" data-close aria-label="Chiudi menu" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; background: transparent; color: #ffffff; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     </div>
     <nav aria-label="Menu" style="display: flex; flex-direction: column; margin-top: 48px">
       <a href="#where" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">01</span>Servizi</a>
-      <a href="#gigs" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">02</span>Gig</a>
-      <a href="#reviews" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">03</span>Recensioni</a>
+      <a href="#listen" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">02</span>Ascolta</a>
+      <a href="#gigs" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">03</span>Gig</a>
+      <a href="#reviews" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">04</span>Recensioni</a>
+      <a href="/it/dj/press-kit/" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">05</span>Press kit</a>
     </nav>
     <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: auto; padding-top: 40px">
       <a class="btn-solid" href="#book" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #c8193a; color: #ffffff; text-decoration: none; font-weight: 800; font-size: 16px" data-goatcounter-click="dj-click-book-absoluut">Prenota DJ Absoluut</a>
@@ -376,6 +422,7 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
   <script>try{if(sessionStorage.getItem('imgroot-menu')){var m=document.getElementById('mobile-menu');if(m&&window.matchMedia&&matchMedia('(max-width: 1060px)').matches){m.hidden=false;document.documentElement.classList.add('sw-menu');document.documentElement.style.overflow='hidden'}else{sessionStorage.removeItem('imgroot-menu')}}}catch(e){}</script>
 
 
+  <main id="main" tabindex="-1">
   <!-- DIRECTION 1: cinematic portrait -->
   <section id="top" class="cine" style="position: relative; min-height: 880px; display: flex; align-items: flex-end; overflow: hidden; background: #1f0328">
     <img class="cine-img cine-right" src="/assets/img/dj-absoluut-bops.jpg" fetchpriority="high" alt="DJ Absoluut in consolle a BOPS" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 45% 75%">
@@ -391,10 +438,10 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
   <section class="marquee" aria-label="Ho suonato a" style="background: #c8193a; padding: 24px 0; overflow: hidden">
     <div class="marquee-track" style="gap: 0">
       <div style="display: flex; align-items: center; gap: 64px; padding-right: 64px; font-size: 19px; font-weight: 700; color: #ffffff; white-space: nowrap">
-        <span style="color: #ffd0da; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Ho suonato a</span><span>Paradiso</span><span>The Other Side</span><span>A'DAM Tower</span><span>Club NYX</span><span>Stadsschouwburg</span><span>FERRY Rotterdam</span><span>Red &amp; Blue Anversa</span><span>Q Club Milano</span><span>LeccoMilano</span><span>Euforia</span><span>Amsterdam Pride</span><span>Antwerp Pride</span><span>Milkshake</span><span>Tropikali</span><span>Superflirt</span><span>Kaspersky</span><span>McDonald's</span><span>Sanoma</span><span>Sofitel</span><span>H'ART Museum</span><span>Bar-le-Duc</span>
+        <span style="color: #ffffff; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Ho suonato a</span><span>Paradiso</span><span>The Other Side</span><span>A'DAM Tower</span><span>Club NYX</span><span>Stadsschouwburg</span><span>FERRY Rotterdam</span><span>Red &amp; Blue Anversa</span><span>Q Club Milano</span><span>LeccoMilano</span><span>Euforia</span><span>Amsterdam Pride</span><span>Antwerp Pride</span><span>Milkshake</span><span>Tropikali</span><span>Superflirt</span><span>Kaspersky</span><span>McDonald's</span><span>Sanoma</span><span>Sofitel</span><span>H'ART Museum</span><span>Bar-le-Duc</span>
       </div>
       <div class="marquee-dup" aria-hidden="true" style="display: flex; align-items: center; gap: 64px; padding-right: 64px; font-size: 19px; font-weight: 700; color: #ffffff; white-space: nowrap">
-        <span style="color: #ffd0da; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Ho suonato a</span><span>Paradiso</span><span>The Other Side</span><span>A'DAM Tower</span><span>Club NYX</span><span>Stadsschouwburg</span><span>FERRY Rotterdam</span><span>Red &amp; Blue Anversa</span><span>Q Club Milano</span><span>LeccoMilano</span><span>Euforia</span><span>Amsterdam Pride</span><span>Antwerp Pride</span><span>Milkshake</span><span>Tropikali</span><span>Superflirt</span><span>Kaspersky</span><span>McDonald's</span><span>Sanoma</span><span>Sofitel</span><span>H'ART Museum</span><span>Bar-le-Duc</span>
+        <span style="color: #ffffff; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Ho suonato a</span><span>Paradiso</span><span>The Other Side</span><span>A'DAM Tower</span><span>Club NYX</span><span>Stadsschouwburg</span><span>FERRY Rotterdam</span><span>Red &amp; Blue Anversa</span><span>Q Club Milano</span><span>LeccoMilano</span><span>Euforia</span><span>Amsterdam Pride</span><span>Antwerp Pride</span><span>Milkshake</span><span>Tropikali</span><span>Superflirt</span><span>Kaspersky</span><span>McDonald's</span><span>Sanoma</span><span>Sofitel</span><span>H'ART Museum</span><span>Bar-le-Duc</span>
       </div>
     </div>
   </section>
@@ -423,6 +470,20 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
         <p style="flex: 1 1 340px; margin: 0; font-size: 17px; line-height: 1.6; color: #5a3d66">I vostri brani irrinunciabili sono il mio punto di partenza. Costruisco attorno ai vostri gusti e adatto la musica agli ospiti e all’energia in pista.</p>
       <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Prenota per un matrimonio ↓</span>
       </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTEN: mixes on SoundCloud -->
+  <section id="listen" aria-labelledby="listen-title" style="background: #1f0328; color: #ffffff">
+    <div style="max-width: 1360px; margin: 0 auto; padding: clamp(80px, 10vw, 136px) clamp(20px, 4vw, 48px)">
+      <p style="margin: 0 0 14px; color: #ff9fb2; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Ascolta</p>
+      <h2 id="listen-title" style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800">Ascolta come suono</h2>
+      <p style="margin: 20px 0 clamp(32px, 4vw, 56px); max-width: 560px; font-size: 17px; line-height: 1.6; color: #e6d3ee">Set completi e mix su SoundCloud, da una serata BOPS piena a un aperitivo rilassato.</p>
+      <div class="listen-grid">
+        <a class="mix" href="https://soundcloud.com/absoluut/bops-queer-pop-party-absoluut-28-february-2025" target="_blank" rel="noopener noreferrer" data-goatcounter-click="listen-bops-2025"><div><span class="mix-k">DJ set in club · feb 2025</span><h3>BOPS al The Other Side</h3></div><div class="mix-foot"><span><span class="mix-play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span><span>Ascolta su SoundCloud<span class="hv-ar hv-ne" aria-hidden="true">↗</span></span></span><span class="mix-time">86 min</span></div></a>
+        <a class="mix" href="https://soundcloud.com/absoluut/poolboy-disco-cocktail-hour" target="_blank" rel="noopener noreferrer" data-goatcounter-click="listen-poolboy"><div><span class="mix-k">Mix per l’aperitivo</span><h3>Poolboy Disco</h3></div><div class="mix-foot"><span><span class="mix-play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span><span>Ascolta su SoundCloud<span class="hv-ar hv-ne" aria-hidden="true">↗</span></span></span><span class="mix-time">55 min</span></div></a>
+        <a class="mix" href="https://soundcloud.com/absoluut/absoluut-bops-showcase-may-2024" target="_blank" rel="noopener noreferrer" data-goatcounter-click="listen-showcase-2024"><div><span class="mix-k">Showcase BOPS · maggio 2024</span><h3>Absoluut Showcase</h3></div><div class="mix-foot"><span><span class="mix-play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span><span>Ascolta su SoundCloud<span class="hv-ar hv-ne" aria-hidden="true">↗</span></span></span><span class="mix-time">60 min</span></div></a>
       </div>
     </div>
   </section>
@@ -495,8 +556,8 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
     <p style="margin: 0 0 18px; color: #ff9fb2; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Prenotazioni</p>
     <h2 id="book-title" style="margin: 0; max-width: 1100px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(44px, 7vw, 108px); line-height: 0.92; letter-spacing: -0.05em; font-weight: 800">Prenota <span style="color: #ff9fb2">DJ Absoluut</span></h2>
     <div style="display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 80px); margin-top: clamp(40px, 5vw, 72px); padding-top: clamp(32px, 4vw, 48px); border-top: 1px solid rgba(255,255,255,0.16)">
-      <div class="book-side" style="flex: 1 1 280px; max-width: 380px; display: flex; flex-direction: column; gap: clamp(28px, 3vw, 40px)"><p style="margin: 0; font-size: 18px; line-height: 1.6; color: #e6d3ee">Raccontami del tuo evento: la data, il luogo e l’atmosfera che hai in mente.</p><div class="case-img book-photo"><img loading="lazy" decoding="async" src="/assets/img/dj-club.jpg" alt="DJ Absoluut in un club" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 25%"></div></div>
-      <form id="contact-form" data-form="dj" action="https://api.web3forms.com/submit" method="POST" data-sending="Invio in corso…" data-success="Grazie! La tua richiesta di prenotazione è stata inviata. Ti risponderò presto." data-error="Qualcosa è andato storto. Riprova tra poco." style="flex: 2 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+      <div class="book-side" style="flex: 1 1 280px; max-width: 380px; display: flex; flex-direction: column; gap: clamp(28px, 3vw, 40px)"><p style="margin: 0; font-size: 18px; line-height: 1.6; color: #e6d3ee">Raccontami del tuo evento: la data, il luogo e l’atmosfera che hai in mente.</p><p class="f-mail" style="margin-top: calc(-1 * clamp(14px, 1.5vw, 20px)); color: #e6d3ee">Preferisci l’email? <a href="mailto:evert@imgroot.nl" data-goatcounter-click="dj-email">evert@imgroot.nl</a><br>Promoter o locale? <a href="/it/dj/press-kit/" data-goatcounter-click="dj-book-press-kit">Press kit e rider →</a></p><div class="case-img book-photo"><img loading="lazy" decoding="async" src="/assets/img/dj-club.jpg" alt="DJ Absoluut in un club" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 25%"></div></div>
+      <form id="contact-form" data-form="dj" action="https://api.web3forms.com/submit" method="POST" data-sending="Invio in corso…" data-success="Grazie! La tua richiesta di prenotazione è stata inviata. Ti risponderò presto." data-error-mail="Oppure scrivimi direttamente:" data-error="Qualcosa è andato storto. Riprova tra poco." style="flex: 2 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
         <input type="hidden" name="access_key" value="efa0a20b-2c4c-4633-a70f-2667f442add4">
         <input type="hidden" name="subject" value="Richiesta DJ via imgroot.nl (IT)">
         <input type="hidden" name="from_name" value="imgroot.nl">
@@ -525,6 +586,8 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
       </form>
     </div>
   </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer class="ft2" style="max-width: none; margin: clamp(96px, 12vw, 160px) 0 0; padding: clamp(48px, 6vw, 80px) calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)) 36px; background: #4b1260">

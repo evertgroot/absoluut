@@ -1,11 +1,12 @@
 /* imgroot.nl — small site script
  * 1. Remembers the language a visitor picks (used by the redirect on the English homepage).
  * 2. Fills in the next BOPS event from assets/bops-event.json (updated daily by a GitHub Action).
- * 3. Sends the contact form through Web3Forms without leaving the page.
+ * 3. Sends the contact form through Web3Forms without leaving the page (with an email fallback on errors).
  */
 (function () {
   'use strict';
   var lang = document.documentElement.lang || 'en';
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* 1. Language choice */
   document.querySelectorAll('a[data-lang]').forEach(function (link) {
@@ -49,35 +50,47 @@
     }
   }
 
-  /* 1b2. Mobile menu, plus a menu that stays reachable after scrolling:
+  /* 1b2. Mobile menu, plus a way forward after scrolling:
      desktop - the header turns into a slim bar fixed to the top;
-     mobile  - a round menu button floats at the bottom right */
+     mobile  - the page's main call to action (contact or booking) floats at the bottom right,
+               and steps aside once the form or the footer is on screen */
   var menuBtn = document.querySelector('.menu-btn');
   var menu = document.getElementById('mobile-menu');
   var header = document.querySelector('header');
   if (menuBtn && menu) {
     var opener = menuBtn;
-    var fab = document.createElement('button');
-    fab.type = 'button';
-    fab.className = 'menu-fab';
+    var cta = document.querySelector('header .hdr-cta');
+    var fab = document.createElement('a');
+    fab.className = 'cta-fab';
     fab.hidden = true;
-    fab.setAttribute('aria-label', menuBtn.getAttribute('aria-label') || 'Menu');
-    fab.setAttribute('aria-controls', 'mobile-menu');
-    fab.setAttribute('aria-expanded', 'false');
-    fab.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg>';
-    document.body.appendChild(fab);
+    if (cta) {
+      fab.href = cta.getAttribute('href');
+      fab.textContent = cta.textContent.trim();
+      fab.style.background = getComputedStyle(cta).backgroundColor;
+      fab.style.color = getComputedStyle(cta).color;
+      if (cta.hasAttribute('data-goatcounter-click')) fab.setAttribute('data-goatcounter-click', cta.getAttribute('data-goatcounter-click') + '-fab');
+      document.body.appendChild(fab);
+    }
+    /* while the menu is open, everything behind it is out of reach for keyboard and screen readers */
+    var setInert = function (on) {
+      for (var node = menu; node && node !== document.body; node = node.parentNode) {
+        [].forEach.call(node.parentNode.children, function (sib) {
+          if (sib === node || sib.tagName === 'SCRIPT' || sib.tagName === 'STYLE') return;
+          if (on) sib.setAttribute('inert', ''); else sib.removeAttribute('inert');
+        });
+      }
+    };
     var setMenu = function (open, from) {
       if (open) opener = from || menuBtn;
       menu.hidden = !open;
+      setInert(open);
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      fab.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.documentElement.style.overflow = open ? 'hidden' : '';
       if (!open) document.documentElement.classList.remove('sw-menu');
       if (open) { var c = menu.querySelector('[data-close]'); if (c) c.focus(); }
       else if (opener && !opener.hidden) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
     };
     menuBtn.addEventListener('click', function () { setMenu(menu.hidden, menuBtn); });
-    fab.addEventListener('click', function () { setMenu(menu.hidden, fab); });
     menu.querySelectorAll('a, [data-close]').forEach(function (el) {
       if (el.closest('.site-sw')) return; /* the site switch keeps the menu open (it reopens on the other site) */
       el.addEventListener('click', function () { if (!menu.hidden) setMenu(false); });
@@ -90,27 +103,40 @@
     if (viaSwitch && !menu.hidden) {
       opener = menuBtn;
       menuBtn.setAttribute('aria-expanded', 'true');
-      fab.setAttribute('aria-expanded', 'true');
+      setInert(true);
       document.documentElement.style.overflow = 'hidden';
     }
 
     var css = document.createElement('style');
     css.textContent =
-      '.menu-fab{position:fixed;right:18px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:55;display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;padding:0;border:2px solid #dbad72;border-radius:999px;background:#17155f;color:#fff;box-shadow:0 10px 28px rgba(0,0,0,.35);cursor:pointer;animation:fab-in .25s ease both}' +
-      '.menu-fab[hidden]{display:none}.menu-fab:focus-visible{outline:3px solid #dbad72;outline-offset:3px}' +
+      '.cta-fab{position:fixed;font-family:Manrope,sans-serif;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:55;display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:999px;font-size:16px;font-weight:800;text-decoration:none;white-space:nowrap;box-shadow:0 10px 28px rgba(0,0,0,.35);animation:fab-in .25s ease both}' +
+      '.cta-fab[hidden]{display:none}.cta-fab:focus-visible{outline:3px solid #ffffff;outline-offset:3px}' +
       'header.hdr-stuck{position:fixed !important;left:0 !important;right:0 !important;top:0 !important;z-index:50 !important;max-width:none !important;padding:10px calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)) !important;background:rgba(23,21,95,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(0,0,0,.25);animation:bar-in .25s ease both}' +
       '@keyframes fab-in{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}' +
       '@keyframes bar-in{from{transform:translateY(-100%)}to{transform:none}}' +
-      '@media (prefers-reduced-motion: reduce){.menu-fab,header.hdr-stuck{animation:none}}' +
+      '@media (prefers-reduced-motion: reduce){.cta-fab,header.hdr-stuck{animation:none}}' +
       'section[id]{scroll-margin-top:76px}' +
-      '@media print{.menu-fab{display:none !important}header.hdr-stuck{position:static !important}}';
+      '@media print{.cta-fab{display:none !important}header.hdr-stuck{position:static !important}}';
     document.head.appendChild(css);
     var limit = function () { return Math.max(320, window.innerHeight * 0.6); };
+    /* the button steps aside where it would only cover what it points to */
+    var inView = 0;
+    var goal = cta && cta.getAttribute('href').charAt(0) === '#' ? document.querySelector(cta.getAttribute('href')) : null;
+    var asides = [goal, document.querySelector('footer')].filter(Boolean);
+    if (asides.length && 'IntersectionObserver' in window) {
+      var showing = new Map();
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { showing.set(en.target, en.isIntersecting); });
+        inView = 0; showing.forEach(function (v) { if (v) inView++; });
+        update();
+      });
+      asides.forEach(function (el) { io.observe(el); });
+    }
     var update = function () {
       var past = window.scrollY > limit();
       var mobile = getComputedStyle(menuBtn).display !== 'none';
       if (header) header.classList.toggle('hdr-stuck', past && !mobile);
-      fab.hidden = !(past && mobile);
+      fab.hidden = !(cta && past && mobile && !inView);
     };
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
@@ -134,7 +160,7 @@
     box.classList.add('mq-js');
     box.setAttribute('tabindex', '0');
     if (still) return; /* no drift, list wraps; nothing to scroll */
-    var pos = 0, seen = 0, last = null, hold = 0, hover = false, drag = null;
+    var pos = 0, seen = 0, last = null, hold = 0, hover = false, focus = false, drag = null, onScreen = true, looping = false;
     var first = track.firstElementChild, dup = track.querySelector('.marquee-dup');
     function unit() { return first ? first.offsetWidth : track.scrollWidth / 2; }
     function fill() { /* enough copies that the band never runs out on wide screens */
@@ -156,16 +182,25 @@
       var dt = last === null ? 0 : Math.min((t - last) / 1000, 0.1);
       last = t;
       if (Math.abs(box.scrollLeft - seen) > 2) { pos = box.scrollLeft; wrap(); }
-      if (!drag && !hover && t > hold) {
+      if (!drag && !hover && !focus && t > hold) {
         var u = unit();
         pos += (u / 48) * dt;
         if (pos > track.scrollWidth - box.clientWidth - 1) pos -= u;
         box.scrollLeft = pos;
         seen = box.scrollLeft;
       }
-      requestAnimationFrame(tick);
+      if (onScreen) requestAnimationFrame(tick); else { looping = false; last = null; }
     }
-    requestAnimationFrame(tick);
+    function start() { if (!looping) { looping = true; requestAnimationFrame(tick); } }
+    start();
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        onScreen = entries[0].isIntersecting;
+        if (onScreen) start();
+      }).observe(box);
+    }
+    box.addEventListener('focusin', function () { focus = true; });
+    box.addEventListener('focusout', function () { focus = false; pause(600); });
     box.addEventListener('scroll', function () { if (drag || performance.now() < hold) { pos = box.scrollLeft; wrap(); } }, { passive: true });
     box.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hover = true; });
     box.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') { hover = false; pause(600); } });
@@ -216,7 +251,7 @@
     }
     function show(i, instant) {
       i = (i + slides.length) % slides.length;
-      track.scrollTo({ left: i * track.clientWidth, behavior: instant ? 'auto' : 'smooth' });
+      track.scrollTo({ left: i * track.clientWidth, behavior: instant || calm ? 'auto' : 'smooth' });
       mark(i);
     }
     track.addEventListener('scroll', function () {
@@ -282,7 +317,7 @@
     }, { passive: true });
     dots.forEach(function (d, n) {
       d.addEventListener('click', function () {
-        grid.scrollTo({ left: cards[n].offsetLeft - cards[0].offsetLeft, behavior: 'smooth' });
+        grid.scrollTo({ left: cards[n].offsetLeft - cards[0].offsetLeft, behavior: calm ? 'auto' : 'smooth' });
         mark(n);
       });
     });
@@ -431,15 +466,19 @@
     var src = document.getElementById(b.getAttribute('data-copy'));
     if (!src) return;
     var label = b.textContent;
+    var selectBio = function () {
+      var r = document.createRange(); r.selectNodeContents(src);
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    };
     var done = { en: 'Copied ✓', nl: 'Gekopieerd ✓', it: 'Copiato ✓' }[lang] || 'Copied ✓';
     b.addEventListener('click', function () {
       var text = Array.prototype.map.call(src.querySelectorAll('p'), function (p) { return p.textContent.trim(); }).join('\n\n');
       var ok = function () { b.textContent = done; setTimeout(function () { b.textContent = label; }, 2000); };
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(ok, function () {});
+        navigator.clipboard.writeText(text).then(ok, function () { selectBio(); });
       } else {
         var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select();
-        try { document.execCommand('copy'); ok(); } catch (e) {}
+        try { if (document.execCommand('copy')) ok(); else selectBio(); } catch (e) { selectBio(); }
         document.body.removeChild(t);
       }
     });
@@ -531,7 +570,15 @@
           status.style.color = getComputedStyle(document.documentElement).getPropertyValue('--hv-acc') || '#7bd6e0';
         })
         .catch(function () {
-          status.textContent = form.getAttribute('data-error');
+          status.textContent = form.getAttribute('data-error') + ' ';
+          var alt = form.getAttribute('data-error-mail');
+          if (alt) {
+            var mail = document.createElement('a');
+            mail.href = 'mailto:evert@imgroot.nl';
+            mail.textContent = 'evert@imgroot.nl';
+            status.appendChild(document.createTextNode(alt + ' '));
+            status.appendChild(mail);
+          }
           status.style.color = '#ffb3c8';
         })
         .then(function () {
