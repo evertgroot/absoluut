@@ -229,11 +229,11 @@ a .bops-mark{transition:background-color .25s ease}
 @media (min-width: 761px){.cine{align-items:center !important}.cine > .gut{padding-top:120px;padding-bottom:64px !important}}
 .hero-lead{margin:0;max-width:min(600px,46vw);font-size:clamp(17px,1.35vw,20px);line-height:1.6;font-weight:500;color:rgba(255,255,255,0.84)}
 @media (max-width: 760px){.hero-lead{max-width:none;font-size:17px}}
-/* gigs: four columns, the numbers sit under Festivals & Prides */
-.gig-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-areas:"v f b" "v s b";gap:clamp(32px,4vw,56px) clamp(24px,4vw,64px);align-items:start}
-.gv{grid-area:v}.gf{grid-area:f}.gb{grid-area:b}.gs{grid-area:s}
-@media (max-width: 1000px){.gig-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"v f" "v s" "b b"}}
-@media (max-width: 640px){.gig-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"v" "f" "b" "s"}}
+/* gigs: three columns */
+.gig-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-areas:"v f b";gap:clamp(32px,4vw,56px) clamp(24px,4vw,64px);align-items:start}
+.gv{grid-area:v}.gf{grid-area:f}.gb{grid-area:b}
+@media (max-width: 1000px){.gig-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"v f" "b b"}}
+@media (max-width: 640px){.gig-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"v" "f" "b"}}
 @media (max-width: 760px){.book-photo{display:none}}
 /* footer: name + socials on top, small legal row below */
 .ft2-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.14)}
