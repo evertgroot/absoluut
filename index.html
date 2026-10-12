@@ -212,6 +212,11 @@ header .site-sw a:not([aria-current]):hover,header .site-sw a:not([aria-current]
 .hdr-lang .lg-pop a:hover,.hdr-lang .lg-pop a:focus-visible{background:rgba(255,255,255,0.08);color:#ffffff}
 :root{--acc:#7bd6e0;--pop:#161618}
 a .bops-mark{transition:background-color .25s ease}
+/* hero: title higher, intro text under the title */
+@media (min-width: 761px){.cine{align-items:center !important}.cine > .gut{padding-top:120px;padding-bottom:64px !important}}
+.hero-lead{margin:0;max-width:min(600px,46vw);font-size:clamp(17px,1.35vw,20px);line-height:1.6;font-weight:500;color:rgba(255,255,255,0.84)}
+@media (max-width: 760px){.hero-lead{max-width:none;font-size:17px}}
+@media (max-width: 700px){.case-feat{grid-template-columns:minmax(0, 1fr) !important}}
 </style>
 <style>
   .quotes > span,.quote-track,.quote-controls{width:100%;max-width:860px;margin-left:auto;margin-right:auto}
@@ -282,6 +287,7 @@ a .bops-mark{transition:background-color .25s ease}
     <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,11,12,0.92) 0%, rgba(11,11,12,0.55) 34%, rgba(11,11,12,0) 62%), linear-gradient(to bottom, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0) 18%)"></div>
     <div class="gut" style="position: relative; width: 100%; padding-bottom: clamp(32px, 4vw, 56px); display: flex; flex-direction: column; gap: clamp(24px, 3vw, 40px)">
       <h1 class="rise" style="margin: 0; max-width: min(780px, 58vw); font-family: 'Baloo Bhai 2', sans-serif; font-weight: 800; font-size: clamp(42px, 5.2vw, 84px); line-height: 0.92; letter-spacing: -0.045em; color: #ffffff; margin-left: -0.03em">Strategy and Content.<br class="br-d"> DJ Sets and Events,<br class="br-d"> <span style="color: #7bd6e0">Rooted in Pop Culture.</span></h1>
+      <p class="hero-lead rise rise-2">I use audience insights and online culture to develop content strategies, campaign concepts and copy built around what your audience cares about. Alongside my freelance work, I’m a pop music content creator, DJ Absoluut and co-founder of Amsterdam’s queer pop party BOPS.</p>
     </div>
   </section>
 
@@ -299,7 +305,6 @@ a .bops-mark{transition:background-color .25s ease}
   <!-- INTRO -->
   <section class="gut" style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: clamp(36px, 4.5vw, 64px) clamp(32px, 5vw, 96px); padding-top: clamp(36px, 4.5vw, 64px); padding-bottom: clamp(56px, 7vw, 104px)">
     <p style="flex: 1 1 100%; margin: 0; line-height: 1.6; color: #dbad72; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Content strategist · DJ · Creator · Event organizer</p>
-    <p style="flex: 1.5 1 480px; max-width: 780px; margin: 0; font-size: clamp(20px, 1.9vw, 28px); line-height: 1.5; font-weight: 500; color: #e9e6ff">I use audience insights and online culture to develop content strategies, campaign concepts and copy built around what your audience cares about. Alongside my freelance work, I’m a pop music content creator, DJ Absoluut and co-founder of Amsterdam’s queer pop party BOPS.</p>
     <div style="flex: 1 1 360px; min-width: 0">
         <dl style="margin: 0; display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.16)">
           <div style="flex: 1 1 0; min-width: 0; padding: 20px clamp(10px, 2vw, 20px) 0 0">
@@ -360,7 +365,7 @@ a .bops-mark{transition:background-color .25s ease}
   <section id="work" aria-labelledby="work-title" style="max-width: 1360px; margin: 0 auto; padding: clamp(96px, 12vw, 160px) clamp(20px, 4vw, 48px) 0">
     <p style="margin: 0 0 14px; color: #dbad72; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Strategy &amp; content</p>
     <h2 id="work-title" style="margin: 0 0 clamp(32px, 4vw, 56px); font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800; margin-left: -0.025em">Campaigns and Content</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: clamp(32px, 4vw, 48px) clamp(16px, 2vw, 32px)">
+    <div class="case-feat" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 4vw, 48px) clamp(16px, 2vw, 32px)">
       <a class="case" href="https://www.instagram.com/tv/CTMzKzHqiFT/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-netflix" style="display: flex; flex-direction: column; gap: 18px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-netflix.jpg" alt="Netflix and NikkieTutorials collaboration" style="display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover"></div>
         <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px">

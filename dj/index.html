@@ -225,6 +225,16 @@ header .site-sw a:not([aria-current]):hover,header .site-sw a:not([aria-current]
 .hdr-lang .lg-pop a:hover,.hdr-lang .lg-pop a:focus-visible{background:rgba(255,255,255,0.08);color:#ffffff}
 :root{--acc:#c8193a;--pop:#2c0739}
 a .bops-mark{transition:background-color .25s ease}
+/* hero: title higher, intro text under the title */
+@media (min-width: 761px){.cine{align-items:center !important}.cine > .gut{padding-top:120px;padding-bottom:64px !important}}
+.hero-lead{margin:0;max-width:min(600px,46vw);font-size:clamp(17px,1.35vw,20px);line-height:1.6;font-weight:500;color:rgba(255,255,255,0.84)}
+@media (max-width: 760px){.hero-lead{max-width:none;font-size:17px}}
+/* gigs: four columns, the numbers sit under Festivals & Prides */
+.gig-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-areas:"v f b" "v s b";gap:clamp(32px,4vw,56px) clamp(24px,4vw,64px);align-items:start}
+.gv{grid-area:v}.gf{grid-area:f}.gb{grid-area:b}.gs{grid-area:s}
+@media (max-width: 1000px){.gig-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"v f" "v s" "b b"}}
+@media (max-width: 640px){.gig-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"v" "f" "b" "s"}}
+@media (max-width: 760px){.book-photo{display:none}}
 </style>
 <style>
   .quotes > span,.quote-track,.quote-controls{width:100%;max-width:860px;margin-left:auto;margin-right:auto}
@@ -260,7 +270,6 @@ a .bops-mark{transition:background-color .25s ease}
     <nav class="site-sw is-dj" aria-label="Site"><span class="sw-thumb" aria-hidden="true"></span><a href="/">Evert Groot</a><a href="/dj/" aria-current="true">DJ Absoluut</a></nav>
     <nav class="nav-links" aria-label="Main" style="display: flex; gap: 32px; font-size: 15px; font-weight: 600">
       <a href="#where" style="text-decoration: none">Services</a>
-      <a href="#decks" style="text-decoration: none">About</a>
       <a href="#gigs" style="text-decoration: none">Gigs</a>
       <a href="#reviews" style="text-decoration: none">Reviews</a>
     </nav>
@@ -280,9 +289,8 @@ a .bops-mark{transition:background-color .25s ease}
     </div>
     <nav aria-label="Menu" style="display: flex; flex-direction: column; margin-top: 48px">
       <a href="#where" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">01</span>Services</a>
-      <a href="#decks" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">02</span>About</a>
-      <a href="#gigs" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">03</span>Gigs</a>
-      <a href="#reviews" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">04</span>Reviews</a>
+      <a href="#gigs" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">02</span>Gigs</a>
+      <a href="#reviews" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">03</span>Reviews</a>
     </nav>
     <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: auto; padding-top: 40px">
       <a class="btn-solid" href="#book" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #c8193a; color: #ffffff; text-decoration: none; font-weight: 800; font-size: 16px" data-goatcounter-click="dj-click-book-absoluut">Book DJ Absoluut</a>
@@ -298,6 +306,7 @@ a .bops-mark{transition:background-color .25s ease}
     <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(31,3,40,0.92) 0%, rgba(31,3,40,0.55) 34%, rgba(31,3,40,0) 62%), linear-gradient(to bottom, rgba(31,3,40,0.55) 0%, rgba(31,3,40,0) 18%)"></div>
     <div class="gut" style="position: relative; width: 100%; padding-bottom: clamp(32px, 4vw, 56px); display: flex; flex-direction: column; gap: clamp(24px, 3vw, 40px)">
       <h1 class="rise" style="margin: 0; max-width: min(640px, 46%); font-family: 'Baloo Bhai 2', sans-serif; font-weight: 800; font-size: clamp(42px, 5.2vw, 84px); line-height: 0.92; letter-spacing: -0.045em; color: #ffffff">DJ for Clubs, Festivals, Weddings and Brand Events<br> <span style="color: #c8193a">In the Netherlands and Italy</span></h1>
+      <p class="hero-lead rise rise-2">Pop is at the heart of what I play, with plenty of room for disco, house and fresh discoveries. I love finding the right balance between familiar hits and lesser-known tracks that deserve a place on the dance floor.</p>
     </div>
   </section>
 </div>
@@ -339,55 +348,27 @@ a .bops-mark{transition:background-color .25s ease}
     </div>
   </section>
 
-  <!-- GALLERY -->
-  <section id="decks" aria-labelledby="gallery-title" style="max-width: 1360px; margin: 0 auto; padding: clamp(96px, 12vw, 160px) clamp(20px, 4vw, 48px)">
-    <p style="margin: 0 0 14px; color: #dbad72; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">About Me</p>
-    <h2 id="gallery-title" style="margin: 0 0 clamp(32px, 4vw, 56px); font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800">Pop at the Heart of Every Set</h2>
-    <div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: clamp(32px, 5vw, 96px); margin-bottom: clamp(40px, 5vw, 72px)">
-    <div style="flex: 1.5 1 480px; max-width: 780px; min-width: 0"><p style="margin: 0; font-size: clamp(20px, 1.9vw, 28px); line-height: 1.5; font-weight: 500; color: #e9e6ff">Pop is at the heart of what I play, with plenty of room for disco, house and fresh discoveries. I love finding the right balance between familiar hits and lesser-known tracks that deserve a place on the dance floor.</p>
-      <a href="https://soundcloud.com/absoluut" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; min-height: 48px; margin-top: clamp(20px, 2.4vw, 32px); padding: 0 22px; border-radius: 999px; border: 2px solid rgba(255,255,255,0.55); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 800" data-goatcounter-click="dj-click-listen-mix">Listen to a Mix ↗</a></div>
-    <div style="flex: 1 1 360px; min-width: 0">
-        <dl style="margin: 0; display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.16)">
-          <div style="flex: 1 1 0; min-width: 0; padding: 20px clamp(10px, 2vw, 20px) 0 0">
-            <dt style="font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 3vw, 42px); font-weight: 800; line-height: 1; letter-spacing: -0.03em">18 yrs</dt>
-            <dd style="margin: 6px 0 0; font-size: 14px; color: #b3afe0">behind the decks</dd>
-          </div>
-          <div style="flex: 1 1 0; min-width: 0; padding: 20px clamp(10px, 2vw, 20px) 0; border-left: 1px solid rgba(255,255,255,0.16)">
-            <dt style="font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 3vw, 42px); font-weight: 800; line-height: 1; letter-spacing: -0.03em">24</dt>
-            <dd style="margin: 6px 0 0; font-size: 14px; color: #b3afe0">queer pop parties organized</dd>
-          </div>
-          <div style="flex: 1.5 1 0; min-width: 0; padding: 20px 0 0 clamp(10px, 2vw, 20px); border-left: 1px solid rgba(255,255,255,0.16)">
-            <dt style="font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 3vw, 42px); font-weight: 800; line-height: 1; letter-spacing: -0.03em">NL · BE · IT</dt>
-            <dd style="margin: 6px 0 0; font-size: 14px; color: #b3afe0">played across three countries</dd>
-          </div>
-        </dl>
-    </div>
-    </div>
-    <div class="dj-gal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(12px, 1.6vw, 24px)">
-      <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/dj-club.jpg" class="g1" alt="DJ Absoluut in a club" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover"></div>
-      <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/dj-festival.jpg" class="g2" alt="DJ Absoluut playing for a festival crowd" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover"></div>
-      <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/dj-outdoor.jpg" class="g3" alt="DJ Absoluut playing outdoors" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover"></div>
-    </div>
-  </section>
-
-
   <!-- GIGS: full list, purple band -->
   <section id="gigs" aria-labelledby="gigs-title" style="background: #814c94; color: #ffffff">
     <div style="max-width: 1360px; margin: 0 auto; padding: clamp(80px, 10vw, 136px) clamp(20px, 4vw, 48px)">
       <p style="margin: 0 0 14px; color: #ffd8ea; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Gigs</p>
       <h2 id="gigs-title" style="margin: 0 0 clamp(36px, 4.5vw, 64px); font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800">Where I’ve Played</h2>
-      <div style="display: flex; flex-wrap: wrap; gap: clamp(32px, 4vw, 56px) clamp(24px, 4vw, 64px)">
-      <div style="flex: 1 1 280px; min-width: 0; padding-top: 20px; border-top: 1.5px solid rgba(255,255,255,0.25)">
+      <div class="gig-grid">
+      <div class="gv" style="min-width: 0; padding-top: 20px; border-top: 1.5px solid rgba(255,255,255,0.25)">
         <h3 style="margin: 0 0 16px; color: #ffd8ea; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">Venues</h3>
         <ul class="gig-list" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(20px, 1.7vw, 24px); font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; color: #ffffff"><li style="white-space: nowrap"><a href="https://adamtoren.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">A'DAM Tower</a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Amsterdam</span></li><li style="white-space: nowrap"><a href="https://clubnyx.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Club NYX</a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Amsterdam</span></li><li style="white-space: nowrap"><a href="https://delamar.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">DeLaMar Theater</a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Amsterdam</span></li><li style="white-space: nowrap"><a href="https://www.paradiso.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Paradiso</a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Amsterdam</span></li><li style="white-space: nowrap"><a href="https://the-other-side.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">The Other Side</a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Amsterdam</span></li><li style="white-space: nowrap"><a href="https://ita.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Stadsschouwburg</a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Amsterdam</span></li><li style="white-space: nowrap"><a href="https://www.ferryrotterdam.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">FERRY</a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Rotterdam</span></li><li style="white-space: nowrap"><a href="http://www.redandblue.eu/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Red &amp; Blue</a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Antwerp</span></li><li style="white-space: nowrap"><a href="https://qclubmilano.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Q Club</a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Milan</span></li><li style="white-space: nowrap"><a href="https://www.instagram.com/leccomilano/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">LeccoMilano</a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Milan</span></li><li style="white-space: nowrap"><a href="https://www.euforiabar.it/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Euforia</a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Milan</span></li></ul>
       </div>
-      <div style="flex: 1 1 280px; min-width: 0; padding-top: 20px; border-top: 1.5px solid rgba(255,255,255,0.25)">
+      <div class="gf" style="min-width: 0; padding-top: 20px; border-top: 1.5px solid rgba(255,255,255,0.25)">
         <h3 style="margin: 0 0 16px; color: #ffd8ea; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">Festivals &amp; Prides</h3>
         <ul class="gig-list" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(20px, 1.7vw, 24px); font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; color: #ffffff"><li style="white-space: nowrap"><a href="https://www.milkshakefestival.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Milkshake</a></li><li style="white-space: nowrap"><a href="https://www.tropikali.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Tropikali</a></li><li style="white-space: nowrap"><a href="https://www.superflirtfestival.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Superflirt</a></li><li style="white-space: nowrap"><a href="https://pride.amsterdam/en/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Amsterdam Pride</a></li><li style="white-space: nowrap"><a href="https://en.antwerppride.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Antwerp Pride</a></li></ul>
       </div>
-      <div style="flex: 1 1 280px; min-width: 0; padding-top: 20px; border-top: 1.5px solid rgba(255,255,255,0.25)">
+      <div class="gb" style="min-width: 0; padding-top: 20px; border-top: 1.5px solid rgba(255,255,255,0.25)">
         <h3 style="margin: 0 0 16px; color: #ffd8ea; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">Brand events</h3>
         <ul class="gig-list" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(20px, 1.7vw, 24px); font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; color: #ffffff"><li style="white-space: nowrap"><a href="https://www.bar-le-duc.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Bar-le-Duc</a></li><li style="white-space: nowrap"><a href="https://www.instagram.com/fvandernat/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Ferry van der Nat</a></li><li style="white-space: nowrap"><a href="https://www.hartmuseum.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">H'ART Museum</a></li><li style="white-space: nowrap"><a href="https://www.kaspersky.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Kaspersky</a></li><li style="white-space: nowrap"><a href="https://www.mcdonalds.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">McDonald's</a></li><li style="white-space: nowrap">Sanoma</li><li style="white-space: nowrap"><a href="https://www.sofitel-legend-thegrand.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Sofitel Hotels</a></li><li style="white-space: nowrap">Solar PR</li></ul>
+      </div>
+            <div class="gs" style="min-width: 0; padding-top: 20px; border-top: 1.5px solid rgba(255,255,255,0.25)">
+        <h3 style="margin: 0 0 16px; color: #ffd8ea; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">In numbers</h3>
+        <dl style="margin: -12px 0 0"><div style="display: flex; align-items: baseline; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.18)"><dt style="flex: 0 0 auto; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.4vw, 34px); font-weight: 800; letter-spacing: -0.02em; line-height: 1; color: #ffffff">18 yrs</dt><dd style="margin: 0; font-size: 15px; line-height: 1.4; color: #ffd8ea">behind the decks</dd></div><div style="display: flex; align-items: baseline; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.18)"><dt style="flex: 0 0 auto; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.4vw, 34px); font-weight: 800; letter-spacing: -0.02em; line-height: 1; color: #ffffff">24</dt><dd style="margin: 0; font-size: 15px; line-height: 1.4; color: #ffd8ea">queer pop parties organized</dd></div><div style="display: flex; align-items: baseline; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.18)"><dt style="flex: 0 0 auto; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.4vw, 34px); font-weight: 800; letter-spacing: -0.02em; line-height: 1; color: #ffffff">NL · BE · IT</dt><dd style="margin: 0; font-size: 15px; line-height: 1.4; color: #ffd8ea">played across three countries</dd></div></dl>
       </div>
       </div>
     </div>
@@ -439,7 +420,7 @@ a .bops-mark{transition:background-color .25s ease}
     <p style="margin: 0 0 18px; color: #dbad72; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Bookings</p>
     <h2 id="book-title" style="margin: 0; max-width: 1100px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(44px, 7vw, 108px); line-height: 0.92; letter-spacing: -0.05em; font-weight: 800">Book <span style="color: #dbad72">DJ Absoluut</span></h2>
     <div style="display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 80px); margin-top: clamp(40px, 5vw, 72px); padding-top: clamp(32px, 4vw, 48px); border-top: 1px solid rgba(255,255,255,0.16)">
-      <p style="flex: 1 1 280px; margin: 0; max-width: 380px; font-size: 18px; line-height: 1.6; color: #d8d4fa">Tell me about your event: the date, the location and the atmosphere you have in mind.</p>
+      <div class="book-side" style="flex: 1 1 280px; max-width: 380px; display: flex; flex-direction: column; gap: clamp(28px, 3vw, 40px)"><p style="margin: 0; font-size: 18px; line-height: 1.6; color: #d8d4fa">Tell me about your event: the date, the location and the atmosphere you have in mind.</p><div class="case-img book-photo"><img loading="lazy" decoding="async" src="/assets/img/dj-club.jpg" alt="DJ Absoluut in a club" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 25%"></div></div>
       <form id="contact-form" data-form="dj" action="https://api.web3forms.com/submit" method="POST" data-sending="Sending…" data-success="Thanks! Your booking request has been sent. I’ll get back to you soon." data-error="Something went wrong. Please try again in a moment." style="flex: 2 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
         <input type="hidden" name="access_key" value="efa0a20b-2c4c-4633-a70f-2667f442add4">
         <input type="hidden" name="subject" value="DJ booking request via imgroot.nl (EN)">
