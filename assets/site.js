@@ -350,10 +350,10 @@
     };
     sw.addEventListener('pointerup', end);
     sw.addEventListener('pointercancel', end);
-    /* first visit: show both names for a moment, then fold the other one into its dot */
+    /* each visit: show both names for a moment, then fold the other one into its dot */
     if (!inMenu) {
-      var seen = null;
-      try { seen = localStorage.getItem('imgroot-sw-seen'); localStorage.setItem('imgroot-sw-seen', '1'); } catch (err) { seen = '1'; }
+      var seen = null, key = 'imgroot-sw-peek-' + (cur === 1 ? 'dj' : 'home'); /* once per visit, on each of the two sites */
+      try { seen = sessionStorage.getItem(key); sessionStorage.setItem(key, '1'); } catch (err) { seen = '1'; }
       if (!seen) {
         setTimeout(function () { sw.classList.add('sw-peek'); }, 700);
         setTimeout(function () { if (!drag) sw.classList.remove('sw-peek'); }, 2600);

@@ -41,7 +41,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
 .svc:hover{background-color:rgba(23,21,95,0.045);color:#17155f}
 .svc-arrow{transition:transform .35s cubic-bezier(.2,.7,.2,1),color .35s ease}
 .svc:hover .svc-arrow{transform:translateX(8px);color:#8f0048}
-.case-img{overflow:hidden;border-radius:14px}
+.case-img{overflow:hidden;border-radius:20px}
 .case-img img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
 .case:hover .case-img img{transform:scale(1.045)}
 .case:hover h3{color:#dbad72}
@@ -208,18 +208,19 @@ header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
 header .site-sw a:not([aria-current]){max-width:40px;padding:0 12px !important;overflow:hidden;color:transparent;transition:max-width .4s cubic-bezier(.3,.7,.2,1),color .25s ease}
 header .site-sw a:not([aria-current])::before{box-shadow:0 0 0 4px rgba(255,255,255,0.09)}
 header .site-sw.sw-peek a:not([aria-current]),header .site-sw:has(a:focus-visible) a:not([aria-current]){max-width:190px;padding:0 16px !important;color:rgba(179,175,224,0.75)}
-@media (hover: hover) and (pointer: fine){header .site-sw:hover a:not([aria-current]){max-width:190px;padding:0 16px !important;color:rgba(179,175,224,0.75)}}
+@media (hover: hover){header .site-sw:hover a:not([aria-current]){max-width:190px;padding:0 16px !important;color:rgba(179,175,224,0.75)}}
 header .site-sw a:not([aria-current]):hover,header .site-sw a:not([aria-current]):focus-visible{color:#ffffff}
 #mobile-menu .site-sw a:not([aria-current]){color:rgba(179,175,224,0.65)}
 @media (prefers-reduced-motion: reduce){header .site-sw a:not([aria-current]){transition:none}}
+/* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
 /* language: current language + arrow, the others in a small panel */
 .lang-dd{position:relative}
 .lg-btn{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 4px 0 10px;border:0;background:none;color:#ffffff;font:800 12px/1 'Manrope',sans-serif;letter-spacing:0.1em;cursor:pointer}
 .lg-btn:hover{color:var(--acc)}
 .lg-btn svg{transition:transform .25s ease}
 .lg-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
-.lg-pop{position:absolute;right:0;top:calc(100% + 6px);z-index:70;min-width:180px;padding:6px;border-radius:14px;background:var(--pop);border:1px solid rgba(255,255,255,0.12);box-shadow:0 16px 40px rgba(0,0,0,0.45)}
-.hdr-lang .lg-pop a{display:flex;align-items:center;justify-content:flex-start;gap:12px;width:auto;height:44px;padding:0 12px;border-radius:10px;color:#ffffff;font:600 14px/1 'Manrope',sans-serif;letter-spacing:0}
+.lg-pop{position:absolute;right:0;top:calc(100% + 6px);z-index:70;min-width:180px;padding:4px;border-radius:12px;background:var(--pop);border:1px solid rgba(255,255,255,0.12);box-shadow:0 16px 40px rgba(0,0,0,0.45)}
+.hdr-lang .lg-pop a{display:flex;align-items:center;justify-content:flex-start;gap:12px;width:auto;height:44px;padding:0 12px;border-radius:8px;color:#ffffff;font:600 14px/1 'Manrope',sans-serif;letter-spacing:0}
 .hdr-lang .lg-pop a b{width:22px;font-size:11px;font-weight:800;letter-spacing:0.1em;color:#8e8abf}
 .hdr-lang .lg-pop a:hover,.hdr-lang .lg-pop a:focus-visible{background:rgba(255,255,255,0.08);color:#ffffff}
 :root{--acc:#c8193a;--pop:#2c0739}
@@ -241,7 +242,7 @@ a .bops-mark{transition:background-color .25s ease}
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://imgroot.nl/#evert", "name": "Evert Groot", "alternateName": ["DJ Absoluut", "Absoluut"], "url": "https://imgroot.nl/", "image": "https://imgroot.nl/assets/img/evert-groot.jpg", "email": "mailto:evert@imgroot.nl", "jobTitle": ["Content Strategist", "DJ", "Content Creator", "Event Organizer"], "knowsAbout": ["Content strategy", "Social media strategy", "Creative direction", "Short-form video", "Pop music", "DJing", "Wedding DJ", "Event organizing", "Queer nightlife"], "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "founder": {"@id": "https://imgroot.nl/#bops"}, "sameAs": ["https://www.instagram.com/absoluut/", "https://www.tiktok.com/@absoluutdj", "https://www.linkedin.com/in/evertgroot", "https://soundcloud.com/absoluut"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content strategy and creative direction", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ for weddings, clubs, festivals and brand events", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event organizing", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator partnerships and short-form video", "areaServed": ["NL", "IT"]}}]}, {"@type": "Organization", "@id": "https://imgroot.nl/#bops", "name": "BOPS", "description": "Queer pop party at The Other Side, Amsterdam", "url": "https://www.instagram.com/bops.ams/", "sameAs": ["https://www.instagram.com/bops.ams/"]}, {"@type": "WebSite", "@id": "https://imgroot.nl/#website", "url": "https://imgroot.nl/", "name": "Evert Groot", "inLanguage": ["en", "nl", "it"], "publisher": {"@id": "https://imgroot.nl/#evert"}}, {"@type": "Service", "@id": "https://imgroot.nl/dj/#service", "serviceType": "DJ", "name": "DJ Absoluut – DJ for weddings, private parties, club nights and brand events", "provider": {"@id": "https://imgroot.nl/#evert"}, "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "url": "https://imgroot.nl/dj/", "image": "https://imgroot.nl/assets/img/dj-absoluut-bops.jpg"}]}</script>
   <script data-goatcounter="https://imgroot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-  <script src="/assets/site.js?v=79846af6" defer></script>
+  <script src="/assets/site.js?v=acee81d2" defer></script>
 </head>
 <body>
 <!-- Icons: Instagram, TikTok, SoundCloud from Simple Icons (CC0); LinkedIn from Font Awesome Free (CC BY 4.0, https://fontawesome.com). -->
@@ -398,7 +399,7 @@ a .bops-mark{transition:background-color .25s ease}
       <p style="margin: 0 0 14px; color: #ffd8ea; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Reviews</p>
       <h2 id="reviews-title" style="margin: 0 0 clamp(32px, 4vw, 56px); font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800">What Couples Say</h2>
       <div class="qgrid" data-reviews>
-        <figure class="qcard" style="margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: clamp(26px, 2.6vw, 36px); border-radius: 22px; background: rgba(0,0,0,0.16); border: 1px solid rgba(255,255,255,0.14)">
+        <figure class="qcard" style="margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: clamp(26px, 2.6vw, 36px); border-radius: 20px; background: rgba(0,0,0,0.16); border: 1px solid rgba(255,255,255,0.14)">
           <div>
             <span aria-hidden="true" style="display: block; height: 44px; font-family: 'Baloo Bhai 2', sans-serif; font-size: 88px; line-height: 0.9; color: #dbad72">“</span>
             <blockquote style="margin: 0; font-size: clamp(18px, 1.45vw, 20px); line-height: 1.6; font-weight: 500; color: #ffffff">We loved how Absoluut mixed our music wishes with very cool pop/disco songs! Super happy we had <strong style="color: #ffd28f; font-weight: 700">this absolute hit of a DJ</strong> playing our wedding. He got everyone dancing till late.</blockquote><span style="display: block; margin-top: 14px; font-size: 14px"><a href="https://coupleofmen.com/34307-gay-spring-wedding-amsterdam-couple-of-men/" target="_blank" rel="noopener noreferrer" style="color: #ffd8ea; text-underline-offset: 3px">Read their wedding story ↗</a></span>
@@ -408,7 +409,7 @@ a .bops-mark{transition:background-color .25s ease}
             <span style="display: block; margin-top: 2px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #ffd8ea">Wedding · Amsterdam</span>
           </figcaption>
         </figure>
-<figure class="qcard" style="margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: clamp(26px, 2.6vw, 36px); border-radius: 22px; background: rgba(0,0,0,0.16); border: 1px solid rgba(255,255,255,0.14)">
+<figure class="qcard" style="margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: clamp(26px, 2.6vw, 36px); border-radius: 20px; background: rgba(0,0,0,0.16); border: 1px solid rgba(255,255,255,0.14)">
           <div>
             <span aria-hidden="true" style="display: block; height: 44px; font-family: 'Baloo Bhai 2', sans-serif; font-size: 88px; line-height: 0.9; color: #dbad72">“</span>
             <blockquote style="margin: 0; font-size: clamp(18px, 1.45vw, 20px); line-height: 1.6; font-weight: 500; color: #ffffff">It was so nice to dance to our favorite songs at our wedding party AND also hear <strong style="color: #ffd28f; font-weight: 700">wonderful new music that fit in beautifully</strong>.</blockquote>
@@ -418,7 +419,7 @@ a .bops-mark{transition:background-color .25s ease}
             <span style="display: block; margin-top: 2px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #ffd8ea">Wedding · Amsterdam</span>
           </figcaption>
         </figure>
-<figure class="qcard" style="margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: clamp(26px, 2.6vw, 36px); border-radius: 22px; background: rgba(0,0,0,0.16); border: 1px solid rgba(255,255,255,0.14)">
+<figure class="qcard" style="margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: clamp(26px, 2.6vw, 36px); border-radius: 20px; background: rgba(0,0,0,0.16); border: 1px solid rgba(255,255,255,0.14)">
           <div>
             <span aria-hidden="true" style="display: block; height: 44px; font-family: 'Baloo Bhai 2', sans-serif; font-size: 88px; line-height: 0.9; color: #dbad72">“</span>
             <blockquote style="margin: 0; font-size: clamp(18px, 1.45vw, 20px); line-height: 1.6; font-weight: 500; color: #ffffff">Absoluut has <strong style="color: #ffd28f; font-weight: 700">a special gift for sensing the atmosphere</strong> and turning any occasion into a true success with his music and energy. He made our wedding unforgettable.</blockquote>
