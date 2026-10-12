@@ -156,7 +156,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
   ::view-transition-group(sw-thumb){z-index:2}
   ::view-transition-group(sw-a),::view-transition-group(sw-b){z-index:3}
 }
-.nav-links{justify-self:center}
+.nav-links{justify-self:start}
 .nav-links a{position:relative;padding:12px 0;white-space:nowrap}
 .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;border-radius:2px;background:#dbad72;transform:scaleX(0);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
 .nav-links a[aria-current]::after{transform:scaleX(1)}
@@ -172,7 +172,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
 .mm-num{flex:0 0 22px;font-family:'Manrope',sans-serif;font-size:12px;font-weight:800;letter-spacing:0.1em;color:#8e8abf}
 .mm-link[aria-current]{color:#dbad72 !important}
 @media (max-width: 1240px){
-  header{grid-template-columns:auto minmax(0,1fr) auto !important;gap:20px !important}
+  header{grid-template-columns:auto auto minmax(0,1fr) !important;gap:20px 28px !important}
   .nav-links{gap:24px !important;font-size:14px !important}
   .hdr-right{gap:12px}
   .hdr-cta{padding:0 16px !important;font-size:14px}
@@ -189,6 +189,12 @@ a{color:#ffffff}a:hover{color:#dbad72}
 @media (max-width: 360px){
   .site-sw a{padding:0 9px;font-size:15px}
 }
+/* page accent: red from the cap in the hero photo */
+.nav-links a::after{background:#bd324a}
+.nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:#bd324a}
+.mm-link[aria-current]{color:#bd324a !important}
+.menu-fab{border-color:#bd324a !important}
+.hdr-cta:hover,#mobile-menu .btn-solid:hover{color:#ffffff}
 </style>
 <style>
   .quotes > span,.quote-track,.quote-controls{width:100%;max-width:860px;margin-left:auto;margin-right:auto}
@@ -220,7 +226,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
     <button type="button" id="lang-banner-close" aria-label="Close" style="min-width: 44px; min-height: 36px; border: 0; border-radius: 999px; background: rgba(42,29,54,0.12); color: #2a1d36; font: inherit; font-weight: 800; cursor: pointer">✕</button>
   </div>
 <div style="position: relative">
-  <header style="position: absolute; left: 0; right: 0; top: 0; z-index: 5; max-width: none; padding-left: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); padding-right: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); max-width: 1360px; margin: 0 auto; padding: 22px clamp(20px, 4vw, 48px); display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 24px">
+  <header style="position: absolute; left: 0; right: 0; top: 0; z-index: 5; max-width: none; padding-left: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); padding-right: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); max-width: 1360px; margin: 0 auto; padding: 22px clamp(20px, 4vw, 48px); display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 24px 44px">
     <nav class="site-sw is-dj" aria-label="Site"><span class="sw-thumb" aria-hidden="true"></span><a href="/">Evert Groot</a><a href="/dj/" aria-current="true">DJ Absoluut</a></nav>
     <nav class="nav-links" aria-label="Main" style="display: flex; gap: 32px; font-size: 15px; font-weight: 600">
       <a href="#where" style="text-decoration: none">Services</a>
@@ -229,7 +235,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
       <a href="#reviews" style="text-decoration: none">Reviews</a>
     </nav>
     <div class="hdr-right">
-      <a class="btn-solid hdr-cta" href="#book" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #dbad72; color: #2a1d36; text-decoration: none; font-weight: 800" data-goatcounter-click="dj-click-book-absoluut">Book DJ Absoluut</a>
+      <a class="btn-solid hdr-cta" href="#book" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #bd324a; color: #ffffff; text-decoration: none; font-weight: 800" data-goatcounter-click="dj-click-book-absoluut">Book DJ Absoluut</a>
       <span class="hdr-sep" aria-hidden="true"></span>
       <div class="hdr-lang" role="group" aria-label="Language"><a href="/dj/" hreflang="en" data-lang="en" aria-current="page">EN</a><a href="/nl/dj/" hreflang="nl" data-lang="nl">NL</a><a href="/it/dj/" hreflang="it" data-lang="it">IT</a></div>
       <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; background: transparent; color: #ffffff; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
@@ -249,7 +255,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
       <a href="#reviews" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">04</span>Reviews</a>
     </nav>
     <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: auto; padding-top: 40px">
-      <a class="btn-solid" href="#book" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #dbad72; color: #2a1d36; text-decoration: none; font-weight: 800; font-size: 16px" data-goatcounter-click="dj-click-book-absoluut">Book DJ Absoluut</a>
+      <a class="btn-solid" href="#book" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #bd324a; color: #ffffff; text-decoration: none; font-weight: 800; font-size: 16px" data-goatcounter-click="dj-click-book-absoluut">Book DJ Absoluut</a>
       <div class="mm-lang" role="group" aria-label="Language"><a href="/dj/" hreflang="en" data-lang="en" aria-current="page">EN</a><a href="/nl/dj/" hreflang="nl" data-lang="nl">NL</a><a href="/it/dj/" hreflang="it" data-lang="it">IT</a></div>
     </div>
   </div>
@@ -261,7 +267,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
     <img class="cine-img cine-right" src="/assets/img/dj-absoluut-bops.jpg" fetchpriority="high" alt="DJ Absoluut playing at BOPS" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 45% 75%">
     <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(18,19,47,0.92) 0%, rgba(18,19,47,0.55) 34%, rgba(18,19,47,0) 62%), linear-gradient(to bottom, rgba(18,19,47,0.55) 0%, rgba(18,19,47,0) 18%)"></div>
     <div class="gut" style="position: relative; width: 100%; padding-bottom: clamp(32px, 4vw, 56px); display: flex; flex-direction: column; gap: clamp(24px, 3vw, 40px)">
-      <h1 class="rise" style="margin: 0; max-width: min(640px, 46%); font-family: 'Baloo Bhai 2', sans-serif; font-weight: 800; font-size: clamp(42px, 5.2vw, 84px); line-height: 0.92; letter-spacing: -0.045em; color: #ffffff">DJ for Clubs, Festivals, Weddings and Brand Events<br> <span style="color: #dbad72">In the Netherlands and Italy</span></h1>
+      <h1 class="rise" style="margin: 0; max-width: min(640px, 46%); font-family: 'Baloo Bhai 2', sans-serif; font-weight: 800; font-size: clamp(42px, 5.2vw, 84px); line-height: 0.92; letter-spacing: -0.045em; color: #ffffff">DJ for Clubs, Festivals, Weddings and Brand Events<br> <span style="color: #bd324a">In the Netherlands and Italy</span></h1>
     </div>
   </section>
 </div>
