@@ -275,6 +275,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#7bd6e0}
 .f-ref b{display:block;font-weight:800;margin-bottom:4px}
 .f-ref a{margin-top:16px}
 @media (max-width: 900px){.svc-row .svc-arrow{flex:1 1 100% !important;padding-left:0 !important;margin-top:4px}}
+#contact p:has(+ #contact-form),.book-side > p:first-child{text-wrap:balance}
 #contact-form select:invalid{color:#8e8e93}
 #contact-form select option{color:#111111}
 </style>
@@ -527,7 +528,7 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
     <p style="margin: 0 0 18px; color: #7bd6e0; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Let's work together</p>
     <h2 id="contact-title" style="margin: 0; max-width: 1100px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(44px, 7vw, 108px); line-height: 0.92; letter-spacing: -0.05em; font-weight: 800; margin-left: -0.025em">Got a Campaign, Event or <span style="color: #7bd6e0">Creative Idea</span> in Mind?</h2>
     <div style="display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 80px); margin-top: clamp(40px, 5vw, 72px); padding-top: clamp(32px, 4vw, 48px); border-top: 1px solid rgba(255,255,255,0.16)">
-      <p style="flex: 1 1 280px; margin: 0; max-width: 380px; font-size: 18px; line-height: 1.6; color: #c9cdcf">Tell me what you're working on. I'd love to hear your ideas and see how I can help.</p>
+      <p style="flex: 1 1 280px; margin: 0; max-width: 380px; font-size: 18px; line-height: 1.6; color: #c9cdcf">Tell me what you’re working on. I’d love to hear your ideas and see how I can help.</p>
       <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" data-sending="Sending…" data-success="Thanks! Your message has been sent. I’ll get back to you soon." data-error="Something went wrong. Please try again in a moment." style="flex: 2 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
         <input type="hidden" name="access_key" value="efa0a20b-2c4c-4633-a70f-2667f442add4">
         <input type="hidden" name="subject" value="New message via imgroot.nl (EN)">
