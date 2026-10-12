@@ -195,6 +195,11 @@ a{color:#ffffff}a:hover{color:#dbad72}
 .mm-link[aria-current]{color:#c8193a !important}
 .menu-fab{border-color:#c8193a !important}
 .hdr-cta:hover,#mobile-menu .btn-solid:hover{color:#ffffff}
+/* site switch: a colored dot per site, teal = Evert Groot, red = DJ Absoluut */
+.site-sw a::before{content:"";flex:0 0 auto;width:8px;height:8px;margin-right:8px;border-radius:50%}
+.site-sw a:first-of-type::before{background:#7bd6e0}
+.site-sw a:last-of-type::before{background:#c8193a}
+@media (max-width: 360px){.site-sw a::before{width:7px;height:7px;margin-right:6px}}
 </style>
 <style>
   @media print{
