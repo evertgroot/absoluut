@@ -321,7 +321,7 @@
     sw.addEventListener('pointerdown', function (e) {
       if (e.button !== 0) return;
       drag = { x: e.clientX, id: e.pointerId, moved: false, flip: false };
-      if (!inMenu) sw.classList.add('sw-peek'); /* unfold the other site while the thumb is dragged */
+      if (!inMenu && e.pointerType === 'mouse') sw.classList.add('sw-peek'); /* unfold the other site while the thumb is dragged */
     });
     sw.addEventListener('pointermove', function (e) {
       if (!drag || e.pointerId !== drag.id) return;
@@ -330,6 +330,7 @@
         if (Math.abs(dx) < 6) return;
         drag.moved = true;
         sw.classList.add('sw-drag');
+        if (!inMenu) sw.classList.add('sw-peek');
         try { sw.setPointerCapture(drag.id); } catch (err) {}
       }
       var dist = links[1].offsetLeft - links[0].offsetLeft;
