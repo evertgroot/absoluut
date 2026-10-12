@@ -514,19 +514,21 @@
         .then(function (r) { return r.json(); })
         .then(function (res) {
           if (!res.success) throw new Error(res.message || 'error');
-          var choice = (form.querySelector('select') || {}).selectedIndex;
+          var sel = form.querySelector('select');
+          var opt = sel && sel.options[sel.selectedIndex];
+          var key = (opt && opt.getAttribute('data-k')) || 'other';
           var isDj = form.getAttribute('data-form') === 'dj';
-          var names = isDj ? ['wedding', 'private-party', 'club-festival', 'brand-event', 'other'] : ['strategy', 'dj', 'event', 'creator', 'other'];
           if (window.goatcounter && window.goatcounter.count) {
             window.goatcounter.count({
-              path: (isDj ? 'dj-booking-sent-' : 'form-sent-') + (names[choice] || 'other') + '-' + lang,
+              path: (isDj ? 'dj-booking-sent-' : 'form-sent-') + key + '-' + lang,
               title: isDj ? 'DJ booking request sent' : 'Contact form sent',
               event: true
             });
           }
           form.reset();
+          form.dispatchEvent(new Event('f-reset'));
           status.textContent = form.getAttribute('data-success');
-          status.style.color = '#dbad72';
+          status.style.color = getComputedStyle(document.documentElement).getPropertyValue('--hv-acc') || '#7bd6e0';
         })
         .catch(function () {
           status.textContent = form.getAttribute('data-error');
@@ -537,5 +539,88 @@
           button.textContent = label;
         });
     });
+  }
+
+  /* 3b. Form prompts per category, preselect buttons, DJ referral */
+  var promptsEl = document.getElementById('form-prompts');
+  if (form && promptsEl) {
+    var P = {};
+    try { P = JSON.parse(promptsEl.textContent); } catch (e) {}
+    var fsel = form.querySelector('select');
+    var q = function (k) { return form.querySelector('[data-f="' + k + '"]'); };
+    var msg = form.querySelector('[name="message"]');
+    var details = form.querySelector('[name="details"]');
+    var loc = form.querySelector('[name="location"]');
+    var hint = q('hint');
+    var ref = q('ref');
+    var keyOf = function () {
+      var o = fsel.options[fsel.selectedIndex];
+      return (o && o.getAttribute('data-k')) || '';
+    };
+    /* everything after the select label, except the referral box, hides for a DJ booking on the home form */
+    var rest = [];
+    var selLabel = fsel.closest('label');
+    for (var el = selLabel.nextElementSibling; el; el = el.nextElementSibling) {
+      if (el !== ref && el.tagName !== 'SCRIPT') rest.push(el);
+    }
+    var apply = function () {
+      var k = keyOf();
+      var c = (P.cats && P.cats[k]) || P['default'] || {};
+      var toRef = P.kind === 'home' && k === 'dj';
+      if (ref) {
+        ref.hidden = !toRef;
+        rest.forEach(function (el) {
+          if (el === hint) return;
+          el.hidden = toRef;
+          [].forEach.call(el.querySelectorAll('input,textarea,button'), function (f) { f.disabled = toRef; });
+          if (el.matches('input,textarea,button')) el.disabled = toRef;
+        });
+      }
+      if (P.kind === 'home') {
+        if (q('dl') && c.dl) q('dl').textContent = c.dl;
+        if (details && c.dp) details.placeholder = c.dp;
+      } else {
+        if (q('ll') && c.ll) q('ll').textContent = c.ll;
+        if (loc && c.lp) loc.placeholder = c.lp;
+      }
+      if (msg && c.mp) msg.placeholder = c.mp;
+      if (hint) { hint.textContent = c.h || ''; hint.hidden = toRef || !c.h; }
+    };
+    var pick = function (k) {
+      for (var i = 0; i < fsel.options.length; i++) {
+        if (fsel.options[i].getAttribute('data-k') === k) { fsel.selectedIndex = i; break; }
+      }
+      apply();
+    };
+    fsel.addEventListener('change', apply);
+    form.addEventListener('f-reset', function () { fsel.selectedIndex = 0; apply(); });
+    /* buttons with data-pick preselect the category, then the anchor scrolls to the form */
+    [].forEach.call(document.querySelectorAll('[data-pick]'), function (a) {
+      a.addEventListener('click', function () { pick(a.getAttribute('data-pick')); });
+    });
+    /* arriving with ?type=wedding (e.g. from a shared link) */
+    var m = /[?&]type=([a-z-]+)/.exec(location.search);
+    if (m) pick(m[1]);
+    /* the home form hands typed name and email to the DJ form (same browser tab only) */
+    var go = q('ref-go');
+    if (go) {
+      go.addEventListener('click', function () {
+        try {
+          sessionStorage.setItem('imgroot-carry', JSON.stringify({
+            name: (form.querySelector('[name="name"]') || {}).value || '',
+            email: (form.querySelector('[name="email"]') || {}).value || ''
+          }));
+        } catch (e) {}
+      });
+    }
+    try {
+      var carry = JSON.parse(sessionStorage.getItem('imgroot-carry') || 'null');
+      if (carry && P.kind === 'dj') {
+        sessionStorage.removeItem('imgroot-carry');
+        if (carry.name) form.querySelector('[name="name"]').value = carry.name;
+        if (carry.email) form.querySelector('[name="email"]').value = carry.email;
+      }
+    } catch (e) {}
+    apply();
   }
 })();

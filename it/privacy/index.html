@@ -40,6 +40,39 @@
   </style>
   <script data-goatcounter="https://imgroot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <script src="/assets/site.js" defer></script>
+<style id="hv-sys">
+/* unified hover system: primary · secondary · text link · icon · card */
+:root{--hv-acc:#7bd6e0;--hv-acc-l:#0b6e78;--hv-glow:rgba(123,214,224,.32)}
+.btn-solid{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease,background-color .25s ease,color .25s ease !important}
+.btn-ghost,.hv-2{transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .25s ease,border-color .25s ease,color .25s ease !important}
+.btn-solid:hover,.btn-solid:focus-visible{box-shadow:0 8px 22px var(--hv-glow)}
+.btn-ghost:hover,.btn-ghost:focus-visible,.hv-2.hv-dk:hover,.hv-2.hv-dk:focus-visible{background-color:rgba(255,255,255,.1) !important;border-color:#ffffff !important;color:#ffffff}
+.hv-2.hv-lt:hover,.hv-2.hv-lt:focus-visible{background-color:rgba(22,18,26,.06) !important;border-color:#16121a !important}
+.hv-tl{text-decoration-line:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:4px;transition:color .25s ease,text-decoration-color .25s ease}
+.hv-tl.hv-dk:hover,.hv-tl.hv-dk:focus-visible{color:var(--hv-acc) !important;text-decoration-color:var(--hv-acc)}
+.hv-tl.hv-lt:hover,.hv-tl.hv-lt:focus-visible{color:var(--hv-acc-l) !important;text-decoration-color:var(--hv-acc-l)}
+.hv-ar{display:inline-block;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2,1)}
+.hv-card{transition:background-color .3s ease,color .3s ease}
+.hv-card:hover,.hv-card:focus-visible{background-color:#ece8ee !important;color:var(--hv-acc-l) !important}
+.reel img,.reel video{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.reel:hover,.reel:focus-visible{transform:none !important}
+:is(.btn-solid,.btn-ghost,.hv-2,.hv-tl,.hv-card,.reel,a.case,.svc,footer.ft2 nav a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
+@media (hover:hover){
+  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:translateY(-2px) !important}
+  :is(a,button):hover .hv-ar.hv-r{transform:translateX(4px)}
+  :is(a,button):hover .hv-ar.hv-d{transform:translateY(3px)}
+  :is(a,button):hover .hv-ar.hv-ne{transform:translate(3px,-3px)}
+  .reel:hover img,.reel:hover video{transform:scale(1.04)}
+}
+.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:translateY(-2px) !important}
+:is(a,button):focus-visible .hv-ar.hv-r{transform:translateX(4px)}
+:is(a,button):focus-visible .hv-ar.hv-d{transform:translateY(3px)}
+:is(a,button):focus-visible .hv-ar.hv-ne{transform:translate(3px,-3px)}
+@media (prefers-reduced-motion:reduce){
+  .btn-solid,.btn-ghost,.hv-2,footer.ft2 nav a,.hv-ar,.reel img,.reel video,a.case .case-img img{transform:none !important}
+}
+</style>
 </head>
 <body>
   <header>
