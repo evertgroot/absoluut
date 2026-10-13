@@ -320,13 +320,13 @@ main:focus{outline:none}
 .lineup ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline}
 .lineup .t1{flex-direction:column;gap:2px;font-size:clamp(34px,4.4vw,64px);line-height:.98;letter-spacing:-0.04em}
 .lineup .t2{gap:4px clamp(18px,2vw,28px);margin-top:clamp(20px,2.4vw,30px);font-size:clamp(24px,2.5vw,36px);line-height:1.15;letter-spacing:-0.025em;color:#ffd8ea}
-.lineup .t3{gap:2px clamp(16px,1.8vw,24px);margin-top:clamp(10px,1.2vw,14px);font-size:clamp(18px,1.6vw,23px);line-height:1.3;letter-spacing:-0.01em;color:#e7c6f1}
+.lineup .t3{gap:2px clamp(16px,1.8vw,24px);margin-top:clamp(10px,1.2vw,14px);font-size:clamp(18px,1.6vw,23px);line-height:1.3;letter-spacing:-0.01em;color:#efd3f6}
 .lineup-reach{margin:20px 0 clamp(32px,4vw,56px);font-size:17px;line-height:1.6;color:#e6d3ee}
 .lineup-brands{margin:clamp(32px,4vw,52px) 0 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.2);max-width:62ch;font-size:17px;line-height:1.6;color:#e6d3ee}
 .lineup-brands b{color:#ffffff;font-weight:800}
 .lineup-photo{margin:0}
 .lineup-photo img{display:block;width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover;border-radius:20px}
-@media (max-width: 900px){.lineup-photo img{aspect-ratio:16 / 10;object-position:50% 35%}}
+@media (max-width: 900px){.lineup-photo img{aspect-ratio:4 / 3;object-position:50% 60%}}
 /* arrows: one drawn set instead of font glyphs. down = further on this page, right = another page of the site,
    up-right = another website, download = save a file. The glyph stays in the markup as a text fallback. */
 .hv-ar{display:inline-block;width:.8em;height:.8em;margin-left:.4em;vertical-align:-.04em;overflow:hidden;text-indent:2em;white-space:nowrap;background:currentColor;-webkit-mask:var(--ar) center / contain no-repeat;mask:var(--ar) center / contain no-repeat}
@@ -451,13 +451,13 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
   </section>
 
 
-  <section class="marquee" aria-label="Gedraaid bij" style="background: #c8193a; padding: 24px 0; overflow: hidden">
+  <section class="marquee" aria-label="Gedraaid voor" style="background: #c8193a; padding: 24px 0; overflow: hidden">
     <div class="marquee-track" style="gap: 0">
       <div style="display: flex; align-items: center; gap: 64px; padding-right: 64px; font-size: 19px; font-weight: 700; color: #ffffff; white-space: nowrap">
-        <span style="color: #ffffff; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Gedraaid bij</span><span>Paradiso</span><span>The Other Side</span><span>A'DAM Tower</span><span>Club NYX</span><span>Stadsschouwburg</span><span>FERRY Rotterdam</span><span>Red &amp; Blue Antwerpen</span><span>Q Club Milano</span><span>LeccoMilano</span><span>Euforia</span><span>Amsterdam Pride</span><span>Antwerp Pride</span><span>Milkshake</span><span>Tropikali</span><span>Superflirt</span><span>Kaspersky</span><span>McDonald's</span><span>Sanoma</span><span>Sofitel</span><span>H'ART Museum</span><span>Bar-le-Duc</span>
+        <span style="color: #ffffff; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Gedraaid voor</span><span>Kaspersky</span><span>McDonald's</span><span>Sanoma</span><span>Sofitel</span><span>H'ART Museum</span><span>Bar-le-Duc</span><span>Ferry van der Nat</span><span>Solar PR</span>
       </div>
       <div class="marquee-dup" aria-hidden="true" style="display: flex; align-items: center; gap: 64px; padding-right: 64px; font-size: 19px; font-weight: 700; color: #ffffff; white-space: nowrap">
-        <span style="color: #ffffff; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Gedraaid bij</span><span>Paradiso</span><span>The Other Side</span><span>A'DAM Tower</span><span>Club NYX</span><span>Stadsschouwburg</span><span>FERRY Rotterdam</span><span>Red &amp; Blue Antwerpen</span><span>Q Club Milano</span><span>LeccoMilano</span><span>Euforia</span><span>Amsterdam Pride</span><span>Antwerp Pride</span><span>Milkshake</span><span>Tropikali</span><span>Superflirt</span><span>Kaspersky</span><span>McDonald's</span><span>Sanoma</span><span>Sofitel</span><span>H'ART Museum</span><span>Bar-le-Duc</span>
+        <span style="color: #ffffff; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Gedraaid voor</span><span>Kaspersky</span><span>McDonald's</span><span>Sanoma</span><span>Sofitel</span><span>H'ART Museum</span><span>Bar-le-Duc</span><span>Ferry van der Nat</span><span>Solar PR</span>
       </div>
     </div>
   </section>
@@ -506,10 +506,10 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
       <p class="lineup-reach">Amsterdam, Rotterdam, Antwerpen en Milaan, sinds 2008.</p>
       <div class="lineup-wrap">
         <div>
-          <div class="lineup"><ul class="t1"><li>Paradiso</li><li>Amsterdam Pride</li><li>A'DAM Tower</li><li>Milkshake</li></ul><ul class="t2"><li>The Other Side</li><li>Club NYX</li><li>Antwerp Pride</li><li>DeLaMar Theater</li><li>Q Club</li><li>FERRY</li><li>Red &amp; Blue</li></ul><ul class="t3"><li>Stadsschouwburg</li><li>Tropikali</li><li>Superflirt</li><li>LeccoMilano</li><li>Euforia</li></ul></div>
-          <p class="lineup-brands"><b>Brand events</b> voor Bar-le-Duc, Ferry van der Nat, H'ART Museum, Kaspersky, McDonald's, Sanoma, Sofitel Hotels en Solar PR.</p>
+          <h3 class="sr-only">Zalen en festivals</h3><div class="lineup"><ul class="t1"><li>Paradiso</li><li>Amsterdam Pride</li><li>A'DAM Tower</li><li>Milkshake</li></ul><ul class="t2"><li>The Other Side</li><li>Club NYX</li><li>Antwerp Pride</li><li>DeLaMar Theater</li><li>Q Club</li><li>FERRY</li><li>Red &amp; Blue</li></ul><ul class="t3"><li>Stadsschouwburg</li><li>Tropikali</li><li>Superflirt</li><li>LeccoMilano</li><li>Euforia</li></ul></div>
+          <p class="lineup-brands"><b>Festivals en Prides</b>: Milkshake, Tropikali, Superflirt, Amsterdam Pride en Antwerp Pride.</p>
         </div>
-        <figure class="lineup-photo"><img loading="lazy" decoding="async" src="/assets/img/dj-festival.jpg" width="874" height="1125" alt="DJ Absoluut op een festivalpodium"></figure>
+        <figure class="lineup-photo"><img loading="lazy" decoding="async" src="/assets/img/dj-festival.jpg" srcset="/assets/img/dj-festival-680.jpg 680w, /assets/img/dj-festival.jpg 874w" sizes="(max-width: 900px) calc(100vw - 40px), 34vw" width="874" height="1125" alt="DJ Absoluut op een festivalpodium"></figure>
       </div>
     </div>
   </section>
