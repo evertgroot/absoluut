@@ -325,3 +325,12 @@ img[width][height]{height:auto}
 .gv{grid-area:v}.gf{grid-area:f}.gb{grid-area:b}
 @media (max-width: 1000px){.gig-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"v f" "b b"}}
 @media (max-width: 640px){.gig-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"v" "f" "b"}}
+
+/* listen cards with the SoundCloud cover: square art on top; on phones a compact row with the art on the left */
+.mix{padding:0 !important;gap:0 !important;overflow:hidden}
+.mix-art{display:block;width:100%;height:auto;aspect-ratio:1 / 1;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.mix > div:not(.mix-foot){padding:20px clamp(20px,2.2vw,28px) 0}
+.mix-foot{margin:20px clamp(20px,2.2vw,28px) clamp(20px,2.2vw,26px)}
+@media (hover:hover){.mix:hover .mix-art{transform:scale(1.03)}}
+@media (max-width: 760px){.mix{display:grid !important;grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto auto;gap:0 16px !important;padding:14px !important;min-height:0}.mix-art{grid-row:1 / span 2;border-radius:12px;align-self:start}.mix > div:not(.mix-foot){padding:0}.mix-foot{grid-column:2;margin:12px 0 0;padding-top:12px}.mix h3{font-size:22px}.mix-foot > span:first-child > span:not(.mix-play){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}}
+@media (prefers-reduced-motion: reduce){.mix-art{transition:none}.mix:hover .mix-art{transform:none}}
