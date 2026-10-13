@@ -234,3 +234,10 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#ffffff;background:r
 
 /* images carry their intrinsic size; CSS decides the rendered height */
 img[width][height]{height:auto}
+
+/* reading column: a comfortable measure, company details as rows, unbroken link underlines */
+.legal{max-width:680px}
+.legal a{text-decoration-skip-ink:none}
+.legal .facts li{display:flex;flex-wrap:wrap;gap:2px 16px}
+.legal .facts li > span{flex:0 0 250px;color:#111111;font-weight:700}
+@media (max-width: 560px){.legal .facts li > span{flex-basis:100%}}
