@@ -153,18 +153,48 @@ body{background:#ffffff}
 /* end page theme */
 
 /* ---- base ---- */
+/* PDF (built by GitHub, see .github/workflows/press-kit-pdf.yml): biography and technical rider on A4 */
+.pdf-only{display:none}
+@page{size:A4;margin:14mm 15mm 16mm}
 @media print{
-    header,#mobile-menu,footer,[data-print],[data-copy],#top .btn-solid,#top a{display:none !important}
-    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-    #top{padding:24px 0 !important}
-    section{break-inside:auto}
-    html,body,body > div{background:#fff1e6 !important}
-    #bio > div,#media > div,#rider > div{padding-top:28px !important;padding-bottom:28px !important}
-    h2{break-after:avoid}
-    #rider figure,#rider li,#rider h3,#rider [style*="#814c94"],#media{break-inside:avoid}
-    #rider figure{margin-bottom:24px !important}
-    a[href^="http"]::after{content:""}
-  }
+  header,#mobile-menu,footer,.skip,[data-lang-banner],.cta-fab,#media,[data-copy],#top .gut > p:not(.pdf-only),#top .gut > div{display:none !important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;animation:none !important;transition:none !important}
+  .rise{opacity:1 !important;transform:none !important}
+  html,body,body > div{background:#ffffff !important}
+  .gut,#rider > div{padding-left:0 !important;padding-right:0 !important;max-width:none !important}
+  #top{padding:22px 26px !important;border-radius:14px}
+  #top h1{font-size:34px !important;line-height:1 !important}
+  .pdf-only{display:block;margin:10px 0 0;font-size:12.5px;font-weight:700;letter-spacing:0.02em;color:#e6d3ee}
+  #bio > .gut{display:grid !important;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:28px !important;padding-top:26px !important;padding-bottom:6px !important}
+  #bio h2,#rider h2{margin:0 0 12px !important;font-size:26px !important}
+  #bio-text{font-size:12.5px !important;line-height:1.6 !important;max-width:none !important}
+  #bio-text p{margin:0 0 9px !important}
+  #bio dl > div{padding:9px 0 !important}
+  #bio dt{font-size:9px !important}
+  #bio dd{margin-top:3px !important;font-size:16px !important}
+  #bio dd a{min-height:0 !important;gap:8px !important;font-size:12px !important;text-decoration:none !important}
+  #bio dd a > span[aria-hidden]{width:24px !important;height:24px !important}
+  #bio dd a svg{width:13px;height:13px}
+  #rider{border-top:0 !important;break-before:page}
+  #rider::before,#media::before{display:none}
+  #rider > div{padding-top:22px !important;padding-bottom:0 !important}
+  #rider figure{margin:0 0 16px !important;break-inside:avoid}
+  #rider figure img{max-height:120px;width:auto !important;margin:0 auto}
+  #rider figcaption{margin-top:10px !important;font-size:11px !important;text-align:center}
+  #rider > div > div{gap:22px !important}
+  #rider > div > div > div:first-child{flex:2 1 0 !important}
+  #rider > div > div > div:last-child{flex:1 1 0 !important;padding:16px !important;border-radius:12px !important}
+  #rider > div > div > div:first-child > div{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:16px 22px !important}
+  #rider h3{font-size:16px !important;margin-bottom:3px !important}
+  #rider ul{font-size:11.5px !important;line-height:1.5 !important}
+  #rider li{margin:0 !important;padding:5px 0 !important}
+  #rider p{font-size:11.5px !important;margin-bottom:10px !important}
+  #rider > div > p:last-child{display:none !important}
+  #rider h3,#rider li,#rider > div > div > div:last-child{break-inside:avoid}
+  h2,h3{break-after:avoid}
+  a{text-decoration:none !important}
+  a[href^="http"]::after{content:""}
+}
 
 /* ---- hv-sys ---- */
 /* unified hover system: primary · secondary · text link · icon · card */

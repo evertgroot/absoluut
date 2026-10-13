@@ -478,10 +478,7 @@
     if (years > 0) el.textContent = years;
   });
 
-  /* 1d. Press kit: save as PDF (print dialog) and copy the biography */
-  document.querySelectorAll('[data-print]').forEach(function (b) {
-    b.addEventListener('click', function () { window.print(); });
-  });
+  /* 1d. Press kit: copy the biography (the PDF is built by GitHub, see .github/workflows/press-kit-pdf.yml) */
   document.querySelectorAll('[data-copy]').forEach(function (b) {
     var src = document.getElementById(b.getAttribute('data-copy'));
     if (!src) return;
