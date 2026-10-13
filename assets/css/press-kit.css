@@ -309,3 +309,11 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
 /* images carry their intrinsic size; CSS decides the rendered height */
 img[width][height]{height:auto}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+/* rider on screen, two columns: Additional moves up under the short Audio block, so Light and Additional end on the same line */
+@media (min-width: 590px){
+  #rider > div > div > div:first-child > div{grid-template-columns:repeat(2,minmax(0,1fr)) !important;grid-template-rows:auto auto auto}
+  #rider > div > div > div:first-child > div > div:nth-child(1){grid-column:1;grid-row:1 / span 2;align-self:start}
+  #rider > div > div > div:first-child > div > div:nth-child(2){grid-column:2;grid-row:1;align-self:start}
+  #rider > div > div > div:first-child > div > div:nth-child(3){grid-column:1;grid-row:3;align-self:end}
+  #rider > div > div > div:first-child > div > div:nth-child(4){grid-column:2;grid-row:2 / span 2;align-self:end}
+}
