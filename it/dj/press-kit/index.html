@@ -327,6 +327,8 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
 .skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:#0b0b0c;font-weight:800;text-decoration:none}
 .skip:focus{top:12px;outline:2px solid var(--hv-acc-l);outline-offset:2px}
 main:focus{outline:none}
+/* pages with a hero button: the header button joins in once the bar sticks, so the first screen has one call to action */
+body:has(.hero-cta) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-sep){display:none !important}
 :is(#services,#events,#where,#bio,#media,#rider) :focus-visible{outline-color:var(--hv-acc-l) !important}
 .field:not(:focus){border-color:rgba(255,255,255,0.5) !important}
 @media (max-width: 760px){.site-sw a{height:40px}header .site-sw a:not([aria-current]){max-width:44px}}
