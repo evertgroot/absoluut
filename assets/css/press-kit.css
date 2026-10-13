@@ -153,46 +153,70 @@ body{background:#ffffff}
 /* end page theme */
 
 /* ---- base ---- */
-/* PDF (built by GitHub, see .github/workflows/press-kit-pdf.yml): biography and technical rider on A4 */
+/* PDF (built by GitHub, see .github/workflows/press-kit-pdf.yml): biography and technical rider on one A4 page */
 .pdf-only{display:none}
-@page{size:A4;margin:14mm 15mm 16mm}
+@page{size:A4;margin:12mm 13mm}
 @media print{
-  header,#mobile-menu,footer,.skip,[data-lang-banner],.cta-fab,#media,[data-copy],#top .gut > p:not(.pdf-only),#top .gut > div{display:none !important}
+  header,#mobile-menu,footer,.skip,[data-lang-banner],.cta-fab,#media,[data-copy],#top .gut > p:not(.pdf-only),#top .gut > div,#rider > div > p:last-child,#rider::before,#media::before{display:none !important}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact;animation:none !important;transition:none !important}
   .rise{opacity:1 !important;transform:none !important}
   html,body,body > div{background:#ffffff !important}
+  a{text-decoration:none !important;color:inherit !important}
   .gut,#rider > div{padding-left:0 !important;padding-right:0 !important;max-width:none !important}
-  #top{padding:22px 26px !important;border-radius:14px}
-  #top h1{font-size:34px !important;line-height:1 !important}
-  .pdf-only{display:block;margin:10px 0 0;font-size:12.5px;font-weight:700;letter-spacing:0.02em;color:#e6d3ee}
-  #bio > .gut{display:grid !important;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:28px !important;padding-top:26px !important;padding-bottom:6px !important}
-  #bio h2,#rider h2{margin:0 0 12px !important;font-size:26px !important}
-  #bio-text{font-size:12.5px !important;line-height:1.6 !important;max-width:none !important}
+
+  /* header band */
+  #top{padding:16px 20px !important;border-radius:10px}
+  #top .gut{display:flex !important;align-items:center;justify-content:flex-start;gap:16px}
+  #top h1{font-size:26px !important;line-height:1 !important;margin:0 !important}
+  /* light pink instead of red on the dark band, so the title stays clear on a black-and-white print */
+  #top h1 span{color:#ff9fb2 !important}
+  /* the DJ Absoluut pill from the site switch in the header */
+  .pdf-name{order:-1;display:inline-flex;align-items:center;height:32px;margin:0;padding:0 14px;border-radius:999px;background:#ffffff;font-family:'Baloo Bhai 2',sans-serif;font-size:15px;font-weight:700;line-height:1;letter-spacing:-0.01em;color:#1f0328;white-space:nowrap}
+  .pdf-name::before{content:"";flex:0 0 auto;width:7px;height:7px;margin-right:7px;border-radius:50%;background:#c8193a}
+
+  /* section titles */
+  #bio h2,#rider h2{margin:0 0 10px !important;font-size:21px !important;line-height:1.1 !important;letter-spacing:-0.02em !important}
+
+  /* biography: text left, facts right */
+  #bio > .gut{display:grid !important;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:26px !important;padding:30px 0 0 !important}
+  #bio-text{font-size:12px !important;line-height:1.6 !important;max-width:none !important;color:#3d3742 !important}
   #bio-text p{margin:0 0 9px !important}
-  #bio dl > div{padding:9px 0 !important}
-  #bio dt{font-size:9px !important}
-  #bio dd{margin-top:3px !important;font-size:16px !important}
-  #bio dd a{min-height:0 !important;gap:8px !important;font-size:12px !important;text-decoration:none !important}
-  #bio dd a > span[aria-hidden]{width:24px !important;height:24px !important}
-  #bio dd a svg{width:13px;height:13px}
-  #rider{border-top:0 !important;break-before:page}
-  #rider::before,#media::before{display:none}
-  #rider > div{padding-top:22px !important;padding-bottom:0 !important}
-  #rider figure{margin:0 0 16px !important;break-inside:avoid}
-  #rider figure img{max-height:120px;width:auto !important;margin:0 auto}
-  #rider figcaption{margin-top:10px !important;font-size:11px !important;text-align:center}
-  #rider > div > div{gap:22px !important}
-  #rider > div > div > div:first-child{flex:2 1 0 !important}
-  #rider > div > div > div:last-child{flex:1 1 0 !important;padding:16px !important;border-radius:12px !important}
+  #bio dl{margin-top:6px !important;border-top:1.5px solid #16121a !important}
+  #bio dl > div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:8px 0 !important;border-bottom:1px solid #e6e1e8 !important}
+  #bio dl > div:last-child{display:block !important;position:relative;min-height:112px;padding-right:96px !important;border-bottom:0 !important}
+  .pdf-photo{display:block;position:absolute;top:10px;right:0;width:78px;height:98px;object-fit:cover;object-position:50% 30%;border-radius:10px}
+  #bio dt{font-size:8px !important;letter-spacing:0.12em !important}
+  #bio dd{margin:0 !important;font-size:13px !important;line-height:1.2 !important;text-align:right}
+  #bio dl > div:last-child dd{margin-top:6px !important;text-align:left}
+  #bio dd ul{flex-direction:column !important;gap:3px !important}
+  #bio dd a.hv-tl{min-height:0 !important;gap:0 !important;font-size:11px !important;font-weight:700 !important;text-decoration-line:none !important}
+  #bio dd a > span[aria-hidden]{display:none !important}
+  #bio dd a[href*="instagram"]::before{content:"Instagram\00a0\00a0";font-weight:500;color:#6b6470}
+  #bio dd a[href*="tiktok"]::before{content:"TikTok\00a0\00a0";font-weight:500;color:#6b6470}
+  #bio dd a[href*="soundcloud"]::before{content:"SoundCloud\00a0\00a0";font-weight:500;color:#6b6470}
+
+  /* technical rider */
+  #rider{border-top:0 !important;break-before:auto}
+  #rider > div{padding:28px 0 0 !important;border-top:1px solid #e6e1e8;margin-top:28px !important}
+  #rider figure{margin:22px 0 0 !important;display:flex;flex-direction:column;align-items:center;gap:8px}
+  #rider figure img{width:56% !important;height:auto !important;margin:0 !important}
+  #rider figcaption{margin:0 !important;font-size:11px !important;line-height:1.4 !important;text-align:center}
+  #rider > div > div{margin-top:24px;display:grid !important;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:18px !important}
   #rider > div > div > div:first-child > div{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:16px 22px !important}
-  #rider h3{font-size:16px !important;margin-bottom:3px !important}
-  #rider ul{font-size:11.5px !important;line-height:1.5 !important}
-  #rider li{margin:0 !important;padding:5px 0 !important}
-  #rider p{font-size:11.5px !important;margin-bottom:10px !important}
-  #rider > div > p:last-child{display:none !important}
-  #rider h3,#rider li,#rider > div > div > div:last-child{break-inside:avoid}
+  #rider > div > div > div:last-child{padding:14px !important;border-radius:10px !important;align-self:start}
+  #rider p{font-size:8px !important;letter-spacing:0.12em !important;margin:0 0 8px !important}
+  #rider h3{font-size:14px !important;margin:0 0 3px !important}
+  #rider ul{font-size:11px !important;line-height:1.5 !important}
+  #rider li{margin:0 !important;padding:4px 0 !important;border-width:0 0 1px !important}
+  #rider li:last-child{border-bottom:0 !important}
+  /* two independent columns: Additional moves up under the short Audio block, so both columns end on the same line */
+  #rider > div > div > div:first-child > div{grid-template-rows:auto auto auto}
+  #rider > div > div > div:first-child > div > div:nth-child(1){grid-column:1;grid-row:1 / span 2}
+  #rider > div > div > div:first-child > div > div:nth-child(2){grid-column:2;grid-row:1}
+  #rider > div > div > div:first-child > div > div:nth-child(3){grid-column:1;grid-row:3;align-self:end}
+  #rider > div > div > div:first-child > div > div:nth-child(4){grid-column:2;grid-row:2 / span 2;align-self:end}
+  #rider h3,#rider li{break-inside:avoid}
   h2,h3{break-after:avoid}
-  a{text-decoration:none !important}
   a[href^="http"]::after{content:""}
 }
 
