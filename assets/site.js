@@ -167,7 +167,7 @@
     update();
   }
 
-  /* 1b3. Gold band: keeps drifting on its own, but visitors can swipe, drag or scroll it themselves */
+  /* 1b3. Logo band: keeps drifting on its own, but visitors can swipe, drag or scroll it themselves */
   var bands = document.querySelectorAll('.marquee');
   if (bands.length) {
     var css = document.createElement('style');

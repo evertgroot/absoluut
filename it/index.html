@@ -10,7 +10,7 @@
   <link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/">
   <link rel="alternate" hreflang="it" href="https://imgroot.nl/it/">
   <link rel="alternate" hreflang="x-default" href="https://imgroot.nl/">
-  <meta name="theme-color" content="#17155f">
+  <meta name="theme-color" content="#0b0b0c">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Evert Groot">
   <meta property="og:url" content="https://imgroot.nl/it/">
@@ -150,7 +150,6 @@ a.case:hover h3{color:#dbad72}
 .hdr-lang a[aria-current],.mm-lang a[aria-current]{color:#ffffff}
 .hdr-lang a:hover,.mm-lang a:hover{color:#dbad72}
 .mm-link{display:flex !important;align-items:baseline;gap:14px}
-.mm-num{flex:0 0 22px;font-family:'Manrope',sans-serif;font-size:12px;font-weight:800;letter-spacing:0.1em;color:#8e8abf}
 .mm-link[aria-current]{color:#dbad72 !important}
 @media (max-width: 1240px){
   header{grid-template-columns:auto auto minmax(0,1fr) !important;gap:20px 28px !important}
@@ -185,16 +184,6 @@ header.hdr-stuck{background:rgba(11,11,12,0.94) !important}
 .site-sw a:last-of-type::before{background:#c8193a}
 @media (max-width: 360px){.site-sw a::before{width:7px;height:7px;margin-right:6px}}
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
-/* language: current language + arrow, the others in a small panel */
-.lang-dd{position:relative}
-.lg-btn{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 4px 0 10px;border:0;background:none;color:#ffffff;font:800 12px/1 'Manrope',sans-serif;letter-spacing:0.1em;cursor:pointer}
-.lg-btn:hover{color:var(--acc)}
-.lg-btn svg{transition:transform .25s ease}
-.lg-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
-.lg-pop{position:absolute;right:0;top:calc(100% + 6px);z-index:70;min-width:180px;padding:4px;border-radius:12px;background:var(--pop);border:1px solid rgba(255,255,255,0.12);box-shadow:0 16px 40px rgba(0,0,0,0.45)}
-.hdr-lang .lg-pop a{display:flex;align-items:center;justify-content:flex-start;gap:12px;width:auto;height:44px;padding:0 12px;border-radius:8px;color:#ffffff;font:600 14px/1 'Manrope',sans-serif;letter-spacing:0}
-.hdr-lang .lg-pop a b{width:22px;font-size:11px;font-weight:800;letter-spacing:0.1em;color:#8e8abf}
-.hdr-lang .lg-pop a:hover,.hdr-lang .lg-pop a:focus-visible{background:rgba(255,255,255,0.08);color:#ffffff}
 :root{--acc:#7bd6e0;--pop:#161618}
 a .bops-mark{transition:background-color .25s ease}
 /* hero: title higher, intro text under the title */
@@ -221,7 +210,7 @@ a:hover{color:#7bd6e0}
 .svc:hover{background-color:rgba(17,17,17,0.04);color:#111111}
 .svc:hover .svc-arrow{color:#0b6e78}
 a.case:hover h3,.chap:hover .chap-label,.mm-link:hover{color:#7bd6e0}
-.hdr-lang a,.mm-lang a,.mm-num,.hdr-lang .lg-pop a b{color:#8c9396}
+.hdr-lang a,.mm-lang a{color:#8c9396}
 .site-sw a,.site-sw.sw-flip a[aria-current]{color:#a7adb0}
 .site-sw a[aria-current],.site-sw a[aria-current]:hover,.site-sw.sw-flip a:not([aria-current]){color:#0b0b0c}
 .ft2-sub,.ft2-bottom a{color:#bcd3d5}
@@ -233,23 +222,9 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#7bd6e0}
 #lang-banner-link,#lang-banner-close{color:#0b0b0c !important}
 /* end page theme */
 </style>
-<style>
-  .quotes > span,.quote-track,.quote-controls{width:100%;max-width:860px;margin-left:auto;margin-right:auto}
-  .quote-track{display:flex;align-items:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab;-webkit-user-select:none;user-select:none}
-  .quote-track::-webkit-scrollbar{display:none}
-  .quote-track.q-drag{cursor:grabbing;scroll-snap-type:none}
-  .quote-slide{flex:0 0 100%;min-width:0;scroll-snap-align:start;margin:0;display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px)}
-  .quote-slide blockquote{max-width:none !important}
-  .quote-controls{display:flex;justify-content:center}
-  .quote-dots{display:flex;gap:0}
-  .quote-dot{display:grid;place-items:center;width:30px;height:44px;padding:0;border:0;background:transparent;cursor:pointer}
-  .quote-dot span{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.4);transition:background .2s ease,transform .2s ease}
-  .quote-dot[aria-current="true"] span{background:#fff;transform:scale(1.2)}
-  .quote-dot:focus-visible,.quote-track:focus-visible{outline:3px solid #dbad72;outline-offset:2px}
-</style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://imgroot.nl/#evert", "name": "Evert Groot", "alternateName": ["DJ Absoluut", "Absoluut"], "url": "https://imgroot.nl/", "image": "https://imgroot.nl/assets/img/evert-groot.jpg", "email": "mailto:evert@imgroot.nl", "jobTitle": ["Content Strategist", "DJ", "Content Creator", "Event Organizer"], "knowsAbout": ["Content strategy", "Social media strategy", "Creative direction", "Short-form video", "Pop music", "DJing", "Wedding DJ", "Event organizing", "Queer nightlife"], "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "founder": {"@id": "https://imgroot.nl/#bops"}, "sameAs": ["https://www.instagram.com/absoluut/", "https://www.tiktok.com/@absoluutdj", "https://www.linkedin.com/in/evertgroot", "https://soundcloud.com/absoluut"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content strategy and creative direction", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ for clubs, festivals, brand events and weddings", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event organizing", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator partnerships and short-form video", "areaServed": ["NL", "IT"]}}]}, {"@type": "Organization", "@id": "https://imgroot.nl/#bops", "name": "BOPS", "description": "Queer pop party at The Other Side, Amsterdam", "url": "https://www.instagram.com/bops.ams/", "sameAs": ["https://www.instagram.com/bops.ams/"]}, {"@type": "WebSite", "@id": "https://imgroot.nl/#website", "url": "https://imgroot.nl/", "name": "Evert Groot", "inLanguage": ["en", "nl", "it"], "publisher": {"@id": "https://imgroot.nl/#evert"}}]}</script>
   <script data-goatcounter="https://imgroot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-  <script src="/assets/site.js?v=c569fc20" defer></script>
+  <script src="/assets/site.js?v=b60128f4" defer></script>
 <style id="form-sys">
 #contact-form [hidden]{display:none !important}
 .f-hint{margin:-6px 0 0;font-size:14px;line-height:1.5;opacity:.75}
@@ -301,6 +276,10 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
 .skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:#0b0b0c;font-weight:800;text-decoration:none}
 .skip:focus{top:12px;outline:2px solid var(--hv-acc-l);outline-offset:2px}
 main:focus{outline:none}
+/* browser surfaces in the page palette */
+::selection{background:var(--hv-acc);color:#0b0b0c}
+.field{caret-color:var(--hv-acc)}
+@media (max-width: 640px){.bops-count{display:block;margin-top:4px}.bops-sep{display:none}}
 /* arrows: one drawn set instead of font glyphs. down = further on this page, right = another page of the site,
    up-right = another website, download = save a file. The glyph stays in the markup as a text fallback. */
 .hv-ar{display:inline-block;width:.8em;height:.8em;margin-left:.4em;vertical-align:-.04em;overflow:hidden;text-indent:2em;white-space:nowrap;background:currentColor;-webkit-mask:var(--ar) center / contain no-repeat;mask:var(--ar) center / contain no-repeat}
@@ -492,20 +471,20 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
     <div class="case-row" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(32px, 4vw, 48px) clamp(16px, 2vw, 32px); margin-top: clamp(40px, 5vw, 64px)">
       <a class="case" href="https://www.linkedin.com/company/stichtingforward/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-forward" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-forward.jpg" alt="Contenuti social per Stichting FORWARD" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
-        <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Strategia · Pianificazione · Copy</span>
-        <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Stichting FORWARD<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
+        <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Stichting FORWARD<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
+        <span style="margin-top: -6px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Strategia · Pianificazione · Copy</span>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #c9cdcf">Strategia dei contenuti, pianificazione editoriale e copy che rendono accessibili temi legali e LGBTQIA+ complessi.</p>
       </a>
       <a class="case" href="https://www.instagram.com/reels/DDMBNbwCVMU/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-tui-social" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-tui-social.jpg" alt="Strategia social short-form per TUI" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
-        <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Strategia · Concept</span>
-        <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Strategia social per TUI<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
+        <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Strategia social per TUI<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
+        <span style="margin-top: -6px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Strategia · Concept</span>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #c9cdcf">Strategia dei contenuti social e concept ricorrenti di video short-form per TUI.</p>
       </a>
       <a class="case" href="https://www.instagram.com/mantotman_nl/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-soa-aids" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-soa-aids.jpg" alt="Contenuti social per Soa Aids Nederland" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
-        <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Contenuti · Advertising · Copy</span>
-        <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Soa Aids Nederland<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
+        <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Soa Aids Nederland<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
+        <span style="margin-top: -6px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Contenuti · Advertising · Copy</span>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #c9cdcf">Contenuti social e campagne inclusive per Man tot Man su Facebook, Instagram e TikTok.</p>
       </a>
     </div>
@@ -532,14 +511,14 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
   <section id="events" aria-labelledby="events-title" style="background: #fff1e6; color: #17155f">
     <div style="max-width: 1360px; margin: 0 auto; padding: clamp(72px, 10vw, 136px) clamp(20px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: clamp(40px, 6vw, 96px); align-items: center">
       <div style="flex: 1 1 360px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px">
-        <img loading="lazy" decoding="async" src="/assets/img/bops-logo-red.webp" alt="Logo BOPS" style="width: 100%; max-width: 520px; height: auto">
+        <img loading="lazy" decoding="async" src="/assets/img/bops-logo-red.webp" width="900" height="582" alt="Logo BOPS" style="width: 100%; max-width: 520px; height: auto">
       </div>
       <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
         <h2 id="events-title" style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800; margin-left: -0.052em">Una community attorno al queer pop</h2>
         <p style="margin: 0; font-size: 17px; line-height: 1.6">Come co-fondatore di BOPS, mi occupo di concept, programmazione, direzione creativa e marketing del nostro queer pop party trimestrale ad Amsterdam. Insieme all’altro co-fondatore, Tom Morgan, ho costruito una community attorno al nostro amore condiviso per la musica pop.</p>
         <div id="bops-card" data-none="Nuova data in arrivo" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 0; border-top: 1.5px solid #17155f; border-bottom: 1.5px solid #17155f">
           <div>
-            <div style="color: #c42b00; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase"><span id="bops-label">Prossimo evento</span><span id="bops-date"> · 27 novembre</span> · 24 edizioni e non ci fermiamo</div>
+            <div style="color: #c42b00; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase"><span id="bops-label">Prossimo evento</span><span id="bops-date"> · 27 novembre</span><span class="bops-count"><span class="bops-sep"> · </span>24 edizioni e non ci fermiamo</span></div>
             <div style="margin-top: 4px; font-family: 'Baloo Bhai 2', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">BOPS al The Other Side</div>
           </div>
           <a class="hv-tl hv-lt" id="bops-tickets" href="https://linktr.ee/bops.ams" target="_blank" rel="noopener noreferrer" data-goatcounter-click="click-bops-more-info" style="display: inline-flex; align-items: center; min-height: 44px; color: #17155f; font-size: 16px; font-weight: 800">Più info<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a>
@@ -616,6 +595,7 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
     </div>
     <div class="ft2-bottom"><span><span>© Evert Groot 2026</span><span>Amsterdam</span><span>KvK 83829210</span><span>IVA NL002102770B37</span></span><span><a href="/it/privacy/">Privacy</a><span>Sito realizzato da <a href="https://freycreates.nl/" target="_blank" rel="noopener noreferrer">Frey Creates</a></span></span></div>
   </footer>
+</div>
 </div>
 </body>
 </html>

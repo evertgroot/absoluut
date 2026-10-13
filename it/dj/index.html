@@ -164,7 +164,6 @@ a{color:#ffffff}a:hover{color:#dbad72}
 .hdr-lang a[aria-current],.mm-lang a[aria-current]{color:#ffffff}
 .hdr-lang a:hover,.mm-lang a:hover{color:#dbad72}
 .mm-link{display:flex !important;align-items:baseline;gap:14px}
-.mm-num{flex:0 0 22px;font-family:'Manrope',sans-serif;font-size:12px;font-weight:800;letter-spacing:0.1em;color:#8e8abf}
 .mm-link[aria-current]{color:#dbad72 !important}
 @media (max-width: 1240px){
   header{grid-template-columns:auto auto minmax(0,1fr) !important;gap:20px 28px !important}
@@ -196,16 +195,6 @@ header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
 .site-sw a:last-of-type::before{background:#c8193a}
 @media (max-width: 360px){.site-sw a::before{width:7px;height:7px;margin-right:6px}}
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
-/* language: current language + arrow, the others in a small panel */
-.lang-dd{position:relative}
-.lg-btn{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 4px 0 10px;border:0;background:none;color:#ffffff;font:800 12px/1 'Manrope',sans-serif;letter-spacing:0.1em;cursor:pointer}
-.lg-btn:hover{color:var(--acc)}
-.lg-btn svg{transition:transform .25s ease}
-.lg-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
-.lg-pop{position:absolute;right:0;top:calc(100% + 6px);z-index:70;min-width:180px;padding:4px;border-radius:12px;background:var(--pop);border:1px solid rgba(255,255,255,0.12);box-shadow:0 16px 40px rgba(0,0,0,0.45)}
-.hdr-lang .lg-pop a{display:flex;align-items:center;justify-content:flex-start;gap:12px;width:auto;height:44px;padding:0 12px;border-radius:8px;color:#ffffff;font:600 14px/1 'Manrope',sans-serif;letter-spacing:0}
-.hdr-lang .lg-pop a b{width:22px;font-size:11px;font-weight:800;letter-spacing:0.1em;color:#8e8abf}
-.hdr-lang .lg-pop a:hover,.hdr-lang .lg-pop a:focus-visible{background:rgba(255,255,255,0.08);color:#ffffff}
 :root{--acc:#c8193a;--pop:#2c0739}
 a .bops-mark{transition:background-color .25s ease}
 /* hero: title higher, intro text under the title */
@@ -231,7 +220,7 @@ a:hover{color:#ff9fb2}
 .field option{color:#1f0328}
 .mm-link:hover{color:#ff9fb2}
 .qdot:focus-visible{outline-color:#ff9fb2}
-.hdr-lang a,.mm-lang a,.mm-num,.hdr-lang .lg-pop a b{color:#b98fc8}
+.hdr-lang a,.mm-lang a{color:#b98fc8}
 .site-sw a,.site-sw.sw-flip a[aria-current]{color:#d9b5e6}
 .site-sw a[aria-current],.site-sw a[aria-current]:hover,.site-sw.sw-flip a:not([aria-current]){color:#1f0328}
 .ft2-sub,.ft2-bottom a{color:#ecd6f3}
@@ -242,23 +231,9 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#ff9fb2}
 #lang-banner-link,#lang-banner-close{color:#ffffff !important}
 /* end page theme */
 </style>
-<style>
-  .quotes > span,.quote-track,.quote-controls{width:100%;max-width:860px;margin-left:auto;margin-right:auto}
-  .quote-track{display:flex;align-items:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab;-webkit-user-select:none;user-select:none}
-  .quote-track::-webkit-scrollbar{display:none}
-  .quote-track.q-drag{cursor:grabbing;scroll-snap-type:none}
-  .quote-slide{flex:0 0 100%;min-width:0;scroll-snap-align:start;margin:0;display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px)}
-  .quote-slide blockquote{max-width:none !important}
-  .quote-controls{display:flex;justify-content:center}
-  .quote-dots{display:flex;gap:0}
-  .quote-dot{display:grid;place-items:center;width:30px;height:44px;padding:0;border:0;background:transparent;cursor:pointer}
-  .quote-dot span{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.4);transition:background .2s ease,transform .2s ease}
-  .quote-dot[aria-current="true"] span{background:#fff;transform:scale(1.2)}
-  .quote-dot:focus-visible,.quote-track:focus-visible{outline:3px solid #dbad72;outline-offset:2px}
-</style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://imgroot.nl/#evert", "name": "Evert Groot", "alternateName": ["DJ Absoluut", "Absoluut"], "url": "https://imgroot.nl/", "image": "https://imgroot.nl/assets/img/evert-groot.jpg", "email": "mailto:evert@imgroot.nl", "jobTitle": ["Content Strategist", "DJ", "Content Creator", "Event Organizer"], "knowsAbout": ["Content strategy", "Social media strategy", "Creative direction", "Short-form video", "Pop music", "DJing", "Wedding DJ", "Event organizing", "Queer nightlife"], "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "founder": {"@id": "https://imgroot.nl/#bops"}, "sameAs": ["https://www.instagram.com/absoluut/", "https://www.tiktok.com/@absoluutdj", "https://www.linkedin.com/in/evertgroot", "https://soundcloud.com/absoluut"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content strategy and creative direction", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ for clubs, festivals, brand events and weddings", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event organizing", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator partnerships and short-form video", "areaServed": ["NL", "IT"]}}]}, {"@type": "Organization", "@id": "https://imgroot.nl/#bops", "name": "BOPS", "description": "Queer pop party at The Other Side, Amsterdam", "url": "https://www.instagram.com/bops.ams/", "sameAs": ["https://www.instagram.com/bops.ams/"]}, {"@type": "WebSite", "@id": "https://imgroot.nl/#website", "url": "https://imgroot.nl/", "name": "Evert Groot", "inLanguage": ["en", "nl", "it"], "publisher": {"@id": "https://imgroot.nl/#evert"}}, {"@type": "Service", "@id": "https://imgroot.nl/it/dj/#service", "serviceType": "DJ", "name": "DJ Absoluut – DJ for club nights, brand events, private parties and weddings", "provider": {"@id": "https://imgroot.nl/#evert"}, "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "url": "https://imgroot.nl/it/dj/", "image": "https://imgroot.nl/assets/img/dj-absoluut-bops.jpg"}]}</script>
   <script data-goatcounter="https://imgroot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-  <script src="/assets/site.js?v=c569fc20" defer></script>
+  <script src="/assets/site.js?v=b60128f4" defer></script>
 <style id="form-sys">
 #contact-form [hidden]{display:none !important}
 .f-hint{margin:-6px 0 0;font-size:14px;line-height:1.5;opacity:.75}
@@ -316,6 +291,9 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
 .skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:#0b0b0c;font-weight:800;text-decoration:none}
 .skip:focus{top:12px;outline:2px solid var(--hv-acc-l);outline-offset:2px}
 main:focus{outline:none}
+/* browser surfaces in the page palette */
+::selection{background:var(--hv-acc);color:#0b0b0c}
+.field{caret-color:var(--hv-acc)}
 /* where I've played: a line-up poster instead of a list. Headliners large, the rest smaller, brand clients as one line */
 .lineup-wrap{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center}
 @media (max-width: 900px){.lineup-wrap{grid-template-columns:minmax(0,1fr)}}
@@ -610,6 +588,7 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
     </div>
     <div class="ft2-bottom"><span><span>© Evert Groot 2026</span><span>Amsterdam</span><span>KvK 83829210</span><span>IVA NL002102770B37</span></span><span><a href="/it/privacy/">Privacy</a><a href="/it/dj/press-kit/">Press kit e rider</a><span>Sito realizzato da <a href="https://freycreates.nl/" target="_blank" rel="noopener noreferrer">Frey Creates</a></span></span></div>
   </footer>
+</div>
 </div>
 </body>
 </html>
