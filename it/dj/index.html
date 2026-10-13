@@ -291,18 +291,19 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
 .skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:#0b0b0c;font-weight:800;text-decoration:none}
 .skip:focus{top:12px;outline:2px solid var(--hv-acc-l);outline-offset:2px}
 main:focus{outline:none}
+.hdr-cta{white-space:nowrap}
+@media (min-width: 1061px) and (max-width: 1240px){.nav-links{gap:16px !important}.hdr-lang a{width:28px}header{column-gap:18px !important}.hdr-right{gap:8px}}
 /* browser surfaces in the page palette */
 ::selection{background:var(--hv-acc);color:#0b0b0c}
 .field{caret-color:var(--hv-acc)}
 /* where I've played: a line-up poster instead of a list. Headliners large, the rest smaller, brand clients as one line */
 .lineup-wrap{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center}
 @media (max-width: 900px){.lineup-wrap{grid-template-columns:minmax(0,1fr)}}
-.lineup{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:10px clamp(20px,2.2vw,34px);font-family:'Baloo Bhai 2',sans-serif;font-weight:800;line-height:.95;letter-spacing:-0.03em;color:#ffffff}
-.lineup li{display:inline-flex;align-items:baseline;gap:.4em}
-.lineup .t1{font-size:clamp(40px,5.4vw,80px);letter-spacing:-0.04em}
-.lineup .t2{font-size:clamp(25px,2.7vw,40px);color:#ffd8ea}
-.lineup .t3{font-size:clamp(19px,1.7vw,26px);color:#efd3f6}
-.lineup small{font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;letter-spacing:0;line-height:1;color:#d9b5e6}
+.lineup{margin:0;padding:0;font-family:'Baloo Bhai 2',sans-serif;font-weight:800;color:#ffffff}
+.lineup ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline}
+.lineup .t1{flex-direction:column;gap:2px;font-size:clamp(40px,5.4vw,80px);line-height:.98;letter-spacing:-0.04em}
+.lineup .t2{gap:4px clamp(18px,2vw,28px);margin-top:clamp(20px,2.4vw,30px);font-size:clamp(24px,2.5vw,36px);line-height:1.15;letter-spacing:-0.025em;color:#ffd8ea}
+.lineup .t3{gap:2px clamp(16px,1.8vw,24px);margin-top:clamp(10px,1.2vw,14px);font-size:clamp(18px,1.6vw,23px);line-height:1.3;letter-spacing:-0.01em;color:#e7c6f1}
 .lineup-reach{margin:16px 0 clamp(36px,4.5vw,64px);font-size:17px;line-height:1.6;color:#e6d3ee}
 .lineup-brands{margin:clamp(32px,4vw,52px) 0 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.2);max-width:62ch;font-size:17px;line-height:1.6;color:#e6d3ee}
 .lineup-brands b{color:#ffffff;font-weight:800}
@@ -489,7 +490,7 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
       <p class="lineup-reach">Amsterdam, Rotterdam, Anversa e Milano, dal 2008.</p>
       <div class="lineup-wrap">
         <div>
-          <ul class="lineup"><li class="t1">Paradiso <small>Amsterdam</small></li><li class="t1">Amsterdam Pride</li><li class="t1">A'DAM Tower <small>Amsterdam</small></li><li class="t1">Milkshake</li><li class="t2">The Other Side <small>Amsterdam, BOPS</small></li><li class="t2">Club NYX <small>Amsterdam</small></li><li class="t2">Antwerp Pride</li><li class="t2">DeLaMar Theater <small>Amsterdam</small></li><li class="t2">Q Club <small>Milano</small></li><li class="t2">FERRY <small>Rotterdam</small></li><li class="t2">Red &amp; Blue <small>Anversa</small></li><li class="t3">Stadsschouwburg <small>Amsterdam</small></li><li class="t3">Tropikali</li><li class="t3">Superflirt</li><li class="t3">LeccoMilano <small>Milano</small></li><li class="t3">Euforia <small>Milano</small></li></ul>
+          <div class="lineup"><ul class="t1"><li>Paradiso</li><li>Amsterdam Pride</li><li>A'DAM Tower</li><li>Milkshake</li></ul><ul class="t2"><li>The Other Side</li><li>Club NYX</li><li>Antwerp Pride</li><li>DeLaMar Theater</li><li>Q Club</li><li>FERRY</li><li>Red &amp; Blue</li></ul><ul class="t3"><li>Stadsschouwburg</li><li>Tropikali</li><li>Superflirt</li><li>LeccoMilano</li><li>Euforia</li></ul></div>
           <p class="lineup-brands"><b>Eventi aziendali</b> per Bar-le-Duc, Ferry van der Nat, H'ART Museum, Kaspersky, McDonald's, Sanoma, Sofitel Hotels e Solar PR.</p>
         </div>
         <figure class="lineup-photo"><img loading="lazy" decoding="async" src="/assets/img/dj-festival.jpg" width="874" height="1125" alt="DJ Absoluut sul palco di un festival"></figure>
