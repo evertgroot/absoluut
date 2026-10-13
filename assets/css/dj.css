@@ -334,3 +334,6 @@ img[width][height]{height:auto}
 @media (hover:hover){.mix:hover .mix-art{transform:scale(1.03)}}
 @media (max-width: 760px){.mix{display:grid !important;grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto auto;gap:0 16px !important;padding:14px !important;min-height:0}.mix-art{grid-row:1 / span 2;border-radius:12px;align-self:start}.mix > div:not(.mix-foot){padding:0}.mix-foot{grid-column:2;margin:12px 0 0;padding-top:12px}.mix h3{font-size:22px}.mix-foot > span:first-child > span:not(.mix-play){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}}
 @media (prefers-reduced-motion: reduce){.mix-art{transition:none}.mix:hover .mix-art{transform:none}}
+/* four listen cards: one row on wide screens, two by two in between */
+@media (min-width: 761px){.listen-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
+@media (min-width: 1180px){.listen-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important}}
