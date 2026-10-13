@@ -337,3 +337,4 @@ img[width][height]{height:auto}
 /* four listen cards: one row on wide screens, two by two in between */
 @media (min-width: 761px){.listen-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
 @media (min-width: 1180px){.listen-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important}}
+.f-mail-end{margin-top:8px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.14);color:#e6d3ee}
