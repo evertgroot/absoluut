@@ -52,8 +52,9 @@
 
   /* 1b2. Mobile menu, plus a way forward after scrolling:
      desktop - the header turns into a slim bar fixed to the top;
-     mobile  - the page's main call to action (contact or booking) floats at the bottom right,
-               and steps aside once the form or the footer is on screen */
+     mobile  - the same slim bar slides back in whenever the visitor scrolls up (and out again when
+               they read on), and the page's main call to action (contact or booking) floats at the
+               bottom right once the hero's own button is gone, stepping aside at the form and footer */
   var menuBtn = document.querySelector('.menu-btn');
   var menu = document.getElementById('mobile-menu');
   var header = document.querySelector('header');
@@ -69,7 +70,8 @@
       fab.style.background = getComputedStyle(cta).backgroundColor;
       fab.style.color = getComputedStyle(cta).color;
       if (cta.hasAttribute('data-goatcounter-click')) fab.setAttribute('data-goatcounter-click', cta.getAttribute('data-goatcounter-click') + '-fab');
-      document.body.appendChild(fab);
+      var mainEl = document.querySelector('main'); /* right after the content in tab order, before the footer */
+      if (mainEl) mainEl.parentNode.insertBefore(fab, mainEl.nextSibling); else document.body.appendChild(fab);
     }
     /* while the menu is open, everything behind it is out of reach for keyboard and screen readers */
     var setInert = function (on) {
@@ -102,11 +104,12 @@
     css.textContent =
       '.cta-fab{position:fixed;font-family:Manrope,sans-serif;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:55;display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:999px;font-size:16px;font-weight:800;text-decoration:none;white-space:nowrap;box-shadow:0 10px 28px rgba(0,0,0,.35);animation:fab-in .25s ease both}' +
       '.cta-fab[hidden]{display:none}.cta-fab:focus-visible{outline:3px solid #ffffff;outline-offset:3px}' +
-      'header.hdr-stuck{position:fixed !important;left:0 !important;right:0 !important;top:0 !important;z-index:50 !important;max-width:none !important;padding:10px calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)) !important;background:rgba(23,21,95,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(0,0,0,.25);animation:bar-in .25s ease both}' +
+      'header.hdr-stuck{position:fixed !important;left:0 !important;right:0 !important;top:0 !important;z-index:50 !important;max-width:none !important;padding:10px calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)) !important;border-bottom:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(0,0,0,.25);animation:bar-in .25s ease both}' +
       '@keyframes fab-in{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}' +
       '@keyframes bar-in{from{transform:translateY(-100%)}to{transform:none}}' +
-      '@media (prefers-reduced-motion: reduce){.cta-fab,header.hdr-stuck{animation:none}}' +
-      'section[id]{scroll-margin-top:76px}' +
+      '@media (max-width: 1060px){header.hdr-stuck{transition:transform .25s cubic-bezier(.2,.7,.2,1)}header.hdr-stuck.hdr-hide{transform:translateY(-110%);box-shadow:none}}' +
+      '@media (prefers-reduced-motion: reduce){.cta-fab,header.hdr-stuck{animation:none;transition:none}}' +
+      '@media (min-width: 1061px){section[id]{scroll-margin-top:76px}}' +
       '@media print{.cta-fab{display:none !important}header.hdr-stuck{position:static !important}}';
     document.head.appendChild(css);
     var limit = function () { return Math.max(320, window.innerHeight * 0.6); };
@@ -123,12 +126,42 @@
       });
       asides.forEach(function (el) { io.observe(el); });
     }
+    var lastY = window.scrollY, quietUntil = 0;
     var update = function () {
-      var past = window.scrollY > limit();
+      var y = window.scrollY;
+      var past = y > limit();
       var mobile = getComputedStyle(menuBtn).display !== 'none';
-      if (header) header.classList.toggle('hdr-stuck', past && !mobile);
-      fab.hidden = !(cta && past && mobile && !inView);
+      if (header) {
+        if (!mobile) { header.classList.toggle('hdr-stuck', past); header.classList.remove('hdr-hide'); }
+        else if (!past) header.classList.remove('hdr-stuck', 'hdr-hide');
+        else if (Math.abs(y - lastY) > 6) {
+          if (y < lastY && performance.now() > quietUntil) { header.classList.add('hdr-stuck'); header.classList.remove('hdr-hide'); }
+          else if (header.classList.contains('hdr-stuck')) header.classList.add('hdr-hide');
+        }
+      }
+      if (!past || Math.abs(y - lastY) > 6) lastY = y;
+      fab.hidden = !(cta && past && mobile && !inView && heroOut);
     };
+    /* the hero's own button: while it is fully on screen the header leaves its copy out (CSS),
+       and the floating button waits until it has scrolled away */
+    var heroBtn = document.querySelector('.hero-cta a');
+    var heroOut = !heroBtn;
+    if (heroBtn && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        var en = entries[entries.length - 1];
+        heroOut = !en.isIntersecting;
+        document.body.classList.toggle('hero-cta-out', en.intersectionRatio < 0.99);
+        update();
+      }, { threshold: [0, 1] }).observe(heroBtn);
+    }
+    /* jumping to a section is not a scroll up: keep the bar out of the way */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="#"]');
+      if (a && a.hash && a.pathname === location.pathname) {
+        quietUntil = performance.now() + 700;
+        if (header && header.classList.contains('hdr-stuck') && getComputedStyle(menuBtn).display !== 'none') header.classList.add('hdr-hide');
+      }
+    });
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
@@ -374,25 +407,7 @@
     window.addEventListener('pageshow', function (e) { if (e.persisted) reset(); });
   });
 
-  /* 1c2c. Language: current language with an arrow; the other two in a small panel */
-  document.querySelectorAll('.lang-dd').forEach(function (dd) {
-    var btn = dd.querySelector('.lg-btn'), pop = dd.querySelector('.lg-pop');
-    if (!btn || !pop) return;
-    var set = function (open, focusFirst) {
-      pop.hidden = !open;
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open && focusFirst) { var a = pop.querySelector('a'); if (a) a.focus(); }
-    };
-    btn.addEventListener('click', function (e) { set(pop.hidden, e.detail === 0); });
-    document.addEventListener('click', function (e) { if (!pop.hidden && !dd.contains(e.target)) set(false); });
-    dd.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !pop.hidden) { set(false); btn.focus(); }
-    });
-    dd.addEventListener('focusout', function (e) { if (!pop.hidden && e.relatedTarget && !dd.contains(e.relatedTarget)) set(false); });
-    window.addEventListener('pageshow', function (e) { if (e.persisted) set(false); });
-  });
-
-  /* 1c3. Menu: mark the section you're reading (gold line on desktop, gold item in the mobile menu) */
+  /* 1c3. Menu: mark the section you are reading (accent line on desktop, accent item in the mobile menu) */
   var spyLinks = [].slice.call(document.querySelectorAll('.nav-links a[href^="#"], #mobile-menu .mm-link[href^="#"]'));
   var spyIds = [];
   spyLinks.forEach(function (a) {
