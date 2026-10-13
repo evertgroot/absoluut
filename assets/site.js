@@ -323,7 +323,7 @@
     window.addEventListener('resize', function () { show(current, true); });
   });
 
-  /* 1c2. Review cards: on small screens they scroll sideways; the dots follow and can be tapped */
+  /* 1c2. Review cards: one sideways row on every screen; the dots follow and can be tapped, and a mouse can drag */
   document.querySelectorAll('[data-reviews]').forEach(function (grid) {
     var cards = grid.querySelectorAll('.qcard');
     var dots = grid.parentNode.querySelectorAll('.qdot');
@@ -347,6 +347,25 @@
         mark(n);
       });
     });
+    var drag = null;
+    grid.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0 || e.target.closest('a')) return;
+      drag = { x: e.clientX, s: grid.scrollLeft };
+      grid.classList.add('q-drag');
+      grid.setPointerCapture(e.pointerId);
+    });
+    grid.addEventListener('pointermove', function (e) { if (drag) grid.scrollLeft = drag.s - (e.clientX - drag.x); });
+    var endDrag = function () {
+      if (!drag) return;
+      drag = null;
+      grid.classList.remove('q-drag');
+      /* settle on the nearest card */
+      var best = 0, dist = Infinity;
+      cards.forEach(function (c, n) { var d = Math.abs(c.offsetLeft - cards[0].offsetLeft - grid.scrollLeft); if (d < dist) { dist = d; best = n; } });
+      grid.scrollTo({ left: cards[best].offsetLeft - cards[0].offsetLeft, behavior: calm ? 'auto' : 'smooth' });
+    };
+    grid.addEventListener('pointerup', endDrag);
+    grid.addEventListener('pointercancel', endDrag);
   });
 
   /* 1c2b. Site switch (Evert Groot | DJ Absoluut).

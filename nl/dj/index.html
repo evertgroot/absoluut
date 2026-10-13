@@ -111,8 +111,12 @@ a{color:#ffffff}a:hover{color:#dbad72}
   .dj-gal .g3{object-position:57% 50%}
 }
 
-.qgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,1.8vw,28px)}
-.qdots{display:none;justify-content:center;gap:0;margin-top:14px}
+/* reviews: one row of equal-height cards to swipe, drag or step through with the dots, on every screen */
+.qgrid{display:flex;align-items:stretch;gap:clamp(14px,1.6vw,24px);overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin:0 calc(-1 * clamp(20px, 4vw, 48px));padding:0 clamp(20px, 4vw, 48px) 4px;scroll-padding:0 clamp(20px, 4vw, 48px);scrollbar-width:none;cursor:grab}
+.qgrid::-webkit-scrollbar{display:none}
+.qgrid.q-drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.qcard{flex:0 0 clamp(320px,38%,480px);scroll-snap-align:start}
+.qdots{display:flex;justify-content:center;gap:0;margin-top:14px}
 .qdot{display:grid;place-items:center;width:30px;height:44px;padding:0;border:0;background:transparent;cursor:pointer}
 .qdot span{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.4);transition:background .2s ease,transform .2s ease}
 .qdot[aria-current="true"] span{background:#fff;transform:scale(1.2)}
@@ -121,7 +125,6 @@ a{color:#ffffff}a:hover{color:#dbad72}
   .qgrid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * clamp(20px, 4vw, 48px));padding:0 clamp(20px, 4vw, 48px) 4px;scroll-padding:0 clamp(20px, 4vw, 48px);scrollbar-width:none;overscroll-behavior-x:contain}
   .qgrid::-webkit-scrollbar{display:none}
   .qcard{flex:0 0 min(84%, 440px);scroll-snap-align:start}
-  .qgrid{align-items:flex-start}
   .qdots{display:flex}
 }
 /* header v3: one menu bar for both sites */
@@ -234,7 +237,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#ff9fb2}
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://imgroot.nl/#evert", "name": "Evert Groot", "alternateName": ["DJ Absoluut", "Absoluut"], "url": "https://imgroot.nl/", "image": "https://imgroot.nl/assets/img/evert-groot.jpg", "email": "mailto:evert@imgroot.nl", "jobTitle": ["Content Strategist", "DJ", "Content Creator", "Event Organizer"], "knowsAbout": ["Content strategy", "Social media strategy", "Creative direction", "Short-form video", "Pop music", "DJing", "Wedding DJ", "Event organizing", "Queer nightlife"], "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "founder": {"@id": "https://imgroot.nl/#bops"}, "sameAs": ["https://www.instagram.com/absoluut/", "https://www.tiktok.com/@absoluutdj", "https://www.linkedin.com/in/evertgroot", "https://soundcloud.com/absoluut"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content strategy and creative direction", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ for clubs, festivals, brand events and weddings", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event organizing", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator partnerships and short-form video", "areaServed": ["NL", "IT"]}}]}, {"@type": "Organization", "@id": "https://imgroot.nl/#bops", "name": "BOPS", "description": "Queer pop party at The Other Side, Amsterdam", "url": "https://www.instagram.com/bops.ams/", "sameAs": ["https://www.instagram.com/bops.ams/"]}, {"@type": "WebSite", "@id": "https://imgroot.nl/#website", "url": "https://imgroot.nl/", "name": "Evert Groot", "inLanguage": ["en", "nl", "it"], "publisher": {"@id": "https://imgroot.nl/#evert"}}, {"@type": "Service", "@id": "https://imgroot.nl/nl/dj/#service", "serviceType": "DJ", "name": "DJ Absoluut – DJ for club nights, brand events, private parties and weddings", "provider": {"@id": "https://imgroot.nl/#evert"}, "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "url": "https://imgroot.nl/nl/dj/", "image": "https://imgroot.nl/assets/img/dj-absoluut-bops.jpg"}]}</script>
   <script data-goatcounter="https://imgroot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-  <script src="/assets/site.js?v=e87131eb" defer></script>
+  <script src="/assets/site.js?v=8c9f8ea7" defer></script>
 <style id="form-sys">
 #contact-form [hidden]{display:none !important}
 .f-hint{margin:-6px 0 0;font-size:14px;line-height:1.5;opacity:.75}
