@@ -258,3 +258,6 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
 #media,#rider{border-top:1px solid #e6e1e8}
 
 .ft2-top > nav{flex-wrap:wrap}
+
+/* images carry their intrinsic size; CSS decides the rendered height */
+img[width][height]{height:auto}

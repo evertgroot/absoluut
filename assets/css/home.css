@@ -299,3 +299,6 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
 .f-mail a:hover,.f-mail a:focus-visible{color:var(--hv-acc)}
 #form-status a{color:inherit;text-underline-offset:3px}
 
+
+/* images carry their intrinsic size; CSS decides the rendered height */
+img[width][height]{height:auto}

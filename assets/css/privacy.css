@@ -231,3 +231,6 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#ffffff;background:r
 .hero-lang a:focus-visible{outline:2px solid #ffffff;outline-offset:-4px;border-radius:6px}
 @media (max-width: 1060px){.hero-lang{display:flex}}
 .ft2-top > nav{flex-wrap:wrap}
+
+/* images carry their intrinsic size; CSS decides the rendered height */
+img[width][height]{height:auto}

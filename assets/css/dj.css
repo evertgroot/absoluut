@@ -330,3 +330,6 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
 @media (max-width: 760px){.mix{min-height:0}}
 
 @media (prefers-reduced-motion: reduce){.mix-play{transition:none}}
+
+/* images carry their intrinsic size; CSS decides the rendered height */
+img[width][height]{height:auto}
