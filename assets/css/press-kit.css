@@ -248,13 +248,6 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
 
 #form-status a{color:inherit;text-underline-offset:3px}
 
-.press-photos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,24px);margin-bottom:clamp(12px,1.6vw,24px)}
-@media (max-width: 760px){.press-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.press-photo{display:flex;flex-direction:column;gap:10px;color:#16121a;text-decoration:none;font-size:15px;font-weight:800}
-.press-photo img{display:block;width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover;border-radius:20px;transition:opacity .3s ease}
-.press-photo:hover img{opacity:.85}
-.press-photo:hover,.press-photo:focus-visible{color:#c8193a}
-.press-photo:focus-visible{outline:2px solid #c8193a;outline-offset:3px}
 #media,#rider{border-top:1px solid #e6e1e8}
 
 .ft2-top > nav{flex-wrap:wrap}
