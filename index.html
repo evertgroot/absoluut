@@ -276,6 +276,15 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
 .skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:#0b0b0c;font-weight:800;text-decoration:none}
 .skip:focus{top:12px;outline:2px solid var(--hv-acc-l);outline-offset:2px}
 main:focus{outline:none}
+/* service rows: one round arrow button per row; the label stays for screen readers */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.svc-row .svc-arrow{display:inline-flex !important;align-items:center;justify-content:center;justify-self:end !important;align-self:center;flex:0 0 48px !important;width:48px;height:48px;padding:0 !important;margin:0 !important;border:1.5px solid currentColor;border-radius:999px;transition:background-color .25s ease,border-color .25s ease,color .25s ease}
+.svc-row .svc-arrow .hv-ar{margin:0;width:18px;height:18px;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.svc:hover .svc-arrow{transform:none !important}
+.svc-row:hover .svc-arrow,.svc-row:focus-visible .svc-arrow{background:var(--hv-acc-l);border-color:var(--hv-acc-l);color:#ffffff}
+@media (hover:hover){.svc-row:hover .svc-arrow .hv-ar.hv-d{transform:translateY(2px) !important}.svc-row:hover .svc-arrow .hv-ar.hv-r{transform:translateX(2px) !important}}
+@media (max-width: 900px){.svc-row{display:grid !important;grid-template-columns:minmax(0,1fr) 48px !important;column-gap:16px !important}.svc-row > h3{grid-column:1;grid-row:1}.svc-row > .svc-arrow{grid-column:2;grid-row:1}.svc-row > p,.svc-row > span:not(.svc-arrow){grid-column:1 / -1;grid-row:2}}
+@media (prefers-reduced-motion: reduce){.svc-row .svc-arrow,.svc-row .svc-arrow .hv-ar{transition:none}}
 .hdr-cta{white-space:nowrap}
 @media (min-width: 1061px) and (max-width: 1240px){.nav-links{gap:16px !important}.hdr-lang a{width:28px}header{column-gap:18px !important}.hdr-right{gap:8px}}
 /* browser surfaces in the page palette */
@@ -430,25 +439,25 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
       </div>
     </div>
     <div style="border-top: 1px solid rgba(17,17,17,0.16)">
-      <a class="svc svc-row" data-goatcounter-click="click-svc-strategy" href="#work" style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 210px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
+      <a class="svc svc-row" data-goatcounter-click="click-svc-strategy" href="#work" style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 48px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
         <h3 style="flex: 1 1 340px; margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Strategy &amp; Content</h3>
         <span style="flex: 1 1 300px; font-size: 17px; line-height: 1.55; color: #4a4f52">Audience insights, creative concepts and content strategies that help brands decide what to say, who to reach and which formats to use.</span>
-        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Learn More<span class="hv-ar hv-d" aria-hidden="true">↓</span></span>
+        <span class="svc-arrow"><span class="sr-only">Learn More</span><span class="hv-ar hv-d" aria-hidden="true">↓</span></span>
       </a>
-      <a class="svc svc-row" data-goatcounter-click="click-svc-creator" href="#creator" style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 210px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
+      <a class="svc svc-row" data-goatcounter-click="click-svc-creator" href="#creator" style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 48px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
         <h3 style="flex: 1 1 340px; margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Creator</h3>
         <span style="flex: 1 1 300px; font-size: 17px; line-height: 1.55; color: #4a4f52">Short-form video about pop music and the culture around it, made for your brand.</span>
-        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Learn More<span class="hv-ar hv-d" aria-hidden="true">↓</span></span>
+        <span class="svc-arrow"><span class="sr-only">Learn More</span><span class="hv-ar hv-d" aria-hidden="true">↓</span></span>
       </a>
-      <a class="svc svc-row" data-goatcounter-click="click-svc-events" href="#events" style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 210px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
+      <a class="svc svc-row" data-goatcounter-click="click-svc-events" href="#events" style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 48px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
         <h3 style="flex: 1 1 340px; margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Event Organizing</h3>
         <span style="flex: 1 1 300px; font-size: 17px; line-height: 1.55; color: #4a4f52">Event concepts, programming, creative direction and promotion, from the first idea to the final campaign.</span>
-        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Learn More<span class="hv-ar hv-d" aria-hidden="true">↓</span></span>
+        <span class="svc-arrow"><span class="sr-only">Learn More</span><span class="hv-ar hv-d" aria-hidden="true">↓</span></span>
       </a>
-      <a class="svc svc-row svc-out" data-goatcounter-click="click-svc-dj" href="/dj/" style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 210px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
+      <a class="svc svc-row svc-out" data-goatcounter-click="click-svc-dj" href="/dj/" style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 48px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
         <h3 style="flex: 1 1 340px; margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">DJ Absoluut</h3>
         <span style="flex: 1 1 300px; font-size: 17px; line-height: 1.55; color: #4a4f52">Pop, disco and house for clubs, festivals, brand events and weddings.</span>
-        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Go to DJ Page<span class="hv-ar hv-r" aria-hidden="true">→</span></span>
+        <span class="svc-arrow"><span class="sr-only">Go to DJ Page</span><span class="hv-ar hv-r" aria-hidden="true">→</span></span>
       </a>
     </div>
     </div>
