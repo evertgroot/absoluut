@@ -168,6 +168,8 @@ body{background:#ffffff}
   #top{padding:16px 20px !important;border-radius:10px}
   #top .gut{display:flex !important;align-items:center;justify-content:flex-start;gap:16px}
   #top h1{font-size:26px !important;line-height:1 !important;margin:0 !important}
+  /* light pink instead of red on the dark band, so the title stays clear on a black-and-white print */
+  #top h1 span{color:#ff9fb2 !important}
   /* the DJ Absoluut pill from the site switch in the header */
   .pdf-name{order:-1;display:inline-flex;align-items:center;height:32px;margin:0;padding:0 14px;border-radius:999px;background:#ffffff;font-family:'Baloo Bhai 2',sans-serif;font-size:15px;font-weight:700;line-height:1;letter-spacing:-0.01em;color:#1f0328;white-space:nowrap}
   .pdf-name::before{content:"";flex:0 0 auto;width:7px;height:7px;margin-right:7px;border-radius:50%;background:#c8193a}
