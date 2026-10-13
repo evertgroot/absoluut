@@ -41,11 +41,13 @@ for section in re.findall(r"<section\b.*?</section>", page, flags=re.I | re.S):
     if not day or not month_name:
         continue
 
+    # The agenda shows day and month only: a date that has already passed this year
+    # belongs to next year (e.g. a January party listed in December).
     try:
         event_date = date(today.year, MONTHS[month_name], day)
+        if event_date < today:
+            event_date = date(today.year + 1, MONTHS[month_name], day)
     except ValueError:
-        continue
-    if event_date < today:
         continue
 
     hrefs = [unescape(url) for url in re.findall(r"href=[\"']([^\"']+)[\"']", section,

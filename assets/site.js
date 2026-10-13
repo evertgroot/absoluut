@@ -96,7 +96,15 @@
       };
       menuBtn.addEventListener('click', function () { setMenu(menu.hidden, menuBtn); });
       menu.querySelectorAll('a, [data-close]').forEach(function (el) {
-        el.addEventListener('click', function () { if (!menu.hidden) setMenu(false); });
+        el.addEventListener('click', function () {
+          if (menu.hidden) return;
+          setMenu(false);
+          var target = el.hash && el.pathname === location.pathname && document.getElementById(el.hash.slice(1));
+          if (target) {
+            if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+            setTimeout(function () { try { target.focus({ preventScroll: true }); } catch (e) {} }, 0);
+          }
+        });
       });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
       window.addEventListener('resize', function () { if (!menu.hidden && getComputedStyle(menuBtn).display === 'none') setMenu(false); });
@@ -176,7 +184,7 @@
     css.textContent = '.marquee.mq-js{overflow-x:auto !important;scrollbar-width:none;cursor:grab;overscroll-behavior-x:contain;-webkit-user-select:none;user-select:none}' +
       '.marquee.mq-js::-webkit-scrollbar{display:none}.marquee.mq-js.mq-drag{cursor:grabbing}' +
       '.marquee.mq-js .marquee-track{animation:none !important}' +
-      '.marquee.mq-js:focus-visible{outline:2px solid #2a1d36;outline-offset:-4px}';
+      '.marquee.mq-js:focus-visible{outline:2px solid #ffffff;outline-offset:-4px;box-shadow:inset 0 0 0 4px rgba(0,0,0,.35)}';
     document.head.appendChild(css);
   }
   bands.forEach(function (box) {
@@ -184,8 +192,8 @@
     if (!track) return;
     var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     box.classList.add('mq-js');
+    if (still) return; /* no drift, list wraps; nothing to scroll or focus */
     box.setAttribute('tabindex', '0');
-    if (still) return; /* no drift, list wraps; nothing to scroll */
     var pos = 0, seen = 0, last = null, hold = 0, hover = false, focus = false, drag = null, onScreen = true, looping = false;
     var first = track.firstElementChild, dup = track.querySelector('.marquee-dup');
     function unit() { return first ? first.offsetWidth : track.scrollWidth / 2; }
@@ -505,7 +513,12 @@
     fetch('/assets/bops-event.json', { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
       .then(function (ev) {
-        if (!ev.date) {
+        var past = false;
+        if (ev.date) {
+          var q = ev.date.split('-').map(Number);
+          past = new Date(q[0], q[1] - 1, q[2] + 1) <= new Date(); /* the night after the party has passed */
+        }
+        if (!ev.date || past) {
           labelEl.textContent = cardEl.getAttribute('data-none');
           dateEl.textContent = '';
           ticketEl.hidden = true;
@@ -578,10 +591,12 @@
           }
           form.reset();
           form.dispatchEvent(new Event('f-reset'));
+          status.setAttribute('role', 'status');
           status.textContent = form.getAttribute('data-success');
           status.style.color = getComputedStyle(document.documentElement).getPropertyValue('--hv-acc') || '#7bd6e0';
         })
         .catch(function () {
+          status.setAttribute('role', 'alert');
           status.textContent = form.getAttribute('data-error') + ' ';
           var alt = form.getAttribute('data-error-mail');
           if (alt) {
