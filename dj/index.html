@@ -111,7 +111,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
   .dj-gal .g3{object-position:57% 50%}
 }
 
-.qgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.8vw,28px)}
+.qgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,1.8vw,28px)}
 .qdots{display:none;justify-content:center;gap:0;margin-top:14px}
 .qdot{display:grid;place-items:center;width:30px;height:44px;padding:0;border:0;background:transparent;cursor:pointer}
 .qdot span{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.4);transition:background .2s ease,transform .2s ease}
@@ -121,6 +121,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
   .qgrid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * clamp(20px, 4vw, 48px));padding:0 clamp(20px, 4vw, 48px) 4px;scroll-padding:0 clamp(20px, 4vw, 48px);scrollbar-width:none;overscroll-behavior-x:contain}
   .qgrid::-webkit-scrollbar{display:none}
   .qcard{flex:0 0 min(84%, 440px);scroll-snap-align:start}
+  .qgrid{align-items:flex-start}
   .qdots{display:flex}
 }
 /* header v3: one menu bar for both sites */
@@ -555,8 +556,18 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
             <span style="display: block; margin-top: 2px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #ffd8ea">Wedding · Amsterdam</span>
           </figcaption>
         </figure>
+<figure class="qcard" style="margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: clamp(26px, 2.6vw, 36px); border-radius: 20px; background: rgba(0,0,0,0.16); border: 1px solid rgba(255,255,255,0.14)">
+          <div>
+            <span aria-hidden="true" style="display: block; height: 44px; font-family: 'Baloo Bhai 2', sans-serif; font-size: 88px; line-height: 0.9; color: #ff9fb2">“</span>
+            <blockquote style="margin: 0; font-size: clamp(18px, 1.45vw, 20px); line-height: 1.6; font-weight: 500; color: #ffffff">Absoluut was <strong style="color: #ff9fb2; font-weight: 700">an absolute legend</strong>! He listened to what we wanted, elevated it, and delivered like a true professional. We and our guests had an incredible time on the dance floor, and by the end of the night, nobody was ready to call it quits. Absoluut is a solid recommendation. We couldn’t have asked for better!</blockquote>
+          </div>
+          <figcaption style="padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.2)">
+            <span style="display: block; font-family: 'Baloo Bhai 2', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.01em; color: #ffffff">Jim &amp; Chris</span>
+            <span style="display: block; margin-top: 2px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #ffd8ea">Amsterdam</span>
+          </figcaption>
+        </figure>
       </div>
-      <div class="qdots" role="group" aria-label="Reviews"><button type="button" class="qdot" data-goto="0" aria-label="Show review 1" aria-current="true"><span></span></button><button type="button" class="qdot" data-goto="1" aria-label="Show review 2"><span></span></button><button type="button" class="qdot" data-goto="2" aria-label="Show review 3"><span></span></button></div>
+      <div class="qdots" role="group" aria-label="Reviews"><button type="button" class="qdot" data-goto="0" aria-label="Show review 1" aria-current="true"><span></span></button><button type="button" class="qdot" data-goto="1" aria-label="Show review 2"><span></span></button><button type="button" class="qdot" data-goto="2" aria-label="Show review 3"><span></span></button><button type="button" class="qdot" data-goto="3" aria-label="Show review 4"><span></span></button></div>
     </div>
   </section>
 
