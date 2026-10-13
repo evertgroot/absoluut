@@ -355,6 +355,7 @@
     var links = [].slice.call(sw.querySelectorAll('a'));
     var thumb = sw.querySelector('.sw-thumb');
     if (links.length !== 2 || !thumb) return;
+    if (!sw.querySelector('a[aria-current]')) return; /* shared pages (privacy) belong to neither site: plain links, no thumb to drag */
     var cur = links[1].hasAttribute('aria-current') ? 1 : 0;
     var menuEl = sw.closest('#mobile-menu');
     var leave = function (href) {
