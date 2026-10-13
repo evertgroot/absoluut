@@ -36,7 +36,7 @@
       document.getElementById('lang-banner-text').textContent = copy[0];
       var bannerLink = document.getElementById('lang-banner-link');
       bannerLink.textContent = copy[1];
-      bannerLink.href = '/' + suggest + (location.pathname.indexOf('/dj/') === 0 ? '/dj/' : '/');
+      bannerLink.href = '/' + suggest + (location.pathname.indexOf('/djabsoluut/') === 0 ? '/djabsoluut/' : '/');
       bannerLink.setAttribute('data-lang', suggest);
       bannerLink.setAttribute('lang', suggest);
       bannerLink.addEventListener('click', function () {
