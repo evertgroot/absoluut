@@ -213,8 +213,6 @@ a .bops-mark{transition:background-color .25s ease}
 .ft2-bottom i{font-style:normal;opacity:0.6}
 .ft2-bottom a{color:#b3afe0;text-decoration:none}
 .ft2-bottom a:hover,.ft2-bottom a:focus-visible{color:#ffffff;text-decoration:underline;text-underline-offset:3px}
-@media (max-width: 1060px){footer.ft2{padding-bottom:110px !important}}
-@media (max-width: 640px){.ft2-bottom i{display:none}.ft2-bottom > span{gap:2px 16px}}
 /* page theme: black & teal (Evert Groot) */
 body{background:#0b0b0c}
 a:hover{color:#7bd6e0}
@@ -304,6 +302,17 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
 .skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:#0b0b0c;font-weight:800;text-decoration:none}
 .skip:focus{top:12px;outline:2px solid var(--hv-acc-l);outline-offset:2px}
 main:focus{outline:none}
+/* arrows: one drawn set instead of font glyphs. down = further on this page, right = another page of the site,
+   up-right = another website, download = save a file. The glyph stays in the markup as a text fallback. */
+.hv-ar{display:inline-block;width:.8em;height:.8em;margin-left:.4em;vertical-align:-.04em;overflow:hidden;text-indent:2em;white-space:nowrap;background:currentColor;-webkit-mask:var(--ar) center / contain no-repeat;mask:var(--ar) center / contain no-repeat}
+.hv-d{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2v11M3.5 8.5 8 13l4.5-4.5'/%3E%3C/svg%3E")}
+.hv-r{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h11M8.5 3.5 13 8l-4.5 4.5'/%3E%3C/svg%3E")}
+.hv-ne{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12 12 4M5.5 4H12v6.5'/%3E%3C/svg%3E")}
+.hv-dl{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2v8M4.5 6.5 8 10l3.5-3.5M3 14h10'/%3E%3C/svg%3E")}
+.svc .hv-ar{transform:none !important}
+@media (hover:hover){a:hover .hv-ar.hv-dl{transform:translateY(2px)}}
+/* footer: no reserved space for a floating button that now steps aside here; tappable legal links on phones */
+@media (max-width: 640px){.ft2-bottom a{display:inline-flex;align-items:center;min-height:44px}.ft2-bottom{padding-top:14px !important}}
 /* navigation: accent from the page's light accent (readable on the dark header), own focus rings */
 .nav-links a::after{background:var(--hv-acc)}
 .nav-links a:hover,.hdr-lang a:hover,.mm-lang a:hover,.mm-link:hover{color:var(--hv-acc)}
@@ -444,22 +453,22 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
       <a class="svc svc-row" data-goatcounter-click="click-svc-strategy" href="#work" style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 210px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
         <h3 style="flex: 1 1 340px; margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Strategie &amp; content</h3>
         <span style="flex: 1 1 300px; font-size: 17px; line-height: 1.55; color: #4a4f52">Doelgroepinzichten, creatieve concepten en contentstrategieën die merken helpen bepalen wat ze zeggen, wie ze willen bereiken en welke formats ze inzetten.</span>
-        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Meer weten <span aria-hidden="true">↓</span></span>
+        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Meer weten<span class="hv-ar hv-d" aria-hidden="true">↓</span></span>
       </a>
       <a class="svc svc-row" data-goatcounter-click="click-svc-creator" href="#creator" style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 210px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
         <h3 style="flex: 1 1 340px; margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Creator</h3>
         <span style="flex: 1 1 300px; font-size: 17px; line-height: 1.55; color: #4a4f52">Korte video's over popmuziek en de cultuur eromheen, gemaakt voor jouw merk.</span>
-        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Meer weten <span aria-hidden="true">↓</span></span>
+        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Meer weten<span class="hv-ar hv-d" aria-hidden="true">↓</span></span>
       </a>
       <a class="svc svc-row" data-goatcounter-click="click-svc-events" href="#events" style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 210px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
         <h3 style="flex: 1 1 340px; margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Events organiseren</h3>
         <span style="flex: 1 1 300px; font-size: 17px; line-height: 1.55; color: #4a4f52">Eventconcepten, programmering, creatieve regie en promotie, van het eerste idee tot de laatste campagne.</span>
-        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Meer weten <span aria-hidden="true">↓</span></span>
+        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Meer weten<span class="hv-ar hv-d" aria-hidden="true">↓</span></span>
       </a>
       <a class="svc svc-row svc-out" data-goatcounter-click="click-svc-dj" href="/nl/dj/" style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 210px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
         <h3 style="flex: 1 1 340px; margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">DJ Absoluut</h3>
         <span style="flex: 1 1 300px; font-size: 17px; line-height: 1.55; color: #4a4f52">Pop, disco en house voor clubs, festivals, brand events en bruiloften.</span>
-        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Naar de DJ-pagina <span aria-hidden="true">→</span></span>
+        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Naar de DJ-pagina<span class="hv-ar hv-r" aria-hidden="true">→</span></span>
       </a>
     </div>
     </div>
@@ -472,7 +481,7 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
       <a class="case" href="https://www.instagram.com/tv/CTMzKzHqiFT/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-netflix" style="display: flex; flex-direction: column; gap: 18px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-netflix.jpg" alt="Samenwerking tussen Netflix en NikkieTutorials" style="display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover"></div>
         <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px">
-          <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Netflix × NikkieTutorials</h3>
+          <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Netflix × NikkieTutorials<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
           <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Concept</span>
         </div>
         <p style="margin: -8px 0 0; font-size: 16px; line-height: 1.55; color: #c9cdcf">Creatief concept voor een samenwerking van Netflix met NikkieTutorials.</p>
@@ -480,7 +489,7 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
       <a class="case" href="https://www.facebook.com/TUINederland/photos/pb.100064940251976.-2207520000/10161090322060719/?type=3" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-tui-campaign" style="display: flex; flex-direction: column; gap: 18px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-tui-campaign.jpg" alt="TUI-campagnecontent" style="display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover"></div>
         <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px">
-          <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">TUI-campagnecontent</h3>
+          <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">TUI-campagnecontent<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
           <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Concept · Creatie · Copy</span>
         </div>
         <p style="margin: -8px 0 0; font-size: 16px; line-height: 1.55; color: #c9cdcf">Concept, creatieve regie en copy voor social content van TUI, samen met The Best Social.</p>
@@ -490,19 +499,19 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
       <a class="case" href="https://www.linkedin.com/company/stichtingforward/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-forward" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-forward.jpg" alt="Social content voor Stichting FORWARD" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
         <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Strategie · Planning · Copy</span>
-        <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Stichting FORWARD</h3>
+        <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Stichting FORWARD<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #c9cdcf">Contentstrategie, redactionele planning en copy die complexe juridische en LHBTIQA+-onderwerpen toegankelijk maken.</p>
       </a>
       <a class="case" href="https://www.instagram.com/reels/DDMBNbwCVMU/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-tui-social" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-tui-social.jpg" alt="Short-form socialstrategie voor TUI" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
         <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Strategie · Concept</span>
-        <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">TUI-socialstrategie</h3>
+        <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">TUI-socialstrategie<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #c9cdcf">Social contentstrategie en terugkerende short-form videoconcepten voor TUI.</p>
       </a>
       <a class="case" href="https://www.instagram.com/mantotman_nl/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-soa-aids" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
         <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-soa-aids.jpg" alt="Social content voor Soa Aids Nederland" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
         <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Content · Advertising · Copy</span>
-        <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Soa Aids Nederland</h3>
+        <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Soa Aids Nederland<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #c9cdcf">Inclusieve social content en campagnes voor Man tot Man op Facebook, Instagram en TikTok.</p>
       </a>
     </div>
@@ -558,7 +567,7 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
         <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #e6d3ee">Voor bruiloften en privé-events zijn jullie must-play songs mijn startpunt. Daaromheen bouw ik met pop, disco en house, en ik stem de set af op de mensen op de dansvloer.</p>
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 8px">
           <a class="btn-solid" href="/nl/dj/#book" data-goatcounter-click="cta-dj-book" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #c8193a; color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 800">Boek DJ Absoluut<span class="hv-ar hv-r" aria-hidden="true">→</span></a>
-          <a class="btn-ghost" href="/nl/dj/" data-goatcounter-click="click-more-dj" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.6); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 800">Meer info</a>
+          <a class="btn-ghost" href="/nl/dj/" data-goatcounter-click="click-more-dj" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.6); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 800">Meer info<span class="hv-ar hv-r" aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
