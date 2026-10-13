@@ -51,7 +51,7 @@ a.case:hover h3{color:#dbad72}
   
   .cine-right{left:auto !important;right:0;width:62% !important;-webkit-mask-image:linear-gradient(to right, transparent 0%, #000 38%),linear-gradient(to top, transparent 0%, #000 20%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right, transparent 0%, #000 38%),linear-gradient(to top, transparent 0%, #000 20%);mask-composite:intersect}
 }
-@media (max-width: 760px){
+@media (max-width: 899px){
   .cine{min-height:0 !important;display:block !important}
   .cine-img{position:relative !important;display:block;width:100% !important;height:auto !important;aspect-ratio:4 / 5;-webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);mask-image:linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%)}
   .cine h1{max-width:none !important}
@@ -149,9 +149,9 @@ header.hdr-stuck{background:rgba(11,11,12,0.94) !important}
 :root{--acc:#7bd6e0;--pop:#161618}
 a .bops-mark{transition:background-color .25s ease}
 /* hero: title higher, intro text under the title */
-@media (min-width: 761px){.cine{align-items:center !important}.cine > .gut{padding-top:120px;padding-bottom:64px !important}}
+@media (min-width: 900px){.cine{align-items:center !important}.cine > .gut{padding-top:120px;padding-bottom:64px !important}}
 .hero-lead{margin:0;max-width:min(600px,46vw);font-size:clamp(17px,1.35vw,20px);line-height:1.6;font-weight:500;color:rgba(255,255,255,0.84)}
-@media (max-width: 760px){.hero-lead{max-width:none;font-size:17px}}
+@media (max-width: 899px){.hero-lead{max-width:none;font-size:17px}}
 
 @media (max-width: 700px){.case-feat{grid-template-columns:minmax(0, 1fr) !important}}
 /* footer: name + socials on top, small legal row below */
@@ -192,7 +192,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#7bd6e0}
 .f-ref a{margin-top:16px}
 
 #contact p:has(+ #contact-form),.book-side > p:first-child{text-wrap:balance}
-@media (max-width: 760px){.gut > .hero-lead{order:2}.gut > .hero-cta{order:1;margin-top:0 !important}}
+@media (max-width: 899px){.gut > .hero-lead{order:2}.gut > .hero-cta{order:1;margin-top:0 !important}}
 #contact-form select:invalid{color:#8c9396}
 #contact-form select option{color:#111111}
 
@@ -293,7 +293,8 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
 .hero-proof{display:flex;flex-wrap:wrap;gap:8px 28px;margin:calc(14px - clamp(24px, 3vw, 40px)) 0 0;padding:0;list-style:none;font-size:15px;line-height:1.4;font-weight:600;color:rgba(255,255,255,0.8)}
 .hero-proof li{display:flex;align-items:baseline;gap:8px}
 .hero-proof b{font-family:'Baloo Bhai 2',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.02em;color:var(--hv-acc)}
-@media (max-width: 760px){.gut > .hero-proof{order:3;margin-top:0;flex-direction:column}}
+@media (max-width: 899px){.gut > .hero-proof{order:3;margin-top:0}}
+@media (max-width: 760px){.gut > .hero-proof{flex-direction:column}}
 .f-mail{margin:0;font-size:16px;line-height:1.6;color:#c9cdcf}
 .f-mail a{color:#ffffff;font-weight:800;text-underline-offset:4px}
 .f-mail a:hover,.f-mail a:focus-visible{color:var(--hv-acc)}
@@ -303,3 +304,6 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
 /* images carry their intrinsic size; CSS decides the rendered height */
 img[width][height]{height:auto}
 .f-mail-end{margin-top:8px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.12)}
+
+/* tablet portrait: photo above the text like on phones, cropped wider so it does not fill the screen */
+@media (min-width: 761px) and (max-width: 899px){.cine-img{aspect-ratio:4 / 3}.cine > .gut{margin-top:-90px}}
