@@ -58,7 +58,9 @@
   var menuBtn = document.querySelector('.menu-btn');
   var menu = document.getElementById('mobile-menu');
   var header = document.querySelector('header');
-  if (menuBtn && menu) {
+  /* phone/tablet layout: same breakpoint as the CSS that swaps the nav links for the menu button */
+  var compact = function () { return window.matchMedia('(max-width: 1060px)').matches; };
+  if (header) {
     var opener = menuBtn;
     var cta = document.querySelector('header .hdr-cta');
     var fab = document.createElement('a');
@@ -74,31 +76,33 @@
       if (mainEl) mainEl.parentNode.insertBefore(fab, mainEl.nextSibling); else document.body.appendChild(fab);
     }
     /* while the menu is open, everything behind it is out of reach for keyboard and screen readers */
-    var setInert = function (on) {
-      for (var node = menu; node && node !== document.body; node = node.parentNode) {
-        [].forEach.call(node.parentNode.children, function (sib) {
-          if (sib === node || sib.tagName === 'SCRIPT' || sib.tagName === 'STYLE') return;
-          if (on) sib.setAttribute('inert', ''); else sib.removeAttribute('inert');
-        });
-      }
-    };
-    var setMenu = function (open, from) {
-      if (open) opener = from || menuBtn;
-      menu.hidden = !open;
-      setInert(open);
-      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.documentElement.style.overflow = open ? 'hidden' : '';
-      if (open) { var c = menu.querySelector('[data-close]'); if (c) c.focus(); }
-      else if (opener && !opener.hidden) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
-    };
-    menuBtn.addEventListener('click', function () { setMenu(menu.hidden, menuBtn); });
-    menu.querySelectorAll('a, [data-close]').forEach(function (el) {
-      el.addEventListener('click', function () { if (!menu.hidden) setMenu(false); });
-    });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
-    window.addEventListener('resize', function () { if (!menu.hidden && getComputedStyle(menuBtn).display === 'none') setMenu(false); });
-    /* coming back with the back button: the page may be restored with the menu still open */
-    window.addEventListener('pageshow', function (e) { if (e.persisted && !menu.hidden) setMenu(false); });
+    if (menuBtn && menu) {
+      var setInert = function (on) {
+        for (var node = menu; node && node !== document.body; node = node.parentNode) {
+          [].forEach.call(node.parentNode.children, function (sib) {
+            if (sib === node || sib.tagName === 'SCRIPT' || sib.tagName === 'STYLE') return;
+            if (on) sib.setAttribute('inert', ''); else sib.removeAttribute('inert');
+          });
+        }
+      };
+      var setMenu = function (open, from) {
+        if (open) opener = from || menuBtn;
+        menu.hidden = !open;
+        setInert(open);
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.documentElement.style.overflow = open ? 'hidden' : '';
+        if (open) { var c = menu.querySelector('[data-close]'); if (c) c.focus(); }
+        else if (opener && !opener.hidden) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
+      };
+      menuBtn.addEventListener('click', function () { setMenu(menu.hidden, menuBtn); });
+      menu.querySelectorAll('a, [data-close]').forEach(function (el) {
+        el.addEventListener('click', function () { if (!menu.hidden) setMenu(false); });
+      });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
+      window.addEventListener('resize', function () { if (!menu.hidden && getComputedStyle(menuBtn).display === 'none') setMenu(false); });
+      /* coming back with the back button: the page may be restored with the menu still open */
+      window.addEventListener('pageshow', function (e) { if (e.persisted && !menu.hidden) setMenu(false); });
+    }
 
     var css = document.createElement('style');
     css.textContent =
@@ -130,14 +134,12 @@
     var update = function () {
       var y = window.scrollY;
       var past = y > limit();
-      var mobile = getComputedStyle(menuBtn).display !== 'none';
-      if (header) {
-        if (!mobile) { header.classList.toggle('hdr-stuck', past); header.classList.remove('hdr-hide'); }
-        else if (!past) header.classList.remove('hdr-stuck', 'hdr-hide');
-        else if (Math.abs(y - lastY) > 6) {
-          if (y < lastY && performance.now() > quietUntil) { header.classList.add('hdr-stuck'); header.classList.remove('hdr-hide'); }
-          else if (header.classList.contains('hdr-stuck')) header.classList.add('hdr-hide');
-        }
+      var mobile = compact();
+      if (!mobile) { header.classList.toggle('hdr-stuck', past); header.classList.remove('hdr-hide'); }
+      else if (!past) header.classList.remove('hdr-stuck', 'hdr-hide');
+      else if (Math.abs(y - lastY) > 6) {
+        if (y < lastY && performance.now() > quietUntil) { header.classList.add('hdr-stuck'); header.classList.remove('hdr-hide'); }
+        else if (header.classList.contains('hdr-stuck')) header.classList.add('hdr-hide');
       }
       if (!past || Math.abs(y - lastY) > 6) lastY = y;
       fab.hidden = !(cta && past && mobile && !inView && heroOut);
@@ -159,7 +161,7 @@
       var a = e.target.closest && e.target.closest('a[href*="#"]');
       if (a && a.hash && a.pathname === location.pathname) {
         quietUntil = performance.now() + 700;
-        if (header && header.classList.contains('hdr-stuck') && getComputedStyle(menuBtn).display !== 'none') header.classList.add('hdr-hide');
+        if (header && header.classList.contains('hdr-stuck') && compact()) header.classList.add('hdr-hide');
       }
     });
     window.addEventListener('scroll', update, { passive: true });
