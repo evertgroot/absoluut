@@ -117,7 +117,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
 .qgrid.q-drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
 .qcard{flex:0 0 clamp(320px,38%,480px);scroll-snap-align:start}
 .qdots{display:flex;justify-content:center;gap:0;margin-top:14px}
-.qdot{display:grid;place-items:center;width:30px;height:44px;padding:0;border:0;background:transparent;cursor:pointer}
+.qdot{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;background:transparent;cursor:pointer}
 .qdot span{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.4);transition:background .2s ease,transform .2s ease}
 .qdot[aria-current="true"] span{background:#fff;transform:scale(1.2)}
 .qdot:focus-visible{outline:3px solid #dbad72;outline-offset:2px}
@@ -362,7 +362,7 @@ main:focus{outline:none}
 body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-sep){display:none !important}
 :is(#services,#events,#where,#bio,#media,#rider) :focus-visible{outline-color:var(--hv-acc-l) !important}
 .field:not(:focus){border-color:rgba(255,255,255,0.5) !important}
-@media (max-width: 760px){.site-sw a{height:40px}}
+@media (max-width: 1060px){.site-sw a{height:44px}}
 /* site switch: both names always written out; very narrow phones get a smaller size so both still fit */
 .site-sw a:focus-visible{outline:2px solid var(--hv-acc);outline-offset:2px}
 @media (max-width: 370px){.site-sw a{padding:0 8px;font-size:14px}.site-sw a::before{width:6px;height:6px;margin-right:5px}}
@@ -408,7 +408,7 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
   <div id="lang-banner" hidden style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 16px; padding: 10px 16px; background: #dbad72; color: #2a1d36; font-size: 15px; font-weight: 700; text-align: center">
     <span id="lang-banner-text"></span>
     <a id="lang-banner-link" href="/nl/" data-lang="nl" style="color: #8f0048; font-weight: 800"></a>
-    <button type="button" id="lang-banner-close" aria-label="Close" style="min-width: 44px; min-height: 36px; border: 0; border-radius: 999px; background: rgba(42,29,54,0.12); color: #2a1d36; font: inherit; font-weight: 800; cursor: pointer">✕</button>
+    <button type="button" id="lang-banner-close" aria-label="Close" style="min-width: 44px; min-height: 44px; border: 0; border-radius: 999px; background: rgba(42,29,54,0.12); color: #2a1d36; font: inherit; font-weight: 800; cursor: pointer">✕</button>
   </div>
 <div style="position: relative">
   <header style="position: absolute; left: 0; right: 0; top: 0; z-index: 5; max-width: none; padding-left: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); padding-right: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); max-width: 1360px; margin: 0 auto; padding: 22px clamp(20px, 4vw, 48px); display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 24px 44px">
