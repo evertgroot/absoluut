@@ -48,7 +48,7 @@ a{color:#ffffff}a:hover{color:#dbad72}
   
   .cine-right{left:auto !important;right:0;width:62% !important;-webkit-mask-image:linear-gradient(to right, transparent 0%, #000 38%),linear-gradient(to top, transparent 0%, #000 20%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right, transparent 0%, #000 38%),linear-gradient(to top, transparent 0%, #000 20%);mask-composite:intersect}
 }
-@media (max-width: 760px){
+@media (max-width: 899px){
   .cine{min-height:0 !important;display:block !important}
   .cine-img{position:relative !important;display:block;width:100% !important;height:auto !important;aspect-ratio:4 / 5;-webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);mask-image:linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%)}
   .cine h1{max-width:none !important}
@@ -156,9 +156,9 @@ header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
 :root{--acc:#c8193a;--pop:#2c0739}
 a .bops-mark{transition:background-color .25s ease}
 /* hero: title higher, intro text under the title */
-@media (min-width: 761px){.cine{align-items:center !important}.cine > .gut{padding-top:120px;padding-bottom:64px !important}}
+@media (min-width: 900px){.cine{align-items:center !important}.cine > .gut{padding-top:120px;padding-bottom:64px !important}}
 .hero-lead{margin:0;max-width:min(600px,46vw);font-size:clamp(17px,1.35vw,20px);line-height:1.6;font-weight:500;color:rgba(255,255,255,0.84)}
-@media (max-width: 760px){.hero-lead{max-width:none;font-size:17px}}
+@media (max-width: 899px){.hero-lead{max-width:none;font-size:17px}}
 /* gigs: three columns */
 @media (max-width: 760px){.book-photo{display:none}}
 /* footer: name + socials on top, small legal row below */
@@ -197,7 +197,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#ff9fb2}
 .f-ref a{margin-top:16px}
 
 #contact p:has(+ #contact-form),.book-side > p:first-child{text-wrap:balance}
-@media (max-width: 760px){.gut > .hero-lead{order:2}.gut > .hero-cta{order:1;margin-top:0 !important}}
+@media (max-width: 899px){.gut > .hero-lead{order:2}.gut > .hero-cta{order:1;margin-top:0 !important}}
 #contact-form select:invalid{color:#8c9396}
 #contact-form select option{color:#111111}
 
@@ -338,3 +338,6 @@ img[width][height]{height:auto}
 @media (min-width: 761px){.listen-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
 @media (min-width: 1180px){.listen-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important}}
 .f-mail-end{margin-top:8px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.14);color:#e6d3ee}
+
+/* tablet portrait: photo above the text like on phones, cropped wider so it does not fill the screen */
+@media (min-width: 761px) and (max-width: 899px){.cine-img{aspect-ratio:4 / 3}.cine > .gut{margin-top:-90px}}
