@@ -10,7 +10,7 @@
   <link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/">
   <link rel="alternate" hreflang="it" href="https://imgroot.nl/it/">
   <link rel="alternate" hreflang="x-default" href="https://imgroot.nl/">
-  <meta name="theme-color" content="#17155f">
+  <meta name="theme-color" content="#0b0b0c">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Evert Groot">
   <meta property="og:url" content="https://imgroot.nl/nl/">
@@ -31,340 +31,62 @@
 <link rel="preload" href="/assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/baloo-bhai-2-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<style>
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:#17155f}
-a{color:#ffffff}a:hover{color:#dbad72}
-.field::placeholder{color:#8e8abf}
-.field:focus{outline:none;border-color:#dbad72 !important;box-shadow:0 0 0 3px rgba(219,173,114,0.35)}
-.field option{color:#17155f}
-.svc{transition:background-color .35s ease}
-.svc:hover{background-color:rgba(23,21,95,0.045);color:#17155f}
-.svc-arrow{transition:transform .35s cubic-bezier(.2,.7,.2,1),color .35s ease}
-.svc:hover .svc-arrow{transform:translateY(4px);color:#8f0048}
-.svc-out:hover .svc-arrow{transform:translateX(4px)}
-.case-img{overflow:hidden;border-radius:20px}
-.case-img img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
-a.case:hover .case-img img{transform:scale(1.045)}
-a.case:hover h3{color:#dbad72}
-.reel{transition:transform .45s cubic-bezier(.2,.7,.2,1)}
-.reel:hover{transform:translateY(-10px)}
-.btn-ghost{transition:background-color .3s ease,border-color .3s ease}
-.btn-ghost:hover{background-color:rgba(255,255,255,0.08);border-color:#ffffff !important;color:#ffffff}
-.btn-solid{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.btn-solid:hover{transform:translateY(-2px);color:#ffffff}
-.marquee-track{display:flex;width:max-content}
-@media (prefers-reduced-motion: no-preference){
-  @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-  .rise{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
-  .rise-2{animation-delay:.12s}
-  .rise-3{animation-delay:.24s}
-  .rise-4{animation-delay:.36s}
-  @keyframes marquee{to{transform:translateX(-50%)}}
-  .marquee-track{animation:marquee 48s linear infinite}
-  .marquee:hover .marquee-track{animation-play-state:paused}
-}
-@media (prefers-reduced-motion: reduce){
-  .marquee-track{width:auto;flex-wrap:wrap}
-  .marquee-dup{display:none !important}
-  a.case:hover .case-img img,.reel:hover,.btn-solid:hover{transform:none}
-}
-@media (max-width: 900px){
-  .svc-row{display:flex !important;flex-wrap:wrap}
-}
-@media (max-width: 760px){
-  .nav-links{display:none !important}
-  .hero-photo{order:-1}
-  .reel-offset{margin-top:0 !important}
-  .dj-photo{min-height:420px !important}
-}
-
-.gut{padding-left:calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px));padding-right:calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px))}
-.chap img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-.chap:hover img{transform:scale(1.04)}
-.chap:hover .chap-label{color:#dbad72}
-.thumb img{transition:opacity .4s ease}
-.thumb:hover img{opacity:.75}
-@media (min-width: 900px){
-  .cine-shift{transform-origin:50% 0;transform:translateX(14%) scale(1.3)}
-  .cine-right{left:auto !important;right:0;width:62% !important;-webkit-mask-image:linear-gradient(to right, transparent 0%, #000 38%),linear-gradient(to top, transparent 0%, #000 20%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right, transparent 0%, #000 38%),linear-gradient(to top, transparent 0%, #000 20%);mask-composite:intersect}
-}
-@media (max-width: 760px){
-  .cine{min-height:0 !important;display:block !important}
-  .cine-img{position:relative !important;display:block;width:100% !important;height:auto !important;aspect-ratio:4 / 5;-webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);mask-image:linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%)}
-  .cine h1{max-width:none !important}
-  .cine-right{object-position:44% 30% !important;top:auto !important}
-  .cine > .gut{margin-top:-110px}
-  .cine-meta{flex-direction:column !important;align-items:flex-start !important}
-  .chap-row{grid-template-columns:repeat(2, minmax(0, 1fr)) !important}
-  .idx-cols{grid-template-columns:repeat(2, minmax(0, 1fr)) !important}
-  .thumb-row{grid-template-columns:repeat(2, minmax(0, 1fr)) !important}
-}
-
-[hidden]{display:none !important}
-.menu-btn{display:none !important}
-.mm-link{transition:color .3s ease}
-.mm-link:hover{color:#dbad72}
-.br-d{display:none}
-@media (min-width: 901px){
-  .br-d{display:inline}
-}
-/* header v3: one menu bar for both sites */
-.site-sw{display:inline-grid;grid-template-columns:auto auto;align-items:center;justify-self:start;padding:3px;border:1px solid rgba(255,255,255,0.2);border-radius:999px;touch-action:pan-y;-webkit-user-select:none;user-select:none}
-.site-sw > *{grid-row:1}
-.site-sw a:first-of-type{grid-column:1}
-.site-sw a:last-of-type{grid-column:2}
-.sw-thumb{grid-column:1;align-self:stretch;border-radius:999px;background:#ffffff;box-shadow:0 2px 10px rgba(0,0,0,0.22)}
-.site-sw.is-dj .sw-thumb{grid-column:2}
-.site-sw a{position:relative;z-index:1;display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;font-family:'Baloo Bhai 2',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;line-height:1;color:#b3afe0;text-decoration:none;white-space:nowrap;-webkit-user-drag:none;transition:color .25s ease}
-.site-sw a:hover{color:#ffffff}
-.site-sw a[aria-current],.site-sw a[aria-current]:hover{color:#17155f;font-weight:800}
-.site-sw.sw-drag{cursor:grabbing}
-.site-sw.sw-drag .sw-thumb{transition:none}
-.sw-thumb{transition:transform .3s cubic-bezier(.3,.7,.2,1)}
-.site-sw.sw-flip a[aria-current]{color:#b3afe0}
-.site-sw.sw-flip a:not([aria-current]){color:#17155f}
-@media (prefers-reduced-motion: no-preference){
-  @view-transition{navigation:auto}
-  header .site-sw{view-transition-name:sw}
-  header .sw-thumb{view-transition-name:sw-thumb}
-  header .site-sw a:first-of-type{view-transition-name:sw-a}
-  header .site-sw a:last-of-type{view-transition-name:sw-b}
-  .sw-menu header .site-sw,.sw-menu header .sw-thumb,.sw-menu header .site-sw a{view-transition-name:none}
-  .sw-menu #mobile-menu .site-sw{view-transition-name:sw}
-  .sw-menu #mobile-menu .sw-thumb{view-transition-name:sw-thumb}
-  .sw-menu #mobile-menu .site-sw a:first-of-type{view-transition-name:sw-a}
-  .sw-menu #mobile-menu .site-sw a:last-of-type{view-transition-name:sw-b}
-  ::view-transition-group(*){animation-duration:.45s;animation-timing-function:cubic-bezier(.3,.7,.2,1)}
-  ::view-transition-old(root),::view-transition-new(root){animation-duration:.3s}
-  ::view-transition-group(sw-thumb){z-index:2}
-  ::view-transition-group(sw-a),::view-transition-group(sw-b){z-index:3}
-  ::view-transition-group(sw-a),::view-transition-group(sw-b){overflow:clip}
-  ::view-transition-old(sw-a),::view-transition-new(sw-a),::view-transition-old(sw-b),::view-transition-new(sw-b){width:auto;height:100%;object-fit:none;object-position:left center}
-}
-.nav-links{justify-self:start}
-.nav-links a{position:relative;padding:12px 0;white-space:nowrap}
-.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;border-radius:2px;background:#dbad72;transform:scaleX(0);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.nav-links a[aria-current]::after{transform:scaleX(1)}
-.hdr-right{display:flex;align-items:center;justify-content:flex-end;justify-self:end;gap:18px;font-size:15px}
-.hdr-sep,.mm-sep{width:1px;height:22px;background:rgba(255,255,255,0.2)}
-.hdr-lang,.mm-lang{display:flex}
-.hdr-lang a,.mm-lang a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:44px;font-size:12px;font-weight:800;letter-spacing:0.1em;color:#8e8abf;text-decoration:none}
-.mm-lang{margin-left:auto;margin-right:-10px}
-.mm-lang a{width:44px;font-size:13px}
-.hdr-lang a[aria-current],.mm-lang a[aria-current]{color:#ffffff}
-.hdr-lang a:hover,.mm-lang a:hover{color:#dbad72}
-.mm-link{display:flex !important;align-items:baseline;gap:14px}
-.mm-num{flex:0 0 22px;font-family:'Manrope',sans-serif;font-size:12px;font-weight:800;letter-spacing:0.1em;color:#8e8abf}
-.mm-link[aria-current]{color:#dbad72 !important}
-@media (max-width: 1240px){
-  header{grid-template-columns:auto auto minmax(0,1fr) !important;gap:20px 28px !important}
-  .nav-links{gap:24px !important;font-size:14px !important}
-  .hdr-right{gap:12px}
-  .hdr-cta{padding:0 16px !important;font-size:14px}
-  .site-sw a{padding:0 13px;font-size:17px}
-}
-@media (max-width: 1060px){
-  .nav-links,.hdr-cta,.hdr-lang,.hdr-sep{display:none !important}
-  .menu-btn{display:inline-flex !important}
-  header{grid-template-columns:minmax(0,1fr) auto !important}
-}
-@media (max-width: 760px){
-  .site-sw a{height:34px;padding:0 12px;font-size:16px}
-}
-@media (max-width: 360px){
-  .site-sw a{padding:0 9px;font-size:15px}
-}
-@media (max-width: 700px){
-  .case-row{grid-template-columns:minmax(0, 1fr) !important}
-}
-/* page accent: teal from the light in the hero photo */
-.nav-links a::after{background:#7bd6e0}
-.nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:#7bd6e0}
-.mm-link[aria-current]{color:#7bd6e0 !important}
-.menu-fab{border-color:#7bd6e0 !important}
-.hdr-cta:hover,#mobile-menu .btn-solid:hover{color:#0b0b0c}
-header.hdr-stuck{background:rgba(11,11,12,0.94) !important}
-.menu-fab{background:#0b0b0c !important}
-/* site switch: a colored dot per site, teal = Evert Groot, red = DJ Absoluut */
-.site-sw a::before{content:"";flex:0 0 auto;width:8px;height:8px;margin-right:8px;border-radius:50%}
-.site-sw a:first-of-type::before{background:#7bd6e0}
-.site-sw a:last-of-type::before{background:#c8193a}
-@media (max-width: 360px){.site-sw a::before{width:7px;height:7px;margin-right:6px}}
-/* site switch: only the current site is written out, the other folds into its dot (opens on hover) */
-header .site-sw a:not([aria-current]){max-width:40px;padding:0 12px !important;overflow:hidden;color:transparent;transition:max-width .4s cubic-bezier(.3,.7,.2,1),color .25s ease}
-header .site-sw a:not([aria-current])::before{box-shadow:0 0 0 4px rgba(255,255,255,0.09)}
-header .site-sw.sw-peek a:not([aria-current]),header .site-sw:has(a:focus-visible) a:not([aria-current]){max-width:190px;padding:0 16px !important;color:rgba(179,175,224,0.75)}
-@media (hover: hover){header .site-sw:hover a:not([aria-current]){max-width:190px;padding:0 16px !important;color:rgba(179,175,224,0.75)}}
-header .site-sw a:not([aria-current]):hover,header .site-sw a:not([aria-current]):focus-visible{color:#ffffff}
-#mobile-menu .site-sw a:not([aria-current]){color:rgba(179,175,224,0.65)}
-@media (prefers-reduced-motion: reduce){header .site-sw a:not([aria-current]){transition:none}}
-/* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
-/* language: current language + arrow, the others in a small panel */
-.lang-dd{position:relative}
-.lg-btn{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 4px 0 10px;border:0;background:none;color:#ffffff;font:800 12px/1 'Manrope',sans-serif;letter-spacing:0.1em;cursor:pointer}
-.lg-btn:hover{color:var(--acc)}
-.lg-btn svg{transition:transform .25s ease}
-.lg-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
-.lg-pop{position:absolute;right:0;top:calc(100% + 6px);z-index:70;min-width:180px;padding:4px;border-radius:12px;background:var(--pop);border:1px solid rgba(255,255,255,0.12);box-shadow:0 16px 40px rgba(0,0,0,0.45)}
-.hdr-lang .lg-pop a{display:flex;align-items:center;justify-content:flex-start;gap:12px;width:auto;height:44px;padding:0 12px;border-radius:8px;color:#ffffff;font:600 14px/1 'Manrope',sans-serif;letter-spacing:0}
-.hdr-lang .lg-pop a b{width:22px;font-size:11px;font-weight:800;letter-spacing:0.1em;color:#8e8abf}
-.hdr-lang .lg-pop a:hover,.hdr-lang .lg-pop a:focus-visible{background:rgba(255,255,255,0.08);color:#ffffff}
-:root{--acc:#7bd6e0;--pop:#161618}
-a .bops-mark{transition:background-color .25s ease}
-/* hero: title higher, intro text under the title */
-@media (min-width: 761px){.cine{align-items:center !important}.cine > .gut{padding-top:120px;padding-bottom:64px !important}}
-.hero-lead{margin:0;max-width:min(600px,46vw);font-size:clamp(17px,1.35vw,20px);line-height:1.6;font-weight:500;color:rgba(255,255,255,0.84)}
-@media (max-width: 760px){.hero-lead{max-width:none;font-size:17px}}
-.hero-lead + .hero-lead{margin-top:calc(14px - clamp(24px, 3vw, 40px))}
-@media (max-width: 700px){.case-feat{grid-template-columns:minmax(0, 1fr) !important}}
-/* footer: name + socials on top, small legal row below */
-.ft2-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.14)}
-.ft2-id{display:flex;flex-direction:column;gap:6px}
-.ft2-name{font-family:'Baloo Bhai 2',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;color:#ffffff}
-.ft2-sub{font-size:14px;line-height:1.5;color:#b3afe0}
-.ft2-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:22px;font-size:13px;line-height:1.6;color:#8e8abf}
-.ft2-bottom > span{display:flex;flex-wrap:wrap;align-items:center;gap:0 10px}
-.ft2-bottom i{font-style:normal;opacity:0.6}
-.ft2-bottom a{color:#b3afe0;text-decoration:none}
-.ft2-bottom a:hover,.ft2-bottom a:focus-visible{color:#ffffff;text-decoration:underline;text-underline-offset:3px}
-@media (max-width: 1060px){footer.ft2{padding-bottom:110px !important}}
-@media (max-width: 640px){.ft2-bottom i{display:none}.ft2-bottom > span{gap:2px 16px}}
-/* page theme: black & teal (Evert Groot) */
-body{background:#0b0b0c}
-a:hover{color:#7bd6e0}
-.field::placeholder{color:#80878a}
-.field:focus{border-color:#7bd6e0 !important;box-shadow:0 0 0 3px rgba(123,214,224,0.3)}
-.field option{color:#111111}
-.svc:hover{background-color:rgba(17,17,17,0.04);color:#111111}
-.svc:hover .svc-arrow{color:#0b6e78}
-a.case:hover h3,.chap:hover .chap-label,.mm-link:hover{color:#7bd6e0}
-.hdr-lang a,.mm-lang a,.mm-num,.hdr-lang .lg-pop a b{color:#8c9396}
-.site-sw a,.site-sw.sw-flip a[aria-current]{color:#a7adb0}
-.site-sw a[aria-current],.site-sw a[aria-current]:hover,.site-sw.sw-flip a:not([aria-current]){color:#0b0b0c}
-.ft2-sub,.ft2-bottom a{color:#bcd3d5}
-.ft2-bottom{color:#8fb0b3}
-.ft2-top,.ft2-bottom{border-color:rgba(255,255,255,0.16) !important}
-footer.ft2 nav a{color:#ffffff;background:rgba(255,255,255,0.1)}
-footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#7bd6e0}
-#lang-banner{background:#7bd6e0 !important;color:#0b0b0c !important}
-#lang-banner-link,#lang-banner-close{color:#0b0b0c !important}
-/* end page theme */
-</style>
-<style>
-  .quotes > span,.quote-track,.quote-controls{width:100%;max-width:860px;margin-left:auto;margin-right:auto}
-  .quote-track{display:flex;align-items:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab;-webkit-user-select:none;user-select:none}
-  .quote-track::-webkit-scrollbar{display:none}
-  .quote-track.q-drag{cursor:grabbing;scroll-snap-type:none}
-  .quote-slide{flex:0 0 100%;min-width:0;scroll-snap-align:start;margin:0;display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px)}
-  .quote-slide blockquote{max-width:none !important}
-  .quote-controls{display:flex;justify-content:center}
-  .quote-dots{display:flex;gap:0}
-  .quote-dot{display:grid;place-items:center;width:30px;height:44px;padding:0;border:0;background:transparent;cursor:pointer}
-  .quote-dot span{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.4);transition:background .2s ease,transform .2s ease}
-  .quote-dot[aria-current="true"] span{background:#fff;transform:scale(1.2)}
-  .quote-dot:focus-visible,.quote-track:focus-visible{outline:3px solid #dbad72;outline-offset:2px}
-</style>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://imgroot.nl/#evert", "name": "Evert Groot", "alternateName": ["DJ Absoluut", "Absoluut"], "url": "https://imgroot.nl/", "image": "https://imgroot.nl/assets/img/evert-groot.jpg", "email": "mailto:evert@imgroot.nl", "jobTitle": ["Content Strategist", "DJ", "Content Creator", "Event Organizer"], "knowsAbout": ["Content strategy", "Social media strategy", "Creative direction", "Short-form video", "Pop music", "DJing", "Wedding DJ", "Event organizing", "Queer nightlife"], "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "founder": {"@id": "https://imgroot.nl/#bops"}, "sameAs": ["https://www.instagram.com/absoluut/", "https://www.tiktok.com/@absoluutdj", "https://www.linkedin.com/in/evertgroot", "https://soundcloud.com/absoluut"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content strategy and creative direction", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ for clubs, festivals, brand events and weddings", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event organizing", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator partnerships and short-form video", "areaServed": ["NL", "IT"]}}]}, {"@type": "Organization", "@id": "https://imgroot.nl/#bops", "name": "BOPS", "description": "Queer pop party at The Other Side, Amsterdam", "url": "https://www.instagram.com/bops.ams/", "sameAs": ["https://www.instagram.com/bops.ams/"]}, {"@type": "WebSite", "@id": "https://imgroot.nl/#website", "url": "https://imgroot.nl/", "name": "Evert Groot", "inLanguage": ["en", "nl", "it"], "publisher": {"@id": "https://imgroot.nl/#evert"}}]}</script>
+<link rel="stylesheet" href="/assets/css/home.css?v=19bde8a6">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://imgroot.nl/#evert", "name": "Evert Groot", "alternateName": ["DJ Absoluut", "Absoluut"], "url": "https://imgroot.nl/", "image": "https://imgroot.nl/assets/img/evert-groot.jpg", "email": "mailto:evert@imgroot.nl", "jobTitle": ["Content Strategist", "DJ", "Content Creator", "Event Organizer"], "knowsAbout": ["Content strategy", "Social media strategy", "Creative direction", "Short-form video", "Pop music", "DJing", "Wedding DJ", "Event organizing", "Queer nightlife"], "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "founder": {"@id": "https://imgroot.nl/#bops"}, "sameAs": ["https://www.instagram.com/absoluut/", "https://www.tiktok.com/@absoluutdj", "https://www.linkedin.com/in/evertgroot", "https://soundcloud.com/absoluut"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Contentstrategie en creatieve regie", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ voor clubs, festivals, brand events en bruiloften", "areaServed": ["NL", "BE", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Events organiseren", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator-samenwerkingen en short-form video", "areaServed": ["NL", "IT"]}}]}, {"@type": "Organization", "@id": "https://imgroot.nl/#bops", "name": "BOPS", "description": "Queer pop party at The Other Side, Amsterdam", "url": "https://www.instagram.com/bops.ams/", "sameAs": ["https://www.instagram.com/bops.ams/"]}, {"@type": "WebSite", "@id": "https://imgroot.nl/#website", "url": "https://imgroot.nl/", "name": "Evert Groot", "inLanguage": ["en", "nl", "it"], "publisher": {"@id": "https://imgroot.nl/#evert"}}]}</script>
   <script data-goatcounter="https://imgroot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-  <script src="/assets/site.js?v=84c42083" defer></script>
-<style id="form-sys">
-#contact-form [hidden]{display:none !important}
-.f-hint{margin:-6px 0 0;font-size:14px;line-height:1.5;opacity:.75}
-.f-ref{border-radius:20px;padding:20px 22px;background:#fbeff3;color:#1f0328;font-size:16px;line-height:1.55}
-.f-ref b{display:block;font-weight:800;margin-bottom:4px}
-.f-ref a{margin-top:16px}
-.svc-row .svc-arrow{justify-self:end !important;text-align:right}
-@media (max-width: 900px){.svc-row .svc-arrow{flex:1 1 100% !important;padding-left:0 !important;margin-top:4px;text-align:right}}
-#contact p:has(+ #contact-form),.book-side > p:first-child{text-wrap:balance}
-@media (max-width: 760px){.gut > .hero-lead{order:2}.gut > .hero-cta{order:1;margin-top:0 !important}}
-#contact-form select:invalid{color:#8e8e93}
-#contact-form select option{color:#111111}
-</style>
-<style id="hv-sys">
-/* unified hover system: primary · secondary · text link · icon · card */
-:root{--hv-acc:#7bd6e0;--hv-acc-l:#0b6e78;--hv-glow:rgba(123,214,224,.32)}
-.btn-solid{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease,background-color .25s ease,color .25s ease !important}
-.btn-ghost,.hv-2{transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .25s ease,border-color .25s ease,color .25s ease !important}
-.btn-solid:hover,.btn-solid:focus-visible{box-shadow:0 8px 22px var(--hv-glow)}
-.btn-ghost:hover,.btn-ghost:focus-visible,.hv-2.hv-dk:hover,.hv-2.hv-dk:focus-visible{background-color:rgba(255,255,255,.1) !important;border-color:#ffffff !important;color:#ffffff}
-.hv-2.hv-lt:hover,.hv-2.hv-lt:focus-visible{background-color:rgba(22,18,26,.06) !important;border-color:#16121a !important}
-.hv-tl{text-decoration-line:underline !important;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:4px;transition:color .25s ease,text-decoration-color .25s ease}
-.hv-tl.hv-dk:hover,.hv-tl.hv-dk:focus-visible{color:var(--hv-acc) !important;text-decoration-color:var(--hv-acc)}
-.hv-tl.hv-lt:hover,.hv-tl.hv-lt:focus-visible{color:var(--hv-acc-l) !important;text-decoration-color:var(--hv-acc-l)}
-.hv-ar{display:inline-block;margin-left:.3em;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
-footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2,1)}
-.hv-card{transition:background-color .3s ease,color .3s ease}
-.hv-card:hover,.hv-card:focus-visible{background-color:#ece8ee !important;color:var(--hv-acc-l) !important}
-.reel img,.reel video{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.reel:hover,.reel:focus-visible{transform:none !important}
-:is(.btn-solid,.btn-ghost,.hv-2,.hv-tl,.hv-card,.reel,a.case,.svc,footer.ft2 nav a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
-@media (hover:hover){
-  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:translateY(-2px) !important}
-  :is(a,button):hover .hv-ar.hv-r{transform:translateX(4px)}
-  :is(a,button):hover .hv-ar.hv-d{transform:translateY(3px)}
-  :is(a,button):hover .hv-ar.hv-ne{transform:translate(3px,-3px)}
-  .reel:hover img,.reel:hover video{transform:scale(1.04)}
-}
-.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:translateY(-2px) !important}
-:is(a,button):focus-visible .hv-ar.hv-r{transform:translateX(4px)}
-:is(a,button):focus-visible .hv-ar.hv-d{transform:translateY(3px)}
-:is(a,button):focus-visible .hv-ar.hv-ne{transform:translate(3px,-3px)}
-@media (prefers-reduced-motion:reduce){
-  .btn-solid,.btn-ghost,.hv-2,footer.ft2 nav a,.hv-ar,.reel img,.reel video,a.case .case-img img{transform:none !important}
-}
-</style>
+  <script src="/assets/site.js?v=c81caa6c" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Naar de inhoud</a>
 <!-- Icons: Instagram, TikTok, SoundCloud from Simple Icons (CC0); LinkedIn from Font Awesome Free (CC BY 4.0, https://fontawesome.com). -->
 <div style="font-family: 'Manrope', sans-serif; color: #ffffff; background: #0b0b0c; min-height: 100vh; overflow: hidden">
 
 <div style="position: relative">
   <!-- NAV -->
   <header style="position: absolute; left: 0; right: 0; top: 0; z-index: 5; max-width: none; padding-left: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); padding-right: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); max-width: 1360px; margin: 0 auto; padding: 22px clamp(20px, 4vw, 48px); display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 24px 44px">
-    <nav class="site-sw" aria-label="Site"><span class="sw-thumb" aria-hidden="true"></span><a href="/nl/" aria-current="true">Evert Groot</a><a href="/nl/dj/">DJ Absoluut</a></nav>
+    <nav class="site-sw" aria-label="Site"><span class="sw-thumb" aria-hidden="true"></span><a href="/nl/" aria-current="page">Evert Groot</a><a href="/nl/dj/">DJ Absoluut</a></nav>
     <nav class="nav-links" aria-label="Hoofdmenu" style="display: flex; gap: 32px; font-size: 15px; font-weight: 600">
       <a href="#services" style="text-decoration: none">Diensten</a>
-      <a href="#work" style="text-decoration: none">Strategie &amp; content</a>
+      <a href="#work" style="text-decoration: none">Werk</a>
       <a href="#creator" style="text-decoration: none">Creator</a>
       <a href="#events" style="text-decoration: none">Events</a>
     </nav>
     <div class="hdr-right">
       <a class="btn-solid hdr-cta" href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #7bd6e0; color: #0b0b0c; text-decoration: none; font-weight: 800" data-goatcounter-click="click-work-with-me">Samenwerken?</a>
       <span class="hdr-sep" aria-hidden="true"></span>
-      <div class="hdr-lang lang-dd"><button type="button" class="lg-btn" aria-expanded="false" aria-controls="lang-pop" aria-label="Taal: Nederlands">NL <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3.5l3 3 3-3"></path></svg></button><div class="lg-pop" id="lang-pop" role="group" aria-label="Taal" hidden><a href="/" hreflang="en" data-lang="en" lang="en"><b>EN</b>English</a><a href="/it/" hreflang="it" data-lang="it" lang="it"><b>IT</b>Italiano</a></div></div>
+      <div class="hdr-lang" role="group" aria-label="Taal"><a href="/" hreflang="en" data-lang="en">EN</a><a href="/nl/" hreflang="nl" data-lang="nl" aria-current="page">NL</a><a href="/it/" hreflang="it" data-lang="it">IT</a></div>
       <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; background: transparent; color: #ffffff; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
     </div>
   </header>
 
   <!-- MOBILE MENU -->
-  <div id="mobile-menu" hidden style="position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; padding: 22px 20px 32px; background: #0b0b0c; overflow-y: auto">
+  <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden style="position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; padding: 22px 20px 32px; background: #0b0b0c; overflow-y: auto">
     <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
-      <nav class="site-sw" aria-label="Site"><span class="sw-thumb" aria-hidden="true"></span><a href="/nl/" aria-current="true">Evert Groot</a><a href="/nl/dj/">DJ Absoluut</a></nav>
+      <nav class="site-sw" aria-label="Site"><span class="sw-thumb" aria-hidden="true"></span><a href="/nl/" aria-current="page">Evert Groot</a><a href="/nl/dj/">DJ Absoluut</a></nav>
       <button type="button" class="menu-close" data-close aria-label="Menu sluiten" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; background: transparent; color: #ffffff; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     </div>
-    <nav aria-label="Menu" style="display: flex; flex-direction: column; margin-top: 48px">
-      <a href="#services" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">01</span>Diensten</a>
-      <a href="#work" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">02</span>Strategie &amp; content</a>
-      <a href="#creator" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">03</span>Creator</a>
-      <a href="#events" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff"><span class="mm-num" aria-hidden="true">04</span>Events</a>
+    <nav aria-label="Secties" style="display: flex; flex-direction: column; margin-top: 48px">
+      <a href="#services" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Diensten</a>
+      <a href="#work" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Werk</a>
+      <a href="#creator" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Creator</a>
+      <a href="#events" class="mm-link" style="display: block; padding: 6px 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; text-decoration: none; color: #ffffff">Events</a>
     </nav>
     <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: auto; padding-top: 40px">
       <a class="btn-solid" href="#contact" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #7bd6e0; color: #0b0b0c; text-decoration: none; font-weight: 800; font-size: 16px" data-goatcounter-click="click-work-with-me">Samenwerken?</a>
       <div class="mm-lang" role="group" aria-label="Taal"><a href="/" hreflang="en" data-lang="en">EN</a><a href="/nl/" hreflang="nl" data-lang="nl" aria-current="page">NL</a><a href="/it/" hreflang="it" data-lang="it">IT</a></div>
     </div>
   </div>
-  <script>try{if(sessionStorage.getItem('imgroot-menu')){var m=document.getElementById('mobile-menu');if(m&&window.matchMedia&&matchMedia('(max-width: 1060px)').matches){m.hidden=false;document.documentElement.classList.add('sw-menu');document.documentElement.style.overflow='hidden'}else{sessionStorage.removeItem('imgroot-menu')}}}catch(e){}</script>
+  
 
-
+  <main id="main" tabindex="-1">
   <!-- DIRECTION 1: cinematic portrait -->
   <section class="cine" style="position: relative; min-height: 880px; display: flex; align-items: flex-end; overflow: hidden; background: #0b0b0c">
-    <img class="cine-img cine-right" src="/assets/img/evert-groot-portrait.jpg" fetchpriority="high" alt="Portret van Evert Groot" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 44% 22%">
+    <img width="1333" height="2000" class="cine-img cine-right" src="/assets/img/evert-groot-portrait.jpg" srcset="/assets/img/evert-groot-portrait-800.jpg 800w, /assets/img/evert-groot-portrait.jpg 1333w" sizes="(max-width: 760px) 100vw, 62vw" fetchpriority="high" alt="Portret van Evert Groot" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 44% 22%">
     <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,11,12,0.92) 0%, rgba(11,11,12,0.55) 34%, rgba(11,11,12,0) 62%), linear-gradient(to bottom, rgba(11,11,12,0.55) 0%, rgba(11,11,12,0) 18%)"></div>
     <div class="gut" style="position: relative; width: 100%; padding-bottom: clamp(32px, 4vw, 56px); display: flex; flex-direction: column; gap: clamp(24px, 3vw, 40px)">
       <h1 class="rise" style="margin: 0; max-width: min(780px, 58vw); font-family: 'Baloo Bhai 2', sans-serif; font-weight: 800; font-size: clamp(42px, 5.2vw, 84px); line-height: 0.92; letter-spacing: -0.045em; color: #ffffff; margin-left: -0.03em">Strategie en content.<br class="br-d"> DJ-sets en events,<br class="br-d"> <span style="color: #7bd6e0">met popcultuur als basis.</span></h1>
       <p class="hero-lead rise rise-2">Ik gebruik doelgroepinzichten en online cultuur om contentstrategieën, campagneconcepten en copy te ontwikkelen rond wat jouw publiek echt belangrijk vindt.</p>
-      <p class="hero-lead rise rise-2">Daarnaast ben ik contentcreator over popmuziek met meer dan 1 miljoen Reel-views, draai ik al <span data-years-since="2008-01-12">18</span> jaar als DJ Absoluut en organiseerde ik 24 edities van BOPS, het queer popfeest dat ik in Amsterdam mede oprichtte.</p>
+      <ul class="hero-proof rise rise-2"><li><b>1M+</b> views op mijn popmuziek-Reels</li><li><b><span data-years-since="2008-01-12">18</span></b> jaar als DJ Absoluut</li><li><b>24</b> edities van BOPS, mijn queer popfeest</li></ul>
       <div class="hero-cta rise rise-3" style="margin-top: 8px"><a class="btn-solid" href="#contact" data-goatcounter-click="hero-cta-home" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #7bd6e0; color: #0b0b0c; text-decoration: none; font-size: 16px; font-weight: 800">Samenwerken?<span class="hv-ar hv-d" aria-hidden="true">↓</span></a></div>
     </div>
   </section>
@@ -372,110 +94,103 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
   <section class="marquee" aria-label="Werkte onder meer voor" style="background: #7bd6e0; padding: 24px 0; overflow: hidden">
     <div class="marquee-track" style="gap: 0">
       <div style="display: flex; align-items: center; gap: 64px; padding-right: 64px; font-size: 19px; font-weight: 700; color: #0b0b0c; white-space: nowrap">
-        <span style="color: #0b6e78; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Werkte onder meer voor</span><span>TUI</span><span>Netflix</span><span>Soa Aids Nederland</span><span>Paradiso</span><span>McDonald's</span><span>Sofitel</span><span>The Best Social</span>
+        <span style="color: #064a51; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Werkte onder meer voor</span><span>TUI</span><span>Netflix</span><span>Soa Aids Nederland</span><span>Paradiso</span><span>McDonald's</span><span>Sofitel</span><span>The Best Social</span>
       </div>
       <div class="marquee-dup" aria-hidden="true" style="display: flex; align-items: center; gap: 64px; padding-right: 64px; font-size: 19px; font-weight: 700; color: #0b0b0c; white-space: nowrap">
-        <span style="color: #0b6e78; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Werkte onder meer voor</span><span>TUI</span><span>Netflix</span><span>Soa Aids Nederland</span><span>Paradiso</span><span>McDonald's</span><span>Sofitel</span><span>The Best Social</span>
+        <span style="color: #064a51; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Werkte onder meer voor</span><span>TUI</span><span>Netflix</span><span>Soa Aids Nederland</span><span>Paradiso</span><span>McDonald's</span><span>Sofitel</span><span>The Best Social</span>
       </div>
     </div>
   </section>
 
   <!-- SERVICES: numbered rows instead of four colored cards -->
   <section id="services" aria-labelledby="services-title" style="background: #f2efe9; color: #111111">
-    <div style="max-width: 1360px; margin: 0 auto; padding: clamp(80px, 10vw, 140px) clamp(20px, 4vw, 48px)">
+    <div style="max-width: 1360px; margin: 0 auto; padding: clamp(72px, 10vw, 136px) clamp(20px, 4vw, 48px)">
     <div style="display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: clamp(32px, 4vw, 56px)">
       <div>
-        <p style="margin: 0 0 14px; color: #0b6e78; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Diensten</p>
-        <h2 id="services-title" style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800; margin-left: -0.007em">Vier manieren om samen te werken</h2>
+        <h2 id="services-title" style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800; margin-left: -0.007em">Manieren om samen te werken</h2>
       </div>
     </div>
     <div style="border-top: 1px solid rgba(17,17,17,0.16)">
-      <a class="svc svc-row" data-goatcounter-click="click-svc-strategy" href="#work" style="display: grid; grid-template-columns: 48px minmax(0, 1.15fr) minmax(0, 1fr) 210px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
-        <span style="flex: 0 0 48px; font-size: 14px; font-weight: 800; color: #0b6e78; letter-spacing: 0.08em">01</span>
-        <span style="flex: 1 1 340px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Strategie &amp; content</span>
+      <a class="svc svc-row" data-goatcounter-click="click-svc-strategy" href="#work" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
+        <h3 style="flex: 1 1 340px; margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Strategie &amp; content<span class="sr-only">, Meer weten</span><span class="hv-ar hv-d" aria-hidden="true">↓</span></h3>
         <span style="flex: 1 1 300px; font-size: 17px; line-height: 1.55; color: #4a4f52">Doelgroepinzichten, creatieve concepten en contentstrategieën die merken helpen bepalen wat ze zeggen, wie ze willen bereiken en welke formats ze inzetten.</span>
-        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Meer weten ↓</span>
+        
       </a>
-      <a class="svc svc-row" data-goatcounter-click="click-svc-creator" href="#creator" style="display: grid; grid-template-columns: 48px minmax(0, 1.15fr) minmax(0, 1fr) 210px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
-        <span style="flex: 0 0 48px; font-size: 14px; font-weight: 800; color: #0b6e78; letter-spacing: 0.08em">02</span>
-        <span style="flex: 1 1 340px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Creator</span>
+      <a class="svc svc-row" data-goatcounter-click="click-svc-creator" href="#creator" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
+        <h3 style="flex: 1 1 340px; margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Creator<span class="sr-only">, Meer weten</span><span class="hv-ar hv-d" aria-hidden="true">↓</span></h3>
         <span style="flex: 1 1 300px; font-size: 17px; line-height: 1.55; color: #4a4f52">Korte video's over popmuziek en de cultuur eromheen, gemaakt voor jouw merk.</span>
-        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Meer weten ↓</span>
+        
       </a>
-      <a class="svc svc-row" data-goatcounter-click="click-svc-events" href="#events" style="display: grid; grid-template-columns: 48px minmax(0, 1.15fr) minmax(0, 1fr) 210px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
-        <span style="flex: 0 0 48px; font-size: 14px; font-weight: 800; color: #0b6e78; letter-spacing: 0.08em">03</span>
-        <span style="flex: 1 1 340px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Events organiseren</span>
+      <a class="svc svc-row" data-goatcounter-click="click-svc-events" href="#events" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
+        <h3 style="flex: 1 1 340px; margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Events organiseren<span class="sr-only">, Meer weten</span><span class="hv-ar hv-d" aria-hidden="true">↓</span></h3>
         <span style="flex: 1 1 300px; font-size: 17px; line-height: 1.55; color: #4a4f52">Eventconcepten, programmering, creatieve regie en promotie, van het eerste idee tot de laatste campagne.</span>
-        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Meer weten ↓</span>
+        
       </a>
-      <a class="svc svc-row svc-out" data-goatcounter-click="click-svc-dj" href="/nl/dj/" style="display: grid; grid-template-columns: 48px minmax(0, 1.15fr) minmax(0, 1fr) 210px; align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
-        <span style="flex: 0 0 48px; font-size: 14px; font-weight: 800; color: #0b6e78; letter-spacing: 0.08em">04</span>
-        <span style="flex: 1 1 340px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">DJ Absoluut</span>
+      <a class="svc svc-row svc-out" data-goatcounter-click="click-svc-dj" href="/nl/dj/" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); align-items: center; gap: 12px clamp(20px, 3vw, 48px); padding: clamp(24px, 3vw, 36px) clamp(8px, 1.5vw, 20px); border-bottom: 1px solid rgba(17,17,17,0.16); text-decoration: none; color: #111111">
+        <h3 style="flex: 1 1 340px; margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">DJ Absoluut<span class="sr-only">, Naar de DJ-pagina</span><span class="hv-ar hv-r" aria-hidden="true">→</span></h3>
         <span style="flex: 1 1 300px; font-size: 17px; line-height: 1.55; color: #4a4f52">Pop, disco en house voor clubs, festivals, brand events en bruiloften.</span>
-        <span class="svc-arrow" style="flex: 0 0 auto; justify-self: start; font-size: 15px; font-weight: 800; white-space: nowrap">Naar de DJ-pagina →</span>
+        
       </a>
     </div>
     </div>
   </section>
 
   <!-- WORK: editorial grid, two featured cases, no frames -->
-  <section id="work" aria-labelledby="work-title" style="max-width: 1360px; margin: 0 auto; padding: clamp(96px, 12vw, 160px) clamp(20px, 4vw, 48px) 0">
-    <p style="margin: 0 0 14px; color: #7bd6e0; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Strategie &amp; content</p>
+  <section id="work" aria-labelledby="work-title" style="max-width: 1360px; margin: 0 auto; padding: clamp(72px, 10vw, 136px) clamp(20px, 4vw, 48px)">
     <h2 id="work-title" style="margin: 0 0 clamp(32px, 4vw, 56px); font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800; margin-left: -0.025em">Campagnes en content</h2>
     <div class="case-feat" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 4vw, 48px) clamp(16px, 2vw, 32px)">
       <a class="case" href="https://www.instagram.com/tv/CTMzKzHqiFT/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-netflix" style="display: flex; flex-direction: column; gap: 18px; text-decoration: none">
-        <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-netflix.jpg" alt="Samenwerking tussen Netflix en NikkieTutorials" style="display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover"></div>
+        <div class="case-img"><img width="800" height="480" loading="lazy" decoding="async" src="/assets/img/work-netflix.jpg" alt="" style="display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover"></div>
         <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px">
-          <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Netflix × NikkieTutorials</h3>
+          <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Netflix × NikkieTutorials<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
           <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Concept</span>
         </div>
         <p style="margin: -8px 0 0; font-size: 16px; line-height: 1.55; color: #c9cdcf">Creatief concept voor een samenwerking van Netflix met NikkieTutorials.</p>
-      </a>
+      <span class="sr-only"> (opent in een nieuw tabblad)</span></a>
       <a class="case" href="https://www.facebook.com/TUINederland/photos/pb.100064940251976.-2207520000/10161090322060719/?type=3" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-tui-campaign" style="display: flex; flex-direction: column; gap: 18px; text-decoration: none">
-        <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-tui-campaign.jpg" alt="TUI-campagnecontent" style="display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover"></div>
+        <div class="case-img"><img width="800" height="480" loading="lazy" decoding="async" src="/assets/img/work-tui-campaign.jpg" alt="" style="display: block; width: 100%; aspect-ratio: 5 / 3; object-fit: cover"></div>
         <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px">
-          <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">TUI-campagnecontent</h3>
+          <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">TUI-campagnecontent<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
           <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Concept · Creatie · Copy</span>
         </div>
         <p style="margin: -8px 0 0; font-size: 16px; line-height: 1.55; color: #c9cdcf">Concept, creatieve regie en copy voor social content van TUI, samen met The Best Social.</p>
-      </a>
+      <span class="sr-only"> (opent in een nieuw tabblad)</span></a>
     </div>
     <div class="case-row" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(32px, 4vw, 48px) clamp(16px, 2vw, 32px); margin-top: clamp(40px, 5vw, 64px)">
       <a class="case" href="https://www.linkedin.com/company/stichtingforward/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-forward" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
-        <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-forward.jpg" alt="Social content voor Stichting FORWARD" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
-        <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Strategie · Planning · Copy</span>
-        <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Stichting FORWARD</h3>
+        <div class="case-img"><img width="800" height="480" loading="lazy" decoding="async" src="/assets/img/work-forward.jpg" alt="" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
+        <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Stichting FORWARD<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
+        <span style="margin-top: -6px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Strategie · Planning · Copy</span>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #c9cdcf">Contentstrategie, redactionele planning en copy die complexe juridische en LHBTIQA+-onderwerpen toegankelijk maken.</p>
-      </a>
+      <span class="sr-only"> (opent in een nieuw tabblad)</span></a>
       <a class="case" href="https://www.instagram.com/reels/DDMBNbwCVMU/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-tui-social" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
-        <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-tui-social.jpg" alt="Short-form socialstrategie voor TUI" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
-        <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Strategie · Concept</span>
-        <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">TUI-socialstrategie</h3>
+        <div class="case-img"><img width="800" height="480" loading="lazy" decoding="async" src="/assets/img/work-tui-social.jpg" alt="" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
+        <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">TUI-socialstrategie<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
+        <span style="margin-top: -6px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Strategie · Concept</span>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #c9cdcf">Social contentstrategie en terugkerende short-form videoconcepten voor TUI.</p>
-      </a>
+      <span class="sr-only"> (opent in een nieuw tabblad)</span></a>
       <a class="case" href="https://www.instagram.com/mantotman_nl/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="work-soa-aids" style="display: flex; flex-direction: column; gap: 14px; text-decoration: none">
-        <div class="case-img"><img loading="lazy" decoding="async" src="/assets/img/work-soa-aids.jpg" alt="Social content voor Soa Aids Nederland" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
-        <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Content · Advertising · Copy</span>
-        <h3 style="margin: -6px 0 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Soa Aids Nederland</h3>
+        <div class="case-img"><img width="1200" height="900" loading="lazy" decoding="async" src="/assets/img/work-soa-aids.jpg" alt="" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover"></div>
+        <h3 style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: 24px; letter-spacing: -0.02em; font-weight: 800; transition: color .3s ease">Soa Aids Nederland<span class="hv-ar hv-ne" aria-hidden="true">↗</span></h3>
+        <span style="margin-top: -6px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #a7adb0">Content · Advertising · Copy</span>
         <p style="margin: -8px 0 0; font-size: 15px; line-height: 1.55; color: #c9cdcf">Inclusieve social content en campagnes voor Man tot Man op Facebook, Instagram en TikTok.</p>
-      </a>
+      <span class="sr-only"> (opent in een nieuw tabblad)</span></a>
     </div>
     <div style="margin-top: clamp(40px, 5vw, 64px)"><a class="btn-ghost" href="#contact" data-pick="strategy" data-goatcounter-click="cta-strategy" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.6); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 800">Praat over strategie<span class="hv-ar hv-d" aria-hidden="true">↓</span></a></div>
   </section>
 
   <!-- CREATOR: full-bleed purple band, reels level -->
-  <section id="creator" aria-labelledby="creator-title" style="margin-top: clamp(96px, 12vw, 160px); background: #0f3b40">
-    <div style="max-width: 1360px; margin: 0 auto; padding: clamp(72px, 9vw, 128px) clamp(20px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 80px); align-items: center">
-      <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
-        <p style="margin: 0; color: #7bd6e0; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Creator</p>
+  <section id="creator" aria-labelledby="creator-title" style="background: #0f3b40">
+    <div style="max-width: 1360px; margin: 0 auto; padding: clamp(72px, 10vw, 136px) clamp(20px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 80px); align-items: center">
+      <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
         <h2 id="creator-title" style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800; margin-left: -0.055em">Popmuziek die het ontdekken waard is</h2>
         <p style="margin: 0; max-width: 440px; font-size: 17px; line-height: 1.6; color: #d6e6e8">Als DJ en contentcreator deel ik mijn liefde voor popmuziek, zet ik ondergewaardeerde artiesten in de spotlight en duik ik in de internetcultuur eromheen. Mijn Reels zijn al meer dan 1 miljoen keer bekeken.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 12px"><a class="btn-ghost" href="https://www.instagram.com/absoluut/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-goatcounter-click="click-creator-instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.6); color: #ffffff; text-decoration: none; "><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"></path></svg></a><a class="btn-ghost" href="https://www.tiktok.com/@absoluutdj" target="_blank" rel="noopener noreferrer" aria-label="TikTok" data-goatcounter-click="click-creator-tiktok" style="display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.6); color: #ffffff; text-decoration: none; "><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path></svg></a><a class="btn-ghost" href="#contact" data-pick="creator" data-goatcounter-click="cta-creator" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.6); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 800">Werk met me als creator<span class="hv-ar hv-d" aria-hidden="true">↓</span></a></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px"><a class="btn-ghost" href="https://www.instagram.com/absoluut/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opent in een nieuw tabblad)" data-goatcounter-click="click-creator-instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.6); color: #ffffff; text-decoration: none; "><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"></path></svg></a><a class="btn-ghost" href="https://www.tiktok.com/@absoluutdj" target="_blank" rel="noopener noreferrer" aria-label="TikTok (opent in een nieuw tabblad)" data-goatcounter-click="click-creator-tiktok" style="display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.6); color: #ffffff; text-decoration: none; "><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path></svg></a><a class="btn-ghost" href="#contact" data-pick="creator" data-goatcounter-click="cta-creator" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.6); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 800">Werk met me als creator<span class="hv-ar hv-d" aria-hidden="true">↓</span></a></div>
       </div>
       <div style="flex: 1.6 1 520px; min-width: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 20px); align-items: stretch">
-        <a class="reel" href="https://www.instagram.com/p/DXYlCenDMh1/" target="_blank" rel="noopener noreferrer" style="position: relative; display: block; overflow: hidden; border-radius: 20px"><img loading="lazy" decoding="async" src="/assets/reels/DXYlCenDMh1.jpg" alt="Reel: 3 Italian pop girlies you're sleeping on" style="display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover"><span aria-hidden="true" style="position: absolute; right: 14px; top: 14px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; background: rgba(11,11,12,0.72)"><svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z"></path></svg></span></a>
-        <a class="reel" href="https://www.instagram.com/p/DZJ4l4tMDnG/" target="_blank" rel="noopener noreferrer" style="position: relative; display: block; overflow: hidden; border-radius: 20px"><img loading="lazy" decoding="async" src="/assets/reels/DZJ4l4tMDnG.jpg" alt="Reel: 3 queer pop artists you need to know" style="display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover"><span aria-hidden="true" style="position: absolute; right: 14px; top: 14px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; background: rgba(11,11,12,0.72)"><svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z"></path></svg></span></a>
-        <a class="reel" href="https://www.instagram.com/p/DYWZcreMebc/" target="_blank" rel="noopener noreferrer" style="position: relative; display: block; overflow: hidden; border-radius: 20px"><img loading="lazy" decoding="async" src="/assets/reels/DYWZcreMebc.jpg" alt="Reel: 3 robbed Eurovision pop girlies" style="display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover"><span aria-hidden="true" style="position: absolute; right: 14px; top: 14px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; background: rgba(11,11,12,0.72)"><svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z"></path></svg></span></a>
+        <a class="reel" href="https://www.instagram.com/p/DXYlCenDMh1/" target="_blank" rel="noopener noreferrer" style="position: relative; display: block; overflow: hidden; border-radius: 20px"><img width="720" height="1280" loading="lazy" decoding="async" src="/assets/reels/DXYlCenDMh1.jpg" srcset="/assets/reels/DXYlCenDMh1-480.jpg 480w, /assets/reels/DXYlCenDMh1.jpg 720w" sizes="(max-width: 900px) 30vw, 240px" alt="Reel: 3 Italian pop girlies you're sleeping on" style="display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover"><span aria-hidden="true" style="position: absolute; right: 14px; top: 14px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; background: rgba(11,11,12,0.72)"><svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z"></path></svg></span><span class="sr-only"> (opent in een nieuw tabblad)</span></a>
+        <a class="reel" href="https://www.instagram.com/p/DZJ4l4tMDnG/" target="_blank" rel="noopener noreferrer" style="position: relative; display: block; overflow: hidden; border-radius: 20px"><img width="720" height="1280" loading="lazy" decoding="async" src="/assets/reels/DZJ4l4tMDnG.jpg" srcset="/assets/reels/DZJ4l4tMDnG-480.jpg 480w, /assets/reels/DZJ4l4tMDnG.jpg 720w" sizes="(max-width: 900px) 30vw, 240px" alt="Reel: 3 queer pop artists you need to know" style="display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover"><span aria-hidden="true" style="position: absolute; right: 14px; top: 14px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; background: rgba(11,11,12,0.72)"><svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z"></path></svg></span><span class="sr-only"> (opent in een nieuw tabblad)</span></a>
+        <a class="reel" href="https://www.instagram.com/p/DYWZcreMebc/" target="_blank" rel="noopener noreferrer" style="position: relative; display: block; overflow: hidden; border-radius: 20px"><img width="720" height="1280" loading="lazy" decoding="async" src="/assets/reels/DYWZcreMebc.jpg" srcset="/assets/reels/DYWZcreMebc-480.jpg 480w, /assets/reels/DYWZcreMebc.jpg 720w" sizes="(max-width: 900px) 30vw, 240px" alt="Reel: 3 robbed Eurovision pop girlies" style="display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover"><span aria-hidden="true" style="position: absolute; right: 14px; top: 14px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; background: rgba(11,11,12,0.72)"><svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z"></path></svg></span><span class="sr-only"> (opent in een nieuw tabblad)</span></a>
       </div>
     </div>
   </section>
@@ -484,20 +199,19 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
   <section id="events" aria-labelledby="events-title" style="background: #fff1e6; color: #17155f">
     <div style="max-width: 1360px; margin: 0 auto; padding: clamp(72px, 10vw, 136px) clamp(20px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: clamp(40px, 6vw, 96px); align-items: center">
       <div style="flex: 1 1 360px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px">
-        <img loading="lazy" decoding="async" src="/assets/img/bops-logo-red.webp" alt="BOPS-logo" style="width: 100%; max-width: 520px; height: auto">
+        <img loading="lazy" decoding="async" src="/assets/img/bops-logo-red.webp" width="900" height="582" alt="BOPS-logo" style="width: 100%; max-width: 520px; height: auto">
       </div>
-      <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
-        <p style="margin: 0; color: #c42b00; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Events</p>
+      <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
         <h2 id="events-title" style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800; margin-left: -0.042em">Een community rond queer pop</h2>
         <p style="margin: 0; font-size: 17px; line-height: 1.6">Als medeoprichter van BOPS ben ik verantwoordelijk voor het concept, de programmering, de creatieve regie en de marketing van ons driemaandelijkse queer popfeest in Amsterdam. Samen met medeoprichter Tom Morgan heb ik een community gebouwd rond onze gedeelde liefde voor popmuziek.</p>
         <div id="bops-card" data-none="Nieuwe datum volgt snel" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 0; border-top: 1.5px solid #17155f; border-bottom: 1.5px solid #17155f">
           <div>
-            <div style="color: #c42b00; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase"><span id="bops-label">Volgend event</span><span id="bops-date"> · 27 november</span> · 24 edities en we gaan door</div>
+            <div style="color: #c42b00; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase"><span id="bops-label">Volgend event</span><span id="bops-date"> · 27 november</span><span class="bops-count"><span class="bops-sep"> · </span>24 edities en we gaan door</span></div>
             <div style="margin-top: 4px; font-family: 'Baloo Bhai 2', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">BOPS in The Other Side</div>
           </div>
-          <a class="btn-solid" id="bops-tickets" href="https://linktr.ee/bops.ams" target="_blank" rel="noopener noreferrer" data-goatcounter-click="click-bops-more-info" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #d63000; color: #ffffff; text-decoration: none; font-weight: 800">Meer info</a>
+          <a class="hv-tl hv-lt" id="bops-tickets" href="https://linktr.ee/bops.ams" target="_blank" rel="noopener noreferrer" data-goatcounter-click="click-bops-more-info" style="display: inline-flex; align-items: center; min-height: 44px; color: #17155f; font-size: 16px; font-weight: 800">Meer info<span class="hv-ar hv-ne" aria-hidden="true">↗</span><span class="sr-only"> (opent in een nieuw tabblad)</span></a>
         </div>
-        <a class="hv-tl hv-lt" href="#contact" data-pick="event" data-goatcounter-click="cta-event" style="align-self: flex-start; color: #17155f; font-size: 16px; font-weight: 800">Plan een event<span class="hv-ar hv-d" aria-hidden="true">↓</span></a>
+        <a class="hv-tl hv-lt" href="#contact" data-pick="event" data-goatcounter-click="cta-event" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; color: #17155f; font-size: 16px; font-weight: 800">Plan een event<span class="hv-ar hv-d" aria-hidden="true">↓</span></a>
       </div>
     </div>
   </section>
@@ -505,17 +219,16 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
   <!-- DJ: photo bleeds to the left edge, venues as a quiet list -->
   <section id="dj" aria-labelledby="dj-title" style="display: flex; flex-wrap: wrap; align-items: stretch; background: #1f0328">
     <div class="dj-photo" style="flex: 1 1 480px; min-height: 760px; position: relative">
-      <img loading="lazy" decoding="async" src="/assets/img/dj-absoluut-bops.jpg" alt="Absoluut draait op BOPS" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%">
+      <img width="1100" height="1375" loading="lazy" decoding="async" src="/assets/img/dj-absoluut-bops.jpg" alt="Absoluut draait op BOPS" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%">
     </div>
     <div style="flex: 1 1 520px; min-width: 0; display: flex">
-      <div style="width: 100%; max-width: 680px; padding: clamp(48px, 7vw, 112px) clamp(20px, 4vw, 48px) clamp(48px, 7vw, 112px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 24px">
-        <p style="margin: 0; color: #ff9fb2; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">DJ Absoluut</p>
-        <h2 id="dj-title" style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(42px, 5.6vw, 84px); line-height: 0.94; letter-spacing: -0.045em; font-weight: 800; margin-left: -0.055em">Popmuziek serieus nemen</h2>
-        <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #e6d3ee">Ik mix iconische hits, nostalgische anthems en nieuwe ontdekkingen uit pop, disco en house. Sinds 2008 draaide ik in clubs, op festivals, Prides en brand events in Nederland, België en Italië, van Paradiso en Amsterdam Pride tot McDonald’s en Sofitel.</p>
+      <div style="width: 100%; max-width: 680px; padding: clamp(48px, 7vw, 112px) clamp(20px, 4vw, 48px) clamp(48px, 7vw, 112px) clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 20px">
+        <h2 id="dj-title" style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(42px, 5.6vw, 84px); line-height: 0.94; letter-spacing: -0.045em; font-weight: 800; margin-left: -0.055em">Ik maak werk van popmuziek</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #e6d3ee">Als DJ Absoluut mix ik iconische hits, nostalgische anthems en nieuwe ontdekkingen uit pop, disco en house. Sinds 2008 draaide ik in clubs, op festivals, Prides en brand events in Nederland, België en Italië, van Paradiso en Amsterdam Pride tot McDonald’s en Sofitel.</p>
         <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #e6d3ee">Voor bruiloften en privé-events zijn jullie must-play songs mijn startpunt. Daaromheen bouw ik met pop, disco en house, en ik stem de set af op de mensen op de dansvloer.</p>
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 8px">
-          <a class="btn-solid" href="/nl/dj/" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #c8193a; color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 800" data-goatcounter-click="click-more-dj">Meer info</a>
-          <a class="btn-ghost" href="/nl/dj/#book" data-goatcounter-click="cta-dj-book" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.6); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 800">Boek DJ Absoluut<span class="hv-ar hv-r" aria-hidden="true">→</span></a>
+          <a class="btn-solid" href="/nl/dj/#book" data-goatcounter-click="cta-dj-book" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: #c8193a; color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 800">Check DJ-beschikbaarheid<span class="hv-ar hv-r" aria-hidden="true">→</span></a>
+          <a class="btn-ghost" href="/nl/dj/" data-goatcounter-click="click-more-dj" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.6); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 800">Meer info<span class="hv-ar hv-r" aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
@@ -523,11 +236,10 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
 
   <!-- CONTACT: big statement, form below -->
   <section id="contact" aria-labelledby="contact-title" style="max-width: 1360px; margin: 0 auto; padding: clamp(96px, 12vw, 160px) clamp(20px, 4vw, 48px) 0">
-    <p style="margin: 0 0 18px; color: #7bd6e0; font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase">Laten we samenwerken</p>
     <h2 id="contact-title" style="margin: 0; max-width: 1100px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(44px, 7vw, 108px); line-height: 0.92; letter-spacing: -0.05em; font-weight: 800; margin-left: -0.055em">Heb je een campagne, event of <span style="color: #7bd6e0">creatief idee</span> in gedachten?</h2>
     <div style="display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 80px); margin-top: clamp(40px, 5vw, 72px); padding-top: clamp(32px, 4vw, 48px); border-top: 1px solid rgba(255,255,255,0.16)">
-      <p style="flex: 1 1 280px; margin: 0; max-width: 380px; font-size: 18px; line-height: 1.6; color: #c9cdcf">Vertel me waar je mee bezig bent. Ik hoor graag je ideeën en kijk hoe ik je kan helpen.</p>
-      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" data-sending="Versturen…" data-success="Dank je! Je bericht is verstuurd. Ik neem snel contact met je op." data-error="Er ging iets mis. Probeer het zo nog eens." style="flex: 2 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+      <div style="flex: 1 1 280px; max-width: 380px; display: flex; flex-direction: column; gap: 16px"><p style="margin: 0; font-size: 18px; line-height: 1.6; color: #c9cdcf; text-wrap: balance">Vertel me waar je mee bezig bent. Ik hoor graag je ideeën en kijk hoe ik je kan helpen.</p><p class="f-mail">Liever mailen? <a href="mailto:evert@imgroot.nl" data-goatcounter-click="contact-email">evert@imgroot.nl</a></p></div>
+      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" data-sending="Versturen…" data-success="Dank je! Je bericht is verstuurd. Ik neem snel contact met je op." data-error-mail="Of mail me direct:" data-error="Er ging iets mis. Probeer het zo nog eens." style="flex: 2 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
         <input type="hidden" name="access_key" value="efa0a20b-2c4c-4633-a70f-2667f442add4">
         <input type="hidden" name="subject" value="Nieuw bericht via imgroot.nl (NL)">
         <input type="hidden" name="from_name" value="imgroot.nl">
@@ -555,20 +267,23 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer class="ft2" style="max-width: none; margin: clamp(96px, 12vw, 160px) 0 0; padding: clamp(48px, 6vw, 80px) calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)) 36px; background: #0f3b40">
     <div class="ft2-top">
       <div class="ft2-id"><span class="ft2-name">Evert Groot</span><span class="ft2-sub">Contentstrateeg, creator, DJ en eventorganisator</span></div>
     <nav aria-label="Social media" style="display: flex; align-items: center; gap: 10px">
-      <a href="https://www.instagram.com/absoluut/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-goatcounter-click="footer-instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,0.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"></path></svg></a>
-      <a href="https://www.tiktok.com/@absoluutdj" target="_blank" rel="noopener noreferrer" aria-label="TikTok" data-goatcounter-click="footer-tiktok" style="display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,0.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path></svg></a>
-      <a href="https://soundcloud.com/absoluut" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud" data-goatcounter-click="footer-soundcloud" style="display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,0.1)"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.999 14.165c-.052 1.796-1.612 3.169-3.4 3.169h-8.18a.68.68 0 0 1-.675-.683V7.862a.747.747 0 0 1 .452-.724s.75-.513 2.333-.513a5.364 5.364 0 0 1 2.763.755 5.433 5.433 0 0 1 2.57 3.54c.282-.08.574-.121.868-.12.884 0 1.73.358 2.347.992s.948 1.49.922 2.373ZM10.721 8.421c.247 2.98.427 5.697 0 8.672a.264.264 0 0 1-.53 0c-.395-2.946-.22-5.718 0-8.672a.264.264 0 0 1 .53 0ZM9.072 9.448c.285 2.659.37 4.986-.006 7.655a.277.277 0 0 1-.55 0c-.331-2.63-.256-5.02 0-7.655a.277.277 0 0 1 .556 0Zm-1.663-.257c.27 2.726.39 5.171 0 7.904a.266.266 0 0 1-.532 0c-.38-2.69-.257-5.21 0-7.904a.266.266 0 0 1 .532 0Zm-1.647.77a26.108 26.108 0 0 1-.008 7.147.272.272 0 0 1-.542 0 27.955 27.955 0 0 1 0-7.147.275.275 0 0 1 .55 0Zm-1.67 1.769c.421 1.865.228 3.5-.029 5.388a.257.257 0 0 1-.514 0c-.21-1.858-.398-3.549 0-5.389a.272.272 0 0 1 .543 0Zm-1.655-.273c.388 1.897.26 3.508-.01 5.412-.026.28-.514.283-.54 0-.244-1.878-.347-3.54-.01-5.412a.283.283 0 0 1 .56 0Zm-1.668.911c.4 1.268.257 2.292-.026 3.572a.257.257 0 0 1-.514 0c-.241-1.262-.354-2.312-.023-3.572a.283.283 0 0 1 .563 0Z"></path></svg></a>
-      <a href="https://www.linkedin.com/in/evertgroot" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-icon-credit="Font Awesome Free, CC BY 4.0" data-goatcounter-click="footer-linkedin" style="display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,0.1)"><svg width="19" height="20" viewBox="0 32 448 448" fill="currentColor" aria-hidden="true"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a>
-      <a href="https://www.instagram.com/bops.ams/" target="_blank" rel="noopener noreferrer" aria-label="BOPS op Instagram" data-goatcounter-click="footer-bops" style="display: inline-flex; align-items: center; justify-content: center; height: 46px; padding: 0 16px; border-radius: 999px; background: rgba(255,255,255,0.1)"><span class="bops-mark" aria-hidden="true" style="display: block; width: 89px; height: 16px; background: currentColor; -webkit-mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat; mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat"></span></a>
+      <a href="https://www.instagram.com/absoluut/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opent in een nieuw tabblad)" data-goatcounter-click="footer-instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,0.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"></path></svg></a>
+      <a href="https://www.tiktok.com/@absoluutdj" target="_blank" rel="noopener noreferrer" aria-label="TikTok (opent in een nieuw tabblad)" data-goatcounter-click="footer-tiktok" style="display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,0.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path></svg></a>
+      <a href="https://soundcloud.com/absoluut" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud (opent in een nieuw tabblad)" data-goatcounter-click="footer-soundcloud" style="display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,0.1)"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.999 14.165c-.052 1.796-1.612 3.169-3.4 3.169h-8.18a.68.68 0 0 1-.675-.683V7.862a.747.747 0 0 1 .452-.724s.75-.513 2.333-.513a5.364 5.364 0 0 1 2.763.755 5.433 5.433 0 0 1 2.57 3.54c.282-.08.574-.121.868-.12.884 0 1.73.358 2.347.992s.948 1.49.922 2.373ZM10.721 8.421c.247 2.98.427 5.697 0 8.672a.264.264 0 0 1-.53 0c-.395-2.946-.22-5.718 0-8.672a.264.264 0 0 1 .53 0ZM9.072 9.448c.285 2.659.37 4.986-.006 7.655a.277.277 0 0 1-.55 0c-.331-2.63-.256-5.02 0-7.655a.277.277 0 0 1 .556 0Zm-1.663-.257c.27 2.726.39 5.171 0 7.904a.266.266 0 0 1-.532 0c-.38-2.69-.257-5.21 0-7.904a.266.266 0 0 1 .532 0Zm-1.647.77a26.108 26.108 0 0 1-.008 7.147.272.272 0 0 1-.542 0 27.955 27.955 0 0 1 0-7.147.275.275 0 0 1 .55 0Zm-1.67 1.769c.421 1.865.228 3.5-.029 5.388a.257.257 0 0 1-.514 0c-.21-1.858-.398-3.549 0-5.389a.272.272 0 0 1 .543 0Zm-1.655-.273c.388 1.897.26 3.508-.01 5.412-.026.28-.514.283-.54 0-.244-1.878-.347-3.54-.01-5.412a.283.283 0 0 1 .56 0Zm-1.668.911c.4 1.268.257 2.292-.026 3.572a.257.257 0 0 1-.514 0c-.241-1.262-.354-2.312-.023-3.572a.283.283 0 0 1 .563 0Z"></path></svg></a>
+      <a href="https://www.linkedin.com/in/evertgroot" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opent in een nieuw tabblad)" data-icon-credit="Font Awesome Free, CC BY 4.0" data-goatcounter-click="footer-linkedin" style="display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,0.1)"><svg width="19" height="20" viewBox="0 32 448 448" fill="currentColor" aria-hidden="true"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a>
+      <a href="https://www.instagram.com/bops.ams/" target="_blank" rel="noopener noreferrer" aria-label="BOPS op Instagram (opent in een nieuw tabblad)" data-goatcounter-click="footer-bops" style="display: inline-flex; align-items: center; justify-content: center; height: 46px; padding: 0 16px; border-radius: 999px; background: rgba(255,255,255,0.1)"><span class="bops-mark" aria-hidden="true" style="display: block; width: 89px; height: 16px; background: currentColor; -webkit-mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat; mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat"></span></a>
     </nav>
     </div>
-    <div class="ft2-bottom"><span><span>© Evert Groot 2026</span><i aria-hidden="true">·</i><span>Amsterdam</span><i aria-hidden="true">·</i><span>KvK 83829210</span><i aria-hidden="true">·</i><span>Btw-id NL002102770B37</span></span><span><a href="/nl/privacy/">Privacyverklaring</a><i aria-hidden="true">·</i><span>Website door <a href="https://freycreates.nl/" target="_blank" rel="noopener noreferrer">Frey Creates</a></span></span></div>
+    <div class="ft2-bottom"><span><span>© Evert Groot 2026</span><span>Amsterdam</span><span>KvK 83829210</span><span>Btw-id NL002102770B37</span></span><span><a href="/nl/privacy/">Privacyverklaring</a><span>Website door <a href="https://freycreates.nl/" target="_blank" rel="noopener noreferrer">Frey Creates<span class="sr-only"> (opent in een nieuw tabblad)</span></a></span></span></div>
   </footer>
+</div>
 </div>
 </body>
 </html>

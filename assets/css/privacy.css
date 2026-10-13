@@ -1,0 +1,236 @@
+/* imgroot.nl — privacy pages (EN/NL/IT). Generated from the former inline <style> blocks; edit here. */
+/* ---- base ---- */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#17155f}
+a{color:#ffffff}a:hover{color:#dbad72}
+
+.gut{padding-left:calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px));padding-right:calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px))}
+
+[hidden]{display:none !important}
+
+/* header v3: one menu bar for both sites */
+.site-sw{display:inline-grid;grid-template-columns:auto auto;align-items:center;justify-self:start;padding:3px;border:1px solid rgba(255,255,255,0.2);border-radius:999px;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.site-sw > *{grid-row:1}
+.site-sw a:first-of-type{grid-column:1}
+.site-sw a:last-of-type{grid-column:2}
+.sw-thumb{grid-column:1;align-self:stretch;border-radius:999px;background:#ffffff;box-shadow:0 2px 10px rgba(0,0,0,0.22)}
+
+.site-sw a{position:relative;z-index:1;display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;font-family:'Baloo Bhai 2',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;line-height:1;color:#b3afe0;text-decoration:none;white-space:nowrap;-webkit-user-drag:none;transition:color .25s ease}
+.site-sw a:hover{color:#ffffff}
+
+.site-sw.sw-drag{cursor:grabbing}
+.site-sw.sw-drag .sw-thumb{transition:none}
+.sw-thumb{transition:transform .3s cubic-bezier(.3,.7,.2,1)}
+.site-sw.sw-flip a[aria-current]{color:#b3afe0}
+.site-sw.sw-flip a:not([aria-current]){color:#17155f}
+@media (prefers-reduced-motion: no-preference){
+  @view-transition{navigation:auto}
+  header .site-sw{view-transition-name:sw}
+  header .sw-thumb{view-transition-name:sw-thumb}
+  header .site-sw a:first-of-type{view-transition-name:sw-a}
+  header .site-sw a:last-of-type{view-transition-name:sw-b}
+  ::view-transition-group(*){animation-duration:.45s;animation-timing-function:cubic-bezier(.3,.7,.2,1)}
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:.3s}
+  ::view-transition-group(sw-thumb){z-index:2}
+  ::view-transition-group(sw-a),::view-transition-group(sw-b){z-index:3}
+  ::view-transition-group(sw-a),::view-transition-group(sw-b){overflow:clip}
+  ::view-transition-old(sw-a),::view-transition-new(sw-a),::view-transition-old(sw-b),::view-transition-new(sw-b){width:auto;height:100%;object-fit:none;object-position:left center}
+}
+
+.hdr-right{display:flex;align-items:center;justify-content:flex-end;justify-self:end;gap:18px;font-size:15px}
+
+.hdr-lang,.mm-lang{display:flex}
+.hdr-lang a,.mm-lang a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:44px;font-size:12px;font-weight:800;letter-spacing:0.1em;color:#8e8abf;text-decoration:none}
+
+.hdr-lang a[aria-current],.mm-lang a[aria-current]{color:#ffffff}
+.hdr-lang a:hover,.mm-lang a:hover{color:#dbad72}
+
+.mm-link[aria-current]{color:#dbad72 !important}
+@media (max-width: 1240px){
+  header{grid-template-columns:auto auto minmax(0,1fr) !important;gap:20px 28px !important}
+  
+  .hdr-right{gap:12px}
+  
+  .site-sw a{padding:0 13px;font-size:17px}
+}
+@media (max-width: 1060px){
+  .nav-links,.hdr-cta,.hdr-lang,.hdr-sep{display:none !important}
+  
+  header{grid-template-columns:minmax(0,1fr) auto !important}
+}
+@media (max-width: 760px){
+  .site-sw a{height:34px;padding:0 12px;font-size:16px}
+}
+@media (max-width: 360px){
+  .site-sw a{padding:0 9px;font-size:15px}
+}
+
+.nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:#c8193a}
+.mm-link[aria-current]{color:#c8193a !important}
+
+header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
+/* site switch: a colored dot per site, teal = Evert Groot, red = DJ Absoluut */
+.site-sw a::before{content:"";flex:0 0 auto;width:8px;height:8px;margin-right:8px;border-radius:50%}
+.site-sw a:first-of-type::before{background:#7bd6e0}
+.site-sw a:last-of-type::before{background:#c8193a}
+@media (max-width: 360px){.site-sw a::before{width:7px;height:7px;margin-right:6px}}
+/* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
+:root{--acc:#c8193a;--pop:#2c0739}
+a .bops-mark{transition:background-color .25s ease}
+
+/* footer: name + socials on top, small legal row below */
+.ft2-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.14)}
+.ft2-id{display:flex;flex-direction:column;gap:6px}
+.ft2-name{font-family:'Baloo Bhai 2',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;color:#ffffff}
+.ft2-sub{font-size:14px;line-height:1.5;color:#b3afe0}
+.ft2-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:22px;font-size:13px;line-height:1.6;color:#8e8abf}
+.ft2-bottom > span{display:flex;flex-wrap:wrap;align-items:center;gap:4px 22px}
+.ft2-bottom a{color:#b3afe0;text-decoration:none}
+.ft2-bottom a:hover,.ft2-bottom a:focus-visible{color:#ffffff;text-decoration:underline;text-underline-offset:3px}
+/* page theme: aubergine & red (DJ Absoluut) */
+body{background:#1f0328}
+a:hover{color:#ff9fb2}
+
+.hdr-lang a,.mm-lang a{color:#b98fc8}
+.site-sw a,.site-sw.sw-flip a[aria-current]{color:#d9b5e6}
+.site-sw a[aria-current],.site-sw a[aria-current]:hover,.site-sw.sw-flip a:not([aria-current]){color:#1f0328}
+.ft2-sub,.ft2-bottom a{color:#efd3f6}
+.ft2-bottom{color:#cba8d8}
+footer.ft2 nav a{color:#ffffff;background:rgba(255,255,255,0.1)}
+footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#ff9fb2}
+
+/* end page theme */
+/* page theme: utilitarian press kit */
+
+.ft2-sub,.ft2-bottom a{color:#efd3f6}
+.ft2-bottom{color:#cba8d8}
+/* end page theme */
+
+/* ---- base ---- */
+@media print{
+    header,#mobile-menu,footer,[data-print],[data-copy],#top .btn-solid,#top a{display:none !important}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    #top{padding:24px 0 !important}
+    section{break-inside:auto}
+        
+    h2{break-after:avoid}
+    
+    a[href^="http"]::after{content:""}
+  }
+
+/* ---- hv-sys ---- */
+/* unified hover system: primary · secondary · text link · icon · card */
+:root{--hv-acc:#ff9fb2;--hv-acc-l:#c8193a;--hv-glow:rgba(200,25,58,.38)}
+
+.hv-ar{display:inline-block;margin-left:.3em;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2,1)}
+
+:is(.btn-solid,.btn-ghost,.hv-2,.hv-tl,.hv-card,.reel,a.case,.svc,footer.ft2 nav a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
+@media (hover:hover){
+  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:translateY(-2px) !important}
+  
+  :is(a,button):hover .hv-ar.hv-ne{transform:translate(3px,-3px)}
+  
+}
+.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:translateY(-2px) !important}
+
+:is(a,button):focus-visible .hv-ar.hv-ne{transform:translate(3px,-3px)}
+@media (prefers-reduced-motion:reduce){
+  .btn-solid,.btn-ghost,.hv-2,footer.ft2 nav a,.hv-ar,.reel img,.reel video,a.case .case-img img{transform:none !important}
+}
+
+/* ---- polish-sys ---- */
+/* polish pass: skip link, focus on light bands, field borders, tap targets, hero proof row, gigs, listen, press photos */
+.skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:#0b0b0c;font-weight:800;text-decoration:none}
+.skip:focus{top:12px;outline:2px solid var(--hv-acc-l);outline-offset:2px}
+main:focus{outline:none}
+
+@media (min-width: 1061px) and (max-width: 1240px){.hdr-lang a{width:28px}header{column-gap:18px !important}.hdr-right{gap:8px}}
+/* browser surfaces in the page palette */
+::selection{background:var(--hv-acc);color:#0b0b0c}
+
+/* arrows: one drawn set instead of font glyphs. down = further on this page, right = another page of the site,
+   up-right = another website, download = save a file. The glyph stays in the markup as a text fallback. */
+.hv-ar{display:inline-block;width:.8em;height:.8em;margin-left:.4em;vertical-align:-.04em;overflow:hidden;text-indent:2em;white-space:nowrap;background:currentColor;-webkit-mask:var(--ar) center / contain no-repeat;mask:var(--ar) center / contain no-repeat}
+
+.hv-ne{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12 12 4M5.5 4H12v6.5'/%3E%3C/svg%3E")}
+
+/* footer: no reserved space for a floating button that now steps aside here; tappable legal links on phones */
+@media (max-width: 640px){.ft2-bottom a{display:inline-flex;align-items:center;min-height:44px}.ft2-bottom{padding-top:14px !important}}
+
+.nav-links a:hover,.hdr-lang a:hover,.mm-lang a:hover,.mm-link:hover{color:var(--hv-acc)}
+.mm-link[aria-current]{color:var(--hv-acc) !important}
+:is(.nav-links a,.hdr-lang a,.mm-link,.mm-lang a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px;border-radius:4px}
+
+.hdr-lang a{font-size:13px}
+/* mobile menu: sections sit low, close to the thumb; languages above a full-width call to action */
+#mobile-menu:not([hidden]){animation:mm-in .24s cubic-bezier(.2,.7,.2,1) both}
+@keyframes mm-in{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion: reduce){#mobile-menu:not([hidden]){animation:none}}
+/* pages with a hero button: the header button joins in once the bar sticks, so the first screen has one call to action */
+body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-sep){display:none !important}
+
+.field:not(:focus){border-color:rgba(255,255,255,0.5) !important}
+@media (max-width: 1060px){.site-sw a{height:44px}}
+/* site switch: both names always written out; very narrow phones get a smaller size so both still fit */
+.site-sw a:focus-visible{outline:2px solid var(--hv-acc);outline-offset:2px}
+@media (max-width: 370px){.site-sw a{padding:0 8px;font-size:14px}.site-sw a::before{width:6px;height:6px;margin-right:5px}}
+@media (prefers-reduced-motion: reduce){.sw-thumb{transition:none !important}}
+
+/* ---- legal-sys ---- */
+/* privacy page: press kit palette (aubergine intro, white reading column, cap-red accents) */
+.site-sw.no-cur .sw-thumb{display:none}
+.legal{max-width:560px}
+.legal a .hv-ar{margin-left:.25em}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.legal > p:first-child{font-size:clamp(19px,1.6vw,22px);line-height:1.6;color:#16121a}
+.legal h2{margin:clamp(48px,5vw,64px) 0 14px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(28px,3vw,40px);line-height:1.05;letter-spacing:-0.03em;font-weight:800;color:#16121a}
+.legal h3{margin:28px 0 6px;font-size:17px;line-height:1.4;font-weight:800;color:#c8193a}
+.legal p,.legal li{font-size:17px;line-height:1.7;color:#4b4550}
+.legal p{margin:0 0 14px}
+.legal ul{margin:0 0 14px;padding:0;list-style:none;border-top:1px solid #e6e1e8}
+.legal li{padding:12px 0;border-bottom:1px solid #e6e1e8}
+.legal strong{color:#16121a}
+.legal a{color:#16121a;font-weight:700;text-decoration:underline;text-decoration-color:#c8193a;text-decoration-thickness:2px;text-underline-offset:4px;transition:color .25s ease}
+.legal a:hover{color:#c8193a}
+.legal a:focus-visible{outline:2px solid #c8193a;outline-offset:3px;border-radius:2px}
+
+/* ---- mono ---- */
+/* privacy page in greyscale: near-black intro and menu, white reading column, contrast instead of colour */
+:root{--hv-acc:#ffffff;--hv-acc-l:#111111;--hv-glow:rgba(0,0,0,.28);--acc:#ffffff;--pop:#1b1b1b}
+body{background:#121212}
+a:hover{color:#ffffff}
+::selection{background:#111111;color:#ffffff}
+header.hdr-stuck{background:rgba(18,18,18,.94) !important}
+.site-sw a,.site-sw.sw-flip a[aria-current]{color:#a8a8a8}
+.site-sw a:hover{color:#ffffff}
+.site-sw a:first-of-type::before{background:#ededed}
+.site-sw a:last-of-type::before{background:#7a7a7a}
+.hdr-lang a,.mm-lang a{color:#8f8f8f}
+.hdr-lang a[aria-current],.mm-lang a[aria-current]{color:#ffffff}
+.nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:#ffffff}
+.mm-link[aria-current]{color:#8f8f8f !important}
+.ft2-sub{color:#a8a8a8}
+.ft2-bottom{color:#8f8f8f}
+.ft2-bottom a{color:#d4d4d4}
+footer.ft2 nav a{background:rgba(255,255,255,0.08)}
+footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#ffffff;background:rgba(255,255,255,0.14)}
+.legal > p:first-child,.legal h2,.legal strong{color:#111111}
+.legal h3{margin:36px 0 8px;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#111111}
+.legal p,.legal li{color:#4d4d4d}
+.legal ul{border-top-color:#e5e5e5}
+.legal li{border-bottom-color:#e5e5e5}
+.legal a{color:#111111;text-decoration-color:#b5b5b5}
+.legal a:hover{color:#111111;text-decoration-color:#111111}
+.legal a:focus-visible{outline-color:#111111}
+@media print{html,body,body > div{background:#ffffff !important}}
+.hero-lang{display:none;margin:18px 0 0 -12px}
+.hero-lang a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;font-size:13px;font-weight:800;letter-spacing:0.1em;color:#8f8f8f;text-decoration:none}
+.hero-lang a[aria-current],.hero-lang a:hover{color:#ffffff}
+.hero-lang a:focus-visible{outline:2px solid #ffffff;outline-offset:-4px;border-radius:6px}
+@media (max-width: 1060px){.hero-lang{display:flex}}
+.ft2-top > nav{flex-wrap:wrap}
+
+/* images carry their intrinsic size; CSS decides the rendered height */
+img[width][height]{height:auto}
