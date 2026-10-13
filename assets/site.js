@@ -86,26 +86,17 @@
       setInert(open);
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       document.documentElement.style.overflow = open ? 'hidden' : '';
-      if (!open) document.documentElement.classList.remove('sw-menu');
       if (open) { var c = menu.querySelector('[data-close]'); if (c) c.focus(); }
       else if (opener && !opener.hidden) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
     };
     menuBtn.addEventListener('click', function () { setMenu(menu.hidden, menuBtn); });
     menu.querySelectorAll('a, [data-close]').forEach(function (el) {
-      if (el.closest('.site-sw')) return; /* the site switch keeps the menu open (it reopens on the other site) */
       el.addEventListener('click', function () { if (!menu.hidden) setMenu(false); });
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
     window.addEventListener('resize', function () { if (!menu.hidden && getComputedStyle(menuBtn).display === 'none') setMenu(false); });
-    /* arrived through the site switch in the menu: the menu was reopened before first paint (inline script); sync its state */
-    var viaSwitch = null;
-    try { viaSwitch = sessionStorage.getItem('imgroot-menu'); sessionStorage.removeItem('imgroot-menu'); } catch (e) {}
-    if (viaSwitch && !menu.hidden) {
-      opener = menuBtn;
-      menuBtn.setAttribute('aria-expanded', 'true');
-      setInert(true);
-      document.documentElement.style.overflow = 'hidden';
-    }
+    /* coming back with the back button: the page may be restored with the menu still open */
+    window.addEventListener('pageshow', function (e) { if (e.persisted && !menu.hidden) setMenu(false); });
 
     var css = document.createElement('style');
     css.textContent =
@@ -324,48 +315,42 @@
   });
 
   /* 1c2b. Site switch (Evert Groot | DJ Absoluut).
-     Clicking is a normal link: the page transition (CSS @view-transition in the page) cross-fades
-     the pages and glides the white thumb to the other side. Here we only add dragging the thumb. */
+     Both names are always written out. Clicking is a normal link: the page transition (CSS @view-transition
+     in the page) cross-fades the pages and glides the white thumb to the other side. Here we only add
+     dragging the thumb; from the mobile menu the menu closes and the visitor lands on the other site's hero. */
   document.querySelectorAll('.site-sw').forEach(function (sw) {
     var links = [].slice.call(sw.querySelectorAll('a'));
     var thumb = sw.querySelector('.sw-thumb');
     if (links.length !== 2 || !thumb) return;
     var cur = links[1].hasAttribute('aria-current') ? 1 : 0;
-    var inMenu = !!sw.closest('#mobile-menu');
-    var keepMenu = function () {
-      if (!inMenu) return;
-      document.documentElement.classList.add('sw-menu');
-      try { sessionStorage.setItem('imgroot-menu', '1'); } catch (e) {}
-    };
+    var menuEl = sw.closest('#mobile-menu');
     var leave = function (href) {
-      keepMenu();
+      if (menuEl) { var x = menuEl.querySelector('[data-close]'); if (x && !menuEl.hidden) x.click(); }
       location.href = href;
     };
     links.forEach(function (a) {
       a.setAttribute('draggable', 'false');
       a.addEventListener('click', function (e) {
-        if (eat) { e.preventDefault(); eat = false; return; }
-        if (!a.hasAttribute('aria-current')) keepMenu();
+        if (eat) { e.preventDefault(); eat = false; }
       });
     });
     var drag = null, eat = false;
     var reset = function () {
-      sw.classList.remove('sw-drag', 'sw-flip', 'sw-peek');
+      sw.classList.remove('sw-drag', 'sw-flip');
       thumb.style.transform = '';
     };
     sw.addEventListener('pointerdown', function (e) {
       if (e.button !== 0) return;
       drag = { x: e.clientX, id: e.pointerId, moved: false, flip: false };
-      if (!inMenu && e.pointerType === 'mouse') sw.classList.add('sw-peek'); /* unfold the other site while the thumb is dragged */
     });
     sw.addEventListener('pointermove', function (e) {
       if (!drag || e.pointerId !== drag.id) return;
+      if (e.pointerType === 'mouse' && e.buttons === 0) { drag = null; reset(); return; } /* button released outside the switch */
       var dx = e.clientX - drag.x;
       if (!drag.moved) {
         if (Math.abs(dx) < 6) return;
         drag.moved = true;
         sw.classList.add('sw-drag');
-        if (!inMenu) sw.classList.add('sw-peek');
         try { sw.setPointerCapture(drag.id); } catch (err) {}
       }
       var dist = links[1].offsetLeft - links[0].offsetLeft;
@@ -377,26 +362,16 @@
     var end = function (e) {
       if (!drag || e.pointerId !== drag.id) return;
       var d = drag; drag = null;
-      if (!d.moved) { sw.classList.remove('sw-peek'); return; }
+      if (!d.moved) return;
       eat = true;
       setTimeout(function () { eat = false; }, 60);
       if (e.type === 'pointerup' && d.flip) { sw.classList.remove('sw-drag'); leave(links[1 - cur].getAttribute('href')); }
       else reset();
     };
-    sw.addEventListener('pointerup', end);
-    sw.addEventListener('pointercancel', end);
-    /* each visit: show both names for a moment, then fold the other one into its dot */
-    if (!inMenu) {
-      var seen = null, key = 'imgroot-sw-peek-' + (cur === 1 ? 'dj' : 'home'); /* once per visit, on each of the two sites */
-      try { seen = sessionStorage.getItem(key); sessionStorage.setItem(key, '1'); } catch (err) { seen = '1'; }
-      if (!seen) {
-        setTimeout(function () { sw.classList.add('sw-peek'); }, 700);
-        setTimeout(function () { if (!drag) sw.classList.remove('sw-peek'); }, 2600);
-      }
-    }
-    window.addEventListener('pageshow', function (e) {
-      if (e.persisted) { reset(); document.documentElement.classList.remove('sw-menu'); }
-    });
+    /* a press that ends anywhere (also outside the switch) ends the drag */
+    window.addEventListener('pointerup', end);
+    window.addEventListener('pointercancel', end);
+    window.addEventListener('pageshow', function (e) { if (e.persisted) reset(); });
   });
 
   /* 1c2c. Language: current language with an arrow; the other two in a small panel */

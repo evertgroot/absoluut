@@ -130,11 +130,6 @@ a.case:hover h3{color:#dbad72}
   header .sw-thumb{view-transition-name:sw-thumb}
   header .site-sw a:first-of-type{view-transition-name:sw-a}
   header .site-sw a:last-of-type{view-transition-name:sw-b}
-  .sw-menu header .site-sw,.sw-menu header .sw-thumb,.sw-menu header .site-sw a{view-transition-name:none}
-  .sw-menu #mobile-menu .site-sw{view-transition-name:sw}
-  .sw-menu #mobile-menu .sw-thumb{view-transition-name:sw-thumb}
-  .sw-menu #mobile-menu .site-sw a:first-of-type{view-transition-name:sw-a}
-  .sw-menu #mobile-menu .site-sw a:last-of-type{view-transition-name:sw-b}
   ::view-transition-group(*){animation-duration:.45s;animation-timing-function:cubic-bezier(.3,.7,.2,1)}
   ::view-transition-old(root),::view-transition-new(root){animation-duration:.3s}
   ::view-transition-group(sw-thumb){z-index:2}
@@ -189,14 +184,6 @@ header.hdr-stuck{background:rgba(11,11,12,0.94) !important}
 .site-sw a:first-of-type::before{background:#7bd6e0}
 .site-sw a:last-of-type::before{background:#c8193a}
 @media (max-width: 360px){.site-sw a::before{width:7px;height:7px;margin-right:6px}}
-/* site switch: only the current site is written out, the other folds into its dot (opens on hover) */
-header .site-sw a:not([aria-current]){max-width:40px;padding:0 12px !important;overflow:hidden;color:transparent;transition:max-width .4s cubic-bezier(.3,.7,.2,1),color .25s ease}
-header .site-sw a:not([aria-current])::before{box-shadow:0 0 0 4px rgba(255,255,255,0.09)}
-header .site-sw.sw-peek a:not([aria-current]),header .site-sw:has(a:focus-visible) a:not([aria-current]){max-width:190px;padding:0 16px !important;color:rgba(179,175,224,0.75)}
-@media (hover: hover){header .site-sw:hover a:not([aria-current]){max-width:190px;padding:0 16px !important;color:rgba(179,175,224,0.75)}}
-header .site-sw a:not([aria-current]):hover,header .site-sw a:not([aria-current]):focus-visible{color:#ffffff}
-#mobile-menu .site-sw a:not([aria-current]){color:rgba(179,175,224,0.65)}
-@media (prefers-reduced-motion: reduce){header .site-sw a:not([aria-current]){transition:none}}
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
 /* language: current language + arrow, the others in a small panel */
 .lang-dd{position:relative}
@@ -265,7 +252,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#7bd6e0}
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://imgroot.nl/#evert", "name": "Evert Groot", "alternateName": ["DJ Absoluut", "Absoluut"], "url": "https://imgroot.nl/", "image": "https://imgroot.nl/assets/img/evert-groot.jpg", "email": "mailto:evert@imgroot.nl", "jobTitle": ["Content Strategist", "DJ", "Content Creator", "Event Organizer"], "knowsAbout": ["Content strategy", "Social media strategy", "Creative direction", "Short-form video", "Pop music", "DJing", "Wedding DJ", "Event organizing", "Queer nightlife"], "areaServed": [{"@type": "Country", "name": "Netherlands"}, {"@type": "Country", "name": "Italy"}], "founder": {"@id": "https://imgroot.nl/#bops"}, "sameAs": ["https://www.instagram.com/absoluut/", "https://www.tiktok.com/@absoluutdj", "https://www.linkedin.com/in/evertgroot", "https://soundcloud.com/absoluut"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content strategy and creative direction", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ for clubs, festivals, brand events and weddings", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event organizing", "areaServed": ["NL", "IT"]}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Creator partnerships and short-form video", "areaServed": ["NL", "IT"]}}]}, {"@type": "Organization", "@id": "https://imgroot.nl/#bops", "name": "BOPS", "description": "Queer pop party at The Other Side, Amsterdam", "url": "https://www.instagram.com/bops.ams/", "sameAs": ["https://www.instagram.com/bops.ams/"]}, {"@type": "WebSite", "@id": "https://imgroot.nl/#website", "url": "https://imgroot.nl/", "name": "Evert Groot", "inLanguage": ["en", "nl", "it"], "publisher": {"@id": "https://imgroot.nl/#evert"}}]}</script>
   <script data-goatcounter="https://imgroot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-  <script src="/assets/site.js?v=2e3662d7" defer></script>
+  <script src="/assets/site.js?v=1d969ba0" defer></script>
 <style id="form-sys">
 #contact-form [hidden]{display:none !important}
 .f-hint{margin:-6px 0 0;font-size:14px;line-height:1.5;opacity:.75}
@@ -321,7 +308,11 @@ main:focus{outline:none}
 body:has(.hero-cta) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-sep){display:none !important}
 :is(#services,#events,#where,#bio,#media,#rider) :focus-visible{outline-color:var(--hv-acc-l) !important}
 .field:not(:focus){border-color:rgba(255,255,255,0.5) !important}
-@media (max-width: 760px){.site-sw a{height:40px}header .site-sw a:not([aria-current]){max-width:44px}}
+@media (max-width: 760px){.site-sw a{height:40px}}
+/* site switch: both names always written out; very narrow phones get a smaller size so both still fit */
+.site-sw a:focus-visible{outline:2px solid var(--hv-acc);outline-offset:2px}
+@media (max-width: 370px){.site-sw a{padding:0 8px;font-size:14px}.site-sw a::before{width:6px;height:6px;margin-right:5px}}
+@media (prefers-reduced-motion: reduce){.sw-thumb{transition:none !important}}
 .hero-proof{display:flex;flex-wrap:wrap;gap:8px 28px;margin:calc(14px - clamp(24px, 3vw, 40px)) 0 0;padding:0;list-style:none;font-size:15px;line-height:1.4;font-weight:600;color:rgba(255,255,255,0.8)}
 .hero-proof li{display:flex;align-items:baseline;gap:8px}
 .hero-proof b{font-family:'Baloo Bhai 2',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.02em;color:var(--hv-acc)}
@@ -366,7 +357,7 @@ body:has(.hero-cta) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-sep){display:none !
 <div style="position: relative">
   <!-- NAV -->
   <header style="position: absolute; left: 0; right: 0; top: 0; z-index: 5; max-width: none; padding-left: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); padding-right: calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)); max-width: 1360px; margin: 0 auto; padding: 22px clamp(20px, 4vw, 48px); display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 24px 44px">
-    <nav class="site-sw" aria-label="Site"><span class="sw-thumb" aria-hidden="true"></span><a href="/nl/" aria-current="true">Evert Groot</a><a href="/nl/dj/">DJ Absoluut</a></nav>
+    <nav class="site-sw" aria-label="Site"><span class="sw-thumb" aria-hidden="true"></span><a href="/nl/" aria-current="page">Evert Groot</a><a href="/nl/dj/">DJ Absoluut</a></nav>
     <nav class="nav-links" aria-label="Hoofdmenu" style="display: flex; gap: 32px; font-size: 15px; font-weight: 600">
       <a href="#services" style="text-decoration: none">Diensten</a>
       <a href="#work" style="text-decoration: none">Strategie &amp; content</a>
@@ -384,7 +375,7 @@ body:has(.hero-cta) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-sep){display:none !
   <!-- MOBILE MENU -->
   <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden style="position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; padding: 22px 20px 32px; background: #0b0b0c; overflow-y: auto">
     <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
-      <nav class="site-sw" aria-label="Site"><span class="sw-thumb" aria-hidden="true"></span><a href="/nl/" aria-current="true">Evert Groot</a><a href="/nl/dj/">DJ Absoluut</a></nav>
+      <nav class="site-sw" aria-label="Site"><span class="sw-thumb" aria-hidden="true"></span><a href="/nl/" aria-current="page">Evert Groot</a><a href="/nl/dj/">DJ Absoluut</a></nav>
       <button type="button" class="menu-close" data-close aria-label="Menu sluiten" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; background: transparent; color: #ffffff; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     </div>
     <nav aria-label="Menu" style="display: flex; flex-direction: column; margin-top: 48px">
@@ -398,8 +389,7 @@ body:has(.hero-cta) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-sep){display:none !
       <div class="mm-lang" role="group" aria-label="Taal"><a href="/" hreflang="en" data-lang="en">EN</a><a href="/nl/" hreflang="nl" data-lang="nl" aria-current="page">NL</a><a href="/it/" hreflang="it" data-lang="it">IT</a></div>
     </div>
   </div>
-  <script>try{if(sessionStorage.getItem('imgroot-menu')){var m=document.getElementById('mobile-menu');if(m&&window.matchMedia&&matchMedia('(max-width: 1060px)').matches){m.hidden=false;document.documentElement.classList.add('sw-menu');document.documentElement.style.overflow='hidden'}else{sessionStorage.removeItem('imgroot-menu')}}}catch(e){}</script>
-
+  
 
   <main id="main" tabindex="-1">
   <!-- DIRECTION 1: cinematic portrait -->
