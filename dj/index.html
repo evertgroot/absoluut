@@ -103,8 +103,6 @@ a{color:#ffffff}a:hover{color:#dbad72}
 .menu-btn{display:none !important}
 .mm-link{transition:color .3s ease}
 .mm-link:hover{color:#dbad72}
-.gig-list a{text-underline-offset:5px;text-decoration-thickness:2px}
-.gig-list a:hover,.gig-list a:focus-visible{text-decoration:underline !important}
 @media (max-width: 640px){
   .dj-gal{grid-template-columns:1fr !important}
   .dj-gal img{aspect-ratio:3 / 2 !important}
@@ -215,10 +213,6 @@ a .bops-mark{transition:background-color .25s ease}
 .hero-lead{margin:0;max-width:min(600px,46vw);font-size:clamp(17px,1.35vw,20px);line-height:1.6;font-weight:500;color:rgba(255,255,255,0.84)}
 @media (max-width: 760px){.hero-lead{max-width:none;font-size:17px}}
 /* gigs: three columns */
-.gig-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-areas:"v f b";gap:clamp(32px,4vw,56px) clamp(24px,4vw,64px);align-items:start}
-.gv{grid-area:v}.gf{grid-area:f}.gb{grid-area:b}
-@media (max-width: 1000px){.gig-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"v f" "b b"}}
-@media (max-width: 640px){.gig-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"v" "f" "b"}}
 @media (max-width: 760px){.book-photo{display:none}}
 /* footer: name + socials on top, small legal row below */
 .ft2-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.14)}
@@ -322,6 +316,21 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
 .skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:#0b0b0c;font-weight:800;text-decoration:none}
 .skip:focus{top:12px;outline:2px solid var(--hv-acc-l);outline-offset:2px}
 main:focus{outline:none}
+/* where I've played: a line-up poster instead of a list. Headliners large, the rest smaller, brand clients as one line */
+.lineup-wrap{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center}
+@media (max-width: 900px){.lineup-wrap{grid-template-columns:minmax(0,1fr)}}
+.lineup{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:10px clamp(20px,2.2vw,34px);font-family:'Baloo Bhai 2',sans-serif;font-weight:800;line-height:.95;letter-spacing:-0.03em;color:#ffffff}
+.lineup li{display:inline-flex;align-items:baseline;gap:.4em}
+.lineup .t1{font-size:clamp(40px,5.4vw,80px);letter-spacing:-0.04em}
+.lineup .t2{font-size:clamp(25px,2.7vw,40px);color:#ffd8ea}
+.lineup .t3{font-size:clamp(19px,1.7vw,26px);color:#efd3f6}
+.lineup small{font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;letter-spacing:0;line-height:1;color:#d9b5e6}
+.lineup-reach{margin:16px 0 clamp(36px,4.5vw,64px);font-size:17px;line-height:1.6;color:#e6d3ee}
+.lineup-brands{margin:clamp(32px,4vw,52px) 0 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.2);max-width:62ch;font-size:17px;line-height:1.6;color:#e6d3ee}
+.lineup-brands b{color:#ffffff;font-weight:800}
+.lineup-photo{margin:0}
+.lineup-photo img{display:block;width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover;border-radius:20px}
+@media (max-width: 900px){.lineup-photo img{aspect-ratio:16 / 10;object-position:50% 35%}}
 /* arrows: one drawn set instead of font glyphs. down = further on this page, right = another page of the site,
    up-right = another website, download = save a file. The glyph stays in the markup as a text fallback. */
 .hv-ar{display:inline-block;width:.8em;height:.8em;margin-left:.4em;vertical-align:-.04em;overflow:hidden;text-indent:2em;white-space:nowrap;background:currentColor;-webkit-mask:var(--ar) center / contain no-repeat;mask:var(--ar) center / contain no-repeat}
@@ -367,11 +376,6 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
 .f-mail a{color:#ffffff;font-weight:800;text-underline-offset:4px}
 .f-mail a:hover,.f-mail a:focus-visible{color:var(--hv-acc)}
 #form-status a{color:inherit;text-underline-offset:3px}
-.gig-list{flex-direction:column !important;flex-wrap:nowrap !important;gap:0 !important}
-.gig-list li{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;border-bottom:1px solid rgba(255,255,255,0.14);white-space:normal !important}
-.gig-list li > span{flex:0 0 auto;text-align:right}
-.gig-list a{display:inline-flex;align-items:center;min-height:44px}
-.gig-list a:not(:hover):not(:focus-visible){text-decoration-color:transparent !important}
 .listen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(12px,1.6vw,24px)}
 .mix{display:flex;flex-direction:column;justify-content:space-between;gap:32px;min-height:220px;padding:clamp(24px,2.4vw,32px);border-radius:20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:#ffffff;text-decoration:none;transition:background-color .3s ease,border-color .3s ease}
 .mix:hover,.mix:focus-visible{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.34);color:#ffffff}
@@ -509,20 +513,14 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
   <!-- GIGS: full list, purple band -->
   <section id="gigs" aria-labelledby="gigs-title" style="background: #4b1260; color: #ffffff">
     <div style="max-width: 1360px; margin: 0 auto; padding: clamp(80px, 10vw, 136px) clamp(20px, 4vw, 48px)">
-      <h2 id="gigs-title" style="margin: 0 0 clamp(36px, 4.5vw, 64px); font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800">Where I’ve Played</h2>
-      <div class="gig-grid">
-      <div class="gv" style="min-width: 0; padding-top: 20px; border-top: 1.5px solid rgba(255,255,255,0.25)">
-        <h3 style="margin: 0 0 16px; color: #ffd8ea; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">Venues</h3>
-        <ul class="gig-list" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(20px, 1.7vw, 24px); font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; color: #ffffff"><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://adamtoren.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">A'DAM Tower<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Amsterdam</span></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://clubnyx.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Club NYX<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Amsterdam</span></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://delamar.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">DeLaMar Theater<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Amsterdam</span></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.paradiso.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Paradiso<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Amsterdam</span></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://the-other-side.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">The Other Side<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Amsterdam · BOPS</span></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://ita.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Stadsschouwburg<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Amsterdam</span></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.ferryrotterdam.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">FERRY<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Rotterdam</span></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="http://www.redandblue.eu/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Red &amp; Blue<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Antwerp</span></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://qclubmilano.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Q Club<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Milan</span></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.instagram.com/leccomilano/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">LeccoMilano<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Milan</span></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.euforiabar.it/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Euforia<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a> <span style="font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: #d9b5e6">Milan</span></li></ul>
-      </div>
-      <div class="gf" style="min-width: 0; padding-top: 20px; border-top: 1.5px solid rgba(255,255,255,0.25)">
-        <h3 style="margin: 0 0 16px; color: #ffd8ea; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">Festivals &amp; Prides</h3>
-        <ul class="gig-list" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(20px, 1.7vw, 24px); font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; color: #ffffff"><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.milkshakefestival.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Milkshake<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.tropikali.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Tropikali<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.superflirtfestival.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Superflirt<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://pride.amsterdam/en/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Amsterdam Pride<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://en.antwerppride.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Antwerp Pride<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a></li></ul>
-      </div>
-      <div class="gb" style="min-width: 0; padding-top: 20px; border-top: 1.5px solid rgba(255,255,255,0.25)">
-        <h3 style="margin: 0 0 16px; color: #ffd8ea; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">Brand events</h3>
-        <ul class="gig-list" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(20px, 1.7vw, 24px); font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; color: #ffffff"><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.bar-le-duc.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Bar-le-Duc<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.instagram.com/fvandernat/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Ferry van der Nat<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.hartmuseum.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">H'ART Museum<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.kaspersky.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Kaspersky<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a></li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.mcdonalds.nl/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">McDonald's<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a></li><li style="white-space: nowrap">Sanoma</li><li style="white-space: nowrap"><a class="hv-tl hv-dk" href="https://www.sofitel-legend-thegrand.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none">Sofitel Hotels<span class="hv-ar hv-ne" aria-hidden="true">↗</span></a></li><li style="white-space: nowrap">Solar PR</li></ul>
-      </div>
+      <h2 id="gigs-title" style="margin: 0; font-family: 'Baloo Bhai 2', sans-serif; font-size: clamp(38px, 5vw, 72px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 800">Where I’ve Played</h2>
+      <p class="lineup-reach">Amsterdam, Rotterdam, Antwerp and Milan, since 2008.</p>
+      <div class="lineup-wrap">
+        <div>
+          <ul class="lineup"><li class="t1">Paradiso <small>Amsterdam</small></li><li class="t1">Amsterdam Pride</li><li class="t1">A'DAM Tower <small>Amsterdam</small></li><li class="t1">Milkshake</li><li class="t2">The Other Side <small>Amsterdam, BOPS</small></li><li class="t2">Club NYX <small>Amsterdam</small></li><li class="t2">Antwerp Pride</li><li class="t2">DeLaMar Theater <small>Amsterdam</small></li><li class="t2">Q Club <small>Milan</small></li><li class="t2">FERRY <small>Rotterdam</small></li><li class="t2">Red &amp; Blue <small>Antwerp</small></li><li class="t3">Stadsschouwburg <small>Amsterdam</small></li><li class="t3">Tropikali</li><li class="t3">Superflirt</li><li class="t3">LeccoMilano <small>Milan</small></li><li class="t3">Euforia <small>Milan</small></li></ul>
+          <p class="lineup-brands"><b>Brand events</b> for Bar-le-Duc, Ferry van der Nat, H'ART Museum, Kaspersky, McDonald's, Sanoma, Sofitel Hotels and Solar PR.</p>
+        </div>
+        <figure class="lineup-photo"><img loading="lazy" decoding="async" src="/assets/img/dj-festival.jpg" width="874" height="1125" alt="DJ Absoluut playing a festival stage"></figure>
       </div>
     </div>
   </section>
