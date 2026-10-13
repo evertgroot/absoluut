@@ -634,9 +634,18 @@
     };
     fsel.addEventListener('change', apply);
     form.addEventListener('f-reset', function () { fsel.selectedIndex = 0; apply(); });
-    /* buttons with data-pick preselect the category, then the anchor scrolls to the form */
+    /* buttons with data-pick preselect the category and land on the form heading (not on the section's
+       top padding); focus goes to the preset field so keyboard and screen-reader users arrive there too */
     [].forEach.call(document.querySelectorAll('[data-pick]'), function (a) {
-      a.addEventListener('click', function () { pick(a.getAttribute('data-pick')); });
+      a.addEventListener('click', function (e) {
+        pick(a.getAttribute('data-pick'));
+        var sec = form.closest('section'), head = sec && sec.querySelector('h2');
+        if (!head) return;
+        e.preventDefault();
+        head.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+        if (history.replaceState) history.replaceState(null, '', '#' + sec.id);
+        try { fsel.focus({ preventScroll: true }); } catch (err) {}
+      });
     });
     /* arriving with ?type=wedding (e.g. from a shared link) */
     var m = /[?&]type=([a-z-]+)/.exec(location.search);
