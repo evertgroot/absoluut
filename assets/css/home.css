@@ -302,3 +302,4 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
 
 /* images carry their intrinsic size; CSS decides the rendered height */
 img[width][height]{height:auto}
+.f-mail-end{margin-top:8px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.12)}
