@@ -560,21 +560,29 @@
       .catch(function () {});
   }
 
-  /* 2c. Case pages: "Talk Strategy" unfolds the contact form in place */
-  [].forEach.call(document.querySelectorAll('[data-expand]'), function (b) {
-    var panel = document.getElementById(b.getAttribute('data-expand'));
-    if (!panel) return;
-    b.addEventListener('click', function () {
-      var open = panel.hidden;
-      panel.hidden = !open;
-      b.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open) {
-        var first = panel.querySelector('input:not([type="hidden"]):not([type="checkbox"]), textarea');
-        panel.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'nearest' });
-        if (first) { try { first.focus({ preventScroll: true }); } catch (e) {} }
-      }
+  /* 2c. Case pages: "Talk Strategy" unfolds the contact form in place; the header and floating
+     "Let's Collaborate" buttons (href="#cs-form") open the same form instead of leaving the page */
+  var csPanel = document.getElementById('cs-form');
+  if (csPanel) {
+    var csToggles = [].slice.call(document.querySelectorAll('[data-expand="cs-form"]'));
+    var setPanel = function (open, scrollTo) {
+      csPanel.hidden = !open;
+      csToggles.forEach(function (b) { b.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+      if (!open) return;
+      var first = csPanel.querySelector('input:not([type="hidden"]):not([type="checkbox"]), textarea');
+      csPanel.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: scrollTo || 'nearest' });
+      if (first) { try { first.focus({ preventScroll: true }); } catch (e) {} }
+    };
+    csToggles.forEach(function (b) {
+      b.addEventListener('click', function () { setPanel(csPanel.hidden); });
     });
-  });
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href="#cs-form"]');
+      if (!a) return;
+      e.preventDefault();
+      setTimeout(function () { setPanel(true, 'center'); }, 0);
+    });
+  }
 
   /* 3. Contact form */
   var form = document.getElementById('contact-form');
