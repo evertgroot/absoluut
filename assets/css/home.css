@@ -686,7 +686,7 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops .cs-bleed{margin:0 calc(50% - 50vw) clamp(64px,8vw,112px)}
 .cs-bops .cs-cover-img{display:block;width:100%;height:clamp(300px,48vw,640px) !important;object-fit:cover;object-position:50% 55%}
 .cs-bops .cs-band{position:relative;max-width:none;margin:0 0 clamp(72px,9vw,128px);padding:clamp(64px,8vw,112px) 0;background:var(--band);box-shadow:0 0 0 100vmax var(--band);clip-path:inset(0 -100vmax)}
-.cs-bops .cs-band-red{--band:var(--c-bops-red);color:var(--c-cream);margin-bottom:0}
+.cs-bops .cs-band-red{--band:var(--c-bops-red);color:var(--c-cream)}
 .cs-bops .cs-band-navy{--band:var(--c-navy);color:#fff}
 .cs-bops .cs-band h2,.cs-bops .cs-band .cs-part-title{color:inherit}
 .cs-bops .cs-band-red p{color:rgba(255,241,230,.9)}
@@ -709,3 +709,10 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops .cs-band-navy .cs-roles > div{border-bottom-color:rgba(255,255,255,.2)}
 .cs-bops .cs-band-navy .cs-roles dt{color:var(--c-pink)}
 .cs-bops .cs-band-navy .cs-roles dd{color:#fff}
+/* BOPS chapter system: every chapter one h2; cream = story, navy = showcase, red = the idea */
+.cs-stage h3,.cs-guest-card h3{margin:2px 0 0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2vw,26px);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:var(--c-navy)}
+.cs-guest-card h3{grid-column:1;color:#fff}
+.cs-bops .cs-band > .cs-intro{max-width:680px;margin:0 0 28px}
+.cs-bops .cs-row .cs-roles{margin-top:20px}
+.cs-bops .cs-split-media .cs-intro{margin:0 0 16px}
+.cs-bops .cs-split-media .cs-intro:last-child{margin-bottom:0}
