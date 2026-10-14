@@ -736,3 +736,4 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-guest-names li{padding:6px 14px;border-radius:999px;border:1.5px solid rgba(255,159,178,.55);color:#fff;font-weight:700;font-size:15px;line-height:1.3}
 @media (max-width:600px){.cs-guest-card .cs-guests-body{grid-column:1;grid-row:auto;margin-top:6px}}
 .cs-guest-card.cs-guests{grid-template-rows:auto 1fr}
+.cs-guest-card.cs-guests{grid-template-rows:auto}.cs-guest-card.cs-guests h3{grid-row:1;margin:0}.cs-guest-card.cs-guests .cs-guests-body{grid-row:1}
