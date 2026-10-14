@@ -511,3 +511,4 @@ div.cs-close + .cs-form{border-top-left-radius:0;border-top-right-radius:0;paddi
 .cs-testimonial figcaption small{margin-left:auto;font-size:13px;font-weight:600;color:rgba(11,11,12,.6)}
 @media (max-width:600px){.cs-testimonial figcaption small{margin-left:0;flex-basis:100%}}
 .cs-testimonial blockquote p{font-size:clamp(24px,3.1vw,44px);max-width:32ch}
+.cs-testimonial figcaption small{color:rgba(11,11,12,.72)}
