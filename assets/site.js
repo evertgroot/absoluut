@@ -52,7 +52,7 @@
 
   /* 1b2. Mobile menu, plus a way forward after scrolling:
      desktop - the header turns into a slim bar fixed to the top;
-     mobile  - the same slim bar slides back in whenever the visitor scrolls up (and out again when
+     mobile  - the same slim bar slides back in whenever the visitor scrolls up or stops scrolling (and out again when
                they read on), and the page's main call to action (contact or booking) floats at the
                bottom right once the hero's own button is gone, stepping aside at the form and footer */
   var menuBtn = document.querySelector('.menu-btn');
@@ -172,7 +172,17 @@
         if (header && header.classList.contains('hdr-stuck') && compact()) header.classList.add('hdr-hide');
       }
     });
-    window.addEventListener('scroll', update, { passive: true });
+    /* phones: when the visitor stops scrolling, the bar comes back too */
+    var idle = null;
+    window.addEventListener('scroll', function () {
+      update();
+      clearTimeout(idle);
+      idle = setTimeout(function reveal() {
+        if (!compact() || window.scrollY <= limit()) return;
+        if (performance.now() < quietUntil) { idle = setTimeout(reveal, quietUntil - performance.now() + 50); return; }
+        header.classList.add('hdr-stuck'); header.classList.remove('hdr-hide');
+      }, 350);
+    }, { passive: true });
     window.addEventListener('resize', update);
     update();
   }
