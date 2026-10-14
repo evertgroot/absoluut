@@ -676,3 +676,8 @@ body:has(main.cs-bops) #mobile-menu{background:var(--c-navy) !important}
 }
 .cs-bops .cs-flyers{max-width:1300px}
 .cs-bops div.cs-close,.cs-bops .cs-form{max-width:1300px}
+/* BOPS: who does what */
+.cs-roles{margin:24px 0 0;border-top:1px solid rgba(23,21,95,.16)}
+.cs-roles > div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid rgba(23,21,95,.16)}
+.cs-roles dt{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--c-bops-red);padding-top:3px}
+.cs-roles dd{margin:0;font-size:17px;font-weight:700;color:var(--c-navy)}
