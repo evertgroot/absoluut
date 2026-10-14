@@ -716,3 +716,8 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops .cs-row .cs-roles{margin-top:20px}
 .cs-bops .cs-split-media .cs-intro{margin:0 0 16px}
 .cs-bops .cs-split-media .cs-intro:last-child{margin-bottom:0}
+/* BOPS: what I offer under the closing question, and a way to follow BOPS */
+.cs-bops div.cs-close p.cs-close-sub{margin-top:6px;font-family:'Manrope',sans-serif;font-size:16px;font-weight:600;letter-spacing:0;line-height:1.5;color:rgba(23,21,95,.72)}
+.cs-bops-link{margin:16px 0 0 !important}
+.cs-bops-link a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:16px;font-weight:800;color:var(--c-navy);text-decoration:none}
+@media (min-width:901px){.cs-bops .cs-hero{max-width:1300px}.cs-bops .cs-meta{grid-template-columns:repeat(5,minmax(0,auto))}}
