@@ -354,7 +354,8 @@ img[width][height]{height:auto}
 .lg-milkshake{--lg:url(/assets/img/logos/milkshake.png?v=2);--la:464 / 120;--lh:.85;background:var(--lg) center / contain no-repeat;-webkit-mask:none;mask:none}
 .lg-qclub{--lg:url(/assets/img/logos/q-club.svg);--la:1 / 1;--lh:.9}
 .lg-euforia{--lg:url(/assets/img/logos/euforia.png);--la:600 / 263;--lh:1.05}
-/* reviews: dots sit close under the cards; the section's bottom padding gives back the dots' tap area,
-   so the space below the dots matches the rhythm of the other sections */
-.qdots{margin-top:8px}
-#reviews > div{padding-bottom:calc(clamp(72px, 10vw, 136px) - 32px) !important}
+/* reviews: the dots sit exactly midway between the cards and the end of the purple section
+   (same space above as below; the 44px tap area is symmetric around the dot) */
+#reviews{--qgap:clamp(32px, 5vw, 64px)}
+.qdots{margin-top:calc(var(--qgap) - 4px)}
+#reviews > div{padding-bottom:var(--qgap) !important}
