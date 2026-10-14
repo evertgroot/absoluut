@@ -558,3 +558,4 @@ a.reel:hover .reel-tag-br,a.reel:focus-visible .reel-tag-br{color:var(--c-teal)}
 .cs-ad video{display:block;width:100%;height:auto;aspect-ratio:9 / 16;object-fit:cover;background:#151517}
 .cs-credit{margin:12px 0 0;font-size:14px;color:rgba(255,255,255,.55)}
 @media (max-width:700px){.cs-split,.cs-split-media{grid-template-columns:1fr}.cs-founders{max-width:360px}.cs-ad{max-width:300px}}
+.cs-block > p + p{margin-top:14px}
