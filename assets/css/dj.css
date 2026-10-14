@@ -314,3 +314,5 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 #reviews{--qgap:clamp(32px, 5vw, 64px)}
 .qdots{margin-top:calc(var(--qgap) - 4px)}
 #reviews > div{padding-bottom:var(--qgap) !important}
+/* review link: a 44px-tall tap area without moving the layout */
+#reviews .qcard a.hv-tl{display:inline-block;padding:12px 0;margin:-12px 0}
