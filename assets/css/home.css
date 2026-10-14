@@ -422,3 +422,9 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 .cs-list{margin:0;padding:0 0 0 1.1em;font-size:18px;line-height:1.65;color:rgba(255,255,255,.84)}
 .cs-list li{margin:0 0 8px}
 .cs-related{margin-top:16px !important;font-size:16px !important;color:rgba(255,255,255,.7) !important}
+/* several projects within one case */
+.cs-project{margin:0 0 clamp(48px,6vw,72px)}
+.cs-project h3{margin:0 0 6px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2vw,28px);line-height:1.1;letter-spacing:-0.02em;font-weight:800}
+.cs-project h3 span{margin-left:10px;font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;letter-spacing:0;color:rgba(255,255,255,.55)}
+.cs-project > p{margin:0 0 20px;max-width:680px;font-size:17px;line-height:1.6;color:rgba(255,255,255,.8)}
+.cs-block h2 + .cs-project{margin-top:28px}
