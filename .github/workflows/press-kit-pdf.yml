@@ -10,6 +10,7 @@ on:
       - "nl/djabsoluut/press-kit/**"
       - "it/djabsoluut/press-kit/**"
       - "assets/css/press-kit.css"
+      - "assets/css/base.css"
       - "assets/img/rider-setup.webp"
       - ".github/workflows/press-kit-pdf.yml"
   workflow_dispatch:
