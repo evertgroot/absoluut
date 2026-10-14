@@ -524,7 +524,7 @@
         var p = ev.date.split('-').map(Number);
         var d = new Date(p[0], p[1] - 1, p[2]);
         var locale = { en: 'en-US', nl: 'nl-NL', it: 'it-IT' }[lang] || 'en-US';
-        var opts = lang === 'en' ? { month: 'long', day: 'numeric' } : { day: 'numeric', month: 'long' };
+        var opts = lang === 'en' ? { month: 'short', day: 'numeric' } : { day: 'numeric', month: 'short' };
         dateEl.textContent = ' · ' + d.toLocaleDateString(locale, opts);
         /* Structured data so the next BOPS can show up in Google's event results */
         var ld = document.createElement('script');
