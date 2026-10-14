@@ -559,3 +559,4 @@ a.cs-reel-link:focus-visible{outline:2px solid #7bd6e0;outline-offset:3px;border
 .cs-gallery-posts[data-reviews]::-webkit-scrollbar{display:none}
 /* homepage reels: platform label bottom right */
 .reel .reel-tag-br{top:auto;left:auto;right:10px;bottom:10px}
+a.reel:hover .reel-tag-br,a.reel:focus-visible .reel-tag-br{color:#7bd6e0}
