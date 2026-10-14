@@ -395,3 +395,9 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 .wk-client.logos{--logo-base:26px;color:#fff;min-height:30px}
 /* case page: Client / For */
 .cs-meta dd .logo{--logo-base:32px;color:#fff;margin-top:4px}
+/* "What I Made" with real posts: three across, each in its own format */
+.cs-gallery-posts{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1100px}
+.cs-gallery-posts img{display:block;width:100%;height:auto !important;border-radius:20px}
+@media (max-width:900px){.cs-gallery-posts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:600px){.cs-gallery-posts{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-right:calc(-1 * clamp(20px,4vw,48px));padding-right:clamp(20px,4vw,48px)}.cs-gallery-posts .cs-reel{flex:0 0 72%;scroll-snap-align:start}}
+.cs-hero + .cs-block{margin-top:clamp(56px,7vw,96px)}
