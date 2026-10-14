@@ -490,6 +490,29 @@
     if (years > 0) el.textContent = years;
   });
 
+  /* 1c3. Case-page videos: load and play only while on screen, with a pause/play button;
+     with reduced motion they stay still until the visitor presses play */
+  document.querySelectorAll('video[data-inview]').forEach(function (v) {
+    var btn = v.parentNode.querySelector('.cs-ad-toggle');
+    var held = calm; /* paused by the visitor (or by reduced motion): don't resume on scroll */
+    var sync = function () {
+      if (!btn) return;
+      btn.setAttribute('aria-label', btn.getAttribute(v.paused ? 'data-play' : 'data-pause'));
+      btn.classList.toggle('is-paused', v.paused);
+    };
+    var play = function () { v.preload = 'auto'; var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+    v.addEventListener('play', sync); v.addEventListener('pause', sync);
+    var toggle = function () { if (v.paused) { held = false; play(); } else { held = true; v.pause(); } };
+    if (btn) btn.addEventListener('click', toggle);
+    v.addEventListener('click', toggle);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { if (!held) play(); } else if (!v.paused) v.pause();
+      }, { threshold: 0.25 }).observe(v);
+    } else if (!held) play();
+    sync();
+  });
+
   /* 1d. Press kit: copy the biography (the PDF is built by GitHub, see .github/workflows/press-kit-pdf.yml) */
   document.querySelectorAll('[data-copy]').forEach(function (b) {
     var src = document.getElementById(b.getAttribute('data-copy'));

@@ -168,4 +168,26 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/work/soa-aids/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/work/soa-aids/"/>
   </url>
+<url>
+    <loc>https://imgroot.nl/work/bops/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/work/bops/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/work/bops/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/work/bops/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/work/bops/"/>
+  </url><url>
+    <loc>https://imgroot.nl/nl/work/bops/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/work/bops/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/work/bops/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/work/bops/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/work/bops/"/>
+  </url><url>
+    <loc>https://imgroot.nl/it/work/bops/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imgroot.nl/work/bops/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://imgroot.nl/nl/work/bops/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://imgroot.nl/it/work/bops/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imgroot.nl/work/bops/"/>
+  </url>
 </urlset>

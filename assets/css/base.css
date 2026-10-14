@@ -17,6 +17,8 @@
   --c-gold:#dbad72; /* legacy accent, mostly overridden */
   --c-periwinkle:#b3afe0; /* legacy muted text */
   --c-lavender:#8e8abf; /* legacy placeholder */
+  --c-cream:#fff1e6; /* BOPS block and BOPS case background */
+  --c-bops-red:#a62400; /* BOPS accent on cream */
 }
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--c-navy)}
