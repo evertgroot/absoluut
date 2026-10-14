@@ -150,7 +150,7 @@ body{background:#ffffff}
   #bio dl > div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:8px 0 !important;border-bottom:1px solid var(--c-line) !important}
   #bio dl > div:last-child{display:block !important;position:relative;min-height:112px;padding-right:96px !important;border-bottom:0 !important}
   .pdf-photo{display:block;position:absolute;top:10px;right:0;width:78px;height:98px;object-fit:cover;object-position:50% 30%;border-radius:10px}
-  #bio dt{font-size:10px !important;letter-spacing:0.1em !important}
+  #bio dt{font-size:11px !important;letter-spacing:0.1em !important}
   #bio dd{margin:0 !important;font-size:13px !important;line-height:1.2 !important;text-align:right}
   #bio dl > div:last-child dd{margin-top:6px !important;text-align:left}
   #bio dd ul{flex-direction:column !important;gap:3px !important}
@@ -169,7 +169,7 @@ body{background:#ffffff}
   #rider > div > div{margin-top:24px;display:grid !important;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:18px !important}
   #rider > div > div > div:first-child > div{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:16px 22px !important}
   #rider > div > div > div:last-child{padding:14px !important;border-radius:10px !important;align-self:start}
-  #rider p{font-size:10px !important;letter-spacing:0.1em !important;margin:0 0 8px !important}
+  #rider p{font-size:11px !important;letter-spacing:0.1em !important;margin:0 0 8px !important}
   #rider h3{font-size:15px !important;margin:0 0 3px !important}
   #rider ul{font-size:12.5px !important;line-height:1.5 !important}
   #rider li{margin:0 !important;padding:4px 0 !important;border-width:0 0 1px !important}
