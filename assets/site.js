@@ -490,6 +490,9 @@
     if (years > 0) el.textContent = years;
   });
 
+  /* 1c3. Autoplaying videos (case pages): with reduced motion they stay still and get controls */
+  if (calm) document.querySelectorAll('video[autoplay]').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
+
   /* 1d. Press kit: copy the biography (the PDF is built by GitHub, see .github/workflows/press-kit-pdf.yml) */
   document.querySelectorAll('[data-copy]').forEach(function (b) {
     var src = document.getElementById(b.getAttribute('data-copy'));
