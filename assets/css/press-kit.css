@@ -143,13 +143,19 @@ body{background:#ffffff}
   #bio h2,#rider h2{margin:0 0 10px !important;font-size:21px !important;line-height:1.1 !important;letter-spacing:-0.02em !important}
 
   /* biography: text left, facts right */
-  #bio > .gut{display:grid !important;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:26px !important;padding:30px 0 0 !important}
-  #bio-text{font-size:13px !important;line-height:1.6 !important;max-width:none !important;color:#3d3742 !important}
+  #bio > .gut{display:grid !important;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:26px !important;padding:20px 0 0 !important}
+  #bio-text{font-size:12.5px !important;line-height:1.5 !important;max-width:none !important;color:#3d3742 !important}
   #bio-text p{margin:0 0 9px !important}
+  /* short bio under the full one, for promoters who need a quick version */
+  #bio-short{margin-top:8px !important;padding-top:10px !important;max-width:none !important;border-top:1px solid var(--c-line) !important}
+  #bio-short h3{margin:0 0 4px !important;font-size:13px !important;line-height:1.2 !important}
+  #bio-short-text{font-size:11.5px !important;line-height:1.5 !important;color:#3d3742 !important}
+  #bio-short-text p{margin:0 !important}
   #bio dl{margin-top:6px !important;border-top:1.5px solid var(--c-plum-ink) !important}
-  #bio dl > div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:8px 0 !important;border-bottom:1px solid var(--c-line) !important}
-  #bio dl > div:last-child{display:block !important;position:relative;min-height:112px;padding-right:96px !important;border-bottom:0 !important}
-  .pdf-photo{display:block;position:absolute;top:10px;right:0;width:78px;height:98px;object-fit:cover;object-position:50% 30%;border-radius:10px}
+  #bio dl > div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:5px 0 !important;border-bottom:1px solid var(--c-line) !important}
+  #bio dl > div:last-child{display:block !important;border-bottom:0 !important}
+  /* photo under the channels, same head-to-elbows crop as on the site */
+  .pdf-photo{display:block;width:100%;height:auto;aspect-ratio:10 / 7;margin-top:10px;object-fit:cover;border-radius:10px}
   #bio dt{font-size:11px !important;letter-spacing:0.1em !important}
   #bio dd{margin:0 !important;font-size:13px !important;line-height:1.2 !important;text-align:right}
   #bio dl > div:last-child dd{margin-top:6px !important;text-align:left}
@@ -162,11 +168,11 @@ body{background:#ffffff}
 
   /* technical rider */
   #rider{border-top:0 !important;break-before:auto}
-  #rider > div{padding:28px 0 0 !important;border-top:1px solid var(--c-line);margin-top:28px !important}
-  #rider figure{margin:22px 0 0 !important;display:flex;flex-direction:column;align-items:center;gap:8px}
-  #rider figure img{width:56% !important;height:auto !important;margin:0 !important}
+  #rider > div{padding:16px 0 0 !important;border-top:1px solid var(--c-line);margin-top:16px !important}
+  #rider figure{margin:8px 0 0 !important;display:flex;flex-direction:column;align-items:center;gap:8px}
+  #rider figure img{width:40% !important;height:auto !important;margin:0 !important}
   #rider figcaption{margin:0 !important;font-size:12px !important;line-height:1.4 !important;text-align:center}
-  #rider > div > div{margin-top:24px;display:grid !important;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:18px !important}
+  #rider > div > div{margin-top:14px;display:grid !important;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:18px !important}
   #rider > div > div > div:first-child > div{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:16px 22px !important}
   #rider > div > div > div:last-child{padding:14px !important;border-radius:10px !important;align-self:start}
   #rider p{font-size:11px !important;letter-spacing:0.1em !important;margin:0 0 8px !important}
@@ -269,3 +275,6 @@ body{background:#ffffff}
   #rider > div > div > div:first-child > div > div:nth-child(3){grid-column:1;grid-row:3;align-self:end}
   #rider > div > div > div:first-child > div > div:nth-child(4){grid-column:2;grid-row:2 / span 2;align-self:end}
 }
+/* biography: landscape crop of the hero photo (head to elbows) under the facts, ending level with the short bio */
+#bio-photo{display:block;flex:none;width:100%;height:auto;aspect-ratio:10 / 7;margin-top:auto;object-fit:cover;border-radius:20px}
+@media print{#bio-photo{display:none !important}}
