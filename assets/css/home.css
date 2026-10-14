@@ -614,3 +614,4 @@ body:has(main.cs-bops) #mobile-menu{background:var(--c-navy) !important}
   .cs-flyers img{width:auto;height:min(52vh,290px) !important}
   .cs-flyers-break{display:none}
 }
+.cs-block > .cs-intro{margin-bottom:24px}
