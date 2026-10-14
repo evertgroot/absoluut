@@ -411,3 +411,4 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
   .wk-grid::-webkit-scrollbar{display:none}
   .wk-grid > li{flex:0 0 68%;scroll-snap-align:start}
 }
+.cs-gallery-one{grid-template-columns:minmax(0,1fr);max-width:640px}
