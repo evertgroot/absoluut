@@ -85,7 +85,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 
 /* ---- hv-sys ---- */
 /* unified hover system: primary · secondary · text link · icon · card */
-:root{--hv-acc:var(--c-pink);--hv-acc-l:var(--c-red);--hv-glow:rgba(200,25,58,.38)}
+:root{--hv-acc:var(--c-pink);--hv-acc-l:var(--c-red);--hv-glow:rgba(0,0,0,.32)}
 
 
 :is(.btn-solid,.btn-ghost,.hv-2,.hv-tl,.hv-card,.reel,a.case,.svc,footer.ft2 nav a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}

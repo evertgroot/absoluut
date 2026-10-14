@@ -187,7 +187,7 @@ body{background:#ffffff}
 
 /* ---- hv-sys ---- */
 /* unified hover system: primary · secondary · text link · icon · card */
-:root{--hv-acc:var(--c-pink);--hv-acc-l:var(--c-red);--hv-glow:rgba(200,25,58,.38)}
+:root{--hv-acc:var(--c-pink);--hv-acc-l:var(--c-red);--hv-glow:rgba(0,0,0,.32)}
 .btn-solid{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease,background-color .25s ease,color .25s ease !important}
 .btn-ghost,.hv-2{transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .25s ease,border-color .25s ease,color .25s ease !important}
 .btn-solid:hover,.btn-solid:focus-visible{box-shadow:0 8px 22px var(--hv-glow)}
