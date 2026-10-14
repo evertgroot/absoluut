@@ -373,3 +373,6 @@ a.wk-card:focus-visible,a.wk-feat:focus-visible{outline:2px solid #7bd6e0;outlin
 a.reel-tag:hover{color:#7bd6e0}
 a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 @media (max-width:600px){.cs-reel{flex:0 0 72%;scroll-snap-align:start}}
+/* campaign posts keep their own format (4:5 and 1:1), aligned at the top */
+.cs-cover-posts{align-items:start}
+.cs-cover-posts .cs-reel img{aspect-ratio:auto}
