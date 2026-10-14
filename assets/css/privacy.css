@@ -205,8 +205,6 @@ a:hover{color:#ffffff}
 header.hdr-stuck{background:rgba(18,18,18,.94) !important}
 .site-sw a,.site-sw.sw-flip a[aria-current]{color:#a8a8a8}
 .site-sw a:hover{color:#ffffff}
-.site-sw a:first-of-type::before{background:#ededed}
-.site-sw a:last-of-type::before{background:#7a7a7a}
 .hdr-lang a,.mm-lang a{color:#8f8f8f}
 .hdr-lang a[aria-current],.mm-lang a[aria-current]{color:#ffffff}
 .nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:#ffffff}
