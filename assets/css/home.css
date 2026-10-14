@@ -512,3 +512,11 @@ a.cs-reel-link:focus-visible{outline:2px solid var(--c-teal);outline-offset:3px;
 /* homepage reels: platform label bottom right */
 .reel .reel-tag-br{top:auto;left:auto;right:10px;bottom:10px}
 a.reel:hover .reel-tag-br,a.reel:focus-visible .reel-tag-br{color:var(--c-teal)}
+/* Trusted by: a still row instead of a moving band. Label and logos on one line on wide screens, centred rows below that */
+.marquee-static .marquee-track{width:auto;animation:none !important}
+.marquee-static .marquee-track > div{flex-wrap:wrap;justify-content:center;gap:24px 56px !important;max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px) !important;white-space:normal !important}
+@media (max-width:1240px){
+  .marquee-static .marquee-track > div{gap:22px 40px !important}
+  .marquee-static .marquee-track > div > span:first-child{flex-basis:100%;text-align:center}
+}
+@media (max-width:600px){.marquee-static .marquee-track > div{gap:20px 30px !important}}

@@ -199,7 +199,7 @@
   }
   bands.forEach(function (box) {
     var track = box.querySelector('.marquee-track');
-    if (!track) return;
+    if (!track || box.classList.contains('marquee-static')) return; /* a static row (homepage) needs none of this */
     var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     box.classList.add('mq-js');
     if (still) return; /* no drift, list wraps; nothing to scroll or focus */
