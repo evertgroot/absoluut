@@ -821,3 +821,6 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-split-founders .cs-founders img{aspect-ratio:16 / 9;object-position:50% 0}
 @media (max-width:700px){.cs-split-founders .cs-founders img{aspect-ratio:4 / 3}}
 .cs-bops .cs-band:has(+ .cs-band){margin-bottom:0}
+/* BOPS hero: roles as small outlined pills instead of dot-separated text */
+.cs-bops .cs-meta dd.cs-meta-pills{display:flex;flex-wrap:wrap;gap:6px;max-width:340px}
+.cs-bops .cs-meta-pills .cs-pill{padding:4px 11px;border-color:rgba(255,241,230,.4);color:#fff;font-size:13px;line-height:1.3}
