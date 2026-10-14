@@ -541,3 +541,13 @@ a.cs-reel-link:focus-visible{outline:2px solid #7bd6e0;outline-offset:3px;border
 .cs-reel:has(.cs-reel-link:focus-visible){overflow:visible}
 /* a 9:16 video still cropped to the 3:4 of the posts beside it, keeping the caption in view */
 .cs-reel img.cs-crop-34{aspect-ratio:3 / 4;object-fit:cover;object-position:50% 100%}
+/* Selected Work dots: only where the cards become a swipe row (phones), same component as the DJ reviews */
+.wk-dots{display:none;justify-content:center;gap:0;margin-top:10px}
+.wk-dots .qdot{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;background:transparent;cursor:pointer}
+.wk-dots .qdot span{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.35);transition:background .2s ease,transform .2s ease}
+.wk-dots .qdot[aria-current="true"] span{background:#7bd6e0;transform:scale(1.2)}
+.wk-dots .qdot:focus-visible{outline:3px solid #7bd6e0;outline-offset:2px;border-radius:999px}
+@media (max-width:700px){.wk-dots{display:flex}}
+@media (prefers-reduced-motion:reduce){.wk-dots .qdot span{transition:none}}
+/* phones: dots close under the cards, the button a steady step below them */
+@media (max-width:700px){.wk-dots{margin-top:20px}.wk .wk-cta{margin-top:20px}} /* dots midway between the card text and the button */

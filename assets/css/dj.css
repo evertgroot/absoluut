@@ -357,3 +357,8 @@ img[width][height]{height:auto}
 .lg-tos{--lg:url(/assets/img/logos/the-other-side.png);--la:384 / 424;--lh:1.4}
 .lg-ferry{--lg:url(/assets/img/logos/ferry.svg);--la:213.4 / 70.2;--lh:.68}
 .lg-euforia{--lg:url(/assets/img/logos/euforia.png);--la:600 / 263;--lh:1.05}
+/* reviews: the dots sit exactly midway between the cards and the end of the purple section
+   (same space above as below; the 44px tap area is symmetric around the dot) */
+#reviews{--qgap:clamp(32px, 5vw, 64px)}
+.qdots{margin-top:calc(var(--qgap) - 4px)}
+#reviews > div{padding-bottom:var(--qgap) !important}

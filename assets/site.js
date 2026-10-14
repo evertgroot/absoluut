@@ -331,9 +331,9 @@
     window.addEventListener('resize', function () { show(current, true); });
   });
 
-  /* 1c2. Review cards: one sideways row on every screen; the dots follow and can be tapped, and a mouse can drag */
+  /* 1c2. Review cards (and the Selected Work cards on phones): one sideways row; the dots follow and can be tapped, and a mouse can drag */
   document.querySelectorAll('[data-reviews]').forEach(function (grid) {
-    var cards = grid.querySelectorAll('.qcard');
+    var cards = grid.querySelectorAll('.qcard, :scope > li');
     var dots = grid.parentNode.querySelectorAll('.qdot');
     if (!cards.length || !dots.length) return;
     var t = null;
