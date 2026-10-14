@@ -705,3 +705,7 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops .cs-band .cs-row > h2{margin:0}
 .cs-bops .cs-band-red p:not(.cs-statement){font-size:clamp(17px,1.4vw,19px);line-height:1.65;margin:0}
 .cs-bops .cs-band-navy .cs-row .cs-intro{font-size:clamp(18px,1.5vw,20px)}
+.cs-bops .cs-band-navy .cs-roles{border-top-color:rgba(255,255,255,.2)}
+.cs-bops .cs-band-navy .cs-roles > div{border-bottom-color:rgba(255,255,255,.2)}
+.cs-bops .cs-band-navy .cs-roles dt{color:var(--c-pink)}
+.cs-bops .cs-band-navy .cs-roles dd{color:#fff}
