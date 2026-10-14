@@ -353,6 +353,7 @@ img[width][height]{height:auto}
 .marquee .logo{--logo-base:34px}
 .lg-milkshake{--lg:url(/assets/img/logos/milkshake.png?v=2);--la:464 / 120;--lh:.85;background:var(--lg) center / contain no-repeat;-webkit-mask:none;mask:none}
 .lg-qclub{--lg:url(/assets/img/logos/q-club.svg);--la:1 / 1;--lh:.9}
-.lg-nyx{--lg:url(/assets/img/logos/club-nyx.png);--la:322 / 396;--lh:1.3}
+.lg-nyx{--lg:url(/assets/img/logos/club-nyx.png?v=2);--la:284 / 531;--lh:1.45}
+.lg-tos{--lg:url(/assets/img/logos/the-other-side.png);--la:384 / 424;--lh:1.4}
 .lg-ferry{--lg:url(/assets/img/logos/ferry.svg);--la:213.4 / 70.2;--lh:.68}
 .lg-euforia{--lg:url(/assets/img/logos/euforia.png);--la:600 / 263;--lh:1.05}
