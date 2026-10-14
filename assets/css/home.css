@@ -653,18 +653,25 @@ body:has(main.cs-bops) #mobile-menu{background:var(--c-navy) !important}
 .cs-bops .cs-row > p,.cs-bops .cs-row > .cs-intro{margin:0;font-size:clamp(18px,1.5vw,20px);line-height:1.65}
 .cs-bops .cs-part{margin-top:clamp(48px,6vw,80px)}
 .cs-bops .cs-part-title{font-size:clamp(24px,2.4vw,30px);margin-bottom:12px}
-.cs-bops .cs-results .cs-growth{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 clamp(16px,2.5vw,32px);margin:32px 0 0;border-top:0;max-width:1300px}
-.cs-bops .cs-results .cs-growth li{position:relative;flex-direction:column;align-items:flex-start;gap:10px;padding:26px 0 0;border-bottom:0;border-top:2px solid rgba(23,21,95,.18)}
-.cs-bops .cs-results .cs-growth li::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--c-cream);border:2px solid var(--c-bops-red)}
-.cs-bops .cs-results .cs-growth li:last-child{border-top-color:var(--c-bops-red)}
+/* timeline: one continuous line with a dot per step; the last stretch runs in BOPS red */
+.cs-bops .cs-results .cs-growth{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:36px 0 0;padding:0;border-top:0;max-width:1300px}
+.cs-bops .cs-results .cs-growth::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:rgba(23,21,95,.3)}
+.cs-bops .cs-results .cs-growth li{position:relative;flex-direction:column;align-items:flex-start;gap:10px;padding:28px clamp(16px,2.5vw,32px) 0 0;border:0}
+.cs-bops .cs-results .cs-growth li::before{content:"";position:absolute;z-index:1;top:-6px;left:0;width:14px;height:14px;border-radius:50%;background:var(--c-cream);border:2px solid var(--c-bops-red);box-sizing:border-box}
 .cs-bops .cs-results .cs-growth li:last-child::before{background:var(--c-bops-red)}
+.cs-bops .cs-results .cs-growth li:last-child::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--c-bops-red)}
 .cs-bops .cs-results .cs-growth li > span{flex:none}
 .cs-bops .cs-results .cs-growth li p{font-size:16px;line-height:1.45}
 .cs-bops .cs-results .cs-growth strong{display:block;margin-bottom:4px;font-size:clamp(28px,3.2vw,44px);line-height:1}
 .cs-bops .cs-results .cs-note{max-width:760px;margin-top:clamp(28px,3vw,40px);font-size:clamp(18px,1.6vw,21px)}
 @media (max-width:760px){
   .cs-bops .cs-row{grid-template-columns:1fr}
-  .cs-bops .cs-results .cs-growth{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}
+  .cs-bops .cs-results .cs-growth{grid-template-columns:1fr;row-gap:0;margin-top:24px}
+  .cs-bops .cs-results .cs-growth::before{top:6px;bottom:6px;left:6px;right:auto;width:2px;height:auto}
+  .cs-bops .cs-results .cs-growth li{padding:0 0 28px 34px}
+  .cs-bops .cs-results .cs-growth li:last-child{padding-bottom:0}
+  .cs-bops .cs-results .cs-growth li::before{top:0}
+  .cs-bops .cs-results .cs-growth li:last-child::after{top:14px;bottom:0;left:4px;right:auto;width:6px;height:auto;background:var(--c-cream)}
 }
 .cs-bops .cs-flyers{max-width:1300px}
 .cs-bops div.cs-close,.cs-bops .cs-form{max-width:1300px}
