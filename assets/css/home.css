@@ -721,3 +721,6 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops-link{margin:16px 0 0 !important}
 .cs-bops-link a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:16px;font-weight:800;color:var(--c-navy);text-decoration:none}
 @media (min-width:901px){.cs-bops .cs-hero{max-width:1300px}.cs-bops .cs-meta{grid-template-columns:repeat(5,minmax(0,auto))}}
+.cs-inline-link{color:inherit;font-weight:700;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
+.cs-inline-link:hover{color:var(--c-pink)}
+.cs-bops .cs-block .cs-inline-link:hover{color:var(--c-bops-red)}
