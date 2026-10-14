@@ -726,7 +726,7 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops .cs-row > div > .cs-intro{margin:0;font-size:clamp(18px,1.5vw,20px);line-height:1.65;max-width:58ch}
 .cs-bops .cs-row > h2{margin:0;text-wrap:balance}
 /* BOPS: Programming the Night as a pink band with the guests set like a flyer line-up */
-.cs-bops .cs-band-pink{--band:var(--c-pink);color:var(--c-navy);margin-bottom:0}
+.cs-bops .cs-band-pink{--band:var(--c-pink);color:var(--c-navy)}
 .cs-bops .cs-band-pink .cs-row{align-items:start}
 .cs-bops .cs-band-pink .cs-intro{margin:0;max-width:52ch;font-size:clamp(18px,1.5vw,20px);line-height:1.6;color:var(--c-navy)}
 /* BOPS line-up back to outlined name pills, in navy on the pink band */
@@ -758,10 +758,6 @@ div:has(> main.cs-bops){overflow-x:clip}
   .cs-split-founders .cs-founders img{aspect-ratio:3 / 2}
 }
 /* BOPS: newest first, so the line runs red from WorldPride 2026 back to 2020 and stops there */
-.cs-bops .cs-results .cs-growth::before{display:none}
-@media (max-width:700px){
-  .cs-bops .cs-results .cs-growth::before{display:block}
-}
 /* BOPS: two partnership cards on top, three stage cards below, on one 3-column grid */
 .cs-bops .cs-stages{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:1000px){
@@ -800,3 +796,4 @@ div:has(> main.cs-bops){overflow-x:clip}
 /* BOPS hero: roles as small outlined pills instead of dot-separated text */
 .cs-bops .cs-meta dd.cs-meta-pills{display:flex;flex-wrap:wrap;gap:6px;max-width:340px}
 .cs-bops .cs-meta-pills .cs-pill{padding:4px 11px;border-color:rgba(255,241,230,.4);color:#fff;font-size:13px;line-height:1.3}
+.cs-bops .cs-bleed:has(+ .cs-band){margin-bottom:0}
