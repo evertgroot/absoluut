@@ -729,3 +729,10 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-guest-card.cs-partner-card .cs-stage-when{color:var(--c-bops-red)}
 .cs-guest-card.cs-partner-card h3{color:var(--c-navy)}
 .cs-guest-card.cs-partner-card p{color:rgba(23,21,95,.78)}
+/* BOPS: guest DJs card with the names as a list */
+.cs-guest-card .cs-guests-body{grid-column:2;grid-row:1 / span 2}
+.cs-guest-card .cs-guests-body p{margin:0}
+.cs-guest-names{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.cs-guest-names li{padding:6px 14px;border-radius:999px;border:1.5px solid rgba(255,159,178,.55);color:#fff;font-weight:700;font-size:15px;line-height:1.3}
+@media (max-width:600px){.cs-guest-card .cs-guests-body{grid-column:1;grid-row:auto;margin-top:6px}}
+.cs-guest-card.cs-guests{grid-template-rows:auto 1fr}
