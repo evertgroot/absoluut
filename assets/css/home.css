@@ -527,3 +527,5 @@ div.cs-close + .cs-form{border-top-left-radius:0;border-top-right-radius:0;paddi
 .wk-dots .qdot:focus-visible{outline:3px solid #7bd6e0;outline-offset:2px;border-radius:999px}
 @media (max-width:700px){.wk-dots{display:flex}}
 @media (prefers-reduced-motion:reduce){.wk-dots .qdot span{transition:none}}
+/* phones: dots close under the cards, the button a steady step below them */
+@media (max-width:700px){.wk-dots{margin-top:4px}.wk .wk-cta{margin-top:12px}}
