@@ -307,3 +307,215 @@ img[width][height]{height:auto}
 
 /* tablet portrait: photo above the text like on phones, cropped wider so it does not fill the screen */
 @media (min-width: 761px) and (max-width: 899px){.cine-img{aspect-ratio:4 / 3}.cine > .gut{margin-top:-90px}}
+/* ---- portfolio preview: Selected Work ---- */
+.wk{max-width:1360px;margin:0 auto;padding:clamp(72px,10vw,136px) clamp(20px,4vw,48px)}
+.wk h2{margin:0 0 clamp(32px,4vw,56px);font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(38px,5vw,72px);line-height:.98;letter-spacing:-0.04em;font-weight:800}
+.wk-media{position:relative;display:block;overflow:hidden;border-radius:20px;background:#1a1a1c;aspect-ratio:4 / 5}
+.wk-media img{display:block;width:100%;height:100% !important;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.wk-media-lg{aspect-ratio:456 / 714}
+.wk-vid{position:absolute;left:12px;bottom:12px;padding:5px 10px;border-radius:999px;background:rgba(11,11,12,.72);color:#bfeff4;font-size:12px;font-weight:700;letter-spacing:.02em;outline:1px dashed rgba(123,214,224,.6)}
+.wk-feat{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,4vw,72px);align-items:center;color:#fff;text-decoration:none;margin-bottom:clamp(56px,7vw,96px)}
+.wk-feat .wk-media{max-width:400px}
+.wk-feat-text{display:flex;flex-direction:column;gap:14px;max-width:560px}
+.wk-feat h3{margin:0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(34px,4vw,58px);line-height:.98;letter-spacing:-0.035em;font-weight:800;text-wrap:balance}
+.wk-feat p{margin:0;font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:rgba(255,255,255,.8)}
+.wk-client{font-size:15px;font-weight:700;color:#7bd6e0}
+.wk-tags{font-size:14px;font-weight:600;color:rgba(255,255,255,.6)}
+.wk-more{display:inline-flex;align-items:center;margin-top:8px;font-size:16px;font-weight:800;color:#fff}
+.wk-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.wk-card{display:flex;flex-direction:column;gap:8px;color:#fff;text-decoration:none}
+.wk-card .wk-media{margin-bottom:8px}
+.wk-card h3{margin:0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(21px,1.8vw,26px);line-height:1.05;letter-spacing:-0.02em;font-weight:800;text-wrap:balance}
+.wk-card p{margin:0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.72)}
+.wk-cta{margin-top:clamp(40px,5vw,64px)}
+a.wk-card:hover .wk-media img,a.wk-feat:hover .wk-media img{transform:scale(1.04)}
+a.wk-card:hover h3,a.wk-feat:hover h3{color:#7bd6e0}
+a.wk-card:focus-visible,a.wk-feat:focus-visible{outline:2px solid #7bd6e0;outline-offset:6px;border-radius:20px}
+.tpl{padding:0 .3em;border-radius:5px;background:rgba(123,214,224,.12);outline:1px dashed rgba(123,214,224,.6);color:#bfeff4;font-style:normal}
+@media (max-width:1000px){.wk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.wk-feat{grid-template-columns:minmax(0,1fr)}.wk-feat .wk-media{max-width:none}}
+@media (prefers-reduced-motion:reduce){.wk-media img{transition:none}a.wk-card:hover .wk-media img,a.wk-feat:hover .wk-media img{transform:none}}
+
+/* ---- portfolio preview: case page ---- */
+.cs{max-width:1360px;margin:0 auto;padding:clamp(130px,14vw,190px) clamp(20px,4vw,48px) 0;color:#fff}
+.cs-hero{max-width:900px}
+.cs-back{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-bottom:18px;color:rgba(255,255,255,.7);font-size:15px;font-weight:700;text-decoration:none}
+.cs-back:hover{color:#7bd6e0}
+.cs-hero h1{margin:0 0 22px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(46px,7vw,96px);line-height:.92;letter-spacing:-0.045em;font-weight:800}
+.cs-lead{margin:0;max-width:680px;font-size:clamp(18px,1.5vw,21px);line-height:1.6;color:rgba(255,255,255,.84)}
+.cs-meta{display:grid;grid-template-columns:repeat(4,minmax(0,auto));justify-content:start;gap:12px clamp(28px,4vw,56px);margin:clamp(32px,4vw,48px) 0 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.16)}
+.cs-meta dt{font-size:13px;font-weight:700;color:rgba(255,255,255,.55)}
+.cs-meta dd{margin:4px 0 0;font-size:16px;font-weight:700}
+.cs-cover{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,28px);max-width:1100px;margin:clamp(48px,6vw,88px) 0}
+.cs-cover img{display:block;width:100%;height:auto !important;aspect-ratio:456 / 714;object-fit:cover;border-radius:20px}
+.cs-ph{display:grid;place-items:center;margin:0;border-radius:20px;background:#151517;outline:1.5px dashed rgba(123,214,224,.5);outline-offset:-1.5px;color:#bfeff4;font-size:14px;font-weight:700;text-align:center;padding:16px}
+.cs-block{max-width:680px;margin:0 0 clamp(48px,6vw,80px)}
+.cs-block-wide{max-width:none}
+.cs-block h2{margin:0 0 14px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(28px,3vw,40px);line-height:1;letter-spacing:-0.03em;font-weight:800}
+.cs-block > p{margin:0;font-size:18px;line-height:1.65;color:rgba(255,255,255,.84)}
+.cs-gallery{display:grid;max-width:1100px;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.6vw,24px);align-items:start}
+.cs-quote{margin:28px 0 0;padding:0}
+.cs-quote p{margin:0 0 8px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2vw,28px);line-height:1.2;font-weight:700}
+.cs-quote footer{font-size:15px;color:rgba(255,255,255,.6)}
+.cs-next{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding:28px 0;border-top:1px solid rgba(255,255,255,.16)}
+.cs-next > a:first-child{display:flex;flex-direction:column;gap:4px;color:#fff;text-decoration:none}
+.cs-next > a:first-child span{font-size:14px;font-weight:700;color:rgba(255,255,255,.6)}
+.cs-next strong{display:inline-flex;align-items:center;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(24px,2.4vw,34px);letter-spacing:-0.02em}
+.cs-next > a:first-child:hover strong{color:#7bd6e0}
+.cs-next .btn-solid{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;background:#7bd6e0;color:#0b0b0c;text-decoration:none;font-size:16px;font-weight:800}
+@media (max-width:900px){.cs-meta{grid-template-columns:repeat(2,minmax(0,auto))}.cs-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.cs-cover{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-right:calc(-1 * clamp(20px,4vw,48px));padding-right:clamp(20px,4vw,48px)}.cs-cover > img{flex:0 0 72%;scroll-snap-align:start}}
+.cs-back-ar{transform:scaleX(-1);margin:0 2px 0 0 !important}
+/* credit on Reel stills: whose Reel it is */
+.cs-reel{position:relative;margin:0}
+.cs-reel img{margin:0}
+.reel-tag{position:absolute;left:10px;top:10px;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:rgba(11,11,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font-size:12.5px;font-weight:700;line-height:1;text-decoration:none;white-space:nowrap}
+a.reel-tag:hover{color:#7bd6e0}
+a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
+@media (max-width:600px){.cs-reel{flex:0 0 72%;scroll-snap-align:start}}
+/* campaign posts keep their own format (4:5 and 1:1), aligned at the top */
+.cs-cover-posts{align-items:start}
+.cs-cover-posts .cs-reel img{aspect-ratio:auto}
+
+/* ---- client logos: one colour (currentColor) via mask, sized for equal optical weight ---- */
+.logo{display:inline-block;flex:0 0 auto;vertical-align:middle;background:currentColor;-webkit-mask:var(--lg) center / contain no-repeat;mask:var(--lg) center / contain no-repeat;height:calc(var(--lh, 1) * var(--logo-base, 28px));aspect-ratio:var(--la)}
+.lg-tbs{--lg:url(/assets/img/logos/the-best-social-studio.png);--la:1200 / 172;--lh:.74}
+.lg-tui{--lg:url(/assets/img/logos/tui.svg);--la:389 / 172;--lh:.78}
+.lg-netflix{--lg:url(/assets/img/logos/netflix.svg);--la:370 / 100;--lh:.6}
+.lg-soa{--lg:url(/assets/img/logos/soa-aids-nederland.svg);--la:124 / 49;--lh:.8}
+.lg-forward{--lg:url(/assets/img/logos/forward.svg);--la:900 / 290;--lh:1.05}
+.lg-paradiso{--lg:url(/assets/img/logos/paradiso.svg);--la:1200 / 224;--lh:.52}
+.lg-mcd{--lg:url(/assets/img/logos/mcdonalds.svg?v=2);--la:264.6 / 33.1;--lh:.44}
+.lg-sofitel{--lg:url(/assets/img/logos/sofitel.svg);--la:70 / 40;--lh:1.75}
+.logos{display:inline-flex;align-items:center;gap:10px}
+.logos .x{font-size:13px;font-weight:700;opacity:.55}
+/* Trusted by */
+.marquee .logo{--logo-base:34px}
+/* Selected Work cards and feature */
+.wk-client.logos{--logo-base:26px;color:#fff;min-height:30px}
+/* case page: Client / For */
+.cs-meta dd .logo{--logo-base:32px;color:#fff;margin-top:4px}
+/* "What I Made" with real posts: three across, each in its own format */
+.cs-gallery-posts{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1100px}
+.cs-gallery-posts img{display:block;width:100%;height:auto !important;border-radius:20px}
+@media (max-width:900px){.cs-gallery-posts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:600px){.cs-gallery-posts{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-right:calc(-1 * clamp(20px,4vw,48px));padding-right:clamp(20px,4vw,48px)}.cs-gallery-posts .cs-reel{flex:0 0 72%;scroll-snap-align:start}}
+.cs-hero + .cs-block{margin-top:clamp(56px,7vw,96px)}
+/* five cases in one row, no big feature */
+.wk-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:1100px){.wk-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){.wk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* phones: the cases become a swipeable row instead of a tall stack of cards */
+@media (max-width:700px){
+  .wk-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-right:calc(-1 * clamp(20px,4vw,48px));padding-right:clamp(20px,4vw,48px);scrollbar-width:none;overscroll-behavior-x:contain}
+  .wk-grid::-webkit-scrollbar{display:none}
+  .wk-grid > li{flex:0 0 68%;scroll-snap-align:start}
+}
+.cs-gallery-one{grid-template-columns:minmax(0,1fr);max-width:640px}
+/* six cases: three per row on wide screens */
+.wk-grid{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:clamp(40px,4vw,56px)}
+@media (max-width:1100px){.wk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* a card without imagery: the client's mark on a coloured field */
+.wk-media-brand{display:grid;place-items:center;background:#16161a;color:#7bd6e0}
+.wk-media-brand .logo{--logo-base:44px;width:auto}
+/* case page lists */
+.cs-list{margin:0;padding:0 0 0 1.1em;font-size:18px;line-height:1.65;color:rgba(255,255,255,.84)}
+.cs-list li{margin:0 0 8px}
+.cs-related{margin-top:16px !important;font-size:16px !important;color:rgba(255,255,255,.7) !important}
+/* several projects within one case */
+.cs-project{margin:0 0 clamp(48px,6vw,72px)}
+.cs-project h3{margin:0 0 6px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2vw,28px);line-height:1.1;letter-spacing:-0.02em;font-weight:800}
+.cs-project h3 > span:last-child{margin-left:10px;font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;letter-spacing:0;color:rgba(255,255,255,.55)}
+.cs-project > p{margin:0 0 20px;max-width:680px;font-size:17px;line-height:1.6;color:rgba(255,255,255,.8)}
+.cs-block h2 + .cs-project{margin-top:28px}
+.lg-vue{--lg:url(/assets/img/logos/vue.png);--la:282 / 146;--lh:.95}
+.lg-phantasialand{--lg:url(/assets/img/logos/phantasialand.png);--la:600 / 259;--lh:1.15}
+/* the brands a case covered, as a quiet logo row under the header */
+.cs-brands{margin-top:clamp(28px,3vw,40px) !important;margin-bottom:clamp(48px,6vw,72px) !important}
+.cs-brands ul{display:flex;flex-wrap:wrap;align-items:center;gap:20px clamp(28px,4vw,52px);margin:0;padding:0;list-style:none;color:#fff;--logo-base:30px}
+.cs-brand-text{font-family:'Baloo Bhai 2',sans-serif;font-size:17px;font-weight:800;line-height:1.05;letter-spacing:-0.01em;display:inline-block;max-width:9em}
+.cs-hero + .cs-brands + .cs-block{margin-top:0}
+/* project heads: brand logo leads, title and year follow */
+.cs-project-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;color:#fff;--logo-base:28px}
+.cs-project-head .cs-ptitle{font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2vw,28px);font-weight:800;letter-spacing:-0.02em}
+.cs-project-head .cs-year{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:rgba(255,255,255,.55)}
+.cs-project + .cs-project{padding-top:clamp(32px,4vw,48px);border-top:1px solid rgba(255,255,255,.12)}
+.cs-gallery-posts .cs-reel:only-child{max-width:360px}
+.cs-project-head .cs-ptitle{margin-left:0;color:#fff;letter-spacing:-0.02em}
+.wk-media img[src*="netflix-nikkie"]{object-position:50% 0}
+/* review pass: single-image project sits beside its text */
+.cs-project-split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;max-width:1100px}
+.cs-project-split .cs-gallery-posts{grid-template-columns:minmax(0,1fr);max-width:420px;justify-self:end;width:100%}
+.cs-project-split .cs-gallery-posts .cs-reel:only-child{max-width:none}
+.cs-split-text > p{margin:0;max-width:520px;font-size:18px;line-height:1.65;color:rgba(255,255,255,.84)}
+@media (max-width:760px){.cs-project-split{grid-template-columns:minmax(0,1fr)}.cs-project-split .cs-gallery-posts{justify-self:start;max-width:none;display:grid}}
+/* projects without imagery: side by side, quieter */
+.cs-also{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px);max-width:1100px}
+.cs-also .cs-project{margin:0;padding:22px 0 0 !important;border-top:1px solid rgba(255,255,255,.12)}
+.cs-also .cs-project > p{margin:0;font-size:16px}
+@media (max-width:700px){.cs-also{grid-template-columns:minmax(0,1fr)}}
+/* optical balance of the project logos */
+.cs-project-head .lg-vue{--lh:.75}
+.cs-project-head .lg-tui{--lh:1.05}
+.cs-project-head .lg-phantasialand{--lh:1.6}
+.cs-project-head .lg-netflix{--lh:.72}
+/* closing nudge before the next case */
+.cs-close{margin:clamp(24px,3vw,40px) 0 18px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(24px,2.6vw,34px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;max-width:640px;text-wrap:balance}
+/* a video case: wide thumbnail with a play button */
+.cs-video{position:relative;display:block;max-width:900px;border-radius:20px;overflow:hidden;color:#fff;text-decoration:none}
+.cs-video img{display:block;width:100%;height:auto !important;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.cs-video .reel-tag{position:absolute;left:12px;top:12px}
+.cs-play{position:absolute;left:50%;top:50%;display:grid;place-items:center;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:rgba(11,11,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:transform .25s ease,background-color .25s ease}
+.cs-play svg{margin-left:3px}
+a.cs-video:hover img{transform:scale(1.03)}
+a.cs-video:hover .cs-play{transform:scale(1.08);background:#7bd6e0;color:#0b0b0c}
+a.cs-video:focus-visible{outline:2px solid #7bd6e0;outline-offset:4px}
+@media (prefers-reduced-motion:reduce){a.cs-video:hover img,a.cs-video:hover .cs-play{transform:none}}
+/* closing: question and button side by side */
+div.cs-close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 32px;margin:clamp(24px,3vw,40px) 0 clamp(28px,3vw,40px);padding:clamp(24px,3vw,36px);border-radius:20px;background:#151517}
+div.cs-close p{margin:0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(24px,2.6vw,34px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;max-width:640px;text-wrap:balance}
+/* compact heads in the "also" row keep the year on the line */
+.cs-also .cs-project-head{flex-wrap:nowrap;--logo-base:22px}
+.cs-also .cs-project-head .cs-ptitle{font-size:clamp(20px,1.8vw,24px)}
+div.cs-close{max-width:none;font-size:inherit}
+div.cs-close .btn-solid{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;background:#7bd6e0;color:#0b0b0c;text-decoration:none;font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;letter-spacing:0;flex:0 0 auto}
+div.cs-close{max-width:1100px}
+.cs-play{left:auto;top:14px;right:14px;margin:0;width:56px;height:56px}
+/* case pages: the contact form unfolds under "Talk Strategy" */
+.cs-form{max-width:1100px;margin:0 0 clamp(40px,5vw,64px);padding:clamp(24px,3vw,36px);border-radius:20px;background:#151517}
+.cs-form form{display:flex;flex-direction:column;gap:16px;max-width:720px}
+.cs-form label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;color:rgba(255,255,255,.8)}
+.cs-form-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cs-form .field{width:100%;min-height:48px;padding:12px 14px;border:1.5px solid rgba(255,255,255,.22);border-radius:12px;background:rgba(255,255,255,.05);color:#fff;font:inherit;font-size:16px;font-weight:500}
+.cs-form textarea.field{resize:vertical}
+.cs-form .field::placeholder{color:rgba(255,255,255,.45)}
+.cs-form .field:focus{outline:none;border-color:#7bd6e0;box-shadow:0 0 0 3px rgba(123,214,224,.25)}
+.cs-form-send{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.cs-form-send .btn-solid{min-height:52px;padding:0 26px;border:0;border-radius:999px;background:#7bd6e0;color:#0b0b0c;font:inherit;font-size:16px;font-weight:800;cursor:pointer}
+.cs-form-send p{margin:0;font-size:14px;color:rgba(255,255,255,.6)}
+.cs-form-send #form-status{flex:1 1 100%;font-size:16px;font-weight:700;color:#fff}
+button.btn-solid[data-expand]{min-height:52px;padding:0 26px;border:0;border-radius:999px;background:#7bd6e0;color:#0b0b0c;font:inherit;font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;cursor:pointer}
+button.btn-solid[data-expand][aria-expanded="true"]{background:#ffffff}
+@media (max-width:600px){.cs-form-row{grid-template-columns:minmax(0,1fr)}}
+/* the open form reads as one panel with the question above it */
+div.cs-close:has(+ .cs-form:not([hidden])){border-bottom-left-radius:0;border-bottom-right-radius:0;margin-bottom:0}
+div.cs-close + .cs-form{border-top-left-radius:0;border-top-right-radius:0;padding-top:4px}
+/* client testimonial: a real pull-quote, not a paragraph */
+.cs-testimonial{position:relative;max-width:1100px;margin:0 0 clamp(56px,7vw,96px);padding:clamp(40px,5vw,72px) clamp(28px,5vw,72px) clamp(32px,4vw,52px);border-radius:24px;background:#7bd6e0;color:#0b0b0c}
+.cs-testimonial::before{content:"“";position:absolute;left:clamp(20px,4vw,56px);top:clamp(-18px,-1vw,-8px);font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(140px,16vw,220px);font-weight:800;line-height:1;color:#0b0b0c}
+.cs-testimonial blockquote{margin:0}
+.cs-testimonial blockquote p{margin:0;padding-top:clamp(36px,4vw,56px);font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(24px,2.7vw,38px);font-weight:700;line-height:1.18;letter-spacing:-0.015em;text-wrap:pretty;max-width:30ch}
+.cs-testimonial figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:clamp(28px,3vw,40px);padding-top:20px;border-top:1.5px solid rgba(11,11,12,.2);font-size:15px;line-height:1.4;color:#0b0b0c;--logo-base:26px}
+.cs-testimonial figcaption > span:not(.logo){display:flex;flex-direction:column}
+.cs-testimonial figcaption strong{font-size:17px;font-weight:800}
+.cs-testimonial figcaption small{margin-left:auto;font-size:13px;font-weight:600;color:rgba(11,11,12,.6)}
+@media (max-width:600px){.cs-testimonial figcaption small{margin-left:0;flex-basis:100%}}
+.cs-testimonial blockquote p{font-size:clamp(24px,3.1vw,44px);max-width:32ch}
+.cs-testimonial figcaption small{color:rgba(11,11,12,.72)}
+/* "Talk Strategy" under Selected Work: the same outlined button as the service CTAs */
+.wk-cta .btn-ghost{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:999px;border:1.5px solid rgba(255,255,255,0.6);color:#fff;text-decoration:none;font-size:16px;font-weight:800}
+/* BOPS: the next party as a compact card under the "Plan an Event" button */
+.bops-card{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 20px;margin-top:8px;padding:18px 22px;border:1.5px solid rgba(23,21,95,.22);border-radius:18px;background:rgba(255,255,255,.55);color:#17155f}
+.bops-when{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#a62400}
+.bops-name{margin-top:2px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2.2vw,28px);font-weight:800;line-height:1.1;letter-spacing:-0.02em}
+.bops-card #bops-tickets{display:inline-flex;align-items:center;min-height:44px;color:#17155f;font-size:16px;font-weight:800}
