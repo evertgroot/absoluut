@@ -383,7 +383,7 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 .lg-tui{--lg:url(/assets/img/logos/tui.svg);--la:389 / 172;--lh:.78}
 .lg-netflix{--lg:url(/assets/img/logos/netflix.svg);--la:370 / 100;--lh:.6}
 .lg-soa{--lg:url(/assets/img/logos/soa-aids-nederland.svg);--la:124 / 49;--lh:.8}
-.lg-forward{--lg:url(/assets/img/logos/forward.svg);--la:900 / 290;--lh:1.05}
+.lg-forward{--lg:url(/assets/img/logos/forward.svg?v=3);--la:570 / 178;--lh:1.05}
 .lg-paradiso{--lg:url(/assets/img/logos/paradiso.svg);--la:1200 / 224;--lh:.52}
 .lg-mcd{--lg:url(/assets/img/logos/mcdonalds.svg?v=2);--la:264.6 / 33.1;--lh:.44}
 .lg-sofitel{--lg:url(/assets/img/logos/sofitel.svg);--la:70 / 40;--lh:1.75}
@@ -391,6 +391,12 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 .logos .x{font-size:13px;font-weight:700;opacity:.55}
 /* Trusted by */
 .marquee .logo{--logo-base:34px}
+/* bar: optical sizes tuned so every logo reads at the same weight on one centre line */
+.marquee .lg-forward{--lh:.95}
+.marquee .lg-vue{--lh:.86;transform:translateY(2px)}
+.marquee .lg-phantasialand{--lh:1.3}
+.marquee .lg-soa{--lh:.84}
+.marquee .lg-netflix{--lh:.62}
 /* Selected Work cards and feature */
 .wk-client.logos{--logo-base:26px;color:#fff;min-height:30px}
 /* case page: Client / For */
@@ -465,12 +471,10 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 .cs-video{position:relative;display:block;max-width:900px;border-radius:20px;overflow:hidden;color:#fff;text-decoration:none}
 .cs-video img{display:block;width:100%;height:auto !important;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .cs-video .reel-tag{position:absolute;left:12px;top:12px}
-.cs-play{position:absolute;left:50%;top:50%;display:grid;place-items:center;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:rgba(11,11,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:transform .25s ease,background-color .25s ease}
-.cs-play svg{margin-left:3px}
 a.cs-video:hover img{transform:scale(1.03)}
-a.cs-video:hover .cs-play{transform:scale(1.08);background:#7bd6e0;color:#0b0b0c}
+a.cs-video:hover .cs-yt{background:#7bd6e0;color:#0b0b0c}
 a.cs-video:focus-visible{outline:2px solid #7bd6e0;outline-offset:4px}
-@media (prefers-reduced-motion:reduce){a.cs-video:hover img,a.cs-video:hover .cs-play{transform:none}}
+@media (prefers-reduced-motion:reduce){a.cs-video:hover img{transform:none}}
 /* closing: question and button side by side */
 div.cs-close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 32px;margin:clamp(24px,3vw,40px) 0 clamp(28px,3vw,40px);padding:clamp(24px,3vw,36px);border-radius:20px;background:#151517}
 div.cs-close p{margin:0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(24px,2.6vw,34px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;max-width:640px;text-wrap:balance}
@@ -480,7 +484,7 @@ div.cs-close p{margin:0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(24
 div.cs-close{max-width:none;font-size:inherit}
 div.cs-close .btn-solid{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;background:#7bd6e0;color:#0b0b0c;text-decoration:none;font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;letter-spacing:0;flex:0 0 auto}
 div.cs-close{max-width:1100px}
-.cs-play{left:auto;top:14px;right:14px;margin:0;width:56px;height:56px}
+
 /* case pages: the contact form unfolds under "Talk Strategy" */
 .cs-form{max-width:1100px;margin:0 0 clamp(40px,5vw,64px);padding:clamp(24px,3vw,36px);border-radius:20px;background:#151517}
 .cs-form form{display:flex;flex-direction:column;gap:16px;max-width:720px}
@@ -519,3 +523,36 @@ div.cs-close + .cs-form{border-top-left-radius:0;border-top-right-radius:0;paddi
 .bops-when{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#a62400}
 .bops-name{margin-top:2px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2.2vw,28px);font-weight:800;line-height:1.1;letter-spacing:-0.02em}
 .bops-card #bops-tickets{display:inline-flex;align-items:center;min-height:44px;color:#17155f;font-size:16px;font-weight:800}
+/* TUI: the bottom of the logo sits on the text baseline */
+.cs-project-head:has(.lg-tui){align-items:baseline}
+/* case images zoom on hover, like the reels elsewhere */
+.cs-reel{overflow:hidden;border-radius:20px}
+.cs-reel img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.cs-reel:hover img{transform:scale(1.04)}}
+/* YouTube mark, bottom right of the video thumbnail */
+.cs-yt{position:absolute;right:14px;bottom:14px;transition:background .2s,color .2s;display:grid;place-items:center;width:44px;height:32px;border-radius:999px;background:rgba(11,11,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff}
+/* case images: platform label bottom right */
+.cs-reel .reel-tag{top:auto;left:auto;right:10px;bottom:10px}
+/* whole image is the link */
+.cs-reel-link{display:block;color:#fff;text-decoration:none}
+.cs-reel-link img{display:block}
+a.cs-reel-link:hover .reel-tag{color:#7bd6e0}
+a.cs-reel-link:focus-visible{outline:2px solid #7bd6e0;outline-offset:3px;border-radius:20px}
+.cs-reel:has(.cs-reel-link:focus-visible){overflow:visible}
+/* a 9:16 video still cropped to the 3:4 of the posts beside it, keeping the caption in view */
+.cs-reel img.cs-crop-34{aspect-ratio:3 / 4;object-fit:cover;object-position:50% 100%}
+/* Selected Work dots: only where the cards become a swipe row (phones), same component as the DJ reviews */
+.wk-dots{display:none;justify-content:center;gap:0;margin-top:10px}
+.wk-dots .qdot{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;background:transparent;cursor:pointer}
+.wk-dots .qdot span{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.35);transition:background .2s ease,transform .2s ease}
+.wk-dots .qdot[aria-current="true"] span{background:#7bd6e0;transform:scale(1.2)}
+.wk-dots .qdot:focus-visible{outline:3px solid #7bd6e0;outline-offset:2px;border-radius:999px}
+@media (max-width:700px){.wk-dots{display:flex}}
+@media (prefers-reduced-motion:reduce){.wk-dots .qdot span{transition:none}}
+/* phones: dots close under the cards, the button a steady step below them */
+@media (max-width:700px){.wk-dots{margin-top:20px}.wk .wk-cta{margin-top:20px}} /* dots midway between the card text and the button */
+/* case galleries: dots only where the row scrolls sideways (phones) */
+.wk-dots.cs-dots{display:none;margin-top:8px}
+@media (max-width:600px){.wk-dots.cs-dots{display:flex}}
+.cs-gallery-posts[data-reviews]{scrollbar-width:none}
+.cs-gallery-posts[data-reviews]::-webkit-scrollbar{display:none}

@@ -331,10 +331,12 @@
     window.addEventListener('resize', function () { show(current, true); });
   });
 
-  /* 1c2. Review cards: one sideways row on every screen; the dots follow and can be tapped, and a mouse can drag */
+  /* 1c2. Review cards (and the Selected Work cards on phones): one sideways row; the dots follow and can be tapped, and a mouse can drag */
   document.querySelectorAll('[data-reviews]').forEach(function (grid) {
-    var cards = grid.querySelectorAll('.qcard');
-    var dots = grid.parentNode.querySelectorAll('.qdot');
+    var cards = grid.querySelectorAll('.qcard, :scope > li, :scope > figure');
+    /* dots right after the row belong to it (a page can have several rows); otherwise look in the parent */
+    var next = grid.nextElementSibling;
+    var dots = next && next.classList.contains('qdots') ? next.querySelectorAll('.qdot') : grid.parentNode.querySelectorAll('.qdot');
     if (!cards.length || !dots.length) return;
     var t = null;
     function mark(i) {
