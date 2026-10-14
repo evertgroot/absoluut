@@ -442,3 +442,4 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 .cs-project + .cs-project{padding-top:clamp(32px,4vw,48px);border-top:1px solid rgba(255,255,255,.12)}
 .cs-gallery-posts .cs-reel:only-child{max-width:360px}
 .cs-project-head .cs-ptitle{margin-left:0;color:#fff;letter-spacing:-0.02em}
+.wk-media img[src*="netflix-nikkie"]{object-position:50% 0}
