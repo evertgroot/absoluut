@@ -752,3 +752,12 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-guest-card.cs-partner-card p{padding-left:0}
 .cs-bops .cs-row > h2{text-wrap:balance}
 @media (max-width:600px){.cs-bops .cs-programming .cs-guest-names{gap:8px}.cs-bops .cs-programming .cs-guest-names li{padding:7px 14px;font-size:16px}}
+/* BOPS: Programming the Night as a pink band with the guests set like a flyer line-up */
+.cs-bops .cs-band-pink{--band:var(--c-pink);color:var(--c-navy);margin-bottom:0}
+.cs-bops .cs-band-pink .cs-row{align-items:start}
+.cs-bops .cs-band-pink .cs-intro{margin:0;max-width:52ch;font-size:clamp(18px,1.5vw,20px);line-height:1.6;color:var(--c-navy)}
+.cs-lineup{list-style:none;margin:clamp(22px,2.6vw,32px) 0 0;padding:0;font-family:'Baloo Bhai 2',sans-serif;font-weight:800;font-size:clamp(26px,3.1vw,42px);line-height:1.12;letter-spacing:-0.025em;color:var(--c-navy);text-wrap:balance}
+.cs-lineup li{display:inline}
+.cs-lineup li:not(:last-child)::after{content:"\2022";margin:0 .32em;color:var(--c-bops-red);font-size:.6em;vertical-align:.18em}
+.cs-lineup li{white-space:nowrap}
+.cs-lineup li{display:inline-block}
