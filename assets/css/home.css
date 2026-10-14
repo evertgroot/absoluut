@@ -724,3 +724,8 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-inline-link{color:inherit;font-weight:700;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
 .cs-inline-link:hover{color:var(--c-pink)}
 .cs-bops .cs-block .cs-inline-link:hover{color:var(--c-bops-red)}
+/* BOPS: KIKI partnership as a wide light card, the favourite guest stays navy */
+.cs-guest-card.cs-partner-card{background:rgba(255,255,255,.55);border:1.5px solid rgba(23,21,95,.22);color:var(--c-navy)}
+.cs-guest-card.cs-partner-card .cs-stage-when{color:var(--c-bops-red)}
+.cs-guest-card.cs-partner-card h3{color:var(--c-navy)}
+.cs-guest-card.cs-partner-card p{color:rgba(23,21,95,.78)}
