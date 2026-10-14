@@ -737,3 +737,7 @@ div:has(> main.cs-bops){overflow-x:clip}
 @media (max-width:600px){.cs-guest-card .cs-guests-body{grid-column:1;grid-row:auto;margin-top:6px}}
 .cs-guest-card.cs-guests{grid-template-rows:auto 1fr}
 .cs-guest-card.cs-guests{grid-template-rows:auto}.cs-guest-card.cs-guests h3{grid-row:1;margin:0}.cs-guest-card.cs-guests .cs-guests-body{grid-row:1}
+/* BOPS: Programming the Night as its own chapter, names as navy pills on cream */
+.cs-bops .cs-programming .cs-intro{max-width:62ch}
+.cs-bops .cs-programming .cs-guest-names{margin-top:clamp(18px,2vw,26px);gap:10px}
+.cs-bops .cs-programming .cs-guest-names li{padding:9px 18px;border:1.5px solid rgba(23,21,95,.28);background:rgba(255,255,255,.55);color:var(--c-navy);font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(17px,1.5vw,20px);font-weight:800;letter-spacing:-0.01em;line-height:1.2}
