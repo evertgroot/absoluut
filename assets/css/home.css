@@ -615,17 +615,14 @@ body:has(main.cs-bops) #mobile-menu{background:var(--c-navy) !important}
   .cs-flyers-break{display:none}
 }
 .cs-block > .cs-intro{margin-bottom:24px}
-/* BOPS case as a pitch: logo beside the hero text, the build-up in three parts */
-.cs-hero.cs-hero-logo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.62fr) !important;gap:clamp(24px,4vw,64px);align-items:center;max-width:1300px}
-.cs-hero-mark{display:block;width:100%;max-width:440px;height:auto;justify-self:end}
+/* BOPS case as a pitch: the build-up in three parts */
 .cs-part{margin-top:clamp(36px,4.5vw,56px)}
 .cs-part-title{margin:0 0 10px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2.2vw,28px);line-height:1.1;letter-spacing:-0.02em;font-weight:800}
 .cs-part .cs-intro{margin:0 0 16px}
 .cs-part .cs-split .cs-intro:last-child{margin-bottom:0}
 .cs-bops .cs-intro strong,.cs-bops .cs-note strong{color:var(--bops-ink)}
 .cs-guest{margin-top:18px !important;max-width:680px}
-@media (max-width:760px){.cs-hero.cs-hero-logo{grid-template-columns:minmax(0,1fr) !important}.cs-hero-mark{justify-self:start;max-width:240px}}
-/* BOPS: partnerships and stages as cards, the favorite guest as a navy card */
+@media (max-width:760px){/* BOPS: partnerships and stages as cards, the favorite guest as a navy card */
 .cs-stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);margin-top:16px;max-width:1300px}
 .cs-stage{display:flex;flex-direction:column;gap:6px;padding:20px 22px 22px;border:1.5px solid rgba(23,21,95,.22);border-radius:18px;background:rgba(255,255,255,.55)}
 .cs-stage-when{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--c-bops-red)}
@@ -642,3 +639,4 @@ body:has(main.cs-bops) #mobile-menu{background:var(--c-navy) !important}
 .cs-photos-grid .cs-photo-portrait{grid-column:span 2;aspect-ratio:4 / 5}
 .cs-photos-grid .cs-photo-half{grid-column:span 3;aspect-ratio:3 / 2}
 @media (max-width:700px){.cs-photos.cs-photos-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-photos-grid .cs-photo-portrait{grid-column:span 1}.cs-photos-grid .cs-photo-portrait:first-child{grid-column:1 / -1}.cs-photos-grid .cs-photo-half{grid-column:1 / -1}}
+.cs-meta dd .cs-meta-logo{display:block;width:auto !important;height:22px !important;max-width:none;margin-top:6px}
