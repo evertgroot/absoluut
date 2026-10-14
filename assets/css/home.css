@@ -741,3 +741,14 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops .cs-programming .cs-intro{max-width:62ch}
 .cs-bops .cs-programming .cs-guest-names{margin-top:clamp(18px,2vw,26px);gap:10px}
 .cs-bops .cs-programming .cs-guest-names li{padding:9px 18px;border:1.5px solid rgba(23,21,95,.28);background:rgba(255,255,255,.55);color:var(--c-navy);font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(17px,1.5vw,20px);font-weight:800;letter-spacing:-0.01em;line-height:1.2}
+/* BOPS layout pass: row chapters share one intro size, KIKI card sits on the stage grid */
+.cs-bops .cs-row > div > .cs-intro{margin:0;font-size:clamp(18px,1.5vw,20px);line-height:1.65;max-width:58ch}
+.cs-bops .cs-programming .cs-guest-names{margin-top:22px}
+.cs-guest-card.cs-partner-card{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:clamp(12px,1.6vw,20px);max-width:1300px;box-sizing:border-box}
+.cs-guest-card.cs-partner-card p{grid-column:2 / -1;padding-left:clamp(22px,2.6vw,32px);max-width:62ch;font-size:clamp(17px,1.4vw,19px)}
+.cs-guest-card.cs-partner-card .cs-stage-when,.cs-guest-card.cs-partner-card h3{grid-column:1}
+@media (max-width:1000px){.cs-guest-card.cs-partner-card{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.cs-guest-card.cs-partner-card{grid-template-columns:1fr}.cs-guest-card.cs-partner-card p{grid-column:1;padding-left:0}}
+.cs-guest-card.cs-partner-card p{padding-left:0}
+.cs-bops .cs-row > h2{text-wrap:balance}
+@media (max-width:600px){.cs-bops .cs-programming .cs-guest-names{gap:8px}.cs-bops .cs-programming .cs-guest-names li{padding:7px 14px;font-size:16px}}
