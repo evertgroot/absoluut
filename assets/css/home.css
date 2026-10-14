@@ -385,7 +385,7 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 .lg-soa{--lg:url(/assets/img/logos/soa-aids-nederland.svg);--la:124 / 49;--lh:.8}
 .lg-forward{--lg:url(/assets/img/logos/forward.png);--la:600 / 191;--lh:1}
 .lg-paradiso{--lg:url(/assets/img/logos/paradiso.svg);--la:1200 / 224;--lh:.52}
-.lg-mcd{--lg:url(/assets/img/logos/mcdonalds.svg);--la:24 / 21;--lh:.92}
+.lg-mcd{--lg:url(/assets/img/logos/mcdonalds.svg?v=2);--la:264.6 / 33.1;--lh:.44}
 .lg-sofitel{--lg:url(/assets/img/logos/sofitel.svg);--la:70 / 40;--lh:1.75}
 .logos{display:inline-flex;align-items:center;gap:10px}
 .logos .x{font-size:13px;font-weight:700;opacity:.55}
