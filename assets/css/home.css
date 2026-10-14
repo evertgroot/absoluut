@@ -401,3 +401,7 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 @media (max-width:900px){.cs-gallery-posts{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:600px){.cs-gallery-posts{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-right:calc(-1 * clamp(20px,4vw,48px));padding-right:clamp(20px,4vw,48px)}.cs-gallery-posts .cs-reel{flex:0 0 72%;scroll-snap-align:start}}
 .cs-hero + .cs-block{margin-top:clamp(56px,7vw,96px)}
+/* five cases in one row, no big feature */
+.wk-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:1100px){.wk-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){.wk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
