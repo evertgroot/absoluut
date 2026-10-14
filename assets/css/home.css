@@ -766,3 +766,13 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-lineup li{display:block;padding:8px 18px;border:1.5px solid rgba(23,21,95,.45);border-radius:999px;font-weight:700;color:var(--c-navy)}
 .cs-lineup li:not(:last-child)::after{content:none}
 @media (max-width:600px){.cs-lineup{gap:8px}.cs-lineup li{padding:7px 14px;font-size:16px}}
+/* BOPS: On the Dance Floor as one compact row on wider screens */
+@media (min-width:701px){
+  .cs-bops .cs-photos.cs-photos-grid{grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.6fr);align-items:stretch}
+  .cs-bops .cs-photos-grid .cs-photo-portrait{grid-column:auto;aspect-ratio:4 / 5}
+  .cs-bops .cs-photos-grid .cs-photo-wide-strip{grid-column:auto;aspect-ratio:auto;height:100%;object-position:50% 55%}
+}
+@media (min-width:701px) and (max-width:1000px){
+  .cs-bops .cs-photos.cs-photos-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cs-bops .cs-photos-grid .cs-photo-wide-strip{grid-column:1 / -1;aspect-ratio:21 / 9;height:auto}
+}
