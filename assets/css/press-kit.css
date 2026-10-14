@@ -269,7 +269,6 @@ body{background:#ffffff}
   #rider > div > div > div:first-child > div > div:nth-child(3){grid-column:1;grid-row:3;align-self:end}
   #rider > div > div > div:first-child > div > div:nth-child(4){grid-column:2;grid-row:2 / span 2;align-self:end}
 }
-/* biography: the hero photo fills the space under the facts, ending level with the short bio */
-#bio-photo{display:block;flex:1 1 0;width:100%;min-height:280px;height:auto;object-fit:cover;object-position:45% 30%;border-radius:20px}
-@media (max-width:760px){#bio-photo{flex:none;aspect-ratio:4 / 5;height:auto}}
+/* biography: landscape crop of the hero photo (head to elbows) under the facts, ending level with the short bio */
+#bio-photo{display:block;flex:none;width:100%;height:auto;aspect-ratio:10 / 7;margin-top:auto;object-fit:cover;border-radius:20px}
 @media print{#bio-photo{display:none !important}}
