@@ -792,3 +792,9 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops .cs-guest-card.cs-partner-card{margin:16px 0 0}
 .cs-bops .cs-partner-card + .cs-stages{margin-top:clamp(12px,1.6vw,20px)}
 @media (max-width:700px){.cs-bops .cs-results .cs-growth::before{display:block}}
+/* BOPS: two partnership cards on top, three stage cards below, on one 3-column grid */
+.cs-bops .cs-stages{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cs-bops .cs-guest-card.cs-partner-card{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cs-bops .cs-partner-card + .cs-partner-card{margin-top:clamp(12px,1.6vw,20px)}
+@media (max-width:1000px){.cs-bops .cs-stages{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-bops .cs-guest-card.cs-partner-card{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-bops .cs-guest-card.cs-partner-card p{grid-column:2}}
+@media (max-width:600px){.cs-bops .cs-stages{grid-template-columns:1fr}.cs-bops .cs-guest-card.cs-partner-card{grid-template-columns:1fr}.cs-bops .cs-guest-card.cs-partner-card p{grid-column:1}}
