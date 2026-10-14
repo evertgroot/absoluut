@@ -144,7 +144,7 @@ body{background:#ffffff}
 
   /* biography: text left, facts right */
   #bio > .gut{display:grid !important;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:26px !important;padding:20px 0 0 !important}
-  #bio-text{font-size:12.5px !important;line-height:1.5 !important;max-width:none !important;color:#3d3742 !important}
+  #bio-text{font-size:12.5px !important;line-height:1.45 !important;max-width:none !important;color:#3d3742 !important}
   #bio-text p{margin:0 0 9px !important}
   /* short bio under the full one, for promoters who need a quick version */
   #bio-short{margin-top:8px !important;padding-top:10px !important;max-width:none !important;border-top:1px solid var(--c-line) !important}
@@ -170,15 +170,15 @@ body{background:#ffffff}
   #rider{border-top:0 !important;break-before:auto}
   #rider > div{padding:16px 0 0 !important;border-top:1px solid var(--c-line);margin-top:16px !important}
   #rider figure{margin:8px 0 0 !important;display:flex;flex-direction:column;align-items:center;gap:8px}
-  #rider figure img{width:40% !important;height:auto !important;margin:0 !important}
+  #rider figure img{width:32% !important;height:auto !important;margin:0 !important}
   #rider figcaption{margin:0 !important;font-size:12px !important;line-height:1.4 !important;text-align:center}
   #rider > div > div{margin-top:14px;display:grid !important;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:18px !important}
   #rider > div > div > div:first-child > div{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:16px 22px !important}
   #rider > div > div > div:last-child{padding:14px !important;border-radius:10px !important;align-self:start}
   #rider p{font-size:11px !important;letter-spacing:0.1em !important;margin:0 0 8px !important}
   #rider h3{font-size:15px !important;margin:0 0 3px !important}
-  #rider ul{font-size:12.5px !important;line-height:1.5 !important}
-  #rider li{margin:0 !important;padding:4px 0 !important;border-width:0 0 1px !important}
+  #rider ul{font-size:12.5px !important;line-height:1.42 !important}
+  #rider li{margin:0 !important;padding:3px 0 !important;border-width:0 0 1px !important}
   #rider li:last-child{border-bottom:0 !important}
   /* two independent columns: Additional moves up under the short Audio block, so both columns end on the same line */
   #rider > div > div > div:first-child > div{grid-template-rows:auto auto auto}
