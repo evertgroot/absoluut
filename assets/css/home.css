@@ -384,7 +384,7 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 .lg-netflix{--lg:url(/assets/img/logos/netflix.svg);--la:370 / 100;--lh:.6}
 .lg-soa{--lg:url(/assets/img/logos/soa-aids-nederland.svg?v=2);--la:127 / 52;--lh:.85}
 /* FORWARD: the official files (dark and white), shown as images rather than a one-colour mask */
-.lg-forward{--la:570 / 178;--lh:1.05;background:url(/assets/img/logos/forward-white.svg) center / contain no-repeat;-webkit-mask:none;mask:none}
+.lg-forward{--la:570 / 178;--lh:1.05;background:url(/assets/img/logos/forward-white.svg?v=2) center / contain no-repeat;-webkit-mask:none;mask:none}
 .lg-paradiso{--lg:url(/assets/img/logos/paradiso.svg);--la:1200 / 224;--lh:.52}
 .lg-mcd{--lg:url(/assets/img/logos/mcdonalds.svg?v=2);--la:264.6 / 33.1;--lh:.44}
 .lg-sofitel{--lg:url(/assets/img/logos/sofitel.svg);--la:70 / 40;--lh:1.75}
@@ -393,7 +393,7 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 /* Trusted by */
 .marquee .logo{--logo-base:34px}
 /* bar: optical sizes tuned so every logo reads at the same weight on one centre line */
-.marquee .lg-forward{--lh:.95;background-image:url(/assets/img/logos/forward.svg?v=4)}
+.marquee .lg-forward{--lh:.95;background-image:url(/assets/img/logos/forward.svg?v=5)}
 .marquee .lg-vue{--lh:.86;transform:translateY(2px)}
 .marquee .lg-phantasialand{--lh:1.3}
 .marquee .lg-soa{--lh:.89}
