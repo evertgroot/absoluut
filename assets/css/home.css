@@ -539,3 +539,5 @@ div.cs-close + .cs-form{border-top-left-radius:0;border-top-right-radius:0;paddi
 a.cs-reel-link:hover .reel-tag{color:#7bd6e0}
 a.cs-reel-link:focus-visible{outline:2px solid #7bd6e0;outline-offset:3px;border-radius:20px}
 .cs-reel:has(.cs-reel-link:focus-visible){overflow:visible}
+/* a 9:16 video still cropped to the 3:4 of the posts beside it, keeping the caption in view */
+.cs-reel img.cs-crop-34{aspect-ratio:3 / 4;object-fit:cover;object-position:50% 100%}
