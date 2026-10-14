@@ -776,3 +776,8 @@ div:has(> main.cs-bops){overflow-x:clip}
   .cs-bops .cs-photos.cs-photos-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .cs-bops .cs-photos-grid .cs-photo-wide-strip{grid-column:1 / -1;aspect-ratio:21 / 9;height:auto}
 }
+/* BOPS: landscape founders photo */
+.cs-split.cs-split-founders{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);max-width:1100px}
+.cs-split-founders .cs-founders{max-width:none}
+.cs-split-founders .cs-founders img{aspect-ratio:3 / 2}
+@media (max-width:700px){.cs-split-founders .cs-founders{max-width:none}}
