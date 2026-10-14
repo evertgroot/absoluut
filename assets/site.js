@@ -560,6 +560,22 @@
       .catch(function () {});
   }
 
+  /* 2c. Case pages: "Talk Strategy" unfolds the contact form in place */
+  [].forEach.call(document.querySelectorAll('[data-expand]'), function (b) {
+    var panel = document.getElementById(b.getAttribute('data-expand'));
+    if (!panel) return;
+    b.addEventListener('click', function () {
+      var open = panel.hidden;
+      panel.hidden = !open;
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) {
+        var first = panel.querySelector('input:not([type="hidden"]):not([type="checkbox"]), textarea');
+        panel.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'nearest' });
+        if (first) { try { first.focus({ preventScroll: true }); } catch (e) {} }
+      }
+    });
+  });
+
   /* 3. Contact form */
   var form = document.getElementById('contact-form');
   if (form) {

@@ -481,3 +481,22 @@ div.cs-close{max-width:none;font-size:inherit}
 div.cs-close .btn-solid{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;background:#7bd6e0;color:#0b0b0c;text-decoration:none;font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;letter-spacing:0;flex:0 0 auto}
 div.cs-close{max-width:1100px}
 .cs-play{left:auto;top:14px;right:14px;margin:0;width:56px;height:56px}
+/* case pages: the contact form unfolds under "Talk Strategy" */
+.cs-form{max-width:1100px;margin:0 0 clamp(40px,5vw,64px);padding:clamp(24px,3vw,36px);border-radius:20px;background:#151517}
+.cs-form form{display:flex;flex-direction:column;gap:16px;max-width:720px}
+.cs-form label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700;color:rgba(255,255,255,.8)}
+.cs-form-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cs-form .field{width:100%;min-height:48px;padding:12px 14px;border:1.5px solid rgba(255,255,255,.22);border-radius:12px;background:rgba(255,255,255,.05);color:#fff;font:inherit;font-size:16px;font-weight:500}
+.cs-form textarea.field{resize:vertical}
+.cs-form .field::placeholder{color:rgba(255,255,255,.45)}
+.cs-form .field:focus{outline:none;border-color:#7bd6e0;box-shadow:0 0 0 3px rgba(123,214,224,.25)}
+.cs-form-send{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.cs-form-send .btn-solid{min-height:52px;padding:0 26px;border:0;border-radius:999px;background:#7bd6e0;color:#0b0b0c;font:inherit;font-size:16px;font-weight:800;cursor:pointer}
+.cs-form-send p{margin:0;font-size:14px;color:rgba(255,255,255,.6)}
+.cs-form-send #form-status{flex:1 1 100%;font-size:16px;font-weight:700;color:#fff}
+button.btn-solid[data-expand]{min-height:52px;padding:0 26px;border:0;border-radius:999px;background:#7bd6e0;color:#0b0b0c;font:inherit;font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;cursor:pointer}
+button.btn-solid[data-expand][aria-expanded="true"]{background:#ffffff}
+@media (max-width:600px){.cs-form-row{grid-template-columns:minmax(0,1fr)}}
+/* the open form reads as one panel with the question above it */
+div.cs-close:has(+ .cs-form:not([hidden])){border-bottom-left-radius:0;border-bottom-right-radius:0;margin-bottom:0}
+div.cs-close + .cs-form{border-top-left-radius:0;border-top-right-radius:0;padding-top:4px}

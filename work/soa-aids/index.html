@@ -29,10 +29,10 @@
 <link rel="preload" href="/assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/baloo-bhai-2-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/css/home.css?v=85b2065d">
+<link rel="stylesheet" href="/assets/css/home.css?v=787049b9">
   
   <script data-goatcounter="https://imgroot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-  <script src="/assets/site.js?v=927173bd" defer></script>
+  <script src="/assets/site.js?v=20e41549" defer></script>
 </head>
 <body>
 <a class="skip" href="/#main">Skip to content</a>
@@ -107,8 +107,29 @@
 
     <nav class="cs-next" aria-label="More work">
       <a href="/work/the-best-social/"><span>Next Case</span><strong>Content for Netflix, TUI &amp; More<span class="hv-ar hv-r" aria-hidden="true">→</span></strong></a>
-      <a class="btn-solid" href="/#contact" data-pick="strategy">Talk Strategy<span class="hv-ar hv-r" aria-hidden="true">→</span></a>
+      <button class="btn-solid" type="button" data-expand="cs-form" aria-expanded="false" aria-controls="cs-form">Talk Strategy</button>
     </nav>
+
+    <div class="cs-form" id="cs-form" hidden>
+      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" data-sending="Sending…" data-success="Thanks! Your message has been sent. I’ll get back to you soon." data-error-mail="Or email me directly:" data-error="Something went wrong. Please try again in a moment.">
+        <input type="hidden" name="access_key" value="efa0a20b-2c4c-4633-a70f-2667f442add4">
+        <input type="hidden" name="subject" value="New message via imgroot.nl case page: Man tot Man (EN)">
+        <input type="hidden" name="from_name" value="imgroot.nl">
+        <input type="hidden" name="topic" value="Content strategy">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+        <div class="cs-form-row">
+          <label>Name<input class="field" name="name" type="text" autocomplete="name" required></label>
+          <label>Email<input class="field" name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <label>Message<textarea class="field" name="message" rows="4" required placeholder="Your brand, the goal and the channels you’re thinking of"></textarea></label>
+        <div class="cs-form-send">
+          <button class="btn-solid" type="submit">Send Message</button>
+          <p>I only use your details to reply to your message.</p>
+          <p id="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+
   </article>
   </main>
 
