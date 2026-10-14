@@ -805,3 +805,12 @@ div:has(> main.cs-bops){overflow-x:clip}
 .bops-case a .hv-ar{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
 .bops-case a:hover .hv-ar{transform:translateX(3px)}
 .cs-split-founders > .cs-bops-link{margin-top:calc(14px - clamp(24px,3vw,40px)) !important}
+/* Selected Work: in-house background as a short list of roles (title, employer, years) between the cases and the button */
+.wk-prev{max-width:760px;margin:clamp(40px,5vw,64px) 0 0}
+.wk-prev-label{margin:0 0 10px;font-size:15px;font-weight:700;color:rgba(255,255,255,.72)}
+.wk-prev ul{margin:0;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.14)}
+.wk-prev li{display:flex;gap:24px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:clamp(16px,1.3vw,18px);line-height:1.45;color:rgba(255,255,255,.72)}
+.wk-prev-yr{flex:0 0 112px;white-space:nowrap;font-variant-numeric:tabular-nums;color:rgba(255,255,255,.55)}
+.wk-prev strong{color:#fff;font-weight:700}
+.wk .wk-prev + .wk-cta{margin-top:32px}
+@media (max-width:700px){.wk-prev{margin-top:24px}.wk-prev li{flex-direction:column;gap:2px}.wk-prev-yr{flex:none;font-size:14px}}
