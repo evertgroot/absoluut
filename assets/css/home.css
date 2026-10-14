@@ -622,7 +622,7 @@ body:has(main.cs-bops) #mobile-menu{background:var(--c-navy) !important}
 .cs-part .cs-split .cs-intro:last-child{margin-bottom:0}
 .cs-bops .cs-intro strong,.cs-bops .cs-note strong{color:var(--bops-ink)}
 .cs-guest{margin-top:18px !important;max-width:680px}
-@media (max-width:760px){/* BOPS: partnerships and stages as cards, the favorite guest as a navy card */
+/* BOPS: partnerships and stages as cards, the favorite guest as a navy card */
 .cs-stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);margin-top:16px;max-width:1300px}
 .cs-stage{display:flex;flex-direction:column;gap:6px;padding:20px 22px 22px;border:1.5px solid rgba(23,21,95,.22);border-radius:18px;background:rgba(255,255,255,.55)}
 .cs-stage-when{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--c-bops-red)}
@@ -640,3 +640,8 @@ body:has(main.cs-bops) #mobile-menu{background:var(--c-navy) !important}
 .cs-photos-grid .cs-photo-half{grid-column:span 3;aspect-ratio:3 / 2}
 @media (max-width:700px){.cs-photos.cs-photos-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-photos-grid .cs-photo-portrait{grid-column:span 1}.cs-photos-grid .cs-photo-portrait:first-child{grid-column:1 / -1}.cs-photos-grid .cs-photo-half{grid-column:1 / -1}}
 .cs-meta dd .cs-meta-logo{display:block;width:auto !important;height:22px !important;max-width:none;margin-top:6px}
+/* BOPS: founders photo with a personal note, near the end */
+.cs-split.cs-split-founders{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);align-items:center;max-width:1000px}
+.cs-split-founders .cs-founders{max-width:420px}
+.cs-split-founders .cs-intro:last-child{margin-bottom:0}
+@media (max-width:700px){.cs-split.cs-split-founders{grid-template-columns:1fr}}
