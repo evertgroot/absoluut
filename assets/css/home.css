@@ -1,5 +1,6 @@
 /* imgroot.nl — home pages (EN/NL/IT). Generated from the former inline <style> blocks; edit here. */
 /* ---- base ---- */
+:root{--bops-line:rgba(23,21,95,.16);--bops-border:rgba(23,21,95,.22);--bops-pill:rgba(23,21,95,.45);--bops-soft:rgba(23,21,95,.6);--bops-muted:rgba(23,21,95,.72);--bops-text:rgba(23,21,95,.78)}
 a{color:#ffffff}
 a:hover{color:var(--c-gold)}
 .field::placeholder{color:var(--c-lavender)}
@@ -469,7 +470,7 @@ div.cs-close + .cs-form{border-top-left-radius:0;border-top-right-radius:0;paddi
 /* "Talk Strategy" under Selected Work: the same outlined button as the service CTAs */
 .wk-cta .btn-ghost{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:999px;border:1.5px solid rgba(255,255,255,0.6);color:#fff;text-decoration:none;font-size:16px;font-weight:800}
 /* BOPS: the next party as a compact card under the "Plan an Event" button */
-.bops-card{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 20px;margin-top:8px;padding:18px 22px;border:1.5px solid rgba(23,21,95,.22);border-radius:18px;background:rgba(255,255,255,.55);color:var(--c-navy)}
+.bops-card{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 20px;margin-top:8px;padding:18px 22px;border:1.5px solid var(--bops-border);border-radius:18px;background:rgba(255,255,255,.55);color:var(--c-navy)}
 .bops-when{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--c-bops-red)}
 .bops-name{margin-top:2px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2.2vw,28px);font-weight:800;line-height:1.1;letter-spacing:-0.02em}
 .bops-card #bops-tickets{display:inline-flex;align-items:center;min-height:44px;color:var(--c-navy);font-size:16px;font-weight:800}
@@ -570,7 +571,7 @@ a.reel:hover .reel-tag-br,a.reel:focus-visible .reel-tag-br{color:var(--c-teal)}
 .cs-block > p + p{margin-top:14px}
 /* ---- BOPS case in the colours of the homepage BOPS block: dark hero, then cream with navy and BOPS red ---- */
 body:has(main.cs-bops),div:has(> main.cs-bops){background:var(--c-cream) !important}
-.cs-bops{--bops-ink:var(--c-navy);--bops-red:var(--c-bops-red);--bops-line:rgba(23,21,95,.16);--bops-muted:rgba(23,21,95,.72);color:var(--bops-ink)}
+.cs-bops{--bops-ink:var(--c-navy);--bops-red:var(--c-bops-red);color:var(--bops-ink)}
 .cs-bops .cs-hero{color:#fff;background:var(--c-navy);box-shadow:0 0 0 100vmax var(--c-navy);clip-path:inset(-100vmax -100vmax 0 -100vmax);padding-bottom:clamp(48px,6vw,80px)}
 .cs-bops .cs-block > p,.cs-bops .cs-intro,.cs-bops .cs-note,.cs-bops .cs-growth li p{color:var(--bops-muted)}
 .cs-bops .cs-growth{border-top-color:var(--bops-line)}
@@ -579,17 +580,17 @@ body:has(main.cs-bops),div:has(> main.cs-bops){background:var(--c-cream) !import
 .cs-bops .cs-growth strong{color:var(--bops-ink)}
 .cs-bops .cs-flyers figcaption,.cs-bops .cs-founders figcaption{color:var(--bops-muted)}
 .cs-bops .cs-flyers figcaption span{color:var(--bops-red)}
-.cs-bops .cs-credit{color:rgba(23,21,95,.6)}
-.cs-bops .wk-dots .qdot span{background:rgba(23,21,95,.55)}
+.cs-bops .cs-credit{color:var(--bops-soft)}
+.cs-bops .wk-dots .qdot span{background:var(--bops-soft)}
 .cs-bops .wk-dots .qdot[aria-current="true"] span{background:var(--bops-red)}
 .cs-bops .wk-dots .qdot:focus-visible{outline-color:var(--bops-ink)}
-.cs-bops div.cs-close{background:rgba(255,255,255,.55);border:1.5px solid rgba(23,21,95,.22)}
+.cs-bops div.cs-close{background:rgba(255,255,255,.55);border:1.5px solid var(--bops-border)}
 .cs-bops div.cs-close p{color:var(--bops-ink)}
 .cs-bops div.cs-close .btn-solid,.cs-bops .cs-form-send .btn-solid{background:var(--bops-ink);color:var(--c-cream)}
-.cs-bops .cs-form{background:rgba(255,255,255,.55);border:1.5px solid rgba(23,21,95,.22);border-top:0}
+.cs-bops .cs-form{background:rgba(255,255,255,.55);border:1.5px solid var(--bops-border);border-top:0}
 .cs-bops .cs-form label{color:var(--bops-ink)}
-.cs-bops .cs-form .field{background:#fff;border-color:rgba(23,21,95,.25);color:var(--bops-ink)}
-.cs-bops .cs-form .field::placeholder{color:rgba(23,21,95,.65)}
+.cs-bops .cs-form .field{background:#fff;border-color:var(--bops-border);color:var(--bops-ink)}
+.cs-bops .cs-form .field::placeholder{color:var(--bops-muted)}
 .cs-bops .cs-form .field:focus{border-color:var(--bops-red);box-shadow:0 0 0 3px rgba(166,36,0,.18)}
 .cs-bops .cs-form-send p,.cs-bops .cs-form .f-mail{color:var(--bops-muted)}
 .cs-bops .cs-form-send #form-status,.cs-bops .cs-form .f-mail a{color:var(--bops-ink)}
@@ -622,10 +623,10 @@ body:has(main.cs-bops) #mobile-menu{background:var(--c-navy) !important}
 .cs-bops .cs-intro strong,.cs-bops .cs-note strong{color:var(--bops-ink)}
 /* BOPS: partnerships and stages as cards, the favorite guest as a navy card */
 .cs-stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);margin-top:16px;max-width:1300px}
-.cs-stage{display:flex;flex-direction:column;gap:6px;padding:20px 22px 22px;border:1.5px solid rgba(23,21,95,.22);border-radius:18px;background:rgba(255,255,255,.55)}
+.cs-stage{display:flex;flex-direction:column;gap:6px;padding:20px 22px 22px;border:1.5px solid var(--bops-border);border-radius:18px;background:rgba(255,255,255,.55)}
 .cs-stage-when{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--c-bops-red)}
 .cs-stage h4,.cs-guest-card h4{margin:2px 0 0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2vw,26px);line-height:1.05;letter-spacing:-0.02em;font-weight:800;color:var(--c-navy)}
-.cs-stage p{margin:0;font-size:16px;line-height:1.5;color:rgba(23,21,95,.72)}
+.cs-stage p{margin:0;font-size:16px;line-height:1.5;color:var(--bops-muted)}
 .cs-guest-card{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,2fr);gap:6px clamp(20px,3vw,40px);align-items:start;margin-top:clamp(12px,1.6vw,20px);padding:clamp(22px,2.6vw,32px);border-radius:18px;background:var(--c-navy);color:var(--c-cream);max-width:1300px}
 .cs-guest-card .cs-stage-when{grid-column:1;color:var(--c-pink)}
 .cs-guest-card h4{grid-column:1;color:#fff}
@@ -659,7 +660,7 @@ body:has(main.cs-bops) #mobile-menu{background:var(--c-navy) !important}
 .cs-bops .cs-row > p,.cs-bops .cs-row > .cs-intro{margin:0;font-size:clamp(18px,1.5vw,20px);line-height:1.65}
 /* timeline: one continuous line with a dot per step; the last stretch runs in BOPS red */
 .cs-bops .cs-results .cs-growth{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:36px 0 0;padding:0;border-top:0;max-width:1300px}
-.cs-bops .cs-results .cs-growth::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:rgba(23,21,95,.3)}
+.cs-bops .cs-results .cs-growth::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--bops-border)}
 .cs-bops .cs-results .cs-growth li{position:relative;flex-direction:column;align-items:flex-start;gap:10px;padding:28px clamp(16px,2.5vw,32px) 0 0;border:0}
 .cs-bops .cs-results .cs-growth li::before{content:"";position:absolute;z-index:2;top:-6px;left:0;width:14px;height:14px;border-radius:50%;background:var(--c-bops-red)}
 /* red from the first to the last step, grey after it */
@@ -708,7 +709,7 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-guest-card h3{grid-column:1;color:#fff}
 .cs-bops .cs-band > .cs-intro{max-width:680px;margin:0 0 28px}
 /* BOPS: what I offer under the closing question, and a way to follow BOPS */
-.cs-bops div.cs-close p.cs-close-sub{margin-top:6px;font-family:'Manrope',sans-serif;font-size:16px;font-weight:600;letter-spacing:0;line-height:1.5;color:rgba(23,21,95,.72)}
+.cs-bops div.cs-close p.cs-close-sub{margin-top:6px;font-family:'Manrope',sans-serif;font-size:16px;font-weight:600;letter-spacing:0;line-height:1.5;color:var(--bops-muted)}
 .cs-bops-link{margin:16px 0 0 !important}
 .cs-bops-link a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:16px;font-weight:800;color:var(--c-navy);text-decoration:none}
 @media (min-width:901px){
@@ -730,7 +731,7 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops .cs-band-pink .cs-intro{margin:0;max-width:52ch;font-size:clamp(18px,1.5vw,20px);line-height:1.6;color:var(--c-navy)}
 /* BOPS line-up back to outlined name pills, in navy on the pink band */
 .cs-lineup{list-style:none;margin:clamp(22px,2.6vw,32px) 0 0;padding:0;font-weight:800;color:var(--c-navy);text-wrap:balance;display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(20px,2.2vw,28px);font-family:inherit;font-size:17px;line-height:1.3;letter-spacing:0}
-.cs-lineup li{white-space:nowrap;display:block;padding:8px 18px;border:1.5px solid rgba(23,21,95,.45);border-radius:999px;font-weight:700;color:var(--c-navy)}
+.cs-lineup li{white-space:nowrap;display:block;padding:8px 18px;border:1.5px solid var(--bops-pill);border-radius:999px;font-weight:700;color:var(--c-navy)}
 .cs-lineup li:not(:last-child)::after{margin:0 .32em;color:var(--c-bops-red);font-size:.6em;vertical-align:.18em;content:none}
 @media (max-width:600px){
   .cs-lineup{gap:8px}
@@ -772,14 +773,14 @@ div:has(> main.cs-bops){overflow-x:clip}
 /* BOPS: The Concept as one paragraph, the first sentence in bold */
 .cs-bops .cs-band-red .cs-row p strong{font-weight:800;color:#fff}
 /* BOPS: roles as outlined pills, same shape as the guest DJ line-up */
-.cs-pill{display:inline-block;padding:7px 16px;border:1.5px solid rgba(23,21,95,.45);border-radius:999px;font-size:16px;font-weight:700;line-height:1.3;color:var(--c-navy)}
+.cs-pill{display:inline-block;padding:7px 16px;border:1.5px solid var(--bops-pill);border-radius:999px;font-size:16px;font-weight:700;line-height:1.3;color:var(--c-navy)}
 .cs-bops .cs-band-red .cs-row p + p{margin-top:14px}
 /* BOPS layout: partnerships as a 2-up tier above the 3-up stages */
 .cs-bops .cs-partners{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);margin-top:16px;max-width:1300px}
-.cs-bops .cs-partners .cs-guest-card.cs-partner-card{display:block;margin:0;padding:clamp(24px,2.6vw,34px);max-width:1300px;box-sizing:border-box;background:rgba(255,255,255,.55);border:1.5px solid rgba(23,21,95,.22);color:var(--c-navy)}
+.cs-bops .cs-partners .cs-guest-card.cs-partner-card{display:block;margin:0;padding:clamp(24px,2.6vw,34px);max-width:1300px;box-sizing:border-box;background:rgba(255,255,255,.55);border:1.5px solid var(--bops-border);color:var(--c-navy)}
 .cs-bops .cs-partners .cs-partner-card .cs-stage-when{color:var(--c-bops-red)}
 .cs-bops .cs-partners .cs-partner-card h3{color:var(--c-navy);margin-top:6px;font-size:clamp(26px,2.4vw,32px)}
-.cs-bops .cs-partners .cs-partner-card p{margin-top:10px;padding:0;max-width:44ch;color:rgba(23,21,95,.78);font-size:clamp(17px,1.4vw,19px)}
+.cs-bops .cs-partners .cs-partner-card p{margin-top:10px;padding:0;max-width:44ch;color:var(--bops-text);font-size:clamp(17px,1.4vw,19px)}
 .cs-bops .cs-partners + .cs-stages{margin-top:clamp(12px,1.6vw,20px)}
 .cs-bops .cs-band-red .cs-row p{font-size:clamp(18px,1.5vw,20px)}
 @media (max-width:600px){
