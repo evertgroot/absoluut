@@ -645,3 +645,26 @@ body:has(main.cs-bops) #mobile-menu{background:var(--c-navy) !important}
 .cs-split-founders .cs-founders{max-width:420px}
 .cs-split-founders .cs-intro:last-child{margin-bottom:0}
 @media (max-width:700px){.cs-split.cs-split-founders{grid-template-columns:1fr}}
+/* ---- BOPS layout: generous breaks between sections, heading-left text rows, growth as a timeline ---- */
+.cs-bops .cs-block{margin-bottom:clamp(72px,9vw,128px)}
+.cs-bops .cs-block h2{margin-bottom:20px;font-size:clamp(34px,4.2vw,56px);letter-spacing:-0.035em}
+.cs-bops .cs-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:12px clamp(32px,5vw,80px);align-items:baseline;max-width:1300px}
+.cs-bops .cs-row > h2{margin:0}
+.cs-bops .cs-row > p,.cs-bops .cs-row > .cs-intro{margin:0;font-size:clamp(18px,1.5vw,20px);line-height:1.65}
+.cs-bops .cs-part{margin-top:clamp(48px,6vw,80px)}
+.cs-bops .cs-part-title{font-size:clamp(24px,2.4vw,30px);margin-bottom:12px}
+.cs-bops .cs-results .cs-growth{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 clamp(16px,2.5vw,32px);margin:32px 0 0;border-top:0;max-width:1300px}
+.cs-bops .cs-results .cs-growth li{position:relative;flex-direction:column;align-items:flex-start;gap:10px;padding:26px 0 0;border-bottom:0;border-top:2px solid rgba(23,21,95,.18)}
+.cs-bops .cs-results .cs-growth li::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--c-cream);border:2px solid var(--c-bops-red)}
+.cs-bops .cs-results .cs-growth li:last-child{border-top-color:var(--c-bops-red)}
+.cs-bops .cs-results .cs-growth li:last-child::before{background:var(--c-bops-red)}
+.cs-bops .cs-results .cs-growth li > span{flex:none}
+.cs-bops .cs-results .cs-growth li p{font-size:16px;line-height:1.45}
+.cs-bops .cs-results .cs-growth strong{display:block;margin-bottom:4px;font-size:clamp(28px,3.2vw,44px);line-height:1}
+.cs-bops .cs-results .cs-note{max-width:760px;margin-top:clamp(28px,3vw,40px);font-size:clamp(18px,1.6vw,21px)}
+@media (max-width:760px){
+  .cs-bops .cs-row{grid-template-columns:1fr}
+  .cs-bops .cs-results .cs-growth{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}
+}
+.cs-bops .cs-flyers{max-width:1300px}
+.cs-bops div.cs-close,.cs-bops .cs-form{max-width:1300px}
