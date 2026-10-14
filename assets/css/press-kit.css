@@ -1,11 +1,9 @@
 /* imgroot.nl — press-kit pages (EN/NL/IT). Generated from the former inline <style> blocks; edit here. */
 /* ---- base ---- */
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:#17155f}
-a{color:#ffffff}a:hover{color:#dbad72}
-.field::placeholder{color:#8e8abf}
-.field:focus{outline:none;border-color:#dbad72 !important;box-shadow:0 0 0 3px rgba(219,173,114,0.35)}
-.field option{color:#17155f}
+a{color:#ffffff}a:hover{color:var(--c-gold)}
+.field::placeholder{color:var(--c-lavender)}
+.field:focus{outline:none;border-color:var(--c-gold) !important;box-shadow:0 0 0 3px rgba(219,173,114,0.35)}
+.field option{color:var(--c-navy)}
 
 .btn-solid{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
 .btn-solid:hover{transform:translateY(-2px);color:#ffffff}
@@ -33,30 +31,16 @@ a{color:#ffffff}a:hover{color:#dbad72}
   
 }
 
-.gut{padding-left:calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px));padding-right:calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px))}
 
-[hidden]{display:none !important}
 .menu-btn{display:none !important}
 .mm-link{transition:color .3s ease}
-.mm-link:hover{color:#dbad72}
+.mm-link:hover{color:var(--c-gold)}
 
 .qdot[aria-current="true"] span{background:#fff;transform:scale(1.2)}
 
 /* header v3: one menu bar for both sites */
-.site-sw{display:inline-grid;grid-template-columns:auto auto;align-items:center;justify-self:start;padding:3px;border:1px solid rgba(255,255,255,0.2);border-radius:999px;touch-action:pan-y;-webkit-user-select:none;user-select:none}
-.site-sw > *{grid-row:1}
-.site-sw a:first-of-type{grid-column:1}
-.site-sw a:last-of-type{grid-column:2}
-.sw-thumb{grid-column:1;align-self:stretch;border-radius:999px;background:#ffffff;box-shadow:0 2px 10px rgba(0,0,0,0.22)}
 .site-sw.is-dj .sw-thumb{grid-column:2}
-.site-sw a{position:relative;z-index:1;display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;font-family:'Baloo Bhai 2',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;line-height:1;color:#b3afe0;text-decoration:none;white-space:nowrap;-webkit-user-drag:none;transition:color .25s ease}
-.site-sw a:hover{color:#ffffff}
-.site-sw a[aria-current],.site-sw a[aria-current]:hover{color:#17155f;font-weight:800}
-.site-sw.sw-drag{cursor:grabbing}
-.site-sw.sw-drag .sw-thumb{transition:none}
-.sw-thumb{transition:transform .3s cubic-bezier(.3,.7,.2,1)}
-.site-sw.sw-flip a[aria-current]{color:#b3afe0}
-.site-sw.sw-flip a:not([aria-current]){color:#17155f}
+.site-sw a[aria-current],.site-sw a[aria-current]:hover{color:var(--c-navy);font-weight:800}
 @media (prefers-reduced-motion: no-preference){
   @view-transition{navigation:auto}
   header .site-sw{view-transition-name:sw}
@@ -72,18 +56,12 @@ a{color:#ffffff}a:hover{color:#dbad72}
 }
 .nav-links{justify-self:start}
 .nav-links a{position:relative;padding:12px 0;white-space:nowrap}
-.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;border-radius:2px;background:#dbad72;transform:scaleX(0);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;border-radius:2px;background:var(--c-gold);transform:scaleX(0);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
 .nav-links a[aria-current]::after{transform:scaleX(1)}
-.hdr-right{display:flex;align-items:center;justify-content:flex-end;justify-self:end;gap:18px;font-size:15px}
 .hdr-sep,.mm-sep{width:1px;height:22px;background:rgba(255,255,255,0.2)}
-.hdr-lang,.mm-lang{display:flex}
-.hdr-lang a,.mm-lang a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:44px;font-size:12px;font-weight:800;letter-spacing:0.1em;color:#8e8abf;text-decoration:none}
 .mm-lang{margin-left:auto;margin-right:-10px}
 .mm-lang a{width:44px;font-size:13px}
-.hdr-lang a[aria-current],.mm-lang a[aria-current]{color:#ffffff}
-.hdr-lang a:hover,.mm-lang a:hover{color:#dbad72}
 .mm-link{display:flex !important;align-items:baseline;gap:14px}
-.mm-link[aria-current]{color:#dbad72 !important}
 @media (max-width: 1240px){
   header{grid-template-columns:auto auto minmax(0,1fr) !important;gap:20px 28px !important}
   .nav-links{gap:24px !important;font-size:14px !important}
@@ -103,51 +81,38 @@ a{color:#ffffff}a:hover{color:#dbad72}
   .site-sw a{padding:0 9px;font-size:15px}
 }
 /* page accent: red from the cap in the hero photo */
-.nav-links a::after{background:#c8193a}
-.nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:#c8193a}
-.mm-link[aria-current]{color:#c8193a !important}
+.nav-links a::after{background:var(--c-red)}
+.nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:var(--c-red)}
+.mm-link[aria-current]{color:var(--c-red) !important}
 .hdr-cta:hover,#mobile-menu .btn-solid:hover{color:#ffffff}
 header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
 /* site switch: a colored dot per site, teal = Evert Groot, red = DJ Absoluut */
-.site-sw a::before{content:"";flex:0 0 auto;width:8px;height:8px;margin-right:8px;border-radius:50%}
-.site-sw a:first-of-type::before{background:#7bd6e0}
-.site-sw a:last-of-type::before{background:#c8193a}
 @media (max-width: 360px){.site-sw a::before{width:7px;height:7px;margin-right:6px}}
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
-:root{--acc:#c8193a;--pop:#2c0739}
-a .bops-mark{transition:background-color .25s ease}
+:root{--acc:var(--c-red);--pop:#2c0739}
 
 /* footer: name + socials on top, small legal row below */
-.ft2-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.14)}
-.ft2-id{display:flex;flex-direction:column;gap:6px}
-.ft2-name{font-family:'Baloo Bhai 2',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;color:#ffffff}
-.ft2-sub{font-size:14px;line-height:1.5;color:#b3afe0}
-.ft2-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:22px;font-size:13px;line-height:1.6;color:#8e8abf}
-.ft2-bottom > span{display:flex;flex-wrap:wrap;align-items:center;gap:4px 22px}
-.ft2-bottom a{color:#b3afe0;text-decoration:none}
-.ft2-bottom a:hover,.ft2-bottom a:focus-visible{color:#ffffff;text-decoration:underline;text-underline-offset:3px}
 /* page theme: aubergine & red (DJ Absoluut) */
-body{background:#1f0328}
-a:hover{color:#ff9fb2}
+body{background:var(--c-aubergine)}
+a:hover{color:var(--c-pink)}
 .field::placeholder{color:#b98fc8}
-.field:focus{border-color:#ff9fb2 !important;box-shadow:0 0 0 3px rgba(255,159,178,0.3)}
-.field option{color:#1f0328}
-.mm-link:hover{color:#ff9fb2}
+.field:focus{border-color:var(--c-pink) !important;box-shadow:0 0 0 3px rgba(255,159,178,0.3)}
+.field option{color:var(--c-aubergine)}
+.mm-link:hover{color:var(--c-pink)}
 
 .hdr-lang a,.mm-lang a{color:#b98fc8}
-.site-sw a,.site-sw.sw-flip a[aria-current]{color:#d9b5e6}
-.site-sw a[aria-current],.site-sw a[aria-current]:hover,.site-sw.sw-flip a:not([aria-current]){color:#1f0328}
+.site-sw a,.site-sw.sw-flip a[aria-current]{color:var(--c-lilac)}
+.site-sw a[aria-current],.site-sw a[aria-current]:hover,.site-sw.sw-flip a:not([aria-current]){color:var(--c-aubergine)}
 .ft2-sub,.ft2-bottom a{color:#efd3f6}
 .ft2-bottom{color:#cba8d8}
-footer.ft2 nav a{color:#ffffff;background:rgba(255,255,255,0.1)}
-footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#ff9fb2}
+footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 
 /* end page theme */
 /* page theme: utilitarian press kit */
 body{background:#ffffff}
-#bio a:hover,#media a:hover,#rider a:hover{color:#c8193a}
+#bio a:hover,#media a:hover,#rider a:hover{color:var(--c-red)}
 #media,#rider{position:relative}
-#media::before,#rider::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:calc(min(100%, 1360px) - 2 * clamp(20px, 4vw, 48px));height:1px;background:#e6e1e8}
+#media::before,#rider::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:calc(min(100%, 1360px) - 2 * clamp(20px, 4vw, 48px));height:1px;background:var(--c-line)}
 .ft2-sub,.ft2-bottom a{color:#efd3f6}
 .ft2-bottom{color:#cba8d8}
 /* end page theme */
@@ -169,10 +134,10 @@ body{background:#ffffff}
   #top .gut{display:flex !important;align-items:center;justify-content:flex-start;gap:16px}
   #top h1{font-size:26px !important;line-height:1 !important;margin:0 !important}
   /* light pink instead of red on the dark band, so the title stays clear on a black-and-white print */
-  #top h1 span{color:#ff9fb2 !important}
+  #top h1 span{color:var(--c-pink) !important}
   /* the DJ Absoluut pill from the site switch in the header */
-  .pdf-name{order:-1;display:inline-flex;align-items:center;height:32px;margin:0;padding:0 14px;border-radius:999px;background:#ffffff;font-family:'Baloo Bhai 2',sans-serif;font-size:15px;font-weight:700;line-height:1;letter-spacing:-0.01em;color:#1f0328;white-space:nowrap}
-  .pdf-name::before{content:"";flex:0 0 auto;width:7px;height:7px;margin-right:7px;border-radius:50%;background:#c8193a}
+  .pdf-name{order:-1;display:inline-flex;align-items:center;height:32px;margin:0;padding:0 14px;border-radius:999px;background:#ffffff;font-family:'Baloo Bhai 2',sans-serif;font-size:15px;font-weight:700;line-height:1;letter-spacing:-0.01em;color:var(--c-aubergine);white-space:nowrap}
+  .pdf-name::before{content:"";flex:0 0 auto;width:7px;height:7px;margin-right:7px;border-radius:50%;background:var(--c-red)}
 
   /* section titles */
   #bio h2,#rider h2{margin:0 0 10px !important;font-size:21px !important;line-height:1.1 !important;letter-spacing:-0.02em !important}
@@ -181,8 +146,8 @@ body{background:#ffffff}
   #bio > .gut{display:grid !important;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:26px !important;padding:30px 0 0 !important}
   #bio-text{font-size:12px !important;line-height:1.6 !important;max-width:none !important;color:#3d3742 !important}
   #bio-text p{margin:0 0 9px !important}
-  #bio dl{margin-top:6px !important;border-top:1.5px solid #16121a !important}
-  #bio dl > div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:8px 0 !important;border-bottom:1px solid #e6e1e8 !important}
+  #bio dl{margin-top:6px !important;border-top:1.5px solid var(--c-plum-ink) !important}
+  #bio dl > div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:8px 0 !important;border-bottom:1px solid var(--c-line) !important}
   #bio dl > div:last-child{display:block !important;position:relative;min-height:112px;padding-right:96px !important;border-bottom:0 !important}
   .pdf-photo{display:block;position:absolute;top:10px;right:0;width:78px;height:98px;object-fit:cover;object-position:50% 30%;border-radius:10px}
   #bio dt{font-size:8px !important;letter-spacing:0.12em !important}
@@ -197,7 +162,7 @@ body{background:#ffffff}
 
   /* technical rider */
   #rider{border-top:0 !important;break-before:auto}
-  #rider > div{padding:28px 0 0 !important;border-top:1px solid #e6e1e8;margin-top:28px !important}
+  #rider > div{padding:28px 0 0 !important;border-top:1px solid var(--c-line);margin-top:28px !important}
   #rider figure{margin:22px 0 0 !important;display:flex;flex-direction:column;align-items:center;gap:8px}
   #rider figure img{width:56% !important;height:auto !important;margin:0 !important}
   #rider figcaption{margin:0 !important;font-size:11px !important;line-height:1.4 !important;text-align:center}
@@ -222,17 +187,15 @@ body{background:#ffffff}
 
 /* ---- hv-sys ---- */
 /* unified hover system: primary · secondary · text link · icon · card */
-:root{--hv-acc:#ff9fb2;--hv-acc-l:#c8193a;--hv-glow:rgba(200,25,58,.38)}
+:root{--hv-acc:var(--c-pink);--hv-acc-l:var(--c-red);--hv-glow:rgba(200,25,58,.38)}
 .btn-solid{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease,background-color .25s ease,color .25s ease !important}
 .btn-ghost,.hv-2{transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .25s ease,border-color .25s ease,color .25s ease !important}
 .btn-solid:hover,.btn-solid:focus-visible{box-shadow:0 8px 22px var(--hv-glow)}
 .btn-ghost:hover,.btn-ghost:focus-visible,.hv-2.hv-dk:hover,.hv-2.hv-dk:focus-visible{background-color:rgba(255,255,255,.1) !important;border-color:#ffffff !important;color:#ffffff}
-.hv-2.hv-lt:hover,.hv-2.hv-lt:focus-visible{background-color:rgba(22,18,26,.06) !important;border-color:#16121a !important}
+.hv-2.hv-lt:hover,.hv-2.hv-lt:focus-visible{background-color:rgba(22,18,26,.06) !important;border-color:var(--c-plum-ink) !important}
 .hv-tl{text-decoration-line:underline !important;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:4px;transition:color .25s ease,text-decoration-color .25s ease}
 
 .hv-tl.hv-lt:hover,.hv-tl.hv-lt:focus-visible{color:var(--hv-acc-l) !important;text-decoration-color:var(--hv-acc-l)}
-.hv-ar{display:inline-block;margin-left:.3em;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
-footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2,1)}
 .hv-card{transition:background-color .3s ease,color .3s ease}
 .hv-card:hover,.hv-card:focus-visible{background-color:#ece8ee !important;color:var(--hv-acc-l) !important}
 
@@ -254,20 +217,16 @@ footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2
 
 /* ---- polish-sys ---- */
 /* polish pass: skip link, focus on light bands, field borders, tap targets, hero proof row, gigs, listen, press photos */
-.skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:#0b0b0c;font-weight:800;text-decoration:none}
-.skip:focus{top:12px;outline:2px solid var(--hv-acc-l);outline-offset:2px}
-main:focus{outline:none}
+.skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:var(--c-ink);font-weight:800;text-decoration:none}
 .hdr-cta{white-space:nowrap}
 @media (min-width: 1061px) and (max-width: 1240px){.nav-links{gap:16px !important}.hdr-lang a{width:28px}header{column-gap:18px !important}.hdr-right{gap:8px}}
 /* browser surfaces in the page palette */
-::selection{background:var(--hv-acc);color:#0b0b0c}
 .field{caret-color:var(--hv-acc)}
 /* arrows: one drawn set instead of font glyphs. down = further on this page, right = another page of the site,
    up-right = another website, download = save a file. The glyph stays in the markup as a text fallback. */
 .hv-ar{display:inline-block;width:.8em;height:.8em;margin-left:.4em;vertical-align:-.04em;overflow:hidden;text-indent:2em;white-space:nowrap;background:currentColor;-webkit-mask:var(--ar) center / contain no-repeat;mask:var(--ar) center / contain no-repeat}
 .hv-d{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2v11M3.5 8.5 8 13l4.5-4.5'/%3E%3C/svg%3E")}
 
-.hv-ne{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12 12 4M5.5 4H12v6.5'/%3E%3C/svg%3E")}
 .hv-dl{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2v8M4.5 6.5 8 10l3.5-3.5M3 14h10'/%3E%3C/svg%3E")}
 
 @media (hover:hover){a:hover .hv-ar.hv-dl{transform:translateY(2px)}}
@@ -281,7 +240,6 @@ main:focus{outline:none}
 :is(.menu-btn,.menu-close):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
 .hdr-lang a{font-size:13px}
 /* mobile menu: sections sit low, close to the thumb; languages above a full-width call to action */
-#mobile-menu:not([hidden]){animation:mm-in .24s cubic-bezier(.2,.7,.2,1) both}
 @keyframes mm-in{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
 #mobile-menu > nav{margin-top:auto !important;padding-top:32px}
 #mobile-menu > div:last-child{margin-top:0 !important;padding-top:28px !important;flex-direction:column;align-items:stretch !important;gap:12px !important}
@@ -291,24 +249,18 @@ main:focus{outline:none}
 @media (max-height: 440px){#mobile-menu{padding-top:12px !important;padding-bottom:14px !important}.mm-link{font-size:24px !important;line-height:1.2 !important;padding:0 !important}#mobile-menu > nav{padding-top:6px}#mobile-menu > div:last-child{padding-top:10px !important;flex-direction:row;align-items:center !important;justify-content:space-between}}
 @media (prefers-reduced-motion: reduce){.nav-links a::after,.mm-link{transition:none}#mobile-menu:not([hidden]){animation:none}}
 /* pages with a hero button: the header button joins in once the bar sticks, so the first screen has one call to action */
-body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-sep){display:none !important}
 :is(#services,#events,#where,#bio,#media,#rider) :focus-visible{outline-color:var(--hv-acc-l) !important}
-.field:not(:focus){border-color:rgba(255,255,255,0.5) !important}
 @media (max-width: 1060px){.site-sw a{height:44px}}
 /* site switch: both names always written out; very narrow phones get a smaller size so both still fit */
-.site-sw a:focus-visible{outline:2px solid var(--hv-acc);outline-offset:2px}
 @media (max-width: 370px){.site-sw a{padding:0 8px;font-size:14px}.site-sw a::before{width:6px;height:6px;margin-right:5px}}
 @media (prefers-reduced-motion: reduce){.sw-thumb{transition:none !important}}
 
 #form-status a{color:inherit;text-underline-offset:3px}
 
-#media,#rider{border-top:1px solid #e6e1e8}
+#media,#rider{border-top:1px solid var(--c-line)}
 
-.ft2-top > nav{flex-wrap:wrap}
 
 /* images carry their intrinsic size; CSS decides the rendered height */
-img[width][height]{height:auto}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 /* rider on screen, two columns: Additional moves up under the short Audio block, so Light and Additional end on the same line */
 @media (min-width: 590px){
   #rider > div > div > div:first-child > div{grid-template-columns:repeat(2,minmax(0,1fr)) !important;grid-template-rows:auto auto auto}
