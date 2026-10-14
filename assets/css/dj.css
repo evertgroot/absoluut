@@ -351,5 +351,6 @@ img[width][height]{height:auto}
 .lg-mcd{--lg:url(/assets/img/logos/mcdonalds.svg);--la:264.6 / 33.1;--lh:.44}
 .lg-sofitel{--lg:url(/assets/img/logos/sofitel.svg);--la:70 / 40;--lh:1.75}
 .marquee .logo{--logo-base:34px}
-/* names without a usable one-colour logo stay as type */
-.marquee .lg-text{font-family:'Baloo Bhai 2',sans-serif;font-size:21px;font-weight:800;letter-spacing:-0.01em}
+.lg-milkshake{--lg:url(/assets/img/logos/milkshake.png);--la:600 / 156;--lh:.8}
+.lg-qclub{--lg:url(/assets/img/logos/q-club.svg);--la:1 / 1;--lh:.9}
+.lg-euforia{--lg:url(/assets/img/logos/euforia.png);--la:600 / 263;--lh:1.05}
