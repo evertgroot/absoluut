@@ -435,3 +435,10 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 .cs-brands ul{display:flex;flex-wrap:wrap;align-items:center;gap:20px clamp(28px,4vw,52px);margin:0;padding:0;list-style:none;color:#fff;--logo-base:30px}
 .cs-brand-text{font-family:'Baloo Bhai 2',sans-serif;font-size:17px;font-weight:800;line-height:1.05;letter-spacing:-0.01em;display:inline-block;max-width:9em}
 .cs-hero + .cs-brands + .cs-block{margin-top:0}
+/* project heads: brand logo leads, title and year follow */
+.cs-project-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;color:#fff;--logo-base:28px}
+.cs-project-head .cs-ptitle{font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2vw,28px);font-weight:800;letter-spacing:-0.02em}
+.cs-project-head .cs-year{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:rgba(255,255,255,.55)}
+.cs-project + .cs-project{padding-top:clamp(32px,4vw,48px);border-top:1px solid rgba(255,255,255,.12)}
+.cs-gallery-posts .cs-reel:only-child{max-width:360px}
+.cs-project-head .cs-ptitle{margin-left:0;color:#fff;letter-spacing:-0.02em}
