@@ -461,3 +461,22 @@ a.reel-tag:focus-visible{outline:2px solid #7bd6e0;outline-offset:2px}
 .cs-project-head .lg-netflix{--lh:.72}
 /* closing nudge before the next case */
 .cs-close{margin:clamp(24px,3vw,40px) 0 18px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(24px,2.6vw,34px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;max-width:640px;text-wrap:balance}
+/* a video case: wide thumbnail with a play button */
+.cs-video{position:relative;display:block;max-width:900px;border-radius:20px;overflow:hidden;color:#fff;text-decoration:none}
+.cs-video img{display:block;width:100%;height:auto !important;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.cs-video .reel-tag{position:absolute;left:12px;top:12px}
+.cs-play{position:absolute;left:50%;top:50%;display:grid;place-items:center;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:rgba(11,11,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:transform .25s ease,background-color .25s ease}
+.cs-play svg{margin-left:3px}
+a.cs-video:hover img{transform:scale(1.03)}
+a.cs-video:hover .cs-play{transform:scale(1.08);background:#7bd6e0;color:#0b0b0c}
+a.cs-video:focus-visible{outline:2px solid #7bd6e0;outline-offset:4px}
+@media (prefers-reduced-motion:reduce){a.cs-video:hover img,a.cs-video:hover .cs-play{transform:none}}
+/* closing: question and button side by side */
+div.cs-close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 32px;margin:clamp(24px,3vw,40px) 0 clamp(28px,3vw,40px);padding:clamp(24px,3vw,36px);border-radius:20px;background:#151517}
+div.cs-close p{margin:0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(24px,2.6vw,34px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;max-width:640px;text-wrap:balance}
+/* compact heads in the "also" row keep the year on the line */
+.cs-also .cs-project-head{flex-wrap:nowrap;--logo-base:22px}
+.cs-also .cs-project-head .cs-ptitle{font-size:clamp(20px,1.8vw,24px)}
+div.cs-close{max-width:none;font-size:inherit}
+div.cs-close .btn-solid{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;background:#7bd6e0;color:#0b0b0c;text-decoration:none;font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;letter-spacing:0;flex:0 0 auto}
+div.cs-close{max-width:1100px}
