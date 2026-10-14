@@ -533,3 +533,9 @@ div.cs-close + .cs-form{border-top-left-radius:0;border-top-right-radius:0;paddi
 .cs-yt{position:absolute;right:14px;bottom:14px;transition:background .2s,color .2s;display:grid;place-items:center;width:44px;height:32px;border-radius:999px;background:rgba(11,11,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff}
 /* case images: platform label bottom right */
 .cs-reel .reel-tag{top:auto;left:auto;right:10px;bottom:10px}
+/* whole image is the link */
+.cs-reel-link{display:block;color:#fff;text-decoration:none}
+.cs-reel-link img{display:block}
+a.cs-reel-link:hover .reel-tag{color:#7bd6e0}
+a.cs-reel-link:focus-visible{outline:2px solid #7bd6e0;outline-offset:3px;border-radius:20px}
+.cs-reel:has(.cs-reel-link:focus-visible){overflow:visible}
