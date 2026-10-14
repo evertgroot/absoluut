@@ -341,3 +341,15 @@ img[width][height]{height:auto}
 
 /* tablet portrait: photo above the text like on phones, cropped wider so it does not fill the screen */
 @media (min-width: 761px) and (max-width: 899px){.cine-img{aspect-ratio:4 / 3}.cine > .gut{margin-top:-90px}}
+/* ---- venue and brand logos in the "Played at" bar: one colour via mask, equal optical weight ---- */
+.logo{display:inline-block;flex:0 0 auto;vertical-align:middle;background:currentColor;-webkit-mask:var(--lg) center / contain no-repeat;mask:var(--lg) center / contain no-repeat;height:calc(var(--lh, 1) * var(--logo-base, 34px));aspect-ratio:var(--la)}
+.lg-paradiso{--lg:url(/assets/img/logos/paradiso.svg);--la:1200 / 224;--lh:.52}
+.lg-adam{--lg:url(/assets/img/logos/adam-toren.png);--la:400 / 543;--lh:1.7}
+.lg-pride-ams{--lg:url(/assets/img/logos/pride-amsterdam.png);--la:500 / 242;--lh:1.05}
+.lg-tropikali{--lg:url(/assets/img/logos/tropikali.png);--la:290 / 72;--lh:.8}
+.lg-antwerp-pride{--lg:url(/assets/img/logos/antwerp-pride.png);--la:600 / 246;--lh:1.5}
+.lg-mcd{--lg:url(/assets/img/logos/mcdonalds.svg);--la:264.6 / 33.1;--lh:.44}
+.lg-sofitel{--lg:url(/assets/img/logos/sofitel.svg);--la:70 / 40;--lh:1.75}
+.marquee .logo{--logo-base:34px}
+/* names without a usable one-colour logo stay as type */
+.marquee .lg-text{font-family:'Baloo Bhai 2',sans-serif;font-size:21px;font-weight:800;letter-spacing:-0.01em}
