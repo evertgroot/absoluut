@@ -786,3 +786,4 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-split-founders .cs-founders img{aspect-ratio:2 / 1;object-position:50% 45%}
 .cs-split-founders > div{max-width:66ch}
 @media (max-width:700px){.cs-split-founders .cs-founders img{aspect-ratio:3 / 2}}
+.cs-split-founders .cs-founders img{object-position:50% 66%}
