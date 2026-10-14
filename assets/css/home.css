@@ -820,3 +820,4 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-split-founders .cs-founders{max-width:880px}
 .cs-split-founders .cs-founders img{aspect-ratio:16 / 9;object-position:50% 0}
 @media (max-width:700px){.cs-split-founders .cs-founders img{aspect-ratio:4 / 3}}
+.cs-bops .cs-band:has(+ .cs-band){margin-bottom:0}
