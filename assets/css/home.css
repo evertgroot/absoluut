@@ -531,3 +531,5 @@ div.cs-close + .cs-form{border-top-left-radius:0;border-top-right-radius:0;paddi
 .cs-reel{overflow:hidden;border-radius:20px}
 .cs-reel img{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){.cs-reel:hover img{transform:scale(1.04)}}
+/* YouTube mark, bottom right of the video thumbnail */
+.cs-yt{position:absolute;right:14px;bottom:14px;display:grid;place-items:center;width:44px;height:32px;border-radius:999px;background:rgba(11,11,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff}
