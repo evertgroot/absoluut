@@ -140,7 +140,7 @@
 
     /* layout from the bottom of the safe area up: gig rows, title, eyebrow; the photo fills what is left */
     var W = s.r - s.l, footH = 0, headH = key === 'story' ? 250 : 220;
-    var rowH = Math.max(118, Math.min(n === 1 ? 260 : 200, Math.floor((s.b - s.t - footH - headH - 40) / n)));
+    var rowH = Math.max(104, Math.min(n === 1 ? 180 : 132, Math.floor((s.b - s.t - footH - headH - 40) / n))); /* compact rows leave room for the photo */
     var listB = s.b - footH, listT = listB - rowH * list.length;
     var titleBase = listT - 46;
 
@@ -154,8 +154,8 @@
     var py = Math.max(phH - ph, Math.min(0, faceY - ph * 0.33));
     if (photo.naturalWidth) ctx.drawImage(photo, (f.w - pw) / 2, py, pw, ph);
     var g1 = ctx.createLinearGradient(0, 0, 0, phH);
-    g1.addColorStop(0, 'rgba(31,3,40,0.55)'); g1.addColorStop(0.18, 'rgba(31,3,40,0.05)');
-    g1.addColorStop(0.55, 'rgba(31,3,40,0.25)'); g1.addColorStop(0.86, 'rgba(31,3,40,0.92)'); g1.addColorStop(1, C.aub);
+    g1.addColorStop(0, 'rgba(31,3,40,0.35)'); g1.addColorStop(0.16, 'rgba(31,3,40,0)');
+    g1.addColorStop(0.62, 'rgba(31,3,40,0.12)'); g1.addColorStop(0.9, 'rgba(31,3,40,0.88)'); g1.addColorStop(1, C.aub);
     ctx.fillStyle = g1; ctx.fillRect(0, 0, f.w, phH + 2);
     ctx.fillStyle = C.aub; ctx.fillRect(0, phH, f.w, f.h - phH);
     /* colour as atmosphere: the red of the cap returns as a warm glow low on the right, purple stage light on the left */
@@ -180,7 +180,7 @@
     /* poster-style dates: a big pink day number with the month and weekday stacked beside it; no boxes, no rules,
        just type and air, like a line-up poster */
     var cy = today().getFullYear(), gap = 30;
-    var daySz = Math.round(Math.min(rowH * (n === 1 ? 0.62 : 0.56), n === 1 ? 150 : 112)), capSz = Math.max(20, Math.round(daySz * 0.24));
+    var daySz = Math.round(Math.min(rowH * 0.5, n === 1 ? 88 : 66)), capSz = Math.max(18, Math.round(daySz * 0.27));
     ctx.font = "800 " + daySz + "px 'Baloo Bhai 2'"; var numW = ctx.measureText('00').width;
     ctx.font = "800 " + capSz + "px 'Manrope'"; var capW = spacedW(ctx, 'MMM', 3) + 4;
     var dateW = Math.round(numW + 12 + capW);
