@@ -676,7 +676,7 @@
           var pb = document.createElement('button');
           pb.type = 'button'; pb.className = 'up-past-toggle';
           pb.setAttribute('aria-expanded', 'false'); pb.setAttribute('aria-controls', 'recent-gigs');
-          pb.innerHTML = esc(T.recent) + ' (' + past.length + ')<span class="up-past-ar hv-ar hv-d" aria-hidden="true">↓</span>';
+          pb.innerHTML = esc(T.recent) + '<span class="up-past-ar hv-ar hv-d" aria-hidden="true">↓</span>';
           pb.addEventListener('click', function () {
             var open = pastList.hidden;
             pastList.hidden = !open; pb.setAttribute('aria-expanded', String(open));
