@@ -140,9 +140,9 @@
 
     /* layout from the bottom of the safe area up: gig rows, title, eyebrow; the photo fills what is left */
     var W = s.r - s.l, footH = 0, headH = key === 'story' ? 250 : 220;
-    var rowH = Math.max(104, Math.min(n === 1 ? 180 : 132, Math.floor((s.b - s.t - footH - headH - 40) / n))); /* compact rows leave room for the photo */
+    var rowH = Math.max(92, Math.min(n === 1 ? 150 : 116, Math.floor((s.b - s.t - footH - headH - 40) / n))); /* compact rows leave room for the photo */
     var listB = s.b - footH, listT = listB - rowH * list.length;
-    var titleBase = listT - 46;
+    var titleBase = listT - 34;
 
     /* background + photo */
     ctx.fillStyle = C.aub; ctx.fillRect(0, 0, f.w, f.h);
@@ -168,8 +168,8 @@
 
     /* eyebrow + title (last word in red, like the website hero) */
     ctx.textBaseline = 'alphabetic'; ctx.fillStyle = '#ff9fb2'; ctx.font = "800 28px 'Manrope'";
-    spaced(ctx, T[lang].eyebrow.toUpperCase(), s.l, titleBase - (key === 'story' ? 128 : 116), 4.5);
-    var t = T[lang].title, tsz = fit(ctx, t[0] + ' ' + t[1], "800 %px 'Baloo Bhai 2'", key === 'story' ? 118 : 108, W);
+    spaced(ctx, T[lang].eyebrow.toUpperCase(), s.l, titleBase - (key === 'story' ? 104 : 96), 4.5);
+    var t = T[lang].title, tsz = fit(ctx, t[0] + ' ' + t[1], "800 %px 'Baloo Bhai 2'", key === 'story' ? 96 : 86, W);
     ctx.font = "800 " + tsz + "px 'Baloo Bhai 2'"; ctx.fillStyle = C.white; ctx.fillText(t[0] + ' ', s.l, titleBase);
     ctx.fillStyle = C.red; ctx.fillText(t[1], s.l + ctx.measureText(t[0] + ' ').width, titleBase);
 
@@ -180,7 +180,7 @@
     /* poster-style dates: a big pink day number with the month and weekday stacked beside it; no boxes, no rules,
        just type and air, like a line-up poster */
     var cy = today().getFullYear(), gap = 30;
-    var daySz = Math.round(Math.min(rowH * 0.5, n === 1 ? 88 : 66)), capSz = Math.max(18, Math.round(daySz * 0.27));
+    var daySz = Math.round(Math.min(rowH * 0.6, n === 1 ? 84 : 66)), capSz = Math.max(18, Math.round(daySz * 0.28));
     ctx.font = "800 " + daySz + "px 'Baloo Bhai 2'"; var numW = ctx.measureText('00').width;
     ctx.font = "800 " + capSz + "px 'Manrope'"; var capW = spacedW(ctx, 'MMM', 3) + 4;
     var dateW = Math.round(numW + 12 + capW);
@@ -193,25 +193,21 @@
       var lh = capSz + 6, top = base - daySz * 0.72 + (daySz * 0.72 - lines.length * lh + 6) / 2;
       ctx.font = "800 " + capSz + "px 'Manrope'";
       lines.forEach(function (ln, j) { ctx.fillStyle = ln[1]; spaced(ctx, ln[0], sx, top + capSz * 0.8 + j * lh, 3); });
-      /* name: logo (sized by area so wide and tall logos look alike) or text, then venue · city */
-      var tx = s.l + dateW + gap, tw = W - dateW - gap, lg = logoOf(g), im = lg && !g.private ? ready[lg.src] || null : null;
-      var subSz = Math.max(24, Math.round(rowH * 0.13)), nameH;
+      /* one line per gig across the full width, like a line-up poster: date, logo (or name), city on the right */
+      var city = where(g).toUpperCase();
+      ctx.font = "800 " + capSz + "px 'Manrope'"; var cityW = spacedW(ctx, city, 3);
+      ctx.fillStyle = C.lilac; spaced(ctx, city, s.r - cityW, mid + capSz * 0.36, 3);
+      var tx = s.l + dateW + gap, tw = Math.max(80, s.r - cityW - 28 - tx), lg = logoOf(g), im = lg && !g.private ? ready[lg.src] || null : null;
       if (im) {
+        /* sized by area, so wide and tall logos look alike, and in step with the date */
         var r = im.naturalWidth && im.naturalHeight ? im.naturalWidth / im.naturalHeight : lg.r;
-        var lh = Math.min(rowH * 0.46, (rowH * 0.62) / Math.sqrt(r)), lw = lh * r;
+        var lh = Math.min(daySz * 0.95, (daySz * 1.45) / Math.sqrt(r)), lw = lh * r;
         if (lw > tw) { lw = tw; lh = lw / r; }
-        nameH = lh;
-        var ny = mid - (nameH + 14 + subSz) / 2;
-        ctx.drawImage(im, tx, ny, lw, lh);
+        ctx.drawImage(im, tx, mid - lh / 2 - daySz * 0.04, lw, lh);
       } else {
-        var nm = g.event, nsz = fit(ctx, nm, "800 %px 'Baloo Bhai 2'", Math.round(rowH * 0.26), tw);
-        nameH = nsz * 0.8;
-        var ny2 = mid - (nameH + 14 + subSz) / 2;
-        ctx.font = "800 " + nsz + "px 'Baloo Bhai 2'"; ctx.fillStyle = C.white; ctx.fillText(nm, tx, ny2 + nameH);
-        ny = ny2;
+        var nm = g.event, nsz = fit(ctx, nm, "800 %px 'Baloo Bhai 2'", Math.round(daySz * 0.62), tw);
+        ctx.font = "800 " + nsz + "px 'Baloo Bhai 2'"; ctx.fillStyle = C.white; ctx.fillText(nm, tx, mid + nsz * 0.3);
       }
-      var wt = where(g), wsz = fit(ctx, wt, "600 %px 'Manrope'", subSz, tw);
-      ctx.font = "600 " + wsz + "px 'Manrope'"; ctx.fillStyle = C.lilac; ctx.fillText(wt, tx, ny + nameH + 14 + wsz * 0.8);
     }
 
     overlay(key);
