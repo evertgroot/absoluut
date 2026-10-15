@@ -151,7 +151,11 @@
     ctx.fillStyle = C.aub; ctx.fillRect(0, 0, f.w, f.h);
     var phH = Math.min(f.h, titleBase + 40), ir = photo.naturalWidth / photo.naturalHeight || 0.8, pw = f.w, ph = f.w / ir;
     if (ph < phH) { ph = phH; pw = ph * ir; }
-    if (photo.naturalWidth) ctx.drawImage(photo, (f.w - pw) / 2, Math.min(0, phH - ph) * 0.35, pw, ph);
+    /* keep the face in view: it sits about a third down the photo; centre it in the free band above the
+       eyebrow, so the title never covers it, and never leave a gap at the top */
+    var faceY = Math.max(60, (titleBase - (key === 'story' ? 170 : 150)) * 0.5);
+    var py = Math.max(phH - ph, Math.min(0, faceY - ph * 0.33));
+    if (photo.naturalWidth) ctx.drawImage(photo, (f.w - pw) / 2, py, pw, ph);
     var g1 = ctx.createLinearGradient(0, 0, 0, phH);
     g1.addColorStop(0, 'rgba(31,3,40,0.55)'); g1.addColorStop(0.18, 'rgba(31,3,40,0.05)');
     g1.addColorStop(0.55, 'rgba(31,3,40,0.25)'); g1.addColorStop(0.86, 'rgba(31,3,40,0.92)'); g1.addColorStop(1, C.aub);
