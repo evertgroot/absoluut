@@ -469,8 +469,11 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .up-past-toggle{display:flex;align-items:center;gap:8px;min-height:44px;padding:0;border:0;background:none;color:var(--c-aubergine);font:inherit;font-size:15px;font-weight:800;cursor:pointer;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(31,3,40,.35)}
 .up-past-toggle:hover{text-decoration-color:var(--c-aubergine)}
 .up-past-toggle:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:3px}
-.up-past-ar{color:var(--c-red);transition:transform .2s ease}
-.up-past-toggle[aria-expanded="true"] .up-past-ar{transform:rotate(180deg)}
+/* the site's own down arrow (mask icon, like "Inquire for …"); it flips up while the list is open and nudges in its direction on hover */
+.up-past-ar.hv-ar{margin-left:0;color:var(--c-red)}
+.up-past-toggle[aria-expanded="true"] .up-past-ar.hv-ar{transform:rotate(180deg)}
+@media (hover:hover){.up-past-toggle[aria-expanded="true"]:hover .up-past-ar.hv-ar{transform:rotate(180deg) translateY(3px)}}
+.up-past-toggle[aria-expanded="true"]:focus-visible .up-past-ar.hv-ar{transform:rotate(180deg) translateY(3px)}
 /* phones: only the first three gigs show; the full-width button reveals the rest, Past Events sits under it */
 @media (max-width:760px){
   .up-collapsed > li:nth-child(n+4){display:none}
@@ -490,6 +493,10 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .up-past .up-event{display:flex;align-items:center;min-height:28px;font-size:18px}
 .up-past .up-where{font-size:13px}
 @media (prefers-reduced-motion:reduce){
-  a.up-row,.up-go,.up-past-ar{transition:none}
+  a.up-row,.up-go{transition:none}
   a.up-row:hover .up-go{transform:none}
+}
+/* reduced motion: no nudge or animation, but the open state still points up */
+@media (prefers-reduced-motion:reduce){
+  .up-past-toggle[aria-expanded="true"] .up-past-ar.hv-ar{transform:rotate(180deg) !important;transition:none}
 }

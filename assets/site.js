@@ -687,7 +687,7 @@
           var pb = document.createElement('button');
           pb.type = 'button'; pb.className = 'up-past-toggle';
           pb.setAttribute('aria-expanded', 'false'); pb.setAttribute('aria-controls', 'upcoming-past');
-          pb.innerHTML = esc(T.past) + ' (' + past.length + ')<span class="up-past-ar" aria-hidden="true">↓</span>';
+          pb.innerHTML = esc(T.past) + ' (' + past.length + ')<span class="up-past-ar hv-ar hv-d" aria-hidden="true">↓</span>';
           pb.addEventListener('click', function () {
             var open = pastList.hidden;
             pastList.hidden = !open; pb.setAttribute('aria-expanded', String(open));
@@ -732,7 +732,7 @@
           var n = list[0], nq = n.date.split('-').map(Number), nd = new Date(nq[0], nq[1] - 1, nq[2]);
           var nDate = nd.toLocaleDateString(upLoc, { weekday: 'short', day: 'numeric', month: 'short' }).replace(/\./g, '');
           var nWhere = [n.event, CITY[n.city] || n.city].filter(Boolean).join(', ');
-          heroNext.innerHTML = '<a href="#upcoming"><span class="hn-label">' + esc(T.next) + '</span><span class="hn-text">' + esc(nDate) + ' · ' + esc(nWhere) + '</span><span class="hn-ar" aria-hidden="true">↓</span></a>';
+          heroNext.innerHTML = '<a href="#upcoming"><span class="hn-label">' + esc(T.next) + '</span><span class="hn-text">' + esc(nDate) + ' · ' + esc(nWhere) + '</span><span class="hn-ar hv-ar hv-d" aria-hidden="true">↓</span></a>';
           heroNext.hidden = false;
         }
       })
