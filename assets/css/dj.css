@@ -501,3 +501,18 @@ main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
   .up-logo{forced-color-adjust:none;background:CanvasText}
   .up-logo.is-color{background:var(--logo) left center / contain no-repeat}
 }
+
+/* past events: one quiet, even rhythm. Logos are sized by area (set in site.js) inside a fixed 28px slot,
+   names sit in the same slot, and the weekday is dropped, so every row has the same height */
+.up-past .up-row{padding:12px 4px;opacity:1;grid-template-columns:44px minmax(0,1fr)}
+.up-past .up-date{width:44px}
+.up-past .up-wd{display:none}
+.up-past .up-day{margin:0 0 3px;font-size:20px}
+.up-past .up-event{display:flex;align-items:center;height:28px;font-size:18px;color:var(--c-aubergine)}
+.up-past .up-logos,.up-past .up-logo{transform:none;margin:0}
+.up-past .up-where{font-size:13px}
+@media (min-width:761px){
+  .up-past{grid-auto-flow:column;grid-template-rows:repeat(var(--rows,7),auto)}
+  .up-past > li:nth-child(2) .up-row{border-top:0}
+  .up-past > li.up-c2 .up-row{border-top:1px solid rgba(31,3,40,.16)}
+}
