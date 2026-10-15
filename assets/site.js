@@ -605,7 +605,7 @@
   if (upSec && upList) {
     var preview = /[?&]gigs=preview\b/.test(location.search);
     var T = {
-      en: { past: 'Past events', priv: { wedding: 'Private wedding', event: 'Private event' }, next: 'Next up', more: 'More dates', all: 'All dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: hidden gigs are shown' },
+      en: { past: 'Past events', priv: { wedding: 'Private Wedding', event: 'Private Event' }, next: 'Next up', more: 'More dates', all: 'All dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: hidden gigs are shown' },
       nl: { past: 'Afgelopen events', priv: { wedding: 'Besloten bruiloft', event: 'Besloten event' }, next: 'Volgende gig', more: 'Meer data', all: 'Alle data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
       it: { past: 'Eventi passati', priv: { wedding: 'Matrimonio privato', event: 'Evento privato' }, next: 'Prossima data', more: 'Altre date', all: 'Tutte le date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
     }[lang] || null;
@@ -641,10 +641,11 @@
           prevYear = y;
           var city = CITY[g.city] || g.city || '';
           var note = g.note ? (typeof g.note === 'string' ? g.note : (g.note[lang] || g.note.en)) : '';
-          var where = [g.private ? '' : g.venue, city, g.private ? '' : note].filter(Boolean).join(' · ');
+          var where = [g.private ? '' : g.venue, g.private ? '' : note, city].filter(Boolean).join(' · ');
           var name = g.private ? (T.priv[g.private] || T.priv.event) : g.event;
+          var logos = g.logos || (g.logo ? [{ src: g.logo, h: g.logoHeight, r: g.logoRatio }] : []);
           var inner = '<time class="up-date" datetime="' + esc(g.date) + '"><span class="up-wd">' + esc(wd) + '</span><span class="up-day">' + q[2] +
-            '</span><span class="up-mo">' + esc(mo) + yr + '</span></time><span class="up-what"><span class="up-event">' + (g.logo && !g.private ? '<span class="up-logo" role="img" aria-label="' + esc(g.event) + '" style="--logo:url(\'' + esc(g.logo) + '\');height:' + Number(g.logoHeight || 20) + 'px;aspect-ratio:' + Number(g.logoRatio || 5.56) + '"></span>' : esc(name)) +
+            '</span><span class="up-mo">' + esc(mo) + yr + '</span></time><span class="up-what"><span class="up-event">' + (logos.length && !g.private ? '<span class="up-logos" role="img" aria-label="' + esc(g.event) + '">' + logos.map(function (l) { return '<span class="up-logo" style="--logo:url(\'' + esc(l.src) + '\');height:' + Number(l.h || 20) + 'px;aspect-ratio:' + Number(l.r || 5.56) + '"></span>'; }).join('<span class="up-x" aria-hidden="true">×</span>') + '</span>' : esc(name)) +
             '</span><span class="up-where">' + esc(where) + '</span></span>';
           return g.url && !g.private && !g._past
             ? '<li><a class="up-row" href="' + esc(g.url) + '" target="_blank" rel="noopener noreferrer">' + inner +

@@ -476,3 +476,9 @@ main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
 .up-past .up-event{font-size:clamp(17px,1.5vw,19px)}
 .up-past .up-logo{transform:scale(.8);transform-origin:left center}
 @media (prefers-reduced-motion:reduce){.up-past-ar{transition:none}}
+/* one or more event logos side by side (e.g. MEIJT × FERRY) */
+.up-logos{display:flex;align-items:center;gap:8px;margin:3px 0 4px}
+.up-logos .up-logo{margin:0;flex:none}
+.up-x{font-weight:800;font-size:14px;color:var(--c-plum-mute)}
+.up-past .up-logos{transform:scale(.8);transform-origin:left center}
+.up-past .up-logo{transform:none}
