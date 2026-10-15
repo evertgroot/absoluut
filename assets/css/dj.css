@@ -504,11 +504,13 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 }
 /* Recent gigs: the past dates at the end of "Where I've Played", on its dark purple. A fourth group under
    Venues / Events / Brand events, with the same top rule; the list lines up with those three columns. */
-.rg{--up-line:rgba(255,255,255,.16);margin-top:clamp(40px,5vw,64px);padding-top:12px;border-top:1.5px solid rgba(255,255,255,.25)}
-.rg .up-past-toggle{color:var(--c-white);text-decoration-color:rgba(255,255,255,.35)}
-.rg .up-past-toggle:hover{text-decoration-color:var(--c-white)}
+.rg{--up-line:rgba(255,255,255,.16);margin-top:clamp(32px,4vw,56px);padding-top:6px;border-top:1.5px solid rgba(255,255,255,.25)}
+/* the button reads as the group label, like VENUES / EVENTS / BRAND EVENTS, with an arrow; it underlines on hover */
+.rg .up-past-toggle{color:var(--c-blush);font-family:'Manrope',sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;text-decoration-color:transparent;text-underline-offset:6px}
+.rg .up-past-toggle:hover{text-decoration-color:var(--c-blush)}
 .rg .up-past-toggle:focus-visible{outline-color:var(--c-white)}
-.rg .up-past-ar.hv-ar{color:var(--c-blush)}
+.rg .up-past-ar.hv-ar{color:var(--c-blush);font-size:15px}
+.rg .up-past{margin-top:4px}
 .rg .up-row{color:var(--c-white)}
 .rg .up-day{color:var(--c-lilac)}
 .rg .up-mo,.rg .up-where{color:var(--c-lilac)}
