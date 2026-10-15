@@ -814,3 +814,9 @@ div:has(> main.cs-bops){overflow-x:clip}
 .wk-prev strong{color:#fff;font-weight:700}
 .wk .wk-prev + .wk-cta{margin-top:32px}
 @media (max-width:700px){.wk-prev{margin-top:24px}.wk-prev li{flex-direction:column;gap:2px}.wk-prev-yr{flex:none;font-size:14px}}
+/* BOPS hero on phones: roles get the full width so the pills sit side by side; the other facts pack two per row */
+@media (max-width:760px){
+  .cs-bops .cs-meta{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row dense;gap:16px 20px}
+  .cs-bops .cs-meta > div:has(.cs-meta-pills){grid-column:1 / -1}
+  .cs-bops .cs-meta dd.cs-meta-pills{max-width:none}
+}
