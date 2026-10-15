@@ -36,7 +36,7 @@
   {"date": "2026-03-21", "event": "Rebel Night", "venue": "Q Club", "city": "Milan"},
   {"date": "2026-06-04", "event": "Private event", "city": "Amsterdam", "private": "event", "venue": "De Hallen"},
   {"date": "2026-06-05", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam"},
-  {"date": "2026-06-08", "event": "FERRY", "venue": "", "city": "Rotterdam", "note": {"en": "Manic Monday", "nl": "Manic Monday", "it": "Manic Monday"}, "logos": [{"src": "/assets/img/logos/ferry.svg", "h": 22, "r": 3.04}]},
+  {"date": "2026-06-08", "event": "FERRY", "venue": "", "city": "Rotterdam", "logos": [{"src": "/assets/img/logos/ferry.svg", "h": 22, "r": 3.04}]},
   {"date": "2026-06-13", "event": "Tropikali", "venue": "", "city": "Amsterdam", "note": {"en": "Kalinichta Stage", "nl": "Kalinichta-stage", "it": "palco Kalinichta"}},
   {"date": "2026-06-20", "event": "LeccoMilano", "venue": "", "city": "Milan"},
   {"date": "2026-06-25", "event": "Euforia", "venue": "", "city": "Milan", "note": {"en": "B2B with Dimitri Tenot", "nl": "B2B met Dimitri Tenot", "it": "B2B con Dimitri Tenot"}},
