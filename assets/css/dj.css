@@ -490,3 +490,9 @@ main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
 .up-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px;margin-top:20px}
 .up-actions:empty{display:none}
 .up-actions .up-toggle,.up-actions .up-past-toggle{margin-top:0}
+/* phones: stack the list controls on purpose; the upcoming button spans the width, past events sits under it */
+@media (max-width:760px){
+  .up-actions{flex-direction:column;align-items:stretch;gap:6px}
+  .up-actions .up-toggle{justify-content:center;width:100%;min-height:48px}
+  .up-actions .up-past-toggle{align-self:flex-start}
+}
