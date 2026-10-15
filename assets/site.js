@@ -640,7 +640,7 @@
             '</span><span class="up-where">' + esc(where) + '</span></span>';
           return g.url
             ? '<li><a class="up-row" href="' + esc(g.url) + '" target="_blank" rel="noopener noreferrer">' + inner +
-              '<span class="up-go" aria-hidden="true">↗</span><span class="sr-only"> (' + esc(T.info) + ', ' + esc(T.nt) + ')</span></a></li>'
+              '<span class="up-go hv-ar hv-ne" aria-hidden="true">↗</span><span class="sr-only"> (' + esc(T.info) + ', ' + esc(T.nt) + ')</span></a></li>'
             : '<li><div class="up-row">' + inner + '</div></li>';
         };
         var build = function (arr) { return arr.map(row).join(''); };
