@@ -628,16 +628,17 @@
         var row = function (g) {
           var q = g.date.split('-').map(Number), d = new Date(q[0], q[1] - 1, q[2]);
           var wd = d.toLocaleDateString(upLoc, { weekday: 'short' });
-          var mo = d.toLocaleDateString(upLoc, { month: 'short' }) + (q[0] !== thisYear ? ' ' + q[0] : '');
+          var mo = d.toLocaleDateString(upLoc, { month: 'short' }).replace('.', '') + (q[0] !== thisYear ? ' ' + q[0] : '');
           var city = CITY[g.city] || g.city || '';
           var where = [g.venue, city].filter(Boolean).join(' · ');
-          var link = g.url ? '<a class="up-link" href="' + esc(g.url) + '" target="_blank" rel="noopener noreferrer">' + esc(T.info) +
-            '<span aria-hidden="true"> ↗</span><span class="sr-only"> (' + esc(T.nt) + ')</span></a>' : '';
-          return '<li class="up-row"><time class="up-date" datetime="' + esc(g.date) + '"><span class="up-wd">' + esc(wd) +
-            '</span><span class="up-day">' + q[2] + '</span><span class="up-mo">' + esc(mo) + '</span></time>' +
-            '<div class="up-what"><span class="up-event">' + esc(g.event) + '</span><span class="up-where">' + esc(where) + '</span></div>' + link + '</li>';
+          var inner = '<time class="up-date" datetime="' + esc(g.date) + '"><span class="up-day">' + q[2] + '</span><span class="up-mo">' + esc(mo) + '</span></time>' +
+            '<span class="up-what"><span class="up-wd">' + esc(wd) + '</span><span class="up-event">' + esc(g.event) + '</span><span class="up-where">' + esc(where) + '</span></span>';
+          return g.url
+            ? '<li><a class="up-card" href="' + esc(g.url) + '" target="_blank" rel="noopener noreferrer">' + inner +
+              '<span class="up-go" aria-hidden="true">↗</span><span class="sr-only"> (' + esc(T.info) + ', ' + esc(T.nt) + ')</span></a></li>'
+            : '<li><div class="up-card">' + inner + '</div></li>';
         };
-        var first = list.slice(0, 5), rest = list.slice(5);
+        var first = list.slice(0, 6), rest = list.slice(6);
         upList.innerHTML = first.map(row).join('');
         var more = document.getElementById('upcoming-more');
         if (more && rest.length) {

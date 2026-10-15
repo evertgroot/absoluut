@@ -401,25 +401,25 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 /* Upcoming gigs (filled from /assets/gigs.json by site.js); shares the purple band with "Where I've Played" */
 .up-sec + .d-main-section-5 .d-where-div{padding-top:clamp(48px,6vw,80px)}
 .up-wrap{padding-bottom:0}
-.up-list{margin:0;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.16)}
-.up-row{display:grid;grid-template-columns:88px minmax(0,1fr) auto;align-items:center;gap:20px clamp(16px,3vw,40px);padding:18px 0;border-bottom:1px solid rgba(255,255,255,.16)}
-.up-date{display:grid;justify-items:start;line-height:1}
-.up-wd,.up-mo{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--c-blush)}
-.up-day{margin:4px 0 2px;font-family:'Baloo Bhai 2',sans-serif;font-size:40px;font-weight:800;letter-spacing:-0.03em;color:var(--c-white)}
-.up-what{display:grid;gap:4px;min-width:0}
-.up-event{font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2vw,28px);font-weight:800;line-height:1.1;letter-spacing:-0.015em;color:var(--c-white)}
-.up-where{font-size:15px;font-weight:600;color:var(--c-lilac)}
-.up-link{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1.5px solid rgba(255,255,255,.4);border-radius:999px;color:var(--c-white);font-size:15px;font-weight:800;text-decoration:none;white-space:nowrap;transition:background-color .2s ease,border-color .2s ease}
-.up-link:hover{background:var(--c-white);border-color:var(--c-white);color:var(--c-purple)}
-.up-link:focus-visible{outline:2px solid var(--c-white);outline-offset:3px}
+.up-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.up-card{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:18px;height:100%;box-sizing:border-box;padding:16px 52px 16px 16px;border-radius:20px;background:rgba(255,255,255,.07);color:var(--c-white);text-decoration:none;transition:background-color .2s ease,transform .2s cubic-bezier(.2,.7,.2,1)}
+a.up-card:hover{background:rgba(255,255,255,.13);transform:translateY(-2px)}
+a.up-card:focus-visible{outline:2px solid var(--c-white);outline-offset:3px}
+.up-date{display:grid;place-items:center;width:64px;height:64px;border-radius:14px;background:var(--c-blush);color:var(--c-purple-deep);line-height:1;text-align:center}
+.up-day{font-family:'Baloo Bhai 2',sans-serif;font-size:28px;font-weight:800;letter-spacing:-0.02em;margin-top:4px}
+.up-mo{margin-top:-6px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.up-what{display:grid;gap:2px;min-width:0}
+.up-wd{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--c-blush)}
+.up-event{font-family:'Baloo Bhai 2',sans-serif;font-size:22px;font-weight:800;line-height:1.1;letter-spacing:-0.015em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.up-where{font-size:14px;font-weight:600;color:var(--c-lilac);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.up-go{position:absolute;top:50%;right:18px;transform:translateY(-50%);font-size:18px;font-weight:800;color:var(--c-blush);transition:transform .2s ease}
+a.up-card:hover .up-go{transform:translate(2px,calc(-50% - 2px))}
 .up-more{margin-top:16px}
-.up-more summary{display:inline-flex;align-items:center;min-height:44px;cursor:pointer;font-weight:800;color:var(--c-white)}
+.up-more summary{display:inline-flex;align-items:center;min-height:44px;cursor:pointer;font-weight:800;color:var(--c-white);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px}
 .up-more summary::marker{color:var(--c-blush)}
 .up-more .up-list{margin-top:8px}
 .up-preview{margin:0 0 16px;padding:8px 14px;border-radius:12px;background:var(--c-blush);color:var(--c-purple-deep);font-size:14px;font-weight:700;display:inline-block}
-@media (max-width:640px){
-  .up-row{grid-template-columns:64px minmax(0,1fr);row-gap:12px}
-  .up-day{font-size:32px}
-  .up-link{grid-column:2;justify-self:start}
-}
-.up-more summary{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px}
+@media (max-width:760px){.up-list{grid-template-columns:minmax(0,1fr);gap:10px}}
+@media (prefers-reduced-motion:reduce){a.up-card,a.up-card:hover,.up-go{transition:none;transform:none}a.up-card:hover .up-go{transform:translateY(-50%)}}
+.up-date{width:70px}
+@media (max-width:760px){.up-card{gap:14px;padding:14px 40px 14px 14px}.up-go{right:14px}.up-event,.up-where{white-space:normal}}
