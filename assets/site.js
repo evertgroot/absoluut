@@ -204,7 +204,24 @@
     box.classList.add('mq-js');
     if (still) return; /* no drift, list wraps; nothing to scroll or focus */
     box.setAttribute('tabindex', '0');
-    var pos = 0, seen = 0, last = null, hold = 0, hover = false, focus = false, drag = null, onScreen = true, looping = false;
+    var pos = 0, seen = 0, last = null, hold = 0, hover = false, focus = false, drag = null, onScreen = true, looping = false, stopped = false;
+    /* a visible pause/play button (WCAG 2.2.2): the band keeps moving otherwise, so visitors can stop it for good */
+    var ML = { en: ['Pause the logo band', 'Play the logo band'], nl: ['Logoband pauzeren', 'Logoband afspelen'], it: ['Metti in pausa i loghi', 'Riproduci i loghi'] }[lang] || ['Pause the logo band', 'Play the logo band'];
+    var wrapEl = document.createElement('div');
+    wrapEl.className = 'mq-wrap';
+    box.parentNode.insertBefore(wrapEl, box);
+    wrapEl.appendChild(box);
+    var pb = document.createElement('button');
+    pb.type = 'button'; pb.className = 'mq-pause';
+    pb.setAttribute('aria-label', ML[0]); pb.setAttribute('aria-pressed', 'false');
+    pb.innerHTML = '<span class="mq-ic" aria-hidden="true"></span>';
+    pb.addEventListener('click', function () {
+      stopped = !stopped;
+      pb.setAttribute('aria-pressed', String(stopped));
+      pb.setAttribute('aria-label', stopped ? ML[1] : ML[0]);
+      if (!stopped) { pos = box.scrollLeft; last = null; }
+    });
+    wrapEl.appendChild(pb);
     var first = track.firstElementChild, dup = track.querySelector('.marquee-dup');
     function unit() { return first ? first.offsetWidth : track.scrollWidth / 2; }
     function fill() { /* enough copies that the band never runs out on wide screens */
@@ -226,7 +243,7 @@
       var dt = last === null ? 0 : Math.min((t - last) / 1000, 0.1);
       last = t;
       if (Math.abs(box.scrollLeft - seen) > 2) { pos = box.scrollLeft; wrap(); }
-      if (!drag && !hover && !focus && t > hold) {
+      if (!stopped && !drag && !hover && !focus && t > hold) {
         var u = unit();
         pos += (u / 48) * dt;
         if (pos > track.scrollWidth - box.clientWidth - 1) pos -= u;
@@ -605,9 +622,9 @@
   if (upSec && upList) {
     var preview = /[?&]gigs=preview\b/.test(location.search);
     var T = {
-      en: { past: 'Past Events', priv: { wedding: 'Private Wedding', event: 'Private Event' }, next: 'Next up', more: 'More Dates', all: 'All Upcoming Dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: Hidden Gigs Are Shown' },
-      nl: { past: 'Afgelopen events', priv: { wedding: 'Besloten bruiloft', event: 'Besloten event' }, next: 'Volgende gig', more: 'Meer data', all: 'Alle komende data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
-      it: { past: 'Eventi passati', priv: { wedding: 'Matrimonio privato', event: 'Evento privato' }, next: 'Prossima data', more: 'Altre date', all: 'Tutte le prossime date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
+      en: { recent: 'Past Gigs', priv: { wedding: 'Wedding', event: 'Private Event' }, next: 'Next up', more: 'More Dates', all: 'All Upcoming Dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: Hidden Gigs Are Shown' },
+      nl: { recent: 'Afgelopen gigs', priv: { wedding: 'Bruiloft', event: 'Besloten event' }, next: 'Volgende gig', more: 'Meer data', all: 'Alle komende data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
+      it: { recent: 'Date passate', priv: { wedding: 'Matrimonio', event: 'Evento privato' }, next: 'Prossima data', more: 'Altre date', all: 'Tutte le prossime date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
     }[lang] || null;
     var CITY = {
       nl: { Milan: 'Milaan', Antwerp: 'Antwerpen', Rome: 'Rome', 'The Hague': 'Den Haag', Brussels: 'Brussel' },
@@ -629,7 +646,7 @@
           var q = g.date.split('-').map(Number);
           return new Date(q[0], q[1] - 1, q[2] + 1, 6) <= now;
         }).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
-        if (!list.length || !T) return;
+        if (!T) return;
         var thisYear = now.getFullYear();
         var prevYear = String(thisYear);
         var row = function (g) {
@@ -660,10 +677,37 @@
           ul.classList.add('up-cols'); ul.style.setProperty('--rows', half);
           if (ul.children[half]) ul.children[half].classList.add('up-c2');
         };
+        /* recent gigs: proof of where I play, so they live at the end of "Where I've Played" (#gigs), behind
+           a button, newest first, as plain names without links. They show even when no upcoming gig is public.
+           On wide screens the list lines up with the three columns above (two on tablets), each read top to bottom. */
+        var gigsWrap = document.querySelector('#gigs .d-where-div');
+        if (past.length && gigsWrap) {
+          prevYear = String(thisYear);
+          var rg = document.createElement('div');
+          rg.className = 'rg';
+          var pastList = document.createElement('ul');
+          pastList.className = 'up-list up-past rg-list'; pastList.id = 'recent-gigs'; pastList.hidden = true;
+          pastList.innerHTML = past.map(function (g) { g._past = true; return row(g); }).join('');
+          pastList.style.setProperty('--rows2', Math.ceil(past.length / 2));
+          pastList.style.setProperty('--rows3', Math.ceil(past.length / 3));
+          var pb = document.createElement('button');
+          pb.type = 'button'; pb.className = 'up-past-toggle';
+          pb.setAttribute('aria-expanded', 'false'); pb.setAttribute('aria-controls', 'recent-gigs');
+          pb.id = 'recent-gigs-toggle'; pastList.setAttribute('aria-labelledby', 'recent-gigs-toggle'); /* the list is announced as "Past Gigs" */
+          pb.innerHTML = esc(T.recent) + '<span class="up-past-ar hv-ar hv-d" aria-hidden="true">↓</span>';
+          pb.addEventListener('click', function () {
+            var open = pastList.hidden;
+            pastList.hidden = !open; pb.setAttribute('aria-expanded', String(open));
+          });
+          rg.appendChild(pb); rg.appendChild(pastList);
+          gigsWrap.appendChild(rg);
+        }
+        if (!list.length) return;
         var first = list.slice(0, 8), rest = list.slice(8);
+        prevYear = String(thisYear); /* the past list above has moved the year on; upcoming starts from this year */
         upList.innerHTML = build(first);
         cols(upList);
-        /* the list controls (All dates on phones, Past events) share one row under the list */
+        /* the list control (All Upcoming Dates, phones only) sits under the list */
         var actions = document.createElement('div');
         actions.className = 'up-actions';
         upList.parentNode.insertBefore(actions, upList.nextSibling);
@@ -676,24 +720,6 @@
           tg.setAttribute('aria-expanded', 'false'); tg.setAttribute('aria-controls', 'upcoming-list');
           tg.addEventListener('click', function () { upList.classList.remove('up-collapsed'); tg.setAttribute('aria-expanded', 'true'); tg.hidden = true; });
           actions.appendChild(tg);
-        }
-        /* past events: a button under the list opens them, newest first, without links */
-        if (past.length) {
-          prevYear = String(thisYear);
-          var pastList = document.createElement('ul');
-          pastList.className = 'up-list up-past'; pastList.id = 'upcoming-past'; pastList.hidden = true;
-          pastList.innerHTML = past.map(function (g) { g._past = true; return row(g); }).join('');
-          cols(pastList);
-          var pb = document.createElement('button');
-          pb.type = 'button'; pb.className = 'up-past-toggle';
-          pb.setAttribute('aria-expanded', 'false'); pb.setAttribute('aria-controls', 'upcoming-past');
-          pb.innerHTML = esc(T.past) + ' (' + past.length + ')<span class="up-past-ar" aria-hidden="true">↓</span>';
-          pb.addEventListener('click', function () {
-            var open = pastList.hidden;
-            pastList.hidden = !open; pb.setAttribute('aria-expanded', String(open));
-          });
-          actions.appendChild(pb);
-          actions.parentNode.insertBefore(pastList, actions.nextSibling);
         }
         var more = document.getElementById('upcoming-more');
         if (more && rest.length) {
@@ -729,10 +755,15 @@
         /* hero: one line with the next gig, linking down to the list */
         var heroNext = document.getElementById('hero-next');
         if (heroNext) {
+          /* one quiet line under the buttons, in the hero's own text style: a red status dot, the label and a linked
+             date · event · city. No box and no arrow, so it doesn't read as a third button */
           var n = list[0], nq = n.date.split('-').map(Number), nd = new Date(nq[0], nq[1] - 1, nq[2]);
-          var nDate = nd.toLocaleDateString(upLoc, { weekday: 'short', day: 'numeric', month: 'short' }).replace(/\./g, '');
-          var nWhere = [n.event, CITY[n.city] || n.city].filter(Boolean).join(', ');
-          heroNext.innerHTML = '<a href="#upcoming"><span class="hn-label">' + esc(T.next) + '</span><span class="hn-text">' + esc(nDate) + ' · ' + esc(nWhere) + '</span><span class="hn-ar" aria-hidden="true">↓</span></a>';
+          var nOpts = { weekday: 'short', day: 'numeric', month: 'short' };
+          if (nq[0] !== thisYear) nOpts.year = 'numeric';
+          var nDate = nd.toLocaleDateString(upLoc, nOpts).replace(/\./g, '');
+          var nPlace = CITY[n.city] || n.city || ''; /* city only; the venue is in the list below */
+          heroNext.innerHTML = '<a class="hn" href="#upcoming"><span class="hn-dot" aria-hidden="true"></span><span class="hn-label">' + esc(T.next) + '</span>' +
+            '<span class="hn-text">' + esc([nDate, n.event, nPlace].filter(Boolean).join(' · ')) + '</span></a>';
           heroNext.hidden = false;
         }
       })

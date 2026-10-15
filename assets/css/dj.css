@@ -299,11 +299,11 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .lg-adam{--lg:url(/assets/img/logos/adam-toren.png);--la:400 / 543;--lh:1.7}
 .lg-pride-ams{--lg:url(/assets/img/logos/pride-amsterdam.png);--la:500 / 242;--lh:1.05}
 .lg-tropikali{--lg:url(/assets/img/logos/tropikali.png);--la:290 / 72;--lh:.8}
-.lg-antwerp-pride{--lg:url(/assets/img/logos/antwerp-pride.png);--la:600 / 246;--lh:1.5}
+.lg-antwerp-pride{--lg:url(/assets/img/logos/antwerp-pride.png?v=2);--la:600 / 246;--lh:1.5}
 .lg-mcd{--lg:url(/assets/img/logos/mcdonalds.svg);--la:264.6 / 33.1;--lh:.44}
 .lg-sofitel{--lg:url(/assets/img/logos/sofitel.svg);--la:70 / 40;--lh:1.75}
 .marquee .logo{--logo-base:34px}
-.lg-milkshake{--lg:url(/assets/img/logos/milkshake.png?v=2);--la:464 / 120;--lh:.85;background:var(--lg) center / contain no-repeat;-webkit-mask:none;mask:none}
+.lg-milkshake{--lg:url(/assets/img/logos/milkshake.png?v=3);--la:464 / 120;--lh:.85;background:var(--lg) center / contain no-repeat;-webkit-mask:none;mask:none}
 .lg-qclub{--lg:url(/assets/img/logos/q-club.svg);--la:1 / 1;--lh:.9}
 .lg-nyx{--lg:url(/assets/img/logos/club-nyx.png?v=2);--la:284 / 531;--lh:1.45}
 .lg-tos{--lg:url(/assets/img/logos/the-other-side.png);--la:384 / 424;--lh:1.4}
@@ -399,13 +399,17 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .d-page-a-4{display: inline-flex;align-items: center;justify-content: center;height: 46px;padding: 0 16px;border-radius: 999px;background: rgba(255,255,255,0.1)}
 .d-page-span{display: block;width: 89px;height: 16px;background: currentColor;-webkit-mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat;mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat}
 /* hero: the next gig as one quiet line under the buttons */
-.hero-next{margin:22px 0 0}
-.hero-next a{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px 10px;min-height:44px;color:var(--c-white);text-decoration:none;font-size:15px;font-weight:700}
-.hn-label{padding:4px 10px;border-radius:999px;background:var(--c-red);color:var(--c-white);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
-.hn-text{text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-decoration-thickness:1.5px;text-underline-offset:5px;transition:text-decoration-color .2s ease}
-.hero-next a:hover .hn-text{text-decoration-color:var(--c-white)}
-.hero-next a:focus-visible{outline:2px solid var(--c-white);outline-offset:4px;border-radius:6px}
-.hn-ar{color:var(--c-blush)}
+.hero-next{margin:0}
+/* hero "Next up": a line of text in the hero's own voice, under the buttons */
+.hn{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px 10px;min-height:44px;color:rgba(255,255,255,.84);text-decoration:none;font-size:15px;font-weight:600}
+.hn-dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--c-red);box-shadow:0 0 0 4px rgba(200,25,58,.28)}
+.hn-label{color:rgba(255,255,255,.84)}
+.hn-text{color:var(--c-white);font-weight:700;text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-decoration-thickness:1.5px;text-underline-offset:5px;transition:text-decoration-color .25s ease}
+.hn:hover,.hn:focus-visible{color:rgba(255,255,255,.84)}
+.hn:hover .hn-text,.hn:focus-visible .hn-text{text-decoration-color:var(--c-white)}
+.hn:focus-visible{outline:2px solid var(--c-white);outline-offset:4px;border-radius:6px}
+/* phones: the line follows the buttons instead of sitting between the title and the buttons */
+@media (max-width: 899px){.gut > .hero-next{order:1}}
 /* one style for every external link on the DJ page: the ↗ arrow, bold, in the section's accent colour,
    nudging up-right on hover (mixes, upcoming gigs, reviews) */
 main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
@@ -421,15 +425,17 @@ main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
 .up-preview{display:inline-block;margin:0 0 20px;padding:8px 14px;border-radius:12px;background:var(--c-aubergine);color:var(--c-white);font-size:14px;font-weight:700}
 .up-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;column-gap:clamp(24px,4vw,64px)}
 .up-list > li:nth-child(-n+2) .up-row{border-top:1px solid var(--up-line)}
-.up-row{display:grid;grid-template-columns:60px minmax(0,1fr) auto;align-items:center;gap:16px;height:100%;box-sizing:border-box;padding:14px 4px;border:0 solid var(--up-line);border-bottom-width:1px;color:var(--c-aubergine);text-decoration:none;transition:background-color .2s ease}
-a.up-row:hover{background:rgba(31,3,40,.05)}
+.up-row{display:grid;grid-template-columns:60px minmax(0,1fr) auto;align-items:center;gap:16px;height:100%;box-sizing:border-box;padding:14px 4px;border:0 solid var(--up-line);border-bottom-width:1px;color:var(--c-aubergine);text-decoration:none;transition:background-color .35s ease}
+/* hover: the same as the What I Do rows: a faint red tint, text and logo keep their colour, the arrow nudges.
+   (The site-wide pink link hover is only for dark backgrounds, so the colour is pinned here.) */
+a.up-row:hover,a.up-row:focus-visible{background:rgba(200,25,58,.05);color:var(--c-aubergine)}
 a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .up-date{display:grid;justify-items:center;width:60px;line-height:1}
 .up-wd,.up-mo{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c-plum-mute)}
 .up-mo{white-space:nowrap}
 /* the year sits under the month of the first gig in a new year */
 .up-yr{display:block;margin-top:3px;color:var(--c-red)}
-.up-day{margin:3px 0 2px;font-family:'Baloo Bhai 2',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.02em;color:var(--c-aubergine)}
+.up-day{margin:3px 0 2px;font-family:'Baloo Bhai 2',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.02em;color:var(--c-plum-mute)}
 .up-what{display:grid;gap:3px;min-width:0}
 .up-event{font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(20px,1.8vw,24px);font-weight:800;line-height:1.1;letter-spacing:-0.015em}
 .up-where{font-size:14px;font-weight:600;color:var(--c-plum-mute)}
@@ -444,7 +450,7 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
   .up-list > li:nth-child(2) .up-row{border-top:0}
 }
 /* one or more event logos side by side (e.g. A × B), sized per logo in gigs.json */
-.up-logos{display:flex;align-items:center;gap:8px;margin:3px 0 4px}
+.up-logos{display:flex;align-items:center;gap:8px;margin:3px 0 4px;color:var(--c-plum-mute)} /* same colour as the date and place */
 .up-logo{display:block;flex:none;width:auto;max-width:100%;background:currentColor;-webkit-mask:var(--logo) left center / contain no-repeat;mask:var(--logo) left center / contain no-repeat}
 /* full-colour logos are shown as they are instead of as a one-colour mask */
 .up-logo.is-color{background:var(--logo) left center / contain no-repeat;-webkit-mask:none;mask:none}
@@ -469,8 +475,11 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .up-past-toggle{display:flex;align-items:center;gap:8px;min-height:44px;padding:0;border:0;background:none;color:var(--c-aubergine);font:inherit;font-size:15px;font-weight:800;cursor:pointer;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(31,3,40,.35)}
 .up-past-toggle:hover{text-decoration-color:var(--c-aubergine)}
 .up-past-toggle:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:3px}
-.up-past-ar{color:var(--c-red);transition:transform .2s ease}
-.up-past-toggle[aria-expanded="true"] .up-past-ar{transform:rotate(180deg)}
+/* the site's own down arrow (mask icon, like "Inquire for …"); it flips up while the list is open and nudges in its direction on hover */
+.up-past-ar.hv-ar{margin-left:0;color:var(--c-red)}
+.up-past-toggle[aria-expanded="true"] .up-past-ar.hv-ar{transform:rotate(180deg)}
+@media (hover:hover){.up-past-toggle[aria-expanded="true"]:hover .up-past-ar.hv-ar{transform:rotate(180deg) translateY(3px)}}
+.up-past-toggle[aria-expanded="true"]:focus-visible .up-past-ar.hv-ar{transform:rotate(180deg) translateY(3px)}
 /* phones: only the first three gigs show; the full-width button reveals the rest, Past Events sits under it */
 @media (max-width:760px){
   .up-collapsed > li:nth-child(n+4){display:none}
@@ -490,6 +499,41 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .up-past .up-event{display:flex;align-items:center;min-height:28px;font-size:18px}
 .up-past .up-where{font-size:13px}
 @media (prefers-reduced-motion:reduce){
-  a.up-row,.up-go,.up-past-ar{transition:none}
+  a.up-row,.up-go{transition:none}
   a.up-row:hover .up-go{transform:none}
 }
+/* reduced motion: no nudge or animation, but the open state still points up */
+@media (prefers-reduced-motion:reduce){
+  .up-past-toggle[aria-expanded="true"] .up-past-ar.hv-ar{transform:rotate(180deg) !important;transition:none}
+}
+/* Recent gigs: the past dates at the end of "Where I've Played", on its dark purple. A fourth group under
+   Venues / Events / Brand events, with the same top rule; the list lines up with those three columns. */
+.rg{--up-line:rgba(255,255,255,.16);margin-top:clamp(32px,4vw,56px);padding-top:6px;border-top:1.5px solid rgba(255,255,255,.25)}
+/* the button reads as the group label, like VENUES / EVENTS / BRAND EVENTS, with an arrow; it underlines on hover */
+.rg .up-past-toggle{color:var(--c-blush);font-family:'Manrope',sans-serif;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;text-decoration-color:transparent;text-underline-offset:6px}
+.rg .up-past-toggle:hover{text-decoration-color:var(--c-blush)}
+.rg .up-past-toggle:focus-visible{outline-color:var(--c-white)}
+.rg .up-past-ar.hv-ar{color:var(--c-blush);font-size:15px}
+.rg .up-past{margin-top:4px}
+.rg .up-row{color:var(--c-white)}
+.rg .up-day{color:var(--c-lilac)}
+.rg .up-mo,.rg .up-where{color:var(--c-lilac)}
+.rg .up-yr{color:var(--c-blush)}
+/* the group's top rule already opens the list, so rows only carry a line underneath */
+#gigs .rg-list > li .up-row{border-top-width:0}
+@media (min-width:1001px){
+  .rg-list{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:column;grid-template-rows:repeat(var(--rows3,5),auto)}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .rg-list{grid-auto-flow:column;grid-template-rows:repeat(var(--rows2,7),auto)}
+}
+/* a past gig without a known place keeps the empty second line, so the row height stays even */
+.up-past .up-where:empty::before{content:"\a0"}
+/* logo band: pause/play button on the band's right edge (dark disc, white icon: two bars, or a triangle when paused) */
+.mq-wrap{position:relative}
+.mq-pause{position:absolute;right:clamp(12px,2vw,24px);top:50%;transform:translateY(-50%);display:grid;place-items:center;width:44px;height:44px;padding:0;border:1.5px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(31,3,40,.6);color:var(--c-white);cursor:pointer;transition:background-color .25s ease,border-color .25s ease}
+.mq-pause:hover{background:rgba(31,3,40,.85);border-color:var(--c-white)}
+.mq-pause:focus-visible{outline:2px solid var(--c-white);outline-offset:3px}
+.mq-ic{display:block;width:12px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Crect x='1' y='1' width='3.5' height='12' rx='1'/%3E%3Crect x='7.5' y='1' width='3.5' height='12' rx='1'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Crect x='1' y='1' width='3.5' height='12' rx='1'/%3E%3Crect x='7.5' y='1' width='3.5' height='12' rx='1'/%3E%3C/svg%3E") center / contain no-repeat}
+.mq-pause[aria-pressed="true"] .mq-ic{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Cpath d='M2 1.5v11a.8.8 0 0 0 1.2.7l8.4-5.5a.8.8 0 0 0 0-1.4L3.2.8A.8.8 0 0 0 2 1.5z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Cpath d='M2 1.5v11a.8.8 0 0 0 1.2.7l8.4-5.5a.8.8 0 0 0 0-1.4L3.2.8A.8.8 0 0 0 2 1.5z'/%3E%3C/svg%3E");margin-left:2px}
+@media (forced-colors:active){.mq-ic{forced-color-adjust:none;background:ButtonText}}
