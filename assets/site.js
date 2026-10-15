@@ -645,9 +645,11 @@
           if (!g || !g.date || (g.show === false && !preview)) return false;
           var q = g.date.split('-').map(Number);
           return new Date(q[0], q[1] - 1, q[2] + 1, 6) <= now;
-        }).sort(function (a, b) { /* newest year first; within a year, January to December */
+        }).sort(function (a, b) { /* newest year first; earlier years January to December, the current year newest first */
           var ya = a.date.slice(0, 4), yb = b.date.slice(0, 4);
-          return ya !== yb ? (ya < yb ? 1 : -1) : (a.date < b.date ? -1 : 1);
+          if (ya !== yb) return ya < yb ? 1 : -1;
+          var asc = a.date < b.date ? -1 : 1;
+          return ya === String(now.getFullYear()) ? -asc : asc;
         });
         if (!T) return;
         var thisYear = now.getFullYear();
