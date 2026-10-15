@@ -496,3 +496,8 @@ main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
   .up-actions .up-toggle{justify-content:center;width:100%;min-height:48px}
   .up-actions .up-past-toggle{align-self:flex-start}
 }
+/* high-contrast mode replaces background colours, which would erase the mask-based logos; draw them in the system text colour */
+@media (forced-colors:active){
+  .up-logo{forced-color-adjust:none;background:CanvasText}
+  .up-logo.is-color{background:var(--logo) left center / contain no-repeat}
+}

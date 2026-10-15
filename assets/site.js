@@ -665,7 +665,7 @@
           var tg = document.createElement('button');
           tg.type = 'button'; tg.className = 'up-toggle';
           tg.textContent = T.all + ' (' + list.length + ')';
-          tg.setAttribute('aria-expanded', 'false');
+          tg.setAttribute('aria-expanded', 'false'); tg.setAttribute('aria-controls', 'upcoming-list');
           tg.addEventListener('click', function () { upList.classList.remove('up-collapsed'); tg.setAttribute('aria-expanded', 'true'); tg.hidden = true; });
           actions.appendChild(tg);
         }
@@ -700,9 +700,12 @@
           /* Structured data so public gigs can show up in Google's event results */
           var ld = document.createElement('script');
           ld.type = 'application/ld+json';
-          ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': list.map(function (g) {
+          ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': list.filter(function (g) { return !g.private; }).map(function (g) {
             return {
               '@type': 'Event', name: g.event + (g.venue ? ' at ' + g.venue : ''), startDate: g.date,
+              /* club nights run past midnight, so they end the next day */
+              endDate: (function () { var q = g.date.split('-').map(Number); return new Date(Date.UTC(q[0], q[1] - 1, q[2] + 1)).toISOString().slice(0, 10); })(),
+              image: ['https://imgroot.nl/assets/img/dj-absoluut-bops.jpg'],
               eventStatus: 'https://schema.org/EventScheduled',
               eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
               location: { '@type': 'Place', name: g.venue || g.event, address: { '@type': 'PostalAddress', addressLocality: g.city } },
