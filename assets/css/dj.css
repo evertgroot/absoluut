@@ -431,3 +431,5 @@ a.up-row:hover .up-go{transform:translate(2px,-2px)}
 .up-mo{white-space:nowrap}
 .up-yr{display:block;margin-top:3px;color:var(--c-blush)}
 @media (max-width:760px){.up-list > li:nth-child(2) .up-row{border-top:0}}
+/* event logos instead of the name (white artwork), sized to sit on the name's baseline */
+.up-logo{display:block;width:auto;height:20px;max-width:100%;margin:3px 0 4px}

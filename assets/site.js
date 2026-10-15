@@ -636,7 +636,7 @@
           var city = CITY[g.city] || g.city || '';
           var where = [g.venue, city].filter(Boolean).join(' · ');
           var inner = '<time class="up-date" datetime="' + esc(g.date) + '"><span class="up-wd">' + esc(wd) + '</span><span class="up-day">' + q[2] +
-            '</span><span class="up-mo">' + esc(mo) + yr + '</span></time><span class="up-what"><span class="up-event">' + esc(g.event) +
+            '</span><span class="up-mo">' + esc(mo) + yr + '</span></time><span class="up-what"><span class="up-event">' + (g.logo ? '<img class="up-logo" src="' + esc(g.logo) + '" alt="' + esc(g.event) + '" decoding="async"' + (g.logoHeight ? ' style="height:' + Number(g.logoHeight) + 'px"' : '') + '>' : esc(g.event)) +
             '</span><span class="up-where">' + esc(where) + '</span></span>';
           return g.url
             ? '<li><a class="up-row" href="' + esc(g.url) + '" target="_blank" rel="noopener noreferrer">' + inner +
