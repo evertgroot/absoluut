@@ -604,9 +604,9 @@
   if (upSec && upList) {
     var preview = /[?&]gigs=preview\b/.test(location.search);
     var T = {
-      en: { more: 'More dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: hidden gigs are shown' },
-      nl: { more: 'Meer data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
-      it: { more: 'Altre date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
+      en: { more: 'More dates', all: 'All dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: hidden gigs are shown' },
+      nl: { more: 'Meer data', all: 'Alle data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
+      it: { more: 'Altre date', all: 'Tutte le date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
     }[lang] || null;
     var CITY = {
       nl: { Milan: 'Milaan', Antwerp: 'Antwerpen', Rome: 'Rome', 'The Hague': 'Den Haag', Brussels: 'Brussel' },
@@ -646,6 +646,16 @@
         var build = function (arr) { return arr.map(row).join(''); };
         var first = list.slice(0, 8), rest = list.slice(8);
         upList.innerHTML = build(first);
+        /* on phones only the first three show; a button reveals the rest */
+        if (first.length > 3) {
+          upList.classList.add('up-collapsed');
+          var tg = document.createElement('button');
+          tg.type = 'button'; tg.className = 'up-toggle';
+          tg.textContent = T.all + ' (' + list.length + ')';
+          tg.setAttribute('aria-expanded', 'false');
+          tg.addEventListener('click', function () { upList.classList.remove('up-collapsed'); tg.setAttribute('aria-expanded', 'true'); tg.hidden = true; });
+          upList.parentNode.insertBefore(tg, upList.nextSibling);
+        }
         var more = document.getElementById('upcoming-more');
         if (more && rest.length) {
           more.querySelector('summary').textContent = T.more + ' (' + rest.length + ')';

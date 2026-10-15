@@ -433,3 +433,20 @@ a.up-row:hover .up-go{transform:translate(2px,-2px)}
 @media (max-width:760px){.up-list > li:nth-child(2) .up-row{border-top:0}}
 /* event logos instead of the name (white artwork), sized to sit on the name's baseline */
 .up-logo{display:block;width:auto;height:20px;max-width:100%;margin:3px 0 4px}
+/* Upcoming gigs on the DJ red, so the newest information stands apart from the purple history below */
+.up-sec{background:var(--c-red);color:var(--c-white)}
+.up-sec .up-wrap{padding-bottom:clamp(64px,8vw,104px)}
+.up-sec + .d-main-section-5 .d-where-div{padding-top:clamp(72px,10vw,136px)}
+.up-sec .up-row{border-color:rgba(255,255,255,.28)}
+.up-sec .up-list > li:nth-child(-n+2) .up-row{border-top-color:rgba(255,255,255,.28)}
+.up-sec .up-wd,.up-sec .up-mo,.up-sec .up-where{color:rgba(255,255,255,.86)}
+.up-sec .up-yr{color:var(--c-white)}
+.up-sec .up-go{color:var(--c-white)}
+.up-sec a.up-row:hover{background:rgba(0,0,0,.1)}
+.up-sec .up-preview{background:var(--c-white);color:var(--c-red)}
+.up-toggle{display:none}
+@media (max-width:760px){
+  .up-collapsed > li:nth-child(n+4){display:none}
+  .up-toggle{display:inline-flex;align-items:center;min-height:44px;margin-top:16px;padding:0 20px;border:1.5px solid rgba(255,255,255,.6);border-radius:999px;background:none;color:var(--c-white);font:inherit;font-size:15px;font-weight:800;cursor:pointer}
+  .up-toggle:focus-visible{outline:2px solid var(--c-white);outline-offset:3px}
+}
