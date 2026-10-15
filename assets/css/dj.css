@@ -426,9 +426,11 @@ main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
 .up-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;column-gap:clamp(24px,4vw,64px)}
 .up-list > li:nth-child(-n+2) .up-row{border-top:1px solid var(--up-line)}
 .up-row{display:grid;grid-template-columns:60px minmax(0,1fr) auto;align-items:center;gap:16px;height:100%;box-sizing:border-box;padding:14px 4px;border:0 solid var(--up-line);border-bottom-width:1px;color:var(--c-aubergine);text-decoration:none;transition:background-color .35s ease}
-/* hover: the same as the What I Do rows: a faint red tint, text and logo keep their colour, the arrow nudges.
-   (The site-wide pink link hover is only for dark backgrounds, so the colour is pinned here.) */
+/* hover: the faint red tint of the What I Do rows, and the logo, date, venue and city light up in the site's red
+   (the pink of "Your Event" is for dark backgrounds; on this light rose it washes out) */
 a.up-row:hover,a.up-row:focus-visible{background:rgba(200,25,58,.05);color:var(--c-aubergine)}
+.up-sec :is(.up-wd,.up-day,.up-mo,.up-where){transition:color .25s ease}
+a.up-row:hover .up-logos,a.up-row:focus-visible .up-logos,a.up-row:hover :is(.up-wd,.up-day,.up-mo,.up-where),a.up-row:focus-visible :is(.up-wd,.up-day,.up-mo,.up-where){color:var(--c-red)}
 a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .up-date{display:grid;justify-items:center;width:60px;line-height:1}
 .up-wd,.up-mo{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c-plum-mute)}
@@ -450,7 +452,7 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
   .up-list > li:nth-child(2) .up-row{border-top:0}
 }
 /* one or more event logos side by side (e.g. A × B), sized per logo in gigs.json */
-.up-logos{display:flex;align-items:center;gap:8px;margin:3px 0 4px;color:var(--c-plum-mute)} /* same colour as the date and place */
+.up-logos{display:flex;align-items:center;gap:8px;margin:3px 0 4px;color:var(--c-plum-mute);transition:color .25s ease} /* same colour as the date and place */
 .up-logo{display:block;flex:none;width:auto;max-width:100%;background:currentColor;-webkit-mask:var(--logo) left center / contain no-repeat;mask:var(--logo) left center / contain no-repeat}
 /* full-colour logos are shown as they are instead of as a one-colour mask */
 .up-logo.is-color{background:var(--logo) left center / contain no-repeat;-webkit-mask:none;mask:none}
@@ -499,7 +501,7 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .up-past .up-event{display:flex;align-items:center;min-height:28px;font-size:18px}
 .up-past .up-where{font-size:13px}
 @media (prefers-reduced-motion:reduce){
-  a.up-row,.up-go{transition:none}
+  a.up-row,.up-go,.up-logos,.up-sec :is(.up-wd,.up-day,.up-mo,.up-where){transition:none}
   a.up-row:hover .up-go{transform:none}
 }
 /* reduced motion: no nudge or animation, but the open state still points up */
