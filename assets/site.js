@@ -596,7 +596,8 @@
   }
 
   /* 2b. DJ page: upcoming gigs from /assets/gigs.json.
-     Each gig: { date: "YYYY-MM-DD", event, venue, city, url, show }. A gig with "show": false stays hidden
+     Each gig: { date: "YYYY-MM-DD", event, venue, city, url, show, logo, note, private }. Past gigs appear under
+     the "Past events" button, newest first; a private gig shows only "Private wedding/event" and the city. A gig with "show": false stays hidden
      until it is switched on; add ?gigs=preview to the URL to see hidden gigs too. A gig counts as upcoming
      until 06:00 the next morning, so a late set doesn't disappear at midnight. */
   var upSec = document.getElementById('upcoming');
@@ -604,9 +605,9 @@
   if (upSec && upList) {
     var preview = /[?&]gigs=preview\b/.test(location.search);
     var T = {
-      en: { next: 'Next up', more: 'More dates', all: 'All dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: hidden gigs are shown' },
-      nl: { next: 'Volgende gig', more: 'Meer data', all: 'Alle data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
-      it: { next: 'Prossima data', more: 'Altre date', all: 'Tutte le date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
+      en: { past: 'Past events', priv: { wedding: 'Private wedding', event: 'Private event' }, next: 'Next up', more: 'More dates', all: 'All dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: hidden gigs are shown' },
+      nl: { past: 'Afgelopen events', priv: { wedding: 'Besloten bruiloft', event: 'Besloten event' }, next: 'Volgende gig', more: 'Meer data', all: 'Alle data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
+      it: { past: 'Eventi passati', priv: { wedding: 'Matrimonio privato', event: 'Evento privato' }, next: 'Prossima data', more: 'Altre date', all: 'Tutte le date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
     }[lang] || null;
     var CITY = {
       nl: { Milan: 'Milaan', Antwerp: 'Antwerpen', Rome: 'Rome', 'The Hague': 'Den Haag', Brussels: 'Brussel' },
@@ -623,6 +624,11 @@
           var q = g.date.split('-').map(Number);
           return new Date(q[0], q[1] - 1, q[2] + 1, 6) > now;
         }).sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+        var past = (gigs || []).filter(function (g) {
+          if (!g || !g.date || (g.show === false && !preview)) return false;
+          var q = g.date.split('-').map(Number);
+          return new Date(q[0], q[1] - 1, q[2] + 1, 6) <= now;
+        }).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
         if (!list.length || !T) return;
         var thisYear = now.getFullYear();
         var prevYear = String(thisYear);
@@ -634,11 +640,13 @@
           var y = String(q[0]), yr = y !== prevYear ? ' <span class="up-yr">' + y + '</span>' : '';
           prevYear = y;
           var city = CITY[g.city] || g.city || '';
-          var where = [g.venue, city].filter(Boolean).join(' · ');
+          var note = g.note ? (typeof g.note === 'string' ? g.note : (g.note[lang] || g.note.en)) : '';
+          var where = [g.private ? '' : g.venue, city, g.private ? '' : note].filter(Boolean).join(' · ');
+          var name = g.private ? (T.priv[g.private] || T.priv.event) : g.event;
           var inner = '<time class="up-date" datetime="' + esc(g.date) + '"><span class="up-wd">' + esc(wd) + '</span><span class="up-day">' + q[2] +
-            '</span><span class="up-mo">' + esc(mo) + yr + '</span></time><span class="up-what"><span class="up-event">' + (g.logo ? '<span class="up-logo" role="img" aria-label="' + esc(g.event) + '" style="--logo:url(\'' + esc(g.logo) + '\');height:' + Number(g.logoHeight || 20) + 'px;aspect-ratio:' + Number(g.logoRatio || 5.56) + '"></span>' : esc(g.event)) +
+            '</span><span class="up-mo">' + esc(mo) + yr + '</span></time><span class="up-what"><span class="up-event">' + (g.logo && !g.private ? '<span class="up-logo" role="img" aria-label="' + esc(g.event) + '" style="--logo:url(\'' + esc(g.logo) + '\');height:' + Number(g.logoHeight || 20) + 'px;aspect-ratio:' + Number(g.logoRatio || 5.56) + '"></span>' : esc(name)) +
             '</span><span class="up-where">' + esc(where) + '</span></span>';
-          return g.url
+          return g.url && !g.private && !g._past
             ? '<li><a class="up-row" href="' + esc(g.url) + '" target="_blank" rel="noopener noreferrer">' + inner +
               '<span class="up-go hv-ar hv-ne" aria-hidden="true">↗</span><span class="sr-only"> (' + esc(T.info) + ', ' + esc(T.nt) + ')</span></a></li>'
             : '<li><div class="up-row">' + inner + '</div></li>';
@@ -655,6 +663,23 @@
           tg.setAttribute('aria-expanded', 'false');
           tg.addEventListener('click', function () { upList.classList.remove('up-collapsed'); tg.setAttribute('aria-expanded', 'true'); tg.hidden = true; });
           upList.parentNode.insertBefore(tg, upList.nextSibling);
+        }
+        /* past events: a button under the list opens them, newest first, without links */
+        if (past.length) {
+          prevYear = String(thisYear);
+          var pastList = document.createElement('ul');
+          pastList.className = 'up-list up-past'; pastList.id = 'upcoming-past'; pastList.hidden = true;
+          pastList.innerHTML = past.map(function (g) { g._past = true; return row(g); }).join('');
+          var pb = document.createElement('button');
+          pb.type = 'button'; pb.className = 'up-past-toggle';
+          pb.setAttribute('aria-expanded', 'false'); pb.setAttribute('aria-controls', 'upcoming-past');
+          pb.innerHTML = esc(T.past) + ' (' + past.length + ')<span class="up-past-ar" aria-hidden="true">↓</span>';
+          pb.addEventListener('click', function () {
+            var open = pastList.hidden;
+            pastList.hidden = !open; pb.setAttribute('aria-expanded', String(open));
+          });
+          var wrap = upList.parentNode;
+          wrap.appendChild(pb); wrap.appendChild(pastList);
         }
         var more = document.getElementById('upcoming-more');
         if (more && rest.length) {

@@ -464,3 +464,15 @@ a.up-row:focus-visible{outline:2px solid var(--c-white);outline-offset:2px}
 main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
 .d-main-section-3 .hv-ar.hv-ne,.up-sec .hv-ar.hv-ne{color:var(--c-red)}
 .up-go.hv-ar{font-size:inherit}
+/* past events: a quiet toggle under the upcoming list, the rows muted and without links */
+.up-past-toggle{display:flex;align-items:center;gap:8px;min-height:44px;margin-top:20px;padding:0;border:0;background:none;color:var(--c-aubergine);font:inherit;font-size:15px;font-weight:800;cursor:pointer;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(31,3,40,.35)}
+.up-past-toggle:hover{text-decoration-color:var(--c-aubergine)}
+.up-past-toggle:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:3px}
+.up-past-ar{color:var(--c-red);transition:transform .2s ease}
+.up-past-toggle[aria-expanded="true"] .up-past-ar{transform:rotate(180deg)}
+.up-past{margin-top:12px;grid-auto-rows:auto}
+.up-past .up-row{padding:10px 4px;opacity:.82}
+.up-past .up-day{font-size:22px}
+.up-past .up-event{font-size:clamp(17px,1.5vw,19px)}
+.up-past .up-logo{transform:scale(.8);transform-origin:left center}
+@media (prefers-reduced-motion:reduce){.up-past-ar{transition:none}}
