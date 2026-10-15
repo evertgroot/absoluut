@@ -604,9 +604,9 @@
   if (upSec && upList) {
     var preview = /[?&]gigs=preview\b/.test(location.search);
     var T = {
-      en: { more: 'More dates', all: 'All dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: hidden gigs are shown' },
-      nl: { more: 'Meer data', all: 'Alle data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
-      it: { more: 'Altre date', all: 'Tutte le date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
+      en: { next: 'Next up', more: 'More dates', all: 'All dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: hidden gigs are shown' },
+      nl: { next: 'Volgende gig', more: 'Meer data', all: 'Alle data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
+      it: { next: 'Prossima data', more: 'Altre date', all: 'Tutte le date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
     }[lang] || null;
     var CITY = {
       nl: { Milan: 'Milaan', Antwerp: 'Antwerpen', Rome: 'Rome', 'The Hague': 'Den Haag', Brussels: 'Brussel' },
@@ -683,6 +683,15 @@
           document.head.appendChild(ld);
         }
         upSec.hidden = false;
+        /* hero: one line with the next gig, linking down to the list */
+        var heroNext = document.getElementById('hero-next');
+        if (heroNext) {
+          var n = list[0], nq = n.date.split('-').map(Number), nd = new Date(nq[0], nq[1] - 1, nq[2]);
+          var nDate = nd.toLocaleDateString(upLoc, { weekday: 'short', day: 'numeric', month: 'short' }).replace(/\./g, '');
+          var nWhere = [n.event, CITY[n.city] || n.city].filter(Boolean).join(', ');
+          heroNext.innerHTML = '<a href="#upcoming"><span class="hn-label">' + esc(T.next) + '</span><span class="hn-text">' + esc(nDate) + ' · ' + esc(nWhere) + '</span><span class="hn-ar" aria-hidden="true">↓</span></a>';
+          heroNext.hidden = false;
+        }
       })
       .catch(function () {});
   }
