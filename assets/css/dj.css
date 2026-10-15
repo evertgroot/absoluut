@@ -398,59 +398,6 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .d-page-a-3{display: inline-flex;align-items: center;justify-content: center;width: 46px;height: 46px;border-radius: 999px;background: rgba(255,255,255,0.1)}
 .d-page-a-4{display: inline-flex;align-items: center;justify-content: center;height: 46px;padding: 0 16px;border-radius: 999px;background: rgba(255,255,255,0.1)}
 .d-page-span{display: block;width: 89px;height: 16px;background: currentColor;-webkit-mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat;mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat}
-/* Upcoming gigs (filled from /assets/gigs.json by site.js): a line-up in two columns, the year once per group */
-.up-sec + .d-main-section-5 .d-where-div{padding-top:clamp(48px,6vw,80px)}
-.up-wrap{padding-bottom:0}
-.up-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(24px,4vw,64px)}
-.up-year{grid-column:1 / -1;margin:28px 0 4px;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--c-blush)}
-.up-year:first-child{margin-top:0}
-.up-row{display:grid;grid-template-columns:60px minmax(0,1fr) auto;align-items:center;gap:16px;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.16);color:var(--c-white);text-decoration:none;transition:background-color .2s ease}
-.up-list > li:nth-child(2) .up-row,.up-list > li.up-year + li .up-row,.up-list > li.up-year + li + li .up-row{border-top:1px solid rgba(255,255,255,.16)}
-a.up-row:hover{background:rgba(255,255,255,.06)}
-a.up-row:focus-visible{outline:2px solid var(--c-white);outline-offset:2px}
-.up-date{display:grid;justify-items:center;line-height:1}
-.up-wd,.up-mo{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c-lilac)}
-.up-day{margin:3px 0 2px;font-family:'Baloo Bhai 2',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.02em;color:var(--c-white)}
-.up-what{display:grid;gap:3px;min-width:0}
-.up-event{font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(20px,1.8vw,24px);font-weight:800;line-height:1.1;letter-spacing:-0.015em}
-.up-where{font-size:14px;font-weight:600;color:var(--c-lilac)}
-.up-go{padding-right:6px;font-size:18px;font-weight:800;color:var(--c-blush);transition:transform .2s ease}
-.up-more{margin-top:20px}
-.up-more summary{display:inline-flex;align-items:center;min-height:44px;cursor:pointer;font-weight:800;color:var(--c-white);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px}
-.up-more summary::marker{color:var(--c-blush)}
-.up-more .up-list{margin-top:12px}
-.up-preview{margin:0 0 20px;padding:8px 14px;border-radius:12px;background:var(--c-blush);color:var(--c-purple-deep);font-size:14px;font-weight:700;display:inline-block}
-@media (max-width:760px){.up-list{grid-template-columns:minmax(0,1fr)}.up-list > li.up-year + li + li .up-row{border-top:0}}
-@media (prefers-reduced-motion:reduce){a.up-row,.up-go{transition:none}a.up-row:hover .up-go{transform:none}}
-/* two columns that line up row by row; the year sits under the month of the first gig in a new year */
-.up-list{grid-auto-rows:1fr}
-.up-list > li:nth-child(-n+2) .up-row{border-top:1px solid rgba(255,255,255,.16)}
-.up-row{height:100%;box-sizing:border-box}
-.up-date{width:60px}
-.up-mo{white-space:nowrap}
-.up-yr{display:block;margin-top:3px;color:var(--c-blush)}
-@media (max-width:760px){.up-list > li:nth-child(2) .up-row{border-top:0}}
-/* event logos instead of the name (white artwork), sized to sit on the name's baseline */
-/* Upcoming gigs on the light rose of "What I Do": red stays for the booking buttons; logos are masks in the text colour */
-.up-sec{background:var(--c-rose-mist);color:var(--c-aubergine)}
-.up-sec .up-wrap{padding-bottom:clamp(64px,8vw,104px)}
-.up-sec + .d-main-section-5 .d-where-div{padding-top:clamp(72px,10vw,136px)}
-.up-sec .up-row,.up-sec .up-list > li:nth-child(-n+2) .up-row{border-color:rgba(31,3,40,.16);color:var(--c-aubergine)}
-.up-sec .up-day{color:var(--c-aubergine)}
-.up-sec .up-wd,.up-sec .up-mo,.up-sec .up-where{color:var(--c-plum-mute)}
-.up-sec .up-yr{color:var(--c-red)}
-.up-sec .up-go{color:var(--c-red)}
-.up-sec a.up-row:hover{background:rgba(31,3,40,.05)}
-.up-sec a.up-row:focus-visible{outline-color:var(--c-aubergine)}
-.up-sec .up-preview{background:var(--c-aubergine);color:var(--c-white)}
-.up-logo{display:block;width:auto;max-width:100%;margin:3px 0 4px;background:currentColor;-webkit-mask:var(--logo) left center / contain no-repeat;mask:var(--logo) left center / contain no-repeat}
-.up-toggle{display:none}
-@media (max-width:760px){
-  .up-collapsed > li:nth-child(n+4){display:none}
-  .up-toggle{display:inline-flex;align-items:center;min-height:44px;margin-top:16px;padding:0 20px;border:1.5px solid rgba(31,3,40,.4);border-radius:999px;background:none;color:var(--c-aubergine);font:inherit;font-size:15px;font-weight:800;cursor:pointer}
-  .up-toggle:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:3px}
-}
-.up-sec .d-gigs-h2{margin-bottom:clamp(24px,3vw,40px)}
 /* hero: the next gig as one quiet line under the buttons */
 .hero-next{margin:22px 0 0}
 .hero-next a{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px 10px;min-height:44px;color:var(--c-white);text-decoration:none;font-size:15px;font-weight:700}
@@ -464,61 +411,85 @@ a.up-row:focus-visible{outline:2px solid var(--c-white);outline-offset:2px}
 main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
 .d-main-section-3 .hv-ar.hv-ne,.up-sec .hv-ar.hv-ne{color:var(--c-red)}
 .up-go.hv-ar{font-size:inherit}
-/* past events: a quiet toggle under the upcoming list, the rows muted and without links */
-.up-past-toggle{display:flex;align-items:center;gap:8px;min-height:44px;margin-top:20px;padding:0;border:0;background:none;color:var(--c-aubergine);font:inherit;font-size:15px;font-weight:800;cursor:pointer;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(31,3,40,.35)}
-.up-past-toggle:hover{text-decoration-color:var(--c-aubergine)}
-.up-past-toggle:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:3px}
-.up-past-ar{color:var(--c-red);transition:transform .2s ease}
-.up-past-toggle[aria-expanded="true"] .up-past-ar{transform:rotate(180deg)}
-.up-past{margin-top:12px;grid-auto-rows:auto}
-.up-past .up-row{padding:10px 4px;opacity:.82}
-.up-past .up-day{font-size:22px}
-.up-past .up-event{font-size:clamp(17px,1.5vw,19px)}
-.up-past .up-logo{transform:scale(.8);transform-origin:left center}
-@media (prefers-reduced-motion:reduce){.up-past-ar{transition:none}}
-/* one or more event logos side by side (e.g. MEIJT × FERRY) */
-.up-logos{display:flex;align-items:center;gap:8px;margin:3px 0 4px}
-.up-logos .up-logo{margin:0;flex:none}
-.up-x{font-weight:800;font-size:14px;color:var(--c-plum-mute)}
-.up-past .up-logos{transform:scale(.8);transform-origin:left center}
-.up-past .up-logo{transform:none}
-/* full-colour logos (e.g. the LeccoMilano badge) are shown as they are instead of as a one-colour mask */
-.up-logo.is-color{background:var(--logo) left center / contain no-repeat;-webkit-mask:none;mask:none}
-.up-logo-name{margin-left:4px;font-family:'Baloo Bhai 2',sans-serif;font-size:inherit;font-weight:800;line-height:1.1;letter-spacing:-0.015em}
-.up-logo-name{font-size:22px}
-/* All dates (phones) and Past events side by side under the list */
-.up-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px;margin-top:20px}
-.up-actions:empty{display:none}
-.up-actions .up-toggle,.up-actions .up-past-toggle{margin-top:0}
-/* phones: stack the list controls on purpose; the upcoming button spans the width, past events sits under it */
-@media (max-width:760px){
-  .up-actions{flex-direction:column;align-items:stretch;gap:6px}
-  .up-actions .up-toggle{justify-content:center;width:100%;min-height:48px}
-  .up-actions .up-past-toggle{align-self:flex-start}
+/* Upcoming gigs (filled from /assets/gigs.json by site.js) on the light rose of "What I Do".
+   Red stays for the booking buttons; logos are masks in the text colour. Two columns on wide screens
+   that read top to bottom (site.js sets --rows), one column on phones. */
+.up-sec{--up-line:rgba(31,3,40,.16);background:var(--c-rose-mist);color:var(--c-aubergine)}
+.up-sec .up-wrap{padding-bottom:clamp(64px,8vw,104px)}
+.up-sec + .d-main-section-5 .d-where-div{padding-top:clamp(72px,10vw,136px)}
+.up-sec .d-gigs-h2{margin-bottom:clamp(24px,3vw,40px)}
+.up-preview{display:inline-block;margin:0 0 20px;padding:8px 14px;border-radius:12px;background:var(--c-aubergine);color:var(--c-white);font-size:14px;font-weight:700}
+.up-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;column-gap:clamp(24px,4vw,64px)}
+.up-list > li:nth-child(-n+2) .up-row{border-top:1px solid var(--up-line)}
+.up-row{display:grid;grid-template-columns:60px minmax(0,1fr) auto;align-items:center;gap:16px;height:100%;box-sizing:border-box;padding:14px 4px;border:0 solid var(--up-line);border-bottom-width:1px;color:var(--c-aubergine);text-decoration:none;transition:background-color .2s ease}
+a.up-row:hover{background:rgba(31,3,40,.05)}
+a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
+.up-date{display:grid;justify-items:center;width:60px;line-height:1}
+.up-wd,.up-mo{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c-plum-mute)}
+.up-mo{white-space:nowrap}
+/* the year sits under the month of the first gig in a new year */
+.up-yr{display:block;margin-top:3px;color:var(--c-red)}
+.up-day{margin:3px 0 2px;font-family:'Baloo Bhai 2',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.02em;color:var(--c-aubergine)}
+.up-what{display:grid;gap:3px;min-width:0}
+.up-event{font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(20px,1.8vw,24px);font-weight:800;line-height:1.1;letter-spacing:-0.015em}
+.up-where{font-size:14px;font-weight:600;color:var(--c-plum-mute)}
+.up-go{padding-right:6px;font-size:18px;font-weight:800;color:var(--c-red);transition:transform .2s ease}
+@media (min-width:761px){
+  .up-cols{grid-auto-flow:column;grid-template-rows:repeat(var(--rows,4),1fr)}
+  .up-cols > li:nth-child(2) .up-row{border-top:0}
+  .up-cols > li.up-c2 .up-row{border-top:1px solid var(--up-line)}
 }
+@media (max-width:760px){
+  .up-list{grid-template-columns:minmax(0,1fr)}
+  .up-list > li:nth-child(2) .up-row{border-top:0}
+}
+/* one or more event logos side by side (e.g. A × B), sized per logo in gigs.json */
+.up-logos{display:flex;align-items:center;gap:8px;margin:3px 0 4px}
+.up-logo{display:block;flex:none;width:auto;max-width:100%;background:currentColor;-webkit-mask:var(--logo) left center / contain no-repeat;mask:var(--logo) left center / contain no-repeat}
+/* full-colour logos are shown as they are instead of as a one-colour mask */
+.up-logo.is-color{background:var(--logo) left center / contain no-repeat;-webkit-mask:none;mask:none}
+.up-x{font-weight:800;font-size:14px;color:var(--c-plum-mute)}
+.up-logo-name{margin-left:4px;font-family:'Baloo Bhai 2',sans-serif;font-size:22px;font-weight:800;line-height:1.1;letter-spacing:-0.015em}
 /* high-contrast mode replaces background colours, which would erase the mask-based logos; draw them in the system text colour */
 @media (forced-colors:active){
   .up-logo{forced-color-adjust:none;background:CanvasText}
   .up-logo.is-color{background:var(--logo) left center / contain no-repeat}
 }
-
-/* past events: one quiet, even rhythm. Names are plain text (no logos) in a fixed 28px slot and the weekday is dropped, so every row has the same height */
-.up-past .up-row{padding:12px 4px;opacity:1;grid-template-columns:44px minmax(0,1fr)}
+/* more than eight upcoming gigs: the rest open under "More Dates" */
+.up-more{margin-top:20px}
+.up-more summary{display:inline-flex;align-items:center;min-height:44px;cursor:pointer;font-weight:800;color:var(--c-aubergine);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(31,3,40,.35)}
+.up-more summary:hover{text-decoration-color:var(--c-aubergine)}
+.up-more summary:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:3px}
+.up-more summary::marker{color:var(--c-red)}
+.up-more .up-list{margin-top:12px}
+/* the list controls under the list: All Upcoming Dates (phones only) and Past Events, which starts its own group */
+.up-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px;margin-top:clamp(28px,3.5vw,44px)}
+.up-actions:empty{display:none}
+.up-toggle{display:none}
+.up-past-toggle{display:flex;align-items:center;gap:8px;min-height:44px;padding:0;border:0;background:none;color:var(--c-aubergine);font:inherit;font-size:15px;font-weight:800;cursor:pointer;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(31,3,40,.35)}
+.up-past-toggle:hover{text-decoration-color:var(--c-aubergine)}
+.up-past-toggle:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:3px}
+.up-past-ar{color:var(--c-red);transition:transform .2s ease}
+.up-past-toggle[aria-expanded="true"] .up-past-ar{transform:rotate(180deg)}
+/* phones: only the first three gigs show; the full-width button reveals the rest, Past Events sits under it */
+@media (max-width:760px){
+  .up-collapsed > li:nth-child(n+4){display:none}
+  .up-actions{flex-direction:column;align-items:stretch;gap:24px;margin-top:20px}
+  .up-toggle{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:48px;padding:0 20px;border:1.5px solid rgba(31,3,40,.4);border-radius:999px;background:none;color:var(--c-aubergine);font:inherit;font-size:15px;font-weight:800;cursor:pointer}
+  .up-toggle:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:3px}
+  .up-past-toggle{align-self:flex-start}
+}
+/* past events: plain names (no logos, no links) and no weekday, in one quiet, even rhythm.
+   The name slot is at least 28px so rows match, and grows if a long name wraps */
+.up-past{margin-top:16px;grid-auto-rows:auto}
+.up-past.up-cols{grid-template-rows:repeat(var(--rows,7),auto)}
+.up-past .up-row{grid-template-columns:44px minmax(0,1fr);padding:12px 4px}
 .up-past .up-date{width:44px}
 .up-past .up-wd{display:none}
 .up-past .up-day{margin:0 0 3px;font-size:20px}
-.up-past .up-event{display:flex;align-items:center;height:28px;font-size:18px;color:var(--c-aubergine)}
-.up-past .up-logos,.up-past .up-logo{transform:none;margin:0}
+.up-past .up-event{display:flex;align-items:center;min-height:28px;font-size:18px}
 .up-past .up-where{font-size:13px}
-@media (min-width:761px){
-  .up-cols{grid-auto-flow:column;grid-template-rows:repeat(var(--rows,4),1fr)}
-  .up-past.up-cols{grid-template-rows:repeat(var(--rows,7),auto)}
-  .up-cols > li:nth-child(2) .up-row{border-top:0}
-  .up-sec .up-cols > li.up-c2 .up-row{border-top:1px solid rgba(31,3,40,.16)}
-}
-/* past events are their own group: clear space above the button, a short step to the list it opens */
-.up-actions{margin-top:clamp(28px,3.5vw,44px)}
-.up-past{margin-top:16px}
-@media (max-width:760px){
-  .up-actions{margin-top:20px;gap:24px}
+@media (prefers-reduced-motion:reduce){
+  a.up-row,.up-go,.up-past-ar{transition:none}
+  a.up-row:hover .up-go{transform:none}
 }
