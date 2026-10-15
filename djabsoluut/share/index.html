@@ -179,30 +179,22 @@
     if (!list.length) {
       ctx.fillStyle = C.lilac; ctx.font = "600 34px 'Manrope'"; ctx.fillText('Kies minstens één gig', s.l, listT + 80);
     }
-    var dateW = Math.round(rowH * 0.62), gap = 34, cy = today().getFullYear();
+    /* poster-style dates: a big pink day number with the month and weekday stacked beside it; no boxes, no rules,
+       just type and air, like a line-up poster */
+    var cy = today().getFullYear(), gap = 30;
+    var daySz = Math.round(Math.min(rowH * (n === 1 ? 0.62 : 0.56), n === 1 ? 150 : 112)), capSz = Math.max(20, Math.round(daySz * 0.24));
+    ctx.font = "800 " + daySz + "px 'Baloo Bhai 2'"; var numW = ctx.measureText('00').width;
+    ctx.font = "800 " + capSz + "px 'Manrope'"; var capW = spacedW(ctx, 'MMM', 3) + 4;
+    var dateW = Math.round(numW + 12 + capW);
     for (var i = 0; i < list.length; i++) {
-      var g = list[i], y0 = listT + i * rowH, mid = y0 + rowH / 2, p = dParts(g);
-      ctx.fillStyle = 'rgba(255,159,178,0.28)'; ctx.fillRect(s.l, y0, W, 2); if (i === list.length - 1) ctx.fillRect(s.l, y0 + rowH - 2, W, 2);
-      /* date block */
-      var daySz = Math.round(rowH * (n === 1 ? 0.36 : 0.34)), capSz = Math.max(20, Math.round(rowH * 0.12)), cx = s.l + (dateW - 6) / 2;
-      var yearLine = p.y !== cy;
-      var blockH = capSz + 10 + daySz * 0.78 + 12 + capSz + (yearLine ? capSz + 8 : 0);
-      if (blockH > rowH - 42) { /* keep breathing room inside the red tile when a year line is added */
-        var k = (rowH - 42) / blockH; daySz = Math.round(daySz * k); capSz = Math.max(16, Math.round(capSz * k));
-        blockH = capSz + 10 + daySz * 0.78 + 12 + capSz + (yearLine ? capSz + 8 : 0);
-      }
-      var by = mid - blockH / 2;
-      /* the date sits on a red tile, like a ticket: the one strong colour, repeated per gig */
-      var tileP = Math.round(rowH * 0.09), tileX = s.l, tileW = dateW - 6, tileH = Math.min(blockH + tileP * 2, rowH - 18), tileY = mid - tileH / 2;
-      ctx.fillStyle = C.red; ctx.beginPath(); ctx.roundRect ? ctx.roundRect(tileX, tileY, tileW, tileH, 16) : ctx.rect(tileX, tileY, tileW, tileH); ctx.fill();
-      ctx.textAlign = 'left'; ctx.font = "800 " + capSz + "px 'Manrope'";
-      ctx.fillStyle = C.blush; spaced(ctx, p.wd, cx - spacedW(ctx, p.wd, 2.5) / 2, by + capSz * 0.8, 2.5);
-      ctx.font = "800 " + daySz + "px 'Baloo Bhai 2'"; ctx.fillStyle = C.white; ctx.textAlign = 'center';
-      ctx.fillText(p.day, cx, by + capSz + 10 + daySz * 0.78);
-      ctx.textAlign = 'left'; ctx.font = "800 " + capSz + "px 'Manrope'"; ctx.fillStyle = C.blush;
-      var moY = by + capSz + 10 + daySz * 0.78 + 12 + capSz * 0.8;
-      spaced(ctx, p.mo, cx - spacedW(ctx, p.mo, 2.5) / 2, moY, 2.5);
-      if (yearLine) { ctx.fillStyle = C.white; var ys = String(p.y); spaced(ctx, ys, cx - spacedW(ctx, ys, 2.5) / 2, moY + capSz + 8, 2.5); }
+      var g = list[i], y0 = listT + i * rowH, mid = y0 + rowH / 2, p = dParts(g), yearLine = p.y !== cy;
+      var base = mid + daySz * 0.3;
+      ctx.textAlign = 'left'; ctx.font = "800 " + daySz + "px 'Baloo Bhai 2'"; ctx.fillStyle = '#ff9fb2';
+      ctx.fillText(p.day, s.l + numW - ctx.measureText(p.day).width, base); /* right-aligned, so single digits line up */
+      var sx = s.l + numW + 12, lines = [[p.mo, C.white], [p.wd, C.lilac]].concat(yearLine ? [[String(p.y), '#ff9fb2']] : []);
+      var lh = capSz + 6, top = base - daySz * 0.72 + (daySz * 0.72 - lines.length * lh + 6) / 2;
+      ctx.font = "800 " + capSz + "px 'Manrope'";
+      lines.forEach(function (ln, j) { ctx.fillStyle = ln[1]; spaced(ctx, ln[0], sx, top + capSz * 0.8 + j * lh, 3); });
       /* name: logo (sized by area so wide and tall logos look alike) or text, then venue · city */
       var tx = s.l + dateW + gap, tw = W - dateW - gap, lg = logoOf(g), im = lg && !g.private ? ready[lg.src] || null : null;
       var subSz = Math.max(24, Math.round(rowH * 0.13)), nameH;
