@@ -595,6 +595,150 @@
       .catch(function () {});
   }
 
+  /* 2b. DJ page: upcoming gigs from /assets/gigs.json.
+     Each gig: { date: "YYYY-MM-DD", event, venue, city, url, show, logo, note, private }. Past gigs appear under
+     the "Past events" button, newest first; a private gig shows "Private Wedding/Event" instead of a name, and no link. A gig with "show": false stays hidden
+     until it is switched on; add ?gigs=preview to the URL to see hidden gigs too. A gig counts as upcoming
+     until 06:00 the next morning, so a late set doesn't disappear at midnight. */
+  var upSec = document.getElementById('upcoming');
+  var upList = document.getElementById('upcoming-list');
+  if (upSec && upList) {
+    var preview = /[?&]gigs=preview\b/.test(location.search);
+    var T = {
+      en: { past: 'Past Events', priv: { wedding: 'Private Wedding', event: 'Private Event' }, next: 'Next up', more: 'More Dates', all: 'All Upcoming Dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: Hidden Gigs Are Shown' },
+      nl: { past: 'Afgelopen events', priv: { wedding: 'Besloten bruiloft', event: 'Besloten event' }, next: 'Volgende gig', more: 'Meer data', all: 'Alle komende data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
+      it: { past: 'Eventi passati', priv: { wedding: 'Matrimonio privato', event: 'Evento privato' }, next: 'Prossima data', more: 'Altre date', all: 'Tutte le prossime date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
+    }[lang] || null;
+    var CITY = {
+      nl: { Milan: 'Milaan', Antwerp: 'Antwerpen', Rome: 'Rome', 'The Hague': 'Den Haag', Brussels: 'Brussel' },
+      it: { Milan: 'Milano', Antwerp: 'Anversa', Rome: 'Roma', 'The Hague': "L'Aia", Brussels: 'Bruxelles' }
+    }[lang] || {};
+    var upLoc = { en: 'en-GB', nl: 'nl-NL', it: 'it-IT' }[lang] || 'en-GB';
+    var esc = function (t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+    fetch('/assets/gigs.json', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (gigs) {
+        var now = new Date();
+        var list = (gigs || []).filter(function (g) {
+          if (!g || !g.date || (g.show === false && !preview)) return false;
+          var q = g.date.split('-').map(Number);
+          return new Date(q[0], q[1] - 1, q[2] + 1, 6) > now;
+        }).sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+        var past = (gigs || []).filter(function (g) {
+          if (!g || !g.date || (g.show === false && !preview)) return false;
+          var q = g.date.split('-').map(Number);
+          return new Date(q[0], q[1] - 1, q[2] + 1, 6) <= now;
+        }).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+        if (!list.length || !T) return;
+        var thisYear = now.getFullYear();
+        var prevYear = String(thisYear);
+        var row = function (g) {
+          var q = g.date.split('-').map(Number), d = new Date(q[0], q[1] - 1, q[2]);
+          var wd = d.toLocaleDateString(upLoc, { weekday: 'short' }).replace('.', '');
+          var mo = d.toLocaleDateString(upLoc, { month: 'short' }).replace('.', '').slice(0, 3);
+          /* the year shows once, on the first gig of a new year */
+          var y = String(q[0]), yr = y !== prevYear ? ' <span class="up-yr">' + y + '</span>' : '';
+          prevYear = y;
+          var city = CITY[g.city] || g.city || '';
+          var note = g.note ? (typeof g.note === 'string' ? g.note : (g.note[lang] || g.note.en)) : '';
+          var where = [g.venue, note, city].filter(Boolean).join(' · ');
+          var name = g.private ? (T.priv[g.private] || T.priv.event) : g.event;
+          /* upcoming gigs show the logo; once a gig is past it falls back to its name in plain text */
+          var logos = g._past ? [] : g.logos || (g.logo ? [{ src: g.logo, h: g.logoHeight, r: g.logoRatio }] : []);
+          var inner = '<time class="up-date" datetime="' + esc(g.date) + '"><span class="up-wd">' + esc(wd) + '</span><span class="up-day">' + q[2] +
+            '</span><span class="up-mo">' + esc(mo) + yr + '</span></time><span class="up-what"><span class="up-event">' + (logos.length && !g.private ? '<span class="up-logos" role="img" aria-label="' + esc(g.event) + '">' + logos.map(function (l) { return '<span class="up-logo' + (l.color ? ' is-color' : '') + '" style="--logo:url(\'' + esc(l.src) + '\');height:' + Number(l.h || 20) + 'px;aspect-ratio:' + Number(l.r || 5.56) + '"></span>'; }).join('<span class="up-x" aria-hidden="true">×</span>') + (g.logoName ? '<span class="up-logo-name" aria-hidden="true">' + esc(g.event) + '</span>' : '') + '</span>' : esc(name)) +
+            '</span><span class="up-where">' + esc(where) + '</span></span>';
+          return g.url && !g.private && !g._past
+            ? '<li><a class="up-row" href="' + esc(g.url) + '" target="_blank" rel="noopener noreferrer">' + inner +
+              '<span class="up-go hv-ar hv-ne" aria-hidden="true">↗</span><span class="sr-only"> (' + esc(T.info) + ', ' + esc(T.nt) + ')</span></a></li>'
+            : '<li><div class="up-row">' + inner + '</div></li>';
+        };
+        var build = function (arr) { return arr.map(row).join(''); };
+        /* on wide screens the two columns read top to bottom, so the dates run in order */
+        var cols = function (ul) {
+          var half = Math.ceil(ul.children.length / 2);
+          ul.classList.add('up-cols'); ul.style.setProperty('--rows', half);
+          if (ul.children[half]) ul.children[half].classList.add('up-c2');
+        };
+        var first = list.slice(0, 8), rest = list.slice(8);
+        upList.innerHTML = build(first);
+        cols(upList);
+        /* the list controls (All dates on phones, Past events) share one row under the list */
+        var actions = document.createElement('div');
+        actions.className = 'up-actions';
+        upList.parentNode.insertBefore(actions, upList.nextSibling);
+        /* on phones only the first three show; a button reveals the rest */
+        if (first.length > 3) {
+          upList.classList.add('up-collapsed');
+          var tg = document.createElement('button');
+          tg.type = 'button'; tg.className = 'up-toggle';
+          tg.textContent = T.all + ' (' + list.length + ')';
+          tg.setAttribute('aria-expanded', 'false'); tg.setAttribute('aria-controls', 'upcoming-list');
+          tg.addEventListener('click', function () { upList.classList.remove('up-collapsed'); tg.setAttribute('aria-expanded', 'true'); tg.hidden = true; });
+          actions.appendChild(tg);
+        }
+        /* past events: a button under the list opens them, newest first, without links */
+        if (past.length) {
+          prevYear = String(thisYear);
+          var pastList = document.createElement('ul');
+          pastList.className = 'up-list up-past'; pastList.id = 'upcoming-past'; pastList.hidden = true;
+          pastList.innerHTML = past.map(function (g) { g._past = true; return row(g); }).join('');
+          cols(pastList);
+          var pb = document.createElement('button');
+          pb.type = 'button'; pb.className = 'up-past-toggle';
+          pb.setAttribute('aria-expanded', 'false'); pb.setAttribute('aria-controls', 'upcoming-past');
+          pb.innerHTML = esc(T.past) + ' (' + past.length + ')<span class="up-past-ar" aria-hidden="true">↓</span>';
+          pb.addEventListener('click', function () {
+            var open = pastList.hidden;
+            pastList.hidden = !open; pb.setAttribute('aria-expanded', String(open));
+          });
+          actions.appendChild(pb);
+          actions.parentNode.insertBefore(pastList, actions.nextSibling);
+        }
+        var more = document.getElementById('upcoming-more');
+        if (more && rest.length) {
+          more.querySelector('summary').textContent = T.more + ' (' + rest.length + ')';
+          more.querySelector('ul').innerHTML = build(rest);
+          cols(more.querySelector('ul'));
+          more.hidden = false;
+        }
+        if (preview) {
+          var note = document.createElement('p');
+          note.className = 'up-preview'; note.textContent = T.preview;
+          upList.parentNode.insertBefore(note, upList);
+        } else {
+          /* Structured data so public gigs can show up in Google's event results */
+          var ld = document.createElement('script');
+          ld.type = 'application/ld+json';
+          ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': list.filter(function (g) { return !g.private; }).map(function (g) {
+            return {
+              '@type': 'Event', name: g.event + (g.venue ? ' at ' + g.venue : ''), startDate: g.date,
+              /* club nights run past midnight, so they end the next day */
+              endDate: (function () { var q = g.date.split('-').map(Number); return new Date(Date.UTC(q[0], q[1] - 1, q[2] + 1)).toISOString().slice(0, 10); })(),
+              image: ['https://imgroot.nl/assets/img/dj-absoluut-bops.jpg'],
+              eventStatus: 'https://schema.org/EventScheduled',
+              eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+              location: { '@type': 'Place', name: g.venue || g.event, address: { '@type': 'PostalAddress', addressLocality: g.city } },
+              performer: { '@type': 'Person', name: 'DJ Absoluut', url: 'https://imgroot.nl/djabsoluut/' },
+              url: g.url || undefined
+            };
+          }) });
+          document.head.appendChild(ld);
+        }
+        upSec.hidden = false;
+        /* hero: one line with the next gig, linking down to the list */
+        var heroNext = document.getElementById('hero-next');
+        if (heroNext) {
+          var n = list[0], nq = n.date.split('-').map(Number), nd = new Date(nq[0], nq[1] - 1, nq[2]);
+          var nDate = nd.toLocaleDateString(upLoc, { weekday: 'short', day: 'numeric', month: 'short' }).replace(/\./g, '');
+          var nWhere = [n.event, CITY[n.city] || n.city].filter(Boolean).join(', ');
+          heroNext.innerHTML = '<a href="#upcoming"><span class="hn-label">' + esc(T.next) + '</span><span class="hn-text">' + esc(nDate) + ' · ' + esc(nWhere) + '</span><span class="hn-ar" aria-hidden="true">↓</span></a>';
+          heroNext.hidden = false;
+        }
+      })
+      .catch(function () {});
+  }
+
   /* 2c. Case pages: "Talk Strategy" unfolds the contact form in place; the header and floating
      "Let's Collaborate" buttons (href="#cs-form") open the same form instead of leaving the page */
   var csPanel = document.getElementById('cs-form');
