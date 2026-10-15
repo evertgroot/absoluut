@@ -500,3 +500,22 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){
   .up-past-toggle[aria-expanded="true"] .up-past-ar.hv-ar{transform:rotate(180deg) !important;transition:none}
 }
+/* Recent gigs: the past dates at the end of "Where I've Played", on its dark purple. A fourth group under
+   Venues / Events / Brand events, with the same top rule; the list lines up with those three columns. */
+.rg{--up-line:rgba(255,255,255,.16);margin-top:clamp(40px,5vw,64px);padding-top:12px;border-top:1.5px solid rgba(255,255,255,.25)}
+.rg .up-past-toggle{color:var(--c-white);text-decoration-color:rgba(255,255,255,.35)}
+.rg .up-past-toggle:hover{text-decoration-color:var(--c-white)}
+.rg .up-past-toggle:focus-visible{outline-color:var(--c-white)}
+.rg .up-past-ar.hv-ar{color:var(--c-blush)}
+.rg .up-row{color:var(--c-white)}
+.rg .up-day{color:var(--c-white)}
+.rg .up-mo,.rg .up-where{color:var(--c-lilac)}
+.rg .up-yr{color:var(--c-blush)}
+/* the group's top rule already opens the list, so rows only carry a line underneath */
+#gigs .rg-list > li .up-row{border-top-width:0}
+@media (min-width:1001px){
+  .rg-list{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-flow:column;grid-template-rows:repeat(var(--rows3,5),auto)}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .rg-list{grid-auto-flow:column;grid-template-rows:repeat(var(--rows2,7),auto)}
+}

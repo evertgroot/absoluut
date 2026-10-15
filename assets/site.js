@@ -605,9 +605,9 @@
   if (upSec && upList) {
     var preview = /[?&]gigs=preview\b/.test(location.search);
     var T = {
-      en: { past: 'Past Events', priv: { wedding: 'Private Wedding', event: 'Private Event' }, next: 'Next up', more: 'More Dates', all: 'All Upcoming Dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: Hidden Gigs Are Shown' },
-      nl: { past: 'Afgelopen events', priv: { wedding: 'Besloten bruiloft', event: 'Besloten event' }, next: 'Volgende gig', more: 'Meer data', all: 'Alle komende data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
-      it: { past: 'Eventi passati', priv: { wedding: 'Matrimonio privato', event: 'Evento privato' }, next: 'Prossima data', more: 'Altre date', all: 'Tutte le prossime date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
+      en: { recent: 'Recent Gigs', priv: { wedding: 'Private Wedding', event: 'Private Event' }, next: 'Next up', more: 'More Dates', all: 'All Upcoming Dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: Hidden Gigs Are Shown' },
+      nl: { recent: 'Recente gigs', priv: { wedding: 'Besloten bruiloft', event: 'Besloten event' }, next: 'Volgende gig', more: 'Meer data', all: 'Alle komende data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
+      it: { recent: 'Date recenti', priv: { wedding: 'Matrimonio privato', event: 'Evento privato' }, next: 'Prossima data', more: 'Altre date', all: 'Tutte le prossime date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
     }[lang] || null;
     var CITY = {
       nl: { Milan: 'Milaan', Antwerp: 'Antwerpen', Rome: 'Rome', 'The Hague': 'Den Haag', Brussels: 'Brussel' },
@@ -629,7 +629,7 @@
           var q = g.date.split('-').map(Number);
           return new Date(q[0], q[1] - 1, q[2] + 1, 6) <= now;
         }).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
-        if (!list.length || !T) return;
+        if (!T) return;
         var thisYear = now.getFullYear();
         var prevYear = String(thisYear);
         var row = function (g) {
@@ -660,10 +660,35 @@
           ul.classList.add('up-cols'); ul.style.setProperty('--rows', half);
           if (ul.children[half]) ul.children[half].classList.add('up-c2');
         };
+        /* recent gigs: proof of where I play, so they live at the end of "Where I've Played" (#gigs), behind
+           a button, newest first, as plain names without links. They show even when no upcoming gig is public.
+           On wide screens the list lines up with the three columns above (two on tablets), each read top to bottom. */
+        var gigsWrap = document.querySelector('#gigs .d-where-div');
+        if (past.length && gigsWrap) {
+          prevYear = String(thisYear);
+          var rg = document.createElement('div');
+          rg.className = 'rg';
+          var pastList = document.createElement('ul');
+          pastList.className = 'up-list up-past rg-list'; pastList.id = 'recent-gigs'; pastList.hidden = true;
+          pastList.innerHTML = past.map(function (g) { g._past = true; return row(g); }).join('');
+          pastList.style.setProperty('--rows2', Math.ceil(past.length / 2));
+          pastList.style.setProperty('--rows3', Math.ceil(past.length / 3));
+          var pb = document.createElement('button');
+          pb.type = 'button'; pb.className = 'up-past-toggle';
+          pb.setAttribute('aria-expanded', 'false'); pb.setAttribute('aria-controls', 'recent-gigs');
+          pb.innerHTML = esc(T.recent) + ' (' + past.length + ')<span class="up-past-ar hv-ar hv-d" aria-hidden="true">↓</span>';
+          pb.addEventListener('click', function () {
+            var open = pastList.hidden;
+            pastList.hidden = !open; pb.setAttribute('aria-expanded', String(open));
+          });
+          rg.appendChild(pb); rg.appendChild(pastList);
+          gigsWrap.appendChild(rg);
+        }
+        if (!list.length) return;
         var first = list.slice(0, 8), rest = list.slice(8);
         upList.innerHTML = build(first);
         cols(upList);
-        /* the list controls (All dates on phones, Past events) share one row under the list */
+        /* the list control (All Upcoming Dates, phones only) sits under the list */
         var actions = document.createElement('div');
         actions.className = 'up-actions';
         upList.parentNode.insertBefore(actions, upList.nextSibling);
@@ -676,24 +701,6 @@
           tg.setAttribute('aria-expanded', 'false'); tg.setAttribute('aria-controls', 'upcoming-list');
           tg.addEventListener('click', function () { upList.classList.remove('up-collapsed'); tg.setAttribute('aria-expanded', 'true'); tg.hidden = true; });
           actions.appendChild(tg);
-        }
-        /* past events: a button under the list opens them, newest first, without links */
-        if (past.length) {
-          prevYear = String(thisYear);
-          var pastList = document.createElement('ul');
-          pastList.className = 'up-list up-past'; pastList.id = 'upcoming-past'; pastList.hidden = true;
-          pastList.innerHTML = past.map(function (g) { g._past = true; return row(g); }).join('');
-          cols(pastList);
-          var pb = document.createElement('button');
-          pb.type = 'button'; pb.className = 'up-past-toggle';
-          pb.setAttribute('aria-expanded', 'false'); pb.setAttribute('aria-controls', 'upcoming-past');
-          pb.innerHTML = esc(T.past) + ' (' + past.length + ')<span class="up-past-ar hv-ar hv-d" aria-hidden="true">↓</span>';
-          pb.addEventListener('click', function () {
-            var open = pastList.hidden;
-            pastList.hidden = !open; pb.setAttribute('aria-expanded', String(open));
-          });
-          actions.appendChild(pb);
-          actions.parentNode.insertBefore(pastList, actions.nextSibling);
         }
         var more = document.getElementById('upcoming-more');
         if (more && rest.length) {
