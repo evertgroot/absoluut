@@ -736,10 +736,16 @@
         /* hero: one line with the next gig, linking down to the list */
         var heroNext = document.getElementById('hero-next');
         if (heroNext) {
+          /* a small ticket: the date block from Upcoming Gigs on the left, the event and place beside it */
           var n = list[0], nq = n.date.split('-').map(Number), nd = new Date(nq[0], nq[1] - 1, nq[2]);
-          var nDate = nd.toLocaleDateString(upLoc, { weekday: 'short', day: 'numeric', month: 'short' }).replace(/\./g, '');
-          var nWhere = [n.event, CITY[n.city] || n.city].filter(Boolean).join(', ');
-          heroNext.innerHTML = '<a href="#upcoming"><span class="hn-label">' + esc(T.next) + '</span><span class="hn-text">' + esc(nDate) + ' · ' + esc(nWhere) + '</span><span class="hn-ar hv-ar hv-d" aria-hidden="true">↓</span></a>';
+          var nWd = nd.toLocaleDateString(upLoc, { weekday: 'short' }).replace('.', '');
+          var nMo = nd.toLocaleDateString(upLoc, { month: 'short' }).replace('.', '').slice(0, 3);
+          var nYr = nq[0] !== thisYear ? '<span class="up-yr">' + nq[0] + '</span>' : '';
+          var nPlace = [n.venue, CITY[n.city] || n.city].filter(Boolean).join(', ');
+          heroNext.innerHTML = '<a class="hn" href="#upcoming"><span class="hn-body"><span class="hn-label">' + esc(T.next) + '</span><span class="hn-text">' + esc(n.event) +
+            (nPlace ? '<span class="hn-place"> · ' + esc(nPlace) + '</span>' : '') + '</span></span>' +
+            '<time class="hn-date" datetime="' + esc(n.date) + '"><span class="hn-wd">' + esc(nWd) + '</span><span class="hn-day">' + nq[2] + '</span><span class="hn-mo">' + esc(nMo) + nYr + '</span></time>' +
+            '<span class="hn-ar hv-ar hv-d" aria-hidden="true">↓</span></a>';
           heroNext.hidden = false;
         }
       })
