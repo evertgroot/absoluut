@@ -738,12 +738,12 @@
         var heroNext = document.getElementById('hero-next');
         if (heroNext) {
           /* one quiet line under the buttons, in the hero's own text style: a red status dot, the label and a linked
-             date · event · place. No box and no arrow, so it doesn't read as a third button */
+             date · event · city. No box and no arrow, so it doesn't read as a third button */
           var n = list[0], nq = n.date.split('-').map(Number), nd = new Date(nq[0], nq[1] - 1, nq[2]);
           var nOpts = { weekday: 'short', day: 'numeric', month: 'short' };
           if (nq[0] !== thisYear) nOpts.year = 'numeric';
           var nDate = nd.toLocaleDateString(upLoc, nOpts).replace(/\./g, '');
-          var nPlace = [n.venue, CITY[n.city] || n.city].filter(Boolean).join(', ');
+          var nPlace = CITY[n.city] || n.city || ''; /* city only; the venue is in the list below */
           heroNext.innerHTML = '<a class="hn" href="#upcoming"><span class="hn-dot" aria-hidden="true"></span><span class="hn-label">' + esc(T.next) + '</span>' +
             '<span class="hn-text">' + esc([nDate, n.event, nPlace].filter(Boolean).join(' · ')) + '</span></a>';
           heroNext.hidden = false;
