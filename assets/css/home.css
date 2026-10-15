@@ -915,3 +915,8 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops .cs-meta > div:not(:nth-child(2)) dd.cs-meta-pills{flex-direction:column;align-items:flex-start}
 .cs-bops .cs-meta-pills .cs-pill{white-space:nowrap}
 @media (max-width:360px){.cs-bops .cs-meta-pills .cs-pill{white-space:normal}}
+/* BOPS hero: Format as two entries, what in the value style, where muted underneath */
+.cs-meta-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.cs-meta-list li{display:grid;gap:1px}
+.cs-meta-name{font-size:16px;font-weight:700;line-height:1.3;color:#fff}
+.cs-meta-where{font-size:14px;font-weight:500;line-height:1.35;color:rgba(255,255,255,.7)}
