@@ -1,5 +1,7 @@
 /* imgroot.nl: shared base for every page (EN/NL/IT). Colour tokens first, then the rules all page stylesheets had in common. Page CSS loads after this file. */
 :root{
+  /* colours from the former inline styles */ --c-banner-ink:#2a1d36; --c-banner-link:#8f0048; --c-teal-ink:#064a51; --c-stone:#f2efe9; --c-slate:#4a4f52; --c-mist:#d6e6e8; --c-lilac-soft:#e6d3ee; --c-grey-light:#c9cdcf; --c-grey-pale:#e4e6e7; --c-grey:#a7adb0; --c-rose-mist:#fbeff3; --c-plum-mute:#5a3d66; --c-purple:#4b1260; --c-purple-deep:#2c0739; --c-lilac-pale:#f1e4f5; --c-paper:#f5f3f6; --c-mauve-grey:#6b6470; --c-dark:#121212; --c-dark-2:#1b1b1b; --c-grey-mid:#a8a8a8; --c-white:#ffffff; 
+  
   --c-teal:#7bd6e0; /* Evert Groot accent */
   --c-teal-deep:#0b6e78; /* teal for text on light */
   --c-red:#c8193a; /* DJ Absoluut accent */
