@@ -625,25 +625,31 @@
         }).sort(function (a, b) { return a.date < b.date ? -1 : 1; });
         if (!list.length || !T) return;
         var thisYear = now.getFullYear();
+        var prevYear = String(thisYear);
         var row = function (g) {
           var q = g.date.split('-').map(Number), d = new Date(q[0], q[1] - 1, q[2]);
-          var wd = d.toLocaleDateString(upLoc, { weekday: 'short' });
-          var mo = d.toLocaleDateString(upLoc, { month: 'short' }).replace('.', '') + (q[0] !== thisYear ? ' ' + q[0] : '');
+          var wd = d.toLocaleDateString(upLoc, { weekday: 'short' }).replace('.', '');
+          var mo = d.toLocaleDateString(upLoc, { month: 'short' }).replace('.', '');
+          /* the year shows once, on the first gig of a new year */
+          var y = String(q[0]), yr = y !== prevYear ? ' <span class="up-yr">' + y + '</span>' : '';
+          prevYear = y;
           var city = CITY[g.city] || g.city || '';
           var where = [g.venue, city].filter(Boolean).join(' · ');
-          var inner = '<time class="up-date" datetime="' + esc(g.date) + '"><span class="up-day">' + q[2] + '</span><span class="up-mo">' + esc(mo) + '</span></time>' +
-            '<span class="up-what"><span class="up-wd">' + esc(wd) + '</span><span class="up-event">' + esc(g.event) + '</span><span class="up-where">' + esc(where) + '</span></span>';
+          var inner = '<time class="up-date" datetime="' + esc(g.date) + '"><span class="up-wd">' + esc(wd) + '</span><span class="up-day">' + q[2] +
+            '</span><span class="up-mo">' + esc(mo) + yr + '</span></time><span class="up-what"><span class="up-event">' + esc(g.event) +
+            '</span><span class="up-where">' + esc(where) + '</span></span>';
           return g.url
-            ? '<li><a class="up-card" href="' + esc(g.url) + '" target="_blank" rel="noopener noreferrer">' + inner +
+            ? '<li><a class="up-row" href="' + esc(g.url) + '" target="_blank" rel="noopener noreferrer">' + inner +
               '<span class="up-go" aria-hidden="true">↗</span><span class="sr-only"> (' + esc(T.info) + ', ' + esc(T.nt) + ')</span></a></li>'
-            : '<li><div class="up-card">' + inner + '</div></li>';
+            : '<li><div class="up-row">' + inner + '</div></li>';
         };
-        var first = list.slice(0, 6), rest = list.slice(6);
-        upList.innerHTML = first.map(row).join('');
+        var build = function (arr) { return arr.map(row).join(''); };
+        var first = list.slice(0, 8), rest = list.slice(8);
+        upList.innerHTML = build(first);
         var more = document.getElementById('upcoming-more');
         if (more && rest.length) {
           more.querySelector('summary').textContent = T.more + ' (' + rest.length + ')';
-          more.querySelector('ul').innerHTML = rest.map(row).join('');
+          more.querySelector('ul').innerHTML = build(rest);
           more.hidden = false;
         }
         if (preview) {

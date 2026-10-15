@@ -398,28 +398,36 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .d-page-a-3{display: inline-flex;align-items: center;justify-content: center;width: 46px;height: 46px;border-radius: 999px;background: rgba(255,255,255,0.1)}
 .d-page-a-4{display: inline-flex;align-items: center;justify-content: center;height: 46px;padding: 0 16px;border-radius: 999px;background: rgba(255,255,255,0.1)}
 .d-page-span{display: block;width: 89px;height: 16px;background: currentColor;-webkit-mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat;mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat}
-/* Upcoming gigs (filled from /assets/gigs.json by site.js); shares the purple band with "Where I've Played" */
+/* Upcoming gigs (filled from /assets/gigs.json by site.js): a line-up in two columns, the year once per group */
 .up-sec + .d-main-section-5 .d-where-div{padding-top:clamp(48px,6vw,80px)}
 .up-wrap{padding-bottom:0}
-.up-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.up-card{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:18px;height:100%;box-sizing:border-box;padding:16px 52px 16px 16px;border-radius:20px;background:rgba(255,255,255,.07);color:var(--c-white);text-decoration:none;transition:background-color .2s ease,transform .2s cubic-bezier(.2,.7,.2,1)}
-a.up-card:hover{background:rgba(255,255,255,.13);transform:translateY(-2px)}
-a.up-card:focus-visible{outline:2px solid var(--c-white);outline-offset:3px}
-.up-date{display:grid;place-items:center;width:64px;height:64px;border-radius:14px;background:var(--c-blush);color:var(--c-purple-deep);line-height:1;text-align:center}
-.up-day{font-family:'Baloo Bhai 2',sans-serif;font-size:28px;font-weight:800;letter-spacing:-0.02em;margin-top:4px}
-.up-mo{margin-top:-6px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-.up-what{display:grid;gap:2px;min-width:0}
-.up-wd{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--c-blush)}
-.up-event{font-family:'Baloo Bhai 2',sans-serif;font-size:22px;font-weight:800;line-height:1.1;letter-spacing:-0.015em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.up-where{font-size:14px;font-weight:600;color:var(--c-lilac);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.up-go{position:absolute;top:50%;right:18px;transform:translateY(-50%);font-size:18px;font-weight:800;color:var(--c-blush);transition:transform .2s ease}
-a.up-card:hover .up-go{transform:translate(2px,calc(-50% - 2px))}
-.up-more{margin-top:16px}
+.up-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(24px,4vw,64px)}
+.up-year{grid-column:1 / -1;margin:28px 0 4px;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--c-blush)}
+.up-year:first-child{margin-top:0}
+.up-row{display:grid;grid-template-columns:60px minmax(0,1fr) auto;align-items:center;gap:16px;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.16);color:var(--c-white);text-decoration:none;transition:background-color .2s ease}
+.up-list > li:nth-child(2) .up-row,.up-list > li.up-year + li .up-row,.up-list > li.up-year + li + li .up-row{border-top:1px solid rgba(255,255,255,.16)}
+a.up-row:hover{background:rgba(255,255,255,.06)}
+a.up-row:focus-visible{outline:2px solid var(--c-white);outline-offset:2px}
+.up-date{display:grid;justify-items:center;line-height:1}
+.up-wd,.up-mo{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c-lilac)}
+.up-day{margin:3px 0 2px;font-family:'Baloo Bhai 2',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.02em;color:var(--c-white)}
+.up-what{display:grid;gap:3px;min-width:0}
+.up-event{font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(20px,1.8vw,24px);font-weight:800;line-height:1.1;letter-spacing:-0.015em}
+.up-where{font-size:14px;font-weight:600;color:var(--c-lilac)}
+.up-go{padding-right:6px;font-size:18px;font-weight:800;color:var(--c-blush);transition:transform .2s ease}
+a.up-row:hover .up-go{transform:translate(2px,-2px)}
+.up-more{margin-top:20px}
 .up-more summary{display:inline-flex;align-items:center;min-height:44px;cursor:pointer;font-weight:800;color:var(--c-white);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px}
 .up-more summary::marker{color:var(--c-blush)}
-.up-more .up-list{margin-top:8px}
-.up-preview{margin:0 0 16px;padding:8px 14px;border-radius:12px;background:var(--c-blush);color:var(--c-purple-deep);font-size:14px;font-weight:700;display:inline-block}
-@media (max-width:760px){.up-list{grid-template-columns:minmax(0,1fr);gap:10px}}
-@media (prefers-reduced-motion:reduce){a.up-card,a.up-card:hover,.up-go{transition:none;transform:none}a.up-card:hover .up-go{transform:translateY(-50%)}}
-.up-date{width:70px}
-@media (max-width:760px){.up-card{gap:14px;padding:14px 40px 14px 14px}.up-go{right:14px}.up-event,.up-where{white-space:normal}}
+.up-more .up-list{margin-top:12px}
+.up-preview{margin:0 0 20px;padding:8px 14px;border-radius:12px;background:var(--c-blush);color:var(--c-purple-deep);font-size:14px;font-weight:700;display:inline-block}
+@media (max-width:760px){.up-list{grid-template-columns:minmax(0,1fr)}.up-list > li.up-year + li + li .up-row{border-top:0}}
+@media (prefers-reduced-motion:reduce){a.up-row,.up-go{transition:none}a.up-row:hover .up-go{transform:none}}
+/* two columns that line up row by row; the year sits under the month of the first gig in a new year */
+.up-list{grid-auto-rows:1fr}
+.up-list > li:nth-child(-n+2) .up-row{border-top:1px solid rgba(255,255,255,.16)}
+.up-row{height:100%;box-sizing:border-box}
+.up-date{width:60px}
+.up-mo{white-space:nowrap}
+.up-yr{display:block;margin-top:3px;color:var(--c-blush)}
+@media (max-width:760px){.up-list > li:nth-child(2) .up-row{border-top:0}}
