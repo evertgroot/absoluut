@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gig Share | DJ Absoluut</title>
+<link rel="icon" href="/favicon-dj.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+  :root{--aub:#1f0328;--aub-2:#2c0739;--purple:#4b1260;--red:#c8193a;--lilac:#d9b5e6;--blush:#ffd8ea;--white:#fff}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--aub);color:var(--white);font:500 15px/1.5 'Manrope',system-ui,sans-serif}
+  main{max-width:1180px;margin:0 auto;padding:28px 16px 64px}
+  h1{margin:0 0 4px;font:800 clamp(30px,4vw,44px)/1.05 'Baloo Bhai 2',sans-serif;letter-spacing:-.01em}
+  .lead{margin:0 0 24px;color:rgba(255,255,255,.78);max-width:640px}
+  .panel{display:grid;gap:18px;padding:20px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:rgba(255,255,255,.04);margin-bottom:28px}
+  .row{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+  .lbl{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blush)}
+  .seg{display:inline-flex;border:1.5px solid rgba(255,255,255,.3);border-radius:999px;overflow:hidden}
+  .seg button{min-height:40px;padding:0 16px;border:0;background:none;color:var(--white);font:700 14px 'Manrope',sans-serif;cursor:pointer}
+  .seg button[aria-pressed="true"]{background:var(--white);color:var(--aub)}
+  .gigs{display:grid;gap:6px}
+  .gigs label{display:flex;gap:12px;align-items:center;min-height:40px;cursor:pointer}
+  .gigs input{width:20px;height:20px;accent-color:var(--red)}
+  .tag{font-size:12px;font-weight:700;color:var(--lilac);border:1px solid rgba(217,181,230,.4);border-radius:999px;padding:1px 8px}
+  .chk{display:flex;gap:10px;align-items:center;min-height:40px;cursor:pointer}
+  .chk input{width:20px;height:20px;accent-color:var(--red)}
+  .warn{color:var(--blush);font-weight:700;min-height:1.5em;margin:0}
+  .out{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px;align-items:start}
+  figure{margin:0}
+  figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 10px}
+  figcaption b{font:800 22px 'Baloo Bhai 2',sans-serif}
+  figcaption span{color:var(--lilac);font-size:13px}
+  .stage{position:relative;border-radius:10px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+  .stage canvas{display:block;width:100%;height:auto}
+  .stage .ov{position:absolute;inset:0;pointer-events:none}
+  .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;border:0;background:var(--red);color:var(--white);font:800 15px 'Manrope',sans-serif;cursor:pointer}
+  .btn.ghost{background:none;border:1.5px solid rgba(255,255,255,.6)}
+  .btn:focus-visible,.seg button:focus-visible,input:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+  .note{color:rgba(255,255,255,.7);font-size:13px;margin:10px 0 0}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:rgba(255,255,255,.75)}
+  .legend i{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Gig Share</h1>
+  <p class="lead">Instagram-afbeeldingen van je aankomende gigs, gemaakt uit dezelfde gig-lijst als de website. Vink aan welke gigs erop moeten, kies de taal en download of deel. Alles staat binnen de safe zones van Instagram.</p>
+
+  <div class="panel">
+    <div class="row"><span class="lbl">Taal</span>
+      <div class="seg" id="lang" role="group" aria-label="Taal">
+        <button type="button" data-v="en" aria-pressed="true">EN</button><button type="button" data-v="nl" aria-pressed="false">NL</button><button type="button" data-v="it" aria-pressed="false">IT</button>
+      </div>
+    </div>
+    <div><span class="lbl">Gigs</span>
+      <div class="gigs" id="gigs"><p class="note">Gigs laden…</p></div>
+      <p class="warn" id="warn" role="status"></p>
+    </div>
+    <div class="row">
+      <label class="chk"><input type="checkbox" id="safe" checked> Safe zones tonen (komen niet in de download)</label>
+    </div>
+    <div class="legend" aria-hidden="true"><span><i style="background:rgba(255,40,80,.35)"></i>Instagram-interface (geen tekst)</span><span><i style="border:2px dashed #7bd6e0"></i>Uitsnede 4:5 in de feed</span></div>
+  </div>
+
+  <div class="out">
+    <figure>
+      <figcaption><b>Post</b><span>1080 × 1440 · 3:4</span></figcaption>
+      <div class="stage"><canvas id="c-post" width="1080" height="1440" aria-label="Voorbeeld post 1080 bij 1440"></canvas><canvas class="ov" id="o-post" width="1080" height="1440" aria-hidden="true"></canvas></div>
+      <div class="acts"><button class="btn" type="button" data-dl="post">Download PNG</button><button class="btn ghost" type="button" data-share="post" hidden>Delen</button></div>
+    </figure>
+    <figure>
+      <figcaption><b>Story</b><span>1080 × 1920 · 9:16</span></figcaption>
+      <div class="stage"><canvas id="c-story" width="1080" height="1920" aria-label="Voorbeeld story 1080 bij 1920"></canvas><canvas class="ov" id="o-story" width="1080" height="1920" aria-hidden="true"></canvas></div>
+      <div class="acts"><button class="btn" type="button" data-dl="story">Download PNG</button><button class="btn ghost" type="button" data-share="story" hidden>Delen</button></div>
+    </figure>
+  </div>
+  <p class="note">Op je telefoon: met “Delen” gaat de afbeelding direct naar Instagram of je fotorol.</p>
+</main>
+<script>
+(function () {
+  var C = { aub: '#1f0328', purple: '#4b1260', red: '#c8193a', lilac: '#d9b5e6', blush: '#ffd8ea', white: '#ffffff' };
+  var T = {
+    en: { eyebrow: 'DJ Absoluut', title: ['Upcoming', 'Gigs'], loc: 'en-GB' },
+    nl: { eyebrow: 'DJ Absoluut', title: ['Aankomende', 'gigs'], loc: 'nl-NL' },
+    it: { eyebrow: 'DJ Absoluut', title: ['Prossime', 'date'], loc: 'it-IT' }
+  };
+  var CITY = { nl: { Milan: 'Milaan', Antwerp: 'Antwerpen', Rome: 'Rome', 'The Hague': 'Den Haag', Brussels: 'Brussel' },
+               it: { Milan: 'Milano', Antwerp: 'Anversa', Rome: 'Roma', 'The Hague': "L'Aia", Brussels: 'Bruxelles' } };
+  var URL_TEXT = 'imgroot.nl/djabsoluut';
+  var MAX = 6;
+  /* Safe zones. Story: Instagram's top bar (~250px) and reply bar/stickers (~340px) cover the edges.
+     Post 3:4: the profile grid shows it whole, but some feeds still crop to 4:5 (1080x1350), so content stays
+     inside that centre band, with a margin. */
+  var F = {
+    post: { w: 1080, h: 1440, safe: { t: 125, b: 1315, l: 84, r: 996 }, crop: { t: 45, b: 1395 }, ui: [] },
+    story: { w: 1080, h: 1920, safe: { t: 270, b: 1560, l: 84, r: 996 }, ui: [[0, 250], [1580, 1920]] }
+  };
+  var lang = 'en', gigs = [], chosen = {}, photo = new Image(), imgs = {}, ready = {}, ticket = { post: 0, story: 0 };
+  photo.src = '/assets/img/dj-absoluut-bops.jpg';
+
+  function load(src) {
+    if (imgs[src]) return imgs[src];
+    imgs[src] = new Promise(function (res) { var i = new Image(); i.onload = function () { ready[src] = i; res(i); }; i.onerror = function () { res(null); }; i.src = src; });
+    return imgs[src];
+  }
+  function today() { var d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+  function dParts(g) {
+    var q = g.date.split('-').map(Number), d = new Date(q[0], q[1] - 1, q[2]), loc = T[lang].loc;
+    return { wd: d.toLocaleDateString(loc, { weekday: 'short' }).replace('.', '').toUpperCase(), day: String(q[2]),
+             mo: d.toLocaleDateString(loc, { month: 'short' }).replace('.', '').slice(0, 3).toUpperCase(), y: q[0] };
+  }
+  function where(g) {
+    var city = (CITY[lang] || {})[g.city] || g.city || '';
+    var note = g.note ? (typeof g.note === 'string' ? g.note : (g.note[lang] || g.note.en)) : '';
+    return [g.venue, note, city].filter(Boolean).join(' · ');
+  }
+  function logoOf(g) {
+    if (g.logos && g.logos.length === 1) return { src: g.logos[0].src, r: g.logos[0].r || 3 };
+    if (g.logo) return { src: g.logo, r: g.logoRatio || 5.56 };
+    return null;
+  }
+  function fit(ctx, text, font, size, maxW) {
+    var s = size; ctx.font = font.replace('%', s);
+    while (ctx.measureText(text).width > maxW && s > 18) { s -= 2; ctx.font = font.replace('%', s); }
+    return s;
+  }
+  function spaced(ctx, text, x, y, track) { /* letter-spaced caps */
+    for (var i = 0; i < text.length; i++) { ctx.fillText(text[i], x, y); x += ctx.measureText(text[i]).width + track; }
+    return x;
+  }
+  function spacedW(ctx, text, track) { var w = 0; for (var i = 0; i < text.length; i++) w += ctx.measureText(text[i]).width + track; return w - track; }
+
+  async function draw(key) {
+    var f = F[key], cv = document.getElementById('c-' + key), ctx = cv.getContext('2d'), s = f.safe;
+    var list = gigs.filter(function (g) { return chosen[g.date + g.event]; }).slice(0, MAX);
+    var n = Math.max(list.length, 1), my = ++ticket[key];
+    await Promise.all(list.map(function (g) { var l = logoOf(g); return l ? load(l.src) : null; }));
+    if (!photo.complete) await new Promise(function (r) { photo.addEventListener('load', r); photo.addEventListener('error', r); });
+    if (my !== ticket[key]) return; /* a newer redraw has started; from here on everything is drawn in one go */
+
+    /* layout from the bottom of the safe area up: footer, gig rows, title, eyebrow; the photo fills what is left */
+    var W = s.r - s.l, footH = key === 'story' ? 80 : 70, headH = key === 'story' ? 250 : 220;
+    var rowH = Math.max(118, Math.min(n === 1 ? 260 : 200, Math.floor((s.b - s.t - footH - headH - 40) / n)));
+    var listB = s.b - footH, listT = listB - rowH * list.length;
+    var titleBase = listT - 46;
+
+    /* background + photo */
+    ctx.fillStyle = C.aub; ctx.fillRect(0, 0, f.w, f.h);
+    var phH = Math.min(f.h, titleBase + 40), ir = photo.naturalWidth / photo.naturalHeight || 0.8, pw = f.w, ph = f.w / ir;
+    if (ph < phH) { ph = phH; pw = ph * ir; }
+    if (photo.naturalWidth) ctx.drawImage(photo, (f.w - pw) / 2, Math.min(0, phH - ph) * 0.35, pw, ph);
+    var g1 = ctx.createLinearGradient(0, 0, 0, phH);
+    g1.addColorStop(0, 'rgba(31,3,40,0.55)'); g1.addColorStop(0.18, 'rgba(31,3,40,0.05)');
+    g1.addColorStop(0.55, 'rgba(31,3,40,0.25)'); g1.addColorStop(0.86, 'rgba(31,3,40,0.92)'); g1.addColorStop(1, C.aub);
+    ctx.fillStyle = g1; ctx.fillRect(0, 0, f.w, phH + 2);
+    ctx.fillStyle = C.aub; ctx.fillRect(0, phH, f.w, f.h - phH);
+    var g2 = ctx.createRadialGradient(f.w * 0.85, f.h, 0, f.w * 0.85, f.h, f.w * 0.9);
+    g2.addColorStop(0, 'rgba(75,18,96,0.75)'); g2.addColorStop(1, 'rgba(75,18,96,0)');
+    ctx.fillStyle = g2; ctx.fillRect(0, phH * 0.6, f.w, f.h);
+
+    /* eyebrow + title (last word in red, like the website hero) */
+    ctx.textBaseline = 'alphabetic'; ctx.fillStyle = C.blush; ctx.font = "800 28px 'Manrope'";
+    spaced(ctx, T[lang].eyebrow.toUpperCase(), s.l, titleBase - (key === 'story' ? 128 : 116), 4.5);
+    var t = T[lang].title, tsz = fit(ctx, t[0] + ' ' + t[1], "800 %px 'Baloo Bhai 2'", key === 'story' ? 118 : 108, W);
+    ctx.font = "800 " + tsz + "px 'Baloo Bhai 2'"; ctx.fillStyle = C.white; ctx.fillText(t[0] + ' ', s.l, titleBase);
+    ctx.fillStyle = C.red; ctx.fillText(t[1], s.l + ctx.measureText(t[0] + ' ').width, titleBase);
+
+    /* gig rows */
+    if (!list.length) {
+      ctx.fillStyle = C.lilac; ctx.font = "600 34px 'Manrope'"; ctx.fillText('Kies minstens één gig', s.l, listT + 80);
+    }
+    var dateW = Math.round(rowH * 0.62), gap = 34, cy = today().getFullYear();
+    for (var i = 0; i < list.length; i++) {
+      var g = list[i], y0 = listT + i * rowH, mid = y0 + rowH / 2, p = dParts(g);
+      ctx.fillStyle = 'rgba(255,255,255,0.18)'; ctx.fillRect(s.l, y0, W, 2); if (i === list.length - 1) ctx.fillRect(s.l, y0 + rowH - 2, W, 2);
+      /* date block */
+      var daySz = Math.round(rowH * (n === 1 ? 0.36 : 0.34)), capSz = Math.max(20, Math.round(rowH * 0.12)), cx = s.l + dateW / 2;
+      var yearLine = p.y !== cy;
+      var blockH = capSz + 10 + daySz * 0.78 + 12 + capSz + (yearLine ? capSz + 8 : 0), by = mid - blockH / 2;
+      ctx.textAlign = 'left'; ctx.font = "800 " + capSz + "px 'Manrope'";
+      ctx.fillStyle = C.lilac; spaced(ctx, p.wd, cx - spacedW(ctx, p.wd, 2.5) / 2, by + capSz * 0.8, 2.5);
+      ctx.font = "800 " + daySz + "px 'Baloo Bhai 2'"; ctx.fillStyle = C.white; ctx.textAlign = 'center';
+      ctx.fillText(p.day, cx, by + capSz + 10 + daySz * 0.78);
+      ctx.textAlign = 'left'; ctx.font = "800 " + capSz + "px 'Manrope'"; ctx.fillStyle = C.lilac;
+      var moY = by + capSz + 10 + daySz * 0.78 + 12 + capSz * 0.8;
+      spaced(ctx, p.mo, cx - spacedW(ctx, p.mo, 2.5) / 2, moY, 2.5);
+      if (yearLine) { ctx.fillStyle = C.blush; var ys = String(p.y); spaced(ctx, ys, cx - spacedW(ctx, ys, 2.5) / 2, moY + capSz + 8, 2.5); }
+      /* name: logo (sized by area so wide and tall logos look alike) or text, then venue · city */
+      var tx = s.l + dateW + gap, tw = W - dateW - gap, lg = logoOf(g), im = lg && !g.private ? ready[lg.src] || null : null;
+      var subSz = Math.max(24, Math.round(rowH * 0.13)), nameH;
+      if (im) {
+        var r = im.naturalWidth && im.naturalHeight ? im.naturalWidth / im.naturalHeight : lg.r;
+        var lh = Math.min(rowH * 0.46, (rowH * 0.62) / Math.sqrt(r)), lw = lh * r;
+        if (lw > tw) { lw = tw; lh = lw / r; }
+        nameH = lh;
+        var ny = mid - (nameH + 14 + subSz) / 2;
+        ctx.drawImage(im, tx, ny, lw, lh);
+      } else {
+        var nm = g.event, nsz = fit(ctx, nm, "800 %px 'Baloo Bhai 2'", Math.round(rowH * 0.26), tw);
+        nameH = nsz * 0.8;
+        var ny2 = mid - (nameH + 14 + subSz) / 2;
+        ctx.font = "800 " + nsz + "px 'Baloo Bhai 2'"; ctx.fillStyle = C.white; ctx.fillText(nm, tx, ny2 + nameH);
+        ny = ny2;
+      }
+      var wt = where(g), wsz = fit(ctx, wt, "600 %px 'Manrope'", subSz, tw);
+      ctx.font = "600 " + wsz + "px 'Manrope'"; ctx.fillStyle = C.lilac; ctx.fillText(wt, tx, ny + nameH + 14 + wsz * 0.8);
+    }
+
+    /* footer: red dot + address */
+    var fy = s.b - 18;
+    ctx.fillStyle = C.red; ctx.beginPath(); ctx.arc(s.l + 9, fy - 10, 9, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(200,25,58,0.28)'; ctx.beginPath(); ctx.arc(s.l + 9, fy - 10, 16, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = C.white; ctx.font = "700 30px 'Manrope'"; ctx.fillText(URL_TEXT, s.l + 38, fy);
+    overlay(key);
+  }
+
+  function overlay(key) {
+    var f = F[key], o = document.getElementById('o-' + key), x = o.getContext('2d'), s = f.safe;
+    x.clearRect(0, 0, f.w, f.h);
+    if (!document.getElementById('safe').checked) return;
+    x.fillStyle = 'rgba(255,40,80,0.35)';
+    f.ui.forEach(function (b) { x.fillRect(0, b[0], f.w, b[1] - b[0]); });
+    if (f.crop) {
+      x.fillStyle = 'rgba(255,40,80,0.35)'; x.fillRect(0, 0, f.w, f.crop.t); x.fillRect(0, f.crop.b, f.w, f.h - f.crop.b);
+      x.setLineDash([18, 12]); x.strokeStyle = '#7bd6e0'; x.lineWidth = 4; x.strokeRect(2, f.crop.t, f.w - 4, f.crop.b - f.crop.t);
+    }
+    x.setLineDash([10, 10]); x.strokeStyle = 'rgba(255,255,255,0.7)'; x.lineWidth = 3; x.strokeRect(s.l, s.t, s.r - s.l, s.b - s.t);
+  }
+
+  function redraw() {
+    var c = gigs.filter(function (g) { return chosen[g.date + g.event]; }).length;
+    document.getElementById('warn').textContent = c > MAX ? 'Er passen maximaal ' + MAX + ' gigs op; de eerste ' + MAX + ' worden getoond.' : (c ? '' : 'Kies minstens één gig.');
+    draw('post'); draw('story');
+  }
+
+  function fileName(key) { return 'dj-absoluut-gigs-' + lang + '-' + (key === 'post' ? '1080x1440' : '1080x1920') + '.png'; }
+  function blob(key) { return new Promise(function (r) { document.getElementById('c-' + key).toBlob(r, 'image/png'); }); }
+  document.querySelectorAll('[data-dl]').forEach(function (b) {
+    b.addEventListener('click', async function () {
+      var k = b.getAttribute('data-dl'), bl = await blob(k), a = document.createElement('a');
+      a.href = URL.createObjectURL(bl); a.download = fileName(k); document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+    });
+  });
+  if (navigator.canShare) {
+    document.querySelectorAll('[data-share]').forEach(function (b) {
+      var test = new File([new Blob(['x'], { type: 'image/png' })], 't.png', { type: 'image/png' });
+      if (!navigator.canShare({ files: [test] })) return;
+      b.hidden = false;
+      b.addEventListener('click', async function () {
+        var k = b.getAttribute('data-share'), bl = await blob(k);
+        try { await navigator.share({ files: [new File([bl], fileName(k), { type: 'image/png' })] }); } catch (e) {}
+      });
+    });
+  }
+  document.querySelectorAll('#lang button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      lang = b.getAttribute('data-v');
+      document.querySelectorAll('#lang button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      redraw();
+    });
+  });
+  document.getElementById('safe').addEventListener('change', function () { overlay('post'); overlay('story'); });
+
+  Promise.all([document.fonts.load("800 40px 'Baloo Bhai 2'"), document.fonts.load("800 20px 'Manrope'"), document.fonts.load("700 20px 'Manrope'"), document.fonts.load("600 20px 'Manrope'"),
+    fetch('/assets/gigs.json', { cache: 'no-store' }).then(function (r) { return r.json(); })])
+    .then(function (res) {
+      var t0 = today();
+      gigs = res[4].filter(function (g) { var q = g.date.split('-').map(Number); return new Date(q[0], q[1] - 1, q[2]) >= t0; })
+        .sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+      var box = document.getElementById('gigs');
+      if (!gigs.length) { box.innerHTML = '<p class="note">Geen aankomende gigs in de lijst.</p>'; redraw(); return; }
+      box.innerHTML = '';
+      gigs.forEach(function (g) {
+        var id = g.date + g.event; chosen[id] = g.show !== false;
+        var l = document.createElement('label'), cb = document.createElement('input');
+        cb.type = 'checkbox'; cb.checked = chosen[id];
+        cb.addEventListener('change', function () { chosen[id] = cb.checked; redraw(); });
+        var q = g.date.split('-').map(Number), d = new Date(q[0], q[1] - 1, q[2]);
+        l.appendChild(cb);
+        l.appendChild(document.createTextNode(d.toLocaleDateString('nl-NL', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }) + ' · ' + g.event + (g.venue ? ', ' + g.venue : '')));
+        if (g.show === false) { var tg = document.createElement('span'); tg.className = 'tag'; tg.textContent = 'nog verborgen op de site'; l.appendChild(tg); }
+        box.appendChild(l);
+      });
+      redraw();
+    });
+})();
+</script>
+</body>
+</html>
