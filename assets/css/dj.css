@@ -512,7 +512,14 @@ main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
 .up-past .up-logos,.up-past .up-logo{transform:none;margin:0}
 .up-past .up-where{font-size:13px}
 @media (min-width:761px){
-  .up-past{grid-auto-flow:column;grid-template-rows:repeat(var(--rows,7),auto)}
-  .up-past > li:nth-child(2) .up-row{border-top:0}
-  .up-past > li.up-c2 .up-row{border-top:1px solid rgba(31,3,40,.16)}
+  .up-cols{grid-auto-flow:column;grid-template-rows:repeat(var(--rows,4),1fr)}
+  .up-past.up-cols{grid-template-rows:repeat(var(--rows,7),auto)}
+  .up-cols > li:nth-child(2) .up-row{border-top:0}
+  .up-sec .up-cols > li.up-c2 .up-row{border-top:1px solid rgba(31,3,40,.16)}
+}
+/* past events are their own group: clear space above the button, a short step to the list it opens */
+.up-actions{margin-top:clamp(28px,3.5vw,44px)}
+.up-past{margin-top:16px}
+@media (max-width:760px){
+  .up-actions{margin-top:20px;gap:24px}
 }

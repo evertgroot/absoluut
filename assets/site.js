@@ -635,7 +635,7 @@
         var row = function (g) {
           var q = g.date.split('-').map(Number), d = new Date(q[0], q[1] - 1, q[2]);
           var wd = d.toLocaleDateString(upLoc, { weekday: 'short' }).replace('.', '');
-          var mo = d.toLocaleDateString(upLoc, { month: 'short' }).replace('.', '');
+          var mo = d.toLocaleDateString(upLoc, { month: 'short' }).replace('.', '').slice(0, 3);
           /* the year shows once, on the first gig of a new year */
           var y = String(q[0]), yr = y !== prevYear ? ' <span class="up-yr">' + y + '</span>' : '';
           prevYear = y;
@@ -653,8 +653,15 @@
             : '<li><div class="up-row">' + inner + '</div></li>';
         };
         var build = function (arr) { return arr.map(row).join(''); };
+        /* on wide screens the two columns read top to bottom, so the dates run in order */
+        var cols = function (ul) {
+          var half = Math.ceil(ul.children.length / 2);
+          ul.classList.add('up-cols'); ul.style.setProperty('--rows', half);
+          if (ul.children[half]) ul.children[half].classList.add('up-c2');
+        };
         var first = list.slice(0, 8), rest = list.slice(8);
         upList.innerHTML = build(first);
+        cols(upList);
         /* the list controls (All dates on phones, Past events) share one row under the list */
         var actions = document.createElement('div');
         actions.className = 'up-actions';
@@ -675,10 +682,7 @@
           var pastList = document.createElement('ul');
           pastList.className = 'up-list up-past'; pastList.id = 'upcoming-past'; pastList.hidden = true;
           pastList.innerHTML = past.map(function (g) { g._past = true; return row(g); }).join('');
-          /* on wide screens the two columns read top to bottom, so the dates run in order */
-          var half = Math.ceil(past.length / 2);
-          pastList.style.setProperty('--rows', half);
-          if (pastList.children[half]) pastList.children[half].className = 'up-c2';
+          cols(pastList);
           var pb = document.createElement('button');
           pb.type = 'button'; pb.className = 'up-past-toggle';
           pb.setAttribute('aria-expanded', 'false'); pb.setAttribute('aria-controls', 'upcoming-past');
@@ -694,6 +698,7 @@
         if (more && rest.length) {
           more.querySelector('summary').textContent = T.more + ' (' + rest.length + ')';
           more.querySelector('ul').innerHTML = build(rest);
+          cols(more.querySelector('ul'));
           more.hidden = false;
         }
         if (preview) {
