@@ -451,3 +451,4 @@ a.up-row:hover .up-go{transform:translate(2px,-2px)}
   .up-toggle{display:inline-flex;align-items:center;min-height:44px;margin-top:16px;padding:0 20px;border:1.5px solid rgba(31,3,40,.4);border-radius:999px;background:none;color:var(--c-aubergine);font:inherit;font-size:15px;font-weight:800;cursor:pointer}
   .up-toggle:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:3px}
 }
+.up-sec .d-gigs-h2{margin-bottom:clamp(24px,3vw,40px)}
