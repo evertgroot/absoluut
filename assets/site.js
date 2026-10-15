@@ -645,7 +645,10 @@
           if (!g || !g.date || (g.show === false && !preview)) return false;
           var q = g.date.split('-').map(Number);
           return new Date(q[0], q[1] - 1, q[2] + 1, 6) <= now;
-        }).sort(function (a, b) { return a.date < b.date ? -1 : 1; /* oldest first */ });
+        }).sort(function (a, b) { /* newest year first; within a year, January to December */
+          var ya = a.date.slice(0, 4), yb = b.date.slice(0, 4);
+          return ya !== yb ? (ya < yb ? 1 : -1) : (a.date < b.date ? -1 : 1);
+        });
         if (!T) return;
         var thisYear = now.getFullYear();
         var prevYear = String(thisYear);
@@ -678,7 +681,7 @@
           if (ul.children[half]) ul.children[half].classList.add('up-c2');
         };
         /* past gigs: proof of where I play, so they live at the end of "Where I've Played" (#gigs), behind a button,
-           as plain names without links. Grouped per year (oldest first), each year a short list that lines up with
+           as plain names without links. Grouped per year (newest year first, each year in date order), each year a short list that lines up with
            the three columns above (two on tablets, one on phones), read top to bottom. They show even when no
            upcoming gig is public. */
         var gigsWrap = document.querySelector('#gigs .d-where-div');
