@@ -686,6 +686,7 @@
         }
         if (!list.length) return;
         var first = list.slice(0, 8), rest = list.slice(8);
+        prevYear = String(thisYear); /* the past list above has moved the year on; upcoming starts from this year */
         upList.innerHTML = build(first);
         cols(upList);
         /* the list control (All Upcoming Dates, phones only) sits under the list */
@@ -736,16 +737,15 @@
         /* hero: one line with the next gig, linking down to the list */
         var heroNext = document.getElementById('hero-next');
         if (heroNext) {
-          /* a small ticket: the date block from Upcoming Gigs on the left, the event and place beside it */
+          /* one quiet line under the buttons, in the hero's own text style: a red status dot, the label and a linked
+             date · event · place. No box and no arrow, so it doesn't read as a third button */
           var n = list[0], nq = n.date.split('-').map(Number), nd = new Date(nq[0], nq[1] - 1, nq[2]);
-          var nWd = nd.toLocaleDateString(upLoc, { weekday: 'short' }).replace('.', '');
-          var nMo = nd.toLocaleDateString(upLoc, { month: 'short' }).replace('.', '').slice(0, 3);
-          var nYr = nq[0] !== thisYear ? '<span class="up-yr">' + nq[0] + '</span>' : '';
+          var nOpts = { weekday: 'short', day: 'numeric', month: 'short' };
+          if (nq[0] !== thisYear) nOpts.year = 'numeric';
+          var nDate = nd.toLocaleDateString(upLoc, nOpts).replace(/\./g, '');
           var nPlace = [n.venue, CITY[n.city] || n.city].filter(Boolean).join(', ');
-          heroNext.innerHTML = '<a class="hn" href="#upcoming"><span class="hn-body"><span class="hn-label">' + esc(T.next) + '</span><span class="hn-text">' + esc(n.event) +
-            (nPlace ? '<span class="hn-place"> · ' + esc(nPlace) + '</span>' : '') + '</span></span>' +
-            '<time class="hn-date" datetime="' + esc(n.date) + '"><span class="hn-wd">' + esc(nWd) + '</span><span class="hn-day">' + nq[2] + '</span><span class="hn-mo">' + esc(nMo) + nYr + '</span></time>' +
-            '<span class="hn-ar hv-ar hv-d" aria-hidden="true">↓</span></a>';
+          heroNext.innerHTML = '<a class="hn" href="#upcoming"><span class="hn-dot" aria-hidden="true"></span><span class="hn-label">' + esc(T.next) + '</span>' +
+            '<span class="hn-text">' + esc([nDate, n.event, nPlace].filter(Boolean).join(' · ')) + '</span></a>';
           heroNext.hidden = false;
         }
       })
