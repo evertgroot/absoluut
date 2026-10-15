@@ -655,6 +655,10 @@
         var build = function (arr) { return arr.map(row).join(''); };
         var first = list.slice(0, 8), rest = list.slice(8);
         upList.innerHTML = build(first);
+        /* the list controls (All dates on phones, Past events) share one row under the list */
+        var actions = document.createElement('div');
+        actions.className = 'up-actions';
+        upList.parentNode.insertBefore(actions, upList.nextSibling);
         /* on phones only the first three show; a button reveals the rest */
         if (first.length > 3) {
           upList.classList.add('up-collapsed');
@@ -663,7 +667,7 @@
           tg.textContent = T.all + ' (' + list.length + ')';
           tg.setAttribute('aria-expanded', 'false');
           tg.addEventListener('click', function () { upList.classList.remove('up-collapsed'); tg.setAttribute('aria-expanded', 'true'); tg.hidden = true; });
-          upList.parentNode.insertBefore(tg, upList.nextSibling);
+          actions.appendChild(tg);
         }
         /* past events: a button under the list opens them, newest first, without links */
         if (past.length) {
@@ -679,8 +683,8 @@
             var open = pastList.hidden;
             pastList.hidden = !open; pb.setAttribute('aria-expanded', String(open));
           });
-          var wrap = upList.parentNode;
-          wrap.appendChild(pb); wrap.appendChild(pastList);
+          actions.appendChild(pb);
+          actions.parentNode.insertBefore(pastList, actions.nextSibling);
         }
         var more = document.getElementById('upcoming-more');
         if (more && rest.length) {
