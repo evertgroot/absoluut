@@ -111,10 +111,8 @@
     return { wd: d.toLocaleDateString(loc, { weekday: 'short' }).replace('.', '').toUpperCase(), day: String(q[2]),
              mo: d.toLocaleDateString(loc, { month: 'short' }).replace('.', '').slice(0, 3).toUpperCase(), y: q[0] };
   }
-  function where(g) {
-    var city = (CITY[lang] || {})[g.city] || g.city || '';
-    var note = g.note ? (typeof g.note === 'string' ? g.note : (g.note[lang] || g.note.en)) : '';
-    return [g.venue, note, city].filter(Boolean).join(' · ');
+  function where(g) { /* city only: followers decide by place; the venue is on the ticket link */
+    return (CITY[lang] || {})[g.city] || g.city || '';
   }
   function logoOf(g) {
     if (g.logos && g.logos.length === 1) return { src: g.logos[0].src, r: g.logos[0].r || 3 };
