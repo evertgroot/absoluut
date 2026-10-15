@@ -1,6 +1,6 @@
 [
-  {"date": "2026-10-29", "event": "Squillo", "venue": "NODO", "city": "Milan", "url": "https://www.nodo.bar", "show": false, "logo": "/assets/img/squillo-logo-white.png", "logoHeight": 36},
-  {"date": "2027-02-19", "event": "Beyond Darklands", "venue": "Waagnatie", "city": "Antwerp", "url": "https://www.darklands.be", "show": false, "logo": "/assets/img/beyond-darklands-logo-white.svg", "logoHeight": 40},
+  {"date": "2026-10-29", "event": "Squillo", "venue": "NODO", "city": "Milan", "url": "https://www.nodo.bar", "show": false, "logo": "/assets/img/squillo-logo-white.png", "logoHeight": 36, "logoRatio": 2.87},
+  {"date": "2027-02-19", "event": "Beyond Darklands", "venue": "Waagnatie", "city": "Antwerp", "url": "https://www.darklands.be", "show": false, "logo": "/assets/img/beyond-darklands-logo-white.svg", "logoHeight": 40, "logoRatio": 2.2},
   {"date": "2027-03-26", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam", "url": "https://linktr.ee/bops.ams", "show": false, "logo": "/assets/img/bops-brand-logo-white.png"},
   {"date": "2027-05-28", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam", "url": "https://linktr.ee/bops.ams", "show": false, "logo": "/assets/img/bops-brand-logo-white.png"},
   {"date": "2027-08-06", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam", "url": "https://linktr.ee/bops.ams", "show": false, "logo": "/assets/img/bops-brand-logo-white.png"},
