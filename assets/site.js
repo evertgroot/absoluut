@@ -677,29 +677,36 @@
           ul.classList.add('up-cols'); ul.style.setProperty('--rows', half);
           if (ul.children[half]) ul.children[half].classList.add('up-c2');
         };
-        /* recent gigs: proof of where I play, so they live at the end of "Where I've Played" (#gigs), behind
-           a button, newest first, as plain names without links. They show even when no upcoming gig is public.
-           On wide screens the list lines up with the three columns above (two on tablets), each read top to bottom. */
+        /* past gigs: proof of where I play, so they live at the end of "Where I've Played" (#gigs), behind a button,
+           as plain names without links. Grouped per year (newest first), each year a short list that lines up with
+           the three columns above (two on tablets, one on phones), read top to bottom. They show even when no
+           upcoming gig is public. */
         var gigsWrap = document.querySelector('#gigs .d-where-div');
         if (past.length && gigsWrap) {
-          prevYear = String(thisYear);
           var rg = document.createElement('div');
           rg.className = 'rg';
-          var pastList = document.createElement('ul');
-          pastList.className = 'up-list up-past rg-list'; pastList.id = 'recent-gigs'; pastList.hidden = true;
-          pastList.innerHTML = past.map(function (g) { g._past = true; return row(g); }).join('');
-          pastList.style.setProperty('--rows2', Math.ceil(past.length / 2));
-          pastList.style.setProperty('--rows3', Math.ceil(past.length / 3));
+          var panel = document.createElement('div');
+          panel.className = 'rg-panel'; panel.id = 'recent-gigs'; panel.hidden = true;
+          panel.setAttribute('role', 'region'); panel.setAttribute('aria-labelledby', 'recent-gigs-toggle');
+          var years = [];
+          past.forEach(function (g) { var y = g.date.slice(0, 4); if (!years.length || years[years.length - 1].y !== y) years.push({ y: y, gigs: [] }); years[years.length - 1].gigs.push(g); });
+          panel.innerHTML = years.map(function (yr) {
+            prevYear = yr.y; /* the year heading says it, so no year under the month */
+            return '<h4 class="rg-year" id="rg-' + yr.y + '">' + yr.y + '</h4><ul class="up-list up-past rg-list" aria-labelledby="rg-' + yr.y + '" style="--rows2:' + Math.ceil(yr.gigs.length / 2) + ';--rows3:' + Math.ceil(yr.gigs.length / 3) + '">' +
+              yr.gigs.map(function (g) { g._past = true; return row(g); }).join('') + '</ul>';
+          }).join('');
+          var hd = document.createElement('h3');
+          hd.className = 'rg-h';
           var pb = document.createElement('button');
-          pb.type = 'button'; pb.className = 'up-past-toggle';
+          pb.type = 'button'; pb.className = 'up-past-toggle'; pb.id = 'recent-gigs-toggle';
           pb.setAttribute('aria-expanded', 'false'); pb.setAttribute('aria-controls', 'recent-gigs');
-          pb.id = 'recent-gigs-toggle'; pastList.setAttribute('aria-labelledby', 'recent-gigs-toggle'); /* the list is announced as "Past Gigs" */
           pb.innerHTML = esc(T.recent) + '<span class="up-past-ar hv-ar hv-d" aria-hidden="true">↓</span>';
           pb.addEventListener('click', function () {
-            var open = pastList.hidden;
-            pastList.hidden = !open; pb.setAttribute('aria-expanded', String(open));
+            var open = panel.hidden;
+            panel.hidden = !open; pb.setAttribute('aria-expanded', String(open));
           });
-          rg.appendChild(pb); rg.appendChild(pastList);
+          hd.appendChild(pb);
+          rg.appendChild(hd); rg.appendChild(panel);
           gigsWrap.appendChild(rg);
         }
         if (!list.length) return;
