@@ -89,7 +89,6 @@
   };
   var CITY = { nl: { Milan: 'Milaan', Antwerp: 'Antwerpen', Rome: 'Rome', 'The Hague': 'Den Haag', Brussels: 'Brussel' },
                it: { Milan: 'Milano', Antwerp: 'Anversa', Rome: 'Roma', 'The Hague': "L'Aia", Brussels: 'Bruxelles' } };
-  var URL_TEXT = 'imgroot.nl/djabsoluut';
   var MAX = 6;
   /* Safe zones. Story: Instagram's top bar (~250px) and reply bar/stickers (~340px) cover the edges.
      Post 3:4: the profile grid shows it whole, but some feeds still crop to 4:5 (1080x1350), so content stays
@@ -141,8 +140,8 @@
     if (!photo.complete) await new Promise(function (r) { photo.addEventListener('load', r); photo.addEventListener('error', r); });
     if (my !== ticket[key]) return; /* a newer redraw has started; from here on everything is drawn in one go */
 
-    /* layout from the bottom of the safe area up: footer, gig rows, title, eyebrow; the photo fills what is left */
-    var W = s.r - s.l, footH = key === 'story' ? 80 : 70, headH = key === 'story' ? 250 : 220;
+    /* layout from the bottom of the safe area up: gig rows, title, eyebrow; the photo fills what is left */
+    var W = s.r - s.l, footH = 0, headH = key === 'story' ? 250 : 220;
     var rowH = Math.max(118, Math.min(n === 1 ? 260 : 200, Math.floor((s.b - s.t - footH - headH - 40) / n)));
     var listB = s.b - footH, listT = listB - rowH * list.length;
     var titleBase = listT - 46;
@@ -213,11 +212,6 @@
       ctx.font = "600 " + wsz + "px 'Manrope'"; ctx.fillStyle = C.lilac; ctx.fillText(wt, tx, ny + nameH + 14 + wsz * 0.8);
     }
 
-    /* footer: red dot + address */
-    var fy = s.b - 18;
-    ctx.fillStyle = C.red; ctx.beginPath(); ctx.arc(s.l + 9, fy - 10, 9, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = 'rgba(200,25,58,0.28)'; ctx.beginPath(); ctx.arc(s.l + 9, fy - 10, 16, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = C.white; ctx.font = "700 30px 'Manrope'"; ctx.fillText(URL_TEXT, s.l + 38, fy);
     overlay(key);
   }
 
