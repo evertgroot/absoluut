@@ -597,7 +597,7 @@
 
   /* 2b. DJ page: upcoming gigs from /assets/gigs.json.
      Each gig: { date: "YYYY-MM-DD", event, venue, city, url, show, logo, note, private }. Past gigs appear under
-     the "Past events" button, newest first; a private gig shows only "Private wedding/event" and the city. A gig with "show": false stays hidden
+     the "Past events" button, newest first; a private gig shows "Private Wedding/Event" instead of a name, and no link. A gig with "show": false stays hidden
      until it is switched on; add ?gigs=preview to the URL to see hidden gigs too. A gig counts as upcoming
      until 06:00 the next morning, so a late set doesn't disappear at midnight. */
   var upSec = document.getElementById('upcoming');
@@ -641,7 +641,7 @@
           prevYear = y;
           var city = CITY[g.city] || g.city || '';
           var note = g.note ? (typeof g.note === 'string' ? g.note : (g.note[lang] || g.note.en)) : '';
-          var where = [g.private ? '' : g.venue, g.private ? '' : note, city].filter(Boolean).join(' · ');
+          var where = [g.venue, note, city].filter(Boolean).join(' · ');
           var name = g.private ? (T.priv[g.private] || T.priv.event) : g.event;
           var logos = g.logos || (g.logo ? [{ src: g.logo, h: g.logoHeight, r: g.logoRatio }] : []);
           var inner = '<time class="up-date" datetime="' + esc(g.date) + '"><span class="up-wd">' + esc(wd) + '</span><span class="up-day">' + q[2] +
