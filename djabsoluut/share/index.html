@@ -23,7 +23,9 @@
   .gigs{display:grid;gap:6px}
   .gigs label{display:flex;gap:12px;align-items:center;min-height:40px;cursor:pointer}
   .gigs input{flex:none;width:20px;height:20px;accent-color:var(--red)}
-  .tag{font-size:12px;font-weight:700;color:var(--lilac);border:1px solid rgba(217,181,230,.4);border-radius:999px;padding:1px 8px}
+  .gt{display:grid;gap:4px;line-height:1.35}
+  .gigs label{padding:4px 0}
+  .tag{justify-self:start;white-space:nowrap;font-size:12px;font-weight:700;color:var(--lilac);border:1px solid rgba(217,181,230,.4);border-radius:999px;padding:1px 8px}
   .chk{display:flex;gap:10px;align-items:center;min-height:40px;cursor:pointer}
   .chk input{flex:none;width:20px;height:20px;accent-color:var(--red)}
   .retry{margin-top:8px}
@@ -54,54 +56,104 @@
   .sliders input{width:100%;accent-color:var(--red);min-height:32px}
   .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:rgba(255,255,255,.75)}
   .legend i{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px}
+  /* three steps: one panel at a time on the left, the live preview beside it (below it on phones) */
+  .steps{display:flex;gap:8px;margin:0 0 20px;padding:0;list-style:none;flex-wrap:wrap}
+  .steps button{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px 0 8px;border:1.5px solid rgba(255,255,255,.25);border-radius:999px;background:none;color:rgba(255,255,255,.75);font:700 15px 'Manrope',sans-serif;cursor:pointer}
+  .steps .n{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.12);font-weight:800}
+  .steps button[aria-current="step"]{border-color:var(--white);color:var(--white)}
+  .steps button[aria-current="step"] .n{background:var(--red)}
+  .steps button:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+  .work{display:grid;gap:24px;align-items:start}
+  @media (min-width:900px){
+    .work{grid-template-columns:minmax(0,420px) minmax(0,1fr)}
+    .preview{position:sticky;top:16px}
+    body[data-step="3"] .work{grid-template-columns:minmax(0,320px) minmax(0,1fr)}
+  }
+  .panel{margin-bottom:0}
+  .step[hidden]{display:none}
+  .warn:empty{display:none}
+  .panel h2{margin:0;font:800 26px/1.1 'Baloo Bhai 2',sans-serif}
+  .panel h2:focus{outline:none}
+  .nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .pv-top{justify-content:space-between;margin-bottom:8px}
+  .preview .legend{margin-bottom:14px}
+  /* steps 1 and 2: one preview, chosen with Post / Story; step 3: both, with their download buttons */
+  body:not([data-step="3"]) .out{grid-template-columns:minmax(0,420px)}
+  body:not([data-step="3"]) .out figure:not(.on){display:none}
+  body:not([data-step="3"]) .acts{display:none}
+  body[data-step="3"] .fmt{display:none}
 </style>
 </head>
 <body>
 <main>
   <h1>Gig Share</h1>
-  <p class="lead">Instagram-afbeeldingen van je aankomende gigs, gemaakt uit dezelfde gig-lijst als de website. Vink aan welke gigs erop moeten, kies de taal en download of deel. Alles staat binnen de safe zones van Instagram.</p>
+  <p class="lead">Instagram-afbeeldingen van je aankomende gigs in drie stappen. Alles staat binnen de safe zones van Instagram.</p>
 
-  <div class="panel">
-    <div class="row"><span class="lbl">Taal</span>
-      <div class="seg" id="lang" role="group" aria-label="Taal">
-        <button type="button" data-v="en" aria-pressed="true">EN</button><button type="button" data-v="nl" aria-pressed="false">NL</button><button type="button" data-v="it" aria-pressed="false">IT</button>
-      </div>
-    </div>
-    <div><span class="lbl">Gigs</span>
-      <div class="gigs" id="gigs"><p class="note">Gigs laden…</p></div>
-      <p class="warn" id="warn" role="status"></p>
-    </div>
-    <div><span class="lbl">Foto</span>
-      <div class="pics" id="pics" role="group" aria-label="Kies een foto"></div>
-      <div class="row" style="margin-top:12px">
-        <label class="btn ghost up"><input type="file" id="upload" accept="image/*"> Eigen foto uploaden</label>
-        <span class="note" style="margin:0">Je eigen foto blijft op je apparaat; hij wordt nergens naartoe gestuurd.</span>
-      </div>
-      <p class="warn" id="photo-msg" role="status"></p>
-      <div class="sliders">
-        <label>Uitsnede links ↔ rechts <input type="range" id="fx" min="0" max="100" step="1"></label>
-        <label>Uitsnede omhoog ↕ omlaag <input type="range" id="fy" min="0" max="100" step="1"></label>
-      </div>
-    </div>
-    <div class="row">
-      <label class="chk"><input type="checkbox" id="safe" checked> Safe zones tonen (komen niet in de download)</label>
-    </div>
-    <div class="legend" aria-hidden="true"><span><i style="background:rgba(255,40,80,.35)"></i>Instagram-interface (geen tekst)</span><span><i style="border:2px dashed #7bd6e0"></i>Uitsnede 4:5 in de feed</span></div>
-  </div>
+  <ol class="steps" aria-label="Stappen">
+    <li><button type="button" data-go="1" aria-current="step"><span class="n">1</span>Foto</button></li>
+    <li><button type="button" data-go="2"><span class="n">2</span>Gigs</button></li>
+    <li><button type="button" data-go="3"><span class="n">3</span>Downloaden</button></li>
+  </ol>
 
-  <div class="out">
-    <figure>
-      <figcaption><b>Post</b><span>1080 × 1440 · 3:4</span></figcaption>
-      <div class="stage"><canvas id="c-post" width="1080" height="1440" aria-label="Voorbeeld post 1080 bij 1440"></canvas><canvas class="ov" id="o-post" width="1080" height="1440" aria-hidden="true"></canvas></div>
-      <div class="acts"><button class="btn" type="button" data-dl="post">Download PNG</button><button class="btn ghost" type="button" data-share="post" hidden>Delen</button></div>
-    </figure>
-    <figure>
-      <figcaption><b>Story</b><span>1080 × 1920 · 9:16</span></figcaption>
-      <div class="stage"><canvas id="c-story" width="1080" height="1920" aria-label="Voorbeeld story 1080 bij 1920"></canvas><canvas class="ov" id="o-story" width="1080" height="1920" aria-hidden="true"></canvas></div>
-      <div class="acts"><button class="btn" type="button" data-dl="story">Download PNG</button><button class="btn ghost" type="button" data-share="story" hidden>Delen</button></div>
-    </figure>
+  <div class="work">
+    <div class="side">
+      <section class="panel step" id="s1" aria-labelledby="h1s">
+        <h2 id="h1s" tabindex="-1">1. Kies een foto</h2>
+        <div class="pics" id="pics" role="group" aria-label="Foto's van de site"></div>
+        <div class="row">
+          <label class="btn ghost up"><input type="file" id="upload" accept="image/*"> Eigen foto uploaden</label>
+        </div>
+        <p class="note" style="margin:0">Je eigen foto blijft op je apparaat; hij wordt nergens naartoe gestuurd.</p>
+        <p class="warn" id="photo-msg" role="status"></p>
+        <div class="sliders">
+          <label>Uitsnede links ↔ rechts <input type="range" id="fx" min="0" max="100" step="1"></label>
+          <label>Uitsnede omhoog ↕ omlaag <input type="range" id="fy" min="0" max="100" step="1"></label>
+        </div>
+        <div class="nav"><button class="btn" type="button" data-go="2">Volgende: gigs →</button></div>
+      </section>
+
+      <section class="panel step" id="s2" aria-labelledby="h2s" hidden>
+        <h2 id="h2s" tabindex="-1">2. Kies je gigs</h2>
+        <div class="row"><span class="lbl">Taal</span>
+          <div class="seg" id="lang" role="group" aria-label="Taal">
+            <button type="button" data-v="en" aria-pressed="true">EN</button><button type="button" data-v="nl" aria-pressed="false">NL</button><button type="button" data-v="it" aria-pressed="false">IT</button>
+          </div>
+        </div>
+        <div class="gigs" id="gigs"><p class="note">Gigs laden…</p></div>
+        <p class="warn" id="warn" role="status"></p>
+        <div class="nav"><button class="btn ghost" type="button" data-go="1">← Foto</button><button class="btn" type="button" data-go="3">Volgende: downloaden →</button></div>
+      </section>
+
+      <section class="panel step" id="s3" aria-labelledby="h3s" hidden>
+        <h2 id="h3s" tabindex="-1">3. Downloaden of delen</h2>
+        <p class="note" style="margin:0">Download de post, de story of allebei. Op je telefoon gaat “Delen” direct naar Instagram of je fotorol.</p>
+        <div class="row"><button class="btn" type="button" id="dl-both">Download allebei</button></div>
+        <div class="nav"><button class="btn ghost" type="button" data-go="2">← Gigs</button><button class="btn ghost" type="button" data-go="1">← Foto</button></div>
+      </section>
+    </div>
+
+    <div class="preview">
+      <div class="row pv-top">
+        <div class="seg fmt" id="fmt" role="group" aria-label="Voorbeeld">
+          <button type="button" data-f="post" aria-pressed="true">Post</button><button type="button" data-f="story" aria-pressed="false">Story</button>
+        </div>
+        <label class="chk"><input type="checkbox" id="safe" checked> Safe zones tonen</label>
+      </div>
+      <div class="legend" aria-hidden="true"><span><i style="background:rgba(255,40,80,.35)"></i>Instagram-interface (geen tekst)</span><span><i style="border:2px dashed #7bd6e0"></i>Uitsnede 4:5 in de feed</span><span>Niet in de download</span></div>
+      <div class="out">
+        <figure data-fmt="post">
+          <figcaption><b>Post</b><span>1080 × 1440 · 3:4</span></figcaption>
+          <div class="stage"><canvas id="c-post" width="1080" height="1440" aria-label="Voorbeeld post 1080 bij 1440"></canvas><canvas class="ov" id="o-post" width="1080" height="1440" aria-hidden="true"></canvas></div>
+          <div class="acts"><button class="btn" type="button" data-dl="post">Download post</button><button class="btn ghost" type="button" data-share="post" hidden>Delen</button></div>
+        </figure>
+        <figure data-fmt="story">
+          <figcaption><b>Story</b><span>1080 × 1920 · 9:16</span></figcaption>
+          <div class="stage"><canvas id="c-story" width="1080" height="1920" aria-label="Voorbeeld story 1080 bij 1920"></canvas><canvas class="ov" id="o-story" width="1080" height="1920" aria-hidden="true"></canvas></div>
+          <div class="acts"><button class="btn" type="button" data-dl="story">Download story</button><button class="btn ghost" type="button" data-share="story" hidden>Delen</button></div>
+        </figure>
+      </div>
+    </div>
   </div>
-  <p class="note">Op je telefoon: met “Delen” gaat de afbeelding direct naar Instagram of je fotorol.</p>
 </main>
 <script>
 (function () {
@@ -299,6 +351,25 @@
   });
   document.getElementById('safe').addEventListener('change', function () { overlay('post'); overlay('story'); });
 
+  /* steps */
+  function go(n, focusIt) {
+    document.body.setAttribute('data-step', n);
+    ['1', '2', '3'].forEach(function (k) { document.getElementById('s' + k).hidden = k !== String(n); });
+    document.querySelectorAll('.steps button').forEach(function (b) { if (b.getAttribute('data-go') === String(n)) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+    if (focusIt) { var h = document.getElementById('h' + n + 's'); h.focus({ preventScroll: true }); document.querySelector('.steps').scrollIntoView({ block: 'start' }); }
+  }
+  document.querySelectorAll('[data-go]').forEach(function (b) { b.addEventListener('click', function () { go(b.getAttribute('data-go'), true); }); });
+  function showFmt(f) {
+    document.querySelectorAll('.out figure').forEach(function (fig) { fig.classList.toggle('on', fig.getAttribute('data-fmt') === f); });
+    document.querySelectorAll('#fmt button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-f') === f)); });
+  }
+  document.querySelectorAll('#fmt button').forEach(function (b) { b.addEventListener('click', function () { showFmt(b.getAttribute('data-f')); }); });
+  showFmt('post'); go(1, false);
+  document.getElementById('dl-both').addEventListener('click', function () {
+    document.querySelector('[data-dl="post"]').click();
+    setTimeout(function () { document.querySelector('[data-dl="story"]').click(); }, 600);
+  });
+
   /* photo picker: site photos, an own upload (stays in the browser), and crop sliders */
   var pics = document.getElementById('pics'), fxEl = document.getElementById('fx'), fyEl = document.getElementById('fy');
   function setSliders() { fxEl.value = Math.round(focus.x * 100); fyEl.value = Math.round(focus.y * 100); }
@@ -353,8 +424,10 @@
         cb.addEventListener('change', function () { chosen[id] = cb.checked; redraw(); });
         var q = g.date.split('-').map(Number), d = new Date(q[0], q[1] - 1, q[2]);
         l.appendChild(cb);
-        l.appendChild(document.createTextNode(d.toLocaleDateString('nl-NL', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }) + ' · ' + g.event + (g.venue ? ', ' + g.venue : '')));
-        if (g.show === false) { var tg = document.createElement('span'); tg.className = 'tag'; tg.textContent = 'nog verborgen op de site'; l.appendChild(tg); }
+        var gt = document.createElement('span'); gt.className = 'gt';
+        gt.appendChild(document.createTextNode(d.toLocaleDateString('nl-NL', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }) + ' · ' + g.event + (g.venue ? ', ' + g.venue : '')));
+        if (g.show === false) { var tg = document.createElement('span'); tg.className = 'tag'; tg.textContent = 'nog verborgen op de site'; gt.appendChild(tg); }
+        l.appendChild(gt);
         box.appendChild(l);
       });
       redraw();
