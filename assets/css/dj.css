@@ -554,3 +554,15 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
   .mix-foot > span:first-child > span:not(.mix-play){grid-column:2;grid-row:1;align-self:end}
   .mix-time{grid-column:2;grid-row:2;align-self:start;font-size:14px}
 }
+/* earlier years in Past Gigs: the year heading is a button that unfolds that year, with the site's down arrow */
+.rg-year-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0;border:0;background:none;color:inherit;font:inherit;letter-spacing:inherit;cursor:pointer;text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:6px;transition:text-decoration-color .25s ease}
+.rg-year-btn:hover{text-decoration-color:rgba(255,255,255,.5)}
+.rg-year-btn:focus-visible{outline:2px solid var(--c-white);outline-offset:3px;border-radius:4px}
+.rg-year-btn .up-past-ar.hv-ar{margin-left:0;font-size:18px;color:var(--c-blush);transition:transform .2s ease}
+.rg-year-btn[aria-expanded="true"] .up-past-ar.hv-ar{transform:rotate(180deg)}
+.rg .rg-year:has(.rg-year-btn){margin-top:14px;margin-bottom:0}
+@media (hover:hover){.rg-year-btn[aria-expanded="true"]:hover .up-past-ar.hv-ar{transform:rotate(180deg) translateY(3px)}}
+@media (prefers-reduced-motion:reduce){
+  .rg-year-btn,.rg-year-btn .up-past-ar.hv-ar{transition:none}
+  .rg-year-btn[aria-expanded="true"] .up-past-ar.hv-ar{transform:rotate(180deg) !important}
+}
