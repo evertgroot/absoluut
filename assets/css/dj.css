@@ -422,17 +422,16 @@ main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
 .up-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;column-gap:clamp(24px,4vw,64px)}
 .up-list > li:nth-child(-n+2) .up-row{border-top:1px solid var(--up-line)}
 .up-row{display:grid;grid-template-columns:60px minmax(0,1fr) auto;align-items:center;gap:16px;height:100%;box-sizing:border-box;padding:14px 4px;border:0 solid var(--up-line);border-bottom-width:1px;color:var(--c-aubergine);text-decoration:none;transition:background-color .2s ease,color .2s ease}
-/* hover: on this light background the row turns red as one (logo and date), like the other links on light sections;
-   the site-wide pink link hover is only for dark backgrounds */
+/* hover: on this light background the logo turns red, like the other links on light sections; the date keeps
+   the month's colour. The site-wide pink link hover is only for dark backgrounds */
 a.up-row:hover,a.up-row:focus-visible{background:rgba(31,3,40,.05);color:var(--c-red)}
-a.up-row:hover .up-day,a.up-row:focus-visible .up-day{color:var(--c-red)}
 a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .up-date{display:grid;justify-items:center;width:60px;line-height:1}
 .up-wd,.up-mo{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c-plum-mute)}
 .up-mo{white-space:nowrap}
 /* the year sits under the month of the first gig in a new year */
 .up-yr{display:block;margin-top:3px;color:var(--c-red)}
-.up-day{margin:3px 0 2px;font-family:'Baloo Bhai 2',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.02em;color:var(--c-aubergine);transition:color .2s ease}
+.up-day{margin:3px 0 2px;font-family:'Baloo Bhai 2',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.02em;color:var(--c-plum-mute)}
 .up-what{display:grid;gap:3px;min-width:0}
 .up-event{font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(20px,1.8vw,24px);font-weight:800;line-height:1.1;letter-spacing:-0.015em}
 .up-where{font-size:14px;font-weight:600;color:var(--c-plum-mute)}
@@ -496,7 +495,7 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .up-past .up-event{display:flex;align-items:center;min-height:28px;font-size:18px}
 .up-past .up-where{font-size:13px}
 @media (prefers-reduced-motion:reduce){
-  a.up-row,.up-go,.up-day{transition:none}
+  a.up-row,.up-go{transition:none}
   a.up-row:hover .up-go{transform:none}
 }
 /* reduced motion: no nudge or animation, but the open state still points up */
@@ -511,7 +510,7 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .rg .up-past-toggle:focus-visible{outline-color:var(--c-white)}
 .rg .up-past-ar.hv-ar{color:var(--c-blush)}
 .rg .up-row{color:var(--c-white)}
-.rg .up-day{color:var(--c-white)}
+.rg .up-day{color:var(--c-lilac)}
 .rg .up-mo,.rg .up-where{color:var(--c-lilac)}
 .rg .up-yr{color:var(--c-blush)}
 /* the group's top rule already opens the list, so rows only carry a line underneath */
