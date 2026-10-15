@@ -523,3 +523,5 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 @media (min-width:761px) and (max-width:1000px){
   .rg-list{grid-auto-flow:column;grid-template-rows:repeat(var(--rows2,7),auto)}
 }
+/* a past gig without a known place keeps the empty second line, so the row height stays even */
+.up-past .up-where:empty::before{content:"\a0"}
