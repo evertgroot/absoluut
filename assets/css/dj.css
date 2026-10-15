@@ -502,8 +502,7 @@ main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
   .up-logo.is-color{background:var(--logo) left center / contain no-repeat}
 }
 
-/* past events: one quiet, even rhythm. Logos are sized by area (set in site.js) inside a fixed 28px slot,
-   names sit in the same slot, and the weekday is dropped, so every row has the same height */
+/* past events: one quiet, even rhythm. Names are plain text (no logos) in a fixed 28px slot and the weekday is dropped, so every row has the same height */
 .up-past .up-row{padding:12px 4px;opacity:1;grid-template-columns:44px minmax(0,1fr)}
 .up-past .up-date{width:44px}
 .up-past .up-wd{display:none}
