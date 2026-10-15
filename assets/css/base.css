@@ -68,3 +68,5 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
 .field:not(:focus){border-color:rgba(255,255,255,0.5) !important}
 .site-sw a:focus-visible{outline:2px solid var(--hv-acc);outline-offset:2px}
 img[width][height]{height:auto}
+/* footer legal links: a taller tap area without moving anything */
+@media (min-width:641px){.ft2-bottom a{padding-block:5px;margin-block:-5px}}
