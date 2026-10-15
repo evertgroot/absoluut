@@ -543,3 +543,14 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .mq-ic{display:block;width:12px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Crect x='1' y='1' width='3.5' height='12' rx='1'/%3E%3Crect x='7.5' y='1' width='3.5' height='12' rx='1'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Crect x='1' y='1' width='3.5' height='12' rx='1'/%3E%3Crect x='7.5' y='1' width='3.5' height='12' rx='1'/%3E%3C/svg%3E") center / contain no-repeat}
 .mq-pause[aria-pressed="true"] .mq-ic{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Cpath d='M2 1.5v11a.8.8 0 0 0 1.2.7l8.4-5.5a.8.8 0 0 0 0-1.4L3.2.8A.8.8 0 0 0 2 1.5z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Cpath d='M2 1.5v11a.8.8 0 0 0 1.2.7l8.4-5.5a.8.8 0 0 0 0-1.4L3.2.8A.8.8 0 0 0 2 1.5z'/%3E%3C/svg%3E");margin-left:2px}
 @media (forced-colors:active){.mq-ic{forced-color-adjust:none;background:ButtonText}}
+/* keep the last word and its arrow together, so the arrow never wraps onto a line of its own */
+.nw{white-space:nowrap}
+/* wide screens: the play button on the left, "Listen on SoundCloud ↗" with the duration underneath,
+   so the four narrow cards never run out of room (phones keep their own compact footer) */
+@media (min-width:761px){
+  .mix-foot{display:grid;grid-template-columns:44px minmax(0,1fr);grid-template-rows:auto auto;column-gap:12px;row-gap:2px;align-items:center}
+  .mix-foot > span:first-child{display:contents}
+  .mix-play{grid-row:1 / span 2;grid-column:1}
+  .mix-foot > span:first-child > span:not(.mix-play){grid-column:2;grid-row:1;align-self:end}
+  .mix-time{grid-column:2;grid-row:2;align-self:start;font-size:14px}
+}
