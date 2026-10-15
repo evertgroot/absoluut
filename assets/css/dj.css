@@ -482,3 +482,7 @@ main .hv-ar.hv-ne{font-weight:800;color:var(--c-blush)}
 .up-x{font-weight:800;font-size:14px;color:var(--c-plum-mute)}
 .up-past .up-logos{transform:scale(.8);transform-origin:left center}
 .up-past .up-logo{transform:none}
+/* full-colour logos (e.g. the LeccoMilano badge) are shown as they are instead of as a one-colour mask */
+.up-logo.is-color{background:var(--logo) left center / contain no-repeat;-webkit-mask:none;mask:none}
+.up-logo-name{margin-left:4px;font-family:'Baloo Bhai 2',sans-serif;font-size:inherit;font-weight:800;line-height:1.1;letter-spacing:-0.015em}
+.up-logo-name{font-size:22px}

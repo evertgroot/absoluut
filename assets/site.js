@@ -645,7 +645,7 @@
           var name = g.private ? (T.priv[g.private] || T.priv.event) : g.event;
           var logos = g.logos || (g.logo ? [{ src: g.logo, h: g.logoHeight, r: g.logoRatio }] : []);
           var inner = '<time class="up-date" datetime="' + esc(g.date) + '"><span class="up-wd">' + esc(wd) + '</span><span class="up-day">' + q[2] +
-            '</span><span class="up-mo">' + esc(mo) + yr + '</span></time><span class="up-what"><span class="up-event">' + (logos.length && !g.private ? '<span class="up-logos" role="img" aria-label="' + esc(g.event) + '">' + logos.map(function (l) { return '<span class="up-logo" style="--logo:url(\'' + esc(l.src) + '\');height:' + Number(l.h || 20) + 'px;aspect-ratio:' + Number(l.r || 5.56) + '"></span>'; }).join('<span class="up-x" aria-hidden="true">×</span>') + '</span>' : esc(name)) +
+            '</span><span class="up-mo">' + esc(mo) + yr + '</span></time><span class="up-what"><span class="up-event">' + (logos.length && !g.private ? '<span class="up-logos" role="img" aria-label="' + esc(g.event) + '">' + logos.map(function (l) { return '<span class="up-logo' + (l.color ? ' is-color' : '') + '" style="--logo:url(\'' + esc(l.src) + '\');height:' + Number(l.h || 20) + 'px;aspect-ratio:' + Number(l.r || 5.56) + '"></span>'; }).join('<span class="up-x" aria-hidden="true">×</span>') + (g.logoName ? '<span class="up-logo-name" aria-hidden="true">' + esc(g.event) + '</span>' : '') + '</span>' : esc(name)) +
             '</span><span class="up-where">' + esc(where) + '</span></span>';
           return g.url && !g.private && !g._past
             ? '<li><a class="up-row" href="' + esc(g.url) + '" target="_blank" rel="noopener noreferrer">' + inner +
