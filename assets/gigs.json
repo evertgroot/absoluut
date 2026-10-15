@@ -1,7 +1,12 @@
 [
+  {"date": "2023-01-21", "event": "3xNYX", "venue": "Club NYX", "city": "Amsterdam"},
   {"date": "2023-01-27", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam"},
   {"date": "2023-05-12", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam"},
+  {"date": "2023-06-24", "event": "Private wedding", "venue": "Paardenburg", "city": "Amstelveen", "private": "wedding"},
+  {"date": "2023-07-30", "event": "Milkshake Festival", "venue": "", "city": "Amsterdam"},
   {"date": "2023-08-04", "event": "BOPS", "venue": "The Other Side", "city": "", "note": {"en": "Pride Amsterdam", "nl": "Pride Amsterdam", "it": "Pride Amsterdam"}},
+  {"date": "2023-08-06", "event": "Club NYX", "venue": "", "city": "Amsterdam"},
+  {"date": "2023-11-04", "event": "3xNYX", "venue": "Club NYX", "city": "Amsterdam"},
   {"date": "2023-11-10", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam"},
   {"date": "2024-01-20", "event": "Kalinichta", "venue": "Paradiso", "city": "Amsterdam"},
   {"date": "2024-02-02", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam"},
