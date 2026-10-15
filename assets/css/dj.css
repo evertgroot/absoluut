@@ -48,8 +48,8 @@ a{color:#ffffff}a:hover{color:var(--c-gold)}
 @media (max-width: 899px){
   .cine{min-height:0 !important;display:block !important}
   .cine-img{position:relative !important;display:block;width:100% !important;height:auto !important;aspect-ratio:4 / 5;-webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);mask-image:linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%)}
-  .cine h1{max-width:none !important}
-  .cine-right{object-position:44% 50% !important;top:auto !important}
+  .cine h1{max-width:none}
+  .cine-right{object-position:44% 50% !important;top:auto}
   .cine > .gut{margin-top:-110px}
   
   
@@ -130,7 +130,7 @@ header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
 :root{--acc:var(--c-red);--pop:#2c0739}
 /* hero: title higher, intro text under the title */
-@media (min-width: 900px){.cine{align-items:center !important}.cine > .gut{padding-top:120px;padding-bottom:64px !important}}
+@media (min-width: 900px){.cine{align-items:center !important}.cine > .gut{padding-top:120px;padding-bottom:64px}}
 .hero-lead{margin:0;max-width:min(600px,46vw);font-size:clamp(17px,1.35vw,20px);line-height:1.6;font-weight:500;color:rgba(255,255,255,0.84)}
 @media (max-width: 899px){.hero-lead{max-width:none;font-size:17px}}
 /* gigs: three columns */
@@ -150,8 +150,8 @@ a:hover{color:var(--c-pink)}
 .ft2-sub,.ft2-bottom a{color:#efd3f6}
 .ft2-bottom{color:#cba8d8}
 footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
-#lang-banner{background:var(--c-red) !important;color:#ffffff !important}
-#lang-banner-link,#lang-banner-close{color:#ffffff !important}
+#lang-banner{background:var(--c-red);color:#ffffff}
+#lang-banner-link,#lang-banner-close{color:#ffffff}
 /* end page theme */
 
 /* ---- form-sys ---- */
@@ -162,7 +162,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .f-ref a{margin-top:16px}
 
 #contact p:has(+ #contact-form),.book-side > p:first-child{text-wrap:balance}
-@media (max-width: 899px){.gut > .hero-lead{order:2}.gut > .hero-cta{order:1;margin-top:0 !important}}
+@media (max-width: 899px){.gut > .hero-lead{order:2}.gut > .hero-cta{order:1;margin-top:0}}
 #contact-form select:invalid{color:#8c9396}
 #contact-form select option{color:var(--c-black-soft)}
 
@@ -173,12 +173,12 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 /* ---- hv-sys ---- */
 /* unified hover system: primary · secondary · text link · icon · card */
 :root{--hv-acc:var(--c-pink);--hv-acc-l:var(--c-red);--hv-glow:rgba(0,0,0,.32)}
-.btn-solid{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease,background-color .25s ease,color .25s ease !important}
-.btn-ghost,.hv-2{transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .25s ease,border-color .25s ease,color .25s ease !important}
+.btn-solid{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease,background-color .25s ease,color .25s ease}
+.btn-ghost,.hv-2{transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .25s ease,border-color .25s ease,color .25s ease}
 .btn-solid:hover,.btn-solid:focus-visible{box-shadow:0 8px 22px var(--hv-glow)}
 .btn-ghost:hover,.btn-ghost:focus-visible,.hv-2.hv-dk:hover,.hv-2.hv-dk:focus-visible{background-color:rgba(255,255,255,.1) !important;border-color:#ffffff !important;color:#ffffff}
 
-.hv-tl{text-decoration-line:underline !important;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:4px;transition:color .25s ease,text-decoration-color .25s ease}
+.hv-tl{text-decoration-line:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:4px;transition:color .25s ease,text-decoration-color .25s ease}
 .hv-tl.hv-dk:hover,.hv-tl.hv-dk:focus-visible{color:var(--hv-acc) !important;text-decoration-color:var(--hv-acc)}
 
 
@@ -227,7 +227,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .hv-r{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h11M8.5 3.5 13 8l-4.5 4.5'/%3E%3C/svg%3E")}
 
 /* footer: no reserved space for a floating button that now steps aside here; tappable legal links on phones */
-@media (max-width: 640px){.ft2-bottom a{display:inline-flex;align-items:center;min-height:44px}.ft2-bottom{padding-top:14px !important}}
+@media (max-width: 640px){.ft2-bottom a{display:inline-flex;align-items:center;min-height:44px}.ft2-bottom{padding-top:14px}}
 /* navigation: accent from the page's light accent (readable on the dark header), own focus rings */
 .nav-links a::after{background:var(--hv-acc)}
 .nav-links a:hover,.hdr-lang a:hover,.mm-lang a:hover,.mm-link:hover{color:var(--hv-acc)}
@@ -237,12 +237,12 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .hdr-lang a{font-size:13px}
 /* mobile menu: sections sit low, close to the thumb; languages above a full-width call to action */
 @keyframes mm-in{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
-#mobile-menu > nav{margin-top:auto !important;padding-top:32px}
-#mobile-menu > div:last-child{margin-top:0 !important;padding-top:28px !important;flex-direction:column;align-items:stretch !important;gap:12px !important}
+#mobile-menu > nav{margin-top:auto;padding-top:32px}
+#mobile-menu > div:last-child{margin-top:0;padding-top:28px;flex-direction:column;align-items:stretch;gap:12px}
 #mobile-menu > div:last-child > .btn-solid{justify-content:center}
 #mobile-menu .mm-lang{order:-1;margin:0 0 0 -12px}
-@media (max-height: 640px){.mm-link{font-size:30px !important;padding:2px 0 !important}#mobile-menu > nav{padding-top:12px}#mobile-menu > div:last-child{padding-top:16px !important}}
-@media (max-height: 440px){#mobile-menu{padding-top:12px !important;padding-bottom:14px !important}.mm-link{font-size:24px !important;line-height:1.2 !important;padding:0 !important}#mobile-menu > nav{padding-top:6px}#mobile-menu > div:last-child{padding-top:10px !important;flex-direction:row;align-items:center !important;justify-content:space-between}}
+@media (max-height: 640px){.mm-link{font-size:30px;padding:2px 0}#mobile-menu > nav{padding-top:12px}#mobile-menu > div:last-child{padding-top:16px}}
+@media (max-height: 440px){#mobile-menu{padding-top:12px;padding-bottom:14px}.mm-link{font-size:24px;line-height:1.2;padding:0}#mobile-menu > nav{padding-top:6px}#mobile-menu > div:last-child{padding-top:10px;flex-direction:row;align-items:center;justify-content:space-between}}
 @media (prefers-reduced-motion: reduce){.nav-links a::after,.mm-link{transition:none}#mobile-menu:not([hidden]){animation:none}}
 /* pages with a hero button: the header button joins in once the bar sticks, so the first screen has one call to action */
 :is(#services,#events,#where,#bio,#media,#rider) :focus-visible{outline-color:var(--hv-acc-l) !important}
@@ -279,16 +279,16 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 @media (max-width: 640px){.gig-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"v" "f" "b"}}
 
 /* listen cards with the SoundCloud cover: square art on top; on phones a compact row with the art on the left */
-.mix{padding:0 !important;gap:0 !important;overflow:hidden}
+.mix{padding:0;gap:0;overflow:hidden}
 .mix-art{display:block;width:100%;height:auto;aspect-ratio:1 / 1;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .mix > div:not(.mix-foot){padding:20px clamp(20px,2.2vw,28px) 0}
 .mix-foot{margin:20px clamp(20px,2.2vw,28px) clamp(20px,2.2vw,26px)}
 @media (hover:hover){.mix:hover .mix-art{transform:scale(1.03)}}
-@media (max-width: 760px){.mix{display:grid !important;grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto auto;gap:0 16px !important;padding:14px !important;min-height:0}.mix-art{grid-row:1 / span 2;border-radius:12px;align-self:start}.mix > div:not(.mix-foot){padding:0}.mix-foot{grid-column:2;margin:12px 0 0;padding-top:12px}.mix h3{font-size:22px}.mix-foot > span:first-child > span:not(.mix-play){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}}
+@media (max-width: 760px){.mix{display:grid;grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto auto;gap:0 16px;padding:14px;min-height:0}.mix-art{grid-row:1 / span 2;border-radius:12px;align-self:start}.mix > div:not(.mix-foot){padding:0}.mix-foot{grid-column:2;margin:12px 0 0;padding-top:12px}.mix h3{font-size:22px}.mix-foot > span:first-child > span:not(.mix-play){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}}
 @media (prefers-reduced-motion: reduce){.mix-art{transition:none}.mix:hover .mix-art{transform:none}}
 /* four listen cards: one row on wide screens, two by two in between */
-@media (min-width: 761px){.listen-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
-@media (min-width: 1180px){.listen-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important}}
+@media (min-width: 761px){.listen-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width: 1180px){.listen-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .f-mail-end{margin-top:8px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.14);color:#e6d3ee}
 
 /* tablet portrait: photo above the text like on phones, cropped wider so it does not fill the screen */
@@ -313,7 +313,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
    (same space above as below; the 44px tap area is symmetric around the dot) */
 #reviews{--qgap:clamp(32px, 5vw, 64px)}
 .qdots{margin-top:calc(var(--qgap) - 4px)}
-#reviews > div{padding-bottom:var(--qgap) !important}
+#reviews > div{padding-bottom:var(--qgap)}
 /* review link: a 44px-tall tap area without moving the layout */
 #reviews .qcard a.hv-tl{display:inline-block;padding:12px 0;margin:-12px 0}
 

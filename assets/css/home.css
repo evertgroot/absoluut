@@ -44,8 +44,8 @@ a:hover{color:var(--c-gold)}
 @media (max-width: 899px){
   .cine{min-height:0 !important;display:block !important}
   .cine-img{position:relative !important;display:block;width:100% !important;height:auto !important;aspect-ratio:4 / 5;-webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);mask-image:linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%)}
-  .cine h1{max-width:none !important}
-  .cine-right{object-position:44% 30% !important;top:auto !important}
+  .cine h1{max-width:none}
+  .cine-right{object-position:44% 30% !important;top:auto}
   .cine > .gut{margin-top:-110px}
 }
 .menu-btn{display:none !important}
@@ -111,7 +111,7 @@ header.hdr-stuck{background:rgba(11,11,12,0.94) !important}
 /* hero: title higher, intro text under the title */
 @media (min-width: 900px){
   .cine{align-items:center !important}
-  .cine > .gut{padding-top:120px;padding-bottom:64px !important}
+  .cine > .gut{padding-top:120px;padding-bottom:64px}
 }
 .hero-lead{margin:0;max-width:min(600px,46vw);font-size:clamp(17px,1.35vw,20px);line-height:1.6;font-weight:500;color:rgba(255,255,255,0.84)}
 @media (max-width: 899px){
@@ -131,10 +131,10 @@ a:hover{color:var(--c-teal)}
 .site-sw a[aria-current],.site-sw a[aria-current]:hover,.site-sw.sw-flip a:not([aria-current]){color:var(--c-ink)}
 .ft2-sub,.ft2-bottom a{color:#bcd3d5}
 .ft2-bottom{color:#8fb0b3}
-.ft2-top,.ft2-bottom{border-color:rgba(255,255,255,0.16) !important}
+.ft2-top,.ft2-bottom{border-color:rgba(255,255,255,0.16)}
 footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-teal)}
-#lang-banner{background:var(--c-teal) !important;color:var(--c-ink) !important}
-#lang-banner-link,#lang-banner-close{color:var(--c-ink) !important}
+#lang-banner{background:var(--c-teal);color:var(--c-ink)}
+#lang-banner-link,#lang-banner-close{color:var(--c-ink)}
 /* end page theme */
 /* ---- form-sys ---- */
 #contact-form [hidden]{display:none !important}
@@ -145,15 +145,15 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-teal)}
 #contact p:has(+ #contact-form),.book-side > p:first-child{text-wrap:balance}
 @media (max-width: 899px){
   .gut > .hero-lead{order:2}
-  .gut > .hero-cta{order:1;margin-top:0 !important}
+  .gut > .hero-cta{order:1;margin-top:0}
 }
 #contact-form select:invalid{color:#8c9396}
 #contact-form select option{color:var(--c-black-soft)}
 /* ---- hv-sys ---- */
 /* unified hover system: primary · secondary · text link · icon · card */
 :root{--hv-acc:var(--c-teal);--hv-acc-l:var(--c-teal-deep);--hv-glow:rgba(0,0,0,.32)}
-.btn-solid{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease,background-color .25s ease,color .25s ease !important}
-.btn-ghost,.hv-2{transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .25s ease,border-color .25s ease,color .25s ease !important}
+.btn-solid{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease,background-color .25s ease,color .25s ease}
+.btn-ghost,.hv-2{transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .25s ease,border-color .25s ease,color .25s ease}
 .btn-solid:hover,.btn-solid:focus-visible{box-shadow:0 8px 22px var(--hv-glow)}
 .btn-ghost:hover,.btn-ghost:focus-visible,.hv-2.hv-dk:hover,.hv-2.hv-dk:focus-visible{background-color:rgba(255,255,255,.1) !important;border-color:#ffffff !important;color:#ffffff}
 .hv-tl{text-decoration-line:underline !important;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:4px;transition:color .25s ease,text-decoration-color .25s ease}
@@ -215,7 +215,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-teal)}
 /* footer: no reserved space for a floating button that now steps aside here; tappable legal links on phones */
 @media (max-width: 640px){
   .ft2-bottom a{display:inline-flex;align-items:center;min-height:44px}
-  .ft2-bottom{padding-top:14px !important}
+  .ft2-bottom{padding-top:14px}
 }
 /* navigation: accent from the page's light accent (readable on the dark header), own focus rings */
 .nav-links a::after{background:var(--hv-acc)}
@@ -226,20 +226,20 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-teal)}
 .hdr-lang a{font-size:13px}
 /* mobile menu: sections sit low, close to the thumb; languages above a full-width call to action */
 @keyframes mm-in{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
-#mobile-menu > nav{margin-top:auto !important;padding-top:32px}
-#mobile-menu > div:last-child{margin-top:0 !important;padding-top:28px !important;flex-direction:column;align-items:stretch !important;gap:12px !important}
+#mobile-menu > nav{margin-top:auto;padding-top:32px}
+#mobile-menu > div:last-child{margin-top:0;padding-top:28px;flex-direction:column;align-items:stretch;gap:12px}
 #mobile-menu > div:last-child > .btn-solid{justify-content:center}
 #mobile-menu .mm-lang{order:-1;margin:0 0 0 -12px}
 @media (max-height: 640px){
-  .mm-link{font-size:30px !important;padding:2px 0 !important}
+  .mm-link{font-size:30px;padding:2px 0}
   #mobile-menu > nav{padding-top:12px}
-  #mobile-menu > div:last-child{padding-top:16px !important}
+  #mobile-menu > div:last-child{padding-top:16px}
 }
 @media (max-height: 440px){
-  #mobile-menu{padding-top:12px !important;padding-bottom:14px !important}
-  .mm-link{font-size:24px !important;line-height:1.2 !important;padding:0 !important}
+  #mobile-menu{padding-top:12px;padding-bottom:14px}
+  .mm-link{font-size:24px;line-height:1.2;padding:0}
   #mobile-menu > nav{padding-top:6px}
-  #mobile-menu > div:last-child{padding-top:10px !important;flex-direction:row;align-items:center !important;justify-content:space-between}
+  #mobile-menu > div:last-child{padding-top:10px;flex-direction:row;align-items:center;justify-content:space-between}
 }
 @media (prefers-reduced-motion: reduce){
   .nav-links a::after,.mm-link{transition:none}
@@ -325,7 +325,7 @@ a.wk-card:focus-visible{outline:2px solid var(--c-teal);outline-offset:6px;borde
   .cs-meta{grid-template-columns:repeat(2,minmax(0,auto))}
   .cs-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-.cs-back-ar{transform:scaleX(-1);margin:0 2px 0 0 !important}
+.cs-back-ar{transform:scaleX(-1);margin:0 2px 0 0}
 /* credit on Reel stills: whose Reel it is */
 .reel-tag{position:absolute;left:10px;top:10px;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:rgba(11,11,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font-size:12.5px;font-weight:700;line-height:1;text-decoration:none;white-space:nowrap}
 a.reel-tag:hover{color:var(--c-teal)}
@@ -360,7 +360,7 @@ a.reel-tag:focus-visible{outline:2px solid var(--c-teal);outline-offset:2px}
 .cs-meta dd .logo{--logo-base:32px;color:#fff;margin-top:4px}
 /* "What I Made" with real posts: three across, each in its own format */
 .cs-gallery-posts{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1100px}
-.cs-gallery-posts img{display:block;width:100%;height:auto !important;border-radius:20px}
+.cs-gallery-posts img{display:block;width:100%;height:auto;border-radius:20px}
 @media (max-width:900px){
   .cs-gallery-posts{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
@@ -405,7 +405,7 @@ a.reel-tag:focus-visible{outline:2px solid var(--c-teal);outline-offset:2px}
 .wk-media img[src*="netflix-nikkie"]{object-position:50% 0}
 /* projects without imagery: side by side, quieter */
 .cs-also{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px);max-width:1100px}
-.cs-also .cs-project{margin:0;padding:22px 0 0 !important;border-top:1px solid rgba(255,255,255,.12)}
+.cs-also .cs-project{margin:0;padding:22px 0 0;border-top:1px solid rgba(255,255,255,.12)}
 .cs-also .cs-project > p{margin:0;font-size:16px}
 @media (max-width:700px){
   .cs-also{grid-template-columns:minmax(0,1fr)}
@@ -419,7 +419,7 @@ a.reel-tag:focus-visible{outline:2px solid var(--c-teal);outline-offset:2px}
 .cs-close{margin:clamp(24px,3vw,40px) 0 18px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(24px,2.6vw,34px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;max-width:640px;text-wrap:balance}
 /* a video case: wide thumbnail with a play button */
 .cs-video{position:relative;display:block;max-width:900px;border-radius:20px;overflow:hidden;color:#fff;text-decoration:none}
-.cs-video img{display:block;width:100%;height:auto !important;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.cs-video img{display:block;width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .cs-video .reel-tag{position:absolute;left:12px;top:12px}
 a.cs-video:hover img{transform:scale(1.03)}
 a.cs-video:hover .cs-yt{background:var(--c-teal);color:var(--c-ink)}
@@ -523,14 +523,14 @@ a.cs-reel-link:focus-visible{outline:2px solid var(--c-teal);outline-offset:3px;
 .reel .reel-tag-br{top:auto;left:auto;right:10px;bottom:10px}
 a.reel:hover .reel-tag-br,a.reel:focus-visible .reel-tag-br{color:var(--c-teal)}
 /* Trusted by: a still row instead of a moving band. Label and logos on one line on wide screens, centred rows below that */
-.marquee-static .marquee-track{width:auto;animation:none !important}
-.marquee-static .marquee-track > div{flex-wrap:wrap;justify-content:center;gap:24px 56px !important;max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px) !important;white-space:normal !important}
+.marquee-static .marquee-track{width:auto;animation:none}
+.marquee-static .marquee-track > div{flex-wrap:wrap;justify-content:center;gap:24px 56px;max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);white-space:normal}
 @media (max-width:1240px){
-  .marquee-static .marquee-track > div{gap:22px 40px !important}
+  .marquee-static .marquee-track > div{gap:22px 40px}
   .marquee-static .marquee-track > div > span:first-child{flex-basis:100%;text-align:center}
 }
 @media (max-width:600px){
-  .marquee-static .marquee-track > div{gap:20px 30px !important}
+  .marquee-static .marquee-track > div{gap:20px 30px}
 }
 /* ---- BOPS case: growth line, flyer wall, list, photos ---- */
 .cs-intro{margin:0 0 24px;max-width:680px;font-size:18px;line-height:1.65;color:rgba(255,255,255,.84)}
@@ -542,7 +542,7 @@ a.reel:hover .reel-tag-br,a.reel:focus-visible .reel-tag-br{color:var(--c-teal)}
 .cs-flyers figcaption{margin-top:10px;font-size:15px;line-height:1.4;color:rgba(255,255,255,.72)}
 .cs-flyers figcaption span{margin-right:8px;font-weight:700;color:#fff}
 .cs-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,2vw,24px);max-width:1300px}
-.cs-photos img{display:block;width:100%;height:auto !important;aspect-ratio:3 / 2;object-fit:cover;border-radius:20px}
+.cs-photos img{display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover;border-radius:20px}
 @media (max-width:600px){
   .cs-growth li{flex-direction:column;gap:2px}
   .cs-growth li > span{flex:none}
@@ -554,14 +554,14 @@ a.reel:hover .reel-tag-br,a.reel:focus-visible .reel-tag-br{color:var(--c-teal)}
   .cs-photos{grid-template-columns:1fr}
 }
 @media (min-width:601px){
-  .cs-flyers + .cs-dots{display:none !important}
+  .cs-flyers + .cs-dots{display:none}
 }
 .bops-case{margin:16px 0 0;font-size:16px;font-weight:700}
 .bops-case a{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--c-navy);text-decoration:none}
 .cs-split{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start;max-width:1100px}
 .cs-note{margin:0;font-size:18px;line-height:1.65;color:rgba(255,255,255,.84)}
 .cs-founders{margin:0}
-.cs-founders img{display:block;width:100%;height:auto !important;aspect-ratio:4 / 5;object-fit:cover;border-radius:20px}
+.cs-founders img{display:block;width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover;border-radius:20px}
 .cs-founders figcaption{margin-top:10px;font-size:15px;font-weight:700;color:rgba(255,255,255,.72)}
 .cs-credit{margin:12px 0 0;font-size:14px;color:rgba(255,255,255,.55)}
 @media (max-width:700px){
@@ -570,7 +570,7 @@ a.reel:hover .reel-tag-br,a.reel:focus-visible .reel-tag-br{color:var(--c-teal)}
 }
 .cs-block > p + p{margin-top:14px}
 /* ---- BOPS case in the colours of the homepage BOPS block: dark hero, then cream with navy and BOPS red ---- */
-body:has(main.cs-bops),div:has(> main.cs-bops){background:var(--c-cream) !important}
+body:has(main.cs-bops),div:has(> main.cs-bops){background:var(--c-cream)}
 .cs-bops{--bops-ink:var(--c-navy);--bops-red:var(--c-bops-red);color:var(--bops-ink)}
 .cs-bops .cs-hero{color:#fff;background:var(--c-navy);box-shadow:0 0 0 100vmax var(--c-navy);clip-path:inset(-100vmax -100vmax 0 -100vmax);padding-bottom:clamp(48px,6vw,80px)}
 .cs-bops .cs-block > p,.cs-bops .cs-intro,.cs-bops .cs-note,.cs-bops .cs-growth li p{color:var(--bops-muted)}
@@ -606,7 +606,7 @@ body:has(main.cs-bops) header.hdr-stuck{background:rgba(23,21,95,.94) !important
 .cs-ad-toggle{position:absolute;top:10px;right:10px;z-index:1;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:999px;background:rgba(11,11,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;cursor:pointer;transition:background .2s,color .2s}
 .cs-ad-toggle:hover{background:#fff;color:var(--c-ink)}
 .cs-ad-toggle:focus-visible{outline:2px solid #fff;outline-offset:2px}
-body:has(main.cs-bops) #mobile-menu{background:var(--c-navy) !important}
+body:has(main.cs-bops) #mobile-menu{background:var(--c-navy)}
 /* flyer wall: rows of equal height, each flyer in its own proportions (no boxes around them) */
 .cs-flyers{display:flex;flex-wrap:wrap;gap:clamp(16px,2vw,24px);max-width:1100px}
 .cs-flyers figure{margin:0;flex:var(--a) 1 0;min-width:0}
@@ -647,7 +647,7 @@ body:has(main.cs-bops) #mobile-menu{background:var(--c-navy) !important}
   .cs-photos-grid .cs-photo-portrait{grid-column:span 1}
   .cs-photos-grid .cs-photo-portrait:first-child{grid-column:1 / -1}
 }
-.cs-meta dd .cs-meta-logo{display:block;width:auto !important;height:22px !important;max-width:none;margin-top:6px}
+.cs-meta dd .cs-meta-logo{display:block;width:auto;height:22px;max-width:none;margin-top:6px}
 /* BOPS: founders photo with a personal note, near the end */
 .cs-split-founders .cs-intro:last-child{margin-bottom:0}
 @media (max-width:700px){
@@ -710,7 +710,7 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops .cs-band > .cs-intro{max-width:680px;margin:0 0 28px}
 /* BOPS: what I offer under the closing question, and a way to follow BOPS */
 .cs-bops div.cs-close p.cs-close-sub{margin-top:6px;font-family:'Manrope',sans-serif;font-size:16px;font-weight:600;letter-spacing:0;line-height:1.5;color:var(--bops-muted)}
-.cs-bops-link{margin:16px 0 0 !important}
+.cs-bops-link{margin:16px 0 0}
 .cs-bops-link a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:16px;font-weight:800;color:var(--c-navy);text-decoration:none}
 @media (min-width:901px){
   .cs-bops .cs-hero{max-width:1300px}
@@ -804,7 +804,7 @@ div:has(> main.cs-bops){overflow-x:clip}
 .bops-case a:focus-visible{outline:2px solid var(--c-navy);outline-offset:3px}
 .bops-case a .hv-ar{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
 .bops-case a:hover .hv-ar{transform:translateX(3px)}
-.cs-split-founders > .cs-bops-link{margin-top:calc(14px - clamp(24px,3vw,40px)) !important}
+.cs-split-founders > .cs-bops-link{margin-top:calc(14px - clamp(24px,3vw,40px))}
 /* Selected Work: in-house background as a short list of roles (title, employer, years) between the cases and the button */
 .wk-prev{max-width:760px;margin:clamp(40px,5vw,64px) 0 0}
 .wk-prev-label{margin:0 0 10px;font-size:15px;font-weight:700;color:rgba(255,255,255,.72)}
