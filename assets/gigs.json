@@ -1,6 +1,6 @@
 [
   {"date": "2026-02-14", "event": "Kalinichta", "venue": "Paradiso", "city": "Amsterdam"},
-  {"date": "2026-03-21", "event": "Rebel Night", "venue": "Q Club", "city": "Milan", "logos": [{"src": "/assets/img/rebel-night-logo-white.png?v=2", "h": 36, "r": 2.71}]},
+  {"date": "2026-03-21", "event": "Rebel Night", "venue": "Q Club", "city": "Milan"},
   {"date": "2026-06-04", "event": "Private event", "city": "Amsterdam", "private": "event", "venue": "De Hallen"},
   {"date": "2026-06-08", "event": "FERRY", "venue": "", "city": "Rotterdam", "note": {"en": "Manic Monday", "nl": "Manic Monday", "it": "Manic Monday"}, "logos": [{"src": "/assets/img/logos/ferry.svg", "h": 22, "r": 3.04}]},
   {"date": "2026-06-13", "event": "Tropikali", "venue": "", "city": "Amsterdam", "note": {"en": "Kalinichta Stage", "nl": "Kalinichta-stage", "it": "palco Kalinichta"}},
