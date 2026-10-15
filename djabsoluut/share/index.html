@@ -40,6 +40,17 @@
   .btn.ghost{background:none;border:1.5px solid rgba(255,255,255,.6)}
   .btn:focus-visible,.seg button:focus-visible,input:focus-visible{outline:2px solid var(--white);outline-offset:3px}
   .note{color:rgba(255,255,255,.7);font-size:13px;margin:10px 0 0}
+  .pics{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px;margin-top:8px}
+  .pics button{position:relative;padding:0;border:2px solid transparent;border-radius:12px;overflow:hidden;background:none;cursor:pointer;aspect-ratio:3/4}
+  .pics button img{display:block;width:100%;height:100%;object-fit:cover}
+  .pics button[aria-pressed="true"]{border-color:var(--red);box-shadow:0 0 0 3px rgba(200,25,58,.35)}
+  .pics button:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+  .up{position:relative;overflow:hidden}
+  .up input{position:absolute;inset:0;opacity:0;cursor:pointer}
+  .up:focus-within{outline:2px solid var(--white);outline-offset:3px}
+  .sliders{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px 24px;margin-top:12px}
+  .sliders label{display:grid;gap:4px;font-size:13px;color:rgba(255,255,255,.8)}
+  .sliders input{width:100%;accent-color:var(--red);min-height:32px}
   .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:rgba(255,255,255,.75)}
   .legend i{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px}
 </style>
@@ -58,6 +69,17 @@
     <div><span class="lbl">Gigs</span>
       <div class="gigs" id="gigs"><p class="note">Gigs laden…</p></div>
       <p class="warn" id="warn" role="status"></p>
+    </div>
+    <div><span class="lbl">Foto</span>
+      <div class="pics" id="pics" role="group" aria-label="Kies een foto"></div>
+      <div class="row" style="margin-top:12px">
+        <label class="btn ghost up"><input type="file" id="upload" accept="image/*"> Eigen foto uploaden</label>
+        <span class="note" style="margin:0">Je eigen foto blijft op je apparaat; hij wordt nergens naartoe gestuurd.</span>
+      </div>
+      <div class="sliders">
+        <label>Uitsnede links ↔ rechts <input type="range" id="fx" min="0" max="100" step="1"></label>
+        <label>Uitsnede omhoog ↕ omlaag <input type="range" id="fy" min="0" max="100" step="1"></label>
+      </div>
     </div>
     <div class="row">
       <label class="chk"><input type="checkbox" id="safe" checked> Safe zones tonen (komen niet in de download)</label>
@@ -97,8 +119,18 @@
     post: { w: 1080, h: 1440, safe: { t: 125, b: 1315, l: 84, r: 996 }, crop: { t: 45, b: 1395 }, ui: [] },
     story: { w: 1080, h: 1920, safe: { t: 270, b: 1560, l: 84, r: 996 }, ui: [[0, 250], [1580, 1920]] }
   };
+  /* photos from the site; fx/fy = where the face (or the focus) sits, as a share of width/height */
+  var PHOTOS = [
+    { src: '/assets/img/dj-absoluut-bops.jpg', alt: 'DJ Absoluut bij BOPS, rode pet', fx: 0.42, fy: 0.33 },
+    { src: '/assets/img/dj-club.jpg', alt: 'DJ Absoluut lachend in de club', fx: 0.45, fy: 0.24 },
+    { src: '/assets/img/dj-festival.jpg', alt: 'DJ Absoluut achter de draaitafels op een festival', fx: 0.2, fy: 0.42 },
+    { src: '/assets/img/dj-outdoor.jpg', alt: 'DJ Absoluut buiten met zonnebril', fx: 0.6, fy: 0.3 },
+    { src: '/assets/img/work/bops/cover-pride-2026.jpg', alt: 'Volle dansvloer bij BOPS Pride', fx: 0.5, fy: 0.45 },
+    { src: '/assets/img/work/bops/booth-2025-front.jpg', alt: 'Publiek met handen in de lucht bij BOPS', fx: 0.5, fy: 0.45 }
+  ];
   var lang = 'en', gigs = [], chosen = {}, photo = new Image(), imgs = {}, ready = {}, ticket = { post: 0, story: 0 };
-  photo.src = '/assets/img/dj-absoluut-bops.jpg';
+  var focus = { x: PHOTOS[0].fx, y: PHOTOS[0].fy };
+  photo.src = PHOTOS[0].src;
 
   function load(src) {
     if (imgs[src]) return imgs[src];
@@ -151,8 +183,9 @@
     /* keep the face in view: it sits about a third down the photo; centre it in the free band above the
        eyebrow, so the title never covers it, and never leave a gap at the top */
     var faceY = Math.max(60, (titleBase - (key === 'story' ? 170 : 150)) * 0.5);
-    var py = Math.max(phH - ph, Math.min(0, faceY - ph * 0.33));
-    if (photo.naturalWidth) ctx.drawImage(photo, (f.w - pw) / 2, py, pw, ph);
+    var py = Math.max(phH - ph, Math.min(0, faceY - ph * focus.y));
+    var px = Math.max(f.w - pw, Math.min(0, f.w * 0.5 - pw * focus.x));
+    if (photo.naturalWidth) ctx.drawImage(photo, px, py, pw, ph);
     var g1 = ctx.createLinearGradient(0, 0, 0, phH);
     g1.addColorStop(0, 'rgba(31,3,40,0.35)'); g1.addColorStop(0.16, 'rgba(31,3,40,0)');
     g1.addColorStop(0.62, 'rgba(31,3,40,0.12)'); g1.addColorStop(0.9, 'rgba(31,3,40,0.88)'); g1.addColorStop(1, C.aub);
@@ -161,10 +194,10 @@
     /* colour as atmosphere: the red of the cap returns as a warm glow low on the right, purple stage light on the left */
     var g2 = ctx.createRadialGradient(f.w * 0.92, f.h * 0.98, 0, f.w * 0.92, f.h * 0.98, f.w * 0.95);
     g2.addColorStop(0, 'rgba(200,25,58,0.55)'); g2.addColorStop(0.55, 'rgba(200,25,58,0.12)'); g2.addColorStop(1, 'rgba(200,25,58,0)');
-    ctx.fillStyle = g2; ctx.fillRect(0, phH * 0.5, f.w, f.h);
+    ctx.fillStyle = g2; ctx.fillRect(0, 0, f.w, f.h);
     var g3 = ctx.createRadialGradient(0, f.h * 0.62, 0, 0, f.h * 0.62, f.w * 0.8);
     g3.addColorStop(0, 'rgba(75,18,96,0.6)'); g3.addColorStop(1, 'rgba(75,18,96,0)');
-    ctx.fillStyle = g3; ctx.fillRect(0, phH * 0.5, f.w, f.h);
+    ctx.fillStyle = g3; ctx.fillRect(0, 0, f.w, f.h);
 
     /* eyebrow + title (last word in red, like the website hero) */
     ctx.textBaseline = 'alphabetic'; ctx.fillStyle = '#ff9fb2'; ctx.font = "800 28px 'Manrope'";
@@ -260,6 +293,37 @@
     });
   });
   document.getElementById('safe').addEventListener('change', function () { overlay('post'); overlay('story'); });
+
+  /* photo picker: site photos, an own upload (stays in the browser), and crop sliders */
+  var pics = document.getElementById('pics'), fxEl = document.getElementById('fx'), fyEl = document.getElementById('fy');
+  function setSliders() { fxEl.value = Math.round(focus.x * 100); fyEl.value = Math.round(focus.y * 100); }
+  function usePhoto(src, fx, fy) {
+    var im = new Image();
+    im.onload = function () { photo = im; focus = { x: fx, y: fy }; setSliders(); redraw(); };
+    im.src = src;
+  }
+  function markPick(btn) { pics.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); }); }
+  PHOTOS.forEach(function (ph, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('aria-pressed', String(i === 0)); b.setAttribute('aria-label', ph.alt);
+    b.innerHTML = '<img src="' + ph.src + '" alt="" loading="lazy">';
+    b.addEventListener('click', function () { markPick(b); usePhoto(ph.src, ph.fx, ph.fy); });
+    pics.appendChild(b);
+  });
+  document.getElementById('upload').addEventListener('change', function (e) {
+    var file = e.target.files && e.target.files[0];
+    if (!file) return;
+    var url = URL.createObjectURL(file), b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('aria-label', 'Eigen foto: ' + file.name);
+    b.innerHTML = '<img src="' + url + '" alt="">';
+    b.addEventListener('click', function () { markPick(b); usePhoto(url, 0.5, 0.35); });
+    pics.appendChild(b); markPick(b); usePhoto(url, 0.5, 0.35);
+    e.target.value = '';
+  });
+  [fxEl, fyEl].forEach(function (el) {
+    el.addEventListener('input', function () { focus = { x: fxEl.value / 100, y: fyEl.value / 100 }; redraw(); });
+  });
+  setSliders();
 
   Promise.all([document.fonts.load("800 40px 'Baloo Bhai 2'"), document.fonts.load("800 20px 'Manrope'"), document.fonts.load("700 20px 'Manrope'"), document.fonts.load("600 20px 'Manrope'"),
     fetch('/assets/gigs.json', { cache: 'no-store' }).then(function (r) { return r.json(); })])
