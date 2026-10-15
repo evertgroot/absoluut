@@ -299,11 +299,11 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .lg-adam{--lg:url(/assets/img/logos/adam-toren.png);--la:400 / 543;--lh:1.7}
 .lg-pride-ams{--lg:url(/assets/img/logos/pride-amsterdam.png);--la:500 / 242;--lh:1.05}
 .lg-tropikali{--lg:url(/assets/img/logos/tropikali.png);--la:290 / 72;--lh:.8}
-.lg-antwerp-pride{--lg:url(/assets/img/logos/antwerp-pride.png);--la:600 / 246;--lh:1.5}
+.lg-antwerp-pride{--lg:url(/assets/img/logos/antwerp-pride.png?v=2);--la:600 / 246;--lh:1.5}
 .lg-mcd{--lg:url(/assets/img/logos/mcdonalds.svg);--la:264.6 / 33.1;--lh:.44}
 .lg-sofitel{--lg:url(/assets/img/logos/sofitel.svg);--la:70 / 40;--lh:1.75}
 .marquee .logo{--logo-base:34px}
-.lg-milkshake{--lg:url(/assets/img/logos/milkshake.png?v=2);--la:464 / 120;--lh:.85;background:var(--lg) center / contain no-repeat;-webkit-mask:none;mask:none}
+.lg-milkshake{--lg:url(/assets/img/logos/milkshake.png?v=3);--la:464 / 120;--lh:.85;background:var(--lg) center / contain no-repeat;-webkit-mask:none;mask:none}
 .lg-qclub{--lg:url(/assets/img/logos/q-club.svg);--la:1 / 1;--lh:.9}
 .lg-nyx{--lg:url(/assets/img/logos/club-nyx.png?v=2);--la:284 / 531;--lh:1.45}
 .lg-tos{--lg:url(/assets/img/logos/the-other-side.png);--la:384 / 424;--lh:1.4}
@@ -529,3 +529,11 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 }
 /* a past gig without a known place keeps the empty second line, so the row height stays even */
 .up-past .up-where:empty::before{content:"\a0"}
+/* logo band: pause/play button on the band's right edge (dark disc, white icon: two bars, or a triangle when paused) */
+.mq-wrap{position:relative}
+.mq-pause{position:absolute;right:clamp(12px,2vw,24px);top:50%;transform:translateY(-50%);display:grid;place-items:center;width:44px;height:44px;padding:0;border:1.5px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(31,3,40,.6);color:var(--c-white);cursor:pointer;transition:background-color .25s ease,border-color .25s ease}
+.mq-pause:hover{background:rgba(31,3,40,.85);border-color:var(--c-white)}
+.mq-pause:focus-visible{outline:2px solid var(--c-white);outline-offset:3px}
+.mq-ic{display:block;width:12px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Crect x='1' y='1' width='3.5' height='12' rx='1'/%3E%3Crect x='7.5' y='1' width='3.5' height='12' rx='1'/%3E%3C/svg%3E") center / contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Crect x='1' y='1' width='3.5' height='12' rx='1'/%3E%3Crect x='7.5' y='1' width='3.5' height='12' rx='1'/%3E%3C/svg%3E") center / contain no-repeat}
+.mq-pause[aria-pressed="true"] .mq-ic{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Cpath d='M2 1.5v11a.8.8 0 0 0 1.2.7l8.4-5.5a.8.8 0 0 0 0-1.4L3.2.8A.8.8 0 0 0 2 1.5z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Cpath d='M2 1.5v11a.8.8 0 0 0 1.2.7l8.4-5.5a.8.8 0 0 0 0-1.4L3.2.8A.8.8 0 0 0 2 1.5z'/%3E%3C/svg%3E");margin-left:2px}
+@media (forced-colors:active){.mq-ic{forced-color-adjust:none;background:ButtonText}}

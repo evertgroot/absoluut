@@ -204,7 +204,24 @@
     box.classList.add('mq-js');
     if (still) return; /* no drift, list wraps; nothing to scroll or focus */
     box.setAttribute('tabindex', '0');
-    var pos = 0, seen = 0, last = null, hold = 0, hover = false, focus = false, drag = null, onScreen = true, looping = false;
+    var pos = 0, seen = 0, last = null, hold = 0, hover = false, focus = false, drag = null, onScreen = true, looping = false, stopped = false;
+    /* a visible pause/play button (WCAG 2.2.2): the band keeps moving otherwise, so visitors can stop it for good */
+    var ML = { en: ['Pause the logo band', 'Play the logo band'], nl: ['Logoband pauzeren', 'Logoband afspelen'], it: ['Metti in pausa i loghi', 'Riproduci i loghi'] }[lang] || ['Pause the logo band', 'Play the logo band'];
+    var wrapEl = document.createElement('div');
+    wrapEl.className = 'mq-wrap';
+    box.parentNode.insertBefore(wrapEl, box);
+    wrapEl.appendChild(box);
+    var pb = document.createElement('button');
+    pb.type = 'button'; pb.className = 'mq-pause';
+    pb.setAttribute('aria-label', ML[0]); pb.setAttribute('aria-pressed', 'false');
+    pb.innerHTML = '<span class="mq-ic" aria-hidden="true"></span>';
+    pb.addEventListener('click', function () {
+      stopped = !stopped;
+      pb.setAttribute('aria-pressed', String(stopped));
+      pb.setAttribute('aria-label', stopped ? ML[1] : ML[0]);
+      if (!stopped) { pos = box.scrollLeft; last = null; }
+    });
+    wrapEl.appendChild(pb);
     var first = track.firstElementChild, dup = track.querySelector('.marquee-dup');
     function unit() { return first ? first.offsetWidth : track.scrollWidth / 2; }
     function fill() { /* enough copies that the band never runs out on wide screens */
@@ -226,7 +243,7 @@
       var dt = last === null ? 0 : Math.min((t - last) / 1000, 0.1);
       last = t;
       if (Math.abs(box.scrollLeft - seen) > 2) { pos = box.scrollLeft; wrap(); }
-      if (!drag && !hover && !focus && t > hold) {
+      if (!stopped && !drag && !hover && !focus && t > hold) {
         var u = unit();
         pos += (u / 48) * dt;
         if (pos > track.scrollWidth - box.clientWidth - 1) pos -= u;
@@ -676,6 +693,7 @@
           var pb = document.createElement('button');
           pb.type = 'button'; pb.className = 'up-past-toggle';
           pb.setAttribute('aria-expanded', 'false'); pb.setAttribute('aria-controls', 'recent-gigs');
+          pb.id = 'recent-gigs-toggle'; pastList.setAttribute('aria-labelledby', 'recent-gigs-toggle'); /* the list is announced as "Past Gigs" */
           pb.innerHTML = esc(T.recent) + '<span class="up-past-ar hv-ar hv-d" aria-hidden="true">↓</span>';
           pb.addEventListener('click', function () {
             var open = pastList.hidden;
