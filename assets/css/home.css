@@ -714,7 +714,7 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops-link a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:16px;font-weight:800;color:var(--c-navy);text-decoration:none}
 @media (min-width:901px){
   .cs-bops .cs-hero{max-width:1300px}
-  .cs-bops .cs-meta{grid-template-columns:repeat(5,minmax(0,auto))}
+  .cs-bops .cs-meta{grid-template-columns:repeat(4,minmax(0,auto))}
 }
 .cs-inline-link{color:inherit;font-weight:700;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
 .cs-inline-link:hover{color:var(--c-pink)}
@@ -913,3 +913,5 @@ div:has(> main.cs-bops){overflow-x:clip}
 .h-events-h2-2{margin: 0;font-family: 'Baloo Bhai 2', sans-serif;font-size: clamp(38px, 5vw, 72px);line-height: 0.98;letter-spacing: -0.04em;font-weight: 800;margin-left: -0.052em}
 /* BOPS hero: Format and Location list their items stacked, Responsibilities keeps the wide row */
 .cs-bops .cs-meta > div:not(:nth-child(2)) dd.cs-meta-pills{flex-direction:column;align-items:flex-start}
+.cs-bops .cs-meta-pills .cs-pill{white-space:nowrap}
+@media (max-width:360px){.cs-bops .cs-meta-pills .cs-pill{white-space:normal}}
