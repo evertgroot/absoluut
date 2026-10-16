@@ -576,3 +576,5 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
    - nothing lifts: the label stays where it is; only the arrow moves, 3px in its own direction
    - solid buttons keep their text colour, the background deepens a little and a soft shadow appears */
 .btn-solid:is(:hover,:focus-visible){background-image:linear-gradient(rgba(0,0,0,.14),rgba(0,0,0,.14));box-shadow:0 8px 22px var(--hv-glow)}
+/* footer links (Privacy Policy, FREYcreates): a 44px tap area on wider screens too; the negative margin keeps the row height */
+@media (min-width: 641px){.ft2-bottom a{display:inline-flex;align-items:center;min-height:44px;margin-block:-11px;margin-block:calc((1lh - 44px) / 2)}}

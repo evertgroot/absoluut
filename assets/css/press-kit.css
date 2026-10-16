@@ -628,3 +628,5 @@ body{background:#ffffff}
   .pk-logo-art{padding-top:max(9%, 96px);aspect-ratio:auto;min-height:220px}
 }
 @media print{.pk-logos{display:none !important}}
+/* footer links (Privacy Policy, FREYcreates): a 44px tap area on wider screens too; the negative margin keeps the row height */
+@media (min-width: 641px){.ft2-bottom a{display:inline-flex;align-items:center;min-height:44px;margin-block:-11px;margin-block:calc((1lh - 44px) / 2)}}
