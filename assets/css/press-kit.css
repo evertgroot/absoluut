@@ -473,8 +473,9 @@ body{background:#ffffff}
   #rider .pk-pdf-rider-q{display:block !important;grid-column:2;grid-row:1;align-self:end;margin:0;padding:0 0 0 14px;font-size:12.5px;letter-spacing:0;color:#3d3742}
   #rider .pk-pdf-rider-q a{font-weight:800;color:var(--c-plum-ink) !important;text-decoration:none}
   #bio dt{font-size:13px !important;line-height:1.2;letter-spacing:0 !important;text-transform:none !important;color:var(--c-plum-ink) !important} /* same heading as Short Bio, as on screen */
-  #bio .p-bio-dl{padding-top:10px !important}
-  .pk-pdf-zip{display:block !important;margin:10px 0 0}
+  #bio .p-bio-dl{padding-top:5px !important} /* + the 5px row padding = 10px under the line, as for Short Bio */
+  #bio dl > div:last-child dd{margin-top:4px} /* heading to list 4px, as Short Bio heading to text */
+  .pk-pdf-zip{display:block !important;margin:7px 0 0} /* the last link's line box adds ~3px under the text: looks 10px, like button to photo */
   .pk-pdf-zip a{display:flex;align-items:center;justify-content:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:var(--c-red);color:#ffffff !important;text-decoration:none;font-size:11.5px;font-weight:800;white-space:nowrap}
   .pk-pdf-zip span{font-size:10.5px;font-weight:600;opacity:.85}
 }
