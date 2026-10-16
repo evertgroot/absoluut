@@ -927,3 +927,5 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-meta-name + .cs-meta-where::before{content:" "}
 @media (max-width:760px){.cs-bops .cs-meta > div:has(.cs-meta-list){grid-column:1 / -1}}
 .cs-meta-where{white-space:nowrap}
+/* hero button: the label stays in place and only the arrow moves down, like the jump links on the press kit */
+.h-main-a:is(:hover,:focus-visible){transform:none !important}

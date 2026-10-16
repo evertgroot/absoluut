@@ -563,3 +563,7 @@ body{background:#ffffff}
 .p-top-jump-a:hover,.p-top-jump-a:focus-visible{color:var(--c-pink);text-decoration-color:var(--c-pink)}
 .p-top-jump-a:focus-visible{outline:2px solid var(--c-pink);outline-offset:3px;border-radius:4px}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){.p-top-jump-a:hover .hv-ar.hv-d{transform:translateY(3px)}}
+/* Download PDF: the label stays in place and only the arrow moves down, the same 3px as the jump links next to it */
+.p-top-pdf.hv-2:is(:hover,:focus-visible){transform:none !important}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.p-top-pdf:hover .hv-ar.hv-dl{transform:translateY(3px)}}
+@media (prefers-reduced-motion:no-preference){.p-top-pdf:focus-visible .hv-ar.hv-dl{transform:translateY(3px)}}
