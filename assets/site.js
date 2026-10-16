@@ -615,6 +615,9 @@
       var a = lgWrap.querySelector('[data-logo-dl]');
       a.href = '/assets/logo/' + name + '.' + ext;
       a.setAttribute('data-goatcounter-click', 'press-logo-' + tone + '-' + ext);
+      /* the link says what it fetches, in the page language: "Download logo, black, PNG" */
+      var toneName = ((lgWrap.querySelector('input[name="logo-tone"]:checked') || {}).nextElementSibling || {}).textContent || tone;
+      a.setAttribute('aria-label', (a.getAttribute('data-label') || 'Download logo') + ', ' + toneName.toLowerCase() + ', ' + ext.toUpperCase());
     };
     lgWrap.addEventListener('change', lgSync);
     lgSync();
