@@ -623,3 +623,23 @@ body{background:#ffffff}
 /* room at the bottom of the logo tile for the Download button, so it never covers the logo */
 .pk-logo-art{padding:9% 12% max(9%, 66px)}
 @media (max-width:560px){.pk-logo-art{aspect-ratio:16 / 9}}
+/* ZIP buttons: the label never breaks inside; in a narrow window the size moves to a second line */
+.pk-all{max-width:100%;padding-block:6px}
+.pk-all .pk-dl-t{flex-wrap:wrap;justify-content:center;column-gap:8px;row-gap:0;text-align:center}
+.pk-all-l,.pk-all .pk-zip{white-space:nowrap}
+/* Logo: the switches sit in the frame, top left; the frame keeps room for them at the top and for Download at the bottom */
+.pk-logo-art .pk-logo-row{position:absolute;top:10px;left:10px;right:10px;z-index:1;margin:0}
+.pk-logo-art{padding:max(9%, 66px) 12% max(9%, 66px)}
+.pk-logo-dark .pk-fmt{background:rgba(255,255,255,.12)}
+.pk-logo-dark .pk-fmt span{color:rgba(255,255,255,.78)}
+.pk-logo-dark .pk-fmt label:hover span{color:#ffffff}
+.pk-logo-dark .pk-fmt input:checked + span{background:#ffffff;color:var(--c-plum-ink)}
+@media (max-width:560px){.pk-logo-art{aspect-ratio:4 / 3}}
+/* small screens: compact switches, so both always fit on one row inside the logo frame */
+@media (max-width:420px){
+  .pk-logo-art .pk-logo-row{flex-wrap:nowrap;gap:6px;top:8px;left:8px;right:8px}
+  .pk-logo-art .pk-fmt span{min-height:34px;padding:0 8px;font-size:11px;letter-spacing:.02em}
+  .pk-logo-art{padding-top:max(9%, 58px)}
+}
+.pk-all-r{display:inline-flex;align-items:center;gap:8px;white-space:nowrap} /* size and arrow stay together */
+.pk-logo-light .pk-fmt{background:#ffffff} /* the switch would vanish against the light tile */
