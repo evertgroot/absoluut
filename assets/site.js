@@ -16,7 +16,31 @@
     if (id === 'upcoming' && (!el || el.hidden)) el = document.getElementById('gigs');
     return el;
   };
-  var glide = function (el) { if (el) el.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' }); };
+  /* our own glide instead of the browser's smooth scroll (which takes 1-1.5s and differs per browser):
+     0.45-0.8s depending on distance, fast start and a soft landing; it re-aims every frame, so content that
+     appears on the way (Upcoming Gigs, the Next up line) doesn't throw it off, and any scroll by the visitor stops it */
+  var glideRun = null;
+  var stopGlide = function () { if (glideRun) { cancelAnimationFrame(glideRun); glideRun = null; } };
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { window.addEventListener(ev, stopGlide, { passive: true }); });
+  var glide = function (el) {
+    if (!el) return;
+    stopGlide();
+    var dest = function () {
+      var m = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      return Math.max(0, Math.min(max, el.getBoundingClientRect().top + window.scrollY - m));
+    };
+    if (calm) { window.scrollTo(0, dest()); return; }
+    var from = window.scrollY, dur = Math.min(800, Math.max(450, 300 + Math.abs(dest() - from) * 0.09)), t0 = null;
+    var ease = function (p) { return 1 - Math.pow(1 - p, 4); };
+    var step = function (t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / dur);
+      window.scrollTo(0, from + (dest() - from) * ease(p));
+      glideRun = p < 1 ? requestAnimationFrame(step) : null;
+    };
+    glideRun = requestAnimationFrame(step);
+  };
   document.addEventListener('click', function (e) {
     if (e.defaultPrevented) return; /* a link with its own scroll handling (e.g. data-pick) already took care of it */
     var a = e.target.closest && e.target.closest('a[href^="#"]');
@@ -40,7 +64,7 @@
       if (arrive === 'upcoming' && el && el.hidden && tries++ < 15) return setTimeout(go, 100);
       glide(target(arrive));
     };
-    setTimeout(go, 450); /* the page is parsed by now (deferred script); no need to wait for every image */
+    setTimeout(go, 350); /* the page is parsed by now (deferred script); a short beat at the top, then the glide */
   }
 
   /* 1. Language choice */
@@ -968,7 +992,7 @@
         var sec = form.closest('section'), head = sec && sec.querySelector('h2');
         if (!head) return;
         e.preventDefault();
-        head.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+        glide(head);
         if (history.replaceState) history.replaceState(null, '', '#' + sec.id);
         try { fsel.focus({ preventScroll: true }); } catch (err) {}
       });
