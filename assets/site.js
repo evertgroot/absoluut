@@ -612,7 +612,7 @@
       art.classList.toggle('pk-logo-dark', tone === 'white');
       art.classList.toggle('pk-logo-light', tone !== 'white');
       lgWrap.parentNode.querySelectorAll('[data-tone]').forEach(function (el) { el.hidden = el.getAttribute('data-tone') !== tone; }); /* preview and the line under it */
-      var a = lgWrap.querySelector('.pk-logo-dl');
+      var a = lgWrap.querySelector('[data-logo-dl]');
       a.href = '/assets/logo/' + name + '.' + ext;
       a.setAttribute('data-goatcounter-click', 'press-logo-' + tone + '-' + ext);
     };

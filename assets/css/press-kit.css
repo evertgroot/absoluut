@@ -615,3 +615,11 @@ body{background:#ffffff}
 .pk-logo-info dt{flex:0 0 3em;font-weight:800;color:var(--c-plum-ink)}
 .pk-logo-info dd{margin:0}
 .pk-logo-info span[hidden]{display:none}
+/* Logo: switches above the preview; Download sits on the preview like on the photos (bottom right) */
+.pk-logo-row{margin:0 0 14px}
+.pk-logo-art{position:relative}
+.pk-logo-dark .pk-dl{background:rgba(255,255,255,.14)} /* on the dark tile the dark pill would disappear */
+.pk-logo-dark .pk-dl:hover,.pk-logo-dark .pk-dl:focus-visible{background:rgba(255,255,255,.24)}
+/* room at the bottom of the logo tile for the Download button, so it never covers the logo */
+.pk-logo-art{padding:9% 12% max(9%, 66px)}
+@media (max-width:560px){.pk-logo-art{aspect-ratio:16 / 9}}
