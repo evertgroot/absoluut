@@ -654,3 +654,14 @@ body{background:#ffffff}
   .pk-logos > .pk-logo-info{grid-column:3 / -1;grid-row:2;align-self:start;max-width:46ch}
   .pk-logos > .pk-foot{grid-column:3 / -1;grid-row:3;align-self:end;margin-top:0}
 }
+/* Logo switches: a thumb glides to the chosen option (as in the header site switch) and can be dragged */
+.pk-fmt{position:relative;touch-action:pan-y}
+.pk-fmt label{z-index:1}
+.pk-fmt-thumb{position:absolute;top:3px;left:0;bottom:3px;width:0;border-radius:999px;background:var(--c-plum-ink);pointer-events:none}
+.pk-fmt-ready .pk-fmt-thumb{transition:transform .45s cubic-bezier(.3,.7,.2,1),width .45s cubic-bezier(.3,.7,.2,1),background-color .2s ease}
+.pk-fmt-drag .pk-fmt-thumb{transition:none}
+.pk-fmt-drag{cursor:grabbing}
+.pk-fmt input:checked + span{background:transparent}
+.pk-logo-dark .pk-fmt-thumb{background:#ffffff}
+@media (prefers-reduced-motion:reduce){.pk-fmt-ready .pk-fmt-thumb{transition:none}}
+.pk-logo-art .pk-fmt input:checked + span{background:transparent} /* the thumb shows the choice, also on the dark tile */
