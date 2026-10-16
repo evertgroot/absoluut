@@ -452,6 +452,8 @@ body{background:#ffffff}
 /* in the PDF there is no link to click, so the header band shows the address itself */
 @media print{
   #top .gut > p.pk-pdf-mail{display:flex !important;align-items:baseline;gap:8px;margin:0 0 0 auto;font-size:12px;font-weight:800;color:#ffffff}
+  #top .gut > p.pk-pdf-src{display:block !important;margin:0 0 0 auto;font-size:12px;font-weight:800} /* where this file comes from */
+  #top .pk-pdf-src a{color:#ffffff !important;text-decoration:none}
 }
 /* phones: the duration moves under the title, so titles get the full width */
 @media (max-width:760px){
