@@ -600,6 +600,60 @@
   });
 
   /* 1d. Press kit: copy the biography (the PDF is built by GitHub, see .github/workflows/press-kit-pdf.yml) */
+  /* Press kit photos: a thumbnail opens a larger preview first (with a description, the file size and a full-size
+     download); arrows and the arrow keys move between photos; Escape or the close button returns to the grid */
+  var pkWrap = document.querySelector('[data-photos]');
+  if (pkWrap && window.HTMLDialogElement) {
+    var PK = { en: ['Close', 'Previous photo', 'Next photo', 'Download', 'Photos', 'Photo by'], nl: ['Sluiten', 'Vorige foto', 'Volgende foto', 'Download', 'Foto’s', 'Foto door'],
+               it: ['Chiudi', 'Foto precedente', 'Foto successiva', 'Scarica', 'Foto', 'Foto di'] }[lang] || ['Close', 'Previous photo', 'Next photo', 'Download', 'Photos', 'Photo by'];
+    var thumbs = [].slice.call(pkWrap.querySelectorAll('.pk-thumb')), cur = 0;
+    var box = document.createElement('dialog');
+    box.className = 'pk-box';
+    box.setAttribute('aria-label', PK[4]);
+    /* photo on top, as large as fits; underneath: photographer and count, then ← Download → */
+    box.innerHTML = '<div class="pk-stage"><img class="pk-big" alt=""></div><div class="pk-bar"><p class="pk-box-cap" aria-live="polite"><span class="pk-who"></span><span class="pk-count"></span></p><div class="pk-box-acts">' +
+      '<button type="button" class="pk-ico" data-pk="-1" aria-label="' + PK[1] + '">←</button>' +
+      '<a class="pk-all pk-full" download>' + PK[3] + '<span class="hv-ar hv-dl" aria-hidden="true">↓</span></a>' +
+      '<button type="button" class="pk-ico" data-pk="1" aria-label="' + PK[2] + '">→</button>' +
+      '</div></div><button type="button" class="pk-ico pk-close" data-pk="close" aria-label="' + PK[0] + '">×</button>';
+    document.body.appendChild(box);
+    var big = box.querySelector('.pk-big'), cap = box.querySelector('.pk-box-cap'), full = box.querySelector('.pk-full'), count = box.querySelector('.pk-count');
+    var showPk = function (i) {
+      cur = (i + thumbs.length) % thumbs.length;
+      var t = thumbs[cur];
+      var src = t.getAttribute('data-big');
+      if (big.getAttribute('src') !== src) { big.classList.add('pk-loading'); big.onload = big.onerror = function () { big.classList.remove('pk-loading'); }; big.src = src; }
+      big.alt = t.getAttribute('data-alt');
+      cap.querySelector('.pk-who').textContent = t.getAttribute('data-credit') ? PK[5] + ' ' + t.getAttribute('data-credit') : '';
+      full.href = t.getAttribute('data-full');
+      full.setAttribute('data-goatcounter-click', 'press-photo-full-' + (cur + 1));
+      count.textContent = (cur + 1) + ' / ' + thumbs.length;
+    };
+    var opener = null;
+    thumbs.forEach(function (t, i) { t.addEventListener('click', function () { opener = t; showPk(i); box.showModal(); }); });
+    /* back on the grid, focus lands on the photo that was last shown */
+    box.addEventListener('close', function () { var t = thumbs[cur] || opener; if (t) { try { t.focus({ preventScroll: true }); } catch (e) {} } });
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-pk]');
+      if (b) { var v = b.getAttribute('data-pk'); if (v === 'close') box.close(); else showPk(cur + Number(v)); return; }
+      if (e.target === box || e.target.classList.contains('pk-stage')) box.close(); /* a click beside the photo closes */
+    });
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); showPk(cur + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); showPk(cur - 1); }
+    });
+    /* swipe left or right on the photo to move between photos */
+    var sx = null, sy = 0;
+    box.addEventListener('touchstart', function (e) { if (e.touches.length === 1) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; } }, { passive: true });
+    box.addEventListener('touchend', function (e) {
+      if (sx === null) return;
+      var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
+      if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.5) showPk(cur + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+    /* preload the larger version when someone points at a thumbnail */
+    thumbs.forEach(function (t) { t.addEventListener('pointerenter', function () { var im = new Image(); im.src = t.getAttribute('data-big'); }, { once: true }); });
+  }
+
   document.querySelectorAll('[data-copy]').forEach(function (b) {
     var src = document.getElementById(b.getAttribute('data-copy'));
     if (!src) return;
