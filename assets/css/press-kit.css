@@ -480,3 +480,11 @@ body{background:#ffffff}
 .pk-dl:hover,.pk-dl:focus-visible{background:rgba(22,6,28,.92);color:#ffffff}
 .pk-dl:focus-visible{outline:2px solid #ffffff;outline-offset:2px}
 .pk-dl .hv-ar{margin-left:0;color:var(--c-pink)}
+/* the four mix rows are always the same height (the tallest sets it); on phones the type is a touch smaller so
+   most titles fit on one line, and nothing is cut off */
+.pk-mix-list{grid-auto-rows:1fr}
+.pk-mix-list > li{display:grid}
+@media (max-width:760px){
+  .pk-mix-k{font-size:10px;letter-spacing:.08em}
+  .pk-mix-h{font-size:18px}
+}
