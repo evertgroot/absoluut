@@ -356,7 +356,7 @@ body{background:#ffffff}
 /* Press photos: four thumbnails that open a larger preview before downloading, plus one ZIP with all full-size files */
 .pk-photos{display:grid;gap:20px;margin-bottom:clamp(48px,6vw,80px)}
 /* Videos: a sibling of Press Photos, same heading, one link instead of a large card */
-.pk-videos{display:grid;gap:16px}
+.pk-videos{display:grid;gap:16px;margin-bottom:clamp(48px,6vw,80px)}
 .pk-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px}
 .pk-h3{margin:0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(24px,2.4vw,32px);font-weight:800;letter-spacing:-0.02em;color:var(--c-plum-ink)}
 .pk-all{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;border:2px solid var(--c-red);background:var(--c-red);color:#ffffff;text-decoration:none;font-weight:800;font-size:15px}
@@ -442,8 +442,8 @@ body{background:#ffffff}
 .pk-mail:hover,.pk-mail:focus-visible{color:#ffffff;text-decoration-color:#ffffff}
 .pk-avail{display:inline-flex;align-items:center;min-height:44px;font-weight:800;color:var(--c-pink);text-decoration:none}
 .pk-avail:hover,.pk-avail:focus-visible{color:#ffffff}
-/* Mixes: the first thing in Media, since promoters book a sound; each row opens the set on SoundCloud */
-.pk-mixes{display:grid;gap:20px;margin-bottom:clamp(48px,6vw,80px)}
+/* Mixes: last in Media, after Videos; each row opens the set on SoundCloud */
+.pk-mixes{display:grid;gap:20px}
 .pk-mix-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px clamp(12px,1.6vw,24px)}
 @media (max-width:760px){.pk-mix-list{grid-template-columns:minmax(0,1fr)}}
 .pk-mix{display:grid;grid-template-columns:72px minmax(0,1fr) auto auto;align-items:center;gap:16px;padding:12px 18px 12px 12px;border-radius:16px;background:var(--c-paper);color:var(--c-plum-ink);text-decoration:none;transition:background-color .25s ease}
