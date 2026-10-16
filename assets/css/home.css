@@ -1,8 +1,7 @@
 /* imgroot.nl — home pages (EN/NL/IT). Generated from the former inline <style> blocks; edit here. */
 /* ---- base ---- */
 :root{--bops-line:rgba(23,21,95,.16);--bops-border:rgba(23,21,95,.22);--bops-pill:rgba(23,21,95,.45);--bops-soft:rgba(23,21,95,.6);--bops-muted:rgba(23,21,95,.72);--bops-text:rgba(23,21,95,.78)}
-a{color:#ffffff}
-a:hover{color:var(--c-gold)}
+
 .field::placeholder{color:var(--c-lavender)}
 .field:focus{outline:none;border-color:var(--c-gold) !important;box-shadow:0 0 0 3px rgba(219,173,114,0.35)}
 .field option{color:var(--c-navy)}
@@ -57,19 +56,7 @@ a:hover{color:var(--c-gold)}
 }
 /* header v3: one menu bar for both sites */
 .site-sw a[aria-current],.site-sw a[aria-current]:hover{color:var(--c-navy);font-weight:800}
-@media (prefers-reduced-motion: no-preference){
-  @view-transition{navigation:auto}
-  header .site-sw{view-transition-name:sw}
-  header .sw-thumb{view-transition-name:sw-thumb}
-  header .site-sw a:first-of-type{view-transition-name:sw-a}
-  header .site-sw a:last-of-type{view-transition-name:sw-b}
-  ::view-transition-group(*){animation-duration:.45s;animation-timing-function:cubic-bezier(.3,.7,.2,1)}
-  ::view-transition-old(root),::view-transition-new(root){animation-duration:.3s}
-  ::view-transition-group(sw-thumb){z-index:2}
-  ::view-transition-group(sw-a),::view-transition-group(sw-b){z-index:3}
-  ::view-transition-group(sw-a),::view-transition-group(sw-b){overflow:clip}
-  ::view-transition-old(sw-a),::view-transition-new(sw-a),::view-transition-old(sw-b),::view-transition-new(sw-b){width:auto;height:100%;object-fit:none;object-position:left center}
-}
+
 .nav-links{justify-self:start}
 .nav-links a{position:relative;padding:12px 0;white-space:nowrap}
 .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;border-radius:2px;background:var(--c-gold);transform:scaleX(0);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
@@ -79,23 +66,18 @@ a:hover{color:var(--c-gold)}
 .mm-lang a{width:44px;font-size:13px}
 .mm-link{display:flex !important;align-items:baseline;gap:14px}
 @media (max-width: 1240px){
-  header{grid-template-columns:auto auto minmax(0,1fr) !important;gap:20px 28px !important}
+  
   .nav-links{gap:24px !important;font-size:14px !important}
-  .hdr-right{gap:12px}
+  
   .hdr-cta{padding:0 16px !important;font-size:14px}
-  .site-sw a{padding:0 13px;font-size:17px}
+  
 }
 @media (max-width: 1060px){
-  .nav-links,.hdr-cta,.hdr-lang,.hdr-sep{display:none !important}
+  
   .menu-btn{display:inline-flex !important}
-  header{grid-template-columns:minmax(0,1fr) auto !important}
+  
 }
-@media (max-width: 760px){
-  .site-sw a{height:34px;padding:0 12px;font-size:16px}
-}
-@media (max-width: 360px){
-  .site-sw a{padding:0 9px;font-size:15px}
-}
+
 /* page accent: teal from the light in the hero photo */
 .nav-links a::after{background:var(--c-teal)}
 .nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:var(--c-teal)}
@@ -103,9 +85,7 @@ a:hover{color:var(--c-gold)}
 .hdr-cta:hover,#mobile-menu .btn-solid:hover{color:var(--c-ink)}
 header.hdr-stuck{background:rgba(11,11,12,0.94) !important}
 /* site switch: a colored dot per site, teal = Evert Groot, red = Absoluut */
-@media (max-width: 360px){
-  .site-sw a::before{width:7px;height:7px;margin-right:6px}
-}
+
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
 :root{--acc:var(--c-teal);--pop:#161618}
 /* hero: title higher, intro text under the title */
@@ -160,24 +140,24 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-teal)}
 .hv-tl.hv-lt:hover,.hv-tl.hv-lt:focus-visible{color:var(--hv-acc-l) !important;text-decoration-color:var(--hv-acc-l)}
 .reel img,.reel video{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .reel:hover,.reel:focus-visible{transform:none !important}
-:is(.btn-solid,.btn-ghost,.hv-2,.hv-tl,.hv-card,.reel,a.case,.svc,footer.ft2 nav a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
+
 @media (hover:hover){
-  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:none !important}
+  
   :is(a,button):hover .hv-ar.hv-r{transform:translateX(3px)}
   :is(a,button):hover .hv-ar.hv-d{transform:translateY(3px)}
-  :is(a,button):hover .hv-ar.hv-ne{transform:translate(3px,-3px)}
+  
   .reel:hover img,.reel:hover video{transform:scale(1.04)}
 }
-.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:none !important}
+
 :is(a,button):focus-visible .hv-ar.hv-r{transform:translateX(3px)}
 :is(a,button):focus-visible .hv-ar.hv-d{transform:translateY(3px)}
-:is(a,button):focus-visible .hv-ar.hv-ne{transform:translate(3px,-3px)}
+
 @media (prefers-reduced-motion:reduce){
   .btn-solid,.btn-ghost,.hv-2,footer.ft2 nav a,.hv-ar,.reel img,.reel video{transform:none !important}
 }
 /* ---- polish-sys ---- */
 /* polish pass: skip link, focus on light bands, field borders, tap targets, hero proof row, gigs, listen, press photos */
-.skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:var(--c-ink);font-weight:800;text-decoration:none}
+
 /* service rows: two columns (title | text); home rows end in a small arrow on the title, DJ rows carry a written action */
 .svc-row{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr) !important}
 .svc-row > h3 .hv-ar{width:.6em;height:.6em;margin-left:.3em;vertical-align:.02em}
@@ -201,31 +181,27 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-teal)}
 .hdr-cta{white-space:nowrap}
 @media (min-width: 1061px) and (max-width: 1240px){
   .nav-links{gap:16px !important}
-  .hdr-lang a{width:28px}
-  header{column-gap:18px !important}
-  .hdr-right{gap:8px}
+
 }
 /* browser surfaces in the page palette */
 .field{caret-color:var(--hv-acc)}
 /* arrows: one drawn set instead of font glyphs. down = further on this page, right = another page of the site,
    up-right = another website, download = save a file. The glyph stays in the markup as a text fallback. */
-.hv-ar{display:inline-block;width:.8em;height:.8em;margin-left:.4em;vertical-align:-.04em;overflow:hidden;text-indent:2em;white-space:nowrap;background:currentColor;-webkit-mask:var(--ar) center / contain no-repeat;mask:var(--ar) center / contain no-repeat}
+
 .hv-d{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2v11M3.5 8.5 8 13l4.5-4.5'/%3E%3C/svg%3E")}
 .hv-r{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h11M8.5 3.5 13 8l-4.5 4.5'/%3E%3C/svg%3E")}
 /* footer: no reserved space for a floating button that now steps aside here; tappable legal links on phones */
 @media (max-width: 640px){
-  .ft2-bottom a{display:inline-flex;align-items:center;min-height:44px}
+  
   .ft2-bottom{padding-top:14px}
 }
 /* navigation: accent from the page's light accent (readable on the dark header), own focus rings */
 .nav-links a::after{background:var(--hv-acc)}
-.nav-links a:hover,.hdr-lang a:hover,.mm-lang a:hover,.mm-link:hover{color:var(--hv-acc)}
-.mm-link[aria-current]{color:var(--hv-acc) !important}
-:is(.nav-links a,.hdr-lang a,.mm-link,.mm-lang a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px;border-radius:4px}
+
 :is(.menu-btn,.menu-close):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
-.hdr-lang a{font-size:13px}
+
 /* mobile menu: sections sit low, close to the thumb; languages above a full-width call to action */
-@keyframes mm-in{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+
 #mobile-menu > nav{margin-top:auto;padding-top:32px}
 #mobile-menu > div:last-child{margin-top:0;padding-top:28px;flex-direction:column;align-items:stretch;gap:12px}
 #mobile-menu > div:last-child > .btn-solid{justify-content:center}
@@ -243,21 +219,13 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-teal)}
 }
 @media (prefers-reduced-motion: reduce){
   .nav-links a::after,.mm-link{transition:none}
-  #mobile-menu:not([hidden]){animation:none}
+  
 }
 /* pages with a hero button: the header button joins in once the bar sticks, so the first screen has one call to action */
 :is(#services,#events,#where,#bio,#media,#rider) :focus-visible{outline-color:var(--hv-acc-l) !important}
-@media (max-width: 1060px){
-  .site-sw a{height:44px}
-}
+
 /* site switch: both names always written out; very narrow phones get a smaller size so both still fit */
-@media (max-width: 370px){
-  .site-sw a{padding:0 8px;font-size:14px}
-  .site-sw a::before{width:6px;height:6px;margin-right:5px}
-}
-@media (prefers-reduced-motion: reduce){
-  .sw-thumb{transition:none !important}
-}
+
 .hero-proof{display:flex;flex-wrap:wrap;gap:8px 28px;margin:calc(14px - clamp(24px, 3vw, 40px)) 0 0;padding:0;list-style:none;font-size:15px;line-height:1.4;font-weight:600;color:rgba(255,255,255,0.8)}
 .hero-proof li{display:flex;align-items:baseline;gap:8px}
 .hero-proof b{font-family:'Baloo Bhai 2',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.02em;color:var(--hv-acc)}
@@ -937,10 +905,10 @@ div:has(> main.cs-bops){overflow-x:clip}
 /* ONE LINE FOR ALL BUTTONS (hover and keyboard focus)
    - nothing lifts: the label stays where it is; only the arrow moves, 3px in its own direction
    - solid buttons keep their text colour, the background deepens a little and a soft shadow appears */
-.btn-solid:is(:hover,:focus-visible){background-image:linear-gradient(rgba(0,0,0,.14),rgba(0,0,0,.14));box-shadow:0 8px 22px var(--hv-glow)}
+
 /* each solid button keeps its own text colour on hover (the general link hover colour must not take over) */
 .btn-solid:is(:hover,:focus-visible){color:var(--c-ink)}
 .h-dj-a:is(:hover,:focus-visible){color:#ffffff}
 .cs-bops div.cs-close .btn-solid:is(:hover,:focus-visible),.cs-bops .cs-form-send .btn-solid:is(:hover,:focus-visible){color:var(--c-cream)}
 /* footer links (Privacy Policy, FREYcreates): a 44px tap area on wider screens too; the negative margin keeps the row height */
-@media (min-width: 641px){.ft2-bottom a{display:inline-flex;align-items:center;min-height:44px;margin-block:-11px;margin-block:calc((1lh - 44px) / 2)}}
+
