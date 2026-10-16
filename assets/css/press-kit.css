@@ -400,13 +400,8 @@ body{background:#ffffff}
 @media (prefers-reduced-motion:reduce){.pk-big{transition:none}}
 /* buttons in the Media section follow the page's own button (Copy to Clipboard): a 48px pill, one line,
    2px solid border */
-.pk-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
-.pk-dl,.pk-vid{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:999px;border:2px solid var(--c-plum-ink);background:transparent;color:var(--c-plum-ink);text-decoration:none;font-size:15px;font-weight:800;white-space:nowrap}
-.pk-dl:hover,.pk-dl:focus-visible,.pk-vid:hover,.pk-vid:focus-visible{color:var(--c-plum-ink)}
-.pk-dl .hv-ar{color:var(--c-red)}
-/* pixel size as a small label in the photo's bottom-right corner: clear of the face (always in the top half),
-   on the quietest part of the image */
-.pk-px{position:absolute;right:10px;bottom:10px;padding:4px 10px;border-radius:999px;background:rgba(22,6,28,.66);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#ffffff;font-size:12px;font-weight:700;line-height:1.3;font-variant-numeric:tabular-nums;white-space:nowrap;pointer-events:none}
+.pk-vid{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:999px;border:2px solid var(--c-plum-ink);background:transparent;color:var(--c-plum-ink);text-decoration:none;font-size:15px;font-weight:800;white-space:nowrap}
+.pk-vid:hover,.pk-vid:focus-visible{color:var(--c-plum-ink)}
 /* the red ZIP button stays red on hover (a shade deeper), unlike the outlined buttons that lighten */
 .pk-all.hv-2:hover,.pk-all.hv-2:focus-visible{background-color:#a8132f !important;border-color:#a8132f !important;color:#ffffff !important}
 /* preview layout: an opaque backdrop (no page showing through); the photo box fills the free space and the photo
@@ -477,3 +472,11 @@ body{background:#ffffff}
   .pk-pdf-more{display:block !important;margin:16px 0 0;padding-top:10px;border-top:1px solid var(--c-line);font-size:12px;color:#3d3742}
   .pk-pdf-more a{font-weight:800;color:var(--c-plum-ink) !important}
 }
+/* one line under the Photos heading says what the files are; each photo carries a small Download overlay,
+   bottom right (clear of the face), while a tap anywhere else opens the larger preview */
+.pk-photos .pk-note{margin:-8px 0 0;font-size:14px;color:var(--c-body-grey)}
+.pk-item{position:relative}
+.pk-dl{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px 0 14px;border-radius:999px;background:rgba(22,6,28,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#ffffff;text-decoration:none;font-size:14px;font-weight:800;transition:background-color .25s ease}
+.pk-dl:hover,.pk-dl:focus-visible{background:rgba(22,6,28,.92);color:#ffffff}
+.pk-dl:focus-visible{outline:2px solid #ffffff;outline-offset:2px}
+.pk-dl .hv-ar{margin-left:0;color:var(--c-pink)}
