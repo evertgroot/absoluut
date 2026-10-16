@@ -32,7 +32,7 @@
     };
     if (calm) { window.scrollTo(0, dest()); return; }
     var from = window.scrollY, dur = Math.min(800, Math.max(450, 300 + Math.abs(dest() - from) * 0.09)), t0 = null;
-    var ease = function (p) { return 1 - Math.pow(1 - p, 4); };
+    var ease = function (p) { return 1 - Math.pow(1 - p, 3); }; /* ~58% of the way in the first quarter: quick, but the travel stays visible */
     var step = function (t) {
       if (t0 === null) t0 = t;
       var p = Math.min(1, (t - t0) / dur);
@@ -58,12 +58,19 @@
   if (arrive && arrive !== 'main' && !calm && document.getElementById(arrive)) {
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     window.scrollTo({ top: 0, behavior: 'instant' });
+    /* if the visitor scrolls, swipes or uses a key before the glide starts, they stay where they are */
+    var tookOver = false, mine = function () { tookOver = true; };
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { window.addEventListener(ev, mine, { passive: true, once: true }); });
     var tries = 0, go = function () {
+      if (tookOver) { done(); return; }
       var el = document.getElementById(arrive);
       /* Upcoming Gigs is filled in from the gig list; give it a moment before falling back */
       if (arrive === 'upcoming' && el && el.hidden && tries++ < 15) return setTimeout(go, 100);
       glide(target(arrive));
+      setTimeout(done, 900);
     };
+    /* afterwards the browser remembers scroll positions again (back and forward land where they should) */
+    var done = function () { if ('scrollRestoration' in history) history.scrollRestoration = 'auto'; };
     setTimeout(go, 350); /* the page is parsed by now (deferred script); a short beat at the top, then the glide */
   }
 
