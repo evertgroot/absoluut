@@ -479,11 +479,10 @@ body{background:#ffffff}
   #bio .p-bio-div-5{display:flex;flex-direction:column}
   #bio dl > div:last-child{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0}
   #bio .pdf-photo{margin-top:0;aspect-ratio:3 / 2;object-position:50% 30%}
-  #bio .pk-pdf-zip{display:block !important;margin:20px 0 6px} /* looks the same above and below: the links' text runs ~7px past their line box */
+  #bio .pk-pdf-zip{display:block !important;margin:20px 0 0}
+  #bio .pk-pdf-vid{margin:8px 0 16px} /* the two download buttons sit together, the photo 16px below */ /* looks the same above and below: the links' text runs ~7px past their line box */
   .pk-pdf-zip a{display:flex;align-items:center;justify-content:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:var(--c-red);color:#ffffff !important;text-decoration:none;font-size:11.5px;font-weight:800;white-space:nowrap}
   .pk-pdf-zip span{font-size:11px;font-weight:600;opacity:.85}
-  #bio .pk-pdf-url{display:block !important;margin:0 0 16px;font-size:11px;line-height:1.3;text-align:center;color:#6b6470}
-  #bio .pk-pdf-url a{display:block;white-space:nowrap;font-weight:800;color:var(--c-plum-ink) !important;text-decoration:none}
 }
 /* one line under the Photos heading says what the files are; each photo carries a small Download overlay,
    bottom right (clear of the face), while a tap anywhere else opens the larger preview */
