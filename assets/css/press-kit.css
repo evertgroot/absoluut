@@ -475,6 +475,11 @@ body{background:#ffffff}
   #bio dt{font-size:13px !important;line-height:1.2;letter-spacing:0 !important;text-transform:none !important;color:var(--c-plum-ink) !important} /* same heading as Short Bio, as on screen */
   #bio .p-bio-dl{padding-top:5px !important} /* + the 5px row padding = 10px under the line, as for Short Bio */
   #bio dl > div:last-child dd{margin-top:4px} /* heading to list 4px, as Short Bio heading to text */
+  /* the side column runs as long as the biography: the photo fills what is left under Channels and the button */
+  #bio .p-bio-div-5{display:flex;flex-direction:column}
+  #bio .p-bio-dl{flex:1 1 auto;display:flex;flex-direction:column}
+  #bio dl > div:last-child{flex:1 1 auto;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0}
+  #bio .pdf-photo{flex:1 1 0;min-height:140px;aspect-ratio:auto;object-position:50% 30%}
   .pk-pdf-zip{display:block !important;margin:7px 0 0} /* the last link's line box adds ~3px under the text: looks 10px, like button to photo */
   .pk-pdf-zip a{display:flex;align-items:center;justify-content:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:var(--c-red);color:#ffffff !important;text-decoration:none;font-size:11.5px;font-weight:800;white-space:nowrap}
   .pk-pdf-zip span{font-size:10.5px;font-weight:600;opacity:.85}
