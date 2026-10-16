@@ -605,3 +605,14 @@ body{background:#ffffff}
 @media print{.pk-logos{display:none !important}}
 /* footer links (Privacy Policy, FREYcreates): a 44px tap area on wider screens too; the negative margin keeps the row height */
 
+/* hero jump links on phones: one compact row (smaller text, closer together); if they still wrap, the rows sit close
+   (the 44px tap area overlaps a little instead of pushing the rows apart) */
+@media (max-width:560px){
+  .p-top-jump{gap:0 18px}
+  .p-top-jump-a{font-size:15px;margin-block:-4px}
+}
+@media (max-width:400px){
+  .p-top-jump{gap:0 14px}
+  .p-top-jump-a{font-size:14px}
+  .p-top-jump-a .hv-ar{margin-left:.3em}
+}

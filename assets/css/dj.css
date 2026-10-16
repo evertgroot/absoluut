@@ -548,3 +548,4 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 
 /* footer links (Privacy Policy, FREYcreates): a 44px tap area on wider screens too; the negative margin keeps the row height */
 
+.d-reviews-a{min-height:44px} /* full tap size on phones too (was 43px) */
