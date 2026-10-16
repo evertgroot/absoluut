@@ -607,3 +607,10 @@ body{background:#ffffff}
 .pk-logo-art{aspect-ratio:5 / 2;padding:9% 12%} /* tile and logo switch together, no fade (a fade briefly shows white on light) */
 .pk-logo-art img[hidden]{display:none}
 .pk-logo-row{margin-top:14px}
+/* Logo: the README text under the preview (which colour where, what each format is for, the use rules) */
+.pk-logo-info{max-width:720px;display:grid;gap:10px;font-size:14px;line-height:1.5;color:var(--c-body-grey)}
+.pk-logo-info p{margin:0}
+.pk-logo-info dl{margin:0;display:grid;gap:4px}
+.pk-logo-info dl > div{display:flex;gap:10px}
+.pk-logo-info dt{flex:0 0 3em;font-weight:800;color:var(--c-plum-ink)}
+.pk-logo-info dd{margin:0}
