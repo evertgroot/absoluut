@@ -6,7 +6,7 @@ a{color:#ffffff}a:hover{color:var(--c-gold)}
 .field option{color:var(--c-navy)}
 
 .btn-solid{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.btn-solid:hover{transform:translateY(-2px);color:#ffffff}
+.btn-solid:hover{color:#ffffff}
 
 @media (prefers-reduced-motion: no-preference){
   @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
@@ -208,13 +208,13 @@ body{background:#ffffff}
 
 :is(.btn-solid,.btn-ghost,.hv-2,.hv-tl,.hv-card,.reel,a.case,.svc,footer.ft2 nav a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
 @media (hover:hover){
-  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:translateY(-2px) !important}
+  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:none !important}
   
   :is(a,button):hover .hv-ar.hv-d{transform:translateY(3px)}
   :is(a,button):hover .hv-ar.hv-ne{transform:translate(3px,-3px)}
   
 }
-.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:translateY(-2px) !important}
+.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:none !important}
 
 :is(a,button):focus-visible .hv-ar.hv-d{transform:translateY(3px)}
 :is(a,button):focus-visible .hv-ar.hv-ne{transform:translate(3px,-3px)}
@@ -569,3 +569,5 @@ body{background:#ffffff}
 @media (prefers-reduced-motion:no-preference){.p-top-pdf:focus-visible .hv-ar.hv-dl{transform:translateY(3px)}}
 /* hero button hover, the same on every page: text keeps its colour, background deepens a little, soft shadow */
 .p-top-pdf.hv-2:is(:hover,:focus-visible){box-shadow:0 8px 22px var(--hv-glow)}
+
+/* buttons site-wide: the label stays in place on hover and focus; only the arrow moves (down, right or diagonal) */

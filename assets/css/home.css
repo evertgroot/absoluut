@@ -15,7 +15,7 @@ a:hover{color:var(--c-gold)}
 .btn-ghost{transition:background-color .3s ease,border-color .3s ease}
 .btn-ghost:hover{background-color:rgba(255,255,255,0.08);border-color:#ffffff !important;color:#ffffff}
 .btn-solid{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.btn-solid:hover{transform:translateY(-2px);color:#ffffff}
+.btn-solid:hover{color:#ffffff}
 .marquee-track{display:flex;width:max-content}
 @media (prefers-reduced-motion: no-preference){
   @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
@@ -162,13 +162,13 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-teal)}
 .reel:hover,.reel:focus-visible{transform:none !important}
 :is(.btn-solid,.btn-ghost,.hv-2,.hv-tl,.hv-card,.reel,a.case,.svc,footer.ft2 nav a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
 @media (hover:hover){
-  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:translateY(-2px) !important}
+  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:none !important}
   :is(a,button):hover .hv-ar.hv-r{transform:translateX(4px)}
   :is(a,button):hover .hv-ar.hv-d{transform:translateY(3px)}
   :is(a,button):hover .hv-ar.hv-ne{transform:translate(3px,-3px)}
   .reel:hover img,.reel:hover video{transform:scale(1.04)}
 }
-.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:translateY(-2px) !important}
+.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:none !important}
 :is(a,button):focus-visible .hv-ar.hv-r{transform:translateX(4px)}
 :is(a,button):focus-visible .hv-ar.hv-d{transform:translateY(3px)}
 :is(a,button):focus-visible .hv-ar.hv-ne{transform:translate(3px,-3px)}
@@ -800,7 +800,7 @@ div:has(> main.cs-bops){overflow-x:clip}
 /* Homepage BOPS block: the case study is the main action, tickets come second */
 .bops-case{margin:8px 0 0}
 .bops-case a{min-height:52px;padding:0 26px;border-radius:999px;background:var(--c-navy);color:var(--c-cream);font-size:16px;font-weight:800;gap:8px;transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .25s ease}
-.bops-case a:hover{color:var(--c-cream);background:var(--c-bops-red);transform:translateY(-2px)}
+.bops-case a:hover{color:var(--c-cream);background:var(--c-bops-red)}
 .bops-case a:focus-visible{outline:2px solid var(--c-navy);outline-offset:3px}
 .bops-case a .hv-ar{transition:transform .25s cubic-bezier(.2,.7,.2,1)}
 .bops-case a:hover .hv-ar{transform:translateX(3px)}
@@ -933,3 +933,5 @@ div:has(> main.cs-bops){overflow-x:clip}
    soft shadow appears (it no longer switches from dark to white text) */
 .h-main-a:is(:hover,:focus-visible){color:var(--c-ink) !important;background:#5cc3cf;box-shadow:0 8px 22px var(--hv-glow)}
 .h-main-a{transition:background-color .25s ease,box-shadow .25s ease}
+
+/* buttons site-wide: the label stays in place on hover and focus; only the arrow moves (down, right or diagonal) */
