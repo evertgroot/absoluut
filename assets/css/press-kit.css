@@ -679,3 +679,11 @@ body{background:#ffffff}
   .pk-logos > .pk-logo{grid-row:2 / 5}
   .pk-logos > .pk-foot{grid-row:3;align-self:start;margin-top:-4px}
 }
+/* Logo Download: the material of the switches in the same frame, not the see-through photo overlay (which reads
+   as a muddy grey block on a flat tile). Light tile: solid dark like the selected option; dark tile: solid white */
+.pk-logo-art .pk-dl{-webkit-backdrop-filter:none;backdrop-filter:none}
+.pk-logo-light .pk-dl{background:var(--c-plum-ink)}
+.pk-logo-light .pk-dl:hover,.pk-logo-light .pk-dl:focus-visible{background:#000000}
+.pk-logo-dark .pk-dl{background:#ffffff;color:var(--c-plum-ink) !important}
+.pk-logo-dark .pk-dl:hover,.pk-logo-dark .pk-dl:focus-visible{background:#ffffff;color:var(--c-red) !important}
+.pk-logo-dark .pk-dl:focus-visible{outline-color:#ffffff}
