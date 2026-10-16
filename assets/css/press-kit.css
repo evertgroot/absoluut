@@ -644,3 +644,13 @@ body{background:#ffffff}
 .pk-all-r{display:inline-flex;align-items:center;gap:8px;white-space:nowrap} /* size and arrow stay together */
 .pk-logo-light .pk-fmt{background:#ffffff} /* the switch would vanish against the light tile */
 .pk-logo-art .pk-logo-row{justify-content:space-between} /* colour switch top left, file type switch top right */
+/* Logo, wide screens: the section follows the photo grid above it. The tile spans the first two photo columns; the
+   colour line and use rule sit in the right half, with Download All Logos level with the bottom of the tile */
+.pk-logos .pk-foot{margin-top:-4px} /* text to button 12px, as under the photos */
+@media (min-width:1000px){
+  .pk-logos{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:clamp(12px,1.6vw,24px);row-gap:16px}
+  .pk-logos > .pk-head{grid-column:1 / -1}
+  .pk-logos > .pk-logo{grid-column:1 / 3;grid-row:2 / 4;max-width:none}
+  .pk-logos > .pk-logo-info{grid-column:3 / -1;grid-row:2;align-self:start;max-width:46ch}
+  .pk-logos > .pk-foot{grid-column:3 / -1;grid-row:3;align-self:end;margin-top:0}
+}
