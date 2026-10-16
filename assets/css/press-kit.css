@@ -427,3 +427,7 @@ body{background:#ffffff}
   .pk-box-acts{justify-content:space-between;gap:10px}
   .pk-box .pk-full{flex:1 1 auto;order:0}
 }
+/* bio side column: the photo fills the height left under Channels (no empty gap), cropped around the face */
+@media (min-width:761px){
+  .p-bio-div-5 #bio-photo{flex:1 1 0;min-height:280px;aspect-ratio:auto;margin-top:0;object-position:50% 30%}
+}
