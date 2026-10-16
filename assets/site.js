@@ -659,7 +659,7 @@
           var wd = d.toLocaleDateString(upLoc, { weekday: 'short' }).replace('.', '');
           var mo = d.toLocaleDateString(upLoc, { month: 'short' }).replace('.', '').slice(0, 3);
           /* the year shows once, on the first gig of a new year */
-          var y = String(q[0]), yr = y !== prevYear ? ' <span class="up-yr">' + y + '</span>' : '';
+          var y = String(q[0]), yr = y !== prevYear ? '<span class="up-yr">' + y + '</span>' : '';
           prevYear = y;
           var city = CITY[g.city] || g.city || '';
           var note = g.note ? (typeof g.note === 'string' ? g.note : (g.note[lang] || g.note.en)) : '';

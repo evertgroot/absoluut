@@ -434,7 +434,7 @@ a.up-row:hover .up-logos,a.up-row:focus-visible .up-logos,a.up-row:hover :is(.up
 a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .up-date{display:grid;justify-items:center;width:60px;line-height:1}
 .up-wd,.up-mo{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--c-plum-mute)}
-.up-mo{white-space:nowrap}
+.up-mo{white-space:nowrap;text-align:center} /* month and year centred under the day */
 /* the year sits under the month of the first gig in a new year */
 .up-yr{display:block;margin-top:3px;color:var(--c-red)}
 .up-day{margin:3px 0 2px;font-family:'Baloo Bhai 2',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.02em;color:var(--c-plum-mute)}
