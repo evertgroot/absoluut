@@ -428,6 +428,7 @@ body{background:#ffffff}
 @media (max-width:900px){
   .p-bio-div-5{flex-basis:100%}
   .p-bio-div{row-gap:clamp(40px, 5vw, 56px)} /* same space above the Channels rule as above the Short Bio rule */
+  .p-bio-dl{padding-top:clamp(40px, 5vw, 56px)} /* Channels sits midway between its two lines (see the bottom padding further down) */
   #bio-photo{display:none}
 }
 .hv-r{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h11M8.5 3.5 13 8l-4.5 4.5'/%3E%3C/svg%3E")}
@@ -489,9 +490,10 @@ body{background:#ffffff}
   .pk-mix-k{font-size:10px;letter-spacing:.08em}
   .pk-mix-h{font-size:18px}
 }
-/* the space above each section divider matches the space below it (as in Media and Rider): on phones and small
-   tablets the bio ends with Channels, whose last row already carries 18px of its own padding */
+/* the space above each section divider matches the space below it (as in Media and Rider); on phones and small
+   tablets the bio ends with Channels, which sits midway between its two lines instead */
 .p-bio-div{padding-bottom:clamp(64px,8vw,104px)}
+@media (max-width:900px){.p-bio-div{padding-bottom:clamp(40px, 5vw, 56px)}}
 /* Media subsections are separated by the same light rule as Short Bio in the biography: Photos, then a line,
    Videos, then a line, Mixes */
 .pk-photos,.pk-videos{margin-bottom:0}
