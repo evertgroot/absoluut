@@ -1,6 +1,6 @@
 /* imgroot.nl — press-kit pages (EN/NL/IT). Generated from the former inline <style> blocks; edit here. */
 /* ---- base ---- */
-a{color:#ffffff}a:hover{color:var(--c-gold)}
+
 .field::placeholder{color:var(--c-lavender)}
 .field:focus{outline:none;border-color:var(--c-gold) !important;box-shadow:0 0 0 3px rgba(219,173,114,0.35)}
 .field option{color:var(--c-navy)}
@@ -10,27 +10,19 @@ a{color:#ffffff}a:hover{color:var(--c-gold)}
 
 @media (prefers-reduced-motion: no-preference){
   @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-  
-  
-  
-  
+
   @keyframes marquee{to{transform:translateX(-50%)}}
-  
-  
+
 }
 @media (prefers-reduced-motion: reduce){
-  
-  
+
   .case:hover .case-img img,.reel:hover,.btn-solid:hover{transform:none}
 }
 
 @media (max-width: 760px){
   .nav-links{display:none !important}
-  
-  
-  
-}
 
+}
 
 .menu-btn{display:none !important}
 .mm-link{transition:color .3s ease}
@@ -41,19 +33,7 @@ a{color:#ffffff}a:hover{color:var(--c-gold)}
 /* header v3: one menu bar for both sites */
 .site-sw.is-dj .sw-thumb{grid-column:2}
 .site-sw a[aria-current],.site-sw a[aria-current]:hover{color:var(--c-navy);font-weight:800}
-@media (prefers-reduced-motion: no-preference){
-  @view-transition{navigation:auto}
-  header .site-sw{view-transition-name:sw}
-  header .sw-thumb{view-transition-name:sw-thumb}
-  header .site-sw a:first-of-type{view-transition-name:sw-a}
-  header .site-sw a:last-of-type{view-transition-name:sw-b}
-  ::view-transition-group(*){animation-duration:.45s;animation-timing-function:cubic-bezier(.3,.7,.2,1)}
-  ::view-transition-old(root),::view-transition-new(root){animation-duration:.3s}
-  ::view-transition-group(sw-thumb){z-index:2}
-  ::view-transition-group(sw-a),::view-transition-group(sw-b){z-index:3}
-  ::view-transition-group(sw-a),::view-transition-group(sw-b){overflow:clip}
-  ::view-transition-old(sw-a),::view-transition-new(sw-a),::view-transition-old(sw-b),::view-transition-new(sw-b){width:auto;height:100%;object-fit:none;object-position:left center}
-}
+
 .nav-links{justify-self:start}
 .nav-links a{position:relative;padding:12px 0;white-space:nowrap}
 .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;border-radius:2px;background:var(--c-gold);transform:scaleX(0);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
@@ -63,23 +43,18 @@ a{color:#ffffff}a:hover{color:var(--c-gold)}
 .mm-lang a{width:44px;font-size:13px}
 .mm-link{display:flex !important;align-items:baseline;gap:14px}
 @media (max-width: 1240px){
-  header{grid-template-columns:auto auto minmax(0,1fr) !important;gap:20px 28px !important}
+  
   .nav-links{gap:24px !important;font-size:14px !important}
-  .hdr-right{gap:12px}
+  
   .hdr-cta{padding:0 16px !important;font-size:14px}
-  .site-sw a{padding:0 13px;font-size:17px}
+  
 }
 @media (max-width: 1060px){
-  .nav-links,.hdr-cta,.hdr-lang,.hdr-sep{display:none !important}
+  
   .menu-btn{display:inline-flex !important}
-  header{grid-template-columns:minmax(0,1fr) auto !important}
+  
 }
-@media (max-width: 760px){
-  .site-sw a{height:34px;padding:0 12px;font-size:16px}
-}
-@media (max-width: 360px){
-  .site-sw a{padding:0 9px;font-size:15px}
-}
+
 /* page accent: red from the cap in the hero photo */
 .nav-links a::after{background:var(--c-red)}
 .nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:var(--c-red)}
@@ -87,7 +62,7 @@ a{color:#ffffff}a:hover{color:var(--c-gold)}
 .hdr-cta:hover,#mobile-menu .btn-solid:hover{color:#ffffff}
 header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
 /* site switch: a colored dot per site, teal = Evert Groot, red = Absoluut */
-@media (max-width: 360px){.site-sw a::before{width:7px;height:7px;margin-right:6px}}
+
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
 :root{--acc:var(--c-red);--pop:#2c0739}
 
@@ -206,65 +181,55 @@ body{background:#ffffff}
 .hv-card{transition:background-color .3s ease,color .3s ease}
 .hv-card:hover,.hv-card:focus-visible{background-color:#ece8ee !important;color:var(--hv-acc-l) !important}
 
-:is(.btn-solid,.btn-ghost,.hv-2,.hv-tl,.hv-card,.reel,a.case,.svc,footer.ft2 nav a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
 @media (hover:hover){
-  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:none !important}
-  
+
   :is(a,button):hover .hv-ar.hv-d{transform:translateY(3px)}
-  :is(a,button):hover .hv-ar.hv-ne{transform:translate(3px,-3px)}
-  
+
 }
-.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:none !important}
 
 :is(a,button):focus-visible .hv-ar.hv-d{transform:translateY(3px)}
-:is(a,button):focus-visible .hv-ar.hv-ne{transform:translate(3px,-3px)}
+
 @media (prefers-reduced-motion:reduce){
   .btn-solid,.btn-ghost,.hv-2,footer.ft2 nav a,.hv-ar,.reel img,.reel video,a.case .case-img img{transform:none !important}
 }
 
 /* ---- polish-sys ---- */
 /* polish pass: skip link, focus on light bands, field borders, tap targets, hero proof row, gigs, listen, press photos */
-.skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:var(--c-ink);font-weight:800;text-decoration:none}
+
 .hdr-cta{white-space:nowrap}
-@media (min-width: 1061px) and (max-width: 1240px){.nav-links{gap:16px !important}.hdr-lang a{width:28px}header{column-gap:18px !important}.hdr-right{gap:8px}}
+@media (min-width: 1061px) and (max-width: 1240px){.nav-links{gap:16px !important}}
 /* browser surfaces in the page palette */
 .field{caret-color:var(--hv-acc)}
 /* arrows: one drawn set instead of font glyphs. down = further on this page, right = another page of the site,
    up-right = another website, download = save a file. The glyph stays in the markup as a text fallback. */
-.hv-ar{display:inline-block;width:.8em;height:.8em;margin-left:.4em;vertical-align:-.04em;overflow:hidden;text-indent:2em;white-space:nowrap;background:currentColor;-webkit-mask:var(--ar) center / contain no-repeat;mask:var(--ar) center / contain no-repeat}
+
 .hv-d{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2v11M3.5 8.5 8 13l4.5-4.5'/%3E%3C/svg%3E")}
 
 .hv-dl{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2v8M4.5 6.5 8 10l3.5-3.5M3 14h10'/%3E%3C/svg%3E")}
 
 @media (hover:hover){a:hover .hv-ar.hv-dl{transform:translateY(3px)}}
 /* footer: no reserved space for a floating button that now steps aside here; tappable legal links on phones */
-@media (max-width: 640px){.ft2-bottom a{display:inline-flex;align-items:center;min-height:44px}.ft2-bottom{padding-top:14px !important}}
+@media (max-width: 640px){.ft2-bottom{padding-top:14px !important}}
 /* navigation: accent from the page's light accent (readable on the dark header), own focus rings */
 .nav-links a::after{background:var(--hv-acc)}
-.nav-links a:hover,.hdr-lang a:hover,.mm-lang a:hover,.mm-link:hover{color:var(--hv-acc)}
-.mm-link[aria-current]{color:var(--hv-acc) !important}
-:is(.nav-links a,.hdr-lang a,.mm-link,.mm-lang a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px;border-radius:4px}
+
 :is(.menu-btn,.menu-close):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
-.hdr-lang a{font-size:13px}
+
 /* mobile menu: sections sit low, close to the thumb; languages above a full-width call to action */
-@keyframes mm-in{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+
 #mobile-menu > nav{margin-top:auto !important;padding-top:32px}
 #mobile-menu > div:last-child{margin-top:0 !important;padding-top:28px !important;flex-direction:column;align-items:stretch !important;gap:12px !important}
 #mobile-menu > div:last-child > .btn-solid{justify-content:center}
 #mobile-menu .mm-lang{order:-1;margin:0 0 0 -12px}
 @media (max-height: 640px){.mm-link{font-size:30px !important;padding:2px 0 !important}#mobile-menu > nav{padding-top:12px}#mobile-menu > div:last-child{padding-top:16px !important}}
 @media (max-height: 440px){#mobile-menu{padding-top:12px !important;padding-bottom:14px !important}.mm-link{font-size:24px !important;line-height:1.2 !important;padding:0 !important}#mobile-menu > nav{padding-top:6px}#mobile-menu > div:last-child{padding-top:10px !important;flex-direction:row;align-items:center !important;justify-content:space-between}}
-@media (prefers-reduced-motion: reduce){.nav-links a::after,.mm-link{transition:none}#mobile-menu:not([hidden]){animation:none}}
+@media (prefers-reduced-motion: reduce){.nav-links a::after,.mm-link{transition:none}}
 /* pages with a hero button: the header button joins in once the bar sticks, so the first screen has one call to action */
 :is(#services,#events,#where,#bio,#media,#rider) :focus-visible{outline-color:var(--hv-acc-l) !important}
-@media (max-width: 1060px){.site-sw a{height:44px}}
+
 /* site switch: both names always written out; very narrow phones get a smaller size so both still fit */
-@media (max-width: 370px){.site-sw a{padding:0 8px;font-size:14px}.site-sw a::before{width:6px;height:6px;margin-right:5px}}
-@media (prefers-reduced-motion: reduce){.sw-thumb{transition:none !important}}
 
 #form-status a{color:inherit;text-underline-offset:3px}
-
-
 
 /* images carry their intrinsic size; CSS decides the rendered height */
 /* rider on screen, two columns: Additional moves up under the short Audio block, so Light and Additional end on the same line */
@@ -298,7 +263,7 @@ body{background:#ffffff}
 .p-top-span{color: var(--c-red)}
 .p-top-p{margin: clamp(20px, 2.4vw, 32px) 0 0;max-width: 620px;font-size: clamp(18px, 1.6vw, 22px);line-height: 1.55;color: var(--c-lilac-soft)}
 .p-top-div{display: flex;flex-wrap: wrap;gap: 12px;margin-top: clamp(28px, 3vw, 40px)}
-.p-top-a{display: inline-flex;align-items: center;min-height: 52px;padding: 0 26px;border-radius: 999px;border: 2px solid rgba(255,255,255,0.55);color: var(--c-white);text-decoration: none;font-size: 16px;font-weight: 800}
+
 .p-main-section-2{background: var(--c-white);color: var(--c-plum-ink)}
 .p-bio-div{padding-top: clamp(80px, 10vw, 136px);padding-bottom: clamp(80px, 10vw, 136px);display: flex;flex-wrap: wrap;gap: clamp(40px, 6vw, 96px)}
 .p-bio-div-2{flex: 1.6 1 460px;min-width: 0}
@@ -311,10 +276,8 @@ body{background:#ffffff}
 .p-bio-short-div{font-size: 17px;line-height: 1.65;color: var(--c-body-grey)}
 .p-bio-short-text-p{margin: 0 0 16px}
 .p-bio-div-5{flex: 1 1 280px;display: flex;flex-direction: column;gap: clamp(32px, 4vw, 48px)}
-.p-bio-dl{margin: 0;padding-top: clamp(24px, 3vw, 32px);border-top: 1px solid var(--c-line)} /* Channels: same rule and spacing as Short Bio */
-.p-bio-div-6{padding: 18px 0;border-bottom: 1px solid var(--c-line)}
-.p-bio-dt{font-family: 'Baloo Bhai 2', sans-serif;font-size: clamp(22px, 2vw, 26px);line-height: 1.1;letter-spacing: -0.02em;font-weight: 800;color: var(--c-plum-ink)} /* same heading as Short Bio */
-.p-bio-dd{margin: 6px 0 0;font-family: 'Baloo Bhai 2', sans-serif;font-size: 24px;font-weight: 800}
+.p-bio-dl{margin: 0;padding-top: clamp(24px, 3vw, 32px);border-top: 1px solid var(--c-line)}
+.p-bio-dt{font-family: 'Baloo Bhai 2', sans-serif;font-size: clamp(22px, 2vw, 26px);line-height: 1.1;letter-spacing: -0.02em;font-weight: 800;color: var(--c-plum-ink)}
 .p-bio-div-7{padding: 0}
 .p-bio-dd-2{margin: 12px 0 0}
 .p-bio-ul{margin: 0;padding: 0;list-style: none;display: flex;flex-direction: column;gap: 6px}
@@ -325,11 +288,7 @@ body{background:#ffffff}
 .p-main-section-3{background: var(--c-white)}
 .p-media-div{padding-top: clamp(64px, 8vw, 104px);padding-bottom: clamp(64px, 8vw, 104px)}
 .p-media-h2{margin: 0 0 clamp(28px, 3.5vw, 48px);font-family: 'Baloo Bhai 2', sans-serif;font-size: clamp(34px, 4.4vw, 60px);line-height: 0.98;letter-spacing: -0.04em;font-weight: 800}
-.p-media-div-2{display: grid;grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));gap: clamp(12px, 1.6vw, 24px)}
-.p-media-a{display: flex;align-items: center;justify-content: space-between;gap: 16px;min-height: 96px;padding: 0 clamp(20px, 2.4vw, 32px);border-radius: 20px;background: var(--c-paper);color: var(--c-plum-ink);text-decoration: none}
-.p-media-span{display: inline-flex;align-items: center;gap: 14px}
-.p-media-span-2{font-family: 'Baloo Bhai 2', sans-serif;font-size: clamp(26px, 2.6vw, 36px);font-weight: 800;letter-spacing: -0.02em}
-.p-media-span-3{font-size: 14px;font-weight: 800}
+
 .p-rider-div{max-width: 1360px;margin: 0 auto;padding: clamp(64px, 8vw, 104px) clamp(20px, 4vw, 48px)}
 .p-rider-h2{margin: 0 0 clamp(32px, 4vw, 56px);font-family: 'Baloo Bhai 2', sans-serif;font-size: clamp(38px, 5vw, 72px);line-height: 0.98;letter-spacing: -0.04em;font-weight: 800}
 .p-rider-figure{margin: 0 0 clamp(40px, 5vw, 72px)}
@@ -388,12 +347,12 @@ body{background:#ffffff}
 @media (prefers-reduced-motion:reduce){.pk-thumb img{transition:none}.pk-thumb:hover img{transform:none}}
 .pk-close{position:absolute;top:max(12px,env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));z-index:1;background:rgba(22,6,28,.6)}
 .pk-stage{padding-top:max(72px,env(safe-area-inset-top,0px))}
-.pk-dims{opacity:.8}
+
 @media (max-width:600px){
   .pk-bar{flex-direction:column;align-items:stretch}
   .pk-box-acts{justify-content:space-between}
   .pk-box .pk-full{flex:1 1 100%;justify-content:center;order:3}
-  .pk-dims{display:none}
+
 }
 .pk-foot{display:flex}
 .pk-big{transition:opacity .2s ease}
@@ -405,10 +364,10 @@ body{background:#ffffff}
 .pk-vid{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:999px;border:2px solid var(--c-plum-ink);background:transparent;color:var(--c-plum-ink);text-decoration:none;font-size:15px;font-weight:800;white-space:nowrap}
 .pk-vid:hover,.pk-vid:focus-visible{color:var(--c-plum-ink)}
 /* the red ZIP button stays red on hover (a shade deeper), unlike the outlined buttons that lighten */
-.pk-all.hv-2:hover,.pk-all.hv-2:focus-visible{background-color:#a8132f !important;border-color:#a8132f !important;color:#ffffff !important}
+.pk-all.hv-2:hover,.pk-all.hv-2:focus-visible{background-color:var(--c-red-deep) !important;border-color:var(--c-red-deep) !important;color:#ffffff !important}
 /* preview layout: an opaque backdrop (no page showing through); the photo box fills the free space and the photo
    is fitted inside it, so it never runs under the controls; one tidy row of controls underneath */
-.pk-box,.pk-box::backdrop{background:#16061c}
+.pk-box,.pk-box::backdrop{background:var(--c-tile-dark)}
 .pk-stage{position:relative;padding:0}
 .pk-big{position:absolute;top:max(72px,env(safe-area-inset-top,0px));left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:8px;width:calc(100% - 32px);height:calc(100% - 80px);max-width:none;max-height:none;margin:auto;object-fit:contain;border-radius:0;box-shadow:none}
 .pk-bar{flex-direction:row;align-items:center;justify-content:space-between}
@@ -437,7 +396,7 @@ body{background:#ffffff}
 .pk-booking{margin:clamp(22px,2.6vw,32px) 0 0;font-size:16px;color:var(--c-lilac-soft)}
 .pk-mail{font-weight:800;color:#ffffff;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.4)}
 .pk-mail:hover,.pk-mail:focus-visible{color:#ffffff;text-decoration-color:#ffffff}
-.pk-book-k{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--c-pink)}
+
 /* Mixes: last in Media, after Videos; each row opens the set on SoundCloud */
 .pk-mixes{display:grid;gap:20px}
 .pk-mix-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px clamp(12px,1.6vw,24px)}
@@ -453,7 +412,6 @@ body{background:#ffffff}
 .pk-mix .hv-ar{color:var(--c-red)}
 /* in the PDF there is no link to click, so the header band shows the address itself */
 @media print{
-  #top .gut > p.pk-pdf-mail{display:flex !important;align-items:baseline;gap:8px;margin:0 0 0 auto;font-size:12px;font-weight:800;color:#ffffff}
   #top .gut > p.pk-pdf-src{display:block !important;margin:0 0 0 auto;font-size:12px;font-weight:800} /* where this file comes from */
   #top .pk-pdf-src a{color:#ffffff !important;text-decoration:none}
 }
@@ -484,7 +442,8 @@ body{background:#ffffff}
   #bio dl > div:last-child{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0}
   #bio .pdf-photo{margin-top:0;aspect-ratio:3 / 2;object-position:50% 30%}
   #bio .pk-pdf-zip{display:block !important;margin:20px 0 0}
-  #bio .pk-pdf-vid{margin:8px 0 16px} /* the two download buttons sit together, the photo 16px below */ /* looks the same above and below: the links' text runs ~7px past their line box */
+  #bio .pk-pdf-vid{margin:8px 0 16px}
+  #bio .pk-pdf-vid:has(+ .pk-pdf-zip){margin-bottom:0} /* the logo button follows: 8px between buttons, 16px after the last */ /* the two download buttons sit together, the photo 16px below */ /* looks the same above and below: the links' text runs ~7px past their line box */
   .pk-pdf-zip a{display:block;height:30px;padding:0 10px;border:1.5px solid var(--c-red);border-radius:999px;background:var(--c-red);color:#ffffff !important;text-decoration:none;text-align:center;font-size:11.5px;line-height:27px;font-weight:800;white-space:nowrap} /* one line box: label and its note share a baseline */
   .pk-pdf-zip span{margin-left:6px;font-size:11px;font-weight:600;opacity:.85}
   .pk-pdf-vid a{border-color:var(--c-plum-ink);background:transparent;color:var(--c-plum-ink) !important} /* as on the page: photos red, Google Drive outlined */
@@ -493,8 +452,8 @@ body{background:#ffffff}
    bottom right (clear of the face), while a tap anywhere else opens the larger preview */
 .pk-photos .pk-note{margin:0 0 -8px;font-size:14px;color:var(--c-body-grey)} /* under the photos, right above the ZIP button it describes */
 .pk-item{position:relative}
-.pk-dl{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px 0 14px;border-radius:999px;background:rgba(22,6,28,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#ffffff;text-decoration:none;font-size:14px;font-weight:800;transition:background-color .25s ease}
-.pk-dl:hover,.pk-dl:focus-visible{background:rgba(22,6,28,.92)}
+.pk-dl{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px 0 14px;border-radius:999px;background:var(--c-overlay);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#ffffff;text-decoration:none;font-size:14px;font-weight:800;transition:background-color .25s ease}
+.pk-dl:hover,.pk-dl:focus-visible{background:var(--c-overlay-strong)}
 .pk-dl:focus-visible{outline:2px solid #ffffff;outline-offset:2px}
 .pk-dl .hv-ar{margin-left:.4em}
 /* photo overlay Download: word and arrow turn pink together on hover; like every button, only the arrow moves */
@@ -554,7 +513,7 @@ body{background:#ffffff}
    so the three anchors no longer look like the file download */
 .p-top-div{align-items:center;gap:16px 32px}
 .p-top-pdf{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;border:2px solid var(--c-red);background:var(--c-red);color:var(--c-white);text-decoration:none;font-size:16px;font-weight:800}
-.p-top-pdf.hv-2:hover,.p-top-pdf.hv-2:focus-visible{background-color:#a8132f !important;border-color:#a8132f !important;color:var(--c-white) !important}
+.p-top-pdf.hv-2:hover,.p-top-pdf.hv-2:focus-visible{background-color:var(--c-red-deep) !important;border-color:var(--c-red-deep) !important;color:var(--c-white) !important}
 .p-top-jump{display:flex;flex-wrap:wrap;gap:8px 24px}
 .p-top-jump-a{display:inline-flex;align-items:center;min-height:44px;color:var(--c-white);text-decoration:underline;text-decoration-color:rgba(255,255,255,.4);text-decoration-thickness:2px;text-underline-offset:6px;font-size:16px;font-weight:800;transition:color .25s ease,text-decoration-color .25s ease}
 .p-top-jump-a:hover,.p-top-jump-a:focus-visible{color:var(--c-pink);text-decoration-color:var(--c-pink)}
@@ -570,6 +529,90 @@ body{background:#ffffff}
 /* ONE LINE FOR ALL BUTTONS (hover and keyboard focus)
    - nothing lifts: the label stays where it is; only the arrow moves, 3px in its own direction
    - solid buttons keep their text colour, the background deepens a little and a soft shadow appears */
-.btn-solid:is(:hover,:focus-visible){background-image:linear-gradient(rgba(0,0,0,.14),rgba(0,0,0,.14));box-shadow:0 8px 22px var(--hv-glow)}
+
 .pk-all.hv-2:is(:hover,:focus-visible){box-shadow:0 8px 22px var(--hv-glow)}
 :is(.pk-dl,.pk-all):focus-visible .hv-ar.hv-dl{transform:translateY(3px)}
+/* ZIP buttons (Download All Photos / All Logos): the label never breaks inside; in a narrow window the size and arrow
+   move to a second line together */
+.pk-all{max-width:100%;padding-block:6px}
+.pk-all .pk-dl-t{flex-wrap:wrap;justify-content:center;column-gap:8px;row-gap:0;text-align:center}
+.pk-all-l,.pk-all .pk-zip{white-space:nowrap}
+.pk-all-r{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+
+/* LOGO: one preview tile with a colour switch (top left), a file-type switch (top right) and Download (bottom right);
+   black logo on a light tile, white logo on a dark tile. The controls share the photo-overlay material: see-through
+   dark with a soft blur on the light tile, see-through light on the dark tile (a dark layer would vanish there).
+   Same divider and rhythm as Videos and Mixes; on wide screens the section follows the photo grid above it */
+.pk-logos{display:grid;gap:16px;margin-top:clamp(40px,5vw,56px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--c-line)}
+.pk-logos .pk-foot{margin-top:-4px} /* text to button 12px, as under the photos */
+.pk-logo{display:flex;flex-direction:column;min-width:0;max-width:720px}
+.pk-logo-art{position:relative;display:grid;place-items:center;aspect-ratio:5 / 2;padding:max(9%, 66px) 12% max(9%, 66px);border-radius:16px} /* room above for the switches, below for Download */
+.pk-logo-light{background:var(--c-paper)}
+.pk-logo-dark{background:var(--c-tile-dark)}
+.pk-logo-art img{display:block;width:100%;height:100%;object-fit:contain}
+.pk-logo-art img[hidden]{display:none} /* tile and logo switch together, no fade (a fade briefly shows white on light) */
+.pk-logo-info{max-width:720px;display:grid;gap:10px;font-size:14px;line-height:1.5;color:var(--c-body-grey)}
+.pk-logo-info p{margin:0}
+.pk-logo-info span[hidden]{display:none}
+
+/* switches in the frame */
+.pk-logo-art .pk-logo-row{position:absolute;top:10px;left:10px;right:10px;z-index:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 12px;margin:0}
+.pk-fmt{position:relative;display:inline-flex;margin:0;padding:3px;border:0;border-radius:999px;touch-action:pan-y}
+.pk-logo-art .pk-fmt{background:var(--c-overlay);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pk-logo-dark .pk-fmt{background:rgba(255,255,255,.14)}
+.pk-fmt label{position:relative;z-index:1;display:inline-flex}
+.pk-fmt input{position:absolute;top:-3px;right:0;bottom:-3px;left:0;width:100%;margin:0;opacity:0;cursor:pointer} /* 44px tap area: the radio reaches past the chip */
+.pk-fmt span{display:inline-flex;align-items:center;min-height:38px;padding:0 11px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.04em;transition:background-color .2s ease,color .2s ease}
+.pk-logo-art .pk-fmt span{color:rgba(255,255,255,.8)}
+.pk-logo-art .pk-fmt label:hover span{color:#ffffff}
+.pk-logo-art .pk-fmt input:checked + span{background:transparent;color:var(--c-plum-ink)} /* the thumb shows the choice */
+.pk-fmt input:focus-visible + span{outline:2px solid #ffffff;outline-offset:2px}
+/* the thumb glides to the chosen option and can be dragged, like the site switch in the header */
+.pk-fmt-thumb{position:absolute;top:3px;left:0;bottom:3px;width:0;border-radius:999px;background:#ffffff;pointer-events:none}
+.pk-fmt-ready .pk-fmt-thumb{transition:transform .45s cubic-bezier(.3,.7,.2,1),width .45s cubic-bezier(.3,.7,.2,1),background-color .2s ease}
+.pk-fmt-drag .pk-fmt-thumb{transition:none}
+.pk-fmt-drag{cursor:grabbing}
+@media (prefers-reduced-motion:reduce){.pk-fmt-ready .pk-fmt-thumb{transition:none}}
+
+/* Download on the tile: the photo-overlay pill */
+.pk-logo-light .pk-dl{background:var(--c-overlay);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pk-logo-light .pk-dl:hover,.pk-logo-light .pk-dl:focus-visible{background:var(--c-overlay-strong)}
+.pk-logo-dark .pk-dl{background:rgba(255,255,255,.14);color:#ffffff !important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.pk-logo-dark .pk-dl:hover,.pk-logo-dark .pk-dl:focus-visible{background:rgba(255,255,255,.24);color:var(--c-pink) !important}
+
+/* wide screens: the tile spans the first two photo columns; text and Download All Logos in the right half */
+@media (min-width:1000px){
+  .pk-logos{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto auto 1fr;column-gap:clamp(12px,1.6vw,24px);row-gap:16px}
+  .pk-logos > .pk-head{grid-column:1 / -1}
+  .pk-logos > .pk-logo{grid-column:1 / 3;grid-row:2 / 5;max-width:none}
+  .pk-logos > .pk-logo-info{grid-column:3 / -1;grid-row:2;align-self:start;max-width:46ch}
+  .pk-logos > .pk-foot{grid-column:3 / -1;grid-row:3;align-self:start;margin-top:-4px}
+}
+/* phones: a taller tile */
+@media (max-width:560px){.pk-logo-art{aspect-ratio:4 / 3}}
+/* small screens: compact switches, so both stay on one row inside the frame */
+@media (max-width:420px){
+  .pk-logo-art .pk-logo-row{flex-wrap:nowrap;gap:6px;top:8px;left:8px;right:8px}
+  .pk-logo-art .pk-fmt span{min-height:34px;padding:0 8px;font-size:11px;letter-spacing:.02em}
+  .pk-logo-art{padding-top:max(9%, 58px)}
+  .pk-fmt input{top:-5px;bottom:-5px}
+}
+/* very narrow screens (or large text zoom): the two switches stack inside the frame */
+@media (max-width:300px){
+  .pk-logo-art .pk-logo-row{flex-wrap:wrap;row-gap:6px}
+  .pk-logo-art{padding-top:max(9%, 96px);aspect-ratio:auto;min-height:220px}
+}
+@media print{.pk-logos{display:none !important}}
+/* footer links (Privacy Policy, FREYcreates): a 44px tap area on wider screens too; the negative margin keeps the row height */
+
+/* hero jump links on phones: one compact row (smaller text, closer together); if they still wrap, the rows sit close
+   (the 44px tap area overlaps a little instead of pushing the rows apart) */
+@media (max-width:560px){
+  .p-top-jump{gap:0 18px}
+  .p-top-jump-a{font-size:15px;margin-block:-4px}
+}
+@media (max-width:400px){
+  .p-top-jump{gap:0 14px}
+  .p-top-jump-a{font-size:14px}
+  .p-top-jump-a .hv-ar{margin-left:.3em}
+}

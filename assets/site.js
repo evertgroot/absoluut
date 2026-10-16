@@ -600,6 +600,89 @@
   });
 
   /* 1d. Press kit: copy the biography (the PDF is built by GitHub, see .github/workflows/press-kit-pdf.yml) */
+  /* Press kit logo: one preview with a colour switch (black on a light tile, white on a dark tile) and a file-format
+     switch (PNG by default); the Download button always fetches the chosen colour in the chosen format */
+  var lgWrap = document.querySelector('[data-logos] .pk-logo');
+  if (lgWrap) {
+    var lgSync = function () {
+      var tone = (lgWrap.querySelector('input[name="logo-tone"]:checked') || {}).value || 'black';
+      var ext = (lgWrap.querySelector('input[name="logo-fmt"]:checked') || {}).value || 'png';
+      var name = lgWrap.getAttribute('data-logo') + '-' + tone;
+      var art = lgWrap.querySelector('.pk-logo-art');
+      art.classList.toggle('pk-logo-dark', tone === 'white');
+      art.classList.toggle('pk-logo-light', tone !== 'white');
+      lgWrap.parentNode.querySelectorAll('[data-tone]').forEach(function (el) { el.hidden = el.getAttribute('data-tone') !== tone; }); /* preview and the line under it */
+      var a = lgWrap.querySelector('[data-logo-dl]');
+      a.href = '/assets/logo/' + name + '.' + ext;
+      a.setAttribute('data-goatcounter-click', 'press-logo-' + tone + '-' + ext);
+      /* the link says what it fetches, in the page language: "Download logo, black, PNG" */
+      var toneName = ((lgWrap.querySelector('input[name="logo-tone"]:checked') || {}).nextElementSibling || {}).textContent || tone;
+      a.setAttribute('aria-label', (a.getAttribute('data-label') || 'Download logo') + ', ' + toneName.toLowerCase() + ', ' + ext.toUpperCase());
+    };
+    lgWrap.addEventListener('change', lgSync);
+    lgSync();
+
+    /* the pill switches work like the site switch in the header: a thumb glides to the chosen option, and it can
+       be dragged; letting go picks the nearest option */
+    lgWrap.querySelectorAll('.pk-fmt').forEach(function (fs) {
+      var labels = [].slice.call(fs.querySelectorAll('label'));
+      var thumb = document.createElement('span');
+      thumb.className = 'pk-fmt-thumb';
+      thumb.setAttribute('aria-hidden', 'true');
+      fs.insertBefore(thumb, fs.firstChild);
+      var place = function (lb, x) {
+        thumb.style.width = lb.offsetWidth + 'px';
+        thumb.style.transform = 'translateX(' + (x === undefined ? lb.offsetLeft : x) + 'px)';
+      };
+      var checked = function () { return labels.filter(function (l) { return l.querySelector('input').checked; })[0] || labels[0]; };
+      var nearest = function (x) {
+        var best = labels[0], d = Infinity;
+        labels.forEach(function (l) { var c = Math.abs(l.offsetLeft + l.offsetWidth / 2 - x); if (c < d) { d = c; best = l; } });
+        return best;
+      };
+      place(checked());
+      requestAnimationFrame(function () { fs.classList.add('pk-fmt-ready'); }); /* glide from now on, not on load */
+      fs.addEventListener('change', function () { place(checked()); });
+      window.addEventListener('resize', function () { place(checked()); });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { place(checked()); });
+
+      var drag = null, eat = false;
+      fs.addEventListener('pointerdown', function (e) {
+        if (e.button !== 0) return;
+        drag = { x: e.clientX, id: e.pointerId, moved: false, start: checked() };
+      });
+      fs.addEventListener('pointermove', function (e) {
+        if (!drag || e.pointerId !== drag.id) return;
+        if (e.pointerType === 'mouse' && e.buttons === 0) { drag = null; place(checked()); return; }
+        var dx = e.clientX - drag.x;
+        if (!drag.moved) {
+          if (Math.abs(dx) < 6) return;
+          drag.moved = true;
+          fs.classList.add('pk-fmt-drag');
+          try { fs.setPointerCapture(drag.id); } catch (err) {}
+        }
+        var first = labels[0], last = labels[labels.length - 1];
+        var x = Math.max(first.offsetLeft, Math.min(last.offsetLeft + last.offsetWidth - drag.start.offsetWidth, drag.start.offsetLeft + dx));
+        place(drag.start, x);
+      });
+      var end = function (e) {
+        if (!drag || e.pointerId !== drag.id) return;
+        var d = drag; drag = null;
+        fs.classList.remove('pk-fmt-drag');
+        if (!d.moved) return;
+        eat = true; setTimeout(function () { eat = false; }, 60);
+        var m = new DOMMatrix(getComputedStyle(thumb).transform);
+        var pick = e.type === 'pointerup' ? nearest(m.m41 + d.start.offsetWidth / 2) : d.start;
+        var input = pick.querySelector('input');
+        if (!input.checked) { input.checked = true; input.dispatchEvent(new Event('change', { bubbles: true })); }
+        place(checked());
+      };
+      fs.addEventListener('click', function (e) { if (eat) { e.preventDefault(); e.stopPropagation(); eat = false; } }, true);
+      window.addEventListener('pointerup', end);
+      window.addEventListener('pointercancel', end);
+    });
+  }
+
   /* Press kit photos: a thumbnail opens a larger preview first (with a description, the file size and a full-size
      download); arrows and the arrow keys move between photos; Escape or the close button returns to the grid */
   var pkWrap = document.querySelector('[data-photos]');

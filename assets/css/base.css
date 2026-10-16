@@ -8,6 +8,10 @@
   --c-ink:#0b0b0c; /* near-black page colour (Evert Groot) */
   --c-aubergine:#1f0328; /* Absoluut page colour */
   --c-plum-ink:#16121a; /* text on light, DJ pages */
+  --c-red-deep:#a8132f; /* hover on red buttons */
+  --c-tile-dark:#16061c; /* dark tile and photo preview backdrop */
+  --c-overlay:rgba(22,6,28,.72); /* see-through pill on photos and the logo tile */
+  --c-overlay-strong:rgba(22,6,28,.92); /* its hover */
   --c-lilac:#d9b5e6; /* soft accent on aubergine */
   --c-line:#e6e1e8; /* hairlines on light */
   --c-pink:#ff9fb2; /* soft red for links on dark */
@@ -74,3 +78,76 @@ img[width][height]{height:auto}
 @media (min-width:641px){.ft2-bottom a{padding-block:5px;margin-block:-5px}}
 /* sections reached through a link stop a little below the fixed header, so their heading has room */
 main > section[id]{scroll-margin-top:24px}
+
+/* SHARED BY EVERY PAGE (moved here from home/dj/press-kit/privacy.css, where they were identical): site switch,
+   page transition, header details, footer links */
+a{color:#ffffff}
+a:hover{color:var(--c-gold)}
+@media (prefers-reduced-motion: no-preference){
+  @view-transition{navigation:auto}
+  header .site-sw{view-transition-name:sw}
+  header .sw-thumb{view-transition-name:sw-thumb}
+  header .site-sw a:first-of-type{view-transition-name:sw-a}
+  header .site-sw a:last-of-type{view-transition-name:sw-b}
+  ::view-transition-group(*){animation-duration:.45s;animation-timing-function:cubic-bezier(.3,.7,.2,1)}
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:.3s}
+  ::view-transition-group(sw-thumb){z-index:2}
+  ::view-transition-group(sw-a),::view-transition-group(sw-b){z-index:3}
+  ::view-transition-group(sw-a),::view-transition-group(sw-b){overflow:clip}
+  ::view-transition-old(sw-a),::view-transition-new(sw-a),::view-transition-old(sw-b),::view-transition-new(sw-b){width:auto;height:100%;object-fit:none;object-position:left center}
+}
+@media (max-width: 1240px){
+  header{grid-template-columns:auto auto minmax(0,1fr) !important;gap:20px 28px !important}
+  .hdr-right{gap:12px}
+  .site-sw a{padding:0 13px;font-size:17px}
+}
+@media (max-width: 1060px){
+  .nav-links,.hdr-cta,.hdr-lang,.hdr-sep{display:none !important}
+  header{grid-template-columns:minmax(0,1fr) auto !important}
+}
+@media (max-width: 760px){
+  .site-sw a{height:34px;padding:0 12px;font-size:16px}
+}
+@media (max-width: 360px){
+  .site-sw a{padding:0 9px;font-size:15px}
+  .site-sw a::before{width:7px;height:7px;margin-right:6px}
+}
+:is(.btn-solid,.btn-ghost,.hv-2,.hv-tl,.hv-card,.reel,a.case,.svc,footer.ft2 nav a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
+@media (hover:hover){
+  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:none !important}
+  :is(a,button):hover .hv-ar.hv-ne{transform:translate(3px,-3px)}
+}
+.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:none !important}
+:is(a,button):focus-visible .hv-ar.hv-ne{transform:translate(3px,-3px)}
+.skip{position:absolute;left:12px;top:-80px;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#ffffff;color:var(--c-ink);font-weight:800;text-decoration:none}
+@media (min-width: 1061px) and (max-width: 1240px){
+  .hdr-lang a{width:28px}
+  header{column-gap:18px !important}
+  .hdr-right{gap:8px}
+}
+.hv-ar{display:inline-block;width:.8em;height:.8em;margin-left:.4em;vertical-align:-.04em;overflow:hidden;text-indent:2em;white-space:nowrap;background:currentColor;-webkit-mask:var(--ar) center / contain no-repeat;mask:var(--ar) center / contain no-repeat}
+@media (max-width: 640px){
+  .ft2-bottom a{display:inline-flex;align-items:center;min-height:44px}
+}
+.nav-links a:hover,.hdr-lang a:hover,.mm-lang a:hover,.mm-link:hover{color:var(--hv-acc)}
+.mm-link[aria-current]{color:var(--hv-acc) !important}
+:is(.nav-links a,.hdr-lang a,.mm-link,.mm-lang a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px;border-radius:4px}
+.hdr-lang a{font-size:13px}
+@keyframes mm-in{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){
+  #mobile-menu:not([hidden]){animation:none}
+}
+@media (max-width: 1060px){
+  .site-sw a{height:44px}
+}
+@media (max-width: 370px){
+  .site-sw a{padding:0 8px;font-size:14px}
+  .site-sw a::before{width:6px;height:6px;margin-right:5px}
+}
+@media (prefers-reduced-motion: reduce){
+  .sw-thumb{transition:none !important}
+}
+.btn-solid:is(:hover,:focus-visible){background-image:linear-gradient(rgba(0,0,0,.14),rgba(0,0,0,.14));box-shadow:0 8px 22px var(--hv-glow)}
+@media (min-width: 641px){
+  .ft2-bottom a{display:inline-flex;align-items:center;min-height:44px;margin-block:-11px;margin-block:calc((1lh - 44px) / 2)}
+}
