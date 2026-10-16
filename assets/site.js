@@ -600,6 +600,51 @@
   });
 
   /* 1d. Press kit: copy the biography (the PDF is built by GitHub, see .github/workflows/press-kit-pdf.yml) */
+  /* Press kit photos: a thumbnail opens a larger preview first (with photographer, size and a full-size
+     download); arrows and the arrow keys move between photos; Escape or the close button returns to the grid */
+  var pkWrap = document.querySelector('[data-photos]');
+  if (pkWrap && window.HTMLDialogElement) {
+    var PK = { en: ['Close', 'Previous photo', 'Next photo', 'Download full size'], nl: ['Sluiten', 'Vorige foto', 'Volgende foto', 'Download op volle grootte'],
+               it: ['Chiudi', 'Foto precedente', 'Foto successiva', 'Scarica in alta risoluzione'] }[lang] || ['Close', 'Previous photo', 'Next photo', 'Download full size'];
+    var thumbs = [].slice.call(pkWrap.querySelectorAll('.pk-thumb')), cur = 0;
+    var box = document.createElement('dialog');
+    box.className = 'pk-box';
+    box.innerHTML = '<div class="pk-stage"><img class="pk-big" alt=""></div><div class="pk-bar"><p class="pk-box-cap" aria-live="polite"></p><div class="pk-box-acts">' +
+      '<button type="button" class="pk-ico" data-pk="-1" aria-label="' + PK[1] + '">←</button><span class="pk-count"></span><button type="button" class="pk-ico" data-pk="1" aria-label="' + PK[2] + '">→</button>' +
+      '<a class="pk-all pk-full" download><span>' + PK[3] + '</span> <span class="pk-zip"></span><span class="hv-ar hv-dl" aria-hidden="true">↓</span></a>' +
+      '</div></div><button type="button" class="pk-ico pk-close" data-pk="close" aria-label="' + PK[0] + '">×</button>';
+    document.body.appendChild(box);
+    var big = box.querySelector('.pk-big'), cap = box.querySelector('.pk-box-cap'), full = box.querySelector('.pk-full'), count = box.querySelector('.pk-count');
+    var showPk = function (i) {
+      cur = (i + thumbs.length) % thumbs.length;
+      var t = thumbs[cur];
+      big.src = t.getAttribute('data-big'); big.alt = t.getAttribute('data-alt');
+      cap.innerHTML = '<b></b><span></span>';
+      cap.firstChild.textContent = t.getAttribute('data-alt'); cap.lastChild.textContent = t.getAttribute('data-credit');
+      full.href = t.getAttribute('data-full');
+      var sz = t.getAttribute('data-size').split(' · '); /* JPG · 2.8 MB · 2920 × 3648 px: the pixel size hides on phones */
+      full.querySelector('.pk-zip').innerHTML = ''; full.querySelector('.pk-zip').appendChild(document.createTextNode(sz.slice(0, 2).join(' · ')));
+      if (sz[2]) { var dm = document.createElement('span'); dm.className = 'pk-dims'; dm.textContent = ' · ' + sz[2]; full.querySelector('.pk-zip').appendChild(dm); }
+      full.setAttribute('data-goatcounter-click', 'press-photo-full-' + (cur + 1));
+      count.textContent = (cur + 1) + ' / ' + thumbs.length;
+    };
+    var opener = null;
+    thumbs.forEach(function (t, i) { t.addEventListener('click', function () { opener = t; showPk(i); box.showModal(); }); });
+    /* back on the grid, focus lands on the photo that was last shown */
+    box.addEventListener('close', function () { var t = thumbs[cur] || opener; if (t) { try { t.focus({ preventScroll: true }); } catch (e) {} } });
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-pk]');
+      if (b) { var v = b.getAttribute('data-pk'); if (v === 'close') box.close(); else showPk(cur + Number(v)); return; }
+      if (e.target === box || e.target.classList.contains('pk-stage')) box.close(); /* a click beside the photo closes */
+    });
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); showPk(cur + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); showPk(cur - 1); }
+    });
+    /* preload the larger version when someone points at a thumbnail */
+    thumbs.forEach(function (t) { t.addEventListener('pointerenter', function () { var im = new Image(); im.src = t.getAttribute('data-big'); }, { once: true }); });
+  }
+
   document.querySelectorAll('[data-copy]').forEach(function (b) {
     var src = document.getElementById(b.getAttribute('data-copy'));
     if (!src) return;
