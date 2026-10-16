@@ -602,3 +602,8 @@ body{background:#ffffff}
 .pk-logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (max-width:560px){.pk-logo-grid{grid-template-columns:minmax(0,1fr)}}
 .pk-logo-art{aspect-ratio:2 / 1;padding:12% 14%}
+/* Logo: one preview with a colour switch and a file-format switch beside the Download button */
+.pk-logo{max-width:720px}
+.pk-logo-art{aspect-ratio:5 / 2;padding:9% 12%} /* tile and logo switch together, no fade (a fade briefly shows white on light) */
+.pk-logo-art img[hidden]{display:none}
+.pk-logo-row{margin-top:14px}

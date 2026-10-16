@@ -600,22 +600,24 @@
   });
 
   /* 1d. Press kit: copy the biography (the PDF is built by GitHub, see .github/workflows/press-kit-pdf.yml) */
-  /* Press kit logos: each tile downloads the format chosen in its switch (PNG by default); choosing a format on one
-     tile switches every tile to it, since whoever needs EPS usually needs it for every version */
-  var lgWrap = document.querySelector('[data-logos]');
+  /* Press kit logo: one preview with a colour switch (black on a light tile, white on a dark tile) and a file-format
+     switch (PNG by default); the Download button always fetches the chosen colour in the chosen format */
+  var lgWrap = document.querySelector('[data-logos] .pk-logo');
   if (lgWrap) {
-    lgWrap.addEventListener('change', function (e) {
-      var t = e.target;
-      if (!t.matches || !t.matches('.pk-fmt input')) return;
-      var ext = t.value;
-      lgWrap.querySelectorAll('.pk-logo').forEach(function (li) {
-        var r = li.querySelector('.pk-fmt input[value="' + ext + '"]');
-        if (r) r.checked = true;
-        var a = li.querySelector('.pk-logo-dl'), name = li.getAttribute('data-logo');
-        a.href = '/assets/logo/' + name + '.' + ext;
-        a.setAttribute('data-goatcounter-click', 'press-logo-' + name.replace('absoluut-', '') + '-' + ext);
-      });
-    });
+    var lgSync = function () {
+      var tone = (lgWrap.querySelector('input[name="logo-tone"]:checked') || {}).value || 'black';
+      var ext = (lgWrap.querySelector('input[name="logo-fmt"]:checked') || {}).value || 'png';
+      var name = lgWrap.getAttribute('data-logo') + '-' + tone;
+      var art = lgWrap.querySelector('.pk-logo-art');
+      art.classList.toggle('pk-logo-dark', tone === 'white');
+      art.classList.toggle('pk-logo-light', tone !== 'white');
+      lgWrap.querySelectorAll('.pk-logo-art img').forEach(function (img) { img.hidden = img.getAttribute('data-tone') !== tone; });
+      var a = lgWrap.querySelector('.pk-logo-dl');
+      a.href = '/assets/logo/' + name + '.' + ext;
+      a.setAttribute('data-goatcounter-click', 'press-logo-' + tone + '-' + ext);
+    };
+    lgWrap.addEventListener('change', lgSync);
+    lgSync();
   }
 
   /* Press kit photos: a thumbnail opens a larger preview first (with a description, the file size and a full-size
