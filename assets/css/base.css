@@ -60,7 +60,7 @@ footer.ft2 nav a{color:#ffffff;background:rgba(255,255,255,0.1)}
 .hv-ar{display:inline-block;margin-left:.3em;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
 footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2,1)}
 .skip:focus{top:12px;outline:2px solid var(--hv-acc-l);outline-offset:2px}
-main:focus{outline:none}
+main:focus,section[tabindex="-1"]:focus{outline:none} /* sections focused after a glide to them */
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 .ft2-top > nav{flex-wrap:wrap}
 ::selection{background:var(--hv-acc);color:var(--c-ink)}
@@ -72,3 +72,5 @@ body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-
 img[width][height]{height:auto}
 /* footer legal links: a taller tap area without moving anything */
 @media (min-width:641px){.ft2-bottom a{padding-block:5px;margin-block:-5px}}
+/* sections reached through a link stop a little below the fixed header, so their heading has room */
+main > section[id]{scroll-margin-top:24px}

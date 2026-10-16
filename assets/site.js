@@ -8,6 +8,72 @@
   var lang = document.documentElement.lang || 'en';
   var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* 0. Links to a part of the page glide there instead of jumping (not with reduced motion).
+     Arriving from another page with #section: start at the top and glide down once the page has settled.
+     A link to Upcoming Gigs falls back to Where I've Played while no upcoming gig is public. */
+  var target = function (id) {
+    var el = document.getElementById(id);
+    if (id === 'upcoming' && (!el || el.hidden)) el = document.getElementById('gigs');
+    return el;
+  };
+  /* our own glide instead of the browser's smooth scroll (which takes 1-1.5s and differs per browser):
+     0.45-0.8s depending on distance, fast start and a soft landing; it re-aims every frame, so content that
+     appears on the way (Upcoming Gigs, the Next up line) doesn't throw it off, and any scroll by the visitor stops it */
+  var glideRun = null;
+  var stopGlide = function () { if (glideRun) { cancelAnimationFrame(glideRun); glideRun = null; } };
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { window.addEventListener(ev, stopGlide, { passive: true }); });
+  var glide = function (el) {
+    if (!el) return;
+    stopGlide();
+    var dest = function () {
+      var m = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      return Math.max(0, Math.min(max, el.getBoundingClientRect().top + window.scrollY - m));
+    };
+    if (calm) { window.scrollTo(0, dest()); return; }
+    var from = window.scrollY, dur = Math.min(800, Math.max(450, 300 + Math.abs(dest() - from) * 0.09)), t0 = null;
+    var ease = function (p) { return 1 - Math.pow(1 - p, 3); }; /* ~58% of the way in the first quarter: quick, but the travel stays visible */
+    var step = function (t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / dur);
+      window.scrollTo(0, from + (dest() - from) * ease(p));
+      glideRun = p < 1 ? requestAnimationFrame(step) : null;
+    };
+    glideRun = requestAnimationFrame(step);
+  };
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return; /* a link with its own scroll handling (e.g. data-pick) already took care of it */
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute('href').length < 2 || a.hasAttribute('data-noglide')) return;
+    var id = a.getAttribute('href').slice(1), el = target(id);
+    if (!el || id === 'main' || id === 'cs-form') return; /* skip link and the case-page form keep their own handling */
+    e.preventDefault();
+    glide(el);
+    /* like a normal anchor jump, keyboard focus continues from the section */
+    if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+    try { el.focus({ preventScroll: true }); } catch (err) {}
+    if (history.pushState) history.pushState(null, '', '#' + id);
+  });
+  var arrive = /^#[\w-]+$/.test(location.hash) ? location.hash.slice(1) : null;
+  if (arrive && arrive !== 'main' && !calm && document.getElementById(arrive)) {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    /* if the visitor scrolls, swipes or uses a key before the glide starts, they stay where they are */
+    var tookOver = false, mine = function () { tookOver = true; };
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { window.addEventListener(ev, mine, { passive: true, once: true }); });
+    var tries = 0, go = function () {
+      if (tookOver) { done(); return; }
+      var el = document.getElementById(arrive);
+      /* Upcoming Gigs is filled in from the gig list; give it a moment before falling back */
+      if (arrive === 'upcoming' && el && el.hidden && tries++ < 15) return setTimeout(go, 100);
+      glide(target(arrive));
+      setTimeout(done, 900);
+    };
+    /* afterwards the browser remembers scroll positions again (back and forward land where they should) */
+    var done = function () { if ('scrollRestoration' in history) history.scrollRestoration = 'auto'; };
+    setTimeout(go, 350); /* the page is parsed by now (deferred script); a short beat at the top, then the glide */
+  }
+
   /* 1. Language choice */
   document.querySelectorAll('a[data-lang]').forEach(function (link) {
     link.addEventListener('click', function () {
@@ -469,9 +535,10 @@
   /* 1c3. Menu: mark the section you are reading (accent line on desktop, accent item in the mobile menu) */
   var spyLinks = [].slice.call(document.querySelectorAll('.nav-links a[href^="#"], #mobile-menu .mm-link[href^="#"]'));
   var spyIds = [];
+  /* a link can stand for more than one section (data-spy): "Gigs" lights up for Upcoming Gigs and Where I've Played */
+  var spyFor = function (a) { return (a.getAttribute('data-spy') || a.getAttribute('href').slice(1)).split(' '); };
   spyLinks.forEach(function (a) {
-    var id = a.getAttribute('href').slice(1);
-    if (spyIds.indexOf(id) < 0 && document.getElementById(id)) spyIds.push(id);
+    spyFor(a).forEach(function (id) { if (spyIds.indexOf(id) < 0 && document.getElementById(id)) spyIds.push(id); });
   });
   if (spyIds.length) {
     var spyNow = null, spyTick = false;
@@ -479,7 +546,7 @@
       if (id === spyNow) return;
       spyNow = id;
       spyLinks.forEach(function (a) {
-        if (id && a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'location');
+        if (id && spyFor(a).indexOf(id) > -1) a.setAttribute('aria-current', 'location');
         else a.removeAttribute('aria-current');
       });
     };
@@ -487,7 +554,9 @@
       spyTick = false;
       var line = Math.min(160, window.innerHeight * 0.3), hit = null;
       spyIds.forEach(function (id) {
-        var r = document.getElementById(id).getBoundingClientRect();
+        var el = document.getElementById(id);
+        if (el.hidden) return;
+        var r = el.getBoundingClientRect();
         if (r.top <= line && r.bottom > line) hit = id;
       });
       spySet(hit);
@@ -930,7 +999,7 @@
         var sec = form.closest('section'), head = sec && sec.querySelector('h2');
         if (!head) return;
         e.preventDefault();
-        head.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+        glide(head);
         if (history.replaceState) history.replaceState(null, '', '#' + sec.id);
         try { fsel.focus({ preventScroll: true }); } catch (err) {}
       });
