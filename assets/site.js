@@ -604,8 +604,8 @@
      download); arrows and the arrow keys move between photos; Escape or the close button returns to the grid */
   var pkWrap = document.querySelector('[data-photos]');
   if (pkWrap && window.HTMLDialogElement) {
-    var PK = { en: ['Close', 'Previous photo', 'Next photo', 'Download', 'Photos'], nl: ['Sluiten', 'Vorige foto', 'Volgende foto', 'Download', 'Foto’s'],
-               it: ['Chiudi', 'Foto precedente', 'Foto successiva', 'Scarica', 'Foto'] }[lang] || ['Close', 'Previous photo', 'Next photo', 'Download', 'Photos'];
+    var PK = { en: ['Close', 'Previous photo', 'Next photo', 'Download', 'Photos', 'Photo by'], nl: ['Sluiten', 'Vorige foto', 'Volgende foto', 'Download', 'Foto’s', 'Foto door'],
+               it: ['Chiudi', 'Foto precedente', 'Foto successiva', 'Scarica', 'Foto', 'Foto di'] }[lang] || ['Close', 'Previous photo', 'Next photo', 'Download', 'Photos', 'Photo by'];
     var thumbs = [].slice.call(pkWrap.querySelectorAll('.pk-thumb')), cur = 0;
     var box = document.createElement('dialog');
     box.className = 'pk-box';
@@ -624,7 +624,7 @@
       var src = t.getAttribute('data-big');
       if (big.getAttribute('src') !== src) { big.classList.add('pk-loading'); big.onload = big.onerror = function () { big.classList.remove('pk-loading'); }; big.src = src; }
       big.alt = t.getAttribute('data-alt');
-      cap.querySelector('.pk-who').textContent = t.getAttribute('data-credit') || '';
+      cap.querySelector('.pk-who').textContent = t.getAttribute('data-credit') ? PK[5] + ' ' + t.getAttribute('data-credit') : '';
       full.href = t.getAttribute('data-full');
       full.setAttribute('data-goatcounter-click', 'press-photo-full-' + (cur + 1));
       count.textContent = (cur + 1) + ' / ' + thumbs.length;
