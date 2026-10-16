@@ -61,7 +61,7 @@
   {"date": "2027-02-19", "event": "Beyond Darklands", "venue": "Waagnatie", "city": "Antwerp", "url": "https://www.darklands.be", "show": false, "logo": "/assets/img/beyond-darklands-logo-white.svg", "logoHeight": 40, "logoRatio": 2.2},
   {"date": "2027-03-26", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam", "url": "https://linktr.ee/bops.ams", "show": false, "logo": "/assets/img/bops-brand-logo-white.png"},
   {"date": "2027-05-28", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam", "url": "https://linktr.ee/bops.ams", "show": false, "logo": "/assets/img/bops-brand-logo-white.png"},
-  {"date": "2027-06-12", "event": "Tropikali Festival", "venue": "", "city": "Amsterdam", "show": false, "logo": "/assets/img/tropikali-logo.svg", "logoHeight": 28, "logoRatio": 3.93},
+  {"date": "2027-06-12", "event": "Tropikali Festival", "venue": "NDSM", "city": "Amsterdam", "url": "https://www.tropikali.nl", "show": false, "logo": "/assets/img/tropikali-logo.svg", "logoHeight": 28, "logoRatio": 3.93},
   {"date": "2027-08-06", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam", "url": "https://linktr.ee/bops.ams", "show": false, "logo": "/assets/img/bops-brand-logo-white.png"},
   {"date": "2027-11-26", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam", "url": "https://linktr.ee/bops.ams", "show": false, "logo": "/assets/img/bops-brand-logo-white.png"}
 ]
