@@ -469,3 +469,6 @@ body{background:#ffffff}
    and far from the next row (28px+), so it clearly belongs to the photo above it */
 .pk-videos{gap:20px}
 .pk-grid{row-gap:clamp(28px,3vw,36px)}
+/* the press kit is a reference page full of buttons and downloads: no floating "Check Availability" on phones
+   (it covered photos and Download buttons); the button stays in the menu bar and the menu */
+.cta-fab{display:none !important}
