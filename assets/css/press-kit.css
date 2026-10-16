@@ -474,7 +474,7 @@ body{background:#ffffff}
 }
 /* one line under the Photos heading says what the files are; each photo carries a small Download overlay,
    bottom right (clear of the face), while a tap anywhere else opens the larger preview */
-.pk-photos .pk-note{margin:-8px 0 0;font-size:14px;color:var(--c-body-grey)}
+.pk-photos .pk-note{margin:0 0 -8px;font-size:14px;color:var(--c-body-grey)} /* under the photos, right above the ZIP button it describes */
 .pk-item{position:relative}
 .pk-dl{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px 0 14px;border-radius:999px;background:rgba(22,6,28,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#ffffff;text-decoration:none;font-size:14px;font-weight:800;transition:background-color .25s ease}
 .pk-dl:hover,.pk-dl:focus-visible{background:rgba(22,6,28,.92);color:#ffffff}
