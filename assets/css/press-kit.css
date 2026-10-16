@@ -499,10 +499,9 @@ body{background:#ffffff}
 /* three mixes: one row of three on wide screens, one column below */
 .pk-mix-list{grid-template-columns:minmax(0,1fr)}
 @media (min-width:1000px){.pk-mix-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
-/* wide screens: Videos and Mixes side by side under one shared rule; Videos takes a narrow column, the mixes
-   stack as rows in the wider one */
+/* wide screens: Videos is a single row (heading left, its one button right), so it takes no more height than it
+   needs; the three mixes sit side by side underneath, across the full width */
 @media (min-width:1000px){
-  .pk-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:0 clamp(32px,4vw,64px);margin-top:clamp(40px,5vw,56px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--c-line)}
-  .pk-row > .pk-videos,.pk-row > .pk-mixes{margin-top:0;padding-top:0;border-top:0;align-content:start}
-  .pk-row .pk-mix-list{grid-template-columns:minmax(0,1fr)}
+  .pk-videos{grid-template-columns:auto auto;justify-content:space-between;align-items:center}
+}
 }
