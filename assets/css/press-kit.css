@@ -6,7 +6,7 @@ a{color:#ffffff}a:hover{color:var(--c-gold)}
 .field option{color:var(--c-navy)}
 
 .btn-solid{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.btn-solid:hover{transform:translateY(-2px);color:#ffffff}
+.btn-solid:hover{color:#ffffff}
 
 @media (prefers-reduced-motion: no-preference){
   @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
@@ -208,13 +208,13 @@ body{background:#ffffff}
 
 :is(.btn-solid,.btn-ghost,.hv-2,.hv-tl,.hv-card,.reel,a.case,.svc,footer.ft2 nav a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
 @media (hover:hover){
-  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:translateY(-2px) !important}
+  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:none !important}
   
   :is(a,button):hover .hv-ar.hv-d{transform:translateY(3px)}
   :is(a,button):hover .hv-ar.hv-ne{transform:translate(3px,-3px)}
   
 }
-.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:translateY(-2px) !important}
+.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:none !important}
 
 :is(a,button):focus-visible .hv-ar.hv-d{transform:translateY(3px)}
 :is(a,button):focus-visible .hv-ar.hv-ne{transform:translate(3px,-3px)}
@@ -236,7 +236,7 @@ body{background:#ffffff}
 
 .hv-dl{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2v8M4.5 6.5 8 10l3.5-3.5M3 14h10'/%3E%3C/svg%3E")}
 
-@media (hover:hover){a:hover .hv-ar.hv-dl{transform:translateY(2px)}}
+@media (hover:hover){a:hover .hv-ar.hv-dl{transform:translateY(3px)}}
 /* footer: no reserved space for a floating button that now steps aside here; tappable legal links on phones */
 @media (max-width: 640px){.ft2-bottom a{display:inline-flex;align-items:center;min-height:44px}.ft2-bottom{padding-top:14px !important}}
 /* navigation: accent from the page's light accent (readable on the dark header), own focus rings */
@@ -497,16 +497,13 @@ body{background:#ffffff}
 .pk-dl:hover,.pk-dl:focus-visible{background:rgba(22,6,28,.92)}
 .pk-dl:focus-visible{outline:2px solid #ffffff;outline-offset:2px}
 .pk-dl .hv-ar{margin-left:.4em}
-/* download buttons (photo overlays and Download All Photos): the label and its arrow move down together on hover,
-   instead of the button lifting and the arrow moving on its own; on the photos, word and arrow turn pink together */
+/* photo overlay Download: word and arrow turn pink together on hover; like every button, only the arrow moves */
 .pk-dl{transition:background-color .25s ease,color .25s ease}
 .pk-dl:hover,.pk-dl:focus-visible{color:var(--c-pink) !important}
 .pk-dl-t{display:inline-flex;align-items:center;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
 .pk-all .pk-dl-t{gap:8px}
-.pk-dl-t .hv-ar{transform:none !important}
 .pk-all.hv-2:hover,.pk-all.hv-2:focus-visible{transform:none !important}
-@media (hover:hover) and (prefers-reduced-motion:no-preference){:is(.pk-dl,.pk-all):hover .pk-dl-t{transform:translateY(2px)}}
-:is(.pk-dl,.pk-all):focus-visible .pk-dl-t{transform:translateY(2px)}
+
 @media (prefers-reduced-motion:reduce){.pk-dl-t{transform:none !important}}
 /* the four mix rows are always the same height (the tallest sets it); on phones the type is a touch smaller so
    most titles fit on one line, and nothing is cut off */
@@ -569,3 +566,10 @@ body{background:#ffffff}
 @media (prefers-reduced-motion:no-preference){.p-top-pdf:focus-visible .hv-ar.hv-dl{transform:translateY(3px)}}
 /* hero button hover, the same on every page: text keeps its colour, background deepens a little, soft shadow */
 .p-top-pdf.hv-2:is(:hover,:focus-visible){box-shadow:0 8px 22px var(--hv-glow)}
+
+/* ONE LINE FOR ALL BUTTONS (hover and keyboard focus)
+   - nothing lifts: the label stays where it is; only the arrow moves, 3px in its own direction
+   - solid buttons keep their text colour, the background deepens a little and a soft shadow appears */
+.btn-solid:is(:hover,:focus-visible){background-image:linear-gradient(rgba(0,0,0,.14),rgba(0,0,0,.14));box-shadow:0 8px 22px var(--hv-glow)}
+.pk-all.hv-2:is(:hover,:focus-visible){box-shadow:0 8px 22px var(--hv-glow)}
+:is(.pk-dl,.pk-all):focus-visible .hv-ar.hv-dl{transform:translateY(3px)}
