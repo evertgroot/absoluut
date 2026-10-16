@@ -175,7 +175,7 @@ body{background:#ffffff}
   #rider figcaption{margin:0;font-size:12px;line-height:1.4;text-align:center}
   #rider > div > div{margin-top:14px;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);gap:18px}
   #rider > div > div > div:first-child > div{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 22px}
-  #rider > div > div > div:last-child{padding:14px;border-radius:10px;align-self:start}
+  #rider > div > div > div:last-of-type{grid-column:2;grid-row:1;padding:14px;border-radius:10px;align-self:start}
   #rider p{font-size:11px;letter-spacing:0.1em;margin:0 0 8px}
   #rider h3{font-size:15px;margin:0 0 3px}
   #rider ul{font-size:12.5px;line-height:1.42}
@@ -470,24 +470,13 @@ body{background:#ffffff}
 .cta-fab{display:none !important}
 /* PDF only: where to find the photos, videos and mixes that the printout leaves out */
 @media print{
-  .pk-pdf-media{display:block !important;margin:16px 0 0;padding-top:16px;border-top:1px solid var(--c-line);break-inside:avoid}
-  .pk-pdf-media h2{margin:0 0 10px;font-family:'Baloo Bhai 2',sans-serif;font-size:21px;line-height:1.1;letter-spacing:-0.02em;font-weight:800;color:var(--c-plum-ink)}
-  .pk-pdf-thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 14px}
-  .pk-pdf-thumbs img{display:block;width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover;border-radius:10px}
-  #rider{break-before:page !important} /* page 1: biography and media; page 2: the full technical rider */
-  #rider > div{border-top:0 !important;margin-top:0 !important;padding-top:0 !important}
-  #rider .pk-pdf-run{display:block !important;margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid var(--c-line);font-size:11px;font-weight:700;letter-spacing:0.02em;color:#6b6470}
-  #rider .pk-pdf-rider-q{display:block !important;margin:18px 0 0;padding-top:10px;border-top:1px solid var(--c-line);font-size:12.5px;letter-spacing:0;color:#3d3742}
+  #rider .pk-pdf-rider-q{display:block !important;grid-column:2;grid-row:1;align-self:end;margin:0;padding:0 0 0 14px;font-size:12.5px;letter-spacing:0;color:#3d3742}
   #rider .pk-pdf-rider-q a{font-weight:800;color:var(--c-plum-ink) !important;text-decoration:none}
   #bio dt{font-size:13px !important;line-height:1.2;letter-spacing:0 !important;text-transform:none !important;color:var(--c-plum-ink) !important} /* same heading as Short Bio, as on screen */
   #bio .p-bio-dl{padding-top:10px !important}
-  .pk-pdf-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-  .pk-pdf-zip{display:block !important;margin:12px 0 0}
-  .pk-pdf-zip a{display:flex;align-items:center;justify-content:center;gap:8px;height:32px;padding:0 16px;border-radius:999px;background:var(--c-red);color:#ffffff !important;text-decoration:none;font-size:12.5px;font-weight:800}
-  .pk-pdf-zip span{font-weight:600;opacity:.85}
-  .pk-pdf-media h3{margin:0 0 3px;font-family:'Baloo Bhai 2',sans-serif;font-size:15px;line-height:1.2;font-weight:800;color:var(--c-plum-ink)}
-  .pk-pdf-media p,.pk-pdf-media ul{margin:0 0 4px;padding:0;list-style:none;font-size:12.5px;line-height:1.42;color:#3d3742}
-  .pk-pdf-media a{font-weight:800;color:var(--c-plum-ink) !important;text-decoration:none}
+  .pk-pdf-zip{display:block !important;margin:10px 0 0}
+  .pk-pdf-zip a{display:flex;align-items:center;justify-content:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:var(--c-red);color:#ffffff !important;text-decoration:none;font-size:11.5px;font-weight:800;white-space:nowrap}
+  .pk-pdf-zip span{font-size:10.5px;font-weight:600;opacity:.85}
 }
 /* one line under the Photos heading says what the files are; each photo carries a small Download overlay,
    bottom right (clear of the face), while a tap anywhere else opens the larger preview */
