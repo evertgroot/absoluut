@@ -56,7 +56,7 @@
   {"date": "2026-08-21", "event": "BASE", "venue": "", "city": "Milan", "note": {"en": "B2B with Dimitri Tenot", "nl": "B2B met Dimitri Tenot", "it": "B2B con Dimitri Tenot"}},
   {"date": "2026-08-29", "event": "Superflirt Festival", "venue": "Kaap", "city": "Amsterdam"},
   {"date": "2026-09-12", "event": "Private wedding", "private": "wedding", "venue": "Westweelde", "city": "Amsterdam"},
-  {"date": "2026-10-29", "event": "Squillo", "venue": "NODO", "city": "Milan", "url": "https://www.nodo.bar", "show": false, "logo": "/assets/img/squillo-logo-white.png?v=2", "logoHeight": 36, "logoRatio": 2.87},
+  {"date": "2026-10-29", "event": "Squillo", "venue": "NODO", "city": "Milan", "url": "https://www.nodo.bar", "show": true, "logo": "/assets/img/squillo-logo-white.png?v=2", "logoHeight": 36, "logoRatio": 2.87},
   {"date": "2026-11-27", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam", "url": "https://linktr.ee/bops.ams", "show": true, "logo": "/assets/img/bops-brand-logo-white.png"},
   {"date": "2027-02-19", "event": "Beyond Darklands", "venue": "Waagnatie", "city": "Antwerp", "url": "https://www.darklands.be", "show": false, "logo": "/assets/img/beyond-darklands-logo-white.svg", "logoHeight": 40, "logoRatio": 2.2},
   {"date": "2027-03-26", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam", "url": "https://linktr.ee/bops.ams", "show": false, "logo": "/assets/img/bops-brand-logo-white.png"},
