@@ -395,3 +395,4 @@ body{background:#ffffff}
   .pk-box .pk-full{flex:1 1 100%;justify-content:center;order:3}
   .pk-dims{display:none}
 }
+.pk-foot{display:flex}
