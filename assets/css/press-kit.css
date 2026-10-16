@@ -353,8 +353,7 @@ body{background:#ffffff}
 .p-page-a-3{display: inline-flex;align-items: center;justify-content: center;width: 46px;height: 46px;border-radius: 999px;background: rgba(255,255,255,0.1)}
 .p-page-a-4{display: inline-flex;align-items: center;justify-content: center;height: 46px;padding: 0 16px;border-radius: 999px;background: rgba(255,255,255,0.1)}
 .p-page-span{display: block;width: 89px;height: 16px;background: currentColor;-webkit-mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat;mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat}
-/* Press photos: four thumbnails that open a larger preview before downloading, each with its photographer,
-   plus one ZIP with all full-size files */
+/* Press photos: four thumbnails that open a larger preview before downloading, plus one ZIP with all full-size files */
 .pk-photos{display:grid;gap:20px;margin-bottom:clamp(36px,4.5vw,64px)}
 .pk-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px}
 .pk-h3{margin:0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(24px,2.4vw,32px);font-weight:800;letter-spacing:-0.02em;color:var(--c-plum-ink)}
@@ -368,12 +367,10 @@ body{background:#ffffff}
 .pk-thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 @media (hover:hover){.pk-thumb:hover img{transform:scale(1.03)}}
 .pk-thumb:focus-visible{outline:2px solid var(--c-red);outline-offset:3px}
-.pk-meta{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px;font-size:13px}
-.pk-cred{color:var(--c-body-grey)}
+.pk-meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;font-size:13px}
 .pk-dl{display:inline-flex;align-items:center;min-height:32px;font-weight:800;color:var(--c-red);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px;text-decoration-color:rgba(200,25,58,.35)}
 .pk-dl:hover,.pk-dl:focus-visible{color:var(--c-red);text-decoration-color:currentColor}
 .pk-size{margin-left:4px;font-weight:600;color:var(--c-body-grey)}
-.pk-note{margin:0;font-size:14px;color:var(--c-body-grey)}
 /* the larger preview: full-screen, the photo as big as fits, the download and arrows underneath */
 .pk-box{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:rgba(22,6,28,.94);color:#ffffff;font-family:'Manrope',system-ui,sans-serif}
 .pk-box::backdrop{background:rgba(22,6,28,.94)}

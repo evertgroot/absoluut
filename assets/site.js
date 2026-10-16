@@ -600,7 +600,7 @@
   });
 
   /* 1d. Press kit: copy the biography (the PDF is built by GitHub, see .github/workflows/press-kit-pdf.yml) */
-  /* Press kit photos: a thumbnail opens a larger preview first (with photographer, size and a full-size
+  /* Press kit photos: a thumbnail opens a larger preview first (with a description, the file size and a full-size
      download); arrows and the arrow keys move between photos; Escape or the close button returns to the grid */
   var pkWrap = document.querySelector('[data-photos]');
   if (pkWrap && window.HTMLDialogElement) {
@@ -619,8 +619,8 @@
       cur = (i + thumbs.length) % thumbs.length;
       var t = thumbs[cur];
       big.src = t.getAttribute('data-big'); big.alt = t.getAttribute('data-alt');
-      cap.innerHTML = '<b></b><span></span>';
-      cap.firstChild.textContent = t.getAttribute('data-alt'); cap.lastChild.textContent = t.getAttribute('data-credit');
+      cap.innerHTML = '<b></b>';
+      cap.firstChild.textContent = t.getAttribute('data-alt');
       full.href = t.getAttribute('data-full');
       var sz = t.getAttribute('data-size').split(' · '); /* JPG · 2.8 MB · 2920 × 3648 px: the pixel size hides on phones */
       full.querySelector('.pk-zip').innerHTML = ''; full.querySelector('.pk-zip').appendChild(document.createTextNode(sz.slice(0, 2).join(' · ')));
