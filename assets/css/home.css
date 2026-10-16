@@ -929,3 +929,7 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-meta-where{white-space:nowrap}
 /* hero button: the label stays in place and only the arrow moves down, like the jump links on the press kit */
 .h-main-a:is(:hover,:focus-visible){transform:none !important}
+/* hero button hover, the same on every page: the text keeps its colour, the background deepens a little and the
+   soft shadow appears (it no longer switches from dark to white text) */
+.h-main-a:is(:hover,:focus-visible){color:var(--c-ink) !important;background:#5cc3cf;box-shadow:0 8px 22px var(--hv-glow)}
+.h-main-a{transition:background-color .25s ease,box-shadow .25s ease}

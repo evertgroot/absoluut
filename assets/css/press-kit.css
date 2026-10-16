@@ -567,3 +567,5 @@ body{background:#ffffff}
 .p-top-pdf.hv-2:is(:hover,:focus-visible){transform:none !important}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){.p-top-pdf:hover .hv-ar.hv-dl{transform:translateY(3px)}}
 @media (prefers-reduced-motion:no-preference){.p-top-pdf:focus-visible .hv-ar.hv-dl{transform:translateY(3px)}}
+/* hero button hover, the same on every page: text keeps its colour, background deepens a little, soft shadow */
+.p-top-pdf.hv-2:is(:hover,:focus-visible){box-shadow:0 8px 22px var(--hv-glow)}
