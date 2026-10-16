@@ -465,3 +465,7 @@ body{background:#ffffff}
   .pk-mix-time{grid-area:time;align-self:start}
   .pk-mix .hv-ar{grid-area:ar}
 }
+/* rhythm in Media: every heading sits 20px above its content; a photo's button stays close to its photo (10px)
+   and far from the next row (28px+), so it clearly belongs to the photo above it */
+.pk-videos{gap:20px}
+.pk-grid{row-gap:clamp(28px,3vw,36px)}
