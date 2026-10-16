@@ -566,3 +566,8 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
   .rg-year-btn,.rg-year-btn .up-past-ar.hv-ar{transition:none}
   .rg-year-btn[aria-expanded="true"] .up-past-ar.hv-ar{transform:rotate(180deg) !important}
 }
+/* hero buttons: the label stays in place and only the arrow moves down, like the jump links on the press kit */
+.d-top-a:is(:hover,:focus-visible),.d-top-a-2:is(:hover,:focus-visible){transform:none !important}
+/* hero button hover, the same on every page: text keeps its colour, background deepens a little, soft shadow */
+.d-top-a:is(:hover,:focus-visible){color:var(--c-white) !important;background:#a8132f;box-shadow:0 8px 22px var(--hv-glow)}
+.d-top-a{transition:background-color .25s ease,box-shadow .25s ease}
