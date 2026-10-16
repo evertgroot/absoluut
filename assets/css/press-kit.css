@@ -112,6 +112,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 body{background:#ffffff}
 #bio a:hover,#media a:hover,#rider a:hover{color:var(--c-red)}
 #media,#rider{position:relative}
+/* the only divider between sections: as wide as the text, like every other line on the page */
 #media::before,#rider::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:calc(min(100%, 1360px) - 2 * clamp(20px, 4vw, 48px));height:1px;background:var(--c-line)}
 .ft2-sub,.ft2-bottom a{color:#efd3f6}
 .ft2-bottom{color:#cba8d8}
@@ -263,7 +264,6 @@ body{background:#ffffff}
 
 #form-status a{color:inherit;text-underline-offset:3px}
 
-#media,#rider{border-top:1px solid var(--c-line)}
 
 
 /* images carry their intrinsic size; CSS decides the rendered height */
