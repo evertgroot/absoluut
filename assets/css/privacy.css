@@ -90,12 +90,12 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 
 :is(.btn-solid,.btn-ghost,.hv-2,.hv-tl,.hv-card,.reel,a.case,.svc,footer.ft2 nav a):focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
 @media (hover:hover){
-  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:translateY(-2px) !important}
+  .btn-solid:hover,.btn-ghost:hover,.hv-2:hover,footer.ft2 nav a:hover{transform:none !important}
   
   :is(a,button):hover .hv-ar.hv-ne{transform:translate(3px,-3px)}
   
 }
-.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:translateY(-2px) !important}
+.btn-solid:focus-visible,.btn-ghost:focus-visible,.hv-2:focus-visible,footer.ft2 nav a:focus-visible{transform:none !important}
 
 :is(a,button):focus-visible .hv-ar.hv-ne{transform:translate(3px,-3px)}
 @media (prefers-reduced-motion:reduce){
@@ -204,3 +204,8 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#ffffff;background:r
 .v-page-a.v-page-a.v-page-a{display: inline-flex;align-items: center;justify-content: center;width: 46px;height: 46px;border-radius: 999px;background: rgba(255,255,255,0.1)}
 .v-page-a-2.v-page-a-2.v-page-a-2{display: inline-flex;align-items: center;justify-content: center;height: 46px;padding: 0 16px;border-radius: 999px;background: rgba(255,255,255,0.1)}
 .v-page-span{display: block;width: 89px;height: 16px;background: currentColor;-webkit-mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat;mask: url(/assets/img/bops-logo-white.png) center / contain no-repeat}
+
+/* ONE LINE FOR ALL BUTTONS (hover and keyboard focus)
+   - nothing lifts: the label stays where it is; only the arrow moves, 3px in its own direction
+   - solid buttons keep their text colour, the background deepens a little and a soft shadow appears */
+.btn-solid:is(:hover,:focus-visible){background-image:linear-gradient(rgba(0,0,0,.14),rgba(0,0,0,.14));box-shadow:0 8px 22px var(--hv-glow)}
