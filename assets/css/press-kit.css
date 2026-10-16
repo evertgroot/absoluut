@@ -630,12 +630,3 @@ body{background:#ffffff}
 @media print{.pk-logos{display:none !important}}
 /* footer links (Privacy Policy, FREYcreates): a 44px tap area on wider screens too; the negative margin keeps the row height */
 @media (min-width: 641px){.ft2-bottom a{display:inline-flex;align-items:center;min-height:44px;margin-block:-11px;margin-block:calc((1lh - 44px) / 2)}}
-/* hero jump links as one pill bar (Biography | Media | Technical Rider): the see-through material of the logo
-   switches, light on the dark hero; no underline, so they no longer look like the "Send an email" link */
-.p-top-jump{display:inline-flex;flex-wrap:nowrap;gap:0;max-width:100%;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden}
-.p-top-jump-a{min-height:44px;padding:0 18px;text-decoration:none;font-size:15px;white-space:nowrap;transition:background-color .25s ease,color .25s ease}
-.p-top-jump-a + .p-top-jump-a{box-shadow:inset 1px 0 0 rgba(255,255,255,.18)} /* thin divider */
-.p-top-jump-a:hover,.p-top-jump-a:focus-visible{color:var(--c-white);background:rgba(255,255,255,.14)}
-.p-top-jump-a:focus-visible{outline:2px solid var(--c-pink);outline-offset:-2px;border-radius:999px}
-@media (max-width:420px){.p-top-jump-a{padding:0 11px;font-size:14px}}
-@media (max-width:360px){.p-top-jump-a{padding:0 9px;font-size:13px}.p-top-jump-a .hv-ar{display:none}} /* the bar itself says "go to"; the arrows go when space runs out */
