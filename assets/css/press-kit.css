@@ -494,14 +494,19 @@ body{background:#ffffff}
 .pk-photos .pk-note{margin:0 0 -8px;font-size:14px;color:var(--c-body-grey)} /* under the photos, right above the ZIP button it describes */
 .pk-item{position:relative}
 .pk-dl{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px 0 14px;border-radius:999px;background:rgba(22,6,28,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#ffffff;text-decoration:none;font-size:14px;font-weight:800;transition:background-color .25s ease}
-.pk-dl:hover,.pk-dl:focus-visible{background:rgba(22,6,28,.92);color:#ffffff}
+.pk-dl:hover,.pk-dl:focus-visible{background:rgba(22,6,28,.92)}
 .pk-dl:focus-visible{outline:2px solid #ffffff;outline-offset:2px}
-.pk-dl .hv-ar{margin-left:.4em;color:#ffffff;transition:color .25s ease}
-/* the word and its arrow move down together on hover; the arrow turns pink */
+.pk-dl .hv-ar{margin-left:.4em}
+/* download buttons (photo overlays and Download All Photos): the label and its arrow move down together on hover,
+   instead of the button lifting and the arrow moving on its own; on the photos, word and arrow turn pink together */
+.pk-dl{transition:background-color .25s ease,color .25s ease}
+.pk-dl:hover,.pk-dl:focus-visible{color:var(--c-pink) !important}
 .pk-dl-t{display:inline-flex;align-items:center;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
-.pk-dl:hover .hv-ar,.pk-dl:focus-visible .hv-ar{color:var(--c-pink);transform:none !important}
-@media (hover:hover) and (prefers-reduced-motion:no-preference){.pk-dl:hover .pk-dl-t{transform:translateY(2px)}}
-.pk-dl:focus-visible .pk-dl-t{transform:translateY(2px)}
+.pk-all .pk-dl-t{gap:8px}
+.pk-dl-t .hv-ar{transform:none !important}
+.pk-all.hv-2:hover,.pk-all.hv-2:focus-visible{transform:none !important}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){:is(.pk-dl,.pk-all):hover .pk-dl-t{transform:translateY(2px)}}
+:is(.pk-dl,.pk-all):focus-visible .pk-dl-t{transform:translateY(2px)}
 @media (prefers-reduced-motion:reduce){.pk-dl-t{transform:none !important}}
 /* the four mix rows are always the same height (the tallest sets it); on phones the type is a touch smaller so
    most titles fit on one line, and nothing is cut off */
