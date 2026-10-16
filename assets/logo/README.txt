@@ -8,4 +8,4 @@ PDF  vector, previews anywhere, for print
 PNG  transparent, 4000 px wide (social, presentations, quick placement)
 
 Please don't recolour, outline, rotate or stretch the logo.
-Minimum height: 24 px on screen / 8 mm in print.
+Minimum height: 20 px on screen / 6 mm in print.
