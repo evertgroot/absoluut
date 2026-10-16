@@ -598,3 +598,7 @@ body{background:#ffffff}
 .pk-logo-dl:hover,.pk-logo-dl:focus-visible{color:var(--c-plum-ink)}
 .pk-logo-dl .hv-ar{margin-left:.4em}
 @media print{.pk-logos{display:none !important}}
+/* Logo: only the wordmark (black and white), two tiles side by side; a wider, flatter tile suits the long wordmark */
+.pk-logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:560px){.pk-logo-grid{grid-template-columns:minmax(0,1fr)}}
+.pk-logo-art{aspect-ratio:2 / 1;padding:12% 14%}
