@@ -643,3 +643,4 @@ body{background:#ffffff}
 }
 .pk-all-r{display:inline-flex;align-items:center;gap:8px;white-space:nowrap} /* size and arrow stay together */
 .pk-logo-light .pk-fmt{background:#ffffff} /* the switch would vanish against the light tile */
+.pk-logo-art .pk-logo-row{justify-content:space-between} /* colour switch top left, file type switch top right */
