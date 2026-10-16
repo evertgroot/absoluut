@@ -472,3 +472,8 @@ body{background:#ffffff}
 /* the press kit is a reference page full of buttons and downloads: no floating "Check Availability" on phones
    (it covered photos and Download buttons); the button stays in the menu bar and the menu */
 .cta-fab{display:none !important}
+/* PDF only: where to find the photos, videos and mixes that the printout leaves out */
+@media print{
+  .pk-pdf-more{display:block !important;margin:16px 0 0;padding-top:10px;border-top:1px solid var(--c-line);font-size:12px;color:#3d3742}
+  .pk-pdf-more a{font-weight:800;color:var(--c-plum-ink) !important}
+}
