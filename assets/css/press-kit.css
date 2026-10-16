@@ -492,3 +492,7 @@ body{background:#ffffff}
    tablets the bio ends with Channels, whose last row already carries 18px of its own padding */
 .p-bio-div{padding-bottom:clamp(64px,8vw,104px)}
 @media (max-width:900px){.p-bio-div{padding-bottom:calc(clamp(64px,8vw,104px) - 18px)}}
+/* Media subsections are separated by the same light rule as Short Bio in the biography: Photos, then a line,
+   Videos, then a line, Mixes */
+.pk-photos,.pk-videos{margin-bottom:0}
+.pk-videos,.pk-mixes{margin-top:clamp(40px,5vw,56px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--c-line)}
