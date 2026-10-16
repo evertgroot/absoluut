@@ -102,7 +102,7 @@ a:hover{color:var(--c-gold)}
 .mm-link[aria-current]{color:var(--c-teal) !important}
 .hdr-cta:hover,#mobile-menu .btn-solid:hover{color:var(--c-ink)}
 header.hdr-stuck{background:rgba(11,11,12,0.94) !important}
-/* site switch: a colored dot per site, teal = Evert Groot, red = DJ Absoluut */
+/* site switch: a colored dot per site, teal = Evert Groot, red = Absoluut */
 @media (max-width: 360px){
   .site-sw a::before{width:7px;height:7px;margin-right:6px}
 }

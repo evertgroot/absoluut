@@ -47,13 +47,13 @@ a{color:#ffffff}a:hover{color:var(--c-gold)}
 .mm-link[aria-current]{color:var(--c-red) !important}
 
 header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
-/* site switch: a colored dot per site, teal = Evert Groot, red = DJ Absoluut */
+/* site switch: a colored dot per site, teal = Evert Groot, red = Absoluut */
 @media (max-width: 360px){.site-sw a::before{width:7px;height:7px;margin-right:6px}}
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
 :root{--acc:var(--c-red);--pop:#2c0739}
 
 /* footer: name + socials on top, small legal row below */
-/* page theme: aubergine & red (DJ Absoluut) */
+/* page theme: aubergine & red (Absoluut) */
 body{background:var(--c-aubergine)}
 a:hover{color:var(--c-pink)}
 
