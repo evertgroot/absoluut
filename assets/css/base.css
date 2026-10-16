@@ -8,6 +8,10 @@
   --c-ink:#0b0b0c; /* near-black page colour (Evert Groot) */
   --c-aubergine:#1f0328; /* Absoluut page colour */
   --c-plum-ink:#16121a; /* text on light, DJ pages */
+  --c-red-deep:#a8132f; /* hover on red buttons */
+  --c-tile-dark:#16061c; /* dark tile and photo preview backdrop */
+  --c-overlay:rgba(22,6,28,.72); /* see-through pill on photos and the logo tile */
+  --c-overlay-strong:rgba(22,6,28,.92); /* its hover */
   --c-lilac:#d9b5e6; /* soft accent on aubergine */
   --c-line:#e6e1e8; /* hairlines on light */
   --c-pink:#ff9fb2; /* soft red for links on dark */

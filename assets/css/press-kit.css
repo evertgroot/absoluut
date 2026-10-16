@@ -10,27 +10,19 @@ a{color:#ffffff}a:hover{color:var(--c-gold)}
 
 @media (prefers-reduced-motion: no-preference){
   @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-  
-  
-  
-  
+
   @keyframes marquee{to{transform:translateX(-50%)}}
-  
-  
+
 }
 @media (prefers-reduced-motion: reduce){
-  
-  
+
   .case:hover .case-img img,.reel:hover,.btn-solid:hover{transform:none}
 }
 
 @media (max-width: 760px){
   .nav-links{display:none !important}
-  
-  
-  
-}
 
+}
 
 .menu-btn{display:none !important}
 .mm-link{transition:color .3s ease}
@@ -264,8 +256,6 @@ body{background:#ffffff}
 
 #form-status a{color:inherit;text-underline-offset:3px}
 
-
-
 /* images carry their intrinsic size; CSS decides the rendered height */
 /* rider on screen, two columns: Additional moves up under the short Audio block, so Light and Additional end on the same line */
 @media (min-width: 590px){
@@ -298,7 +288,7 @@ body{background:#ffffff}
 .p-top-span{color: var(--c-red)}
 .p-top-p{margin: clamp(20px, 2.4vw, 32px) 0 0;max-width: 620px;font-size: clamp(18px, 1.6vw, 22px);line-height: 1.55;color: var(--c-lilac-soft)}
 .p-top-div{display: flex;flex-wrap: wrap;gap: 12px;margin-top: clamp(28px, 3vw, 40px)}
-.p-top-a{display: inline-flex;align-items: center;min-height: 52px;padding: 0 26px;border-radius: 999px;border: 2px solid rgba(255,255,255,0.55);color: var(--c-white);text-decoration: none;font-size: 16px;font-weight: 800}
+
 .p-main-section-2{background: var(--c-white);color: var(--c-plum-ink)}
 .p-bio-div{padding-top: clamp(80px, 10vw, 136px);padding-bottom: clamp(80px, 10vw, 136px);display: flex;flex-wrap: wrap;gap: clamp(40px, 6vw, 96px)}
 .p-bio-div-2{flex: 1.6 1 460px;min-width: 0}
@@ -311,10 +301,8 @@ body{background:#ffffff}
 .p-bio-short-div{font-size: 17px;line-height: 1.65;color: var(--c-body-grey)}
 .p-bio-short-text-p{margin: 0 0 16px}
 .p-bio-div-5{flex: 1 1 280px;display: flex;flex-direction: column;gap: clamp(32px, 4vw, 48px)}
-.p-bio-dl{margin: 0;padding-top: clamp(24px, 3vw, 32px);border-top: 1px solid var(--c-line)} /* Channels: same rule and spacing as Short Bio */
-.p-bio-div-6{padding: 18px 0;border-bottom: 1px solid var(--c-line)}
-.p-bio-dt{font-family: 'Baloo Bhai 2', sans-serif;font-size: clamp(22px, 2vw, 26px);line-height: 1.1;letter-spacing: -0.02em;font-weight: 800;color: var(--c-plum-ink)} /* same heading as Short Bio */
-.p-bio-dd{margin: 6px 0 0;font-family: 'Baloo Bhai 2', sans-serif;font-size: 24px;font-weight: 800}
+.p-bio-dl{margin: 0;padding-top: clamp(24px, 3vw, 32px);border-top: 1px solid var(--c-line)}
+.p-bio-dt{font-family: 'Baloo Bhai 2', sans-serif;font-size: clamp(22px, 2vw, 26px);line-height: 1.1;letter-spacing: -0.02em;font-weight: 800;color: var(--c-plum-ink)}
 .p-bio-div-7{padding: 0}
 .p-bio-dd-2{margin: 12px 0 0}
 .p-bio-ul{margin: 0;padding: 0;list-style: none;display: flex;flex-direction: column;gap: 6px}
@@ -325,11 +313,7 @@ body{background:#ffffff}
 .p-main-section-3{background: var(--c-white)}
 .p-media-div{padding-top: clamp(64px, 8vw, 104px);padding-bottom: clamp(64px, 8vw, 104px)}
 .p-media-h2{margin: 0 0 clamp(28px, 3.5vw, 48px);font-family: 'Baloo Bhai 2', sans-serif;font-size: clamp(34px, 4.4vw, 60px);line-height: 0.98;letter-spacing: -0.04em;font-weight: 800}
-.p-media-div-2{display: grid;grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));gap: clamp(12px, 1.6vw, 24px)}
-.p-media-a{display: flex;align-items: center;justify-content: space-between;gap: 16px;min-height: 96px;padding: 0 clamp(20px, 2.4vw, 32px);border-radius: 20px;background: var(--c-paper);color: var(--c-plum-ink);text-decoration: none}
-.p-media-span{display: inline-flex;align-items: center;gap: 14px}
-.p-media-span-2{font-family: 'Baloo Bhai 2', sans-serif;font-size: clamp(26px, 2.6vw, 36px);font-weight: 800;letter-spacing: -0.02em}
-.p-media-span-3{font-size: 14px;font-weight: 800}
+
 .p-rider-div{max-width: 1360px;margin: 0 auto;padding: clamp(64px, 8vw, 104px) clamp(20px, 4vw, 48px)}
 .p-rider-h2{margin: 0 0 clamp(32px, 4vw, 56px);font-family: 'Baloo Bhai 2', sans-serif;font-size: clamp(38px, 5vw, 72px);line-height: 0.98;letter-spacing: -0.04em;font-weight: 800}
 .p-rider-figure{margin: 0 0 clamp(40px, 5vw, 72px)}
@@ -388,12 +372,12 @@ body{background:#ffffff}
 @media (prefers-reduced-motion:reduce){.pk-thumb img{transition:none}.pk-thumb:hover img{transform:none}}
 .pk-close{position:absolute;top:max(12px,env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));z-index:1;background:rgba(22,6,28,.6)}
 .pk-stage{padding-top:max(72px,env(safe-area-inset-top,0px))}
-.pk-dims{opacity:.8}
+
 @media (max-width:600px){
   .pk-bar{flex-direction:column;align-items:stretch}
   .pk-box-acts{justify-content:space-between}
   .pk-box .pk-full{flex:1 1 100%;justify-content:center;order:3}
-  .pk-dims{display:none}
+
 }
 .pk-foot{display:flex}
 .pk-big{transition:opacity .2s ease}
@@ -405,10 +389,10 @@ body{background:#ffffff}
 .pk-vid{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:999px;border:2px solid var(--c-plum-ink);background:transparent;color:var(--c-plum-ink);text-decoration:none;font-size:15px;font-weight:800;white-space:nowrap}
 .pk-vid:hover,.pk-vid:focus-visible{color:var(--c-plum-ink)}
 /* the red ZIP button stays red on hover (a shade deeper), unlike the outlined buttons that lighten */
-.pk-all.hv-2:hover,.pk-all.hv-2:focus-visible{background-color:#a8132f !important;border-color:#a8132f !important;color:#ffffff !important}
+.pk-all.hv-2:hover,.pk-all.hv-2:focus-visible{background-color:var(--c-red-deep) !important;border-color:var(--c-red-deep) !important;color:#ffffff !important}
 /* preview layout: an opaque backdrop (no page showing through); the photo box fills the free space and the photo
    is fitted inside it, so it never runs under the controls; one tidy row of controls underneath */
-.pk-box,.pk-box::backdrop{background:#16061c}
+.pk-box,.pk-box::backdrop{background:var(--c-tile-dark)}
 .pk-stage{position:relative;padding:0}
 .pk-big{position:absolute;top:max(72px,env(safe-area-inset-top,0px));left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:8px;width:calc(100% - 32px);height:calc(100% - 80px);max-width:none;max-height:none;margin:auto;object-fit:contain;border-radius:0;box-shadow:none}
 .pk-bar{flex-direction:row;align-items:center;justify-content:space-between}
@@ -437,7 +421,7 @@ body{background:#ffffff}
 .pk-booking{margin:clamp(22px,2.6vw,32px) 0 0;font-size:16px;color:var(--c-lilac-soft)}
 .pk-mail{font-weight:800;color:#ffffff;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.4)}
 .pk-mail:hover,.pk-mail:focus-visible{color:#ffffff;text-decoration-color:#ffffff}
-.pk-book-k{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--c-pink)}
+
 /* Mixes: last in Media, after Videos; each row opens the set on SoundCloud */
 .pk-mixes{display:grid;gap:20px}
 .pk-mix-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px clamp(12px,1.6vw,24px)}
@@ -453,7 +437,6 @@ body{background:#ffffff}
 .pk-mix .hv-ar{color:var(--c-red)}
 /* in the PDF there is no link to click, so the header band shows the address itself */
 @media print{
-  #top .gut > p.pk-pdf-mail{display:flex !important;align-items:baseline;gap:8px;margin:0 0 0 auto;font-size:12px;font-weight:800;color:#ffffff}
   #top .gut > p.pk-pdf-src{display:block !important;margin:0 0 0 auto;font-size:12px;font-weight:800} /* where this file comes from */
   #top .pk-pdf-src a{color:#ffffff !important;text-decoration:none}
 }
@@ -494,8 +477,8 @@ body{background:#ffffff}
    bottom right (clear of the face), while a tap anywhere else opens the larger preview */
 .pk-photos .pk-note{margin:0 0 -8px;font-size:14px;color:var(--c-body-grey)} /* under the photos, right above the ZIP button it describes */
 .pk-item{position:relative}
-.pk-dl{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px 0 14px;border-radius:999px;background:rgba(22,6,28,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#ffffff;text-decoration:none;font-size:14px;font-weight:800;transition:background-color .25s ease}
-.pk-dl:hover,.pk-dl:focus-visible{background:rgba(22,6,28,.92)}
+.pk-dl{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px 0 14px;border-radius:999px;background:var(--c-overlay);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#ffffff;text-decoration:none;font-size:14px;font-weight:800;transition:background-color .25s ease}
+.pk-dl:hover,.pk-dl:focus-visible{background:var(--c-overlay-strong)}
 .pk-dl:focus-visible{outline:2px solid #ffffff;outline-offset:2px}
 .pk-dl .hv-ar{margin-left:.4em}
 /* photo overlay Download: word and arrow turn pink together on hover; like every button, only the arrow moves */
@@ -555,7 +538,7 @@ body{background:#ffffff}
    so the three anchors no longer look like the file download */
 .p-top-div{align-items:center;gap:16px 32px}
 .p-top-pdf{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;border:2px solid var(--c-red);background:var(--c-red);color:var(--c-white);text-decoration:none;font-size:16px;font-weight:800}
-.p-top-pdf.hv-2:hover,.p-top-pdf.hv-2:focus-visible{background-color:#a8132f !important;border-color:#a8132f !important;color:var(--c-white) !important}
+.p-top-pdf.hv-2:hover,.p-top-pdf.hv-2:focus-visible{background-color:var(--c-red-deep) !important;border-color:var(--c-red-deep) !important;color:var(--c-white) !important}
 .p-top-jump{display:flex;flex-wrap:wrap;gap:8px 24px}
 .p-top-jump-a{display:inline-flex;align-items:center;min-height:44px;color:var(--c-white);text-decoration:underline;text-decoration-color:rgba(255,255,255,.4);text-decoration-thickness:2px;text-underline-offset:6px;font-size:16px;font-weight:800;transition:color .25s ease,text-decoration-color .25s ease}
 .p-top-jump-a:hover,.p-top-jump-a:focus-visible{color:var(--c-pink);text-decoration-color:var(--c-pink)}
@@ -574,130 +557,74 @@ body{background:#ffffff}
 .btn-solid:is(:hover,:focus-visible){background-image:linear-gradient(rgba(0,0,0,.14),rgba(0,0,0,.14));box-shadow:0 8px 22px var(--hv-glow)}
 .pk-all.hv-2:is(:hover,:focus-visible){box-shadow:0 8px 22px var(--hv-glow)}
 :is(.pk-dl,.pk-all):focus-visible .hv-ar.hv-dl{transform:translateY(3px)}
-/* Logo: four tiles (black versions on a light tile, white versions on a dark tile), each with a format switch and a
-   download button; the same divider and rhythm as Videos and Mixes */
-.pk-logos{display:grid;gap:16px;margin-top:clamp(40px,5vw,56px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--c-line)}
-.pk-logo-grid{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(28px,3vw,36px) clamp(12px,1.6vw,24px)}
-@media (max-width:1100px){.pk-logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.pk-logo-grid{grid-template-columns:minmax(0,1fr)}}
-.pk-logo{display:flex;flex-direction:column;min-width:0}
-.pk-logo-art{display:grid;place-items:center;aspect-ratio:3 / 2;padding:14% 16%;border-radius:16px}
-.pk-logo-light{background:var(--c-paper)}
-.pk-logo-dark{background:#16061c}
-.pk-logo-art img{display:block;width:100%;height:100%;object-fit:contain}
-.pk-logo-t{margin:12px 0 10px;font-size:15px;font-weight:800;color:var(--c-plum-ink)}
-.pk-logo-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
-.pk-fmt{display:inline-flex;margin:0;padding:3px;border:0;border-radius:999px;background:var(--c-paper)}
-.pk-fmt label{position:relative;display:inline-flex}
-.pk-fmt input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
-.pk-fmt span{display:inline-flex;align-items:center;min-height:38px;padding:0 11px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--c-body-grey);transition:background-color .2s ease,color .2s ease}
-.pk-fmt label:hover span{color:var(--c-plum-ink)}
-.pk-fmt input:checked + span{background:var(--c-plum-ink);color:#ffffff}
-.pk-fmt input:focus-visible + span{outline:2px solid var(--c-red);outline-offset:2px}
-.pk-logo-dl{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;border:2px solid var(--c-plum-ink);background:transparent;color:var(--c-plum-ink);text-decoration:none;font-size:15px;font-weight:800;white-space:nowrap}
-.pk-logo-dl:hover,.pk-logo-dl:focus-visible{color:var(--c-plum-ink)}
-.pk-logo-dl .hv-ar{margin-left:.4em}
-@media print{.pk-logos{display:none !important}}
-/* Logo: only the wordmark (black and white), two tiles side by side; a wider, flatter tile suits the long wordmark */
-.pk-logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media (max-width:560px){.pk-logo-grid{grid-template-columns:minmax(0,1fr)}}
-.pk-logo-art{aspect-ratio:2 / 1;padding:12% 14%}
-/* Logo: one preview with a colour switch and a file-format switch beside the Download button */
-.pk-logo{max-width:720px}
-.pk-logo-art{aspect-ratio:5 / 2;padding:9% 12%} /* tile and logo switch together, no fade (a fade briefly shows white on light) */
-.pk-logo-art img[hidden]{display:none}
-.pk-logo-row{margin-top:14px}
-/* Logo: the README text under the preview (which colour where, what each format is for, the use rules) */
-.pk-logo-info{max-width:720px;display:grid;gap:10px;font-size:14px;line-height:1.5;color:var(--c-body-grey)}
-.pk-logo-info p{margin:0}
-.pk-logo-info dl{margin:0;display:grid;gap:4px}
-.pk-logo-info dl > div{display:flex;gap:10px}
-.pk-logo-info dt{flex:0 0 3em;font-weight:800;color:var(--c-plum-ink)}
-.pk-logo-info dd{margin:0}
-.pk-logo-info span[hidden]{display:none}
-/* Logo: switches above the preview; Download sits on the preview like on the photos (bottom right) */
-.pk-logo-row{margin:0 0 14px}
-.pk-logo-art{position:relative}
-.pk-logo-dark .pk-dl{background:rgba(255,255,255,.14)} /* on the dark tile the dark pill would disappear */
-.pk-logo-dark .pk-dl:hover,.pk-logo-dark .pk-dl:focus-visible{background:rgba(255,255,255,.24)}
-/* room at the bottom of the logo tile for the Download button, so it never covers the logo */
-.pk-logo-art{padding:9% 12% max(9%, 66px)}
-@media (max-width:560px){.pk-logo-art{aspect-ratio:16 / 9}}
-/* ZIP buttons: the label never breaks inside; in a narrow window the size moves to a second line */
+/* ZIP buttons (Download All Photos / All Logos): the label never breaks inside; in a narrow window the size and arrow
+   move to a second line together */
 .pk-all{max-width:100%;padding-block:6px}
 .pk-all .pk-dl-t{flex-wrap:wrap;justify-content:center;column-gap:8px;row-gap:0;text-align:center}
 .pk-all-l,.pk-all .pk-zip{white-space:nowrap}
-/* Logo: the switches sit in the frame, top left; the frame keeps room for them at the top and for Download at the bottom */
-.pk-logo-art .pk-logo-row{position:absolute;top:10px;left:10px;right:10px;z-index:1;margin:0}
-.pk-logo-art{padding:max(9%, 66px) 12% max(9%, 66px)}
-.pk-logo-dark .pk-fmt{background:rgba(255,255,255,.12)}
-.pk-logo-dark .pk-fmt span{color:rgba(255,255,255,.78)}
-.pk-logo-dark .pk-fmt label:hover span{color:#ffffff}
-.pk-logo-dark .pk-fmt input:checked + span{background:#ffffff;color:var(--c-plum-ink)}
+.pk-all-r{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+
+/* LOGO: one preview tile with a colour switch (top left), a file-type switch (top right) and Download (bottom right);
+   black logo on a light tile, white logo on a dark tile. The controls share the photo-overlay material: see-through
+   dark with a soft blur on the light tile, see-through light on the dark tile (a dark layer would vanish there).
+   Same divider and rhythm as Videos and Mixes; on wide screens the section follows the photo grid above it */
+.pk-logos{display:grid;gap:16px;margin-top:clamp(40px,5vw,56px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--c-line)}
+.pk-logos .pk-foot{margin-top:-4px} /* text to button 12px, as under the photos */
+.pk-logo{display:flex;flex-direction:column;min-width:0;max-width:720px}
+.pk-logo-art{position:relative;display:grid;place-items:center;aspect-ratio:5 / 2;padding:max(9%, 66px) 12% max(9%, 66px);border-radius:16px} /* room above for the switches, below for Download */
+.pk-logo-light{background:var(--c-paper)}
+.pk-logo-dark{background:var(--c-tile-dark)}
+.pk-logo-art img{display:block;width:100%;height:100%;object-fit:contain}
+.pk-logo-art img[hidden]{display:none} /* tile and logo switch together, no fade (a fade briefly shows white on light) */
+.pk-logo-info{max-width:720px;display:grid;gap:10px;font-size:14px;line-height:1.5;color:var(--c-body-grey)}
+.pk-logo-info p{margin:0}
+.pk-logo-info span[hidden]{display:none}
+
+/* switches in the frame */
+.pk-logo-art .pk-logo-row{position:absolute;top:10px;left:10px;right:10px;z-index:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 12px;margin:0}
+.pk-fmt{position:relative;display:inline-flex;margin:0;padding:3px;border:0;border-radius:999px;touch-action:pan-y}
+.pk-logo-art .pk-fmt{background:var(--c-overlay);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pk-logo-dark .pk-fmt{background:rgba(255,255,255,.14)}
+.pk-fmt label{position:relative;z-index:1;display:inline-flex}
+.pk-fmt input{position:absolute;top:-3px;right:0;bottom:-3px;left:0;width:100%;margin:0;opacity:0;cursor:pointer} /* 44px tap area: the radio reaches past the chip */
+.pk-fmt span{display:inline-flex;align-items:center;min-height:38px;padding:0 11px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.04em;transition:background-color .2s ease,color .2s ease}
+.pk-logo-art .pk-fmt span{color:rgba(255,255,255,.8)}
+.pk-logo-art .pk-fmt label:hover span{color:#ffffff}
+.pk-logo-art .pk-fmt input:checked + span{background:transparent;color:var(--c-plum-ink)} /* the thumb shows the choice */
+.pk-fmt input:focus-visible + span{outline:2px solid #ffffff;outline-offset:2px}
+/* the thumb glides to the chosen option and can be dragged, like the site switch in the header */
+.pk-fmt-thumb{position:absolute;top:3px;left:0;bottom:3px;width:0;border-radius:999px;background:#ffffff;pointer-events:none}
+.pk-fmt-ready .pk-fmt-thumb{transition:transform .45s cubic-bezier(.3,.7,.2,1),width .45s cubic-bezier(.3,.7,.2,1),background-color .2s ease}
+.pk-fmt-drag .pk-fmt-thumb{transition:none}
+.pk-fmt-drag{cursor:grabbing}
+@media (prefers-reduced-motion:reduce){.pk-fmt-ready .pk-fmt-thumb{transition:none}}
+
+/* Download on the tile: the photo-overlay pill */
+.pk-logo-light .pk-dl{background:var(--c-overlay);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pk-logo-light .pk-dl:hover,.pk-logo-light .pk-dl:focus-visible{background:var(--c-overlay-strong)}
+.pk-logo-dark .pk-dl{background:rgba(255,255,255,.14);color:#ffffff !important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.pk-logo-dark .pk-dl:hover,.pk-logo-dark .pk-dl:focus-visible{background:rgba(255,255,255,.24);color:var(--c-pink) !important}
+
+/* wide screens: the tile spans the first two photo columns; text and Download All Logos in the right half */
+@media (min-width:1000px){
+  .pk-logos{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto auto 1fr;column-gap:clamp(12px,1.6vw,24px);row-gap:16px}
+  .pk-logos > .pk-head{grid-column:1 / -1}
+  .pk-logos > .pk-logo{grid-column:1 / 3;grid-row:2 / 5;max-width:none}
+  .pk-logos > .pk-logo-info{grid-column:3 / -1;grid-row:2;align-self:start;max-width:46ch}
+  .pk-logos > .pk-foot{grid-column:3 / -1;grid-row:3;align-self:start;margin-top:-4px}
+}
+/* phones: a taller tile */
 @media (max-width:560px){.pk-logo-art{aspect-ratio:4 / 3}}
-/* small screens: compact switches, so both always fit on one row inside the logo frame */
+/* small screens: compact switches, so both stay on one row inside the frame */
 @media (max-width:420px){
   .pk-logo-art .pk-logo-row{flex-wrap:nowrap;gap:6px;top:8px;left:8px;right:8px}
   .pk-logo-art .pk-fmt span{min-height:34px;padding:0 8px;font-size:11px;letter-spacing:.02em}
   .pk-logo-art{padding-top:max(9%, 58px)}
+  .pk-fmt input{top:-5px;bottom:-5px}
 }
-.pk-all-r{display:inline-flex;align-items:center;gap:8px;white-space:nowrap} /* size and arrow stay together */
-.pk-logo-light .pk-fmt{background:#ffffff} /* the switch would vanish against the light tile */
-.pk-logo-art .pk-logo-row{justify-content:space-between} /* colour switch top left, file type switch top right */
-/* Logo, wide screens: the section follows the photo grid above it. The tile spans the first two photo columns; the
-   colour line and use rule sit in the right half, with Download All Logos level with the bottom of the tile */
-.pk-logos .pk-foot{margin-top:-4px} /* text to button 12px, as under the photos */
-@media (min-width:1000px){
-  .pk-logos{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:clamp(12px,1.6vw,24px);row-gap:16px}
-  .pk-logos > .pk-head{grid-column:1 / -1}
-  .pk-logos > .pk-logo{grid-column:1 / 3;grid-row:2 / 4;max-width:none}
-  .pk-logos > .pk-logo-info{grid-column:3 / -1;grid-row:2;align-self:start;max-width:46ch}
-  .pk-logos > .pk-foot{grid-column:3 / -1;grid-row:3;align-self:end;margin-top:0}
-}
-/* Logo switches: a thumb glides to the chosen option (as in the header site switch) and can be dragged */
-.pk-fmt{position:relative;touch-action:pan-y}
-.pk-fmt label{z-index:1}
-.pk-fmt-thumb{position:absolute;top:3px;left:0;bottom:3px;width:0;border-radius:999px;background:var(--c-plum-ink);pointer-events:none}
-.pk-fmt-ready .pk-fmt-thumb{transition:transform .45s cubic-bezier(.3,.7,.2,1),width .45s cubic-bezier(.3,.7,.2,1),background-color .2s ease}
-.pk-fmt-drag .pk-fmt-thumb{transition:none}
-.pk-fmt-drag{cursor:grabbing}
-.pk-fmt input:checked + span{background:transparent}
-.pk-logo-dark .pk-fmt-thumb{background:#ffffff}
-@media (prefers-reduced-motion:reduce){.pk-fmt-ready .pk-fmt-thumb{transition:none}}
-.pk-logo-art .pk-fmt input:checked + span{background:transparent} /* the thumb shows the choice, also on the dark tile */
-/* switch options: a 44px tap area without a bigger chip (the radio reaches past the chip, over the switch's padding) */
-.pk-fmt input{top:-3px;bottom:-3px;height:auto}
-@media (max-width:420px){.pk-fmt input{top:-5px;bottom:-5px}}
-/* very narrow screens (or large text zoom): the two switches stack inside the frame, with room kept above the logo */
+/* very narrow screens (or large text zoom): the two switches stack inside the frame */
 @media (max-width:300px){
   .pk-logo-art .pk-logo-row{flex-wrap:wrap;row-gap:6px}
   .pk-logo-art{padding-top:max(9%, 96px);aspect-ratio:auto;min-height:220px}
 }
-/* Logo, wide screens: Download All Logos directly under the text (12px, as under the photos), not at the tile bottom */
-@media (min-width:1000px){
-  .pk-logos{grid-template-rows:auto auto auto 1fr}
-  .pk-logos > .pk-logo{grid-row:2 / 5}
-  .pk-logos > .pk-foot{grid-row:3;align-self:start;margin-top:-4px}
-}
-/* Logo Download: the material of the switches in the same frame, not the see-through photo overlay (which reads
-   as a muddy grey block on a flat tile). Light tile: solid dark like the selected option; dark tile: solid white */
-.pk-logo-art .pk-dl{-webkit-backdrop-filter:none;backdrop-filter:none}
-.pk-logo-light .pk-dl{background:var(--c-plum-ink)}
-.pk-logo-light .pk-dl:hover,.pk-logo-light .pk-dl:focus-visible{background:#000000}
-.pk-logo-dark .pk-dl{background:#ffffff;color:var(--c-plum-ink) !important}
-.pk-logo-dark .pk-dl:hover,.pk-logo-dark .pk-dl:focus-visible{background:#ffffff;color:var(--c-red) !important}
-.pk-logo-dark .pk-dl:focus-visible{outline-color:#ffffff}
-/* Logo frame controls share the photo overlay material: see-through dark with a soft blur on the light tile,
-   see-through light on the dark tile (a dark layer would vanish there); the chosen option is a white thumb */
-.pk-logo-art .pk-fmt{background:rgba(22,6,28,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.pk-logo-art .pk-fmt span{color:rgba(255,255,255,.8)}
-.pk-logo-art .pk-fmt label:hover span{color:#ffffff}
-.pk-logo-art .pk-fmt input:checked + span{color:var(--c-plum-ink)}
-.pk-logo-art .pk-fmt-thumb{background:#ffffff}
-.pk-logo-art .pk-fmt input:focus-visible + span{outline-color:#ffffff}
-.pk-logo-dark .pk-fmt{background:rgba(255,255,255,.14)}
-/* Download back to the same material (as on the photos) */
-.pk-logo-light .pk-dl{background:rgba(22,6,28,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.pk-logo-light .pk-dl:hover,.pk-logo-light .pk-dl:focus-visible{background:rgba(22,6,28,.92)}
-.pk-logo-dark .pk-dl{background:rgba(255,255,255,.14);color:#ffffff !important}
-.pk-logo-dark .pk-dl:hover,.pk-logo-dark .pk-dl:focus-visible{background:rgba(255,255,255,.24);color:var(--c-pink) !important}
+@media print{.pk-logos{display:none !important}}
