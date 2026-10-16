@@ -604,11 +604,12 @@
      download); arrows and the arrow keys move between photos; Escape or the close button returns to the grid */
   var pkWrap = document.querySelector('[data-photos]');
   if (pkWrap && window.HTMLDialogElement) {
-    var PK = { en: ['Close', 'Previous photo', 'Next photo', 'Download full size'], nl: ['Sluiten', 'Vorige foto', 'Volgende foto', 'Download op volle grootte'],
-               it: ['Chiudi', 'Foto precedente', 'Foto successiva', 'Scarica in alta risoluzione'] }[lang] || ['Close', 'Previous photo', 'Next photo', 'Download full size'];
+    var PK = { en: ['Close', 'Previous photo', 'Next photo', 'Download full size', 'Photos'], nl: ['Sluiten', 'Vorige foto', 'Volgende foto', 'Download op volle grootte', 'Foto’s'],
+               it: ['Chiudi', 'Foto precedente', 'Foto successiva', 'Scarica in alta risoluzione', 'Foto'] }[lang] || ['Close', 'Previous photo', 'Next photo', 'Download full size', 'Photos'];
     var thumbs = [].slice.call(pkWrap.querySelectorAll('.pk-thumb')), cur = 0;
     var box = document.createElement('dialog');
     box.className = 'pk-box';
+    box.setAttribute('aria-label', PK[4]);
     box.innerHTML = '<div class="pk-stage"><img class="pk-big" alt=""></div><div class="pk-bar"><p class="pk-box-cap" aria-live="polite"></p><div class="pk-box-acts">' +
       '<button type="button" class="pk-ico" data-pk="-1" aria-label="' + PK[1] + '">←</button><span class="pk-count"></span><button type="button" class="pk-ico" data-pk="1" aria-label="' + PK[2] + '">→</button>' +
       '<a class="pk-all pk-full" download><span>' + PK[3] + '</span> <span class="pk-zip"></span><span class="hv-ar hv-dl" aria-hidden="true">↓</span></a>' +
@@ -618,7 +619,9 @@
     var showPk = function (i) {
       cur = (i + thumbs.length) % thumbs.length;
       var t = thumbs[cur];
-      big.src = t.getAttribute('data-big'); big.alt = t.getAttribute('data-alt');
+      var src = t.getAttribute('data-big');
+      if (big.getAttribute('src') !== src) { big.classList.add('pk-loading'); big.onload = big.onerror = function () { big.classList.remove('pk-loading'); }; big.src = src; }
+      big.alt = t.getAttribute('data-alt');
       cap.innerHTML = '<b></b>';
       cap.firstChild.textContent = t.getAttribute('data-alt');
       full.href = t.getAttribute('data-full');
@@ -641,6 +644,14 @@
       if (e.key === 'ArrowRight') { e.preventDefault(); showPk(cur + 1); }
       if (e.key === 'ArrowLeft') { e.preventDefault(); showPk(cur - 1); }
     });
+    /* swipe left or right on the photo to move between photos */
+    var sx = null, sy = 0;
+    box.addEventListener('touchstart', function (e) { if (e.touches.length === 1) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; } }, { passive: true });
+    box.addEventListener('touchend', function (e) {
+      if (sx === null) return;
+      var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
+      if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.5) showPk(cur + (dx < 0 ? 1 : -1));
+    }, { passive: true });
     /* preload the larger version when someone points at a thumbnail */
     thumbs.forEach(function (t) { t.addEventListener('pointerenter', function () { var im = new Image(); im.src = t.getAttribute('data-big'); }, { once: true }); });
   }
