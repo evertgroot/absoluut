@@ -614,3 +614,4 @@ body{background:#ffffff}
 .pk-logo-info dl > div{display:flex;gap:10px}
 .pk-logo-info dt{flex:0 0 3em;font-weight:800;color:var(--c-plum-ink)}
 .pk-logo-info dd{margin:0}
+.pk-logo-info span[hidden]{display:none}

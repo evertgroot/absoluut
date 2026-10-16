@@ -611,7 +611,7 @@
       var art = lgWrap.querySelector('.pk-logo-art');
       art.classList.toggle('pk-logo-dark', tone === 'white');
       art.classList.toggle('pk-logo-light', tone !== 'white');
-      lgWrap.querySelectorAll('.pk-logo-art img').forEach(function (img) { img.hidden = img.getAttribute('data-tone') !== tone; });
+      lgWrap.parentNode.querySelectorAll('[data-tone]').forEach(function (el) { el.hidden = el.getAttribute('data-tone') !== tone; }); /* preview and the line under it */
       var a = lgWrap.querySelector('.pk-logo-dl');
       a.href = '/assets/logo/' + name + '.' + ext;
       a.setAttribute('data-goatcounter-click', 'press-logo-' + tone + '-' + ext);
