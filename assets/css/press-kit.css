@@ -411,3 +411,19 @@ body{background:#ffffff}
 .pk-px{position:absolute;right:10px;bottom:10px;padding:4px 10px;border-radius:999px;background:rgba(22,6,28,.66);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#ffffff;font-size:12px;font-weight:700;line-height:1.3;font-variant-numeric:tabular-nums;white-space:nowrap;pointer-events:none}
 /* the red ZIP button stays red on hover (a shade deeper), unlike the outlined buttons that lighten */
 .pk-all.hv-2:hover,.pk-all.hv-2:focus-visible{background-color:#a8132f !important;border-color:#a8132f !important;color:#ffffff !important}
+/* preview layout: an opaque backdrop (no page showing through); the photo box fills the free space and the photo
+   is fitted inside it, so it never runs under the controls; one tidy row of controls underneath */
+.pk-box,.pk-box::backdrop{background:#16061c}
+.pk-stage{position:relative;padding:0}
+.pk-big{position:absolute;top:max(72px,env(safe-area-inset-top,0px));left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:8px;width:calc(100% - 32px);height:calc(100% - 80px);max-width:none;max-height:none;margin:auto;object-fit:contain;border-radius:0;box-shadow:none}
+.pk-bar{flex-direction:row;align-items:center;justify-content:space-between}
+.pk-box-cap{display:flex;align-items:baseline;gap:12px;color:#ffffff;font-weight:700}
+.pk-box-cap .pk-count{min-width:0;font-weight:600}
+.pk-box-acts{flex-wrap:nowrap}
+.pk-box .pk-full{justify-content:center;min-width:150px}
+@media (max-width:600px){
+  .pk-bar{flex-direction:column;align-items:stretch;gap:12px}
+  .pk-box-cap{justify-content:space-between}
+  .pk-box-acts{justify-content:space-between;gap:10px}
+  .pk-box .pk-full{flex:1 1 auto;order:0}
+}

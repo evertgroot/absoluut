@@ -604,15 +604,17 @@
      download); arrows and the arrow keys move between photos; Escape or the close button returns to the grid */
   var pkWrap = document.querySelector('[data-photos]');
   if (pkWrap && window.HTMLDialogElement) {
-    var PK = { en: ['Close', 'Previous photo', 'Next photo', 'Download full size', 'Photos'], nl: ['Sluiten', 'Vorige foto', 'Volgende foto', 'Download op volle grootte', 'Foto’s'],
-               it: ['Chiudi', 'Foto precedente', 'Foto successiva', 'Scarica in alta risoluzione', 'Foto'] }[lang] || ['Close', 'Previous photo', 'Next photo', 'Download full size', 'Photos'];
+    var PK = { en: ['Close', 'Previous photo', 'Next photo', 'Download', 'Photos'], nl: ['Sluiten', 'Vorige foto', 'Volgende foto', 'Download', 'Foto’s'],
+               it: ['Chiudi', 'Foto precedente', 'Foto successiva', 'Scarica', 'Foto'] }[lang] || ['Close', 'Previous photo', 'Next photo', 'Download', 'Photos'];
     var thumbs = [].slice.call(pkWrap.querySelectorAll('.pk-thumb')), cur = 0;
     var box = document.createElement('dialog');
     box.className = 'pk-box';
     box.setAttribute('aria-label', PK[4]);
-    box.innerHTML = '<div class="pk-stage"><img class="pk-big" alt=""></div><div class="pk-bar"><p class="pk-box-cap" aria-live="polite"></p><div class="pk-box-acts">' +
-      '<button type="button" class="pk-ico" data-pk="-1" aria-label="' + PK[1] + '">←</button><span class="pk-count"></span><button type="button" class="pk-ico" data-pk="1" aria-label="' + PK[2] + '">→</button>' +
-      '<a class="pk-all pk-full" download><span>' + PK[3] + '</span> <span class="pk-zip"></span><span class="hv-ar hv-dl" aria-hidden="true">↓</span></a>' +
+    /* photo on top, as large as fits; underneath: photographer and count, then ← Download → */
+    box.innerHTML = '<div class="pk-stage"><img class="pk-big" alt=""></div><div class="pk-bar"><p class="pk-box-cap" aria-live="polite"><span class="pk-who"></span><span class="pk-count"></span></p><div class="pk-box-acts">' +
+      '<button type="button" class="pk-ico" data-pk="-1" aria-label="' + PK[1] + '">←</button>' +
+      '<a class="pk-all pk-full" download>' + PK[3] + '<span class="hv-ar hv-dl" aria-hidden="true">↓</span></a>' +
+      '<button type="button" class="pk-ico" data-pk="1" aria-label="' + PK[2] + '">→</button>' +
       '</div></div><button type="button" class="pk-ico pk-close" data-pk="close" aria-label="' + PK[0] + '">×</button>';
     document.body.appendChild(box);
     var big = box.querySelector('.pk-big'), cap = box.querySelector('.pk-box-cap'), full = box.querySelector('.pk-full'), count = box.querySelector('.pk-count');
@@ -622,12 +624,8 @@
       var src = t.getAttribute('data-big');
       if (big.getAttribute('src') !== src) { big.classList.add('pk-loading'); big.onload = big.onerror = function () { big.classList.remove('pk-loading'); }; big.src = src; }
       big.alt = t.getAttribute('data-alt');
-      cap.innerHTML = '<b></b>';
-      cap.firstChild.textContent = t.getAttribute('data-alt');
+      cap.querySelector('.pk-who').textContent = t.getAttribute('data-credit') || '';
       full.href = t.getAttribute('data-full');
-      var sz = t.getAttribute('data-size').split(' · '); /* JPG · 2.8 MB · 2920 × 3648 px: the pixel size hides on phones */
-      full.querySelector('.pk-zip').innerHTML = ''; full.querySelector('.pk-zip').appendChild(document.createTextNode(sz.slice(0, 2).join(' · ')));
-      if (sz[2]) { var dm = document.createElement('span'); dm.className = 'pk-dims'; dm.textContent = ' · ' + sz[2]; full.querySelector('.pk-zip').appendChild(dm); }
       full.setAttribute('data-goatcounter-click', 'press-photo-full-' + (cur + 1));
       count.textContent = (cur + 1) + ' / ' + thumbs.length;
     };
