@@ -975,6 +975,13 @@
               eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
               location: { '@type': 'Place', name: g.venue || g.event, address: { '@type': 'PostalAddress', addressLocality: g.city } },
               performer: { '@type': 'Person', name: 'Absoluut', url: 'https://imgroot.nl/absoluut/' },
+              /* the party or festival that books the night; gigs.json can name another organizer with "organizer" */
+              organizer: { '@type': 'Organization', name: (g.organizer && g.organizer.name) || g.event, url: (g.organizer && g.organizer.url) || g.url || undefined },
+              description: 'Absoluut DJs at ' + g.event + (g.venue ? ' at ' + g.venue : '') + (g.city ? ', ' + g.city : '') + '.',
+              /* only describe tickets when gigs.json gives a price and a ticket link; a price-less offer triggers warnings */
+              offers: (g.ticketUrl && g.price !== undefined) ? {
+                '@type': 'Offer', url: g.ticketUrl, price: String(g.price), priceCurrency: g.priceCurrency || 'EUR', availability: 'https://schema.org/InStock'
+              } : undefined,
               url: g.url || undefined
             };
           }) });
