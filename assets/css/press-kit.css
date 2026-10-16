@@ -152,7 +152,7 @@ body{background:#ffffff}
   #bio-short h3{margin:0 0 4px;font-size:13px;line-height:1.2}
   #bio-short-text{font-size:12.5px;line-height:1.45;color:#3d3742}
   #bio-short-text p{margin:0}
-  #bio dl{margin-top:6px;border-top:1.5px solid var(--c-plum-ink)}
+  #bio dl{margin-top:6px;border-top:1px solid var(--c-line)}
   #bio dl > div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid var(--c-line)}
   #bio dl > div:last-child{display:block;border-bottom:0}
   /* photo under the channels, same head-to-elbows crop as on the site */
@@ -311,7 +311,7 @@ body{background:#ffffff}
 .p-bio-short-div{font-size: 17px;line-height: 1.65;color: var(--c-body-grey)}
 .p-bio-short-text-p{margin: 0 0 16px}
 .p-bio-div-5{flex: 1 1 280px;display: flex;flex-direction: column;gap: clamp(32px, 4vw, 48px)}
-.p-bio-dl{margin: 0;border-top: 1.5px solid var(--c-plum-ink)}
+.p-bio-dl{margin: 0;border-top: 1px solid var(--c-line)} /* only Channels is left: a light rule like every other line */
 .p-bio-div-6{padding: 18px 0;border-bottom: 1px solid var(--c-line)}
 .p-bio-dt{font-size: 12px;font-weight: 800;letter-spacing: 0.14em;text-transform: uppercase;color: var(--c-red)}
 .p-bio-dd{margin: 6px 0 0;font-family: 'Baloo Bhai 2', sans-serif;font-size: 24px;font-weight: 800}
