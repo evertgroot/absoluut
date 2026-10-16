@@ -482,6 +482,9 @@ body{background:#ffffff}
   #bio dt{font-size:13px !important;line-height:1.2;letter-spacing:0 !important;text-transform:none !important;color:var(--c-plum-ink) !important} /* same heading as Short Bio, as on screen */
   #bio .p-bio-dl{padding-top:10px !important}
   .pk-pdf-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .pk-pdf-zip{display:block !important;margin:12px 0 0}
+  .pk-pdf-zip a{display:flex;align-items:center;justify-content:center;gap:8px;height:32px;padding:0 16px;border-radius:999px;background:var(--c-red);color:#ffffff !important;text-decoration:none;font-size:12.5px;font-weight:800}
+  .pk-pdf-zip span{font-weight:600;opacity:.85}
   .pk-pdf-media h3{margin:0 0 3px;font-family:'Baloo Bhai 2',sans-serif;font-size:15px;line-height:1.2;font-weight:800;color:var(--c-plum-ink)}
   .pk-pdf-media p,.pk-pdf-media ul{margin:0 0 4px;padding:0;list-style:none;font-size:12.5px;line-height:1.42;color:#3d3742}
   .pk-pdf-media a{font-weight:800;color:var(--c-plum-ink) !important;text-decoration:none}
