@@ -479,9 +479,11 @@ body{background:#ffffff}
   #bio .p-bio-div-5{display:flex;flex-direction:column}
   #bio dl > div:last-child{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0}
   #bio .pdf-photo{margin-top:0;aspect-ratio:3 / 2;object-position:50% 30%}
-  #bio .pk-pdf-zip{display:block !important;margin:20px 0 16px} /* looks the same above and below: the links' text runs ~7px past their line box */
+  #bio .pk-pdf-zip{display:block !important;margin:20px 0 6px} /* looks the same above and below: the links' text runs ~7px past their line box */
   .pk-pdf-zip a{display:flex;align-items:center;justify-content:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:var(--c-red);color:#ffffff !important;text-decoration:none;font-size:11.5px;font-weight:800;white-space:nowrap}
-  .pk-pdf-zip span{font-size:10.5px;font-weight:600;opacity:.85}
+  .pk-pdf-zip span{font-size:11px;font-weight:600;opacity:.85}
+  #bio .pk-pdf-url{display:block !important;margin:0 0 16px;font-size:11px;line-height:1.3;text-align:center;color:#6b6470}
+  #bio .pk-pdf-url a{display:block;white-space:nowrap;font-weight:800;color:var(--c-plum-ink) !important;text-decoration:none}
 }
 /* one line under the Photos heading says what the files are; each photo carries a small Download overlay,
    bottom right (clear of the face), while a tap anywhere else opens the larger preview */
@@ -496,7 +498,7 @@ body{background:#ffffff}
 .pk-mix-list{grid-auto-rows:1fr}
 .pk-mix-list > li{display:grid}
 @media (max-width:760px){
-  .pk-mix-k{font-size:10px;letter-spacing:.08em}
+  .pk-mix-k{font-size:11px;letter-spacing:.08em}
   .pk-mix-h{font-size:18px}
 }
 /* the space above each section divider matches the space below it (as in Media and Rider); on phones and small
@@ -536,3 +538,13 @@ body{background:#ffffff}
   .pk-photos,.pk-videos,.pk-mixes{gap:16px}
   .pk-photos .pk-note{margin:0 0 -4px} /* note to ZIP button stays 12px */
 }
+/* hero: one action (the PDF, red like the other primary buttons) and a light row of jump links to the sections,
+   so the three anchors no longer look like the file download */
+.p-top-div{align-items:center;gap:16px 32px}
+.p-top-pdf{display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;border:2px solid var(--c-red);background:var(--c-red);color:var(--c-white);text-decoration:none;font-size:16px;font-weight:800}
+.p-top-pdf.hv-2:hover,.p-top-pdf.hv-2:focus-visible{background-color:#a8132f !important;border-color:#a8132f !important;color:var(--c-white) !important}
+.p-top-jump{display:flex;flex-wrap:wrap;gap:8px 24px}
+.p-top-jump-a{display:inline-flex;align-items:center;min-height:44px;color:var(--c-white);text-decoration:underline;text-decoration-color:rgba(255,255,255,.4);text-decoration-thickness:2px;text-underline-offset:6px;font-size:16px;font-weight:800;transition:color .25s ease,text-decoration-color .25s ease}
+.p-top-jump-a:hover,.p-top-jump-a:focus-visible{color:var(--c-pink);text-decoration-color:var(--c-pink)}
+.p-top-jump-a:focus-visible{outline:2px solid var(--c-pink);outline-offset:3px;border-radius:4px}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.p-top-jump-a:hover .hv-ar.hv-d{transform:translateY(3px)}}
