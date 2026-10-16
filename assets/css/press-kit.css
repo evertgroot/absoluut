@@ -687,3 +687,17 @@ body{background:#ffffff}
 .pk-logo-dark .pk-dl{background:#ffffff;color:var(--c-plum-ink) !important}
 .pk-logo-dark .pk-dl:hover,.pk-logo-dark .pk-dl:focus-visible{background:#ffffff;color:var(--c-red) !important}
 .pk-logo-dark .pk-dl:focus-visible{outline-color:#ffffff}
+/* Logo frame controls share the photo overlay material: see-through dark with a soft blur on the light tile,
+   see-through light on the dark tile (a dark layer would vanish there); the chosen option is a white thumb */
+.pk-logo-art .pk-fmt{background:rgba(22,6,28,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pk-logo-art .pk-fmt span{color:rgba(255,255,255,.8)}
+.pk-logo-art .pk-fmt label:hover span{color:#ffffff}
+.pk-logo-art .pk-fmt input:checked + span{color:var(--c-plum-ink)}
+.pk-logo-art .pk-fmt-thumb{background:#ffffff}
+.pk-logo-art .pk-fmt input:focus-visible + span{outline-color:#ffffff}
+.pk-logo-dark .pk-fmt{background:rgba(255,255,255,.14)}
+/* Download back to the same material (as on the photos) */
+.pk-logo-light .pk-dl{background:rgba(22,6,28,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pk-logo-light .pk-dl:hover,.pk-logo-light .pk-dl:focus-visible{background:rgba(22,6,28,.92)}
+.pk-logo-dark .pk-dl{background:rgba(255,255,255,.14);color:#ffffff !important}
+.pk-logo-dark .pk-dl:hover,.pk-logo-dark .pk-dl:focus-visible{background:rgba(255,255,255,.24);color:var(--c-pink) !important}
