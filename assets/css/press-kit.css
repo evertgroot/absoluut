@@ -496,3 +496,6 @@ body{background:#ffffff}
    Videos, then a line, Mixes */
 .pk-photos,.pk-videos{margin-bottom:0}
 .pk-videos,.pk-mixes{margin-top:clamp(40px,5vw,56px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--c-line)}
+/* three mixes: one row of three on wide screens, one column below */
+.pk-mix-list{grid-template-columns:minmax(0,1fr)}
+@media (min-width:1000px){.pk-mix-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
