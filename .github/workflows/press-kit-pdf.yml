@@ -6,9 +6,9 @@ on:
   push:
     branches: [main]
     paths:
-      - "djabsoluut/press-kit/**"
-      - "nl/djabsoluut/press-kit/**"
-      - "it/djabsoluut/press-kit/**"
+      - "absoluut/press-kit/**"
+      - "nl/absoluut/press-kit/**"
+      - "it/absoluut/press-kit/**"
       - "assets/css/press-kit.css"
       - "assets/css/base.css"
       - "assets/img/rider-setup.webp"
@@ -36,8 +36,8 @@ jobs:
         run: |
           mkdir -p assets/press-kit
           for lang in en nl it; do
-            path="/djabsoluut/press-kit/"
-            [ "$lang" != "en" ] && path="/$lang/djabsoluut/press-kit/"
+            path="/absoluut/press-kit/"
+            [ "$lang" != "en" ] && path="/$lang/absoluut/press-kit/"
             timeout 120 google-chrome --headless=new --no-sandbox --disable-gpu --no-pdf-header-footer \
               --run-all-compositor-stages-before-draw --window-size=1280,6000 --virtual-time-budget=8000 \
               --print-to-pdf="assets/press-kit/Absoluut-Press-Kit-${lang^^}.pdf" "http://127.0.0.1:8000$path" || true

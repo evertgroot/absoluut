@@ -102,7 +102,7 @@
       document.getElementById('lang-banner-text').textContent = copy[0];
       var bannerLink = document.getElementById('lang-banner-link');
       bannerLink.textContent = copy[1];
-      bannerLink.href = '/' + suggest + (location.pathname.indexOf('/djabsoluut/') === 0 ? '/djabsoluut/' : '/');
+      bannerLink.href = '/' + suggest + (location.pathname.indexOf('/absoluut/') === 0 ? '/absoluut/' : '/');
       bannerLink.setAttribute('data-lang', suggest);
       bannerLink.setAttribute('lang', suggest);
       bannerLink.addEventListener('click', function () {
@@ -891,7 +891,7 @@
               eventStatus: 'https://schema.org/EventScheduled',
               eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
               location: { '@type': 'Place', name: g.venue || g.event, address: { '@type': 'PostalAddress', addressLocality: g.city } },
-              performer: { '@type': 'Person', name: 'Absoluut', url: 'https://imgroot.nl/djabsoluut/' },
+              performer: { '@type': 'Person', name: 'Absoluut', url: 'https://imgroot.nl/absoluut/' },
               url: g.url || undefined
             };
           }) });
