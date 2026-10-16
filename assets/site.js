@@ -102,7 +102,7 @@
       document.getElementById('lang-banner-text').textContent = copy[0];
       var bannerLink = document.getElementById('lang-banner-link');
       bannerLink.textContent = copy[1];
-      bannerLink.href = '/' + suggest + (location.pathname.indexOf('/djabsoluut/') === 0 ? '/djabsoluut/' : '/');
+      bannerLink.href = '/' + suggest + (location.pathname.indexOf('/absoluut/') === 0 ? '/absoluut/' : '/');
       bannerLink.setAttribute('data-lang', suggest);
       bannerLink.setAttribute('lang', suggest);
       bannerLink.addEventListener('click', function () {
@@ -471,7 +471,7 @@
     grid.addEventListener('pointercancel', endDrag);
   });
 
-  /* 1c2b. Site switch (Evert Groot | DJ Absoluut).
+  /* 1c2b. Site switch (Evert Groot | Absoluut).
      Both names are always written out. Clicking is a normal link: the page transition (CSS @view-transition
      in the page) cross-fades the pages and glides the white thumb to the other side. Here we only add
      dragging the thumb; from the mobile menu the menu closes and the visitor lands on the other site's hero. */
@@ -721,7 +721,7 @@
           image: ['https://imgroot.nl/assets/img/dj-absoluut-bops.jpg'],
           description: 'Queer pop party with house and disco twists in Amsterdam.',
           organizer: { '@type': 'Organization', name: 'BOPS', url: 'https://www.instagram.com/bops.ams/' },
-          performer: { '@type': 'Person', name: 'DJ Absoluut', url: 'https://imgroot.nl/' },
+          performer: { '@type': 'Person', name: 'Absoluut', url: 'https://imgroot.nl/' },
           /* Only describe an offer when the price is known; a price-less offer triggers Search Console warnings */
           offers: (ev.ticketUrl && ev.price !== undefined) ? {
             '@type': 'Offer', url: ev.ticketUrl, price: String(ev.price), priceCurrency: ev.priceCurrency || 'EUR',
@@ -891,7 +891,7 @@
               eventStatus: 'https://schema.org/EventScheduled',
               eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
               location: { '@type': 'Place', name: g.venue || g.event, address: { '@type': 'PostalAddress', addressLocality: g.city } },
-              performer: { '@type': 'Person', name: 'DJ Absoluut', url: 'https://imgroot.nl/djabsoluut/' },
+              performer: { '@type': 'Person', name: 'Absoluut', url: 'https://imgroot.nl/absoluut/' },
               url: g.url || undefined
             };
           }) });

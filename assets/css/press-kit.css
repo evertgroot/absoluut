@@ -86,13 +86,13 @@ a{color:#ffffff}a:hover{color:var(--c-gold)}
 .mm-link[aria-current]{color:var(--c-red) !important}
 .hdr-cta:hover,#mobile-menu .btn-solid:hover{color:#ffffff}
 header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
-/* site switch: a colored dot per site, teal = Evert Groot, red = DJ Absoluut */
+/* site switch: a colored dot per site, teal = Evert Groot, red = Absoluut */
 @media (max-width: 360px){.site-sw a::before{width:7px;height:7px;margin-right:6px}}
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
 :root{--acc:var(--c-red);--pop:#2c0739}
 
 /* footer: name + socials on top, small legal row below */
-/* page theme: aubergine & red (DJ Absoluut) */
+/* page theme: aubergine & red (Absoluut) */
 body{background:var(--c-aubergine)}
 a:hover{color:var(--c-pink)}
 .field::placeholder{color:#b98fc8}
@@ -136,7 +136,7 @@ body{background:#ffffff}
   #top h1{font-size:26px;line-height:1;margin:0}
   /* light pink instead of red on the dark band, so the title stays clear on a black-and-white print */
   #top h1 span{color:var(--c-pink)}
-  /* the DJ Absoluut pill from the site switch in the header */
+  /* the Absoluut pill from the site switch in the header */
   .pdf-name{order:-1;display:inline-flex;align-items:center;height:32px;margin:0;padding:0 14px;border-radius:999px;background:#ffffff;font-family:'Baloo Bhai 2',sans-serif;font-size:15px;font-weight:700;line-height:1;letter-spacing:-0.01em;color:var(--c-aubergine);white-space:nowrap}
   .pdf-name::before{content:"";flex:0 0 auto;width:7px;height:7px;margin-right:7px;border-radius:50%;background:var(--c-red)}
 
