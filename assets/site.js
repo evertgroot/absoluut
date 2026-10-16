@@ -8,6 +8,41 @@
   var lang = document.documentElement.lang || 'en';
   var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* 0. Links to a part of the page glide there instead of jumping (not with reduced motion).
+     Arriving from another page with #section: start at the top and glide down once the page has settled.
+     A link to Upcoming Gigs falls back to Where I've Played while no upcoming gig is public. */
+  var target = function (id) {
+    var el = document.getElementById(id);
+    if (id === 'upcoming' && (!el || el.hidden)) el = document.getElementById('gigs');
+    return el;
+  };
+  var glide = function (el) { if (el) el.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' }); };
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return; /* a link with its own scroll handling (e.g. data-pick) already took care of it */
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || a.getAttribute('href').length < 2 || a.hasAttribute('data-noglide')) return;
+    var id = a.getAttribute('href').slice(1), el = target(id);
+    if (!el || id === 'main' || id === 'cs-form') return; /* skip link and the case-page form keep their own handling */
+    e.preventDefault();
+    glide(el);
+    /* like a normal anchor jump, keyboard focus continues from the section */
+    if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+    try { el.focus({ preventScroll: true }); } catch (err) {}
+    if (history.pushState) history.pushState(null, '', '#' + id);
+  });
+  var arrive = /^#[\w-]+$/.test(location.hash) ? location.hash.slice(1) : null;
+  if (arrive && arrive !== 'main' && !calm && document.getElementById(arrive)) {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    var tries = 0, go = function () {
+      var el = document.getElementById(arrive);
+      /* Upcoming Gigs is filled in from the gig list; give it a moment before falling back */
+      if (arrive === 'upcoming' && el && el.hidden && tries++ < 15) return setTimeout(go, 100);
+      glide(target(arrive));
+    };
+    setTimeout(go, 450); /* the page is parsed by now (deferred script); no need to wait for every image */
+  }
+
   /* 1. Language choice */
   document.querySelectorAll('a[data-lang]').forEach(function (link) {
     link.addEventListener('click', function () {
@@ -469,9 +504,10 @@
   /* 1c3. Menu: mark the section you are reading (accent line on desktop, accent item in the mobile menu) */
   var spyLinks = [].slice.call(document.querySelectorAll('.nav-links a[href^="#"], #mobile-menu .mm-link[href^="#"]'));
   var spyIds = [];
+  /* a link can stand for more than one section (data-spy): "Gigs" lights up for Upcoming Gigs and Where I've Played */
+  var spyFor = function (a) { return (a.getAttribute('data-spy') || a.getAttribute('href').slice(1)).split(' '); };
   spyLinks.forEach(function (a) {
-    var id = a.getAttribute('href').slice(1);
-    if (spyIds.indexOf(id) < 0 && document.getElementById(id)) spyIds.push(id);
+    spyFor(a).forEach(function (id) { if (spyIds.indexOf(id) < 0 && document.getElementById(id)) spyIds.push(id); });
   });
   if (spyIds.length) {
     var spyNow = null, spyTick = false;
@@ -479,7 +515,7 @@
       if (id === spyNow) return;
       spyNow = id;
       spyLinks.forEach(function (a) {
-        if (id && a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'location');
+        if (id && spyFor(a).indexOf(id) > -1) a.setAttribute('aria-current', 'location');
         else a.removeAttribute('aria-current');
       });
     };
@@ -487,7 +523,9 @@
       spyTick = false;
       var line = Math.min(160, window.innerHeight * 0.3), hit = null;
       spyIds.forEach(function (id) {
-        var r = document.getElementById(id).getBoundingClientRect();
+        var el = document.getElementById(id);
+        if (el.hidden) return;
+        var r = el.getBoundingClientRect();
         if (r.top <= line && r.bottom > line) hit = id;
       });
       spySet(hit);
