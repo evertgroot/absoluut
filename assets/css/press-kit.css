@@ -499,10 +499,25 @@ body{background:#ffffff}
 /* three mixes: one row of three on wide screens, one column below */
 .pk-mix-list{grid-template-columns:minmax(0,1fr)}
 @media (min-width:1000px){.pk-mix-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
-/* wide screens: Videos and Mixes side by side under one shared rule; Videos takes a narrow column, the mixes
-   stack as rows in the wider one */
+/* wide screens: one row of four equal blocks under one shared rule: Videos (a block in the same style as the
+   mixes) and the three mixes, with their headings above; both columns end at the same line */
 @media (min-width:1000px){
-  .pk-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:0 clamp(32px,4vw,64px);margin-top:clamp(40px,5vw,56px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--c-line)}
-  .pk-row > .pk-videos,.pk-row > .pk-mixes{margin-top:0;padding-top:0;border-top:0;align-content:start}
-  .pk-row .pk-mix-list{grid-template-columns:minmax(0,1fr)}
+  .pk-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto 1fr;gap:20px 12px;margin-top:clamp(40px,5vw,56px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--c-line)}
+  .pk-row > .pk-videos,.pk-row > .pk-mixes{display:contents}
+  .pk-row .pk-videos .pk-h3{grid-column:1;grid-row:1}
+  .pk-row .pk-videos .pk-foot{grid-column:1;grid-row:2;display:grid}
+  .pk-row .pk-mixes .pk-h3{grid-column:2 / span 3;grid-row:1}
+  .pk-row .pk-mix-list{grid-column:2 / span 3;grid-row:2;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .pk-row .pk-mix{grid-template-columns:56px minmax(0,1fr) auto;grid-template-areas:"art t ar" "art time ar";gap:2px 12px;padding:10px 14px 10px 10px}
+  .pk-row .pk-mix-art{grid-area:art;width:56px;height:56px;border-radius:8px}
+  .pk-row .pk-mix-t{grid-area:t;align-self:end}
+  .pk-row .pk-mix-time{grid-area:time;align-self:start;font-size:12px}
+  .pk-row .pk-mix .hv-ar{grid-area:ar}
+  .pk-row .pk-mix-k{font-size:10px;letter-spacing:.08em}
+  .pk-row .pk-mix-h{font-size:16px}
+  /* the Google Drive button as a block like the mixes: a video tile, the label, the outgoing arrow */
+  .pk-row .pk-vid{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:12px;min-height:0;height:100%;padding:10px 14px 10px 10px;border:0;border-radius:16px;background:var(--c-paper);white-space:normal;font-size:15px;line-height:1.25;transition:background-color .25s ease}
+  .pk-row .pk-vid::before{content:"";width:56px;height:56px;border-radius:8px;background:var(--c-aubergine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5'/%3E%3Crect x='2' y='6' width='14' height='12' rx='2'/%3E%3C/svg%3E") center / 26px no-repeat}
+  .pk-row .pk-vid:hover,.pk-row .pk-vid:focus-visible{background:#ece8ee;transform:none !important}
+  .pk-row .pk-vid .hv-ar{color:var(--c-red)}
 }
