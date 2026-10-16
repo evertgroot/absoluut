@@ -673,3 +673,9 @@ body{background:#ffffff}
   .pk-logo-art .pk-logo-row{flex-wrap:wrap;row-gap:6px}
   .pk-logo-art{padding-top:max(9%, 96px);aspect-ratio:auto;min-height:220px}
 }
+/* Logo, wide screens: Download All Logos directly under the text (12px, as under the photos), not at the tile bottom */
+@media (min-width:1000px){
+  .pk-logos{grid-template-rows:auto auto auto 1fr}
+  .pk-logos > .pk-logo{grid-row:2 / 5}
+  .pk-logos > .pk-foot{grid-row:3;align-self:start;margin-top:-4px}
+}
