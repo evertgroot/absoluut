@@ -470,17 +470,16 @@ body{background:#ffffff}
 .cta-fab{display:none !important}
 /* PDF only: where to find the photos, videos and mixes that the printout leaves out */
 @media print{
-  #rider .pk-pdf-rider-q{display:block !important;grid-column:2;grid-row:1;align-self:end;margin:0;padding:0 0 0 14px;font-size:12.5px;letter-spacing:0;color:#3d3742}
+  #rider .pk-pdf-rider-q{display:block !important;grid-column:2;grid-row:1;align-self:end;margin:0 0 3px;padding:0 0 0 14px;font-size:12.5px;letter-spacing:0;color:#3d3742}
   #rider .pk-pdf-rider-q a{font-weight:800;color:var(--c-plum-ink) !important;text-decoration:none}
   #bio dt{font-size:13px !important;line-height:1.2;letter-spacing:0 !important;text-transform:none !important;color:var(--c-plum-ink) !important} /* same heading as Short Bio, as on screen */
   #bio .p-bio-dl{padding-top:5px !important} /* + the 5px row padding = 10px under the line, as for Short Bio */
   #bio dl > div:last-child dd{margin-top:4px} /* heading to list 4px, as Short Bio heading to text */
-  /* the side column runs as long as the biography: the photo fills what is left under Channels and the button */
+  /* side column: Channels, the photo button with room around it, then the photo */
   #bio .p-bio-div-5{display:flex;flex-direction:column}
-  #bio .p-bio-dl{flex:1 1 auto;display:flex;flex-direction:column}
-  #bio dl > div:last-child{flex:1 1 auto;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0}
-  #bio .pdf-photo{flex:1 1 0;min-height:140px;aspect-ratio:auto;object-position:50% 30%}
-  .pk-pdf-zip{display:block !important;margin:7px 0 0} /* the last link's line box adds ~3px under the text: looks 10px, like button to photo */
+  #bio dl > div:last-child{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0}
+  #bio .pdf-photo{margin-top:0;aspect-ratio:3 / 2;object-position:50% 30%}
+  #bio .pk-pdf-zip{display:block !important;margin:20px 0 16px} /* looks the same above and below: the links' text runs ~7px past their line box */
   .pk-pdf-zip a{display:flex;align-items:center;justify-content:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;background:var(--c-red);color:#ffffff !important;text-decoration:none;font-size:11.5px;font-weight:800;white-space:nowrap}
   .pk-pdf-zip span{font-size:10.5px;font-weight:600;opacity:.85}
 }
