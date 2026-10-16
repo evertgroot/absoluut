@@ -484,7 +484,8 @@ body{background:#ffffff}
   #bio dl > div:last-child{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0}
   #bio .pdf-photo{margin-top:0;aspect-ratio:3 / 2;object-position:50% 30%}
   #bio .pk-pdf-zip{display:block !important;margin:20px 0 0}
-  #bio .pk-pdf-vid{margin:8px 0 16px} /* the two download buttons sit together, the photo 16px below */ /* looks the same above and below: the links' text runs ~7px past their line box */
+  #bio .pk-pdf-vid{margin:8px 0 16px}
+  #bio .pk-pdf-vid:has(+ .pk-pdf-zip){margin-bottom:0} /* the logo button follows: 8px between buttons, 16px after the last */ /* the two download buttons sit together, the photo 16px below */ /* looks the same above and below: the links' text runs ~7px past their line box */
   .pk-pdf-zip a{display:block;height:30px;padding:0 10px;border:1.5px solid var(--c-red);border-radius:999px;background:var(--c-red);color:#ffffff !important;text-decoration:none;text-align:center;font-size:11.5px;line-height:27px;font-weight:800;white-space:nowrap} /* one line box: label and its note share a baseline */
   .pk-pdf-zip span{margin-left:6px;font-size:11px;font-weight:600;opacity:.85}
   .pk-pdf-vid a{border-color:var(--c-plum-ink);background:transparent;color:var(--c-plum-ink) !important} /* as on the page: photos red, Google Drive outlined */
@@ -573,3 +574,27 @@ body{background:#ffffff}
 .btn-solid:is(:hover,:focus-visible){background-image:linear-gradient(rgba(0,0,0,.14),rgba(0,0,0,.14));box-shadow:0 8px 22px var(--hv-glow)}
 .pk-all.hv-2:is(:hover,:focus-visible){box-shadow:0 8px 22px var(--hv-glow)}
 :is(.pk-dl,.pk-all):focus-visible .hv-ar.hv-dl{transform:translateY(3px)}
+/* Logo: four tiles (black versions on a light tile, white versions on a dark tile), each with a format switch and a
+   download button; the same divider and rhythm as Videos and Mixes */
+.pk-logos{display:grid;gap:16px;margin-top:clamp(40px,5vw,56px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--c-line)}
+.pk-logo-grid{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(28px,3vw,36px) clamp(12px,1.6vw,24px)}
+@media (max-width:1100px){.pk-logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.pk-logo-grid{grid-template-columns:minmax(0,1fr)}}
+.pk-logo{display:flex;flex-direction:column;min-width:0}
+.pk-logo-art{display:grid;place-items:center;aspect-ratio:3 / 2;padding:14% 16%;border-radius:16px}
+.pk-logo-light{background:var(--c-paper)}
+.pk-logo-dark{background:#16061c}
+.pk-logo-art img{display:block;width:100%;height:100%;object-fit:contain}
+.pk-logo-t{margin:12px 0 10px;font-size:15px;font-weight:800;color:var(--c-plum-ink)}
+.pk-logo-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
+.pk-fmt{display:inline-flex;margin:0;padding:3px;border:0;border-radius:999px;background:var(--c-paper)}
+.pk-fmt label{position:relative;display:inline-flex}
+.pk-fmt input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.pk-fmt span{display:inline-flex;align-items:center;min-height:38px;padding:0 11px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--c-body-grey);transition:background-color .2s ease,color .2s ease}
+.pk-fmt label:hover span{color:var(--c-plum-ink)}
+.pk-fmt input:checked + span{background:var(--c-plum-ink);color:#ffffff}
+.pk-fmt input:focus-visible + span{outline:2px solid var(--c-red);outline-offset:2px}
+.pk-logo-dl{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;border:2px solid var(--c-plum-ink);background:transparent;color:var(--c-plum-ink);text-decoration:none;font-size:15px;font-weight:800;white-space:nowrap}
+.pk-logo-dl:hover,.pk-logo-dl:focus-visible{color:var(--c-plum-ink)}
+.pk-logo-dl .hv-ar{margin-left:.4em}
+@media print{.pk-logos{display:none !important}}
