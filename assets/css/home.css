@@ -912,3 +912,7 @@ div:has(> main.cs-bops){overflow-x:clip}
 .cs-bops div.cs-close .btn-solid:is(:hover,:focus-visible),.cs-bops .cs-form-send .btn-solid:is(:hover,:focus-visible){color:var(--c-cream)}
 /* footer links (Privacy Policy, FREYcreates): a 44px tap area on wider screens too; the negative margin keeps the row height */
 
+/* under the contact form: DJ bookings go through the DJ form (it asks for date and location) */
+.h-contact-dj{margin:0;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)}
+.h-contact-dj a{color:var(--c-white);font-weight:800;text-decoration:underline;text-decoration-color:rgba(255,255,255,.4);text-underline-offset:4px;white-space:nowrap}
+.h-contact-dj a:hover,.h-contact-dj a:focus-visible{color:var(--c-teal);text-decoration-color:var(--c-teal)}
