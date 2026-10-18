@@ -225,6 +225,8 @@
         fab.style.color = cs.color;
       }
       fab.hidden = !show;
+      /* phone: while the capsule is showing, the top edge of the page blurs away under it (CSS: html.bar-on) */
+      document.documentElement.classList.toggle('bar-on', header.classList.contains('hdr-stuck') && !header.classList.contains('hdr-hide'));
     };
     /* the hero's own button: while it is fully on screen the header leaves its copy out (CSS),
        and the floating button waits until it has scrolled away */
@@ -268,7 +270,7 @@
     var tintQueued = false;
     var tint = function () {
       tintQueued = false;
-      document.documentElement.classList.toggle('hero-top', heroPhoto.getBoundingClientRect().bottom > 80);
+      document.documentElement.classList.toggle('hero-top', heroPhoto.getBoundingClientRect().bottom > 80 && !(header && header.classList.contains('hdr-stuck')));
     };
     tint();
     window.addEventListener('scroll', function () { if (!tintQueued) { tintQueued = true; requestAnimationFrame(tint); } }, { passive: true });
