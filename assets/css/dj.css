@@ -225,7 +225,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .mix:hover,.mix:focus-visible{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.34);color:var(--c-white)}
 .mix:focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
 .mix-k{display:block;font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-blush)}
-.mix h3{margin:10px 0 0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(26px,2.4vw,34px);line-height:1.02;letter-spacing:-0.025em;font-weight:800}
+.mix h4{margin:10px 0 0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(26px,2.4vw,34px);line-height:1.02;letter-spacing:-0.025em;font-weight:800}
 .mix-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.2);font-size:15px;font-weight:800}
 .mix-foot > span:first-child{display:inline-flex;align-items:center;gap:12px}
 .mix-play{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;border-radius:999px;background:var(--c-red);color:var(--c-white);transition:transform .25s cubic-bezier(.2,.7,.2,1)}
@@ -249,7 +249,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .mix > div:not(.mix-foot){padding:20px clamp(20px,2.2vw,28px) 0}
 .mix-foot{margin:20px clamp(20px,2.2vw,28px) clamp(20px,2.2vw,26px)}
 @media (hover:hover){.mix:hover .mix-art{transform:scale(1.03)}}
-@media (max-width: 760px){.mix{display:grid;grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto auto;gap:0 16px;padding:14px;min-height:0}.mix-art{grid-row:1 / span 2;border-radius:12px;align-self:start}.mix > div:not(.mix-foot){padding:0}.mix-foot{grid-column:2;margin:12px 0 0;padding-top:12px}.mix h3{font-size:22px}.mix-foot > span:first-child > span:not(.mix-play){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}}
+@media (max-width: 760px){.mix{display:grid;grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto auto;gap:0 16px;padding:14px;min-height:0}.mix-art{grid-row:1 / span 2;border-radius:12px;align-self:start}.mix > div:not(.mix-foot){padding:0}.mix-foot{grid-column:2;margin:12px 0 0;padding-top:12px}.mix h4{font-size:22px}.mix-foot > span:first-child > span:not(.mix-play){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}}
 @media (prefers-reduced-motion: reduce){.mix-art{transition:none}.mix:hover .mix-art{transform:none}}
 /* four listen cards: one row on wide screens, two by two in between */
 /* three mixes: one row of three from tablet width up */
@@ -550,7 +550,7 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
    Instagram/TikTok links on the left, the three Reels from the home page on the right (one row of three on phones) */
 /* Videos is the second half of Media: half the usual section gap after the mixes */
 #listen > .d-where-div{padding-bottom:clamp(36px,5vw,68px)}
-.d-reels .d-reels-div{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,72px);padding-top:0}
+.d-reels .d-reels-div{display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(28px,5vw,72px);padding-top:0}
 .d-reels-text{flex:1 1 300px;min-width:0;max-width:460px}
 .d-reels-h2{margin:0 0 14px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(26px,2.6vw,36px);line-height:1.05;letter-spacing:-0.02em;font-weight:800}
 /* Media: two subheadings (Mixes, Videos) in the same size, each straight above its intro */
@@ -560,7 +560,7 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .d-reels-links{display:flex;gap:10px}
 .d-reels-icon{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:999px;border:1.5px solid rgba(255,255,255,.6);color:var(--c-white);text-decoration:none;transition:background-color .25s ease,border-color .25s ease}
 .d-reels-icon:hover,.d-reels-icon:focus-visible{background:rgba(255,255,255,.1);border-color:var(--c-white);color:var(--c-white)}
-.d-reels-grid{flex:1.4 1 420px;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);max-width:640px}
+.d-reels-grid{flex:1.4 1 420px;min-width:0;margin-left:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);max-width:640px}
 .d-reels-a{position:relative;display:block;overflow:hidden;border-radius:20px;color:var(--c-white)}
 .d-reels-img{display:block;width:100%;aspect-ratio:9 / 16;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){.d-reels-a:hover .d-reels-img{transform:scale(1.04)}}

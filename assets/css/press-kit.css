@@ -97,7 +97,7 @@ body{background:var(--c-white)}
 .pdf-only{display:none}
 @page{size:A4;margin:12mm 13mm}
 @media print{
-  header,#mobile-menu,footer,.skip,[data-lang-banner],.cta-fab,#media,[data-copy],#top .gut > p:not(.pdf-only),#top .gut > div,#rider > div > p:last-child,#rider::before,#media::before{display:none !important}
+  header,#mobile-menu,footer,.skip,[data-lang-banner],#media,[data-copy],#top .gut > p:not(.pdf-only),#top .gut > div,#rider > div > p:last-child,#rider::before,#media::before{display:none !important}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact;animation:none;transition:none}
   .rise{opacity:1;transform:none}
   html,body,body > div{background:var(--c-white)}
@@ -423,7 +423,6 @@ body{background:var(--c-white)}
 .pk-grid{row-gap:clamp(28px,3vw,36px)}
 /* the press kit is a reference page full of buttons and downloads: no floating "Check Availability" on phones
    (it covered photos and Download buttons); the button stays in the menu bar and the menu */
-.cta-fab{display:none !important}
 /* PDF only: where to find the photos, videos and mixes that the printout leaves out */
 @media print{
   #rider .pk-pdf-rider-q{display:block !important;grid-column:2;grid-row:1;align-self:end;margin:0 0 3px;padding:0 0 0 14px;font-size:12.5px;letter-spacing:0;color:var(--c-plum-text)}

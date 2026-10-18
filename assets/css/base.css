@@ -195,5 +195,4 @@ body:has(main.cs-bops) header{--bar-bg:#17155f}
   html #mobile-menu{padding-top:calc(26px + env(safe-area-inset-top,0px));padding-right:max(clamp(20px, 4vw, 48px),env(safe-area-inset-right,0px))}
   html #mobile-menu .site-sw{display:none}
   html #mobile-menu > :first-child{justify-content:flex-end}
-  html .cta-fab{right:max(clamp(20px, 4vw, 48px),env(safe-area-inset-right,0px))} /* same right edge as the menu button above it */
 }

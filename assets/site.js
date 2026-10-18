@@ -116,10 +116,9 @@
     }
   }
 
-  /* 1b2. Mobile menu, plus a way forward after scrolling:
+  /* 1b2. Mobile menu and the bar after scrolling:
      desktop - the header stays at the top (sticky) and turns into a solid bar as soon as the page scrolls;
-     mobile  - the top bar (site switch + menu button) stays at the top too; the page's main call to action (contact or booking)
-               floats at the bottom right once the hero's own button is gone, stepping aside at the form and footer */
+     mobile  - the top bar (site switch + menu button) stays at the top too and gets a solid background */
   var menuBtn = document.querySelector('.menu-btn');
   var menu = document.getElementById('mobile-menu');
   var header = document.querySelector('header');
@@ -128,16 +127,6 @@
   if (header) {
     var opener = menuBtn;
     var cta = document.querySelector('header .hdr-cta');
-    var fab = document.createElement('a');
-    fab.className = 'cta-fab';
-    fab.hidden = true;
-    if (cta) {
-      fab.href = cta.getAttribute('href');
-      fab.textContent = cta.textContent.trim();
-      if (cta.hasAttribute('data-goatcounter-click')) fab.setAttribute('data-goatcounter-click', cta.getAttribute('data-goatcounter-click') + '-fab');
-      var mainEl = document.querySelector('main'); /* right after the content in tab order, before the footer */
-      if (mainEl) mainEl.parentNode.insertBefore(fab, mainEl.nextSibling); else document.body.appendChild(fab);
-    }
     /* while the menu is open, everything behind it is out of reach for keyboard and screen readers */
     if (menuBtn && menu) {
       var setInert = function (on) {
@@ -165,6 +154,15 @@
         else if (opener && !opener.hidden) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
       };
       menuBtn.addEventListener('click', function () { setMenu(menu.hidden, menuBtn); });
+      /* keyboard focus never ends up hidden behind the fixed bar (WCAG 2.4.11): nudge the page down just enough */
+      document.addEventListener('focusin', function (e) {
+        var t = e.target;
+        if (!t || !t.getBoundingClientRect || header.contains(t) || menu.contains(t)) return;
+        setTimeout(function () { /* after the browser's own scroll-into-view */
+          var bar = header.getBoundingClientRect().bottom, r = t.getBoundingClientRect();
+          if (r.top < bar + 8 && r.bottom > 0) window.scrollBy(0, r.top - bar - 16);
+        }, 0);
+      });
       /* a tap anywhere outside the panel closes it */
       document.addEventListener('click', function (e) {
         if (!menu.hidden && !menu.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false);
@@ -188,52 +186,24 @@
 
     var css = document.createElement('style');
     css.textContent =
-      '.cta-fab{position:fixed;font-family:Manrope,sans-serif;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:55;display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:999px;font-size:16px;font-weight:800;text-decoration:none;white-space:nowrap;box-shadow:0 10px 28px rgba(0,0,0,.35);animation:fab-in .25s ease both}' +
-      '.cta-fab[hidden]{display:none}.cta-fab:focus-visible{outline:3px solid #ffffff;outline-offset:3px}' +
       'header.hdr-stuck{position:fixed !important;left:0 !important;right:0 !important;top:0 !important;z-index:50 !important;max-width:none !important;padding:10px calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)) !important;border-bottom:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(0,0,0,.25);animation:bar-in .25s ease both}' +
-      '@keyframes fab-in{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}' +
       '@keyframes bar-in{from{transform:translateY(-100%)}to{transform:none}}' +
-      '@media (prefers-reduced-motion: reduce){.cta-fab,header.hdr-stuck{animation:none;transition:none}}' +
+      '@media (prefers-reduced-motion: reduce){header.hdr-stuck{animation:none;transition:none}}' +
       '@media (min-width: 1061px){section[id]{scroll-margin-top:76px}}' +
-      '@media print{.cta-fab{display:none !important}header.hdr-stuck{position:static !important}}';
+      '@media print{header.hdr-stuck{position:static !important}}';
     document.head.appendChild(css);
-    var limit = function () { return Math.max(320, window.innerHeight * 0.6); };
-    /* the button steps aside where it would only cover what it points to */
-    var inView = 0;
-    var goal = cta && cta.getAttribute('href').charAt(0) === '#' ? document.querySelector(cta.getAttribute('href')) : null;
-    var asides = [goal, document.querySelector('footer')].filter(Boolean);
-    if (asides.length && 'IntersectionObserver' in window) {
-      var showing = new Map();
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) { showing.set(en.target, en.isIntersecting); });
-        inView = 0; showing.forEach(function (v) { if (v) inView++; });
-        update();
-      });
-      asides.forEach(function (el) { io.observe(el); });
-    }
     var update = function () {
       var y = window.scrollY;
-      var past = y > limit();
       var mobile = compact();
       if (!mobile) { header.classList.toggle('hdr-stuck', y > 8); header.classList.remove('hdr-hide'); } /* desktop: sticky bar, solid as soon as the page scrolls */
-      else header.classList.remove('hdr-stuck', 'hdr-hide'); /* phone: no bar after scrolling, the menu button joins the floating button instead */
-      var show = !!(cta && past && mobile && !inView && heroOut);
-      if (show && fab.hidden) { /* copy the header button's colours only now: when the script starts, Safari may still be loading the stylesheet */
-        var cs = getComputedStyle(cta);
-        fab.style.background = cs.backgroundColor;
-        fab.style.color = cs.color;
-      }
-      fab.hidden = !show;
+      else header.classList.remove('hdr-stuck', 'hdr-hide'); /* phone: the bar itself stays put (CSS), only its background changes */
       document.documentElement.classList.toggle('m-scrolled', mobile && y > 8); /* phone: the fixed top bar gets its solid background */
     };
-    /* the hero's own button: while it is fully on screen the header leaves its copy out (CSS),
-       and the floating button waits until it has scrolled away */
+    /* the hero's own button: while it is fully on screen the header leaves its copy out (CSS) */
     var heroBtn = document.querySelector('.hero-cta a');
-    var heroOut = !heroBtn;
     if (heroBtn && 'IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
         var en = entries[entries.length - 1];
-        heroOut = !en.isIntersecting;
         document.body.classList.toggle('hero-cta-out', en.intersectionRatio < 0.99);
         update();
       }, { threshold: [0, 1] }).observe(heroBtn);
