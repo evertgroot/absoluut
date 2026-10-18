@@ -318,7 +318,8 @@ a.reel-tag:focus-visible{outline:2px solid var(--c-teal);outline-offset:2px}
 /* Trusted by */
 .marquee .logo{--logo-base:34px}
 /* bar: optical sizes tuned so every logo reads at the same weight on one centre line */
-.marquee .lg-forward{--lh:.95;background-image:url(/assets/img/logos/forward.svg?v=5)}
+/* FORWARD in the band: the official shape, recoloured to the same near-black as the other logos */
+.marquee .lg-forward{--lh:.95;background-image:url(/assets/img/logos/forward-ink.svg?v=1)}
 .marquee .lg-vue{--lh:.86;transform:translateY(2px)}
 .marquee .lg-phantasialand{--lh:1.3}
 .marquee .lg-soa{--lh:.89}
