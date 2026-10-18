@@ -549,3 +549,20 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 /* footer links (Privacy Policy, FREYcreates): a 44px tap area on wider screens too; the negative margin keeps the row height */
 
 .d-reviews-a{min-height:44px} /* full tap size on phones too (was 43px) */
+/* Short videos after Press Play: the same aubergine band, so it reads as part of the listening section; text and the
+   Instagram/TikTok links on the left, the three Reels from the home page on the right (one row of three on phones) */
+.d-reels .d-reels-div{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,72px);padding-top:0}
+.d-reels-text{flex:1 1 300px;min-width:0;max-width:460px}
+.d-reels-h2{margin:0 0 14px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(26px,2.6vw,36px);line-height:1.05;letter-spacing:-0.02em;font-weight:800}
+.d-reels-p{margin:0 0 20px;font-size:17px;line-height:1.6;color:var(--c-lilac-soft)}
+.d-reels-links{display:flex;gap:10px}
+.d-reels-icon{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:999px;border:1.5px solid rgba(255,255,255,.6);color:var(--c-white);text-decoration:none;transition:background-color .25s ease,border-color .25s ease}
+.d-reels-icon:hover,.d-reels-icon:focus-visible{background:rgba(255,255,255,.1);border-color:#ffffff;color:var(--c-white)}
+.d-reels-grid{flex:1.4 1 420px;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);max-width:640px}
+.d-reels-a{position:relative;display:block;overflow:hidden;border-radius:20px;color:#ffffff}
+.d-reels-img{display:block;width:100%;aspect-ratio:9 / 16;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.d-reels-a:hover .d-reels-img{transform:scale(1.04)}}
+.d-reels-a:focus-visible{outline:2px solid var(--c-pink);outline-offset:3px}
+.d-reels .reel-tag{position:absolute;right:10px;bottom:10px;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:rgba(11,11,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font-size:12.5px;font-weight:700;line-height:1;white-space:nowrap}
+.d-reels-a:hover .reel-tag,.d-reels-a:focus-visible .reel-tag{color:var(--c-pink)}
+@media (max-width:560px){.d-reels .reel-tag{right:6px;bottom:6px;padding:5px 8px;font-size:11px}}
