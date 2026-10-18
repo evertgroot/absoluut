@@ -318,7 +318,8 @@ a.reel-tag:focus-visible{outline:2px solid var(--c-teal);outline-offset:2px}
 /* Trusted by */
 .marquee .logo{--logo-base:34px}
 /* bar: optical sizes tuned so every logo reads at the same weight on one centre line */
-.marquee .lg-forward{--lh:.95;background-image:url(/assets/img/logos/forward.svg?v=5)}
+/* FORWARD in the band: the official shape, recoloured to the same near-black as the other logos */
+.marquee .lg-forward{--lh:.95;background-image:url(/assets/img/logos/forward-ink.svg?v=1)}
 .marquee .lg-vue{--lh:.86;transform:translateY(2px)}
 .marquee .lg-phantasialand{--lh:1.3}
 .marquee .lg-soa{--lh:.89}
@@ -500,7 +501,17 @@ a.reel:hover .reel-tag-br,a.reel:focus-visible .reel-tag-br{color:var(--c-teal)}
 }
 @media (max-width:600px){
   .marquee-static .marquee-track > div{gap:20px 30px}
+  /* phones: the widest logo gets its own row, the other six sit 3 + 3 (no lone logo at the end) */
+  .marquee-static .marquee-track > div{row-gap:0;column-gap:22px;margin-block:-10px}
+  .marquee-static .marquee-track > div > *{margin-block:10px}
+  .marquee-static .marquee-track > div::before,.marquee-static .marquee-track > div::after{content:"";flex-basis:100%;height:0}
+  .marquee-static .marquee-track > div > .lg-tbs{order:1}
+  .marquee-static .marquee-track > div::before{order:2}
+  .marquee-static .marquee-track > div > :is(.lg-netflix,.lg-tui,.lg-vue){order:3}
+  .marquee-static .marquee-track > div::after{order:4}
+  .marquee-static .marquee-track > div > :is(.lg-phantasialand,.lg-forward,.lg-soa){order:5}
 }
+@media (max-width:400px){.marquee-static .logo{--logo-base:30px}}
 /* ---- BOPS case: growth line, flyer wall, list, photos ---- */
 .cs-intro{margin:0 0 24px;max-width:680px;font-size:18px;line-height:1.65;color:rgba(255,255,255,.84)}
 .cs-growth{margin:8px 0 20px;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.14)}
