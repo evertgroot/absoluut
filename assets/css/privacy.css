@@ -6,7 +6,6 @@
 .nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:var(--c-red)}
 .mm-link[aria-current]{color:var(--c-red) !important}
 
-header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
 /* site switch: a colored dot per site, teal = Evert Groot, red = Absoluut */
 
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
@@ -91,7 +90,6 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 body{background:var(--c-dark)}
 a:hover{color:var(--c-white)}
 ::selection{background:var(--c-black-soft);color:var(--c-white)}
-header.hdr-stuck{background:rgba(18,18,18,.94) !important}
 .site-sw a,.site-sw.sw-flip a[aria-current]{color:var(--c-grey-mid)}
 .hdr-lang a,.mm-lang a{color:var(--c-grey-lang)}
 .nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:var(--c-white)}
