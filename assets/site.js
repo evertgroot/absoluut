@@ -135,8 +135,6 @@
     if (cta) {
       fab.href = cta.getAttribute('href');
       fab.textContent = cta.textContent.trim();
-      fab.style.background = getComputedStyle(cta).backgroundColor;
-      fab.style.color = getComputedStyle(cta).color;
       if (cta.hasAttribute('data-goatcounter-click')) fab.setAttribute('data-goatcounter-click', cta.getAttribute('data-goatcounter-click') + '-fab');
       var mainEl = document.querySelector('main'); /* right after the content in tab order, before the footer */
       if (mainEl) mainEl.parentNode.insertBefore(fab, mainEl.nextSibling); else document.body.appendChild(fab);
@@ -216,7 +214,13 @@
         else if (header.classList.contains('hdr-stuck')) header.classList.add('hdr-hide');
       }
       if (!past || Math.abs(y - lastY) > 6) lastY = y;
-      fab.hidden = !(cta && past && mobile && !inView && heroOut);
+      var show = !!(cta && past && mobile && !inView && heroOut);
+      if (show && fab.hidden) { /* copy the header button's colours only now: when the script starts, Safari may still be loading the stylesheet */
+        var cs = getComputedStyle(cta);
+        fab.style.background = cs.backgroundColor;
+        fab.style.color = cs.color;
+      }
+      fab.hidden = !show;
     };
     /* the hero's own button: while it is fully on screen the header leaves its copy out (CSS),
        and the floating button waits until it has scrolled away */
@@ -251,6 +255,19 @@
     }, { passive: true });
     window.addEventListener('resize', update);
     update();
+  }
+
+  /* 1b2b. iPhone Safari colours the strip behind the clock with the page background: while the hero photo
+     sits under that strip, use the colour of the photo's top edge (set in the page CSS) so the two blend */
+  var heroPhoto = document.querySelector('section.cine.h-main-section, section.cine.d-main-section');
+  if (heroPhoto) {
+    var tintQueued = false;
+    var tint = function () {
+      tintQueued = false;
+      document.documentElement.classList.toggle('hero-top', heroPhoto.getBoundingClientRect().bottom > 80);
+    };
+    tint();
+    window.addEventListener('scroll', function () { if (!tintQueued) { tintQueued = true; requestAnimationFrame(tint); } }, { passive: true });
   }
 
   /* 1b3. Logo band: keeps drifting on its own, but visitors can swipe, drag or scroll it themselves */

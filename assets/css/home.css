@@ -100,6 +100,7 @@ header.hdr-stuck{background:rgba(11,11,12,0.94) !important}
 /* footer: name + socials on top, small legal row below */
 /* page theme: black & teal (Evert Groot) */
 body{background:var(--c-ink)}
+:root.hero-top body{background:#060606} /* top edge of the portrait: iPhone Safari paints the status bar strip with this while the photo is at the top */
 a:hover{color:var(--c-teal)}
 .field::placeholder{color:var(--c-grey-cool)}
 .field:focus{border-color:var(--c-teal) !important;box-shadow:0 0 0 3px rgba(123,214,224,0.3)}

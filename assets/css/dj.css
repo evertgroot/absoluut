@@ -115,6 +115,7 @@ header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
 /* footer: name + socials on top, small legal row below */
 /* page theme: aubergine & red (Absoluut) */
 body{background:var(--c-aubergine)}
+:root.hero-top body{background:#310c51} /* top edge of the DJ photo: iPhone Safari paints the status bar strip with this while the photo is at the top */
 a:hover{color:var(--c-pink)}
 .field::placeholder{color:var(--c-lilac-mute)}
 .field:focus{border-color:var(--c-pink) !important;box-shadow:0 0 0 3px rgba(255,159,178,0.3)}
