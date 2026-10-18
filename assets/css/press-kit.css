@@ -6,7 +6,7 @@
 .field option{color:var(--c-navy)}
 
 .btn-solid{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.btn-solid:hover{color:#ffffff}
+.btn-solid:hover{color:var(--c-white)}
 
 @media (prefers-reduced-motion: no-preference){
   @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
@@ -28,7 +28,7 @@
 .mm-link{transition:color .3s ease}
 .mm-link:hover{color:var(--c-gold)}
 
-.qdot[aria-current="true"] span{background:#fff;transform:scale(1.2)}
+.qdot[aria-current="true"] span{background:var(--c-white);transform:scale(1.2)}
 
 /* header v3: one menu bar for both sites */
 .site-sw.is-dj .sw-thumb{grid-column:2}
@@ -59,38 +59,38 @@
 .nav-links a::after{background:var(--c-red)}
 .nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:var(--c-red)}
 .mm-link[aria-current]{color:var(--c-red) !important}
-.hdr-cta:hover,#mobile-menu .btn-solid:hover{color:#ffffff}
+.hdr-cta:hover,#mobile-menu .btn-solid:hover{color:var(--c-white)}
 header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
 /* site switch: a colored dot per site, teal = Evert Groot, red = Absoluut */
 
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
-:root{--acc:var(--c-red);--pop:#2c0739}
+:root{--acc:var(--c-red);--pop:var(--c-purple-deep)}
 
 /* footer: name + socials on top, small legal row below */
 /* page theme: aubergine & red (Absoluut) */
 body{background:var(--c-aubergine)}
 a:hover{color:var(--c-pink)}
-.field::placeholder{color:#b98fc8}
+.field::placeholder{color:var(--c-lilac-mute)}
 .field:focus{border-color:var(--c-pink) !important;box-shadow:0 0 0 3px rgba(255,159,178,0.3)}
 .field option{color:var(--c-aubergine)}
 .mm-link:hover{color:var(--c-pink)}
 
-.hdr-lang a,.mm-lang a{color:#b98fc8}
+.hdr-lang a,.mm-lang a{color:var(--c-lilac-mute)}
 .site-sw a,.site-sw.sw-flip a[aria-current]{color:var(--c-lilac)}
 .site-sw a[aria-current],.site-sw a[aria-current]:hover,.site-sw.sw-flip a:not([aria-current]){color:var(--c-aubergine)}
-.ft2-sub,.ft2-bottom a{color:#efd3f6}
-.ft2-bottom{color:#cba8d8}
+.ft2-sub,.ft2-bottom a{color:var(--c-lilac-foot)}
+.ft2-bottom{color:var(--c-lilac-dim)}
 footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 
 /* end page theme */
 /* page theme: utilitarian press kit */
-body{background:#ffffff}
+body{background:var(--c-white)}
 #bio a:hover,#media a:hover,#rider a:hover{color:var(--c-red)}
 #media,#rider{position:relative}
 /* the only divider between sections: as wide as the text, like every other line on the page */
 #media::before,#rider::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:calc(min(100%, 1360px) - 2 * clamp(20px, 4vw, 48px));height:1px;background:var(--c-line)}
-.ft2-sub,.ft2-bottom a{color:#efd3f6}
-.ft2-bottom{color:#cba8d8}
+.ft2-sub,.ft2-bottom a{color:var(--c-lilac-foot)}
+.ft2-bottom{color:var(--c-lilac-dim)}
 /* end page theme */
 
 /* ---- base ---- */
@@ -101,7 +101,7 @@ body{background:#ffffff}
   header,#mobile-menu,footer,.skip,[data-lang-banner],.cta-fab,#media,[data-copy],#top .gut > p:not(.pdf-only),#top .gut > div,#rider > div > p:last-child,#rider::before,#media::before{display:none !important}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact;animation:none;transition:none}
   .rise{opacity:1;transform:none}
-  html,body,body > div{background:#ffffff}
+  html,body,body > div{background:var(--c-white)}
   a{text-decoration:none !important;color:inherit !important}
   .gut,#rider > div{padding-left:0;padding-right:0;max-width:none}
 
@@ -112,7 +112,7 @@ body{background:#ffffff}
   /* light pink instead of red on the dark band, so the title stays clear on a black-and-white print */
   #top h1 span{color:var(--c-pink)}
   /* the Absoluut pill from the site switch in the header */
-  .pdf-name{order:-1;display:inline-flex;align-items:center;height:32px;margin:0;padding:0 14px;border-radius:999px;background:#ffffff;font-family:'Baloo Bhai 2',sans-serif;font-size:15px;font-weight:700;line-height:1;letter-spacing:-0.01em;color:var(--c-aubergine);white-space:nowrap}
+  .pdf-name{order:-1;display:inline-flex;align-items:center;height:32px;margin:0;padding:0 14px;border-radius:999px;background:var(--c-white);font-family:'Baloo Bhai 2',sans-serif;font-size:15px;font-weight:700;line-height:1;letter-spacing:-0.01em;color:var(--c-aubergine);white-space:nowrap}
   .pdf-name::before{content:"";flex:0 0 auto;width:7px;height:7px;margin-right:7px;border-radius:50%;background:var(--c-red)}
 
   /* section titles */
@@ -120,12 +120,12 @@ body{background:#ffffff}
 
   /* biography: text left, facts right */
   #bio > .gut{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:26px;padding:20px 0 0}
-  #bio-text{font-size:12.5px;line-height:1.45;max-width:none;color:#3d3742}
+  #bio-text{font-size:12.5px;line-height:1.45;max-width:none;color:var(--c-plum-text)}
   #bio-text p{margin:0 0 9px}
   /* short bio under the full one, for promoters who need a quick version */
   #bio-short{margin-top:8px;padding-top:10px;max-width:none;border-top:1px solid var(--c-line)}
   #bio-short h3{margin:0 0 4px;font-size:13px;line-height:1.2}
-  #bio-short-text{font-size:12.5px;line-height:1.45;color:#3d3742}
+  #bio-short-text{font-size:12.5px;line-height:1.45;color:var(--c-plum-text)}
   #bio-short-text p{margin:0}
   #bio dl{margin-top:6px;border-top:1px solid var(--c-line)}
   #bio dl > div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid var(--c-line)}
@@ -138,9 +138,9 @@ body{background:#ffffff}
   #bio dd ul{flex-direction:column;gap:3px}
   #bio dd a.hv-tl{min-height:0;gap:0;font-size:12px;font-weight:700;text-decoration-line:none !important}
   #bio dd a > span[aria-hidden]{display:none}
-  #bio dd a[href*="instagram"]::before{content:"Instagram\00a0\00a0";font-weight:500;color:#6b6470}
-  #bio dd a[href*="tiktok"]::before{content:"TikTok\00a0\00a0";font-weight:500;color:#6b6470}
-  #bio dd a[href*="soundcloud"]::before{content:"SoundCloud\00a0\00a0";font-weight:500;color:#6b6470}
+  #bio dd a[href*="instagram"]::before{content:"Instagram\00a0\00a0";font-weight:500;color:var(--c-mauve-grey)}
+  #bio dd a[href*="tiktok"]::before{content:"TikTok\00a0\00a0";font-weight:500;color:var(--c-mauve-grey)}
+  #bio dd a[href*="soundcloud"]::before{content:"SoundCloud\00a0\00a0";font-weight:500;color:var(--c-mauve-grey)}
 
   /* technical rider */
   #rider{border-top:0 !important;break-before:auto}
@@ -173,7 +173,7 @@ body{background:#ffffff}
 .btn-solid{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease,background-color .25s ease,color .25s ease !important}
 .btn-ghost,.hv-2{transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .25s ease,border-color .25s ease,color .25s ease !important}
 .btn-solid:hover,.btn-solid:focus-visible{box-shadow:0 8px 22px var(--hv-glow)}
-.btn-ghost:hover,.btn-ghost:focus-visible,.hv-2.hv-dk:hover,.hv-2.hv-dk:focus-visible{background-color:rgba(255,255,255,.1) !important;border-color:#ffffff !important;color:#ffffff}
+.btn-ghost:hover,.btn-ghost:focus-visible,.hv-2.hv-dk:hover,.hv-2.hv-dk:focus-visible{background-color:rgba(255,255,255,.1) !important;border-color:var(--c-white) !important;color:var(--c-white)}
 .hv-2.hv-lt:hover,.hv-2.hv-lt:focus-visible{background-color:rgba(22,18,26,.06) !important;border-color:var(--c-plum-ink) !important}
 .hv-tl{text-decoration-line:underline !important;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:4px;transition:color .25s ease,text-decoration-color .25s ease}
 
@@ -320,8 +320,8 @@ body{background:#ffffff}
 .pk-videos{display:grid;gap:16px;margin-bottom:clamp(48px,6vw,80px)}
 .pk-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px}
 .pk-h3{margin:0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(24px,2.4vw,32px);font-weight:800;letter-spacing:-0.02em;color:var(--c-plum-ink)}
-.pk-all{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;border:2px solid var(--c-red);background:var(--c-red);color:#ffffff;text-decoration:none;font-weight:800;font-size:15px}
-.pk-all:hover,.pk-all:focus-visible{color:#ffffff}
+.pk-all{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;border:2px solid var(--c-red);background:var(--c-red);color:var(--c-white);text-decoration:none;font-weight:800;font-size:15px}
+.pk-all:hover,.pk-all:focus-visible{color:var(--c-white)}
 .pk-zip{font-weight:600;opacity:.85;white-space:nowrap}
 .pk-grid{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,24px)}
 @media (max-width:900px){.pk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -331,18 +331,18 @@ body{background:#ffffff}
 @media (hover:hover){.pk-thumb:hover img{transform:scale(1.03)}}
 .pk-thumb:focus-visible{outline:2px solid var(--c-red);outline-offset:3px}
 /* the larger preview: full-screen, the photo as big as fits, the download and arrows underneath */
-.pk-box{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:rgba(22,6,28,.94);color:#ffffff;font-family:'Manrope',system-ui,sans-serif}
+.pk-box{width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:rgba(22,6,28,.94);color:var(--c-white);font-family:'Manrope',system-ui,sans-serif}
 .pk-box::backdrop{background:rgba(22,6,28,.94)}
 .pk-box[open]{display:grid;grid-template-rows:minmax(0,1fr) auto}
 .pk-stage{display:grid;place-items:center;min-height:0;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px))}
 .pk-big{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
 .pk-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding:12px max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .pk-box-cap{margin:0;display:grid;gap:2px;font-size:14px;color:rgba(255,255,255,.8);min-width:0}
-.pk-box-cap b{font-weight:700;color:#ffffff}
+.pk-box-cap b{font-weight:700;color:var(--c-white)}
 .pk-box-acts{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
-.pk-ico{display:grid;place-items:center;width:48px;height:48px;padding:0;border:1.5px solid rgba(255,255,255,.45);border-radius:50%;background:none;color:#ffffff;font:800 20px/1 'Manrope',sans-serif;cursor:pointer}
-.pk-ico:hover{border-color:#ffffff;background:rgba(255,255,255,.08)}
-.pk-ico:focus-visible,.pk-box .pk-all:focus-visible{outline:2px solid #ffffff;outline-offset:3px}
+.pk-ico{display:grid;place-items:center;width:48px;height:48px;padding:0;border:1.5px solid rgba(255,255,255,.45);border-radius:50%;background:none;color:var(--c-white);font:800 20px/1 'Manrope',sans-serif;cursor:pointer}
+.pk-ico:hover{border-color:var(--c-white);background:rgba(255,255,255,.08)}
+.pk-ico:focus-visible,.pk-box .pk-all:focus-visible{outline:2px solid var(--c-white);outline-offset:3px}
 .pk-count{min-width:44px;text-align:center;font-size:14px;color:rgba(255,255,255,.75);font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.pk-thumb img{transition:none}.pk-thumb:hover img{transform:none}}
 .pk-close{position:absolute;top:max(12px,env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));z-index:1;background:rgba(22,6,28,.6)}
@@ -364,14 +364,14 @@ body{background:#ffffff}
 .pk-vid{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:999px;border:2px solid var(--c-plum-ink);background:transparent;color:var(--c-plum-ink);text-decoration:none;font-size:15px;font-weight:800;white-space:nowrap}
 .pk-vid:hover,.pk-vid:focus-visible{color:var(--c-plum-ink)}
 /* the red ZIP button stays red on hover (a shade deeper), unlike the outlined buttons that lighten */
-.pk-all.hv-2:hover,.pk-all.hv-2:focus-visible{background-color:var(--c-red-deep) !important;border-color:var(--c-red-deep) !important;color:#ffffff !important}
+.pk-all.hv-2:hover,.pk-all.hv-2:focus-visible{background-color:var(--c-red-deep) !important;border-color:var(--c-red-deep) !important;color:var(--c-white) !important}
 /* preview layout: an opaque backdrop (no page showing through); the photo box fills the free space and the photo
    is fitted inside it, so it never runs under the controls; one tidy row of controls underneath */
 .pk-box,.pk-box::backdrop{background:var(--c-tile-dark)}
 .pk-stage{position:relative;padding:0}
 .pk-big{position:absolute;top:max(72px,env(safe-area-inset-top,0px));left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:8px;width:calc(100% - 32px);height:calc(100% - 80px);max-width:none;max-height:none;margin:auto;object-fit:contain;border-radius:0;box-shadow:none}
 .pk-bar{flex-direction:row;align-items:center;justify-content:space-between}
-.pk-box-cap{display:flex;align-items:baseline;gap:12px;color:#ffffff;font-weight:700}
+.pk-box-cap{display:flex;align-items:baseline;gap:12px;color:var(--c-white);font-weight:700}
 .pk-box-cap .pk-count{min-width:0;font-weight:600}
 .pk-box-acts{flex-wrap:nowrap}
 .pk-box .pk-full{justify-content:center;min-width:150px}
@@ -394,8 +394,8 @@ body{background:#ffffff}
 .hv-r{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 8h11M8.5 3.5 13 8l-4.5 4.5'/%3E%3C/svg%3E")}
 /* Booking: one sentence under the hero buttons, in the same voice as the rider's "Questions about the setup?" */
 .pk-booking{margin:clamp(22px,2.6vw,32px) 0 0;font-size:16px;color:var(--c-lilac-soft)}
-.pk-mail{font-weight:800;color:#ffffff;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.4)}
-.pk-mail:hover,.pk-mail:focus-visible{color:#ffffff;text-decoration-color:#ffffff}
+.pk-mail{font-weight:800;color:var(--c-white);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.4)}
+.pk-mail:hover,.pk-mail:focus-visible{color:var(--c-white);text-decoration-color:var(--c-white)}
 
 /* Mixes: last in Media, after Videos; each row opens the set on SoundCloud */
 .pk-mixes{display:grid;gap:20px}
@@ -413,7 +413,7 @@ body{background:#ffffff}
 /* in the PDF there is no link to click, so the header band shows the address itself */
 @media print{
   #top .gut > p.pk-pdf-src{display:block !important;margin:0 0 0 auto;font-size:12px;font-weight:800} /* where this file comes from */
-  #top .pk-pdf-src a{color:#ffffff !important;text-decoration:none}
+  #top .pk-pdf-src a{color:var(--c-white) !important;text-decoration:none}
 }
 /* phones: the duration moves under the title, so titles get the full width */
 @media (max-width:760px){
@@ -432,7 +432,7 @@ body{background:#ffffff}
 .cta-fab{display:none !important}
 /* PDF only: where to find the photos, videos and mixes that the printout leaves out */
 @media print{
-  #rider .pk-pdf-rider-q{display:block !important;grid-column:2;grid-row:1;align-self:end;margin:0 0 3px;padding:0 0 0 14px;font-size:12.5px;letter-spacing:0;color:#3d3742}
+  #rider .pk-pdf-rider-q{display:block !important;grid-column:2;grid-row:1;align-self:end;margin:0 0 3px;padding:0 0 0 14px;font-size:12.5px;letter-spacing:0;color:var(--c-plum-text)}
   #rider .pk-pdf-rider-q a{font-weight:800;color:var(--c-plum-ink) !important;text-decoration:none}
   #bio dt{font-size:13px !important;line-height:1.2;letter-spacing:0 !important;text-transform:none !important;color:var(--c-plum-ink) !important} /* same heading as Short Bio, as on screen */
   #bio .p-bio-dl{padding-top:5px !important} /* + the 5px row padding = 10px under the line, as for Short Bio */
@@ -444,7 +444,7 @@ body{background:#ffffff}
   #bio .pk-pdf-zip{display:block !important;margin:20px 0 0}
   #bio .pk-pdf-vid{margin:8px 0 16px}
   #bio .pk-pdf-vid:has(+ .pk-pdf-zip){margin-bottom:0} /* the logo button follows: 8px between buttons, 16px after the last */ /* the two download buttons sit together, the photo 16px below */ /* looks the same above and below: the links' text runs ~7px past their line box */
-  .pk-pdf-zip a{display:block;height:30px;padding:0 10px;border:1.5px solid var(--c-red);border-radius:999px;background:var(--c-red);color:#ffffff !important;text-decoration:none;text-align:center;font-size:11.5px;line-height:27px;font-weight:800;white-space:nowrap} /* one line box: label and its note share a baseline */
+  .pk-pdf-zip a{display:block;height:30px;padding:0 10px;border:1.5px solid var(--c-red);border-radius:999px;background:var(--c-red);color:var(--c-white) !important;text-decoration:none;text-align:center;font-size:11.5px;line-height:27px;font-weight:800;white-space:nowrap} /* one line box: label and its note share a baseline */
   .pk-pdf-zip span{margin-left:6px;font-size:11px;font-weight:600;opacity:.85}
   .pk-pdf-vid a{border-color:var(--c-plum-ink);background:transparent;color:var(--c-plum-ink) !important} /* as on the page: photos red, Google Drive outlined */
 }
@@ -452,9 +452,9 @@ body{background:#ffffff}
    bottom right (clear of the face), while a tap anywhere else opens the larger preview */
 .pk-photos .pk-note{margin:0 0 -8px;font-size:14px;color:var(--c-body-grey)} /* under the photos, right above the ZIP button it describes */
 .pk-item{position:relative}
-.pk-dl{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px 0 14px;border-radius:999px;background:var(--c-overlay);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#ffffff;text-decoration:none;font-size:14px;font-weight:800;transition:background-color .25s ease}
+.pk-dl{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px 0 14px;border-radius:999px;background:var(--c-overlay);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--c-white);text-decoration:none;font-size:14px;font-weight:800;transition:background-color .25s ease}
 .pk-dl:hover,.pk-dl:focus-visible{background:var(--c-overlay-strong)}
-.pk-dl:focus-visible{outline:2px solid #ffffff;outline-offset:2px}
+.pk-dl:focus-visible{outline:2px solid var(--c-white);outline-offset:2px}
 .pk-dl .hv-ar{margin-left:.4em}
 /* photo overlay Download: word and arrow turn pink together on hover; like every button, only the arrow moves */
 .pk-dl{transition:background-color .25s ease,color .25s ease}
@@ -564,11 +564,11 @@ body{background:#ffffff}
 .pk-fmt input{position:absolute;top:-3px;right:0;bottom:-3px;left:0;width:100%;margin:0;opacity:0;cursor:pointer} /* 44px tap area: the radio reaches past the chip */
 .pk-fmt span{display:inline-flex;align-items:center;min-height:38px;padding:0 11px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.04em;transition:background-color .2s ease,color .2s ease}
 .pk-logo-art .pk-fmt span{color:rgba(255,255,255,.8)}
-.pk-logo-art .pk-fmt label:hover span{color:#ffffff}
+.pk-logo-art .pk-fmt label:hover span{color:var(--c-white)}
 .pk-logo-art .pk-fmt input:checked + span{background:transparent;color:var(--c-plum-ink)} /* the thumb shows the choice */
-.pk-fmt input:focus-visible + span{outline:2px solid #ffffff;outline-offset:2px}
+.pk-fmt input:focus-visible + span{outline:2px solid var(--c-white);outline-offset:2px}
 /* the thumb glides to the chosen option and can be dragged, like the site switch in the header */
-.pk-fmt-thumb{position:absolute;top:3px;left:0;bottom:3px;width:0;border-radius:999px;background:#ffffff;pointer-events:none}
+.pk-fmt-thumb{position:absolute;top:3px;left:0;bottom:3px;width:0;border-radius:999px;background:var(--c-white);pointer-events:none}
 .pk-fmt-ready .pk-fmt-thumb{transition:transform .45s cubic-bezier(.3,.7,.2,1),width .45s cubic-bezier(.3,.7,.2,1),background-color .2s ease}
 .pk-fmt-drag .pk-fmt-thumb{transition:none}
 .pk-fmt-drag{cursor:grabbing}
@@ -577,7 +577,7 @@ body{background:#ffffff}
 /* Download on the tile: the photo-overlay pill */
 .pk-logo-light .pk-dl{background:var(--c-overlay);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .pk-logo-light .pk-dl:hover,.pk-logo-light .pk-dl:focus-visible{background:var(--c-overlay-strong)}
-.pk-logo-dark .pk-dl{background:rgba(255,255,255,.14);color:#ffffff !important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.pk-logo-dark .pk-dl{background:rgba(255,255,255,.14);color:var(--c-white) !important;-webkit-backdrop-filter:none;backdrop-filter:none}
 .pk-logo-dark .pk-dl:hover,.pk-logo-dark .pk-dl:focus-visible{background:rgba(255,255,255,.24);color:var(--c-pink) !important}
 
 /* wide screens: the tile spans the first two photo columns; text and Download All Logos in the right half */
