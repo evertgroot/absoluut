@@ -159,6 +159,10 @@
         else if (opener && !opener.hidden) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
       };
       menuBtn.addEventListener('click', function () { setMenu(menu.hidden, menuBtn); });
+      /* the menu is a card under the bar: a tap anywhere outside it closes it */
+      document.addEventListener('click', function (e) {
+        if (!menu.hidden && !menu.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false);
+      });
       menu.querySelectorAll('a, [data-close]').forEach(function (el) {
         el.addEventListener('click', function () {
           if (menu.hidden) return;
