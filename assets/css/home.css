@@ -860,6 +860,8 @@ div:has(> main.cs-bops){overflow-x:clip}
 .h-contact-form-input{display: none}
 .h-contact-form-label{display: flex;flex-direction: column;gap: 8px;font-size: 15px;font-weight: 700;color: var(--c-grey-pale)}
 .h-contact-form-select.h-contact-form-select.h-contact-form-select{width: 100%;min-height: 56px;padding: 0 16px;border: 1.5px solid rgba(255,255,255,0.3);border-radius: 12px;background: rgba(255,255,255,0.06);color: var(--c-white);font: inherit;font-size: 16px;font-weight: 500}
+/* native select: same box as the text fields on every browser (iOS Safari otherwise draws its own short grey control), with a visible chevron */
+select.h-contact-form-select.h-contact-form-select.h-contact-form-select{-webkit-appearance:none;appearance:none;height:56px;padding-right:48px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23ffffff' stroke-opacity='.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 18px center/14px 8px,rgba(255,255,255,0.06)}
 .h-contact-form-div{display: flex;flex-wrap: wrap;gap: 18px}
 .h-contact-form-label-2{flex: 1 1 200px;display: flex;flex-direction: column;gap: 8px;font-size: 15px;font-weight: 700;color: var(--c-grey-pale)}
 .h-contact-form-span{font-weight: 500;color: var(--c-grey)}
