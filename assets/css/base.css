@@ -171,13 +171,12 @@ html #mobile-menu .mm-link:last-child{border-bottom:0}
 html #mobile-menu > :last-child{flex-direction:column;align-items:stretch;margin-top:0;padding-top:22px;gap:6px}
 html #mobile-menu .mm-lang{order:1;justify-content:center;margin:0}
 @media (prefers-reduced-motion:reduce){html #mobile-menu{animation:none}}
-/* the bar after scrolling: a floating glass capsule (desktop and phone), the same family as the menu card.
+/* desktop: the bar after scrolling is a floating glass capsule, the same family as the menu card.
    "html" plus !important outranks the slim-bar rules site.js injects. */
 header:is(.d-page-header,.p-page-header){--cap-bg:rgba(31,3,40,.88)}
 header.v-page-header{--cap-bg:rgba(18,18,18,.88)}
 body:has(main.cs-bops) header{--cap-bg:rgba(23,21,95,.88)}
 html header.hdr-stuck{left:max(10px,calc((100% - 1360px) / 2)) !important;right:max(10px,calc((100% - 1360px) / 2)) !important;top:calc(10px + env(safe-area-inset-top,0px)) !important;padding:7px 8px !important;border:1px solid rgba(255,255,255,.14) !important;border-radius:999px;background:var(--cap-bg,rgba(11,11,12,.86)) !important;-webkit-backdrop-filter:blur(22px) saturate(1.4);backdrop-filter:blur(22px) saturate(1.4);box-shadow:0 14px 40px rgba(0,0,0,.35) !important}
-@media (max-width:1060px){html header.hdr-stuck.hdr-hide{transform:translateY(calc(-100% - 90px))}}
 /* grey language links stay readable when the glass sits over a light section (home, case pages, privacy) */
 html header.hdr-stuck:not(.d-page-header,.p-page-header) .hdr-lang a:not([aria-current]),html #mobile-menu:not(.d-page-div-4,.p-page-div-3) .mm-lang a:not([aria-current]){color:var(--c-grey)}
 /* desktop: links centred, both ends of the bar are pills (site switch left, button right) */
@@ -187,11 +186,24 @@ html header.hdr-stuck:not(.d-page-header,.p-page-header) .hdr-lang a:not([aria-c
   html header .hdr-right .hdr-lang{order:-2}
   html header .hdr-right .hdr-sep{order:-1}
 }
-/* phone: content scrolling under the floating capsule fades into a soft blur at the top edge (like iOS 26), instead of
-   showing a sharp, cut-off line in the gap above the capsule; inside the capsule the site switch drops its own ring */
+/* inside the capsule the site switch drops its own ring */
 html header.hdr-stuck .site-sw{border-color:transparent}
+/* phone/tablet: the menu button joins the floating call to action at the bottom right; the menu card unfolds upwards from it */
+.mcluster{display:none}
 @media (max-width:1060px){
-  body::before{content:"";position:fixed;left:0;right:0;top:0;z-index:49;height:calc(96px + env(safe-area-inset-top,0px));pointer-events:none;background:inherit;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);-webkit-mask-image:linear-gradient(#000 calc(10px + env(safe-area-inset-top,0px)),rgba(0,0,0,.6) 55%,transparent);mask-image:linear-gradient(#000 calc(10px + env(safe-area-inset-top,0px)),rgba(0,0,0,.6) 55%,transparent);opacity:0;transition:opacity .25s ease}
-  html.bar-on body::before{opacity:1}
+  :root{--glass-m:rgba(11,11,12,.8)}
+  body:has(.d-page-header,.p-page-header){--glass-m:rgba(31,3,40,.82)}
+  .mcluster{position:fixed;right:max(clamp(20px, 4vw, 48px),env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:55;display:flex;align-items:center;gap:8px}
+  .mcluster[hidden]{display:none}
+  .mcluster .cta-fab{position:static}
+  .mcluster .mm-fab{order:2} /* the menu button keeps the corner, under the top bar's menu button; the call to action comes and goes beside it */
+  .mm-fab{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;padding:0;border-radius:999px;color:var(--c-white);background:var(--glass-m);border:1px solid rgba(255,255,255,.18);-webkit-backdrop-filter:blur(22px) saturate(1.4);backdrop-filter:blur(22px) saturate(1.4);box-shadow:0 10px 28px rgba(0,0,0,.35);cursor:pointer;animation:fab-in .25s ease both}
+  .mm-fab:focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
+  html #mobile-menu.from-fab{inset:auto max(clamp(20px, 4vw, 48px),env(safe-area-inset-right,0px)) calc(80px + env(safe-area-inset-bottom,0px)) auto;width:min(440px,calc(100% - 2 * clamp(20px, 4vw, 48px)));max-height:calc(100dvh - 100px);transform-origin:bottom right;animation-name:mm-rise}
+  /* the call to action already floats right below the menu button: no second copy in the card */
+  html #mobile-menu.cta-below .btn-solid{display:none}
+  body:has(#mobile-menu.from-fab:not([hidden])) .mcluster{z-index:61}
+  html #mobile-menu.cta-below > :last-child{padding-top:16px}
+  @keyframes mm-rise{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
 }
-@media (prefers-reduced-motion:reduce){body::before{transition:none}}
+@media (max-width:1060px) and (prefers-reduced-motion:reduce){.mm-fab{animation:none}}
