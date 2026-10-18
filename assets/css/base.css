@@ -157,53 +157,44 @@ a:hover{color:var(--c-gold)}
 @media (min-width: 641px){
   .ft2-bottom a{display:inline-flex;align-items:center;min-height:44px;margin-block:-11px;margin-block:calc((1lh - 44px) / 2)}
 }
-/* mobile menu: a compact frosted card that drops down under the bar (the page stays visible around it).
-   Three groups: site switch + close, the section links, then the main button with the language choice below it.
+/* mobile menu: a solid panel that slides in from the right over the dimmed page.
+   Top: site switch + close; then the section links; at the bottom (thumb reach) the main button with the language choice.
    "html" in the selectors outranks the older full-screen rules in the page stylesheets. */
 #mobile-menu{--mm-bg:var(--c-ink)}
 #mobile-menu:is(.d-page-div-4,.p-page-div-3){--mm-bg:var(--c-aubergine)}
-@keyframes mm-drop{from{opacity:0;transform:translateY(-12px) scale(.98)}to{opacity:1;transform:none}}
-html #mobile-menu{inset:max(10px,env(safe-area-inset-top,0px)) max(10px,env(safe-area-inset-right,0px)) auto auto;width:min(440px,calc(100% - 20px));max-height:calc(100dvh - 20px);padding:18px;border-radius:28px;background:color-mix(in srgb,var(--mm-bg) 86%,transparent);-webkit-backdrop-filter:blur(22px) saturate(1.4);backdrop-filter:blur(22px) saturate(1.4);border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 100vmax rgba(0,0,0,.35);animation:mm-drop .28s cubic-bezier(.16,1,.3,1) both;transform-origin:top right}
-html #mobile-menu > nav{margin-top:0;padding-top:10px}
-html #mobile-menu .mm-link{display:flex !important;align-items:center;padding:12px 2px;font-family:Manrope,sans-serif;font-size:19px;font-weight:700;letter-spacing:-.01em;line-height:1.2;border-bottom:1px solid rgba(255,255,255,.1)}
+@keyframes mm-slide{from{transform:translateX(100%)}to{transform:none}}
+html #mobile-menu{inset:0 0 0 auto;width:min(400px,calc(100% - 40px));max-height:none;padding:calc(22px + env(safe-area-inset-top,0px)) max(22px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) 22px;border-radius:0;background:var(--mm-bg);border-left:1px solid rgba(255,255,255,.08);box-shadow:0 0 0 100vmax rgba(0,0,0,.5);overflow-y:auto;animation:mm-slide .32s cubic-bezier(.16,1,.3,1) both}
+html #mobile-menu > :first-child{flex-wrap:wrap}
+html #mobile-menu > nav{margin-top:0;padding-top:28px}
+html #mobile-menu .mm-link{display:flex !important;align-items:center;padding:14px 2px;font-family:Manrope,sans-serif;font-size:20px;font-weight:700;letter-spacing:-.01em;line-height:1.2;border-bottom:1px solid rgba(255,255,255,.1)}
 html #mobile-menu .mm-link[aria-current]{color:var(--c-white) !important;text-decoration:underline;text-decoration-color:var(--hv-acc);text-decoration-thickness:2px;text-underline-offset:8px}
 html #mobile-menu .mm-link:last-child{border-bottom:0}
-html #mobile-menu > :last-child{flex-direction:column;align-items:stretch;margin-top:0;padding-top:22px;gap:6px}
+html #mobile-menu > :last-child{flex-direction:column;align-items:stretch;margin-top:auto;padding-top:28px;gap:10px}
 html #mobile-menu .mm-lang{order:1;justify-content:center;margin:0}
 @media (prefers-reduced-motion:reduce){html #mobile-menu{animation:none}}
-/* desktop: the bar after scrolling is a floating glass capsule, the same family as the menu card.
-   "html" plus !important outranks the slim-bar rules site.js injects. */
-header:is(.d-page-header,.p-page-header){--cap-bg:rgba(31,3,40,.88)}
-header.v-page-header{--cap-bg:rgba(18,18,18,.88)}
-body:has(main.cs-bops) header{--cap-bg:rgba(23,21,95,.88)}
-html header.hdr-stuck{left:max(10px,calc((100% - 1360px) / 2)) !important;right:max(10px,calc((100% - 1360px) / 2)) !important;top:calc(10px + env(safe-area-inset-top,0px)) !important;padding:7px 8px !important;border:1px solid rgba(255,255,255,.14) !important;border-radius:999px;background:var(--cap-bg,rgba(11,11,12,.86)) !important;-webkit-backdrop-filter:blur(22px) saturate(1.4);backdrop-filter:blur(22px) saturate(1.4);box-shadow:0 14px 40px rgba(0,0,0,.35) !important}
-/* grey language links stay readable when the glass sits over a light section (home, case pages, privacy) */
-html header.hdr-stuck:not(.d-page-header,.p-page-header) .hdr-lang a:not([aria-current]),html #mobile-menu:not(.d-page-div-4,.p-page-div-3) .mm-lang a:not([aria-current]){color:var(--c-grey)}
-/* desktop: links centred, both ends of the bar are pills (site switch left, button right) */
+/* desktop: the bar is always there (sticky). Transparent over the top of the hero, a solid full-width bar as soon as the page scrolls. */
+header{--bar-bg:var(--c-ink)}
+header:is(.d-page-header,.p-page-header){--bar-bg:var(--c-aubergine)}
+header.v-page-header{--bar-bg:#121212}
+body:has(main.cs-bops) header{--bar-bg:#17155f}
 @media (min-width:1061px){
+  html header:is(.h-page-header,.d-page-header,.p-page-header,.v-page-header){position:fixed;transition:background-color .25s ease,padding .25s ease,box-shadow .25s ease}
+  html header.hdr-stuck{background:var(--bar-bg) !important;animation:none !important}
+  /* links centred; the bar ends on the button (languages before it) */
   html header{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) !important}
   html header .nav-links{justify-self:center}
   html header .hdr-right .hdr-lang{order:-2}
   html header .hdr-right .hdr-sep{order:-1}
 }
-/* inside the capsule the site switch drops its own ring */
-html header.hdr-stuck .site-sw{border-color:transparent}
-/* phone/tablet: the menu button joins the floating call to action at the bottom right; the menu card unfolds upwards from it */
+/* phone/tablet: once the top bar has scrolled away, the menu button sits next to the floating call to action at the bottom right */
 .mcluster{display:none}
 @media (max-width:1060px){
-  :root{--glass-m:rgba(11,11,12,.8)}
-  body:has(.d-page-header,.p-page-header){--glass-m:rgba(31,3,40,.82)}
   .mcluster{position:fixed;right:max(clamp(20px, 4vw, 48px),env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:55;display:flex;align-items:center;gap:8px}
   .mcluster[hidden]{display:none}
   .mcluster .cta-fab{position:static}
   .mcluster .mm-fab{order:2} /* the menu button keeps the corner, under the top bar's menu button; the call to action comes and goes beside it */
-  .mm-fab{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;padding:0;border-radius:999px;color:var(--c-white);background:var(--glass-m);border:1px solid rgba(255,255,255,.18);-webkit-backdrop-filter:blur(22px) saturate(1.4);backdrop-filter:blur(22px) saturate(1.4);box-shadow:0 10px 28px rgba(0,0,0,.35);cursor:pointer;animation:fab-in .25s ease both}
+  .mm-fab{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;padding:0;border-radius:999px;color:var(--c-white);background:var(--c-ink);border:1px solid rgba(255,255,255,.22);box-shadow:0 10px 28px rgba(0,0,0,.35);cursor:pointer;animation:fab-in .25s ease both}
+  body:has(.d-page-header,.p-page-header) .mm-fab{background:var(--c-aubergine)}
   .mm-fab:focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
-  html #mobile-menu.from-fab{inset:auto max(clamp(20px, 4vw, 48px),env(safe-area-inset-right,0px)) calc(80px + env(safe-area-inset-bottom,0px)) auto;width:min(440px,calc(100% - 2 * clamp(20px, 4vw, 48px)));max-height:calc(100dvh - 100px);transform-origin:bottom right;animation-name:mm-rise}
-  /* the call to action already floats right below the menu button: no second copy in the card */
-  html #mobile-menu.cta-below .btn-solid{display:none}
-  body:has(#mobile-menu.from-fab:not([hidden])) .mcluster{z-index:61}
-  html #mobile-menu.cta-below > :last-child{padding-top:16px}
-  @keyframes mm-rise{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
 }
 @media (max-width:1060px) and (prefers-reduced-motion:reduce){.mm-fab{animation:none}}
