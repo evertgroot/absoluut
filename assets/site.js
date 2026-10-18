@@ -145,6 +145,7 @@
         for (var node = menu; node && node !== document.body; node = node.parentNode) {
           [].forEach.call(node.parentNode.children, function (sib) {
             if (sib === node || sib.tagName === 'SCRIPT' || sib.tagName === 'STYLE') return;
+            if (sib === mcl && menu.classList.contains('from-fab')) { sib.removeAttribute('inert'); return; } /* the floating buttons stay usable below a menu opened from them */
             if (on) sib.setAttribute('inert', ''); else sib.removeAttribute('inert');
           });
         }
@@ -169,8 +170,8 @@
       var mfab = document.createElement('button'); mfab.type = 'button'; mfab.className = 'mm-fab';
       mfab.setAttribute('aria-label', menuBtn.getAttribute('aria-label') || 'Menu'); mfab.setAttribute('aria-controls', 'mobile-menu');
       mfab.innerHTML = menuBtn.innerHTML;
-      mfab.addEventListener('click', function (e) { e.stopPropagation(); menu.classList.add('from-fab'); setMenu(menu.hidden, mfab); });
-      menuBtn.addEventListener('click', function () { menu.classList.remove('from-fab'); });
+      mfab.addEventListener('click', function (e) { e.stopPropagation(); menu.classList.add('from-fab'); menu.classList.toggle('cta-below', !fab.hidden && !!fab.offsetWidth); setMenu(menu.hidden, mfab); });
+      menuBtn.addEventListener('click', function () { menu.classList.remove('from-fab', 'cta-below'); });
       if (fab.parentNode) { fab.parentNode.insertBefore(mcl, fab); mcl.appendChild(mfab); mcl.appendChild(fab); }
       else { document.body.appendChild(mcl); mcl.appendChild(mfab); }
       menu.querySelectorAll('a, [data-close]').forEach(function (el) {
