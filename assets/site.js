@@ -154,6 +154,15 @@
         else if (opener && !opener.hidden) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
       };
       menuBtn.addEventListener('click', function () { setMenu(menu.hidden, menuBtn); });
+      /* keyboard focus never ends up hidden behind the fixed bar (WCAG 2.4.11): nudge the page down just enough */
+      document.addEventListener('focusin', function (e) {
+        var t = e.target;
+        if (!t || !t.getBoundingClientRect || header.contains(t) || menu.contains(t)) return;
+        setTimeout(function () { /* after the browser's own scroll-into-view */
+          var bar = header.getBoundingClientRect().bottom, r = t.getBoundingClientRect();
+          if (r.top < bar + 8 && r.bottom > 0) window.scrollBy(0, r.top - bar - 16);
+        }, 0);
+      });
       /* a tap anywhere outside the panel closes it */
       document.addEventListener('click', function (e) {
         if (!menu.hidden && !menu.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false);

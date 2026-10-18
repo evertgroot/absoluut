@@ -225,7 +225,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .mix:hover,.mix:focus-visible{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.34);color:var(--c-white)}
 .mix:focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
 .mix-k{display:block;font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-blush)}
-.mix h3{margin:10px 0 0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(26px,2.4vw,34px);line-height:1.02;letter-spacing:-0.025em;font-weight:800}
+.mix h4{margin:10px 0 0;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(26px,2.4vw,34px);line-height:1.02;letter-spacing:-0.025em;font-weight:800}
 .mix-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.2);font-size:15px;font-weight:800}
 .mix-foot > span:first-child{display:inline-flex;align-items:center;gap:12px}
 .mix-play{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;border-radius:999px;background:var(--c-red);color:var(--c-white);transition:transform .25s cubic-bezier(.2,.7,.2,1)}
@@ -249,7 +249,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .mix > div:not(.mix-foot){padding:20px clamp(20px,2.2vw,28px) 0}
 .mix-foot{margin:20px clamp(20px,2.2vw,28px) clamp(20px,2.2vw,26px)}
 @media (hover:hover){.mix:hover .mix-art{transform:scale(1.03)}}
-@media (max-width: 760px){.mix{display:grid;grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto auto;gap:0 16px;padding:14px;min-height:0}.mix-art{grid-row:1 / span 2;border-radius:12px;align-self:start}.mix > div:not(.mix-foot){padding:0}.mix-foot{grid-column:2;margin:12px 0 0;padding-top:12px}.mix h3{font-size:22px}.mix-foot > span:first-child > span:not(.mix-play){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}}
+@media (max-width: 760px){.mix{display:grid;grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto auto;gap:0 16px;padding:14px;min-height:0}.mix-art{grid-row:1 / span 2;border-radius:12px;align-self:start}.mix > div:not(.mix-foot){padding:0}.mix-foot{grid-column:2;margin:12px 0 0;padding-top:12px}.mix h4{font-size:22px}.mix-foot > span:first-child > span:not(.mix-play){position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}}
 @media (prefers-reduced-motion: reduce){.mix-art{transition:none}.mix:hover .mix-art{transform:none}}
 /* four listen cards: one row on wide screens, two by two in between */
 /* three mixes: one row of three from tablet width up */
