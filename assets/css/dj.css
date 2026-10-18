@@ -101,7 +101,6 @@
 .nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:var(--c-red)}
 .mm-link[aria-current]{color:var(--c-red) !important}
 .hdr-cta:hover,#mobile-menu .btn-solid:hover{color:var(--c-white)}
-header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
 /* site switch: a colored dot per site, teal = Evert Groot, red = Absoluut */
 
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */

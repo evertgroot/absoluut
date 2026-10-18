@@ -83,7 +83,6 @@
 .nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:var(--c-teal)}
 .mm-link[aria-current]{color:var(--c-teal) !important}
 .hdr-cta:hover,#mobile-menu .btn-solid:hover{color:var(--c-ink)}
-header.hdr-stuck{background:rgba(11,11,12,0.94) !important}
 /* site switch: a colored dot per site, teal = Evert Groot, red = Absoluut */
 
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
@@ -567,7 +566,6 @@ body:has(main.cs-bops),div:has(> main.cs-bops){background:var(--c-cream)}
 .cs-bops :focus-visible{outline-color:var(--bops-ink)}
 .cs-bops .cs-hero :focus-visible{outline-color:var(--c-teal)}
 .cs-bops div.cs-close:has(+ .cs-form:not([hidden])){border-bottom:0}
-body:has(main.cs-bops) header.hdr-stuck{background:rgba(23,21,95,.94) !important}
 /* case video: pause/play button, top right */
 .cs-ad-toggle{position:absolute;top:10px;right:10px;z-index:1;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:999px;background:rgba(11,11,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--c-white);cursor:pointer;transition:background .2s,color .2s}
 .cs-ad-toggle:hover{background:var(--c-white);color:var(--c-ink)}
