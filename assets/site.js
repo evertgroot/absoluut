@@ -118,7 +118,7 @@
 
   /* 1b2. Mobile menu, plus a way forward after scrolling:
      desktop - the header stays at the top (sticky) and turns into a solid bar as soon as the page scrolls;
-     mobile  - the menu button stays fixed at the top right; the page's main call to action (contact or booking)
+     mobile  - the top bar (site switch + menu button) stays at the top too; the page's main call to action (contact or booking)
                floats at the bottom right once the hero's own button is gone, stepping aside at the form and footer */
   var menuBtn = document.querySelector('.menu-btn');
   var menu = document.getElementById('mobile-menu');
@@ -224,7 +224,7 @@
         fab.style.color = cs.color;
       }
       fab.hidden = !show;
-      document.documentElement.classList.toggle('m-scrolled', mobile && y > 30); /* phone: the fixed menu button gets a solid backdrop */
+      document.documentElement.classList.toggle('m-scrolled', mobile && y > 8); /* phone: the fixed top bar gets its solid background */
     };
     /* the hero's own button: while it is fully on screen the header leaves its copy out (CSS),
        and the floating button waits until it has scrolled away */
@@ -250,7 +250,7 @@
     var tintQueued = false;
     var tint = function () {
       tintQueued = false;
-      document.documentElement.classList.toggle('hero-top', heroPhoto.getBoundingClientRect().bottom > 80 && !(header && header.classList.contains('hdr-stuck')));
+      document.documentElement.classList.toggle('hero-top', heroPhoto.getBoundingClientRect().bottom > 80 && !(header && header.classList.contains('hdr-stuck')) && !document.documentElement.classList.contains('m-scrolled'));
     };
     tint();
     window.addEventListener('scroll', function () { if (!tintQueued) { tintQueued = true; requestAnimationFrame(tint); } }, { passive: true });

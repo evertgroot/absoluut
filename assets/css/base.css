@@ -189,9 +189,15 @@ body:has(main.cs-bops) header{--bar-bg:#17155f}
   html header .hdr-right .hdr-lang{order:-2}
   html header .hdr-right .hdr-sep{order:-1}
 }
-/* phone/tablet: the menu button stays fixed at the top right; once the page scrolls it gets a solid backdrop */
+/* phone/tablet: the top bar (site switch left, menu button right) stays where it is while the page scrolls;
+   once the page scrolls it gets a solid background in the page colour. Same height and position in both states. */
 @media (max-width:1060px){
-  html header .menu-btn{position:fixed;top:calc(26px + env(safe-area-inset-top,0px));right:max(clamp(20px, 4vw, 48px),env(safe-area-inset-right,0px));z-index:56;transition:background-color .25s ease,box-shadow .25s ease}
-  html.m-scrolled header .menu-btn{background:var(--bar-bg);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+  html header:is(.h-page-header,.d-page-header,.p-page-header,.v-page-header){position:fixed;z-index:50;border-bottom:1px solid transparent;transition:background-color .3s ease,box-shadow .3s ease,border-color .3s ease}
+  html.m-scrolled header:is(.h-page-header,.d-page-header,.p-page-header,.v-page-header){background:var(--bar-bg);border-bottom-color:rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  section[id]{scroll-margin-top:104px} /* jumping to a section lands below the bar */
+  /* the panel from the right: no site switch (it stays in the bar); the close button sits exactly over the menu button */
+  html #mobile-menu{padding-top:calc(26px + env(safe-area-inset-top,0px));padding-right:max(clamp(20px, 4vw, 48px),env(safe-area-inset-right,0px))}
+  html #mobile-menu .site-sw{display:none}
+  html #mobile-menu > :first-child{justify-content:flex-end}
   html .cta-fab{right:max(clamp(20px, 4vw, 48px),env(safe-area-inset-right,0px))} /* same right edge as the menu button above it */
 }
