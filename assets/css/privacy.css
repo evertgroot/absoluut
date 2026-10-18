@@ -10,25 +10,25 @@ header.hdr-stuck{background:rgba(31,3,40,0.94) !important}
 /* site switch: a colored dot per site, teal = Evert Groot, red = Absoluut */
 
 /* corner radius scale: fully round = clickable (buttons, pill, chips) · 20px = content (cards, photos, tiles) · 12px = small UI (fields, menus; items 8px) */
-:root{--acc:var(--c-red);--pop:#2c0739}
+:root{--acc:var(--c-red);--pop:var(--c-purple-deep)}
 
 /* footer: name + socials on top, small legal row below */
 /* page theme: aubergine & red (Absoluut) */
 body{background:var(--c-aubergine)}
 a:hover{color:var(--c-pink)}
 
-.hdr-lang a,.mm-lang a{color:#b98fc8}
+.hdr-lang a,.mm-lang a{color:var(--c-lilac-mute)}
 .site-sw a,.site-sw.sw-flip a[aria-current]{color:var(--c-lilac)}
 .site-sw a[aria-current],.site-sw a[aria-current]:hover,.site-sw.sw-flip a:not([aria-current]){color:var(--c-aubergine)}
-.ft2-sub,.ft2-bottom a{color:#efd3f6}
-.ft2-bottom{color:#cba8d8}
+.ft2-sub,.ft2-bottom a{color:var(--c-lilac-foot)}
+.ft2-bottom{color:var(--c-lilac-dim)}
 footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 
 /* end page theme */
 /* page theme: utilitarian press kit */
 
-.ft2-sub,.ft2-bottom a{color:#efd3f6}
-.ft2-bottom{color:#cba8d8}
+.ft2-sub,.ft2-bottom a{color:var(--c-lilac-foot)}
+.ft2-bottom{color:var(--c-lilac-dim)}
 /* end page theme */
 
 /* ---- base ---- */
@@ -87,20 +87,20 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 
 /* ---- mono ---- */
 /* privacy page in greyscale: near-black intro and menu, white reading column, contrast instead of colour */
-:root{--hv-acc:#ffffff;--hv-acc-l:var(--c-black-soft);--hv-glow:rgba(0,0,0,.28);--acc:#ffffff;--pop:#1b1b1b}
-body{background:#121212}
-a:hover{color:#ffffff}
-::selection{background:var(--c-black-soft);color:#ffffff}
+:root{--hv-acc:var(--c-white);--hv-acc-l:var(--c-black-soft);--hv-glow:rgba(0,0,0,.28);--acc:var(--c-white);--pop:var(--c-dark-2)}
+body{background:var(--c-dark)}
+a:hover{color:var(--c-white)}
+::selection{background:var(--c-black-soft);color:var(--c-white)}
 header.hdr-stuck{background:rgba(18,18,18,.94) !important}
-.site-sw a,.site-sw.sw-flip a[aria-current]{color:#a8a8a8}
-.hdr-lang a,.mm-lang a{color:#8f8f8f}
-.nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:#ffffff}
-.mm-link[aria-current]{color:#8f8f8f !important}
-.ft2-sub{color:#a8a8a8}
-.ft2-bottom{color:#8f8f8f}
+.site-sw a,.site-sw.sw-flip a[aria-current]{color:var(--c-grey-mid)}
+.hdr-lang a,.mm-lang a{color:var(--c-grey-lang)}
+.nav-links a:hover,.mm-link:hover,.hdr-lang a:hover,.mm-lang a:hover{color:var(--c-white)}
+.mm-link[aria-current]{color:var(--c-grey-lang) !important}
+.ft2-sub{color:var(--c-grey-mid)}
+.ft2-bottom{color:var(--c-grey-lang)}
 .ft2-bottom a{color:#d4d4d4}
 footer.ft2 nav a{background:rgba(255,255,255,0.08)}
-footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#ffffff;background:rgba(255,255,255,0.14)}
+footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-white);background:rgba(255,255,255,0.14)}
 .legal > p:first-child,.legal h2,.legal strong{color:var(--c-black-soft)}
 .legal h3{margin:36px 0 8px;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-black-soft)}
 .legal p,.legal li{color:#4d4d4d}
@@ -109,11 +109,11 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:#ffffff;background:r
 .legal a{color:var(--c-black-soft);text-decoration-color:#b5b5b5}
 .legal a:hover{color:var(--c-black-soft);text-decoration-color:var(--c-black-soft)}
 .legal a:focus-visible{outline-color:var(--c-black-soft)}
-@media print{html,body,body > div{background:#ffffff !important}}
+@media print{html,body,body > div{background:var(--c-white) !important}}
 .hero-lang{display:none;margin:18px 0 0 -12px}
-.hero-lang a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;font-size:13px;font-weight:800;letter-spacing:0.1em;color:#8f8f8f;text-decoration:none}
-.hero-lang a[aria-current],.hero-lang a:hover{color:#ffffff}
-.hero-lang a:focus-visible{outline:2px solid #ffffff;outline-offset:-4px;border-radius:6px}
+.hero-lang a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;font-size:13px;font-weight:800;letter-spacing:0.1em;color:var(--c-grey-lang);text-decoration:none}
+.hero-lang a[aria-current],.hero-lang a:hover{color:var(--c-white)}
+.hero-lang a:focus-visible{outline:2px solid var(--c-white);outline-offset:-4px;border-radius:6px}
 @media (max-width: 1060px){.hero-lang{display:flex}}
 
 /* images carry their intrinsic size; CSS decides the rendered height */
