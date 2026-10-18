@@ -118,9 +118,9 @@
 
   /* 1b2. Mobile menu, plus a way forward after scrolling:
      desktop - the header turns into a slim bar fixed to the top;
-     mobile  - the same slim bar slides back in whenever the visitor scrolls up or stops scrolling (and out again when
-               they read on), and the page's main call to action (contact or booking) floats at the
-               bottom right once the hero's own button is gone, stepping aside at the form and footer */
+     mobile  - no bar after scrolling: a round menu button and the page's main call to action (contact or booking)
+               float together at the bottom right once the top bar has scrolled away; the call to action waits
+               until the hero's own button is gone and steps aside at the form and footer */
   var menuBtn = document.querySelector('.menu-btn');
   var menu = document.getElementById('mobile-menu');
   var header = document.querySelector('header');
@@ -163,6 +163,16 @@
       document.addEventListener('click', function (e) {
         if (!menu.hidden && !menu.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false);
       });
+      /* phone/tablet: once the top bar has scrolled away, a round menu button sits next to the floating
+         call to action (bottom right, within thumb reach); the menu then unfolds upwards from it */
+      var mcl = document.createElement('div'); mcl.className = 'mcluster'; mcl.hidden = true;
+      var mfab = document.createElement('button'); mfab.type = 'button'; mfab.className = 'mm-fab';
+      mfab.setAttribute('aria-label', menuBtn.getAttribute('aria-label') || 'Menu'); mfab.setAttribute('aria-controls', 'mobile-menu');
+      mfab.innerHTML = menuBtn.innerHTML;
+      mfab.addEventListener('click', function (e) { e.stopPropagation(); menu.classList.add('from-fab'); setMenu(menu.hidden, mfab); });
+      menuBtn.addEventListener('click', function () { menu.classList.remove('from-fab'); });
+      if (fab.parentNode) { fab.parentNode.insertBefore(mcl, fab); mcl.appendChild(mfab); mcl.appendChild(fab); }
+      else { document.body.appendChild(mcl); mcl.appendChild(mfab); }
       menu.querySelectorAll('a, [data-close]').forEach(function (el) {
         el.addEventListener('click', function () {
           if (menu.hidden) return;
@@ -206,18 +216,12 @@
       });
       asides.forEach(function (el) { io.observe(el); });
     }
-    var lastY = window.scrollY, quietUntil = 0;
     var update = function () {
       var y = window.scrollY;
       var past = y > limit();
       var mobile = compact();
       if (!mobile) { header.classList.toggle('hdr-stuck', past); header.classList.remove('hdr-hide'); }
-      else if (!past) header.classList.remove('hdr-stuck', 'hdr-hide');
-      else if (Math.abs(y - lastY) > 6) {
-        if (y < lastY && performance.now() > quietUntil) { header.classList.add('hdr-stuck'); header.classList.remove('hdr-hide'); }
-        else if (header.classList.contains('hdr-stuck')) header.classList.add('hdr-hide');
-      }
-      if (!past || Math.abs(y - lastY) > 6) lastY = y;
+      else header.classList.remove('hdr-stuck', 'hdr-hide'); /* phone: no bar after scrolling, the menu button joins the floating button instead */
       var show = !!(cta && past && mobile && !inView && heroOut);
       if (show && fab.hidden) { /* copy the header button's colours only now: when the script starts, Safari may still be loading the stylesheet */
         var cs = getComputedStyle(cta);
@@ -225,8 +229,7 @@
         fab.style.color = cs.color;
       }
       fab.hidden = !show;
-      /* phone: while the capsule is showing, the top edge of the page blurs away under it (CSS: html.bar-on) */
-      document.documentElement.classList.toggle('bar-on', header.classList.contains('hdr-stuck') && !header.classList.contains('hdr-hide'));
+      if (typeof mcl !== 'undefined' && mcl) mcl.hidden = !(past && mobile);
     };
     /* the hero's own button: while it is fully on screen the header leaves its copy out (CSS),
        and the floating button waits until it has scrolled away */
@@ -240,25 +243,7 @@
         update();
       }, { threshold: [0, 1] }).observe(heroBtn);
     }
-    /* jumping to a section is not a scroll up: keep the bar out of the way */
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('a[href*="#"]');
-      if (a && a.hash && a.pathname === location.pathname) {
-        quietUntil = performance.now() + 700;
-        if (header && header.classList.contains('hdr-stuck') && compact()) header.classList.add('hdr-hide');
-      }
-    });
-    /* phones: when the visitor stops scrolling, the bar comes back too */
-    var idle = null;
-    window.addEventListener('scroll', function () {
-      update();
-      clearTimeout(idle);
-      idle = setTimeout(function reveal() {
-        if (!compact() || window.scrollY <= limit()) return;
-        if (performance.now() < quietUntil) { idle = setTimeout(reveal, quietUntil - performance.now() + 50); return; }
-        header.classList.add('hdr-stuck'); header.classList.remove('hdr-hide');
-      }, 350);
-    }, { passive: true });
+    window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
   }
