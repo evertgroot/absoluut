@@ -76,7 +76,8 @@ main:focus,section[tabindex="-1"]:focus{outline:none} /* sections focused after 
 ::selection{background:var(--hv-acc);color:var(--c-ink)}
 .hv-ne{--ar:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12 12 4M5.5 4H12v6.5'/%3E%3C/svg%3E")}
 #mobile-menu:not([hidden]){animation:mm-in .24s cubic-bezier(.2,.7,.2,1) both}
-body:has(.hero-cta):not(.hero-cta-out) header:not(.hdr-stuck) :is(.hdr-cta,.hdr-sep){display:none !important}
+header :is(.hdr-cta,.hdr-sep){transition:opacity .3s ease,visibility .3s ease}
+body:has(.hero-cta):not(.hero-cta-out) header :is(.hdr-cta,.hdr-sep){opacity:0;visibility:hidden}
 .field:not(:focus){border-color:rgba(255,255,255,0.5) !important}
 .site-sw a:focus-visible{outline:2px solid var(--hv-acc);outline-offset:2px}
 img[width][height]{height:auto}
@@ -162,7 +163,8 @@ a:hover{color:var(--c-gold)}
    "html" in the selectors outranks the older full-screen rules in the page stylesheets. */
 #mobile-menu{--mm-bg:var(--c-ink)}
 #mobile-menu:is(.d-page-div-4,.p-page-div-3){--mm-bg:var(--c-aubergine)}
-@keyframes mm-slide{from{transform:translateX(100%)}to{transform:none}}
+@keyframes mm-slide{from{transform:translateX(100%);box-shadow:0 0 0 100vmax rgba(0,0,0,0)}to{transform:none}}
+@keyframes mm-slide-out{to{transform:translateX(100%);box-shadow:0 0 0 100vmax rgba(0,0,0,0)}}
 html #mobile-menu{inset:0 0 0 auto;width:min(400px,calc(100% - 40px));max-height:none;padding:calc(22px + env(safe-area-inset-top,0px)) max(22px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) 22px;border-radius:0;background:var(--mm-bg);border-left:1px solid rgba(255,255,255,.08);box-shadow:0 0 0 100vmax rgba(0,0,0,.5);overflow-y:auto;animation:mm-slide .32s cubic-bezier(.16,1,.3,1) both}
 html #mobile-menu > :first-child{flex-wrap:wrap}
 html #mobile-menu > nav{margin-top:0;padding-top:28px}
@@ -171,30 +173,25 @@ html #mobile-menu .mm-link[aria-current]{color:var(--c-white) !important;text-de
 html #mobile-menu .mm-link:last-child{border-bottom:0}
 html #mobile-menu > :last-child{flex-direction:column;align-items:stretch;margin-top:auto;padding-top:28px;gap:10px}
 html #mobile-menu .mm-lang{order:1;justify-content:center;margin:0}
-@media (prefers-reduced-motion:reduce){html #mobile-menu{animation:none}}
-/* desktop: the bar is always there (sticky). Transparent over the top of the hero, a solid full-width bar as soon as the page scrolls. */
+html #mobile-menu.mm-out{animation:mm-slide-out .24s cubic-bezier(.4,0,1,1) both}
+@media (prefers-reduced-motion:reduce){html #mobile-menu,html #mobile-menu.mm-out{animation:none}}
+/* desktop: the bar is always there (sticky) at one fixed height. Transparent over the top of the hero; as soon as the page scrolls only its background fades in. */
 header{--bar-bg:var(--c-ink)}
 header:is(.d-page-header,.p-page-header){--bar-bg:var(--c-aubergine)}
 header.v-page-header{--bar-bg:#121212}
 body:has(main.cs-bops) header{--bar-bg:#17155f}
 @media (min-width:1061px){
-  html header:is(.h-page-header,.d-page-header,.p-page-header,.v-page-header){position:fixed;transition:background-color .25s ease,padding .25s ease,box-shadow .25s ease}
-  html header.hdr-stuck{background:var(--bar-bg) !important;animation:none !important}
+  html header:is(.h-page-header,.d-page-header,.p-page-header,.v-page-header){position:fixed;max-width:none !important;padding:14px calc(max(0px, (100% - 1360px) / 2) + clamp(20px, 4vw, 48px)) !important;border-bottom:1px solid transparent;transition:background-color .3s ease,box-shadow .3s ease,border-color .3s ease}
+  html header.hdr-stuck{background:var(--bar-bg) !important;border-bottom-color:rgba(255,255,255,.12) !important;animation:none !important}
   /* links centred; the bar ends on the button (languages before it) */
   html header{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) !important}
   html header .nav-links{justify-self:center}
   html header .hdr-right .hdr-lang{order:-2}
   html header .hdr-right .hdr-sep{order:-1}
 }
-/* phone/tablet: once the top bar has scrolled away, the menu button sits next to the floating call to action at the bottom right */
-.mcluster{display:none}
+/* phone/tablet: the menu button stays fixed at the top right; once the page scrolls it gets a solid backdrop */
 @media (max-width:1060px){
-  .mcluster{position:fixed;right:max(clamp(20px, 4vw, 48px),env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:55;display:flex;align-items:center;gap:8px}
-  .mcluster[hidden]{display:none}
-  .mcluster .cta-fab{position:static}
-  .mcluster .mm-fab{order:2} /* the menu button keeps the corner, under the top bar's menu button; the call to action comes and goes beside it */
-  .mm-fab{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;padding:0;border-radius:999px;color:var(--c-white);background:var(--c-ink);border:1px solid rgba(255,255,255,.22);box-shadow:0 10px 28px rgba(0,0,0,.35);cursor:pointer;animation:fab-in .25s ease both}
-  body:has(.d-page-header,.p-page-header) .mm-fab{background:var(--c-aubergine)}
-  .mm-fab:focus-visible{outline:2px solid var(--hv-acc);outline-offset:3px}
+  html header .menu-btn{position:fixed;top:calc(26px + env(safe-area-inset-top,0px));right:max(clamp(20px, 4vw, 48px),env(safe-area-inset-right,0px));z-index:56;transition:background-color .25s ease,box-shadow .25s ease}
+  html.m-scrolled header .menu-btn{background:var(--bar-bg);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+  html .cta-fab{right:max(clamp(20px, 4vw, 48px),env(safe-area-inset-right,0px))} /* same right edge as the menu button above it */
 }
-@media (max-width:1060px) and (prefers-reduced-motion:reduce){.mm-fab{animation:none}}
