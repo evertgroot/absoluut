@@ -117,10 +117,9 @@
   }
 
   /* 1b2. Mobile menu, plus a way forward after scrolling:
-     desktop - the header turns into a slim bar fixed to the top;
-     mobile  - no bar after scrolling: a round menu button and the page's main call to action (contact or booking)
-               float together at the bottom right once the top bar has scrolled away; the call to action waits
-               until the hero's own button is gone and steps aside at the form and footer */
+     desktop - the header stays at the top (sticky) and turns into a solid bar as soon as the page scrolls;
+     mobile  - the top bar (site switch + menu button) stays at the top too; the page's main call to action (contact or booking)
+               floats at the bottom right once the hero's own button is gone, stepping aside at the form and footer */
   var menuBtn = document.querySelector('.menu-btn');
   var menu = document.getElementById('mobile-menu');
   var header = document.querySelector('header');
@@ -145,38 +144,31 @@
         for (var node = menu; node && node !== document.body; node = node.parentNode) {
           [].forEach.call(node.parentNode.children, function (sib) {
             if (sib === node || sib.tagName === 'SCRIPT' || sib.tagName === 'STYLE') return;
-            if (sib === mcl && menu.classList.contains('from-fab')) { sib.removeAttribute('inert'); return; } /* the floating buttons stay usable below a menu opened from them */
             if (on) sib.setAttribute('inert', ''); else sib.removeAttribute('inert');
           });
         }
       };
+      var menuOut = null;
       var setMenu = function (open, from) {
         if (open) opener = from || menuBtn;
-        if (open && opener === menuBtn) menu.classList.remove('from-fab', 'cta-below'); /* opened from the top bar: the full, modal menu */
-        menu.hidden = !open;
+        /* the panel slides in from the right and slides back out before it is hidden */
+        clearTimeout(menuOut);
+        if (open) { menu.classList.remove('mm-out'); menu.hidden = false; }
+        else if (!menu.hidden && !menu.classList.contains('mm-out')) {
+          if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) menu.hidden = true;
+          else { menu.classList.add('mm-out'); menuOut = setTimeout(function () { menu.hidden = true; menu.classList.remove('mm-out'); }, 240); }
+        }
         setInert(open);
         menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        if (typeof mfab !== 'undefined' && mfab) mfab.setAttribute('aria-expanded', open ? 'true' : 'false');
-        /* opened from the floating buttons, those stay usable below it: then it is a menu, not a modal dialog */
-        menu.setAttribute('aria-modal', open && menu.classList.contains('from-fab') ? 'false' : 'true');
         document.documentElement.style.overflow = open ? 'hidden' : '';
         if (open) { var c = menu.querySelector('[data-close]'); if (c) c.focus(); }
         else if (opener && !opener.hidden) { try { opener.focus({ preventScroll: true }); } catch (e) {} }
       };
       menuBtn.addEventListener('click', function () { setMenu(menu.hidden, menuBtn); });
-      /* the menu is a card under the bar: a tap anywhere outside it closes it */
+      /* a tap anywhere outside the panel closes it */
       document.addEventListener('click', function (e) {
         if (!menu.hidden && !menu.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false);
       });
-      /* phone/tablet: once the top bar has scrolled away, a round menu button sits next to the floating
-         call to action (bottom right, within thumb reach); the menu then unfolds upwards from it */
-      var mcl = document.createElement('div'); mcl.className = 'mcluster'; mcl.hidden = true;
-      var mfab = document.createElement('button'); mfab.type = 'button'; mfab.className = 'mm-fab';
-      mfab.setAttribute('aria-label', menuBtn.getAttribute('aria-label') || 'Menu'); mfab.setAttribute('aria-controls', 'mobile-menu'); mfab.setAttribute('aria-expanded', 'false');
-      mfab.innerHTML = menuBtn.innerHTML;
-      mfab.addEventListener('click', function (e) { e.stopPropagation(); menu.classList.add('from-fab'); menu.classList.toggle('cta-below', !fab.hidden && !!fab.offsetWidth); setMenu(menu.hidden, mfab); });
-      if (fab.parentNode) { fab.parentNode.insertBefore(mcl, fab); mcl.appendChild(mfab); mcl.appendChild(fab); }
-      else { document.body.appendChild(mcl); mcl.appendChild(mfab); }
       menu.querySelectorAll('a, [data-close]').forEach(function (el) {
         el.addEventListener('click', function () {
           if (menu.hidden) return;
@@ -223,7 +215,7 @@
       var y = window.scrollY;
       var past = y > limit();
       var mobile = compact();
-      if (!mobile) { header.classList.toggle('hdr-stuck', past); header.classList.remove('hdr-hide'); }
+      if (!mobile) { header.classList.toggle('hdr-stuck', y > 8); header.classList.remove('hdr-hide'); } /* desktop: sticky bar, solid as soon as the page scrolls */
       else header.classList.remove('hdr-stuck', 'hdr-hide'); /* phone: no bar after scrolling, the menu button joins the floating button instead */
       var show = !!(cta && past && mobile && !inView && heroOut);
       if (show && fab.hidden) { /* copy the header button's colours only now: when the script starts, Safari may still be loading the stylesheet */
@@ -232,7 +224,7 @@
         fab.style.color = cs.color;
       }
       fab.hidden = !show;
-      if (typeof mcl !== 'undefined' && mcl) mcl.hidden = !(past && mobile);
+      document.documentElement.classList.toggle('m-scrolled', mobile && y > 8); /* phone: the fixed top bar gets its solid background */
     };
     /* the hero's own button: while it is fully on screen the header leaves its copy out (CSS),
        and the floating button waits until it has scrolled away */
@@ -258,7 +250,7 @@
     var tintQueued = false;
     var tint = function () {
       tintQueued = false;
-      document.documentElement.classList.toggle('hero-top', heroPhoto.getBoundingClientRect().bottom > 80 && !(header && header.classList.contains('hdr-stuck')));
+      document.documentElement.classList.toggle('hero-top', heroPhoto.getBoundingClientRect().bottom > 80 && !(header && header.classList.contains('hdr-stuck')) && !document.documentElement.classList.contains('m-scrolled'));
     };
     tint();
     window.addEventListener('scroll', function () { if (!tintQueued) { tintQueued = true; requestAnimationFrame(tint); } }, { passive: true });
