@@ -1,0 +1,51 @@
+name: Submit changed pages to IndexNow
+
+# After each successful GitHub Pages deploy, sends the pages that changed since the
+# previous successful deploy to IndexNow (Bing, Yandex, Seznam, Naver and others).
+# Comparing with the previous successful deploy, not the previous commit, keeps pages
+# from a cancelled deploy (for example one overtaken by the press kit PDF commit) in.
+# Run it by hand to submit every page in the sitemap.
+
+on:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: indexnow
+
+jobs:
+  submit:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Submit all pages
+        if: github.event_name == 'workflow_dispatch'
+        run: python scripts/indexnow.py --all
+      - name: Submit the pages changed since the previous deploy
+        if: github.event_name == 'workflow_run'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          prev=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "pages build and deployment" --status success --limit 20 \
+            --json headSha -q "[.[] | select(.headSha != \"$HEAD_SHA\")][0].headSha")
+          if [ -z "$prev" ] || ! git cat-file -e "$prev" 2>/dev/null; then
+            echo "No previous deploy found; nothing to compare."
+            exit 0
+          fi
+          git diff --name-only "$prev" "$HEAD_SHA" -- '*.html' sitemap.xml > changed.txt
+          cat changed.txt
+          python scripts/indexnow.py $(cat changed.txt)
