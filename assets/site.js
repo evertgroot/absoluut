@@ -878,20 +878,29 @@
           panel.setAttribute('role', 'region'); panel.setAttribute('aria-labelledby', 'recent-gigs-toggle');
           var years = [];
           past.forEach(function (g) { var y = g.date.slice(0, 4); if (!years.length || years[years.length - 1].y !== y) years.push({ y: y, gigs: [] }); years[years.length - 1].gigs.push(g); });
-          /* the most recent year is open; earlier years fold up behind their year heading */
-          panel.innerHTML = years.map(function (yr, i) {
-            prevYear = yr.y; /* the year heading says it, so no year under the month */
-            var list = '<ul class="up-list up-past rg-list" id="rg-list-' + yr.y + '" aria-labelledby="rg-' + yr.y + '"' + (i ? ' hidden' : '') +
-              ' style="--rows2:' + Math.ceil(yr.gigs.length / 2) + ';--rows3:' + Math.ceil(yr.gigs.length / 3) + '">' +
-              yr.gigs.map(function (g) { g._past = true; return row(g); }).join('') + '</ul>';
-            if (!i) return '<h4 class="rg-year" id="rg-' + yr.y + '">' + yr.y + '</h4>' + list;
-            return '<h4 class="rg-year"><button type="button" class="rg-year-btn" id="rg-' + yr.y + '" aria-expanded="false" aria-controls="rg-list-' + yr.y + '">' +
-              yr.y + '<span class="up-past-ar hv-ar hv-d" aria-hidden="true">↓</span></button></h4>' + list;
-          }).join('');
-          [].forEach.call(panel.querySelectorAll('.rg-year-btn'), function (btn) {
+          /* one row of years as an index (newest first), then the chosen year's gigs underneath: the row stays put,
+             only the list below changes. The most recent year is chosen when the panel opens. */
+          var yearLabel = { en: 'Year', nl: 'Jaar', it: 'Anno' }[lang] || 'Year';
+          /* rows of equal length, never a short last row: at most 6 years per row on phones, 9 on tablets, 12 on wide screens */
+          var even = function (max) { return Math.ceil(years.length / Math.ceil(years.length / max)); };
+          panel.innerHTML = '<div class="rg-years" role="group" aria-label="' + yearLabel + '" style="--yc6:' + even(6) + ';--yc9:' + even(9) + ';--yc12:' + even(12) + '">' +
+            years.map(function (yr, i) {
+              return '<button type="button" class="rg-year-btn" aria-pressed="' + (i ? 'false' : 'true') + '" aria-controls="rg-list-' + yr.y + '">' + yr.y + '</button>';
+            }).join('') + '</div>' +
+            years.map(function (yr, i) {
+              prevYear = yr.y; /* the chosen year says it, so no year under the month */
+              return '<ul class="up-list up-past rg-list" id="rg-list-' + yr.y + '" aria-label="' + yr.y + '"' + (i ? ' hidden' : '') +
+                ' style="--rows2:' + Math.ceil(yr.gigs.length / 2) + ';--rows3:' + Math.ceil(yr.gigs.length / 3) + '">' +
+                yr.gigs.map(function (g) { g._past = true; return row(g); }).join('') + '</ul>';
+            }).join('');
+          var yearBtns = panel.querySelectorAll('.rg-year-btn');
+          [].forEach.call(yearBtns, function (btn) {
             btn.addEventListener('click', function () {
-              var ul = document.getElementById(btn.getAttribute('aria-controls')), open = ul.hidden;
-              ul.hidden = !open; btn.setAttribute('aria-expanded', String(open));
+              [].forEach.call(yearBtns, function (b) {
+                var on = b === btn;
+                b.setAttribute('aria-pressed', String(on));
+                document.getElementById(b.getAttribute('aria-controls')).hidden = !on;
+              });
             });
           });
           var hd = document.createElement('h3');

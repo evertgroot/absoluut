@@ -485,9 +485,10 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .rg .up-past-ar.hv-ar{color:var(--c-blush);font-size:15px}
 .rg-h{margin:0;font:inherit}
 .rg .up-past{margin-top:0}
-/* one heading per year, then that year's gigs */
-.rg-year{margin:28px 0 6px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(22px,2vw,28px);font-weight:800;line-height:1;letter-spacing:-0.01em;color:var(--c-white)}
-.rg-year:first-child{margin-top:8px}
+/* the years as one index row above the list: the chosen year in white with the underline, the rest in lilac */
+.rg-years{display:grid;grid-template-columns:repeat(var(--yc6,6),max-content);column-gap:clamp(14px,1.6vw,22px);margin:6px 0 10px}
+@media (min-width:761px){.rg-years{grid-template-columns:repeat(var(--yc9,9),max-content)}}
+@media (min-width:1001px){.rg-years{grid-template-columns:repeat(var(--yc12,12),max-content)}}
 .rg .up-row{color:var(--c-white)}
 .rg .up-day{color:var(--c-lilac)}
 .rg .up-mo,.rg .up-where{color:var(--c-lilac)}
@@ -521,18 +522,12 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
   .mix-foot > span:first-child > span:not(.mix-play){grid-column:2;grid-row:1;align-self:end}
   .mix-time{grid-column:2;grid-row:2;align-self:start;font-size:14px}
 }
-/* earlier years in Past Gigs: the year heading is a button that unfolds that year, with the site's down arrow */
-.rg-year-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0;border:0;background:none;color:inherit;font:inherit;letter-spacing:inherit;cursor:pointer;text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:6px;transition:text-decoration-color .25s ease}
-.rg-year-btn:hover{text-decoration-color:rgba(255,255,255,.5)}
+.rg-year-btn{display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:none;color:var(--c-lilac);font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(19px,1.8vw,24px);font-weight:800;line-height:1;letter-spacing:-0.01em;font-variant-numeric:tabular-nums;cursor:pointer;text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:7px;transition:color .2s ease,text-decoration-color .2s ease}
+.rg-year-btn:hover{color:var(--c-white);text-decoration-color:rgba(255,255,255,.35)}
+.rg-year-btn[aria-pressed="true"]{color:var(--c-white);text-decoration-color:var(--c-blush)}
 .rg-year-btn:focus-visible{outline:2px solid var(--c-white);outline-offset:3px;border-radius:4px}
-.rg-year-btn .up-past-ar.hv-ar{margin-left:0;font-size:18px;color:var(--c-blush);transition:transform .2s ease}
-.rg-year-btn[aria-expanded="true"] .up-past-ar.hv-ar{transform:rotate(180deg)}
-.rg .rg-year:has(.rg-year-btn){margin-top:14px;margin-bottom:0}
-@media (hover:hover){.rg-year-btn[aria-expanded="true"]:hover .up-past-ar.hv-ar{transform:rotate(180deg) translateY(3px)}}
-@media (prefers-reduced-motion:reduce){
-  .rg-year-btn,.rg-year-btn .up-past-ar.hv-ar{transition:none}
-  .rg-year-btn[aria-expanded="true"] .up-past-ar.hv-ar{transform:rotate(180deg) !important}
-}
+@media (prefers-reduced-motion:reduce){.rg-year-btn{transition:none}}
+
 /* hero buttons: the label stays in place and only the arrow moves down, like the jump links on the press kit */
 .d-top-a:is(:hover,:focus-visible),.d-top-a-2:is(:hover,:focus-visible){transform:none !important}
 /* hero button hover, the same on every page: text keeps its colour, background deepens a little, soft shadow */
