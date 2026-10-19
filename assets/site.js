@@ -213,8 +213,8 @@
     update();
   }
 
-  /* 1b2b. iPhone Safari colours the strip behind the clock with the page background: while the hero photo
-     sits under that strip, use the colour of the photo's top edge (set in the page CSS) so the two blend */
+  /* 1b2b. iPhone Safari colors the strip behind the clock with the page background: while the hero photo
+     sits under that strip, use the color of the photo's top edge (set in the page CSS) so the two blend */
   var heroPhoto = document.querySelector('section.cine.h-main-section, section.cine.d-main-section');
   if (heroPhoto) {
     var tintQueued = false;
@@ -809,7 +809,7 @@
       nl: { Milan: 'Milaan', Antwerp: 'Antwerpen', Rome: 'Rome', 'The Hague': 'Den Haag', Brussels: 'Brussel' },
       it: { Milan: 'Milano', Antwerp: 'Anversa', Rome: 'Roma', 'The Hague': "L'Aia", Brussels: 'Bruxelles' }
     }[lang] || {};
-    var upLoc = { en: 'en-GB', nl: 'nl-NL', it: 'it-IT' }[lang] || 'en-GB';
+    var upLoc = { en: 'en-US', nl: 'nl-NL', it: 'it-IT' }[lang] || 'en-US'; /* English dates in American style: Thu, Oct 29 */
     var esc = function (t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
     fetch('/assets/gigs.json', { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
