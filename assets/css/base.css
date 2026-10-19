@@ -132,6 +132,9 @@ a:hover{color:var(--c-gold)}
   .hdr-right{gap:8px}
 }
 .hv-ar{display:inline-block;width:.8em;height:.8em;margin-left:.4em;vertical-align:-.04em;overflow:hidden;text-indent:2em;white-space:nowrap;background:currentColor;-webkit-mask:var(--ar) center / contain no-repeat;mask:var(--ar) center / contain no-repeat}
+/* optical centering: a trailing arrow is lighter than the bold label and its drawing sits inside its box, so nudge the content 1px right without changing the button width */
+:is(.btn-solid,.btn-ghost):has(> .hv-ar:last-child)::before{content:"";flex:none;width:1px}
+:is(.btn-solid,.btn-ghost) > .hv-ar:last-child{margin-right:-1px}
 @media (max-width: 640px){
   .ft2-bottom a{display:inline-flex;align-items:center;min-height:44px}
 }
