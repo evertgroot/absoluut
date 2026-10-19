@@ -2,6 +2,8 @@ name: Build press kit PDF
 
 # Prints the biography and technical rider of the press kit (EN/NL/IT) to A4 PDFs
 # with headless Chrome, using the print styles in assets/css/press-kit.css.
+# Before printing it updates the "ZIP · size" labels on the press kit to the real size of the zips,
+# so a new photo or logo zip never shows an outdated size (on the page or in the PDF).
 on:
   push:
     branches: [main]
@@ -12,6 +14,8 @@ on:
       - "assets/css/press-kit.css"
       - "assets/css/base.css"
       - "assets/img/rider-setup.webp"
+      - "assets/press-kit/*.zip"
+      - "scripts/update_zip_sizes.py"
       - ".github/workflows/press-kit-pdf.yml"
   workflow_dispatch:
 
@@ -28,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Update the zip sizes on the press kit
+        run: python3 scripts/update_zip_sizes.py
       - name: Serve the site locally
         run: |
           python3 -m http.server 8000 --bind 127.0.0.1 >/dev/null 2>&1 &
@@ -50,14 +56,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git add assets/press-kit
+          git add assets/press-kit absoluut/press-kit nl/absoluut/press-kit it/absoluut/press-kit
           if git diff --cached --quiet; then
-            echo "The PDFs did not change."
+            echo "The PDFs and zip sizes did not change."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Update press kit PDFs"
+          git commit -m "Update press kit PDFs and zip sizes"
           git push
           # pushes made by this workflow do not start a Pages build on their own
           gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
