@@ -138,7 +138,7 @@ footer.ft2 nav a:hover,footer.ft2 nav a:focus-visible{color:var(--c-pink)}
 .f-ref b{display:block;font-weight:800;margin-bottom:4px}
 .f-ref a{margin-top:16px}
 
-#contact p:has(+ #contact-form),.book-side > p:first-child{text-wrap:balance}
+#contact p:has(+ #contact-form),.book-side > p:first-child{text-wrap:wrap} /* running text: fill each line (balance made the lines stop far too early on phones) */
 @media (max-width: 899px){.gut > .hero-lead{order:2}.gut > .hero-cta{order:1;margin-top:0}}
 #contact-form select:invalid{color:var(--c-grey-cool)}
 #contact-form select option{color:var(--c-black-soft)}
