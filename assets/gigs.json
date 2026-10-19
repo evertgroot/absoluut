@@ -64,7 +64,7 @@
   {"date": "2014-03-08", "event": "Club NYX", "venue": "", "city": "Amsterdam"},
   {"date": "2014-03-29", "event": "Club NYX", "venue": "", "city": "Amsterdam"},
   {"date": "2014-04-19", "event": "Club NYX", "venue": "", "city": "Amsterdam"},
-  {"date": "2014-05-13", "event": "The Butcher", "venue": "", "city": "Amsterdam"},
+  {"date": "2014-05-13", "event": "FTF", "venue": "The Butcher", "city": "Amsterdam"},
   {"date": "2014-06-28", "event": "Club NYX", "venue": "", "city": "Amsterdam"},
   {"date": "2014-08-02", "event": "RGLRS", "venue": "Reguliersdwarsstraat", "city": "Amsterdam"},
   {"date": "2014-08-08", "event": "Club NYX", "venue": "", "city": "Amsterdam"},
