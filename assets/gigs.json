@@ -3,7 +3,7 @@
   {"date": "2008-05-11", "event": "Private event", "venue": "Rain", "city": "Amsterdam", "private": "event"},
   {"date": "2008-05-28", "event": "Katapult", "venue": "Studio 80", "city": "Amsterdam"},
   {"date": "2008-07-16", "event": "Katapult", "venue": "Studio 80", "city": "Amsterdam"},
-  {"date": "2010-02-05", "event": "Kaboem: Expreszo", "venue": "Akhnaton", "city": "Amsterdam"},
+  {"date": "2010-02-05", "event": "Private event", "venue": "Akhnaton", "city": "Amsterdam", "private": "event"},
   {"date": "2011-04-16", "event": "Café SOHO", "venue": "", "city": "Amsterdam"},
   {"date": "2011-04-23", "event": "Café SOHO", "venue": "", "city": "Amsterdam"},
   {"date": "2011-04-29", "event": "Café SOHO", "venue": "", "city": "Amsterdam"},
