@@ -162,8 +162,12 @@
       document.addEventListener('focusin', function (e) {
         var t = e.target;
         if (!t || !t.getBoundingClientRect || header.contains(t) || menu.contains(t)) return;
+        /* only keyboard focus: a tap in Safari focuses <main> (it has tabindex for the skip link), and nudging
+           that whole page into view sent visitors back to the top */
+        try { if (!t.matches(':focus-visible')) return; } catch (err) {}
         setTimeout(function () { /* after the browser's own scroll-into-view */
           var bar = header.getBoundingClientRect().bottom, r = t.getBoundingClientRect();
+          if (r.height > window.innerHeight / 2) return; /* a section or the page itself: leave the scroll alone */
           if (r.top < bar + 8 && r.bottom > 0) window.scrollBy(0, r.top - bar - 16);
         }, 0);
       });
