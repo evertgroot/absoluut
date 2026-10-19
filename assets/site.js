@@ -52,17 +52,21 @@
     /* like a normal anchor jump, keyboard focus continues from the section */
     if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
     try { el.focus({ preventScroll: true }); } catch (err) {}
-    if (history.pushState) history.pushState(null, '', '#' + id);
+    /* update the address without a new history step: Back leaves the page instead of jumping between sections (or to the top) */
+    if (history.replaceState) history.replaceState(null, '', '#' + id);
   });
-  var arrive = /^#[\w-]+$/.test(location.hash) ? location.hash.slice(1) : null;
+  /* only on a fresh visit: after Back, Forward or a reload the browser puts the visitor back where they were */
+  var navType = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0] || {}).type;
+  var arrive = /^#[\w-]+$/.test(location.hash) && (!navType || navType === 'navigate') ? location.hash.slice(1) : null;
   if (arrive && arrive !== 'main' && !calm && document.getElementById(arrive)) {
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     window.scrollTo({ top: 0, behavior: 'instant' });
-    /* if the visitor scrolls, swipes or uses a key before the glide starts, they stay where they are */
+    /* if the visitor scrolls, swipes or uses a key before the glide starts, they go straight to the section
+       (staying at the top, where the page was put for the glide, would undo the link) */
     var tookOver = false, mine = function () { tookOver = true; };
     ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { window.addEventListener(ev, mine, { passive: true, once: true }); });
     var tries = 0, go = function () {
-      if (tookOver) { done(); return; }
+      if (tookOver) { var at = target(arrive); if (at) window.scrollTo(0, Math.max(0, at.getBoundingClientRect().top + window.scrollY - (parseFloat(getComputedStyle(at).scrollMarginTop) || 0))); done(); return; }
       var el = document.getElementById(arrive);
       /* Upcoming Gigs is filled in from the gig list; give it a moment before falling back */
       if (arrive === 'upcoming' && el && el.hidden && tries++ < 15) return setTimeout(go, 100);
