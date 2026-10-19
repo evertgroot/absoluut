@@ -64,6 +64,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Update press kit PDFs and zip sizes"
+          # main may have moved on while the PDFs were printed (two merges in a row): catch up first.
+          # If that newer commit also touched the press kit, its own run prints fresh PDFs, so this one stops.
+          if ! git pull --rebase -q origin main; then
+            git rebase --abort
+            echo "main changed the press kit in the meantime; the run for that commit takes over."
+            exit 0
+          fi
           git push
           # pushes made by this workflow do not start a Pages build on their own
           gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
