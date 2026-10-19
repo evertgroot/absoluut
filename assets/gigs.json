@@ -129,6 +129,7 @@
   {"date": "2018-02-28", "event": "Vodka Woensdag XXL", "venue": "Club NYX", "city": "Amsterdam"},
   {"date": "2018-03-17", "event": "I Will Survive: J.Lo", "venue": "Club NYX", "city": "Amsterdam"},
   {"date": "2018-05-12", "event": "Tropikali Festival", "venue": "NDSM", "city": "Amsterdam"},
+  {"date": "2018-05-26", "event": "Private wedding", "venue": "Tolhuistuin", "city": "Amsterdam", "private": "wedding"},
   {"date": "2018-06-09", "event": "I Will Survive: Xtina", "venue": "Club NYX", "city": "Amsterdam"},
   {"date": "2018-08-03", "event": "Pride Cocktail", "venue": "Sofitel Amsterdam The Grand", "city": "Amsterdam"},
   {"date": "2018-09-01", "event": "Latinichta", "venue": "NDSM", "city": "Amsterdam"},
