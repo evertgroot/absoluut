@@ -1,6 +1,6 @@
 [
   {"date": "2008-01-12", "event": "FPQ", "venue": "Studio 80", "city": "Amsterdam"},
-  {"date": "2008-05-11", "event": "Smashing Pink", "venue": "Rain", "city": "Amsterdam"},
+  {"date": "2008-05-11", "event": "Private event", "venue": "Rain", "city": "Amsterdam", "private": "event"},
   {"date": "2008-05-28", "event": "Katapult", "venue": "Studio 80", "city": "Amsterdam"},
   {"date": "2008-07-16", "event": "Katapult", "venue": "Studio 80", "city": "Amsterdam"},
   {"date": "2010-02-05", "event": "Kaboem: Expreszo", "venue": "Akhnaton", "city": "Amsterdam"},
@@ -67,7 +67,7 @@
   {"date": "2014-04-19", "event": "Club NYX", "venue": "", "city": "Amsterdam"},
   {"date": "2014-05-13", "event": "FTF", "venue": "The Butcher", "city": "Amsterdam"},
   {"date": "2014-06-28", "event": "Club NYX", "venue": "", "city": "Amsterdam"},
-  {"date": "2014-08-02", "event": "RGLRS", "venue": "Reguliersdwarsstraat", "city": "Amsterdam"},
+  {"date": "2014-08-02", "event": "Reguliersdwarsstraat Street Party", "venue": "", "city": "Amsterdam"},
   {"date": "2014-08-08", "event": "Club NYX", "venue": "", "city": "Amsterdam"},
   {"date": "2014-09-12", "event": "Private event", "venue": "", "city": "Best", "private": "event"},
   {"date": "2014-09-14", "event": "Club NYX", "venue": "", "city": "Amsterdam"},
