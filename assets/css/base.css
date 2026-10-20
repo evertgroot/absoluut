@@ -67,6 +67,8 @@ a .bops-mark{transition:background-color .25s ease}
 .ft2-bottom a{color:var(--c-periwinkle);text-decoration:none}
 .ft2-bottom a:hover,.ft2-bottom a:focus-visible{color:var(--c-white);text-decoration:underline;text-underline-offset:3px}
 footer.ft2 nav a{color:var(--c-white);background:rgba(255,255,255,0.1)}
+/* controls show the hand, like links: Safari keeps the arrow on buttons and selects unless asked (zero specificity, so any component's own cursor wins) */
+:where(button:not(:disabled),select:not(:disabled),summary,[role=button]){cursor:pointer}
 .hv-ar{display:inline-block;margin-left:.3em;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
 footer.ft2 nav a{transition:color .25s ease,transform .25s cubic-bezier(.2,.7,.2,1)}
 .skip:focus{top:12px;outline:2px solid var(--hv-acc-l);outline-offset:2px}
