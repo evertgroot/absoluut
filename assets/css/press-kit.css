@@ -554,7 +554,7 @@ body{background:var(--c-white)}
 .pk-logo-art .pk-fmt{background:var(--c-overlay);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .pk-logo-dark .pk-fmt{background:rgba(255,255,255,.14)}
 .pk-fmt label{position:relative;z-index:1;display:inline-flex}
-.pk-fmt input{position:absolute;top:-3px;right:0;bottom:-3px;left:0;width:100%;margin:0;opacity:0;cursor:pointer} /* 44px tap area: the radio reaches past the chip */
+.pk-fmt input{position:absolute;top:-3px;right:0;bottom:-3px;left:0;width:100%;height:auto;margin:0;opacity:0;cursor:pointer;-webkit-appearance:none;appearance:none} /* 44px tap area: the radio reaches past the chip (without appearance:none Safari keeps a radio 16px tall, so only the chip's top edge was clickable) */
 .pk-fmt span{display:inline-flex;align-items:center;min-height:38px;padding:0 11px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.04em;transition:background-color .2s ease,color .2s ease}
 .pk-logo-art .pk-fmt span{color:rgba(255,255,255,.8)}
 .pk-logo-art .pk-fmt label:hover span{color:var(--c-white)}
