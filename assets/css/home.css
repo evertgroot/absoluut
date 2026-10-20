@@ -257,7 +257,7 @@ a.wk-card:focus-visible{outline:2px solid var(--c-teal);outline-offset:6px;borde
 /* ---- portfolio preview: case page ---- */
 .cs{max-width:1360px;margin:0 auto;padding:clamp(130px,14vw,190px) clamp(20px,4vw,48px) 0;color:var(--c-white)}
 .cs-hero{max-width:900px}
-.cs-back{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-bottom:18px;color:rgba(255,255,255,.7);font-size:15px;font-weight:700;text-decoration:none}
+.cs-back{position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-bottom:18px;color:rgba(255,255,255,.7);font-size:15px;font-weight:700;text-decoration:none}
 .cs-back:hover{color:var(--c-teal)}
 .cs-hero h1{margin:0 0 22px;font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(46px,7vw,96px);line-height:.92;letter-spacing:-0.045em;font-weight:800}
 .cs-lead{margin:0;max-width:680px;font-size:clamp(18px,1.5vw,21px);line-height:1.6;color:rgba(255,255,255,.84)}
