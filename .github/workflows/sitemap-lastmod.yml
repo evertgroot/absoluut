@@ -1,0 +1,50 @@
+name: Update sitemap dates
+
+# After every push to main that changes a page, sets <lastmod> in sitemap.xml to the date each page
+# last changed, so search engines know which pages to crawl again.
+
+on:
+  push:
+    branches: [main]
+    paths: ["**.html"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sitemap-lastmod
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Set the page dates
+        run: python scripts/update_sitemap_lastmod.py
+      - name: Save the sitemap and publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- sitemap.xml; then
+            echo "The sitemap did not change."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "Update sitemap dates"
+          # main may have moved on in the meantime (for example the press kit PDF commit): catch up first
+          if ! git pull --rebase -q origin main; then
+            git rebase --abort
+            echo "main changed sitemap.xml in the meantime; the next run takes over."
+            exit 0
+          fi
+          git push
+          # pushes made by this workflow do not start a Pages build on their own
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
