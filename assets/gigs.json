@@ -231,7 +231,7 @@
   {"date": "2026-08-29", "event": "Superflirt Festival", "venue": "Kaap", "city": "Amsterdam"},
   {"date": "2026-09-12", "event": "Private wedding", "private": "wedding", "venue": "Westweelde", "city": "Amsterdam"},
   {"date": "2026-10-29", "event": "Squillo", "venue": "NODO", "city": "Milan", "url": "https://www.instagram.com/squillopopclub", "show": true, "logo": "/assets/img/squillo-logo-white.png?v=2", "logoHeight": 36, "logoRatio": 2.87},
-  {"date": "2026-11-13", "event": "FANTASTICO", "venue": "Nepentha", "city": "Milan", "url": "https://www.instagram.com/stanottefantastico/", "show": false},
+  {"date": "2026-11-13", "event": "FANTASTICO", "venue": "Nepentha", "city": "Milan", "url": "https://www.instagram.com/stanottefantastico/", "show": true},
   {"date": "2026-11-25", "event": "Even Numbers Singles Social", "venue": "Artefact", "city": "Milan", "url": "https://www.eventbrite.it/e/singles-social-milan-irl-dating-event-dj-night-tickets-2004475970587", "show": true, "organizer": {"name": "Even Numbers", "url": "https://www.eventbrite.it/o/115666087371"}},
   {"date": "2026-11-27", "event": "BOPS", "venue": "The Other Side", "city": "Amsterdam", "url": "https://linktr.ee/bops.ams", "show": true, "logo": "/assets/img/bops-brand-logo-white.png"},
   {"date": "2027-02-19", "event": "Beyond Darklands", "venue": "Waagnatie", "city": "Antwerp", "url": "https://www.darklands.be", "show": false, "logo": "/assets/img/beyond-darklands-logo-white.svg", "logoHeight": 40, "logoRatio": 2.2},
