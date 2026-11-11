@@ -408,6 +408,9 @@ a.up-row:focus-visible{outline:2px solid var(--c-aubergine);outline-offset:2px}
 .up-what{display:grid;gap:3px;min-width:0}
 .up-event{font-family:'Baloo Bhai 2',sans-serif;font-size:clamp(20px,1.8vw,24px);font-weight:800;line-height:1.1;letter-spacing:-0.015em}
 .up-where{font-size:14px;font-weight:600;color:var(--c-plum-mute)}
+/* a gig without a logo shows its name as text, in the same colour as the logos, and red on hover like them */
+.up-sec .up-event{color:var(--c-plum-mute);transition:color .25s ease}
+a.up-row:hover .up-event,a.up-row:focus-visible .up-event{color:var(--c-red)}
 .up-go{padding-right:6px;font-size:18px;font-weight:800;color:var(--c-red);transition:transform .2s ease}
 @media (min-width:761px){
   .up-cols{grid-auto-flow:column;grid-template-rows:repeat(var(--rows,4),1fr)}
