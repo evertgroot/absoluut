@@ -850,7 +850,7 @@
           prevYear = y;
           var city = CITY[g.city] || g.city || '';
           var note = g.note ? (typeof g.note === 'string' ? g.note : (g.note[lang] || g.note.en)) : '';
-          var where = [g.venue, note, city].filter(Boolean).join(' · ');
+          var where = (g.noteFirst ? [note, g.venue, city] : [g.venue, note, city]).filter(Boolean).join(' · '); /* noteFirst: the note leads, e.g. "Singles Social · Artefact · Milan" */
           var name = g.private ? (T.priv[g.private] || T.priv.event) : g.event;
           /* upcoming gigs show the logo; once a gig is past it falls back to its name in plain text */
           var logos = g._past ? [] : g.logos || (g.logo ? [{ src: g.logo, h: g.logoHeight, r: g.logoRatio }] : []);
