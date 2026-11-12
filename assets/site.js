@@ -809,7 +809,7 @@
   if (upSec && upList) {
     var preview = /[?&]gigs=preview\b/.test(location.search);
     var T = {
-      en: { recent: 'Gigs by Year', priv: { wedding: 'Wedding', event: 'Private Event' }, next: 'Next up', more: 'More Dates', all: 'All Upcoming Dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: Hidden Gigs Are Shown' },
+      en: { recent: 'Gigs by Year', priv: { wedding: 'Wedding', event: 'Private Event' }, next: 'Next Up', more: 'More Dates', all: 'All Upcoming Dates', info: 'Tickets & Info', nt: 'opens in a new tab', preview: 'Preview: Hidden Gigs Are Shown' },
       nl: { recent: 'Gigs per jaar', priv: { wedding: 'Bruiloft', event: 'Besloten event' }, next: 'Volgende gig', more: 'Meer data', all: 'Alle aankomende data', info: 'Tickets & info', nt: 'opent in een nieuw tabblad', preview: 'Voorbeeld: verborgen gigs worden getoond' },
       it: { recent: 'Date per anno', priv: { wedding: 'Matrimonio', event: 'Evento privato' }, next: 'Prossima data', more: 'Altre date', all: 'Tutte le prossime date', info: 'Biglietti e info', nt: 'si apre in una nuova scheda', preview: 'Anteprima: vengono mostrate le date nascoste' }
     }[lang] || null;
