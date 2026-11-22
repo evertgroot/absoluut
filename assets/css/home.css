@@ -910,8 +910,9 @@ select.h-contact-form-select.h-contact-form-select.h-contact-form-select{-webkit
 .cs-bops div.cs-close .btn-solid:is(:hover,:focus-visible),.cs-bops .cs-form-send .btn-solid:is(:hover,:focus-visible){color:var(--c-cream)}
 /* footer links (Privacy Policy, FREYcreates): a 44px tap area on wider screens too; the negative margin keeps the row height */
 /* BOPS case: admin app section */
-.cs-app-shots{display:flex;align-items:flex-start;gap:clamp(12px,2vw,24px);max-width:900px;margin-top:clamp(28px,4vw,48px)}
+.cs-app-shots{display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(12px,2vw,24px);max-width:1240px;margin-top:clamp(28px,4vw,48px)}
 .cs-app-shots figure{margin:0;flex:var(--a) 1 0;min-width:0}
 .cs-app-shots img{display:block;width:100%;height:auto;border-radius:18px}
 .cs-app-shots figcaption{overflow-wrap:break-word;hyphens:auto;margin-top:10px;font-size:15px;font-weight:700;color:rgba(255,241,230,.88)}
+@media (max-width:700px){.cs-app-shots figure{flex-grow:1}.cs-app-shots figure:first-child{flex-basis:100%}}
 .cs-bops .cs-band-red.cs-app p.cs-credit{margin:14px 0 0;font-size:14px;color:rgba(255,241,230,.72)}
